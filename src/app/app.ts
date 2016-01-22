@@ -5,9 +5,11 @@ import {Component} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
+import { YoutubeSearch } from './core/services/youtube.search';
+
 import {RouterActive} from './directives/router-active';
 import {Home} from './home/home';
-
+import { YoutubeMedia } from './core/components/youtube-media/youtube-media';
 
 /*
  * App Component
@@ -15,8 +17,8 @@ import {Home} from './home/home';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
+  providers: [ ...FORM_PROVIDERS, YoutubeSearch ],
+  directives: [ ...ROUTER_DIRECTIVES, RouterActive, YoutubeMedia ],
   pipes: [],
   styles: [`
     nav ul {
@@ -32,30 +34,32 @@ import {Home} from './home/home';
     nav li.active {
       background-color: lightgray;
     }
-  `],
-  template: `
-    <header>
-      <nav>
-        <h1>Hello {{ name }}</h1>
-        <ul>
-          <li router-active="active">
-            <a [routerLink]=" ['Index'] ">Index</a>
-          </li>
-          <li router-active="active">
-            <a [routerLink]=" ['Home'] ">Home</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <footer>
-      WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
-    </footer>
   `
+  ],
+  template: require('./app.html')
+  // template: `
+  //   <header>
+  //     <nav>
+  //       <h1>Hello {{ name }}</h1>
+  //       <ul>
+  //         <li router-active="active">
+  //           <a [routerLink]=" ['Index'] ">Index</a>
+  //         </li>
+  //         <li router-active="active">
+  //           <a [routerLink]=" ['Home'] ">Home</a>
+  //         </li>
+  //       </ul>
+  //     </nav>
+  //   </header>
+
+  //   <main>
+  //     <router-outlet></router-outlet>
+  //   </main>
+
+  //   <footer>
+  //     WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
+  //   </footer>
+  // `
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Index' },
@@ -65,8 +69,14 @@ import {Home} from './home/home';
 export class App {
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
-  constructor() {
+  videoMock: any;
 
+  constructor( youtubeSearch: YoutubeSearch) {
+    this.videoMock = youtubeSearch.search().items[0];
+  }
+
+  onVideoPlay (video) {
+    console.log("playing", video);
   }
 }
 

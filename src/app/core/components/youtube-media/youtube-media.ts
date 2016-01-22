@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input } from 'angular2/core';
+import { Component, EventEmitter, Input, Output } from 'angular2/core';
 import { NgClass } from 'angular2/common';
 
 /* @ngInject */
@@ -18,9 +18,9 @@ import { NgClass } from 'angular2/common';
 })
 export class YoutubeMedia {
 	@Input() video: any;
-	playEvent = new EventEmitter();
-	queueEvent = new EventEmitter();
-	addEvent = new EventEmitter();
+	@Output() play = new EventEmitter();
+	@Output() queue = new EventEmitter();
+	@Output() add = new EventEmitter();
 
 	showDesc = false;
 	isPlaying = false;
@@ -35,15 +35,15 @@ export class YoutubeMedia {
 	}
 
     playVideo (video) {
-    	this.playEvent.next({ video });
+    	this.play.next(video);
 	}
 
 	queueVideo(video) {
-		this.queueEvent.next({ video });
+		this.queue.next({ video });
 	}
 
-	add (video) {
-		this.addEvent.next({ video });
+	addVideo (video) {
+		this.add.next({ video });
 	}
 
 	toggle (showDesc) {

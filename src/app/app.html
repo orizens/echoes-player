@@ -1,0 +1,82 @@
+<nav class="navbar navbar-default navbar-fixed-top" player-resizer="fullscreen">
+	<div class="container-fluid">
+		<div class="navbar-brand" drawer-toggle="drawer-opened">
+			<span class="btn btn-navbar" id="sidebar-menu-toggler">
+				<i class="fa fa-bars"></i>
+			</span>
+			Ech<i class="fa fa-headphones"></i>es</div>
+
+		<div class="navbar-header">
+			<search-panel></search-panel>
+		</div>
+
+		<div id="header-menu" class="collapse navbar-collapse">
+
+			<div class="nav-collapse">
+
+				<feed-filter></feed-filter>
+
+				<!-- <ul class="navbar-nav nav" id="search-presets"
+					ng-controller="PresetCtrl as vm">
+					<e-dropdown label="Presets"
+						items="vm.presets"
+						on-select="vm.updatePreset(item)"
+						icon="tag"
+						selected="{{ vm.selected }}"
+					></e-dropdown>
+				</ul> -->
+
+				<ul class="navbar-nav nav" id="duration-picker"
+					ng-controller="DurationCtrl as vm">
+					<e-dropdown label="Duration"
+						items="vm.durations"
+						on-select="vm.onDurationChange(item, index)"
+						icon="time"
+					></e-dropdown>
+				</ul>
+
+				<user-profile></user-profile>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<!-- YOUTUBE PLAYER -->
+<div id="youtube-player-container" class="navbar navbar-default navbar-fixed-bottom"
+	youtube-player
+	player-id="player" auto-next
+></div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar sidebar-left-fixed well ux-maker"
+	drawer-closed="closed"
+	>
+	<ul id="library-nav" class="nav nav-list nicer-ux" navigator>
+		<li class="nav-header">Library</li>
+		<li class="active"><a href="#explore"><i class="fa fa-music"></i>Explore</a></li>
+		<li><a href="#history"><i class="fa fa-calendar-o"></i>History</a></li>
+		<li><a href="#myPlaylists"><i class="fa fa-heart"></i>My Playlists</a></li>
+	</ul>
+
+	<now-playing></now-playing>
+
+</div>
+<!-- <div class="modal-backdrop sidebar-backdrop" drawer-toggle></div> -->
+
+<div class="app-loader">
+	<loader></loader>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container-fluid container-main drawer-opened"
+	drawer-closed="drawer-closed" drawer-not-closed="drawer-opened"
+	>
+	<div class="row-fluid" >
+		<!-- SEARCH RESULTS AREA -->
+		<div id="search-results" class="ux-maker search-results clearfix main-view"
+			ui-view
+		>
+			<youtube-media [video]="videoMock" (play)="onVideoPlay(videoMock)"></youtube-media>
+		</div>
+	</div>
+</div>
