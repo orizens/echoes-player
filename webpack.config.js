@@ -55,6 +55,12 @@ module.exports = {
       // Support for *.json files.
       { test: /\.json$/,  loader: 'json-loader' },
 
+      // LESS
+      {
+        test: /\.less$/,
+        loader: 'style!css!less'
+      },
+
       // Support for CSS as raw text
       { test: /\.css$/,   loader: 'raw-loader' },
 
@@ -70,6 +76,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js', minChunks: Infinity }),
     // static assets
     new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
+    new CopyWebpackPlugin([ { from: 'src/fonts', to: 'fonts' } ]),
     // generating html
     new HtmlWebpackPlugin({ template: 'src/index.html', inject: false }),
     // replace
