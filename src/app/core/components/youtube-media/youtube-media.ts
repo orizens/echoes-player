@@ -6,7 +6,7 @@ import { NgClass } from 'angular2/common';
 	selector: 'youtube-media',
 	template: require('./youtube-media.html'),
 	inputs: [
-		'video'
+		'media'
 	],
 	// outputs: [
 	// 	'play',
@@ -14,10 +14,9 @@ import { NgClass } from 'angular2/common';
 	// 	'add'
 	// ],
 	directives: [ NgClass ]
-	// pipes: [ NumberPipe ]
 })
 export class YoutubeMedia {
-	@Input() video: any;
+	@Input() media: any;
 	@Output() play = new EventEmitter();
 	@Output() queue = new EventEmitter();
 	@Output() add = new EventEmitter();
@@ -30,20 +29,20 @@ export class YoutubeMedia {
 	}
 
 	ngOnInit(){
-		this.video.statistics.likeCount = parseInt(this.video.statistics.likeCount);
-		this.video.statistics.viewCount = parseInt(this.video.statistics.viewCount);
+		this.media.statistics.likeCount = parseInt(this.media.statistics.likeCount);
+		this.media.statistics.viewCount = parseInt(this.media.statistics.viewCount);
 	}
 
-    playVideo (video) {
-    	this.play.next(video);
+    playVideo (media) {
+    	this.play.next(media);
 	}
 
-	queueVideo(video) {
-		this.queue.next({ video });
+	queueVideo(media) {
+		this.queue.next(media);
 	}
 
-	addVideo (video) {
-		this.add.next({ video });
+	addVideo (media) {
+		this.add.next(media);
 	}
 
 	toggle (showDesc) {

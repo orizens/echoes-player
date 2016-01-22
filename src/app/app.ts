@@ -72,11 +72,11 @@ export class App {
   videoMock: any;
 
   constructor( youtubeSearch: YoutubeSearch) {
-    this.videoMock = youtubeSearch.search().items[0];
+    this.videoMock = youtubeSearch.search().items[5];
   }
 
-  onVideoPlay (video) {
-    console.log("playing", video);
+  playSelectedVideo (media) {
+    console.log("playing", media);
   }
 }
 
