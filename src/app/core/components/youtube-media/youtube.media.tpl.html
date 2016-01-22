@@ -1,0 +1,81 @@
+<li class="youtube-item card ux-maker col-sm-3 col-xs-12"
+	[class.showDescription]="showDesc">
+	<section class="media-title">
+
+		<div class="front face">
+			<div class="indicators clearfix">
+
+				<span class="pull-left item-is-playing">
+					<i class="fa fa-play"></i>Now Playing
+				</span>
+
+			</div>
+
+			<div rel="tooltip" class="media-thumb"
+				title="{{ video.snippet.title }}"
+				(click)="playVideo(video)">
+
+				<div class="thumbnail">
+					<img src="{{video.snippet.thumbnails.high.url}}">
+				</div>
+
+				<button class="btn btn-default btn-lg ux-maker play-media">
+					<i class="fa fa-play"></i>
+				</button>
+			</div>
+
+			<section class="item-actions main-actions">
+
+				<h4 class="title span11">
+					<a href='#/video/{{ video.id }}' rel="tooltip" class="media-thumb ellipsis"
+						title="{{ video.snippet.title }}">
+						{{ video.snippet.title }}
+					</a>
+				</h4>
+
+				<section class="media-actions clearfix">
+					<button class="btn btn-link btn-xs add-to-playlist" title="Queue this video to now playlist"
+						(click)="queueVideo(video)">
+						<i class="fa fa-share"></i> Queue
+					</button>
+					<button class="btn btn-link btn-xs add-to-playlist" title="Add this video to a playlist"
+						(click)="add(video)">
+						<i class="fa fa-plus"></i> Add
+					</button>
+				</section>
+
+				<span
+					(click)="toggle(showDesc)"
+					class="btn btn-default btn-xs media-desc " title="more info about this video">
+					<i class="fa fa-info-circle"></i>
+				</span>
+
+				<span class="item-action"><i class="fa fa-clock-o"></i>{{ video.time}}</span>
+
+				<span class="item-likes item-action" rel="tooltip" title="Number of Likes">
+					<i class="fa fa-thumbs-up"></i> {{ video.statistics.likeCount | number:'2.0'}}
+				</span>
+
+				<span class="item-views item-action" rel="tooltip" title="Number of Views">
+					<i class="fa fa-eye"></i> {{ video.statistics.viewCount | number:'2.0'}}
+				</span>
+
+			</section>
+		</div>
+
+		<div class="description back face">
+			<h4><a href='#/video/{{ video.id}}' rel="tooltip" title="{{ video.snippet.title }}" class="media-thumb">{{ video.snippet.title}}</a></h4>
+			<div>{{ video.snippet.description }}</div>
+		</div>
+
+		<section class="item-actions close-desc">
+			<span
+				(click)="toggle(showDesc)"
+				class="btn btn-default btn-xs media-desc " title="flip back...">
+					<i class="fa fa-times-circle"></i>
+				</span>
+		</section>
+
+	</section>
+
+</li>
