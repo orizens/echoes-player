@@ -4,7 +4,7 @@ import { NgClass } from 'angular2/common';
 /* @ngInject */
 @Component({
 	selector: 'youtube-media',
-	template: require('./youtube.media.tpl.html'),
+	template: require('./youtube-media.html'),
 	inputs: [
 		'video'
 	],
