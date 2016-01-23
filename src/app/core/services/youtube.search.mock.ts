@@ -1,4 +1,6 @@
-export var YoutubeItems = {
+import { YoutubeResource } from '../interfaces/youtube.resource.d';
+
+export var YoutubeItems: YoutubeResource = {
   "kind": "youtube#videoListResponse",
   "etag": "\"9iWEWaGPvvCMMVNTPHF9GiusHJA/SjrDQu4oAmm_Fvr15Qq90XCQoGM\"",
   "pageInfo": {

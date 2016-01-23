@@ -7,6 +7,7 @@ import {FORM_PROVIDERS} from 'angular2/common';
 
 import { YoutubeSearch } from './core/services/youtube.search';
 
+import { YoutubeMediaResource } from './core/interfaces/youtube.media.resource.d';
 import {RouterActive} from './directives/router-active';
 import {Home} from './home/home';
 import { YoutubeMedia } from './core/components/youtube-media/youtube-media';
@@ -69,7 +70,7 @@ import { YoutubeMedia } from './core/components/youtube-media/youtube-media';
 export class App {
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
-  videoMock: any;
+  videoMock: YoutubeMediaResource;
 
   constructor( youtubeSearch: YoutubeSearch) {
     this.videoMock = youtubeSearch.search().items[5];

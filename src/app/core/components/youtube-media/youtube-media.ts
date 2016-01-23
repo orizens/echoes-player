@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from 'angular2/core';
 import { NgClass } from 'angular2/common';
+import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d';
 
 /* @ngInject */
 @Component({
@@ -16,7 +17,7 @@ import { NgClass } from 'angular2/common';
 	directives: [ NgClass ]
 })
 export class YoutubeMedia {
-	@Input() media: any;
+	@Input() media: YoutubeMediaResource;
 	@Output() play = new EventEmitter();
 	@Output() queue = new EventEmitter();
 	@Output() add = new EventEmitter();
@@ -33,19 +34,19 @@ export class YoutubeMedia {
 		this.media.statistics.viewCount = parseInt(this.media.statistics.viewCount);
 	}
 
-    playVideo (media) {
+    playVideo (media: YoutubeMediaResource) {
     	this.play.next(media);
 	}
 
-	queueVideo(media) {
+	queueVideo(media: YoutubeMediaResource) {
 		this.queue.next(media);
 	}
 
-	addVideo (media) {
+	addVideo (media: YoutubeMediaResource) {
 		this.add.next(media);
 	}
 
-	toggle (showDesc) {
+	toggle (showDesc: Boolean) {
 		this.showDesc = !showDesc;
 	}
 }
