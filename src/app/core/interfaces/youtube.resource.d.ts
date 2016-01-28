@@ -1,4 +1,4 @@
-import { YoutubeMediaResource } from './youtube.media.d';
+import { YoutubeMediaResource } from './youtube.media.resource.d';
 
 export interface YoutubeResource {
 	kind: string;

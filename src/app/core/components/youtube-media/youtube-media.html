@@ -1,4 +1,4 @@
-<li class="youtube-item card ux-maker col-sm-3 col-xs-12"
+<div class="youtube-item card ux-maker col-sm-3 col-xs-12"
 	[class.show-description]="showDesc">
 	<section class="media-title">
 
@@ -12,11 +12,11 @@
 			</div>
 
 			<div rel="tooltip" class="media-thumb"
-				title="{{ media.snippet.title }}"
+				title="{{ media.snippet?.title }}"
 				(click)="playVideo(media)">
 
 				<div class="thumbnail">
-					<img src="{{media.snippet.thumbnails.high.url}}">
+					<img src="{{media.snippet?.thumbnails?.high?.url}}">
 				</div>
 
 				<button class="btn btn-default btn-lg ux-maker play-media">
@@ -28,8 +28,8 @@
 
 				<h4 class="title span11">
 					<a href='#/video/{{ media.id }}' rel="tooltip" class="media-thumb ellipsis"
-						title="{{ media.snippet.title }}">
-						{{ media.snippet.title }}
+						title="{{ media.snippet?.title }}">
+						{{ media.snippet?.title }}
 					</a>
 				</h4>
 
@@ -53,19 +53,19 @@
 				<span class="item-action"><i class="fa fa-clock-o"></i>{{ media.time}}</span>
 
 				<span class="item-likes item-action" rel="tooltip" title="Number of Likes">
-					<i class="fa fa-thumbs-up"></i> {{ media.statistics.likeCount | number:'2.0'}}
+					<i class="fa fa-thumbs-up"></i> {{ media.statistics?.likeCount | number:'2.0'}}
 				</span>
 
 				<span class="item-views item-action" rel="tooltip" title="Number of Views">
-					<i class="fa fa-eye"></i> {{ media.statistics.viewCount | number:'2.0'}}
+					<i class="fa fa-eye"></i> {{ media.statistics?.viewCount | number:'2.0'}}
 				</span>
 
 			</section>
 		</div>
 
 		<div class="description back face">
-			<h4><a href='#/video/{{ media.id}}' rel="tooltip" title="{{ media.snippet.title }}" class="media-thumb">{{ media.snippet.title}}</a></h4>
-			<div>{{ media.snippet.description }}</div>
+			<h4><a href='#/video/{{ media.id}}' rel="tooltip" title="{{ media.snippet?.title }}" class="media-thumb">{{ media.snippet?.title}}</a></h4>
+			<div>{{ media.snippet?.description }}</div>
 		</div>
 
 		<section class="item-actions close-desc">
@@ -78,4 +78,4 @@
 
 	</section>
 
-</li>
+</div>

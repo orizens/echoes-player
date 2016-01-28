@@ -10,7 +10,9 @@ import { YoutubeSearch } from './core/services/youtube.search';
 import { YoutubeMediaResource } from './core/interfaces/youtube.media.resource.d';
 import {RouterActive} from './directives/router-active';
 import {Home} from './home/home';
+
 import { YoutubeMedia } from './core/components/youtube-media/youtube-media';
+import { YoutubeList } from './core/components/youtube-list/youtube-list';
 
 /*
  * App Component
@@ -19,7 +21,7 @@ import { YoutubeMedia } from './core/components/youtube-media/youtube-media';
 @Component({
   selector: 'app',
   providers: [ ...FORM_PROVIDERS, YoutubeSearch ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive, YoutubeMedia ],
+  directives: [...ROUTER_DIRECTIVES, RouterActive, YoutubeList],
   pipes: [],
   styles: [`
     nav ul {
@@ -68,16 +70,19 @@ import { YoutubeMedia } from './core/components/youtube-media/youtube-media';
   { path: '/**', redirectTo: ['Index'] }
 ])
 export class App {
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
-  videoMock: YoutubeMediaResource;
+  videosMock: any = [];
 
-  constructor( youtubeSearch: YoutubeSearch) {
-    this.videoMock = youtubeSearch.search().items[5];
+  constructor(private youtubeSearch: YoutubeSearch) {
+    this.search();
+  }
+
+  search () {
+    this.youtubeSearch.search('tremonti', true)
+      .then(response => this.videosMock = response.items);
   }
 
   playSelectedVideo (media) {
-    console.log("playing", media);
+    console.log('playing', media);
   }
 }
 

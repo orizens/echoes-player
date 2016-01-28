@@ -6,9 +6,9 @@ import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d'
 @Component({
 	selector: 'youtube-media',
 	template: require('./youtube-media.html'),
-	inputs: [
-		'media'
-	],
+	// inputs: [
+	// 	'media'
+	// ],
 	// outputs: [
 	// 	'play',
 	// 	'queue',
@@ -17,7 +17,7 @@ import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d'
 	directives: [ NgClass ]
 })
 export class YoutubeMedia {
-	@Input() media: YoutubeMediaResource;
+	@Input() media: any;
 	@Output() play = new EventEmitter();
 	@Output() queue = new EventEmitter();
 	@Output() add = new EventEmitter();
@@ -30,8 +30,10 @@ export class YoutubeMedia {
 	}
 
 	ngOnInit(){
-		this.media.statistics.likeCount = parseInt(this.media.statistics.likeCount);
-		this.media.statistics.viewCount = parseInt(this.media.statistics.viewCount);
+		if (this.media.statistics) {
+			this.media.statistics.likeCount = parseInt(this.media.statistics.likeCount);
+			this.media.statistics.viewCount = parseInt(this.media.statistics.viewCount);
+		}
 	}
 
     playVideo (media: YoutubeMediaResource) {

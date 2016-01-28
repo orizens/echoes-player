@@ -76,7 +76,7 @@
 		<div id="search-results" class="ux-maker search-results clearfix main-view"
 			ui-view
 		>
-			<youtube-media [media]="videoMock" (play)="playSelectedVideo(videoMock)"></youtube-media>
+			<youtube-list [list]="videosMock" (play)="playSelectedVideo($event)"></youtube-list>
 		</div>
 	</div>
 </div>
