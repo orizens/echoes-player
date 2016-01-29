@@ -73,10 +73,8 @@
 	>
 	<div class="row-fluid" >
 		<!-- SEARCH RESULTS AREA -->
-		<div id="search-results" class="ux-maker search-results clearfix main-view"
-			ui-view
-		>
-			<youtube-list [list]="videosMock" (play)="playSelectedVideo($event)"></youtube-list>
+		<div id="search-results" class="ux-maker search-results clearfix main-view">
+			<router-outlet></router-outlet>
 		</div>
 	</div>
 </div>

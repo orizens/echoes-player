@@ -11,28 +11,21 @@ import { YoutubeMedia } from '../youtube-media/youtube-media';
 	directives: [NgFor, YoutubeMedia ]
 })
 export class YoutubeList {
-	// @Input() list: any = [];
 	@Output() play = new EventEmitter();
-	// @Output() queue = new EventEmitter();
-	// @Output() add = new EventEmitter();
+	@Output() queue = new EventEmitter();
+	@Output() add = new EventEmitter();
 
-	constructor () {
-
-	}
-
-	ngOnInit(){
-
-	}
+	constructor () {}
 
 	playSelectedVideo (media) {
 		this.play.next(media);
 	}
 
 	queueSelectedVideo (media) {
-
+		this.queue.next(media);
 	}
 
 	addVideo (media) {
-
+		this.add.next(media);
 	}
 }

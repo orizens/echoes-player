@@ -1,7 +1,1 @@
-<youtube-media
-	*ngFor="#media in mediaList"
-	[media]="media"
-	(play)="playSelectedVideo(media)"
-	(queue)="queueSelectedVideo(video)"
-	(add)="addVideo(video)">
-</youtube-media>
+<youtube-list [list]="videos" (play)="playSelectedVideo($event)"></youtube-list>
