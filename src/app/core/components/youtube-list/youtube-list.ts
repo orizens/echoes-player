@@ -8,11 +8,6 @@ import { YoutubeMedia } from '../youtube-media/youtube-media';
 	inputs: [
 		'list'
 	],
-	outputs: [
-		// 'play'
-		// 'queue',
-		// 'add'
-	],
 	directives: [NgFor, YoutubeMedia ]
 })
 export class YoutubeList {
