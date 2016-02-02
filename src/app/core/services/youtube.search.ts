@@ -17,6 +17,9 @@ export class YoutubeSearch {
 			pageToken: ''
 		}
 	};
+	isSearching: Boolean = false;
+	items: Array<any> = [];
+	private nextPageToken: string;
 
 	constructor(private http: Http) {
 		this._config.set('part', 'snippet,id');
@@ -28,39 +31,39 @@ export class YoutubeSearch {
 	}
 
 	search(query: string, dontReset: Boolean){
-		let config = new URLSearchParams();
-		config.set('part', 'snippet,id');
-		config.set('key', YOUTUBE_API_KEY);
-		config.set('q', '');
-		config.set('maxResults', '50');
-		config.set('type', 'video');
-		config.set('pageToken', '');
-		// return YoutubeItems;
-		// if (!dontReset) {
-		// 	resetList();
-		// }
-		let isSearching = true;
-		// if (query && query !== this.config.params.q) {
-		// 	this.config.params.pageToken = '';
-		// }
-		// remove properties not relevant to playlist search
-		// sanitize();
-		// this.config.params.q = query || this.config.params.q;
+		const isNewSearch = query && query !== this._config.get('q');
+		const shouldBeReset = !dontReset;
+
+		if (shouldBeReset || isNewSearch) {
+			this._config.set('pageToken', '');
+		}
+		this.isSearching = true;
 		if (query && query.length) {
-			config.set('q', query);
+			this._config.set('q', query);
 		}
 		// localStorageService.set(Storage.QUERY, this.config.params.q);
-		return this.http.get(this.url, { search: config })
+		return this.http.get(this.url, { search: this._config })
 			// .map((res: Response) => res.json())
 			.toPromise()
-			.then((response) => response.json());
-			// .subscribe((response) => {
-			// 	console.log('search response', response);
-			// 	return response;
-			// });
+			.then((response) => response.json())
+			.then((response) => {
+				let itemsAmount = this.items.length;
+				this.nextPageToken = response.nextPageToken;
+				this.isSearching = false;
+				this.items.splice(itemsAmount, 0, ...response.items);
+				console.log('this.items', this.items, 'this:', this);
+				return response;
+			});
 
 			// .then(fetchContentDetails)
 			// .then(addDuration)
 			// .then(finalize);
+	}
+
+	searchMore() {
+		if (!this.isSearching && this.items.length) {
+			this._config.set('pageToken', this.nextPageToken);
+			this.search(this._config.q, true);
+		}
 	}
 }
