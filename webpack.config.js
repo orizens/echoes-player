@@ -62,7 +62,7 @@ module.exports = {
       },
 
       // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw-loader' },
+      // { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw-loader' }

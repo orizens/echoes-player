@@ -8,7 +8,9 @@ import {FORM_PROVIDERS} from 'angular2/common';
 import {RouterActive} from './directives/router-active';
 
 // import {Home} from './home/home';
+import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 import { YoutubeVideos } from './youtube-videos/youtube-videos';
+import { YoutubeSearch } from './core/services/youtube.search';
 
 
 /*
@@ -17,8 +19,8 @@ import { YoutubeVideos } from './youtube-videos/youtube-videos';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS ],
-  directives: [...ROUTER_DIRECTIVES, RouterActive],
+  providers: [...FORM_PROVIDERS, YoutubeSearch],
+  directives: [...ROUTER_DIRECTIVES, RouterActive, InfiniteScroll],
   pipes: [],
   styles: [],
   template: require('./app.html')
@@ -39,8 +41,16 @@ import { YoutubeVideos } from './youtube-videos/youtube-videos';
   { path: '/**', redirectTo: ['Index'] }
 ])
 export class App {
+  public start = true;
 
-  constructor() {
+  constructor(public youtubeSearch: YoutubeSearch) {
+  }
 
+  onScroll () {
+    if (this.start) {
+      this.start = false;
+      return;
+    }
+    this.youtubeSearch.searchMore();
   }
 }
