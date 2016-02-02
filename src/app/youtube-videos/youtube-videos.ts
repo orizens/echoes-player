@@ -3,17 +3,11 @@ import { Component, EventEmitter, Input, Output } from 'angular2/core';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubeList } from '../core/components/youtube-list/youtube-list';
 
-
-
 @Component({
 	selector: 'youtube-videos',
 	template: require('./youtube-videos.html'),
-	// inputs: [
-	// ],
-	// outputs: [
-	// ],
 	directives: [ YoutubeList ],
-	providers: [ YoutubeSearch ]
+	providers: [  ]
 })
 export class YoutubeVideos {
 	// @Input() media: any;
@@ -30,7 +24,7 @@ export class YoutubeVideos {
 
 	search () {
 		this.youtubeSearch.search('tremonti', true)
-			.then(response => this.videos = response.items);
+			.then(response => this.videos = this.youtubeSearch.items);
 	}
 
 	playSelectedVideo(media) {
