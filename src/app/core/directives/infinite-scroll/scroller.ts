@@ -1,16 +1,20 @@
 export class Scroller {
+	public scrollDistance: any;
+	public scrollEnabled: any;
+	public checkWhenEnabled: any;
+	public container: any;
+	public immediateCheck: any;
+	public useDocumentBottom: any;
+	public unregisterEventListener: any;
+	public checkInterval: any;
+	public windowElement: any;
+	public infiniteScrollCallback: any;
+	public $interval: any;
+	public $elementRef: any;
 
 	constructor($window, $interval, $elementRef, infiniteScrollCallback, infiniteScrollDistance, infiniteScrollParent) {
 		let THROTTLE_MILLISECONDS = 300;
 		this.windowElement = $window;
-		this.scrollDistance = null;
-		this.scrollEnabled = null;
-		this.checkWhenEnabled = null;
-		this.container = null;
-		this.immediateCheck = true;
-		this.useDocumentBottom = false;
-		this.unregisterEventListener = null;
-		this.checkInterval = false;
 		this.infiniteScrollCallback = infiniteScrollCallback;
 		this.$interval = $interval;
 		this.$elementRef = $elementRef;
@@ -76,7 +80,7 @@ export class Scroller {
 			elementBottom = this.offsetTop(this.$elementRef.nativeElement) - containerTopOffset + this.height(this.$elementRef.nativeElement);
 		}
 		if (this.useDocumentBottom) {
-			elementBottom = height((this.$elementRef.nativeElement.ownerDocument || this.$elementRef.nativeElement.document).documentElement);
+			elementBottom = this.height((this.$elementRef.nativeElement.ownerDocument || this.$elementRef.nativeElement.document).documentElement);
 		}
 		remaining = elementBottom - containerBottom;
 		shouldScroll = remaining <= this.height(this.container) * this.scrollDistance + 1;
@@ -135,9 +139,9 @@ export class Scroller {
 	}
 
 	changeContainer (newContainer) {
-		if (this.container != null) {
-            this.container.unbind('scroll', this.handler);
-		}
+		// if (this.container != null) {
+            // this.container.unbind('scroll', this.handler);
+		// }
 		this.container = newContainer;
 		if (newContainer != null) {
             return this.container.addEventListener('scroll', this.handler.bind(this));
@@ -152,76 +156,3 @@ export class Scroller {
 		// }
 	}
 }
-
-	// if (THROTTLE_MILLISECONDS != null) {
-	// 	handler = throttle(handler, THROTTLE_MILLISECONDS);
-	// }
-	// scope.$on('$destroy', function() {
-	// 	container.unbind('scroll', handler);
-	// 	if (unregisterEventListener != null) {
-	// 		unregisterEventListener();
-	// 		return unregisterEventListener = null;
-	// 	}
-	// });
-	// handleInfiniteScrollDistance = function(v) {
-	// 	return scrollDistance = parseFloat(v) || 0;
-	// };
-	// scope.$watch('infiniteScrollDistance', handleInfiniteScrollDistance);
-	// handleInfiniteScrollDistance(scope.infiniteScrollDistance);
-	// handleInfiniteScrollDisabled = function(v) {
-	// 	scrollEnabled = !v;
-	// 	if (scrollEnabled && checkWhenEnabled) {
-	// 		checkWhenEnabled = false;
-	// 		return handler();
-	// 	}
-	// };
-	// scope.$watch('infiniteScrollDisabled', handleInfiniteScrollDisabled);
-	// handleInfiniteScrollDisabled(scope.infiniteScrollDisabled);
-	// handleInfiniteScrollUseDocumentBottom = function(v) {
-	// 	return useDocumentBottom = v;
-	// };
-	// scope.$watch('infiniteScrollUseDocumentBottom', handleInfiniteScrollUseDocumentBottom);
-	// handleInfiniteScrollUseDocumentBottom(scope.infiniteScrollUseDocumentBottom);
-	// changeContainer = function(newContainer) {
-	// 	if (container != null) {
-	// 		container.unbind('scroll', handler);
-	// 	}
-	// 	container = newContainer;
-	// 	if (newContainer != null) {
-	// 		return container.bind('scroll', handler);
-	// 	}
-	// };
-	// changeContainer(windowElement);
-	// if (scope.infiniteScrollListenForEvent) {
-	// 	unregisterEventListener = $rootScope.$on(scope.infiniteScrollListenForEvent, handler);
-	// }
-	// handleInfiniteScrollContainer = function(newContainer) {
-	// 	if ((newContainer == null) || newContainer.length === 0) {
-	// 		return;
-	// 	}
-	// 	if (newContainer instanceof HTMLElement) {
-	// 		newContainer = angular.element(newContainer);
-	// 	} else if (typeof newContainer.append === 'function') {
-	// 		newContainer = angular.element(newContainer[newContainer.length - 1]);
-	// 	} else if (typeof newContainer === 'string') {
-	// 		newContainer = angular.element(document.querySelector(newContainer));
-	// 	}
-	// 	if (newContainer != null) {
-	// 		return changeContainer(newContainer);
-	// 	} else {
-	// 		throw new Exception("invalid infinite-scroll-container attribute.");
-	// 	}
-	// };
-	// scope.$watch('infiniteScrollContainer', handleInfiniteScrollContainer);
-	// handleInfiniteScrollContainer(scope.infiniteScrollContainer || []);
-	// if (attrs.infiniteScrollParent != null) {
-	// 	changeContainer(angular.element(elem.parent()));
-	// }
-	// if (attrs.infiniteScrollImmediateCheck != null) {
-	// 	immediateCheck = scope.$eval(attrs.infiniteScrollImmediateCheck);
-	// }
-	// return checkInterval = $interval((function() {
-	// 	if (immediateCheck) {
-	// 		return handler();
-	// 	}
-	// }), 0);

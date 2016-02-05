@@ -7,16 +7,6 @@ import YOUTUBE_API_KEY from './constants';
 export class YoutubeSearch {
 	url: string = 'https://www.googleapis.com/youtube/v3/search';
 	private _config: URLSearchParams = new URLSearchParams();
-	private config = {
-		params: {
-			part: 'snippet,id',
-			key: YOUTUBE_API_KEY,
-			q: '', //localStorageService.get(Storage.QUERY),
-			maxResults: 50,
-			type: 'video',//types.VIDEO
-			pageToken: ''
-		}
-	};
 	isSearching: Boolean = false;
 	items: Array<any> = [];
 	private nextPageToken: string;
@@ -63,7 +53,7 @@ export class YoutubeSearch {
 	searchMore() {
 		if (!this.isSearching && this.items.length) {
 			this._config.set('pageToken', this.nextPageToken);
-			this.search(this._config.q, true);
+			this.search(this._config.get('q'), true);
 		}
 	}
 }
