@@ -25,6 +25,6 @@ export class InfiniteScroll {
   };
 
   onScroll () {
-    this.scroll.next();
+    this.scroll.next({});
   }
 }
