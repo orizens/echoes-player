@@ -16,8 +16,8 @@ import { Scroller } from './scroller';
   selector: '[infinite-scroll]'
 })
 export class InfiniteScroll {
-  @Input() infiniteDistance: Number;
-  @Output() scroll = new EventEmitter();
+  @Input() infiniteScrollDistance: Number;
+  @Output() scrolled = new EventEmitter();
   private scroller: Scroller;
 
   constructor( private element: ElementRef ) {
@@ -25,6 +25,6 @@ export class InfiniteScroll {
   };
 
   onScroll () {
-    this.scroll.next({});
+    this.scrolled.next({});
   }
 }

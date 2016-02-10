@@ -43,6 +43,7 @@
     "zone.js": "0.5.10"
   },
   "devDependencies": {
+    "angular2-infinite-scroll": "0.0.5",
     "arrify": "*",
     "bluebird": "*",
     "blueimp-tmpl": "*",

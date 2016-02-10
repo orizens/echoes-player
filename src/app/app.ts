@@ -8,7 +8,7 @@ import {FORM_PROVIDERS} from 'angular2/common';
 import {RouterActive} from './directives/router-active';
 
 // import {Home} from './home/home';
-import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
+import { InfiniteScroll } from 'angular2-infinite-scroll';
 import { YoutubeVideos } from './youtube-videos/youtube-videos';
 import { YoutubeSearch } from './core/services/youtube.search';
 

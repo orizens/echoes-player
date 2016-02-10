@@ -74,7 +74,9 @@
 	<div class="row-fluid" >
 		<!-- SEARCH RESULTS AREA -->
 		<div id="search-results" class="ux-maker search-results clearfix main-view"
-			infinite-scroll infinite-scroll-distance="2" (scroll)="onScroll()">
+			infinite-scroll
+			[infiniteScrollDistance]="2"
+			(scrolled)="onScroll()">
 			<router-outlet></router-outlet>
 		</div>
 	</div>
