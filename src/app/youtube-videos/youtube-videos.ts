@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from 'angular2/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from 'angular2/core';
+import { Store} from '@ngrx/store';
 // import { NgClass } from 'angular2/common';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubeList } from '../core/components/youtube-list/youtube-list';
@@ -7,24 +8,26 @@ import { YoutubeList } from '../core/components/youtube-list/youtube-list';
 	selector: 'youtube-videos',
 	template: require('./youtube-videos.html'),
 	directives: [ YoutubeList ],
-	providers: [  ]
+	providers: [  ],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubeVideos {
-	// @Input() media: any;
-	// @Output() play = new EventEmitter();
-	videos: Array<any>;
+	// videos: Array<any>;
+	videos: any;
 
-	constructor(private youtubeSearch: YoutubeSearch) {
+	constructor(private youtubeSearch: YoutubeSearch, public store: Store<any>) {
+		this.videos = this.store.select('videos');
 		this.search();
 	}
 
 	ngOnInit(){
-
 	}
 
 	search () {
 		this.youtubeSearch.search('tremonti', true)
-			.then(response => this.videos = this.youtubeSearch.items);
+			// .then(response => {
+			// 	this.videos = this.youtubeSearch.items;
+			// });
 	}
 
 	playSelectedVideo(media) {

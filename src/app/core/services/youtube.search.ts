@@ -1,6 +1,8 @@
 import { Http, URLSearchParams, Response } from 'angular2/http';
 import { YoutubeItems } from './youtube.search.mock';
 import { Injectable } from 'angular2/core';
+import { Store } from '@ngrx/store';
+import { ADD } from '../store/youtube-videos';
 import YOUTUBE_API_KEY from './constants';
 
 @Injectable()
@@ -11,7 +13,7 @@ export class YoutubeSearch {
 	items: Array<any> = [];
 	private nextPageToken: string;
 
-	constructor(private http: Http) {
+	constructor(private http: Http, private store: Store<any>) {
 		this._config.set('part', 'snippet,id');
 		this._config.set('key', YOUTUBE_API_KEY);
 		this._config.set('q', '');
@@ -41,6 +43,7 @@ export class YoutubeSearch {
 				this.nextPageToken = response.nextPageToken;
 				this.isSearching = false;
 				this.items.splice(itemsAmount, 0, ...response.items);
+				this.store.dispatch({ type: ADD, payload: [ ...response.items ] })
 				console.log('this.items', this.items, 'this:', this);
 				return response;
 			});

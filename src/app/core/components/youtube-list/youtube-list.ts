@@ -5,12 +5,10 @@ import { YoutubeMedia } from '../youtube-media/youtube-media';
 @Component({
 	selector: 'youtube-list',
 	template: require('./youtube-list.html'),
-	inputs: [
-		'list'
-	],
 	directives: [NgFor, YoutubeMedia ]
 })
 export class YoutubeList {
+	@Input() list: any;
 	@Output() play = new EventEmitter();
 	@Output() queue = new EventEmitter();
 	@Output() add = new EventEmitter();

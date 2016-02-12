@@ -43,6 +43,7 @@
     "zone.js": "0.5.10"
   },
   "devDependencies": {
+    "@ngrx/store": "^1.2.1",
     "angular2-infinite-scroll": "0.0.5",
     "arrify": "*",
     "bluebird": "*",

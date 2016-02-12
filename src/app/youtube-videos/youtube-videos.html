@@ -1,1 +1,1 @@
-<youtube-list [list]="videos" (play)="playSelectedVideo($event)"></youtube-list>
+<youtube-list [list]="videos | async" (play)="playSelectedVideo($event)"></youtube-list>
