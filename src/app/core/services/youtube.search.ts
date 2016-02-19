@@ -2,7 +2,7 @@ import { Http, URLSearchParams, Response } from 'angular2/http';
 import { YoutubeItems } from './youtube.search.mock';
 import { Injectable } from 'angular2/core';
 import { Store } from '@ngrx/store';
-import { ADD } from '../store/youtube-videos';
+import { ADD, RESET } from '../store/youtube-videos';
 import YOUTUBE_API_KEY from './constants';
 
 @Injectable()
@@ -28,6 +28,7 @@ export class YoutubeSearch {
 
 		if (shouldBeReset || isNewSearch) {
 			this._config.set('pageToken', '');
+			this.store.dispatch({ type: RESET });
 		}
 		this.isSearching = true;
 		if (query && query.length) {
@@ -58,5 +59,9 @@ export class YoutubeSearch {
 			this._config.set('pageToken', this.nextPageToken);
 			this.search(this._config.get('q'), true);
 		}
+	}
+
+	resetPageToken () {
+		this._config.set('pageToken', '');
 	}
 }

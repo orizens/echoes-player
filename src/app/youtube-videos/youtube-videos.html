@@ -1,1 +1,23 @@
-<youtube-list [list]="videos | async" (play)="playSelectedVideo($event)"></youtube-list>
+<nav class="navbar col-md-12" player-resizer="fullscreen">
+
+	<div class="navbar-header">
+		<div class="search-panel">
+			<!-- SEARCH FORM -->
+			<form class="navbar-form form-search navbar-left" id="media-explorer">
+				<div class="form-group">
+					<input placeholder="Explore Media" id="media-search" type="search" class="form-control" autocomplete="off"
+						[(ngModel)]="searchQuery"
+						(input)="resetPageToken()"
+						>
+					<button class="btn btn-transparent btn-submit" type="submit" title="search with echoes"
+						(click)="search()">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</nav>
+<section class="videos-list">
+	<youtube-list [list]="videos | async" (play)="playSelectedVideo($event)"></youtube-list>
+</section>

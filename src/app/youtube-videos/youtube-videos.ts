@@ -1,19 +1,21 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from 'angular2/core';
+import { NgModel } from 'angular2/common'
 import { Store} from '@ngrx/store';
 // import { NgClass } from 'angular2/common';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubeList } from '../core/components/youtube-list/youtube-list';
 
 @Component({
-	selector: 'youtube-videos',
+	selector: 'youtube-videos.youtube-videos',
 	template: require('./youtube-videos.html'),
-	directives: [ YoutubeList ],
+	directives: [YoutubeList, NgModel],
 	providers: [  ],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubeVideos {
 	// videos: Array<any>;
 	videos: any;
+	searchQuery: string = 'tremonti';
 
 	constructor(private youtubeSearch: YoutubeSearch, public store: Store<any>) {
 		this.videos = this.store.select('videos');
@@ -24,7 +26,7 @@ export class YoutubeVideos {
 	}
 
 	search () {
-		this.youtubeSearch.search('tremonti', true)
+		this.youtubeSearch.search(this.searchQuery, false);
 			// .then(response => {
 			// 	this.videos = this.youtubeSearch.items;
 			// });
@@ -32,5 +34,10 @@ export class YoutubeVideos {
 
 	playSelectedVideo(media) {
 		console.log('playing', media);
+	}
+
+	resetPageToken() {
+		// this.store.dispatch('resetPageToken', {});
+		this.youtubeSearch.resetPageToken();
 	}
 }
