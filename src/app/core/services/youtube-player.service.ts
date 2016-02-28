@@ -35,7 +35,11 @@ export class YoutubePlayerService {
 
 	isPlaying () {
         // because YT is not loaded yet 1 is used - YT.PlayerState.PLAYING
-        return this.player.getPlayerState() === YT.PlayerState.PLAYING;
+        const isPlayerReady: any = this.player && this.player.getPlayerState;
+        const isPlayerPlaying = isPlayerReady ?
+			this.player.getPlayerState() === YT.PlayerState.PLAYING :
+			false;
+        return isPlayerPlaying;
     }
 	// createPlayer (elementId, height, width, videoId, callback) {
 	createPlayer (callback) {

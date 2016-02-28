@@ -2,7 +2,7 @@ import {Reducer, Action} from '@ngrx/store';
 
 export const PLAY = 'PLAY';
 export const QUEUE = 'REMOVE';
-export const TOGGLE_PLAYER = 'SHIW_PLAYER';
+export const TOGGLE_PLAYER = 'TOGGLE_PLAYER';
 
 let initialPlayerState = {
     mediaId: 'NONE',
