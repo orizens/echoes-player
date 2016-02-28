@@ -1,9 +1,13 @@
 import {provideStore} from '@ngrx/store';
 // reducers
 import {videos} from './youtube-videos';
+import {player} from './youtube-player';
 // Echoes State
-let EchoesStore = {
-	videos: []
+let echoes = {
+	videos: [],
+	player: {}
 };
 
-export const store = provideStore({ videos }, { videos: EchoesStore.videos });
+export const store = provideStore({
+	videos, player
+});

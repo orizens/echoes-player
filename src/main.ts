@@ -7,9 +7,9 @@ import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {store} from './app/core/store/store';
 
-// import {enableProdMode} from 'angular2/core';
+import {enableProdMode} from 'angular2/core';
+import 'rxjs/Rx';
 
-// enableProdMode();
 
 /*
  * App Component
@@ -20,6 +20,7 @@ import {App} from './app/app';
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
+// enableProdMode();
 document.addEventListener('DOMContentLoaded', function main() {
   bootstrap(App, [
     ...('production' === process.env.ENV ? [] : ELEMENT_PROBE_PROVIDERS),

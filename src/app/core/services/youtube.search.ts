@@ -27,8 +27,7 @@ export class YoutubeSearch {
 		const shouldBeReset = !dontReset;
 
 		if (shouldBeReset || isNewSearch) {
-			this._config.set('pageToken', '');
-			this.store.dispatch({ type: RESET });
+			this.resetPageToken();
 		}
 		this.isSearching = true;
 		if (query && query.length) {
@@ -45,7 +44,6 @@ export class YoutubeSearch {
 				this.isSearching = false;
 				this.items.splice(itemsAmount, 0, ...response.items);
 				this.store.dispatch({ type: ADD, payload: [ ...response.items ] })
-				console.log('this.items', this.items, 'this:', this);
 				return response;
 			});
 
@@ -63,5 +61,6 @@ export class YoutubeSearch {
 
 	resetPageToken () {
 		this._config.set('pageToken', '');
+		this.store.dispatch({ type: RESET });
 	}
 }

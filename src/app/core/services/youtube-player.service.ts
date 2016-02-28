@@ -1,0 +1,76 @@
+import { Http, URLSearchParams, Response } from 'angular2/http';
+import { Injectable } from 'angular2/core';
+import { window } from 'angular2/src/facade/browser';
+import { Store } from '@ngrx/store';
+import { PLAY, QUEUE, TOGGLE_PLAYER } from '../store/youtube-player';
+
+@Injectable()
+export class YoutubePlayerService {
+	public player: YT.Player;
+	public player$: any;
+
+	constructor (public store: Store<any>) {
+		window['onYouTubeIframeAPIReady'] = () => {
+			this.player = this.createPlayer(() => { });
+		}
+		this.player$ = this.store.select('player');
+	}
+	play () {
+		this.player.playVideo();
+	}
+
+	pause () {
+		this.player.pauseVideo();
+	}
+
+	playVideo (media: any) {
+		this.player.loadVideoById(media.id.videoId);
+		this.play();
+		this.store.dispatch({ type: PLAY, payload: media });
+	}
+
+	togglePlayer() {
+		this.store.dispatch({ type: TOGGLE_PLAYER, payload: true });
+	}
+
+	isPlaying () {
+        // because YT is not loaded yet 1 is used - YT.PlayerState.PLAYING
+        return this.player.getPlayerState() === YT.PlayerState.PLAYING;
+    }
+	// createPlayer (elementId, height, width, videoId, callback) {
+	createPlayer (callback) {
+		const defaultSizes = {
+		    height: 270,
+		    width: 300
+		};
+	    return new YT.Player('player', {
+	        height: defaultSizes.height,
+			width: defaultSizes.width,
+	        videoId: '',
+	        // playerVars: playerVars,
+	        events: {
+	            onReady: () => {},
+				onStateChange: onPlayerStateChange
+	        }
+	    });
+
+	    function onPlayerStateChange (event) {
+	        const state = event.data;
+			let autoNext = false;
+	        // play the next song if its not the end of the playlist
+	        // should add a "repeat" feature
+	        // if (autoNext && state === YT.PlayerState.ENDED) {
+	        //     service.playNextTrack({ stopOnLast: true });
+	        // }
+
+	        if (state === YT.PlayerState.PAUSED) {
+	            // service.playerState = YT.PlayerState.PAUSED;
+	        }
+	        if (state === YT.PlayerState.PLAYING) {
+	            // service.playerState = YT.PlayerState.PLAYING;
+	        }
+	        // callback(state);
+	        console.log('state changed', state);
+	    }
+	}
+}

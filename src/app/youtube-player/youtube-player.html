@@ -1,0 +1,65 @@
+<div class="youtube-player navbar navbar-default navbar-fixed-bottom show-youtube-player"
+	[ngClass]="{
+		'show-youtube-player': player?.showPlayer
+	}">
+	<div class="yt-player ux-maker">
+		<div id="player" class="ux-maker"></div>
+	</div>
+
+	<div class="container-fluid">
+
+		<ul class="col-md-4 youtube-toolbar nicer-ux clearfix row list-unstyled">
+
+			<li class="player-controls col-md-12"
+				[ngClass]="{ 'yt-playing': isPlaying() }">
+
+				<div class="btn-group">
+					<button title="show / hide"
+						(click)="togglePlayer()"
+						class="btn btn-default btn-lg navbar-btn show-player"><i class="fa fa-chevron-up"></i></button>
+
+					<!-- <button title="maximize / minimize"
+						class="btn btn-default btn-lg navbar-btn fullscreen"
+						ng-click="vm.toggleFullScreen()"
+						><i class="fa fa-arrows-alt"></i></button>
+
+
+					<button title="play previous track"
+						class="btn btn-default btn-lg navbar-btn previous"
+						ng-click="vm.playPreviousTrack()"
+						ng-disabled="!vm.playlistHasTracks()">
+						<i class="fa fa-step-backward"></i></button>
+-->
+					<button title="pause"
+						class="btn btn-default btn-lg navbar-btn pause"
+						(click)="pauseVideo()">
+						<i class="fa fa-pause"></i></button>
+
+					<button title="play"
+						class="btn btn-default btn-lg navbar-btn play"
+						(click)="playVideo()">
+						<i class="fa fa-play"></i></button>
+
+					<!-- button title="play next track"
+						class="btn btn-default btn-lg navbar-btn next"
+						ng-click="vm.playNextTrack()"
+						ng-disabled="vm.playlistIsEmpty() || vm.playlistHasOneTrack()"
+						><i class="fa fa-step-forward"></i></button> -->
+				</div>
+			</li>
+		</ul>
+
+		<div class="col-md-6 navbar-brand">
+			{{ player?.media?.snippet?.title }}
+		</div>
+
+		<ul class="nav navbar-nav navbar-right social-badges col-md-2">
+			<li class="social-badge">
+				<div class="g-follow" data-annotation="bubble" data-height="15" data-href="//plus.google.com/u/0/111830310196328233893" data-rel="publisher"></div>
+			</li>
+			<li>
+			 	<a href="#" class="facebook-page brand"><iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fechoesplayer&amp;width=50&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=683337491728445" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe></a>
+			</li>
+		</ul>
+	</div>
+</div>

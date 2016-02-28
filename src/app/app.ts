@@ -11,7 +11,8 @@ import {RouterActive} from './directives/router-active';
 import { InfiniteScroll } from 'angular2-infinite-scroll';
 import { YoutubeVideos } from './youtube-videos/youtube-videos';
 import { YoutubeSearch } from './core/services/youtube.search';
-
+import { YoutubePlayer } from './youtube-player/youtube-player';
+import { YoutubePlayerService } from './core/services/youtube-player.service';
 
 /*
  * App Component
@@ -19,8 +20,8 @@ import { YoutubeSearch } from './core/services/youtube.search';
  */
 @Component({
   selector: 'app',
-  providers: [...FORM_PROVIDERS, YoutubeSearch],
-  directives: [...ROUTER_DIRECTIVES, RouterActive, InfiniteScroll],
+  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService],
+  directives: [...ROUTER_DIRECTIVES, RouterActive, InfiniteScroll, YoutubePlayer],
   pipes: [],
   styles: [],
   template: require('./app.html')
