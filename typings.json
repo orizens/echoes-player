@@ -14,5 +14,8 @@
     "webpack": "github:DefinitelyTyped/DefinitelyTyped/webpack/webpack.d.ts#95c02169ba8fa58ac1092422efbd2e3174a206f4",
     "youtube": "github:DefinitelyTyped/DefinitelyTyped/youtube/youtube.d.ts#069003c1d2038c1123b84c60d73d93e8e227b22a",
     "zone": "github:angular/DefinitelyTyped/zone/zone.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9"
+  },
+  "ambientDevDependencies": {
+    "gapi.youtube": "github:DefinitelyTyped/DefinitelyTyped/gapi.youtube/gapi.youtube.d.ts#1c1a37c1e4a5cb614f64b4c547fd69cbe6ca2828"
   }
 }
