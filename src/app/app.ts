@@ -43,8 +43,11 @@ import { YoutubePlayerService } from './core/services/youtube-player.service';
 ])
 export class App {
   public start = true;
+  public player: any;
 
-  constructor(public youtubeSearch: YoutubeSearch) {
+  constructor(public youtubeSearch: YoutubeSearch,
+    public playerService: YoutubePlayerService) {
+    this.playerService.player$.subscribe((player) => this.player = player);
   }
 
   onScroll () {

@@ -14,7 +14,7 @@ import {
 
 // Load the implementations that should be tested
 import { player } from './youtube-player';
-import { PLAY, QUEUE, TOGGLE_PLAYER } from './youtube-player';
+import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE } from './youtube-player';
 import { YoutubeMediaMock } from '../../../../test/mocks/youtube.media.item';
 
 describe('The Youtube Player reducer', () => {
@@ -33,9 +33,16 @@ describe('The Youtube Player reducer', () => {
     });
 
     it('should toggle visibility of the player', () => {
-        const state = { mediaId: 'mocked', showPlayer: false;
+      const state = { mediaId: 'mocked', showPlayer: false };
         const actual = player(state, { type: TOGGLE_PLAYER, payload: true });
         const expected = state;
         expect(actual.showPlayer).toBe(expected.showPlayer);
+    });
+
+    it('should change the state of the player', () => {
+      const state = { mediaId: 'mocked', playerState: 0 };
+        const actual = player(state, { type: STATE_CHANGE, payload: 1 });
+        const expected = state;
+        expect(actual.playerState).toBe(expected.playerState);
     });
 });

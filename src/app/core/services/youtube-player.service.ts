@@ -2,12 +2,13 @@ import { Http, URLSearchParams, Response } from 'angular2/http';
 import { Injectable } from 'angular2/core';
 import { window } from 'angular2/src/facade/browser';
 import { Store } from '@ngrx/store';
-import { PLAY, QUEUE, TOGGLE_PLAYER } from '../store/youtube-player';
+import { Observable } from 'rxjs/Observable';
+import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE } from '../store/youtube-player';
 
 @Injectable()
 export class YoutubePlayerService {
 	public player: YT.Player;
-	public player$: any;
+	public player$: Observable<any>;
 
 	constructor (public store: Store<any>) {
 		window['onYouTubeIframeAPIReady'] = () => {
@@ -43,6 +44,7 @@ export class YoutubePlayerService {
     }
 	// createPlayer (elementId, height, width, videoId, callback) {
 	createPlayer (callback) {
+		const store = this.store;
 		const defaultSizes = {
 		    height: 270,
 		    width: 300
@@ -73,6 +75,7 @@ export class YoutubePlayerService {
 	        if (state === YT.PlayerState.PLAYING) {
 	            // service.playerState = YT.PlayerState.PLAYING;
 	        }
+			store.dispatch({ type: STATE_CHANGE, payload: state });
 	        // callback(state);
 	        console.log('state changed', state);
 	    }

@@ -8,7 +8,7 @@
 
 	<div class="container-fluid">
 
-		<ul class="col-md-4 youtube-toolbar nicer-ux clearfix row list-unstyled">
+		<ul class="col-md-3 youtube-toolbar nicer-ux clearfix row list-unstyled">
 
 			<li class="player-controls col-md-12"
 				[ngClass]="{ 'yt-playing': isPlaying() }">
@@ -49,11 +49,11 @@
 			</li>
 		</ul>
 
-		<div class="col-md-6 navbar-brand">
-			{{ player?.media?.snippet?.title }}
+		<div class="col-md-6 navbar-brand text-center ellipsis bg-primary">
+			{{ title | async }}
 		</div>
 
-		<ul class="nav navbar-nav navbar-right social-badges col-md-2">
+		<ul class="nav navbar-nav navbar-right social-badges col-md-3">
 			<li class="social-badge">
 				<div class="g-follow" data-annotation="bubble" data-height="15" data-href="//plus.google.com/u/0/111830310196328233893" data-rel="publisher"></div>
 			</li>
