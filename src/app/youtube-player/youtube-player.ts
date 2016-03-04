@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit
 import { NgModel, NgClass, AsyncPipe } from 'angular2/common'
 import { Observable } from 'rxjs/Observable';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
+import { YoutubePlayerState } from '../core/store/youtube-player';
 
 @Component({
 	selector: 'youtube-player',

@@ -8,7 +8,7 @@ export const STATE_CHANGE = 'STATE_CHANGE';
 export interface YoutubePlayerState {
     mediaId: string,
     index: number,
-    media?: GoogleApiYouTubeSearchResource,
+    media?: any,
     showPlayer: boolean,
     playerState: number
 }

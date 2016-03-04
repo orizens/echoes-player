@@ -3,8 +3,7 @@
 /*
  * Helper: root(), and rootDir() are defined at the bottom
  */
-var path = require('path');
-var zlib = require('zlib');
+var helpers = require('./helpers');
 // Webpack Plugins
 var webpack = require('webpack');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
@@ -32,21 +31,22 @@ var metadata = {
 /*
  * Config
  */
-module.exports = {
+module.exports = helpers.validate({
   // static data for index.html
   metadata: metadata,
-  // for faster builds use 'eval'
+
   devtool: 'source-map',
+  cache: false,
   debug: false,
 
   entry: {
-    'vendor':'./src/vendor.ts',
+    'polyfills':'./src/polyfills.ts',
     'main':'./src/main.ts' // our angular app
   },
 
   // Config for our build files
   output: {
-    path: root('dist'),
+    path: helpers.root('dist'),
     filename: '[name].[chunkhash].bundle.js',
     sourceMapFilename: '[name].[chunkhash].bundle.map',
     chunkFilename: '[id].[chunkhash].chunk.js'
@@ -55,7 +55,7 @@ module.exports = {
   resolve: {
     cache: false,
     // ensure loader extensions match
-    extensions: ['','.ts','.js','.json','.css','.html']
+    extensions: ['', '.ts','.js']
   },
 
   module: {
@@ -64,11 +64,19 @@ module.exports = {
         test: /\.ts$/,
         loader: 'tslint-loader',
         exclude: [
-          /node_modules/
+          helpers.root('node_modules')
+        ]
+      },
+      {
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        exclude: [
+          helpers.root('node_modules/rxjs')
         ]
       }
     ],
     loaders: [
+      // Support Angular 2 async routes via .async.ts
       // Support for .ts files.
       {
         test: /\.ts$/,
@@ -80,19 +88,32 @@ module.exports = {
             'noEmitHelpers': true,
           }
         },
-        exclude: [ /\.(spec|e2e)\.ts$/ ]
+        exclude: [
+          /\.(spec|e2e)\.ts$/
+        ]
       },
 
       // Support for *.json files.
-      { test: /\.json$/,  loader: 'json-loader' },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
 
       // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw-loader' },
+      {
+        test: /\.css$/,
+        loader: 'raw-loader'
+      },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' }
+      {
+        test: /\.html$/,
+        loader: 'raw-loader',
+        exclude: [
+          helpers.root('src/index.html')
+        ]
+      }
 
-      // if you add a loader include the file extension
     ]
   },
 
@@ -101,9 +122,9 @@ module.exports = {
     new DedupePlugin(),
     new OccurenceOrderPlugin(true),
     new CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.[chunkhash].bundle.js',
-      minChunks: Infinity
+      name: 'polyfills',
+      filename: 'polyfills.[chunkhash].bundle.js',
+      chunks: Infinity
     }),
     // static assets
     new CopyWebpackPlugin([
@@ -113,9 +134,7 @@ module.exports = {
       }
     ]),
     // generating html
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
+    new HtmlWebpackPlugin({ template: 'src/index.html' }),
     new DefinePlugin({
       // Environment helpers
       'process.env': {
@@ -129,24 +148,31 @@ module.exports = {
       '__decorate': 'ts-helper/decorate',
       '__awaiter': 'ts-helper/awaiter',
       '__extends': 'ts-helper/extends',
-      '__param': 'ts-helper/param',
-      'Reflect': 'es7-reflect-metadata/dist/browser'
+      '__param': 'ts-helper/param'
     }),
     new UglifyJsPlugin({
-      beautify: true,
+      // to debug prod builds uncomment //debug lines and comment //prod lines
+
+      // beautify: true,//debug
+      // mangle: false,//debug
+      // dead_code: false,//debug
+      // unused: false,//debug
+      // deadCode: false,//debug
+      // compress : { screw_ie8 : true, keep_fnames: true, drop_debugger: false, dead_code: false, unused: false, }, // debug
+      // comments: true,//debug
+
+      beautify: false,//prod
+      // disable mangling because of a bug in angular2 beta.1, beta.2 and beta.3
+      // TODO(mastertinner): enable mangling as soon as angular2 beta.4 is out
+      // mangle: { screw_ie8 : true },//prod
       mangle: false,
-      comments: false,
-      compress : {
-        screw_ie8 : true
-      },
-      // TODO(gdi2290): uncomment in beta.2
-      //mangle: {
-      //  screw_ie8 : true
-      //}
+      compress : { screw_ie8 : true },//prod
+      comments: false//prod
+
     }),
    // include uglify in production
     new CompressionPlugin({
-      algorithm: gzipMaxLevel,
+      algorithm: helpers.gzipMaxLevel,
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       threshold: 2 * 1024
     })
@@ -154,7 +180,16 @@ module.exports = {
   // Other module loader config
   tslint: {
     emitErrors: true,
-    failOnHint: true
+    failOnHint: false, //true, : https://github.com/AngularClass/angular2-webpack-starter/issues/374
+    resourcePath: 'src',
+  },
+
+  htmlLoader: {
+    minimize: true,
+    removeAttributeQuotes: false,
+    caseSensitive: true,
+    customAttrSurround: [ [/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/] ],
+    customAttrAssign: [ /\)?\]?=/ ]
   },
   // don't use devServer for production
 
@@ -167,20 +202,4 @@ module.exports = {
     clearImmediate: false,
     setImmediate: false
   }
-};
-
-// Helper functions
-
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
-
-function rootNode(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return root.apply(path, ['node_modules'].concat(args));
-}
-
-function gzipMaxLevel(buffer, callback) {
-  return zlib['gzip'](buffer, {level: 9}, callback)
-}
+});
