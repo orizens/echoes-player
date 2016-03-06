@@ -19,5 +19,8 @@
 	</div>
 </nav>
 <section class="videos-list">
-	<youtube-list [list]="videos | async" (play)="playSelectedVideo($event)"></youtube-list>
+	<youtube-list [list]="videos | async"
+		(play)="playSelectedVideo($event)"
+		(queue)="queueSelectedVideo($event)"
+	></youtube-list>
 </section>

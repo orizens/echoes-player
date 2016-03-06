@@ -4,6 +4,7 @@ import { Store} from '@ngrx/store';
 // import { NgClass } from 'angular2/common';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
+import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { YoutubeList } from '../core/components/youtube-list/youtube-list';
 
 @Component({
@@ -20,6 +21,7 @@ export class YoutubeVideos {
 
 	constructor(
 		private youtubeSearch: YoutubeSearch,
+		private nowPlaylistService: NowPlaylistService,
 		public store: Store<any>,
 		public youtubePlayer: YoutubePlayerService) {
 		this.videos = this.store.select('videos');
@@ -36,8 +38,12 @@ export class YoutubeVideos {
 			// });
 	}
 
-	playSelectedVideo(media) {
+	playSelectedVideo (media) {
 		this.youtubePlayer.playVideo(media);
+	}
+
+	queueSelectedVideo (media) {
+		this.nowPlaylistService.queueVideo(media);
 	}
 
 	resetPageToken() {

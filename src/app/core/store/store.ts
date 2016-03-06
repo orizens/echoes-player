@@ -2,6 +2,8 @@ import {provideStore} from '@ngrx/store';
 // reducers
 import {videos} from './youtube-videos';
 import {player} from './youtube-player';
+import {nowPlaylist} from './now-playlist';
+
 // Echoes State
 let echoes = {
 	videos: [],
@@ -9,5 +11,5 @@ let echoes = {
 };
 
 export const store = provideStore({
-	videos, player
+	videos, player, nowPlaylist
 });

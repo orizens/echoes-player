@@ -8,14 +8,32 @@
 <div id="sidebar" class="sidebar sidebar-left-fixed well ux-maker"
 	drawer-closed="closed"
 	>
-	<ul id="library-nav" class="nav nav-list nicer-ux" navigator>
+	<nav class="navbar navbar-transparent" player-resizer="fullscreen">
+		<div class="navbar-brand col-md-12" drawer-toggle="drawer-opened">
+			<span class="btn btn-navbar btn-link ux-maker sidebar-toggle">
+				<i class="fa fa-bars"></i>
+			</span>
+			Ech<i class="fa fa-headphones"></i>es
+		</div>
+	</nav>
+
+	<ul id="library-nav" class="nav nav-list nicer-ux library-nav" navigator>
 		<li class="nav-header">Library</li>
 		<li class="active"><a href="#explore"><i class="fa fa-music"></i>Explore</a></li>
 		<li><a href="#history"><i class="fa fa-calendar-o"></i>History</a></li>
 		<li><a href="#myPlaylists"><i class="fa fa-heart"></i>My Playlists</a></li>
 	</ul>
 
-	<now-playing></now-playing>
+	<div class="sidebar-pane">
+		<now-playlist-filter
+			[playlist]="nowPlaylist"
+		></now-playlist-filter>
+		<now-playlist
+			[playlist]="nowPlaylist"
+			(select)="selectVideo($event)"
+			(sort)="sortVideo($event)"
+		></now-playlist>
+	</div>
 
 </div>
 <!-- <div class="modal-backdrop sidebar-backdrop" drawer-toggle></div> -->

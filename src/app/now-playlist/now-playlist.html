@@ -1,0 +1,23 @@
+<section class="now-playlist"
+	[ngClass]="{
+		'transition-in': playlist?.videos?.length
+	}">
+	<ul class="nav nav-list xux-maker xnicer-ux">
+		<li class="now-playlist-track"
+			[ngClass]="{
+				'active': playlist?.index === index
+			}"
+			*ngFor="#video of playlist?.videos | search:playlist.filter ; #index = index"
+			>
+			<a class="" title="{{ video.snippet.title }}"
+				(click)="selectVideo(video)">
+				{{ index + 1 }})
+				<img class="video-thumb" draggable="false" src="{{ video.snippet.thumbnails.default.url }}" title="Drag to sort">
+				<span class="video-title">{{ video.snippet.title }}</span>
+				<span class="badge badge-info">{{ video.time }}</span>
+				<span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
+					(click)="removeVideo(video)"><i class="fa fa-remove"></i></span>
+			</a>
+		</li>
+	</ul>
+</section>

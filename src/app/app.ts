@@ -13,6 +13,9 @@ import { YoutubeVideos } from './youtube-videos/youtube-videos';
 import { YoutubeSearch } from './core/services/youtube.search';
 import { YoutubePlayer } from './youtube-player/youtube-player';
 import { YoutubePlayerService } from './core/services/youtube-player.service';
+import { NowPlaylist } from './now-playlist/now-playlist';
+import { NowPlaylistFilter } from './now-playlist-filter/now-playlist-filter';
+import { NowPlaylistService } from './core/services/now-playlist.service';
 
 /*
  * App Component
@@ -20,8 +23,12 @@ import { YoutubePlayerService } from './core/services/youtube-player.service';
  */
 @Component({
   selector: 'app',
-  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService],
-  directives: [...ROUTER_DIRECTIVES, RouterActive, InfiniteScroll, YoutubePlayer],
+  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService, NowPlaylistService],
+  directives: [...ROUTER_DIRECTIVES, RouterActive, InfiniteScroll,
+    YoutubePlayer,
+    NowPlaylist,
+    NowPlaylistFilter
+  ],
   pipes: [],
   styles: [],
   template: require('./app.html')
@@ -44,10 +51,14 @@ import { YoutubePlayerService } from './core/services/youtube-player.service';
 export class App {
   public start = true;
   public player: any;
+  public nowPlaylist: any = {};
 
   constructor(public youtubeSearch: YoutubeSearch,
-    public playerService: YoutubePlayerService) {
-    this.playerService.player$.subscribe((player) => this.player = player);
+    public playerService: YoutubePlayerService,
+    public nowPlaylistService: NowPlaylistService
+  ) {
+    this.playerService.player$.subscribe(player => this.player = player);
+    nowPlaylistService.playlist$.subscribe(playlist => this.nowPlaylist = playlist);
   }
 
   onScroll () {
@@ -56,5 +67,13 @@ export class App {
       return;
     }
     this.youtubeSearch.searchMore();
+  }
+
+  selectVideo (media: GoogleApiYouTubeSearchResource) {
+    this.playerService.playVideo(media);
+  }
+
+  sortVideo (media: GoogleApiYouTubeSearchResource) {
+
   }
 }
