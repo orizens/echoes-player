@@ -36,13 +36,13 @@ describe('The Youtube Player reducer', () => {
       const state = { mediaId: 'mocked', showPlayer: false };
         const actual = player(state, { type: TOGGLE_PLAYER, payload: true });
         const expected = state;
-        expect(actual.showPlayer).toBe(expected.showPlayer);
+        expect(actual.showPlayer).toBe(!expected.showPlayer);
     });
 
     it('should change the state of the player', () => {
       const state = { mediaId: 'mocked', playerState: 0 };
         const actual = player(state, { type: STATE_CHANGE, payload: 1 });
         const expected = state;
-        expect(actual.playerState).toBe(expected.playerState);
+        expect(actual.playerState).toBe(1);
     });
 });
