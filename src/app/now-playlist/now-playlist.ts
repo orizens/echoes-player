@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from 
 import { NgClass, NgFor } from 'angular2/common';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { YoutubeMediaPlaylist } from '../core/store/now-playlist';
-import { SearchPipe } from '../core/pipes/array-filter.pipe';
+import { SearchPipe } from '../core/pipes/search.pipe';
 
 @Component({
 	selector: 'now-playlist',
