@@ -1,34 +1,28 @@
 // Polyfills
-// import 'ie-shim';
-import 'es6-shim';
 // (these modules are what are in 'angular2/bundles/angular2-polyfills' so don't use that here)
-import 'es6-promise';
-import 'es7-reflect-metadata';
-import 'zone.js/dist/zone-microtask';
 
-if ('production' === process.env.ENV) {
-	// Production
+// import 'ie-shim'; // Internet Explorer
+// import 'es6-shim';
+// import 'es6-promise';
+// import 'es7-reflect-metadata';
 
-	// RxJS
-	// In production manually include the operators you use
-	require('rxjs/add/operator/map');
-	require('rxjs/add/operator/mergeMap');
+// Prefer CoreJS over the polyfills above
+import 'core-js/es6';
+import 'core-js/es7/reflect';
+require('zone.js/dist/zone');
+
+// Typescript emit helpers polyfill
+import 'ts-helpers';
+
+if ('production' === ENV) {
+  // Production
+
 
 } else {
-	// Development
+  // Development
 
-	Error['stackTraceLimit'] = Infinity;
+  Error.stackTraceLimit = Infinity;
 
-	require('zone.js/dist/long-stack-trace-zone');
-
-	// RxJS
-	// to include every operator uncomment
-	// require('rxjs/Rx');
-
-	require('rxjs/add/operator/map');
-	require('rxjs/add/operator/mergeMap');
+  require('zone.js/dist/long-stack-trace-zone');
 
 }
-
-// For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
-// Also see custom_typings.d.ts as you also need to do `typings install x` where `x` is your module

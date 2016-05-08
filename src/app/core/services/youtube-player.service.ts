@@ -1,6 +1,6 @@
-import { Http, URLSearchParams, Response } from 'angular2/http';
-import { Injectable } from 'angular2/core';
-import { window } from 'angular2/src/facade/browser';
+import { Http, URLSearchParams, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { window } from '@angular/platform-browser/src/facade/browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE } from '../store/youtube-player';

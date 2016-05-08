@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from 'angular2/core';
-import { NgClass } from 'angular2/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgClass } from '@angular/common';
 import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d';
 
 // var css = require('less!./youtube-media.less');

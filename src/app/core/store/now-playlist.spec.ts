@@ -4,7 +4,7 @@ import {
   injectAsync,
   describe,
   expect
-} from 'angular2/testing';
+} from '@angular/core/testing';
 
 // import {MockBackend} from 'angular2/http/testing';
 
