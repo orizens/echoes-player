@@ -1,5 +1,6 @@
 // import {isPresent} from 'angular2/src/facade/lang';
-import {Directive, ElementRef, Input, Output, EventEmitter} from 'angular2/core';
+import {Directive, ElementRef, Input, Output, EventEmitter} from '@angular/core';
+import { window } from '@angular/platform-browser/src/facade/browser';
 import { Scroller } from './scroller';
 
 /**

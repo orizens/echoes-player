@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from 'angular2/core';
-import { NgModel, NgClass, AsyncPipe } from 'angular2/common'
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { NgModel, NgClass, AsyncPipe } from '@angular/common'
 import { Observable } from 'rxjs/Observable';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { YoutubePlayerState } from '../core/store/youtube-player';

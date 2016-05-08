@@ -1,12 +1,12 @@
-import { Http, URLSearchParams, Response } from 'angular2/http';
-import { Injectable } from 'angular2/core';
+import { Http, URLSearchParams, Response } from '@angular/http';
+import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { SELECT, QUEUE, REMOVE, UPDATE_INDEX, FILTER_CHANGE, REMOVE_ALL, YoutubeMediaPlaylist } from '../store/now-playlist';
 
 @Injectable()
 export class NowPlaylistService {
-	public playlist$: Observable<YoutubeMediaPlaylist>;
+	public playlist$: Observable<Object>;
 
 	constructor(public store: Store<YoutubeMediaPlaylist>) {
 		this.playlist$ = this.store.select('nowPlaylist');

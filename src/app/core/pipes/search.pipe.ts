@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from 'angular2/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
 	name: 'search',
@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from 'angular2/core';
 export class SearchPipe implements PipeTransform {
 
 	transform(values: any, args: Array<any>) {
-		const term = args[0].toLowerCase();
+		const term = args.length ? args[0].toLowerCase() : args;
 		// const jsonPath = args[1];
 		let matchTerm = (item) => { return matchString(item) };
 		let matchString = (key) => {

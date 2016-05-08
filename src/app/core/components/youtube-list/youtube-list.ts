@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from 'angular2/core';
-import { NgFor } from 'angular2/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgFor } from '@angular/common';
 import { YoutubeMedia } from '../youtube-media/youtube-media';
 
 @Component({

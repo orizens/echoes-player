@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from 'angular2/core';
-import { NgClass, NgFor } from 'angular2/common';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { NgClass, NgFor } from '@angular/common';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { YoutubeMediaPlaylist } from '../core/store/now-playlist';
 import { SearchPipe } from '../core/pipes/search.pipe';

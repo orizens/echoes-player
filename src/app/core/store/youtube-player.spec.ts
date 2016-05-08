@@ -4,9 +4,8 @@ import {
   injectAsync,
   describe,
   expect,
-  beforeEachProviders,
-  TestComponentBuilder
-} from 'angular2/testing';
+  beforeEachProviders
+} from '@angular/core/testing';
 
 // import {Component, provide} from 'angular2/core';
 // import {BaseRequestOptions, Http} from 'angular2/http';
