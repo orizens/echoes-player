@@ -29,9 +29,11 @@ export class UserArea implements AfterViewInit{
 	}
 
 	ngAfterViewInit() {
-		
+		window.setTimeout(() => {
+			this.userManager.authAndSignIn();
+		}, 1000);
 	}
-	
+
 	isSignIn () {
 		return this.userManager.isSignIn();
 	}

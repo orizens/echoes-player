@@ -38,15 +38,17 @@ export class UserManager {
 	}
 	
 	authAndSignIn() {
-		this.isAuthInitiated = true;
-        this.auth2 = window.gapi.auth2.init({
-            client_id: `${CLIENT_ID}.apps.googleusercontent.com`
-        });
-		this.attachSignIn();	
+		if (!this.isAuthInitiated) {	
+	        this.auth2 = window.gapi.auth2.init({
+	            client_id: `${CLIENT_ID}.apps.googleusercontent.com`
+	        });
+		} 
+		this.attachSignIn();
 	}
 
 	attachSignIn() {
-		if (this.auth2) {
+		if (this.auth2 && !this.isSignedIn) {
+			this.isAuthInitiated = true;
 			// Attach the click handler to the sign-in button
 			this.auth2.attachClickHandler('signin-button', {}, this.onLoginSuccess.bind(this), this.onLoginFailed.bind(this));
 		}
