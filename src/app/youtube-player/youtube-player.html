@@ -1,6 +1,7 @@
 <div class="youtube-player navbar navbar-default navbar-fixed-bottom show-youtube-player"
 	[ngClass]="{
-		'show-youtube-player': player?.showPlayer
+		'show-youtube-player': player?.showPlayer,
+		'fullscreen': player?.isFullscreen
 	}">
 	<div class="yt-player ux-maker">
 		<div id="player" class="ux-maker"></div>
@@ -18,9 +19,9 @@
 						(click)="togglePlayer()"
 						class="btn btn-default btn-lg navbar-btn show-player"><i class="fa fa-chevron-up"></i></button>
 
-					<!-- <button title="maximize / minimize"
+					 <button title="maximize / minimize"
 						class="btn btn-default btn-lg navbar-btn fullscreen"
-						ng-click="vm.toggleFullScreen()"
+						(click)="toggleFullScreen()"
 						><i class="fa fa-arrows-alt"></i></button>
 
 
@@ -29,7 +30,7 @@
 						ng-click="vm.playPreviousTrack()"
 						ng-disabled="!vm.playlistHasTracks()">
 						<i class="fa fa-step-backward"></i></button>
--->
+
 					<button title="pause"
 						class="btn btn-default btn-lg navbar-btn pause"
 						(click)="pauseVideo()">

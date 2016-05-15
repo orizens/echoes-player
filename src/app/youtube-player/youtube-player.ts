@@ -8,6 +8,12 @@ import { YoutubePlayerState } from '../core/store/youtube-player';
 	selector: 'youtube-player',
 	template: require('./youtube-player.html'),
 	directives: [NgModel, NgClass],
+	styles: [
+		`.navbar-brand {
+			text-transform: lowercase;
+			color: white;
+		}`
+	],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayer implements OnInit {
@@ -50,5 +56,9 @@ export class YoutubePlayer implements OnInit {
 
 	onStop (state: YT.PlayerState) {
 		this.ended.next(state);
+	}
+
+	toggleFullScreen () {
+		this.playerService.setSize();
 	}
 }

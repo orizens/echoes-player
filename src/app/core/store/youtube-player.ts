@@ -4,13 +4,15 @@ export const PLAY = 'PLAY';
 export const QUEUE = 'REMOVE';
 export const TOGGLE_PLAYER = 'TOGGLE_PLAYER';
 export const STATE_CHANGE = 'STATE_CHANGE';
+export const FULLSCREEN = 'FULLSCREEN';
 
 export interface YoutubePlayerState {
     mediaId: string,
     index: number,
     media?: any,
     showPlayer: boolean,
-    playerState: number
+    playerState: number,
+    isFullscreen: boolean
 }
 let initialPlayerState: YoutubePlayerState = {
     mediaId: 'NONE',
@@ -19,9 +21,10 @@ let initialPlayerState: YoutubePlayerState = {
         snippet: { title: 'No Media Yet' }
     },
     showPlayer: true,
-    playerState: 0
+    playerState: 0,
+    isFullscreen: false
 }
-export const player: Reducer<any> = (state: Object = initialPlayerState, action: Action) => {
+export const player: Reducer<any> = (state: YoutubePlayerState = initialPlayerState, action: Action) => {
 
     switch (action.type) {
         case PLAY:
@@ -36,23 +39,26 @@ export const player: Reducer<any> = (state: Object = initialPlayerState, action:
         case STATE_CHANGE:
             return changePlayerState(state, action.payload);
 
+        case FULLSCREEN:
+            return Object.assign({}, state, { isFullscreen: !state.isFullscreen })
+
         default:
             return state;
     }
 }
 
-export function playVideo(state: any, media: any) {
-    return Object.assign({}, { 
+export function playVideo(state: YoutubePlayerState, media: GoogleApiYouTubeSearchResource) {
+    return Object.assign({}, state, { 
         mediaId: media.id.videoId, 
         media, 
         showPlayer: true 
     });
 }
 
-export function toggleVisibility(state: any) {
+export function toggleVisibility(state: YoutubePlayerState) {
     return Object.assign({}, state, { showPlayer: !state.showPlayer });
 }
 
-export function changePlayerState (state: any, playerState: YT.PlayerState) {
+export function changePlayerState (state: YoutubePlayerState, playerState: YT.PlayerState) {
     return Object.assign({}, state, { playerState: playerState })
 }

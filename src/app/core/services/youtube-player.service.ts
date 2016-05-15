@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE } from '../store/youtube-player';
+import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE, FULLSCREEN, YoutubePlayerState } from '../store/youtube-player';
 
 @Injectable()
 export class YoutubePlayerService {
@@ -11,6 +11,11 @@ export class YoutubePlayerService {
 	public player$: Observable<any>;
 	private listeners: any = {
 		ended: []
+	};
+	private isFullscreen: boolean = false;
+	private defaultSizes = {
+	    height: 270,
+	    width: 367
 	};
 
 	constructor (public store: Store<any>) {
@@ -27,6 +32,7 @@ export class YoutubePlayerService {
 			this.player = this.createPlayer(() => {});
 		}
 		this.player$ = this.store.select('player');
+		this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen });
 	}
 	play () {
 		this.player.playVideo();
@@ -49,8 +55,9 @@ export class YoutubePlayerService {
 	isPlaying () {
         // because YT is not loaded yet 1 is used - YT.PlayerState.PLAYING
         const isPlayerReady: any = this.player && this.player.getPlayerState;
+        const playerState = isPlayerReady ? this.player.getPlayerState() : {};
         const isPlayerPlaying = isPlayerReady ?
-			this.player.getPlayerState() === YT.PlayerState.PLAYING :
+			playerState !== YT.PlayerState.ENDED && playerState !== YT.PlayerState.PAUSED :
 			false;
         return isPlayerPlaying;
     }
@@ -58,10 +65,7 @@ export class YoutubePlayerService {
 	createPlayer (callback) {
 		const store = this.store;
 		const service = this;
-		const defaultSizes = {
-		    height: 270,
-		    width: 367
-		};
+		const defaultSizes = this.defaultSizes;
 	    return new window.YT.Player('player', {
 	        height: defaultSizes.height,
 			width: defaultSizes.width,
@@ -95,5 +99,20 @@ export class YoutubePlayerService {
 
 	registerListener (eventName: string, callback: Function) {
 		this.listeners[eventName].push(callback);
+	}
+
+	setSize () {
+		let height: number;
+		let width: number;
+
+		if (!this.isFullscreen) {
+			height = window.innerHeight;
+	        width = window.innerWidth;
+		} else {
+			height = this.defaultSizes.height;
+			width = this.defaultSizes.width;	
+		}
+        this.player.setSize(width, height);
+        this.store.dispatch({ type: FULLSCREEN });
 	}
 }
