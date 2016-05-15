@@ -7,7 +7,13 @@ import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d'
 @Component({
 	selector: 'youtube-media',
 	template: require('./youtube-media.html'),
-	styles: [  ],
+	styles: [ `
+		@media (min-width: 768px) {
+			.youtube-item {
+			    width: 25%;
+			}
+		}
+	` ],
 	directives: [ NgClass ],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
