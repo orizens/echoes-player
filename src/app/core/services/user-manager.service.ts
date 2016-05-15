@@ -40,13 +40,14 @@ export class UserManager {
 	authAndSignIn() {
 		let GoogleAuth = window.gapi ? window.gapi.auth2.getAuthInstance() : false;
 		if (!this.isAuthInitiated) {
-			console.log('GoogleAuth', GoogleAuth);
-	        this.auth2 = window.gapi.auth2.init({
-	            client_id: `${CLIENT_ID}.apps.googleusercontent.com`
-	        });
+			if (!GoogleAuth) {
+		        this.auth2 = window.gapi.auth2.init({
+		            client_id: `${CLIENT_ID}.apps.googleusercontent.com`
+		        });
+			}
 		} 
 		if (GoogleAuth) {
-			GoogleAuth.signIn();
+			this.auth2 = GoogleAuth;
 		}
 		this.attachSignIn();
 	}
