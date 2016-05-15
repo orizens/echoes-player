@@ -42,8 +42,9 @@ export class YoutubePlayerService {
 		this.player.pauseVideo();
 	}
 
-	playVideo(media: GoogleApiYouTubeSearchResource) {
-		this.player.loadVideoById(media.id.videoId);
+	playVideo(media: any) {
+		const id = media.id.videoId ? media.id.videoId : media.snippet.resourceId.videoId;
+		this.player.loadVideoById(id);
 		this.play();
 		this.store.dispatch({ type: PLAY, payload: media });
 	}

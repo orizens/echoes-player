@@ -7,6 +7,7 @@ export const UPDATE_INDEX = 'UPDATE_INDEX';
 export const FILTER_CHANGE = 'FILTER_CHANGE';
 export const REMOVE_ALL = 'REMOVE_ALL';
 export const SELECT_NEXT = 'SELECT_NEXT';
+export const QUEUE_VIDEOS = 'QUEUE_VIDEOS';
 
 export interface YoutubeMediaPlaylist {
     videos: GoogleApiYouTubeSearchResource[],
@@ -28,6 +29,9 @@ export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialS
 
         case QUEUE:
             return Object.assign({}, state, { videos: addMedia(state.videos, action.payload) });
+
+        case QUEUE_VIDEOS:
+            return Object.assign({}, state, { videos: addMedias(state.videos, action.payload) });
 
         case REMOVE:
             return Object.assign({}, state, { videos: state.videos.filter(isDifferent) });
@@ -56,6 +60,16 @@ function addMedia(videos: GoogleApiYouTubeSearchResource[], media: any) {
     return [...videos];
 }
 
+function addMedias(videos, medias) {
+    const allVideoIds = videos.map(video => video.id.videoId);
+    let newVideos = [];
+    medias.forEach(media => {
+        if (allVideoIds.indexOf(media.id) === -1) {
+            newVideos.push(media);
+        }
+    });
+    return videos.concat(newVideos);
+}
 function selectNextIndex(videos: GoogleApiYouTubeSearchResource[], index: number) {
     let nextIndex: number = index + 1;
     if (!videos.length) {

@@ -8,6 +8,7 @@ import {
 	FILTER_CHANGE, 
 	REMOVE_ALL, 
 	SELECT_NEXT, 
+	QUEUE_VIDEOS, 
 	YoutubeMediaPlaylist 
 } from '../store/now-playlist';
 
@@ -21,6 +22,10 @@ export class NowPlaylistService {
 
 	queueVideo (media) {
 		this.store.dispatch({ type: QUEUE, payload: media });
+	}
+
+	queueVideos (medias) {
+		this.store.dispatch({ type: QUEUE_VIDEOS, payload: medias });
 	}
 
 	removeVideo (media) {

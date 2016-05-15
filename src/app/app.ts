@@ -9,7 +9,9 @@ import {FORM_PROVIDERS} from '@angular/common';
 // import { InfiniteScroll } from 'angular2-infinite-scroll';
 import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 import { YoutubeVideos } from './youtube-videos/youtube-videos';
+import { UserArea } from './user-area/user-area';
 import { YoutubeSearch } from './core/services/youtube.search';
+import { UserManager } from './core/services/user-manager.service';
 import { YoutubePlayer } from './youtube-player/youtube-player';
 import { YoutubePlayerService } from './core/services/youtube-player.service';
 import { NowPlaylist } from './now-playlist/now-playlist';
@@ -23,7 +25,7 @@ import { YoutubePlayerState } from './core/store/youtube-player.ts';
  */
 @Component({
   selector: 'app',
-  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService, NowPlaylistService],
+  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService, NowPlaylistService, UserManager],
   directives: [...ROUTER_DIRECTIVES, 
     InfiniteScroll,
     YoutubePlayer,
@@ -36,6 +38,7 @@ import { YoutubePlayerState } from './core/store/youtube-player.ts';
 })
 @RouteConfig([
   { path: '/', component: YoutubeVideos, name: 'Index' },
+  { path: '/user', component: UserArea, name: 'UserArea' },
   // { path: '/home', component: Home, name: 'Home' },
   { path: '/**', redirectTo: ['Index'] }
 ])

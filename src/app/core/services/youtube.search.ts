@@ -2,7 +2,7 @@ import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ADD, RESET } from '../store/youtube-videos';
-import YOUTUBE_API_KEY from './constants';
+import { YOUTUBE_API_KEY } from './constants';
 
 @Injectable()
 export class YoutubeSearch {

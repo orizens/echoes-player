@@ -3,6 +3,7 @@ import { provideStore, compose, combineReducers } from '@ngrx/store';
 import {videos} from './youtube-videos';
 import {player} from './youtube-player';
 import {nowPlaylist} from './now-playlist';
+import {user} from './user-manager';
 import { localStorageSync } from './ngrx-store-localstorage';
 
 // Echoes State
@@ -14,5 +15,5 @@ export const store = provideStore(
 	compose(
 		localStorageSync(['videos', 'player', 'nowPlaylist'], true),
 		combineReducers
-	)({ videos, player, nowPlaylist })
+	)({ videos, player, nowPlaylist, user })
 );
