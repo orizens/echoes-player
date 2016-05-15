@@ -6,7 +6,11 @@ import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d'
 	selector: 'youtube-playlist',
 	template: require('./youtube-playlist.html'),
 	styles: [ `
-		
+		@media (min-width: 768px) {
+			.youtube-item {
+			    width: 25%;
+			}
+		}
 	` ],
 	directives: [ NgClass ],
 	changeDetection: ChangeDetectionStrategy.OnPush
