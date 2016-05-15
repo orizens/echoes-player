@@ -12,7 +12,7 @@ import { YoutubePlayerState } from '../core/store/youtube-player';
 })
 export class YoutubePlayer implements OnInit {
 	@Input() player: YoutubePlayerState;
-	@Output() action = new EventEmitter();
+	@Output() ended = new EventEmitter();
 	@Output() playNext = new EventEmitter();
 	@Output() play = new EventEmitter();
 
@@ -24,6 +24,7 @@ export class YoutubePlayer implements OnInit {
 	ngOnInit(){
 		// this.playerService.player$.subscribe((player) => this.player = player);
 		this.title = this.playerService.player$.map(player => player.media.snippet.title );
+		this.playerService.registerListener('ended', this.onStop.bind(this));
 	}
 
 	playVideo () {
@@ -47,7 +48,7 @@ export class YoutubePlayer implements OnInit {
 		this.playNext.next(this.player);
 	}
 
-	onActionChange () {
-		this.action.next(this.player.playerState);
+	onStop (state: YT.PlayerState) {
+		this.ended.next(state);
 	}
 }

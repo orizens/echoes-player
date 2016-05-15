@@ -65,16 +65,22 @@ export class App {
     this.nowPlaylistService.updateIndexByMedia(media);
   }
 
-  onActionChange () {
-
+  handleVideoEnded (state) {
+    if (!this.isLastIndex()) {
+      this.playNextVideo(state);
+    }
   }
 
-  onPlayNext (player) {
+  playNextVideo (player) {
     this.nowPlaylistService.getNextVideoByIndex();
     this.selectVideo(this.nowPlaylist.videos[this.nowPlaylist.index]);
   }
 
   sortVideo (media: GoogleApiYouTubeSearchResource) {
 
+  }
+
+  isLastIndex () {
+    return this.nowPlaylist.index + 1 === this.nowPlaylist.length;
   }
 }

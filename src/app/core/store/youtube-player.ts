@@ -42,12 +42,11 @@ export const player: Reducer<any> = (state: Object = initialPlayerState, action:
 }
 
 export function playVideo(state: any, media: any) {
-    return {
-        mediaId: media.id.videoId,
-        index: 0,
-        media: media,
-        showPlayer: true
-    }
+    return Object.assign({}, { 
+        mediaId: media.id.videoId, 
+        media, 
+        showPlayer: true 
+    });
 }
 
 export function toggleVisibility(state: any) {

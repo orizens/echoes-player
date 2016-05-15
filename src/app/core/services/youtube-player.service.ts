@@ -9,6 +9,9 @@ import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE } from '../store/youtube-playe
 export class YoutubePlayerService {
 	public player: YT.Player;
 	public player$: Observable<any>;
+	private listeners: any = {
+		ended: []
+	};
 
 	constructor (public store: Store<any>) {
 		// in production mode, the youtube iframe api script tag is loaded
@@ -54,9 +57,10 @@ export class YoutubePlayerService {
 	// createPlayer (elementId, height, width, videoId, callback) {
 	createPlayer (callback) {
 		const store = this.store;
+		const service = this;
 		const defaultSizes = {
 		    height: 270,
-		    width: 300
+		    width: 367
 		};
 	    return new window.YT.Player('player', {
 	        height: defaultSizes.height,
@@ -75,7 +79,7 @@ export class YoutubePlayerService {
 	        // play the next song if its not the end of the playlist
 	        // should add a "repeat" feature
 	        if (state === YT.PlayerState.ENDED) {
-	            // this.store.dispatch
+				service.listeners.ended.forEach(callback => callback(state));
 	        }
 
 	        if (state === YT.PlayerState.PAUSED) {
@@ -84,9 +88,12 @@ export class YoutubePlayerService {
 	        if (state === YT.PlayerState.PLAYING) {
 	            // service.playerState = YT.PlayerState.PLAYING;
 	        }
-			store.dispatch({ type: STATE_CHANGE, payload: state });
-	        // callback(state);
 	        console.log('state changed', state);
+			store.dispatch({ type: STATE_CHANGE, payload: state });
 	    }
+	}
+
+	registerListener (eventName: string, callback: Function) {
+		this.listeners[eventName].push(callback);
 	}
 }
