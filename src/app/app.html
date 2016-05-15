@@ -1,0 +1,58 @@
+<!-- YOUTUBE PLAYER -->
+<youtube-player id="youtube-player-container"
+	[player]="player"
+	player-id="player" auto-next
+></youtube-player>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar sidebar-left-fixed well ux-maker"
+	drawer-closed="closed"
+	>
+	<nav class="navbar navbar-transparent" player-resizer="fullscreen">
+		<div class="navbar-brand col-md-12" drawer-toggle="drawer-opened">
+			<span class="btn btn-navbar btn-link ux-maker sidebar-toggle">
+				<i class="fa fa-bars"></i>
+			</span>
+			Ech<i class="fa fa-headphones"></i>es
+		</div>
+	</nav>
+
+	<ul id="library-nav" class="nav nav-list nicer-ux library-nav" navigator>
+		<li class="nav-header">Library</li>
+		<li class="active"><a href="#explore"><i class="fa fa-music"></i>Explore</a></li>
+		<li><a href="#history"><i class="fa fa-calendar-o"></i>History</a></li>
+		<li><a href="#myPlaylists"><i class="fa fa-heart"></i>My Playlists</a></li>
+	</ul>
+
+	<div class="sidebar-pane">
+		<now-playlist-filter
+			[playlist]="nowPlaylist"
+		></now-playlist-filter>
+		<now-playlist
+			[playlist]="nowPlaylist"
+			(select)="selectVideo($event)"
+			(sort)="sortVideo($event)"
+		></now-playlist>
+	</div>
+
+</div>
+<!-- <div class="modal-backdrop sidebar-backdrop" drawer-toggle></div> -->
+
+<div class="app-loader">
+	<loader></loader>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container-fluid container-main drawer-opened"
+	drawer-closed="drawer-closed" drawer-not-closed="drawer-opened"
+	>
+	<div class="row-fluid" >
+		<!-- SEARCH RESULTS AREA -->
+		<div id="search-results" class="ux-maker search-results clearfix main-view"
+			infinite-scroll
+			[infiniteScrollDistance]="2"
+			(scrolled)="onScroll()">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>
