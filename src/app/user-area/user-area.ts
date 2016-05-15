@@ -29,8 +29,9 @@ export class UserArea implements AfterViewInit{
 	}
 
 	ngAfterViewInit() {
-		window.setTimeout(() => {
+		let timeoutId = window.setTimeout(() => {
 			this.userManager.authAndSignIn();
+			window.clearTimeout(timeoutId);
 		}, 1000);
 	}
 
