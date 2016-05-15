@@ -26,7 +26,7 @@ export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialS
             return Object.assign({}, state, { index: state.videos.findIndex(matchMedia) });
 
         case QUEUE:
-            return Object.assign({}, state, { videos: [ ...state.videos, action.payload ]});
+            return Object.assign({}, state, { videos: addMedia(state.videos, action.payload) });
 
         case REMOVE:
             return Object.assign({}, state, { videos: state.videos.filter(isDifferent) });
@@ -43,4 +43,10 @@ export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialS
         default:
             return state;
     }
+}
+
+function addMedia(videos: GoogleApiYouTubeSearchResource[], media: any) {
+    const newMedia = [...videos].findIndex(video => video.id.videoId === media.id.videoId);
+    const newVideos = newMedia === -1 ? videos.push(media) : videos;
+    return [...videos];
 }

@@ -27,7 +27,7 @@
 			<section class="item-actions main-actions">
 
 				<h4 class="title span11">
-					<a href='#/video/{{ media.id }}' rel="tooltip" class="media-thumb ellipsis"
+					<a href='#/video/{{ media.id.videoId }}' rel="tooltip" class="media-thumb ellipsis"
 						title="{{ media.snippet?.title }}">
 						{{ media.snippet?.title }}
 					</a>
@@ -64,7 +64,7 @@
 		</div>
 
 		<div class="description back face">
-			<h4><a href='#/video/{{ media.id}}' rel="tooltip" title="{{ media.snippet?.title }}" class="media-thumb">{{ media.snippet?.title}}</a></h4>
+			<h4><a href='#/video/{{ media.id.videoId }}' rel="tooltip" title="{{ media.snippet?.title }}" class="media-thumb">{{ media.snippet?.title}}</a></h4>
 			<div>{{ media.snippet?.description }}</div>
 		</div>
 
