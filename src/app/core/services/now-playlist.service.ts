@@ -2,7 +2,14 @@ import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { SELECT, QUEUE, REMOVE, UPDATE_INDEX, FILTER_CHANGE, REMOVE_ALL, YoutubeMediaPlaylist } from '../store/now-playlist';
+import { 
+	SELECT, QUEUE, REMOVE, 
+	UPDATE_INDEX, 
+	FILTER_CHANGE, 
+	REMOVE_ALL, 
+	SELECT_NEXT, 
+	YoutubeMediaPlaylist 
+} from '../store/now-playlist';
 
 @Injectable()
 export class NowPlaylistService {
@@ -30,5 +37,13 @@ export class NowPlaylistService {
 
 	clearPlaylist () {
 		this.store.dispatch({ type: REMOVE_ALL });
+	}
+
+	getNextVideoByIndex () {
+		this.store.dispatch({ type: SELECT_NEXT })		
+	}
+
+	updateIndexByMedia(media: GoogleApiYouTubeSearchResource) {
+		this.store.dispatch({ type: UPDATE_INDEX, payload: media });
 	}
 }

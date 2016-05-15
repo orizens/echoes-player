@@ -38,6 +38,7 @@ export class YoutubeVideos {
 	playSelectedVideo (media) {
 		this.youtubePlayer.playVideo(media);
 		this.queueSelectedVideo(media);
+		this.nowPlaylistService.updateIndexByMedia(media);
 	}
 
 	queueSelectedVideo (media) {

@@ -74,9 +74,9 @@ export class YoutubePlayerService {
 			let autoNext = false;
 	        // play the next song if its not the end of the playlist
 	        // should add a "repeat" feature
-	        // if (autoNext && state === YT.PlayerState.ENDED) {
-	        //     service.playNextTrack({ stopOnLast: true });
-	        // }
+	        if (state === YT.PlayerState.ENDED) {
+	            // this.store.dispatch
+	        }
 
 	        if (state === YT.PlayerState.PAUSED) {
 	            // service.playerState = YT.PlayerState.PAUSED;

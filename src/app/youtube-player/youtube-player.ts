@@ -12,6 +12,10 @@ import { YoutubePlayerState } from '../core/store/youtube-player';
 })
 export class YoutubePlayer implements OnInit {
 	@Input() player: YoutubePlayerState;
+	@Output() action = new EventEmitter();
+	@Output() playNext = new EventEmitter();
+	@Output() play = new EventEmitter();
+
 	title: Observable<string>;
 
 	constructor(public playerService: YoutubePlayerService) {
@@ -24,6 +28,7 @@ export class YoutubePlayer implements OnInit {
 
 	playVideo () {
 		this.playerService.play();
+		this.play.next(this.player.media);
 	}
 
 	isPlaying () {
@@ -36,5 +41,13 @@ export class YoutubePlayer implements OnInit {
 
 	togglePlayer () {
 		this.playerService.togglePlayer();
+	}
+
+	playNextTrack () {
+		this.playNext.next(this.player);
+	}
+
+	onActionChange () {
+		this.action.next(this.player.playerState);
 	}
 }

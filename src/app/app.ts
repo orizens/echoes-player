@@ -15,6 +15,7 @@ import { YoutubePlayerService } from './core/services/youtube-player.service';
 import { NowPlaylist } from './now-playlist/now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter/now-playlist-filter';
 import { NowPlaylistService } from './core/services/now-playlist.service';
+import { YoutubePlayerState } from './core/store/youtube-player.ts';
 
 /*
  * App Component
@@ -40,7 +41,7 @@ import { NowPlaylistService } from './core/services/now-playlist.service';
 ])
 export class App {
   public start = true;
-  public player: any;
+  public player: YoutubePlayerState;
   public nowPlaylist: any = {};
 
   constructor(public youtubeSearch: YoutubeSearch,
@@ -61,6 +62,16 @@ export class App {
 
   selectVideo (media: GoogleApiYouTubeSearchResource) {
     this.playerService.playVideo(media);
+    this.nowPlaylistService.updateIndexByMedia(media);
+  }
+
+  onActionChange () {
+
+  }
+
+  onPlayNext (player) {
+    this.nowPlaylistService.getNextVideoByIndex();
+    this.selectVideo(this.nowPlaylist.videos[this.nowPlaylist.index]);
   }
 
   sortVideo (media: GoogleApiYouTubeSearchResource) {

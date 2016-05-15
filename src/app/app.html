@@ -1,6 +1,9 @@
 <!-- YOUTUBE PLAYER -->
 <youtube-player id="youtube-player-container"
 	[player]="player"
+	(action)="onPlayerStateChange($event)"
+	(playNext)="onPlayNext($event)"
+	(play)="selectVideo($event)"
 	player-id="player" auto-next
 ></youtube-player>
 

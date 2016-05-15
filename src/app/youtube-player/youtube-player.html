@@ -40,11 +40,11 @@
 						(click)="playVideo()">
 						<i class="fa fa-play"></i></button>
 
-					<!-- button title="play next track"
+					<button title="play next track"
 						class="btn btn-default btn-lg navbar-btn next"
-						ng-click="vm.playNextTrack()"
-						ng-disabled="vm.playlistIsEmpty() || vm.playlistHasOneTrack()"
-						><i class="fa fa-step-forward"></i></button> -->
+						(click)="playNextTrack()"
+						><i class="fa fa-step-forward"></i></button>
+						<!-- ng-disabled="vm.playlistIsEmpty() || vm.playlistHasOneTrack()" -->
 				</div>
 			</li>
 		</ul>
