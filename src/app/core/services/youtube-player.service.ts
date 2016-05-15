@@ -11,8 +11,16 @@ export class YoutubePlayerService {
 	public player$: Observable<any>;
 
 	constructor (public store: Store<any>) {
-		window['onYouTubeIframeAPIReady'] = () => {
-			this.player = this.createPlayer(() => { });
+		// in production mode, the youtube iframe api script tag is loaded
+		// before the bundle.js, so the 'onYouTubeIfarmeAPIReady' has 
+		// already been triggered
+		// TODO: handle this in build or in nicer in code
+		if (!window['YT']) {
+			window['onYouTubeIframeAPIReady'] = () => {
+				this.player = this.createPlayer(() => { });
+			}
+		} else {
+			this.player = this.createPlayer(() => {});
 		}
 		this.player$ = this.store.select('player');
 	}
