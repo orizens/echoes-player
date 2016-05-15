@@ -245,7 +245,10 @@ module.exports = {
     }]),
 
     // static assets
-    new CopyWebpackPlugin([ { from: 'src/fonts', to: 'fonts' } ]),
+    new CopyWebpackPlugin([ 
+      { from: 'src/fonts', to: 'fonts' },
+      { from: './CNAME', to: './' } 
+    ]),
     /*
      * Plugin: HtmlWebpackPlugin
      * Description: Simplifies creation of HTML files to serve your webpack bundles.
