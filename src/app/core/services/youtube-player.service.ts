@@ -15,11 +15,12 @@ export class YoutubePlayerService {
 		// before the bundle.js, so the 'onYouTubeIfarmeAPIReady' has 
 		// already been triggered
 		// TODO: handle this in build or in nicer in code
-		if (!window['YT']) {
-			window['onYouTubeIframeAPIReady'] = () => {
+		window['onYouTubeIframeAPIReady'] = () => {
+			if (window['YT']) {
 				this.player = this.createPlayer(() => { });
 			}
-		} else {
+		};
+		if (window.YT && window.YT.Player) {
 			this.player = this.createPlayer(() => {});
 		}
 		this.player$ = this.store.select('player');
@@ -57,7 +58,7 @@ export class YoutubePlayerService {
 		    height: 270,
 		    width: 300
 		};
-	    return new YT.Player('player', {
+	    return new window.YT.Player('player', {
 	        height: defaultSizes.height,
 			width: defaultSizes.width,
 	        videoId: '',

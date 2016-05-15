@@ -48,7 +48,8 @@
     "postinstall": "npm run typings -- install",
     "preversion": "npm test",
     "version": "npm run build",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "deploy": "npm run build:prod && surge ./dist"
   },
   "dependencies": {
     "@angular2-material/button": "2.0.0-alpha.4",
