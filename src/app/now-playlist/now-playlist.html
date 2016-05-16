@@ -7,7 +7,7 @@
 			[ngClass]="{
 				'active': playlist?.index === index
 			}"
-			*ngFor="let video of playlist?.videos | search:playlist.filter ; #index = index"
+			*ngFor="let video of playlist?.videos | search:playlist.filter; let index = index"
 			>
 			<a class="" title="{{ video.snippet.title }}"
 				(click)="selectVideo(video)">

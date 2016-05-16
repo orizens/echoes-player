@@ -8,10 +8,20 @@ import { YoutubePlayerState } from '../core/store/youtube-player';
 	selector: 'youtube-player',
 	template: require('./youtube-player.html'),
 	directives: [NgModel, NgClass],
+	styles: [
+		`.navbar-brand {
+			text-transform: lowercase;
+			color: white;
+		}`
+	],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayer implements OnInit {
 	@Input() player: YoutubePlayerState;
+	@Output() ended = new EventEmitter();
+	@Output() playNext = new EventEmitter();
+	@Output() play = new EventEmitter();
+
 	title: Observable<string>;
 
 	constructor(public playerService: YoutubePlayerService) {
@@ -20,10 +30,12 @@ export class YoutubePlayer implements OnInit {
 	ngOnInit(){
 		// this.playerService.player$.subscribe((player) => this.player = player);
 		this.title = this.playerService.player$.map(player => player.media.snippet.title );
+		this.playerService.registerListener('ended', this.onStop.bind(this));
 	}
 
 	playVideo () {
 		this.playerService.play();
+		this.play.next(this.player.media);
 	}
 
 	isPlaying () {
@@ -36,5 +48,17 @@ export class YoutubePlayer implements OnInit {
 
 	togglePlayer () {
 		this.playerService.togglePlayer();
+	}
+
+	playNextTrack () {
+		this.playNext.next(this.player);
+	}
+
+	onStop (state: YT.PlayerState) {
+		this.ended.next(state);
+	}
+
+	toggleFullScreen () {
+		this.playerService.setSize();
 	}
 }
