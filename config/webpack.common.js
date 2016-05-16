@@ -16,7 +16,7 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
  * Webpack Constants
  */
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Echoes Player - Open Source Media Player for Youtube',
   baseUrl: '/'
 };
 
@@ -245,7 +245,10 @@ module.exports = {
     }]),
 
     // static assets
-    new CopyWebpackPlugin([ { from: 'src/fonts', to: 'fonts' } ]),
+    new CopyWebpackPlugin([ 
+      { from: 'src/fonts', to: 'fonts' },
+      { from: './CNAME', to: './' } 
+    ]),
     /*
      * Plugin: HtmlWebpackPlugin
      * Description: Simplifies creation of HTML files to serve your webpack bundles.

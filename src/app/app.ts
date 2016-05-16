@@ -9,12 +9,15 @@ import {FORM_PROVIDERS} from '@angular/common';
 // import { InfiniteScroll } from 'angular2-infinite-scroll';
 import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 import { YoutubeVideos } from './youtube-videos/youtube-videos';
+import { UserArea } from './user-area/user-area';
 import { YoutubeSearch } from './core/services/youtube.search';
+import { UserManager } from './core/services/user-manager.service';
 import { YoutubePlayer } from './youtube-player/youtube-player';
 import { YoutubePlayerService } from './core/services/youtube-player.service';
 import { NowPlaylist } from './now-playlist/now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter/now-playlist-filter';
 import { NowPlaylistService } from './core/services/now-playlist.service';
+import { YoutubePlayerState } from './core/store/youtube-player.ts';
 
 /*
  * App Component
@@ -22,7 +25,7 @@ import { NowPlaylistService } from './core/services/now-playlist.service';
  */
 @Component({
   selector: 'app',
-  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService, NowPlaylistService],
+  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService, NowPlaylistService, UserManager],
   directives: [...ROUTER_DIRECTIVES, 
     InfiniteScroll,
     YoutubePlayer,
@@ -35,12 +38,13 @@ import { NowPlaylistService } from './core/services/now-playlist.service';
 })
 @RouteConfig([
   { path: '/', component: YoutubeVideos, name: 'Index' },
+  { path: '/user', component: UserArea, name: 'UserArea' },
   // { path: '/home', component: Home, name: 'Home' },
   { path: '/**', redirectTo: ['Index'] }
 ])
 export class App {
   public start = true;
-  public player: any;
+  public player: YoutubePlayerState;
   public nowPlaylist: any = {};
 
   constructor(public youtubeSearch: YoutubeSearch,
@@ -61,9 +65,25 @@ export class App {
 
   selectVideo (media: GoogleApiYouTubeSearchResource) {
     this.playerService.playVideo(media);
+    this.nowPlaylistService.updateIndexByMedia(media);
+  }
+
+  handleVideoEnded (state) {
+    if (!this.isLastIndex()) {
+      this.playNextVideo(state);
+    }
+  }
+
+  playNextVideo (player) {
+    this.nowPlaylistService.getNextVideoByIndex();
+    this.selectVideo(this.nowPlaylist.videos[this.nowPlaylist.index]);
   }
 
   sortVideo (media: GoogleApiYouTubeSearchResource) {
 
+  }
+
+  isLastIndex () {
+    return this.nowPlaylist.index + 1 === this.nowPlaylist.length;
   }
 }

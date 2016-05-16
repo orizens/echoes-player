@@ -33,13 +33,12 @@ export class YoutubeVideos {
 
 	search () {
 		this.youtubeSearch.search(this.searchQuery, false);
-			// .then(response => {
-			// 	this.videos = this.youtubeSearch.items;
-			// });
 	}
 
 	playSelectedVideo (media) {
 		this.youtubePlayer.playVideo(media);
+		this.queueSelectedVideo(media);
+		this.nowPlaylistService.updateIndexByMedia(media);
 	}
 
 	queueSelectedVideo (media) {

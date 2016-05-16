@@ -1,0 +1,22 @@
+<section class="">
+	<h2>My User Area</h2>
+
+	<p *ngIf="!isSignIn()" class="well">
+		To view your playlists in youtube, you need to sign in.
+		<button class="btn btn-lg btn-danger"
+			id="signin-button">
+			<i class="fa fa-google-plus"></i> Sign In
+		</button>
+	</p>
+	<section class="videos-list">
+		<h3>My Playlists</h3>
+		<ul class="list-unstyled ux-maker youtube-items-container clearfix">
+			<youtube-playlist
+				*ngFor="let playlist of playlists | async"
+				[media]="playlist"
+				(play)="playSelectedPlaylist(playlist)"
+				(queue)="queueSelectedPlaylist(playlist)">
+			</youtube-playlist>
+		</ul>
+	</section>
+</section>
