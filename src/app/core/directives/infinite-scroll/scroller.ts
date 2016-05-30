@@ -11,8 +11,16 @@ export class Scroller {
 	public infiniteScrollCallback: any;
 	public $interval: any;
 	public $elementRef: any;
+	private bindedHandler: Function;
 
-	constructor($window, $interval, $elementRef, infiniteScrollCallback, infiniteScrollDistance, infiniteScrollParent) {
+	constructor(
+		$window: any,
+		$interval: any,
+		$elementRef: any,
+		infiniteScrollCallback: any,
+		infiniteScrollDistance: number,
+		infiniteScrollParent: any
+		) {
 		let THROTTLE_MILLISECONDS = 300;
 		this.windowElement = $window;
 		this.infiniteScrollCallback = infiniteScrollCallback;
@@ -139,12 +147,18 @@ export class Scroller {
 	}
 
 	changeContainer (newContainer) {
-		// if (this.container != null) {
-            // this.container.unbind('scroll', this.handler);
-		// }
+		this.clean();
 		this.container = newContainer;
 		if (newContainer != null) {
-            return this.container.addEventListener('scroll', this.handler.bind(this));
+			this.bindedHandler = this.handler.bind(this);
+            return this.container.addEventListener('scroll', this.bindedHandler);
+		}
+	}
+
+	clean () {
+		if (this.container !== undefined) {
+            this.container.removeEventListener('scroll', this.bindedHandler);
+            this.bindedHandler = null;
 		}
 	}
 
