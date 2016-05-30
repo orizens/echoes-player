@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, Output, EventEmitter, OnDestroy, OnInit, Attribute } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Scroller } from './scroller';
 
@@ -7,17 +7,14 @@ import { Scroller } from './scroller';
 })
 export class InfiniteScroll implements OnDestroy, OnInit {
   private scroller: Scroller;
-  private _distance: number = 2;
-
-  @Input() set infiniteScrollDistance(distance: number) {
-    this._distance = distance;
-  }
+  @Input('infiniteScrollDistance') _distance: number;
 
   @Output() scrolled = new EventEmitter();
 
   constructor(private element: ElementRef) {}
 
   ngOnInit() {
+    console.log(this._distance);
     this.scroller = new Scroller(window, setInterval, this.element, this.onScroll.bind(this), this._distance, {});
   }
 
