@@ -53,7 +53,8 @@
 		<div id="search-results" class="ux-maker search-results clearfix main-view"
 			infinite-scroll
 			[infiniteScrollDistance]="2"
-			(scrolled)="onScroll()">
+			(scrolled)="onScroll()"
+			[immediateCheck]="true">
 			<router-outlet></router-outlet>
 		</div>
 	</div>

@@ -6,8 +6,8 @@ import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated
 import {FORM_PROVIDERS} from '@angular/common';
 
 // import {Home} from './home/home';
-// import { InfiniteScroll } from 'angular2-infinite-scroll';
-import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
+import { InfiniteScroll } from 'angular2-infinite-scroll';
+// import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 import { YoutubeVideos } from './youtube-videos/youtube-videos';
 import { UserArea } from './user-area/user-area';
 import { YoutubeSearch } from './core/services/youtube.search';

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { NgModel } from '@angular/common'
-import { Store} from '@ngrx/store';
+import { Store,  } from '@ngrx/store';
 // import { NgClass } from '@angular/common';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';

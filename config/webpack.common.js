@@ -246,8 +246,7 @@ module.exports = {
 
     // static assets
     new CopyWebpackPlugin([ 
-      { from: 'src/fonts', to: 'fonts' },
-      { from: './CNAME', to: './' } 
+      { from: 'src/fonts', to: 'fonts' }
     ]),
     /*
      * Plugin: HtmlWebpackPlugin
