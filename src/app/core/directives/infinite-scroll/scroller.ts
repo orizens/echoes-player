@@ -10,7 +10,7 @@ export class Scroller {
 	public checkInterval: number;
 	public windowElement: Window | ElementRef | any;
 	private bindedHandler: Function;
-	private documentElement: any;
+	private documentElement: Window | ElementRef | any;
 	private isContainerWindow: boolean;
 
 	constructor(
@@ -82,19 +82,15 @@ export class Scroller {
 	}
 
 	handler () {
-		let remaining: number,
-			containerBreakpoint: number,
-			shouldScroll: boolean;
 		const container = this.calculatePoints();
-		
+		const remaining: number = container.totalToScroll - container.scrolledUntilNow;
+		const containerBreakpoint: number = container.height * this.scrollDistance + 1;
+		const shouldScroll: boolean = remaining <= containerBreakpoint;
+		const triggerCallback: boolean = shouldScroll && this.scrollEnabled;
+		const shouldClearInterval = shouldScroll && this.checkInterval;
 		// if (this.useDocumentBottom) {
 		// 	container.totalToScroll = this.height(this.$elementRef.nativeElement.ownerDocument);
 		// }
-		remaining = container.totalToScroll - container.scrolledUntilNow;
-		containerBreakpoint = container.height * this.scrollDistance + 1;
-		shouldScroll = remaining <= containerBreakpoint;
-		const triggerCallback = shouldScroll && this.scrollEnabled;
-		const shouldClearInterval = shouldScroll && this.checkInterval;
 		this.checkWhenEnabled = shouldScroll;
 		if (triggerCallback) {
 			this.infiniteScrollCallback();
@@ -133,32 +129,29 @@ export class Scroller {
 		// const totalToScroll = this.offsetTop(this.$elementRef.nativeElement) - containerTopOffset + this.height(this.$elementRef.nativeElement);
 		return { height, scrolledUntilNow, totalToScroll };
 	}
-	throttle (func, wait) {
-		var later, previous, timeout;
-		var _self = this;
-		timeout = null;
-		previous = 0;
-		later = function() {
-			var context;
+	
+	throttle (func: Function, wait: number) {
+		let timeout: number = null;
+		let previous = 0;
+		const later = () => {
 			previous = new Date().getTime();
 			clearInterval(timeout);
 			timeout = null;
-			func.call(_self);
-			return context = null;
+			func.call(this);
 		};
-		return function() {
-			var now, remaining;
+		return () => {
+			var now: number, remaining: number;
 			now = new Date().getTime();
 			remaining = wait - (now - previous);
 			if (remaining <= 0) {
-				clearTimeout(timeout);
+				// clearTimeout(timeout);
 				clearInterval(timeout);
 				timeout = null;
 				previous = now;
-				return func.call(_self);
+				return func.call(this);
 			} else {
 				if (!timeout) {
-					return timeout = _self.$interval(later, remaining, 1);
+					return timeout = this.$interval(later, remaining, 1);
 				}
 			}
 		};

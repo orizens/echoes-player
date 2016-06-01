@@ -2,6 +2,7 @@ import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ADD, RESET } from '../store/youtube-videos';
+import { UPDATE_QUERY } from '../store/player-search';
 import { YOUTUBE_API_KEY } from './constants';
 
 @Injectable()
@@ -27,10 +28,12 @@ export class YoutubeSearch {
 
 		if (shouldBeReset || isNewSearch) {
 			this.resetPageToken();
+			this.store.dispatch({ type: RESET });
 		}
 		this.isSearching = true;
-		if (query && query.length) {
+		if (query) {
 			this._config.set('q', query);
+			this.store.dispatch({ type: UPDATE_QUERY, payload: query });
 		}
 		// localStorageService.set(Storage.QUERY, this.config.params.q);
 		return this.http.get(this.url, { search: this._config })
@@ -60,6 +63,5 @@ export class YoutubeSearch {
 
 	resetPageToken () {
 		this._config.set('pageToken', '');
-		this.store.dispatch({ type: RESET });
 	}
 }
