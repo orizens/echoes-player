@@ -29,7 +29,7 @@ export class YoutubePlayer implements OnInit {
 
 	ngOnInit(){
 		// this.playerService.player$.subscribe((player) => this.player = player);
-		this.title = this.playerService.player$.map(player => player.media.snippet.title );
+		this.title = this.playerService.player$.map(player => player.media.snippet.title);
 		this.playerService.registerListener('ended', this.onStop.bind(this));
 	}
 

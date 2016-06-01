@@ -18,6 +18,7 @@ import { NowPlaylist } from './now-playlist/now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter/now-playlist-filter';
 import { NowPlaylistService } from './core/services/now-playlist.service';
 import { YoutubePlayerState } from './core/store/youtube-player.ts';
+import { YoutubeVideosInfo } from './core/services/youtube-videos-info.service';
 
 /*
  * App Component
@@ -25,7 +26,11 @@ import { YoutubePlayerState } from './core/store/youtube-player.ts';
  */
 @Component({
   selector: 'app',
-  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService, NowPlaylistService, UserManager],
+  providers: [...FORM_PROVIDERS, YoutubeSearch, 
+    YoutubePlayerService, NowPlaylistService, UserManager,
+    NowPlaylistService,
+    YoutubeVideosInfo
+  ],
   directives: [...ROUTER_DIRECTIVES, 
     InfiniteScroll,
     YoutubePlayer,

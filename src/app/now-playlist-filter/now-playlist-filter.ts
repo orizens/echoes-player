@@ -24,10 +24,6 @@ export class NowPlaylistFilter {
 
 	}
 
-	ngOnInit(){
-
-	}
-
 	handleFilterChange (searchFilter: string) {
 		this.nowPlaylistService.updateFilter(searchFilter);
 	}

@@ -15,7 +15,8 @@ import { user } from '../core/store/user-manager';
 	selector: 'user-area.user-area',
 	template: require('./user-area.html'),
 	directives: [ NgModel, YoutubePlaylist ],
-	pipes: [ AsyncPipe ]
+	pipes: [ AsyncPipe ],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserArea implements AfterViewInit{
 	playlists: Observable<GoogleApiYouTubePlaylistResource[]>;
@@ -44,11 +45,11 @@ export class UserArea implements AfterViewInit{
 	}
 
 	playSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {
-		this.userManager.playlistInfo.list(media.id)
-			.then(response => { 
+		this.userManager.fetchPlaylistItems(media.id)
+			.then(response => {
 				this.nowPlaylistService.queueVideos(response.items);
 				this.youtubePlayer.playVideo(response.items[0]);
-			})
+			});
 		// this.youtubePlayer.playVideo(media);
 		// this.queueSelectedVideo(media);
 		// this.nowPlaylistService.updateIndexByMedia(media);

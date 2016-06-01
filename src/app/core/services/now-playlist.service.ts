@@ -11,20 +11,27 @@ import {
 	QUEUE_VIDEOS, 
 	YoutubeMediaPlaylist 
 } from '../store/now-playlist';
+import { YoutubeVideosInfo } from './youtube-videos-info.service';
+
 
 @Injectable()
 export class NowPlaylistService {
-	public playlist$: Observable<Object>;
+	public playlist$: Observable<YoutubeMediaPlaylist>;
 
-	constructor(public store: Store<YoutubeMediaPlaylist>) {
-		this.playlist$ = this.store.select('nowPlaylist');
+	constructor(public store: Store<any>,
+		private youtubeVideosInfo: YoutubeVideosInfo
+		) {
+		this.playlist$ = this.store.select(state => state.nowPlaylist);
 	}
 
-	queueVideo (media) {
-		this.store.dispatch({ type: QUEUE, payload: media });
+	queueVideo (mediaId: string) {
+		this.youtubeVideosInfo.api.list(mediaId)
+      .then(response => {
+        this.store.dispatch({ type: QUEUE, payload: response.items[0] });
+			});
 	}
 
-	queueVideos (medias) {
+	queueVideos (medias: GoogleApiYouTubeVideoResource[]) {
 		this.store.dispatch({ type: QUEUE_VIDEOS, payload: medias });
 	}
 

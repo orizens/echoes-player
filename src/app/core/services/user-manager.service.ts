@@ -1,10 +1,11 @@
 import { Http, URLSearchParams, Response } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Store } from '@ngrx/store';
 import { ADD_PLAYLISTS, UPDATE_TOKEN } from '../store/user-manager';
 import { YOUTUBE_API_KEY, CLIENT_ID} from './constants';
 import { YoutubeApiService } from './youtube-api.service';
+import { YoutubeVideosInfo } from './youtube-videos-info.service';
 // https://www.googleapis.com/youtube/v3/playlistItems
 @Injectable()
 export class UserManager {
@@ -17,8 +18,14 @@ export class UserManager {
 	private isSignedIn: boolean = false;
 	private auth2: any;
 	public playlistInfo: YoutubeApiService;
+	public playlistItemsInfo: YoutubeApiService;
 
-	constructor(private http: Http, private store: Store<any>) {
+	constructor(
+		private http: Http, 
+		private zone: NgZone,
+		private store: Store<any>,
+		private youtubeVideosInfo: YoutubeVideosInfo
+		) {
 		this.playlistInfo = new YoutubeApiService({
 			url: 'https://www.googleapis.com/youtube/v3/playlistItems',
 			http: this.http,
@@ -38,7 +45,7 @@ export class UserManager {
 	}
 	
 	authAndSignIn() {
-		let GoogleAuth = window.gapi ? window.gapi.auth2.getAuthInstance() : false;
+		let GoogleAuth = window.gapi && window.gapi.auth2  && window.gapi.auth2.getAuthInstance ? window.gapi.auth2.getAuthInstance() : false;
 		if (!this.isAuthInitiated) {
 			if (!GoogleAuth) {
 		        this.auth2 = window.gapi.auth2.init({
@@ -53,10 +60,11 @@ export class UserManager {
 	}
 
 	attachSignIn() {
-		if (this.auth2 && !this.isSignedIn) {
+    const run = (fn) => (r) => this.zone.run(() => fn(r));
+		if (this.auth2 && !this.isSignedIn && !this.isAuthInitiated) {
 			this.isAuthInitiated = true;
 			// Attach the click handler to the sign-in button
-			this.auth2.attachClickHandler('signin-button', {}, this.onLoginSuccess.bind(this), this.onLoginFailed.bind(this));
+			this.auth2.attachClickHandler('signin-button', {}, run(this.onLoginSuccess.bind(this)), run(this.onLoginFailed.bind(this)));
 		}
 	}
 
@@ -102,5 +110,14 @@ export class UserManager {
 
 	resetPageToken () {
 		this._config.set('pageToken', '');
+	}
+
+	fetchPlaylistItems (playlistId: string) {
+		return this.playlistInfo
+			.list(playlistId)
+			.then(response => { 
+				const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
+				return this.youtubeVideosInfo.api.list(videoIds);
+			});
 	}
 }
