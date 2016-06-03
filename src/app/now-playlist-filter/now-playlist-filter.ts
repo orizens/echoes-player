@@ -17,7 +17,7 @@ import { YoutubeMediaPlaylist } from '../core/store/now-playlist';
 export class NowPlaylistFilter {
 	@Input() playlist: YoutubeMediaPlaylist;
 	// @Output() save = new EventEmitter();
-	// @Output() clear = new EventEmitter();
+	@Output() clear = new EventEmitter();
 	// @Output() change = new EventEmitter();
 
 	constructor(private nowPlaylistService: NowPlaylistService) {

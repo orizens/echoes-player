@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{%= webpackConfig.metadata.title %}">
-
+  <meta name="google-signin-client_id" content="971861197531-hm7solf3slsdjc4omsfti4jbcbe625hs.apps.googleusercontent.com">
   <!-- use http://www.favicon-generator.org/ to replace files in public/icon-->
   <link rel="apple-touch-icon" sizes="57x57" href="/assets/icon/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/assets/icon/apple-icon-60x60.png">
@@ -23,10 +23,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/icon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
-  <link rel="manifest" href="/assets/manifest.json">
-  <meta name="msapplication-TileColor" content="#00bcd4">
+  <link rel="manifest" href="/assets/icon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/icon/ms-icon-144x144.png">
-  <meta name="theme-color" content="#00bcd4">
+  <meta name="theme-color" content="#ffffff">
   <!-- end favicon -->
 
   <!-- base url -->
@@ -57,6 +57,7 @@
   <script src="/webpack-dev-server.js"></script>
   <% } %>
 
-  <script src="//www.youtube.com/iframe_api"></script>
 </body>
+  <script src="https://apis.google.com/js/platform.js?onload=apiLoaded" async defer></script>
+  <script src="//www.youtube.com/iframe_api"></script>
 </html>

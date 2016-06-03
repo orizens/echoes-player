@@ -1,0 +1,41 @@
+<li class="well youtube-item youtube-playlist-item col-md-3 ux-maker card">
+    
+    <section class="media-title front">
+        <div class="indicators clearfix">
+            
+            <span class="pull-left item-is-playing playing-false">
+                <i class="icon-play"></i>Now Playing
+            </span>
+            
+        </div>
+
+        <div class="media-thumb">
+            
+            <div class="thumbnail">
+              <img src="{{ media.snippet.thumbnails.high.url }}">
+            </div>
+
+            <button class="btn btn-default btn-lg play-media" (click)="playPlaylist(media)">
+                <i class="fa fa-play"></i>
+            </button>
+
+        </div>
+
+        <section class="item-actions">
+            
+            <a href="#playlist/{{ media.id }}">
+                <h4 class="title">
+                    {{ media.snippet.title }}
+                </h4>
+                
+                <span class="item-action badge badge-info">
+                    <i class="icon-list"></i>  
+                    {{ media.contentDetails.itemCount }} videos
+                </span>
+            </a> 
+
+        </section>
+        
+    </section>
+
+</li>

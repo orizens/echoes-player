@@ -4,7 +4,15 @@ import { YoutubeMedia } from '../youtube-media/youtube-media';
 
 @Component({
 	selector: 'youtube-list',
-	template: require('./youtube-list.html'),
+	template: `
+		<youtube-media
+			*ngFor="let media of list"
+			[media]="media"
+			(play)="playSelectedVideo(media)"
+			(queue)="queueSelectedVideo(media)"
+			(add)="addVideo(media)">
+		</youtube-media>
+	`,
 	directives: [NgFor, YoutubeMedia ]
 })
 export class YoutubeList {
