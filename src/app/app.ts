@@ -18,15 +18,21 @@ import { NowPlaylist } from './now-playlist/now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter/now-playlist-filter';
 import { NowPlaylistService } from './core/services/now-playlist.service';
 import { YoutubePlayerState } from './core/store/youtube-player.ts';
-
+import { YoutubeVideosInfo } from './core/services/youtube-videos-info.service';
+import { Observable } from "rxjs/Observable";
+import { YoutubeMediaPlaylist } from './core/store/now-playlist';
 /*
  * App Component
  * Top Level Component
  */
 @Component({
   selector: 'app',
-  providers: [...FORM_PROVIDERS, YoutubeSearch, YoutubePlayerService, NowPlaylistService, UserManager],
-  directives: [...ROUTER_DIRECTIVES, 
+  providers: [...FORM_PROVIDERS, YoutubeSearch,
+    YoutubePlayerService, NowPlaylistService, UserManager,
+    NowPlaylistService,
+    YoutubeVideosInfo
+  ],
+  directives: [...ROUTER_DIRECTIVES,
     InfiniteScroll,
     YoutubePlayer,
     NowPlaylist,
@@ -44,15 +50,15 @@ import { YoutubePlayerState } from './core/store/youtube-player.ts';
 ])
 export class App {
   public start = true;
-  public player: YoutubePlayerState;
-  public nowPlaylist: any = {};
+  public player: Observable<YoutubePlayerState>;
+  public nowPlaylist: Observable<YoutubeMediaPlaylist>;
 
   constructor(public youtubeSearch: YoutubeSearch,
     public playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService
   ) {
-    this.playerService.player$.subscribe(player => this.player = player);
-    nowPlaylistService.playlist$.subscribe(playlist => this.nowPlaylist = playlist);
+    this.player = this.playerService.player$;
+    this.nowPlaylist = nowPlaylistService.playlist$;
   }
 
   onScroll () {
@@ -75,8 +81,8 @@ export class App {
   }
 
   playNextVideo (player) {
-    this.nowPlaylistService.getNextVideoByIndex();
-    this.selectVideo(this.nowPlaylist.videos[this.nowPlaylist.index]);
+    this.nowPlaylistService.selectNextIndex();
+    this.selectVideo(this.nowPlaylistService.getCurrent());
   }
 
   sortVideo (media: GoogleApiYouTubeSearchResource) {
@@ -84,6 +90,6 @@ export class App {
   }
 
   isLastIndex () {
-    return this.nowPlaylist.index + 1 === this.nowPlaylist.length;
+    // return this.nowPlaylist.index + 1 === this.nowPlaylist.length;
   }
 }

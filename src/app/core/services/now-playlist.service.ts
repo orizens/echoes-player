@@ -11,20 +11,27 @@ import {
 	QUEUE_VIDEOS, 
 	YoutubeMediaPlaylist 
 } from '../store/now-playlist';
+import { YoutubeVideosInfo } from './youtube-videos-info.service';
+
 
 @Injectable()
 export class NowPlaylistService {
-	public playlist$: Observable<Object>;
+	public playlist$: Observable<YoutubeMediaPlaylist>;
 
-	constructor(public store: Store<YoutubeMediaPlaylist>) {
-		this.playlist$ = this.store.select('nowPlaylist');
+	constructor(public store: Store<any>,
+		private youtubeVideosInfo: YoutubeVideosInfo
+		) {
+		this.playlist$ = this.store.select(state => state.nowPlaylist);
 	}
 
-	queueVideo (media) {
-		this.store.dispatch({ type: QUEUE, payload: media });
+	queueVideo (mediaId: string) {
+		this.youtubeVideosInfo.api.list(mediaId)
+      .then(response => {
+        this.store.dispatch({ type: QUEUE, payload: response.items[0] });
+			});
 	}
 
-	queueVideos (medias) {
+	queueVideos (medias: GoogleApiYouTubeVideoResource[]) {
 		this.store.dispatch({ type: QUEUE_VIDEOS, payload: medias });
 	}
 
@@ -44,11 +51,17 @@ export class NowPlaylistService {
 		this.store.dispatch({ type: REMOVE_ALL });
 	}
 
-	getNextVideoByIndex () {
-		this.store.dispatch({ type: SELECT_NEXT })		
+	selectNextIndex () {
+		this.store.dispatch({ type: SELECT_NEXT })
 	}
 
-	updateIndexByMedia(media: GoogleApiYouTubeSearchResource) {
+	getCurrent () {
+		let media;
+		this.playlist$.take(1).subscribe(playlist => media = playlist.videos[playlist.index]);
+		return media;
+	}
+
+	updateIndexByMedia(media: GoogleApiYouTubeSearchResource | GoogleApiYouTubeVideoResource) {
 		this.store.dispatch({ type: UPDATE_INDEX, payload: media });
 	}
 }

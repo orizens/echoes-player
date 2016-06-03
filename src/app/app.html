@@ -3,8 +3,8 @@
 	[player]="player"
 	(ended)="handleVideoEnded($event)"
 	(playNext)="playNextVideo($event)"
-	(play)="selectVideo($event)"
-	player-id="player" auto-next
+	player-id="player" 
+	auto-next
 ></youtube-player>
 
 <!-- SIDEBAR -->
@@ -28,10 +28,10 @@
 
 	<div class="sidebar-pane">
 		<now-playlist-filter
-			[playlist]="nowPlaylist"
+			[playlist]="nowPlaylist | async"
 		></now-playlist-filter>
 		<now-playlist
-			[playlist]="nowPlaylist"
+			[playlist]="nowPlaylist | async"
 			(select)="selectVideo($event)"
 			(sort)="sortVideo($event)"
 		></now-playlist>
@@ -53,7 +53,8 @@
 		<div id="search-results" class="ux-maker search-results clearfix main-view"
 			infinite-scroll
 			[infiniteScrollDistance]="2"
-			(scrolled)="onScroll()">
+			(scrolled)="onScroll()"
+			[immediateCheck]="true">
 			<router-outlet></router-outlet>
 		</div>
 	</div>

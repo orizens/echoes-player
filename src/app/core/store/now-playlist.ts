@@ -10,7 +10,7 @@ export const SELECT_NEXT = 'SELECT_NEXT';
 export const QUEUE_VIDEOS = 'QUEUE_VIDEOS';
 
 export interface YoutubeMediaPlaylist {
-    videos: GoogleApiYouTubeSearchResource[],
+    videos: GoogleApiYouTubeVideoResource[],
     index: number,
     filter: string
 }
@@ -20,8 +20,8 @@ let initialState: YoutubeMediaPlaylist = {
     filter: ''
 }
 export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialState, action: Action) => {
-    let matchMedia = (media) => media.id.videoId === action.payload.id.videoId;
-    let isDifferent = (media) => media.id.videoId !== action.payload.id.videoId;
+    let matchMedia = (media: GoogleApiYouTubeVideoResource) => media.id === action.payload.id;
+    let isDifferent = (media: GoogleApiYouTubeVideoResource) => media.id !== action.payload.id;
 
     switch (action.type) {
         case SELECT:
@@ -54,14 +54,14 @@ export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialS
     }
 }
 
-function addMedia(videos: GoogleApiYouTubeSearchResource[], media: any) {
-    const newMedia = [...videos].findIndex(video => video.id.videoId === media.id.videoId);
+function addMedia(videos: GoogleApiYouTubeVideoResource[], media: any) {
+    const newMedia = [...videos].findIndex(video => video.id === media.id);
     const newVideos = newMedia === -1 ? videos.push(media) : videos;
     return [...videos];
 }
 
 function addMedias(videos, medias) {
-    const allVideoIds = videos.map(video => video.id.videoId);
+    const allVideoIds = videos.map(video => video.id);
     let newVideos = [];
     medias.forEach(media => {
         if (allVideoIds.indexOf(media.id) === -1) {
@@ -70,7 +70,7 @@ function addMedias(videos, medias) {
     });
     return videos.concat(newVideos);
 }
-function selectNextIndex(videos: GoogleApiYouTubeSearchResource[], index: number) {
+function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], index: number) {
     let nextIndex: number = index + 1;
     if (!videos.length) {
         nextIndex = videos.length;
@@ -82,10 +82,10 @@ function selectNextIndex(videos: GoogleApiYouTubeSearchResource[], index: number
     return nextIndex;
 }
 
-function getIndexByMedia(videos: GoogleApiYouTubeSearchResource[], media: GoogleApiYouTubeSearchResource) {
+function getIndexByMedia(videos: GoogleApiYouTubeVideoResource[], media: GoogleApiYouTubeVideoResource) {
     let nextIndex: number = 0;
     if (videos.length) {
-        nextIndex = videos.findIndex(video => video.id.videoId === media.id.videoId);
+        nextIndex = videos.findIndex(video => video.id === media.id);
     }
     return nextIndex === -1 ? 0 : nextIndex;
 }

@@ -47,9 +47,9 @@ export const player: Reducer<any> = (state: YoutubePlayerState = initialPlayerSt
     }
 }
 
-export function playVideo(state: YoutubePlayerState, media: GoogleApiYouTubeSearchResource) {
+export function playVideo(state: YoutubePlayerState, media: GoogleApiYouTubeVideoResource | GoogleApiYouTubeSearchResource) {
     return Object.assign({}, state, { 
-        mediaId: media.id.videoId, 
+        mediaId: media.id, 
         media, 
         showPlayer: true 
     });
