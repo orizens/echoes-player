@@ -8,7 +8,7 @@ import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE, FULLSCREEN, YoutubePlayerStat
 @Injectable()
 export class YoutubePlayerService {
   public player: YT.Player;
-  public player$: Observable<any>;
+  public player$: Observable<YoutubePlayerState>;
   private listeners: any = {
     ended: []
   };
@@ -19,8 +19,14 @@ export class YoutubePlayerService {
   };
 
   constructor (public store: Store<any>, private zone: NgZone) {
+    this.setupPlayer();
+    this.player$ = this.store.select(store => store.player);
+    this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen });
+  }
+
+  setupPlayer () {
     // in production mode, the youtube iframe api script tag is loaded
-    // before the bundle.js, so the 'onYouTubeIfarmeAPIReady' has 
+    // before the bundle.js, so the 'onYouTubeIfarmeAPIReady' has
     // already been triggered
     // TODO: handle this in build or in nicer in code
     window['onYouTubeIframeAPIReady'] = () => {
@@ -31,9 +37,8 @@ export class YoutubePlayerService {
     if (window.YT && window.YT.Player) {
       this.player = this.createPlayer(() => {});
     }
-    this.player$ = this.store.select('player');
-    this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen });
   }
+
   play () {
     this.player.playVideo();
   }
@@ -111,7 +116,7 @@ export class YoutubePlayerService {
           width = window.innerWidth;
     } else {
       height = this.defaultSizes.height;
-      width = this.defaultSizes.width;  
+      width = this.defaultSizes.width;
     }
         this.player.setSize(width, height);
         this.store.dispatch({ type: FULLSCREEN });

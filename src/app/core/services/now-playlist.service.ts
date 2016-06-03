@@ -51,11 +51,17 @@ export class NowPlaylistService {
 		this.store.dispatch({ type: REMOVE_ALL });
 	}
 
-	getNextVideoByIndex () {
-		this.store.dispatch({ type: SELECT_NEXT })		
+	selectNextIndex () {
+		this.store.dispatch({ type: SELECT_NEXT })
 	}
 
-	updateIndexByMedia(media: GoogleApiYouTubeSearchResource) {
+	getCurrent () {
+		let media;
+		this.playlist$.take(1).subscribe(playlist => media = playlist.videos[playlist.index]);
+		return media;
+	}
+
+	updateIndexByMedia(media: GoogleApiYouTubeSearchResource | GoogleApiYouTubeVideoResource) {
 		this.store.dispatch({ type: UPDATE_INDEX, payload: media });
 	}
 }

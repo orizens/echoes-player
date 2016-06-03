@@ -1,9 +1,9 @@
 <!-- YOUTUBE PLAYER -->
 <youtube-player id="youtube-player-container"
-	[player]="player"
+	[player]="player | async"
 	(ended)="handleVideoEnded($event)"
 	(playNext)="playNextVideo($event)"
-	player-id="player" 
+	player-id="player"
 	auto-next
 ></youtube-player>
 
@@ -28,10 +28,10 @@
 
 	<div class="sidebar-pane">
 		<now-playlist-filter
-			[playlist]="nowPlaylist"
+			[playlist]="nowPlaylist | async"
 		></now-playlist-filter>
 		<now-playlist
-			[playlist]="nowPlaylist"
+			[playlist]="nowPlaylist | async"
 			(select)="selectVideo($event)"
 			(sort)="sortVideo($event)"
 		></now-playlist>

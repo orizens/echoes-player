@@ -18,7 +18,6 @@ export class UserManager {
 	private isSignedIn: boolean = false;
 	private auth2: any;
 	public playlistInfo: YoutubeApiService;
-	public playlistItemsInfo: YoutubeApiService;
 
 	constructor(
 		private http: Http, 
