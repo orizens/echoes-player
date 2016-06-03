@@ -1,6 +1,6 @@
 <!-- YOUTUBE PLAYER -->
 <youtube-player id="youtube-player-container"
-	[player]="player"
+	[player]="player | async"
 	(ended)="handleVideoEnded($event)"
 	(playNext)="playNextVideo($event)"
 	player-id="player" 

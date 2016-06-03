@@ -5,20 +5,23 @@ import {Component} from '@angular/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {FORM_PROVIDERS} from '@angular/common';
 
-// import {Home} from './home/home';
 // import { InfiniteScroll } from 'angular2-infinite-scroll';
+// DIRECTIVES/COMPONENTS
 import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 import { YoutubeVideos } from './youtube-videos/youtube-videos';
 import { UserArea } from './user-area/user-area';
-import { YoutubeSearch } from './core/services/youtube.search';
-import { UserManager } from './core/services/user-manager.service';
 import { YoutubePlayer } from './youtube-player/youtube-player';
-import { YoutubePlayerService } from './core/services/youtube-player.service';
 import { NowPlaylist } from './now-playlist/now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter/now-playlist-filter';
+
+// SERVICES
+import { UserManager } from './core/services/user-manager.service';
+import { YoutubeSearch } from './core/services/youtube.search';
+import { YoutubePlayerService } from './core/services/youtube-player.service';
 import { NowPlaylistService } from './core/services/now-playlist.service';
-import { YoutubePlayerState } from './core/store/youtube-player.ts';
 import { YoutubeVideosInfo } from './core/services/youtube-videos-info.service';
+
+import { YoutubePlayerState } from './core/store/youtube-player.ts';
 import { Observable } from "rxjs/Observable";
 import { YoutubeMediaPlaylist } from './core/store/now-playlist';
 /*
