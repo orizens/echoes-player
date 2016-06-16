@@ -80,7 +80,7 @@
   "devDependencies": {
     "@ngrx/store": "^1.5.0",
     "angular2-hmr": "~0.6.0",
-    "angular2-infinite-scroll": "0.0.10",
+    "angular2-infinite-scroll": "^0.1.4",
     "awesome-typescript-loader": "~0.17.0",
     "codelyzer": "~0.0.19",
     "compression-webpack-plugin": "^0.3.1",

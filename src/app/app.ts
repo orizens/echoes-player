@@ -5,9 +5,9 @@ import {Component} from '@angular/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {FORM_PROVIDERS} from '@angular/common';
 
-// import { InfiniteScroll } from 'angular2-infinite-scroll';
+import { InfiniteScroll } from 'angular2-infinite-scroll';
 // DIRECTIVES/COMPONENTS
-import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
+// import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 import { YoutubeVideos } from './youtube-videos/youtube-videos';
 import { UserArea } from './user-area/user-area';
 import { YoutubePlayer } from './youtube-player/youtube-player';
