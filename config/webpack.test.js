@@ -88,7 +88,6 @@ module.exports = {
         exclude: [
         // these packages have problems with their sourcemaps
         helpers.root('node_modules/rxjs'),
-        helpers.root('node_modules/@angular2-material'),
         helpers.root('node_modules/@angular')
       ]}
 
@@ -137,7 +136,7 @@ module.exports = {
        *
        * See: https://github.com/webpack/raw-loader
        */
-      { test: /\.css$/, loader: 'raw-loader', exclude: [helpers.root('src/index.html')] },
+      { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'], exclude: [helpers.root('src/index.html')] },
 
       /**
        * Raw loader support for *.html

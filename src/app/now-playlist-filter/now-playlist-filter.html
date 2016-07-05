@@ -13,7 +13,7 @@
 	<div class="playlist-filter pull-right">
 		<i class="fa fa-search" *ngIf="isFilterEmpty()"></i>
 		<i class="fa fa-remove text-danger" *ngIf="!isFilterEmpty()" (click)="resetSearchFilter()"></i>
-		<input type="search"
+		<input type="search" name="playlist-search"
 			[ngModel]="playlist?.filter"
 			#searchFilter
 			(input)="handleFilterChange(searchFilter.value)">

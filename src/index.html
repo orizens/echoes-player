@@ -28,12 +28,16 @@
   <meta name="msapplication-TileImage" content="assets/icon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <!-- end favicon -->
-
+<% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
   <!-- base url -->
   <!-- <base href="<%= webpackConfig.metadata.baseUrl %>"> -->
   <link href='http://fonts.googleapis.com/css?family=Asap|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="assets/css/style.css?rev=@@hash">
 </head>
+
 <body>
 
   <app>
@@ -51,7 +55,7 @@
     ga('send', 'pageview');
   </script> -->
 
-  <% if (webpackConfig.metadata.ENV === 'development') { %>
+  <% if (webpackConfig.metadata.isDevServer) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>

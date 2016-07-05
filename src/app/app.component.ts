@@ -2,14 +2,14 @@
  * Angular 2 decorators and services
  */
 import {Component} from '@angular/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+// import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {FORM_PROVIDERS} from '@angular/common';
 
 import { InfiniteScroll } from 'angular2-infinite-scroll';
 // DIRECTIVES/COMPONENTS
 // import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
-import { YoutubeVideos } from './youtube-videos/youtube-videos';
-import { UserArea } from './user-area/user-area';
+// import { YoutubeVideos } from './youtube-videos/youtube-videos';
+// import { UserArea } from './user-area/user-area';
 import { YoutubePlayer } from './youtube-player/youtube-player';
 import { NowPlaylist } from './now-playlist/now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter/now-playlist-filter';
@@ -35,7 +35,7 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
     NowPlaylistService,
     YoutubeVideosInfo
   ],
-  directives: [...ROUTER_DIRECTIVES,
+  directives: [
     InfiniteScroll,
     YoutubePlayer,
     NowPlaylist,
@@ -45,12 +45,6 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
   styles: [],
   template: require('./app.html')
 })
-@RouteConfig([
-  { path: '/', component: YoutubeVideos, name: 'Index' },
-  { path: '/user', component: UserArea, name: 'UserArea' },
-  // { path: '/home', component: Home, name: 'Home' },
-  { path: '/**', redirectTo: ['Index'] }
-])
 export class App {
   public start = true;
   public player: Observable<YoutubePlayerState>;
