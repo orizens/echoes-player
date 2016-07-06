@@ -2,36 +2,56 @@ import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit
 import { NgModel } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
+import { EchoesState } from '../core/store/store'; 
 
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { PlayerSearch } from '../core/store/player-search';
+import { EchoesVideos } from '../core/store/youtube-videos';
 
 import { PlayerSearch as PlayerSearchComponent } from './player-search.component'; 
 import { YoutubeList } from '../core/components/youtube-list/youtube-list';
 
 @Component({
   selector: 'youtube-videos.youtube-videos',
-  template: require('./youtube-videos.html'),
   directives: [
     PlayerSearchComponent, 
     YoutubeList, 
     NgModel
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  template: `
+    <nav class="navbar col-md-12" player-resizer="fullscreen">
+      <div class="navbar-header">
+        <player-search 
+          [query]="playerSearch$ | async"
+          (change)="resetPageToken()"
+          (search)="search($event)"
+        ></player-search>
+      </div>
+      <div class="pull-right">
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      </div>
+    </nav>
+    <section class="videos-list">
+      <youtube-list [list]="videos$ | async"
+        (play)="playSelectedVideo($event)"
+        (queue)="queueSelectedVideo($event)"
+      ></youtube-list>
+    </section>
+  `
 })
 export class YoutubeVideos implements OnInit {
-  videos$: Observable<GoogleApiYouTubeSearchResource[]>;
+  videos$: Observable<EchoesVideos>;
   playerSearch$: Observable<PlayerSearch>;
 
   constructor(
     private youtubeSearch: YoutubeSearch,
     private nowPlaylistService: NowPlaylistService,
-    public store: Store<any>,
+    private store: Store<EchoesState>,
     public youtubePlayer: YoutubePlayerService) {
-    this.videos$ = this.store.select(state => state.videos);
-    this.playerSearch$ = this.store.select(state => state.search)
+    this.videos$ = store.select(state => state.videos);
+    this.playerSearch$ = store.select(state => state.search)
   }
 
   ngOnInit(){
@@ -48,12 +68,12 @@ export class YoutubeVideos implements OnInit {
 
   playSelectedVideo (media: GoogleApiYouTubeSearchResource) {
     this.youtubePlayer.playVideo(media);
-    this.queueSelectedVideo(media);
-    this.nowPlaylistService.updateIndexByMedia(media);
+    this.queueSelectedVideo(media)
+      .then(videoResource => this.nowPlaylistService.updateIndexByMedia(videoResource));
   }
 
   queueSelectedVideo (media: GoogleApiYouTubeSearchResource) {
-    this.nowPlaylistService.queueVideo(media.id.videoId);
+    return this.nowPlaylistService.queueVideo(media.id.videoId);
   }
 
   resetPageToken() {

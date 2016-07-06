@@ -83,9 +83,10 @@ function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], index: number)
 }
 
 function getIndexByMedia(videos: GoogleApiYouTubeVideoResource[], media: GoogleApiYouTubeVideoResource) {
+    const mediaId = media.id;
     let nextIndex: number = 0;
     if (videos.length) {
-        nextIndex = videos.findIndex(video => video.id === media.id);
+        nextIndex = videos.findIndex(video => video.id === mediaId);
     }
     return nextIndex === -1 ? 0 : nextIndex;
 }

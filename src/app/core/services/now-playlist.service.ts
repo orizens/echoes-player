@@ -25,9 +25,10 @@ export class NowPlaylistService {
 	}
 
 	queueVideo (mediaId: string) {
-		this.youtubeVideosInfo.api.list(mediaId)
+		return this.youtubeVideosInfo.api.list(mediaId)
       .then(response => {
         this.store.dispatch({ type: QUEUE, payload: response.items[0] });
+        return response.items[0];
 			});
 	}
 
@@ -61,7 +62,7 @@ export class NowPlaylistService {
 		return media;
 	}
 
-	updateIndexByMedia(media: GoogleApiYouTubeSearchResource | GoogleApiYouTubeVideoResource) {
+	updateIndexByMedia(media: GoogleApiYouTubeVideoResource) {
 		this.store.dispatch({ type: UPDATE_INDEX, payload: media });
 	}
 }

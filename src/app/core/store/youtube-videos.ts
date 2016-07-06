@@ -4,7 +4,9 @@ export const ADD = 'ADD';
 export const REMOVE = 'REMOVE';
 export const RESET = 'RESET';
 
-export const videos: Reducer<any> = (state: GoogleApiYouTubeSearchResource[] = [], action: Action) => {
+export interface EchoesVideos extends Array<GoogleApiYouTubeSearchResource>{};
+
+export const videos: Reducer<any> = (state: EchoesVideos = [], action: Action) => {
 
     switch (action.type) {
         case ADD:
@@ -21,6 +23,6 @@ export const videos: Reducer<any> = (state: GoogleApiYouTubeSearchResource[] = [
     }
 }
 
-export function addVideos(state: GoogleApiYouTubeSearchResource[], videos: GoogleApiYouTubeSearchResource[]) {
+export function addVideos(state: EchoesVideos, videos: GoogleApiYouTubeSearchResource[]) {
     return state.concat(videos);
 }

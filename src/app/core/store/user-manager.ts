@@ -5,6 +5,11 @@ export const ADD_PLAYLISTS = 'ADD_PLAYLISTS';
 export const UPDATE_TOKEN = 'UPDATE_TOKEN';
 export const LOG_OUT = 'LOG_OUT';
 
+export interface UserProfile {
+    access_token: string,
+    playlist: Array<any>
+}
+
 let initialUserState = {
     access_token: null,
     playlists: []
