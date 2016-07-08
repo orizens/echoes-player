@@ -90,3 +90,28 @@ export class App {
     // return this.nowPlaylist.index + 1 === this.nowPlaylist.length;
   }
 }
+
+
+// const futureApp = {
+// template: `
+// <section class="sidebar">
+//   <app-nav></app-nav>
+//   <div class="sidebar-pane">
+//     <now-playlist
+//       [playlist]="nowPlaylist"
+//       (select)="selectVideo($event)"
+//       (sort)="sortVideo($event)"
+//     ></now-playlist>
+//   </div>
+// </section>
+// <app-loader></app-loader>
+// <content-viewer></content-viewer>
+// <youtube-player 
+//   id="youtube-player-container"
+//   [player]="player"
+//   (ended)="handleVideoEnded($event)"
+//   (playNext)="playNextVideo($event)"
+//   player-id="player" 
+//   auto-next
+// ></youtube-player>`
+// }
