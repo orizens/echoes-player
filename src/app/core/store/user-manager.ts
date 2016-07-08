@@ -7,7 +7,7 @@ export const LOG_OUT = 'LOG_OUT';
 
 export interface UserProfile {
     access_token: string,
-    playlist: Array<any>
+    playlists: Array<any>
 }
 
 let initialUserState = {

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit
 import { NgModel } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { EchoesState } from '../core/store/store'; 
+import { EchoesState } from '../core/store'; 
 
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';

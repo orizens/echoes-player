@@ -81,7 +81,7 @@
   "devDependencies": {
     "@ngrx/store": "^1.5.0",
     "angular2-hmr": "~0.8.0",
-    "angular2-infinite-scroll": "^0.1.5",
+    "angular2-infinite-scroll": "^0.1.8",
     "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "1.1.1",
     "codelyzer": "~0.0.21",

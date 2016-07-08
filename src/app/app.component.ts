@@ -11,8 +11,8 @@ import { InfiniteScroll } from 'angular2-infinite-scroll';
 // import { YoutubeVideos } from './youtube-videos/youtube-videos';
 // import { UserArea } from './user-area/user-area';
 import { YoutubePlayer } from './youtube-player/youtube-player';
-import { NowPlaylist } from './now-playlist/now-playlist';
-import { NowPlaylistFilter } from './now-playlist-filter/now-playlist-filter';
+import { NowPlaylist } from './now-playlist';
+import { NowPlaylistFilter } from './now-playlist-filter';
 
 // SERVICES
 import { UserManager } from './core/services/user-manager.service';

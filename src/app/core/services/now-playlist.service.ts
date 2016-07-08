@@ -62,7 +62,7 @@ export class NowPlaylistService {
 		return media;
 	}
 
-	updateIndexByMedia(media: GoogleApiYouTubeVideoResource) {
+	updateIndexByMedia(media: GoogleApiYouTubeSearchResource) {
 		this.store.dispatch({ type: UPDATE_INDEX, payload: media });
 	}
 }

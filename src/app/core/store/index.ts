@@ -1,5 +1,5 @@
 import { Reducer, Action } from '@ngrx/store';
-import { provideStore, compose, combineReducers } from '@ngrx/store';
+import { compose, combineReducers } from '@ngrx/store';
 // reducers
 import { videos, EchoesVideos } from './youtube-videos';
 import { player, YoutubePlayerState} from './youtube-player';
@@ -20,9 +20,7 @@ export interface EchoesState {
   search: PlayerSearch;
 }
 
-export const store = provideStore(
-  compose(
-    localStorageSync(['videos', 'player', 'nowPlaylist', 'search'], true),
-    combineReducers
-  )({ videos, player, nowPlaylist, user, search })
-);
+export default compose(
+  localStorageSync(['videos', 'player', 'nowPlaylist', 'search'], true),
+  combineReducers
+)({ videos, player, nowPlaylist, user, search });
