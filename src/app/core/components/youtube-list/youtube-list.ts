@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { YoutubeMedia } from '../youtube-media/youtube-media';
 
@@ -13,7 +13,8 @@ import { YoutubeMedia } from '../youtube-media/youtube-media';
 			(add)="addVideo(media)">
 		</youtube-media>
 	`,
-	directives: [NgFor, YoutubeMedia ]
+	directives: [NgFor, YoutubeMedia ],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubeList {
 	@Input() list: any;

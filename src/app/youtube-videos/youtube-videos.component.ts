@@ -34,7 +34,8 @@ import { YoutubeList } from '../core/components/youtube-list/youtube-list';
       </div>
     </nav>
     <section class="videos-list">
-      <youtube-list [list]="videos$ | async"
+      <youtube-list 
+        [list]="videos$ | async"
         (play)="playSelectedVideo($event)"
         (queue)="queueSelectedVideo($event)"
       ></youtube-list>
