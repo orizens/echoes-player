@@ -1,6 +1,8 @@
 import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import { Store } from '@ngrx/store';
 import { ADD_PLAYLISTS, UPDATE_TOKEN } from '../store/user-manager';
 import { YOUTUBE_API_KEY, CLIENT_ID} from './constants';
@@ -18,9 +20,11 @@ export class UserManager {
 	private isSignedIn: boolean = false;
 	private auth2: any;
 	public playlistInfo: YoutubeApiService;
+	public api$: Observable<Object>;
+	private gapiLoader: Observer<any>;
 
 	constructor(
-		private http: Http, 
+		private http: Http,
 		private zone: NgZone,
 		private store: Store<any>,
 		private youtubeVideosInfo: YoutubeVideosInfo
@@ -35,40 +39,75 @@ export class UserManager {
 		this._config.set('mine', 'true');
 		this._config.set('maxResults', '50');
 		this._config.set('pageToken', '');
-
-		window['apiLoaded'] = () => { 
-			window.gapi.load('auth2', () => {
-				this.authAndSignIn();
-		    });
-		}
+		this.api$ = new Observable(observer => {
+			this.gapiLoader = observer;
+		});
+		this.setupGapiAuth();
 	}
-	
-	authAndSignIn() {
-		let GoogleAuth = window.gapi && window.gapi.auth2  && window.gapi.auth2.getAuthInstance ? window.gapi.auth2.getAuthInstance() : false;
-		if (!this.isAuthInitiated) {
-			if (!GoogleAuth) {
-		        this.auth2 = window.gapi.auth2.init({
-		            client_id: `${CLIENT_ID}.apps.googleusercontent.com`
-		        });
-			}
-		} 
-		if (GoogleAuth) {
-			this.auth2 = GoogleAuth;
+
+	setupGapiAuth() {
+		const isGapiLoaded = window.gapi && window.gapi.load;
+		const isGapiAuthLoaded = window.gapi && window.gapi.auth2;
+		const initGapiAuth = () => {
+			this.auth2 = window.gapi.auth2.init({
+				client_id: `${CLIENT_ID}.apps.googleusercontent.com`
+			});
+			return this.auth2;
+		};
+		const gapiLoader = () => {
+			window.gapi.load('auth2', (response) => {
+				// initGapiAuth().then((rs) => {
+				// 	this.gapiLoader.next(rs);
+				// })
+				this.authAndSignIn();
+			});
+		};
+		if (!isGapiLoaded) {
+			window['apiLoaded'] = gapiLoader;
 		}
-		this.attachSignIn();
+		if (!isGapiAuthLoaded) {
+			return gapiLoader();
+		}
+		// return this.authAndSignIn();
+	}
+
+	authAndSignIn() {
+		// let GoogleAuth = window.gapi && window.gapi.auth2  && window.gapi.auth2.getAuthInstance ? window.gapi.auth2.getAuthInstance() : false;
+		// if (!this.isAuthInitiated) {
+			// if (!GoogleAuth) {
+			const onGapiAuthLoaded = (GoogleAuth) => {
+				console.log(GoogleAuth)
+				const isSignedIn = GoogleAuth.isSignedIn.get();
+				if (isSignedIn) {
+					GoogleAuth.signIn({ scope: 'profile email' }).then(() => {
+						const token = GoogleAuth.currentUser.get().getAuthResponse();
+						this.zone.run(() => this.onLoginSuccess(token.access_token));
+					});
+				}
+			}
+      this.auth2 = window.gapi.auth2.init({
+          client_id: `${CLIENT_ID}.apps.googleusercontent.com`
+      }).then(onGapiAuthLoaded);
+			// }
+		// }
+		// if (GoogleAuth) {
+		// 	this.auth2 = GoogleAuth;
+		// }
+		// this.attachSignIn();
 	}
 
 	attachSignIn() {
     const run = (fn) => (r) => this.zone.run(() => fn(r));
-		if (this.auth2 && !this.isSignedIn && !this.isAuthInitiated) {
+		// this.auth2
+		if (!this.isSignedIn && !this.isAuthInitiated) {
 			this.isAuthInitiated = true;
 			// Attach the click handler to the sign-in button
 			this.auth2.attachClickHandler('signin-button', {}, run(this.onLoginSuccess.bind(this)), run(this.onLoginFailed.bind(this)));
 		}
 	}
 
-	onLoginSuccess(response) {
-		const token = response.hg.access_token;
+	onLoginSuccess(token) {
+		// const token = response.hg.access_token;
 		this.isSignedIn = true;
 		this.playlistInfo.setToken(token);
 		this._config.set('access_token', token);
@@ -114,7 +153,7 @@ export class UserManager {
 	fetchPlaylistItems (playlistId: string) {
 		return this.playlistInfo
 			.list(playlistId)
-			.then(response => { 
+			.then(response => {
 				const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
 				return this.youtubeVideosInfo.api.list(videoIds);
 			});

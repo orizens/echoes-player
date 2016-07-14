@@ -31,10 +31,14 @@ export class UserArea implements AfterContentInit {
 	}
 
 	ngAfterContentInit() {
-		let timeoutId = window.setTimeout(() => {
-			this.userManager.authAndSignIn();
-			window.clearTimeout(timeoutId);
-		}, 1000);
+		this.userManager.api$.subscribe(value => {
+			// this.userManager.attachSignIn();
+			console.log('user',value)
+		});
+		// let timeoutId = window.setTimeout(() => {
+		// 	this.userManager.authAndSignIn();
+		// 	window.clearTimeout(timeoutId);
+		// }, 1000);
 	}
 
 	isSignIn () {
