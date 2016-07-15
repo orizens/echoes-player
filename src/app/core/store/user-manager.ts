@@ -1,4 +1,4 @@
-import {Reducer, Action} from '@ngrx/store';
+import {ActionReducer, Action} from '@ngrx/store';
 
 export const UPDATE = 'UPDATE';
 export const ADD_PLAYLISTS = 'ADD_PLAYLISTS';
@@ -14,7 +14,7 @@ let initialUserState = {
     access_token: null,
     playlists: []
 }
-export const user: Reducer<any> = (state = initialUserState, action: Action) => {
+export const user: ActionReducer<UserProfile> = (state = initialUserState, action: Action) => {
 
     switch (action.type) {
         case ADD_PLAYLISTS:

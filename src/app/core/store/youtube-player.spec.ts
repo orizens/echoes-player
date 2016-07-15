@@ -17,31 +17,45 @@ import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE } from './youtube-player';
 import { YoutubeMediaMock } from '../../../../test/mocks/youtube.media.item';
 
 describe('The Youtube Player reducer', () => {
+    const mockedState = {
+      mediaId: 'mocked...',
+      index: 0,
+      media: {},
+      showPlayer: true,
+      playerState: 0,
+      isFullscreen: false
+    };
     it('should return current state when no valid actions have been made', () => {
-        const state = { mediaId: 'mocked...' };
+        const state = Object.assign({}, mockedState);
         const actual = player(state, {type: 'INVALID_ACTION', payload: {}});
         const expected = state;
         expect(actual).toBe(expected);
     });
 
     it('should set the new media id by the new PLAYED youtube media item', () => {
-        const state = { mediaId: 'mocked', media: {}};
+        const state = Object.assign({}, mockedState);
         const actual = player(state, { type: PLAY, payload: YoutubeMediaMock });
         const expected = state;
-        expect(actual.mediaId).toBe(YoutubeMediaMock.id.videoId);
+        expect(actual.mediaId.videoId).toBe(YoutubeMediaMock.id.videoId);
     });
 
     it('should toggle visibility of the player', () => {
-      const state = { mediaId: 'mocked', showPlayer: false };
-        const actual = player(state, { type: TOGGLE_PLAYER, payload: true });
-        const expected = state;
-        expect(actual.showPlayer).toBe(!expected.showPlayer);
+      const state = Object.assign({}, mockedState, {
+        mediaId: 'mocked',
+        showPlayer: false
+      });
+      const actual = player(state, { type: TOGGLE_PLAYER, payload: true });
+      const expected = state;
+      expect(actual.showPlayer).toBe(!expected.showPlayer);
     });
 
     it('should change the state of the player', () => {
-      const state = { mediaId: 'mocked', playerState: 0 };
-        const actual = player(state, { type: STATE_CHANGE, payload: 1 });
-        const expected = state;
-        expect(actual.playerState).toBe(1);
+      const state = Object.assign({}, mockedState, {
+        mediaId: 'mocked',
+        playerState: 0
+      });
+      const actual = player(state, { type: STATE_CHANGE, payload: 1 });
+      const expected = state;
+      expect(actual.playerState).toBe(1);
     });
 });

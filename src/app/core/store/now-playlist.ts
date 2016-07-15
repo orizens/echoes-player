@@ -1,4 +1,4 @@
-import {Reducer, Action} from '@ngrx/store';
+import { ActionReducer, Action } from '@ngrx/store';
 
 export const SELECT = 'SELECT';
 export const QUEUE = 'QUEUE';
@@ -19,7 +19,7 @@ let initialState: YoutubeMediaPlaylist = {
     index: 0,
     filter: ''
 }
-export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialState, action: Action) => {
+export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (state: YoutubeMediaPlaylist = initialState, action: Action) => {
     let matchMedia = (media: GoogleApiYouTubeVideoResource) => media.id === action.payload.id;
     let isDifferent = (media: GoogleApiYouTubeVideoResource) => media.id !== action.payload.id;
 
@@ -36,7 +36,7 @@ export const nowPlaylist: Reducer<any> = (state: YoutubeMediaPlaylist = initialS
         case REMOVE:
             return Object.assign({}, state, { videos: state.videos.filter(isDifferent) });
 
-        // updates index by media 
+        // updates index by media
         case UPDATE_INDEX:
             return Object.assign({}, state, { index: getIndexByMedia(state.videos, action.payload) });
 

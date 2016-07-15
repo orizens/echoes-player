@@ -1,4 +1,4 @@
-import {Reducer, Action} from '@ngrx/store';
+import { ActionReducer, Action } from '@ngrx/store';
 
 export const UPDATE_QUERY = 'UPDATE_QUERY';
 export const UPDATE_FILTER = 'UPDATE_FILTER';
@@ -11,7 +11,7 @@ let initialState: PlayerSearch = {
     query: '',
     filter: ''
 }
-export const search: Reducer<any> = (state: PlayerSearch = initialState, action: Action) => {
+export const search: ActionReducer<PlayerSearch> = (state: PlayerSearch = initialState, action: Action) => {
 
     switch (action.type) {
         case UPDATE_QUERY:

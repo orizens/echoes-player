@@ -1,4 +1,4 @@
-import {Reducer, Action} from '@ngrx/store';
+import { ActionReducer, Action } from '@ngrx/store';
 
 export const PLAY = 'PLAY';
 export const QUEUE = 'REMOVE';
@@ -7,7 +7,7 @@ export const STATE_CHANGE = 'STATE_CHANGE';
 export const FULLSCREEN = 'FULLSCREEN';
 
 export interface YoutubePlayerState {
-    mediaId: string,
+    mediaId: { videoId: string },
     index: number,
     media?: any,
     showPlayer: boolean,
@@ -15,7 +15,7 @@ export interface YoutubePlayerState {
     isFullscreen: boolean
 }
 let initialPlayerState: YoutubePlayerState = {
-    mediaId: 'NONE',
+    mediaId: { videoId: 'NONE' },
     index: 0,
     media: {
         snippet: { title: 'No Media Yet' }
@@ -24,7 +24,7 @@ let initialPlayerState: YoutubePlayerState = {
     playerState: 0,
     isFullscreen: false
 }
-export const player: Reducer<any> = (state: YoutubePlayerState = initialPlayerState, action: Action) => {
+export const player: ActionReducer<YoutubePlayerState> = (state: YoutubePlayerState = initialPlayerState, action: Action) => {
 
     switch (action.type) {
         case PLAY:
@@ -48,10 +48,10 @@ export const player: Reducer<any> = (state: YoutubePlayerState = initialPlayerSt
 }
 
 export function playVideo(state: YoutubePlayerState, media: GoogleApiYouTubeVideoResource | GoogleApiYouTubeSearchResource) {
-    return Object.assign({}, state, { 
-        mediaId: media.id, 
-        media, 
-        showPlayer: true 
+    return Object.assign({}, state, {
+        mediaId: media.id,
+        media,
+        showPlayer: true
     });
 }
 

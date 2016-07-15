@@ -1,4 +1,4 @@
-import {Reducer, Action} from '@ngrx/store';
+import { ActionReducer, Action } from '@ngrx/store';
 
 export const ADD = 'ADD';
 export const REMOVE = 'REMOVE';
@@ -6,7 +6,7 @@ export const RESET = 'RESET';
 
 export interface EchoesVideos extends Array<GoogleApiYouTubeSearchResource>{};
 
-export const videos: Reducer<any> = (state: EchoesVideos = [], action: Action) => {
+export const videos: ActionReducer<GoogleApiYouTubeSearchResource[]> = (state: EchoesVideos = [], action: Action) => {
 
     switch (action.type) {
         case ADD:

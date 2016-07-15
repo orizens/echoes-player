@@ -1,5 +1,6 @@
-import { Reducer, Action } from '@ngrx/store';
-import { compose, combineReducers } from '@ngrx/store';
+import { ActionReducer, Action } from '@ngrx/store';
+import { combineReducers } from '@ngrx/store';
+import { compose } from "@ngrx/core/compose";
 // reducers
 import { videos, EchoesVideos } from './youtube-videos';
 import { player, YoutubePlayerState} from './youtube-player';
