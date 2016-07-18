@@ -10,7 +10,7 @@ import {
 
 // Load the implementations that should be tested
 import { nowPlaylist } from './now-playlist';
-import { SELECT, QUEUE, REMOVE, UPDATE_INDEX, FILTER_CHANGE, REMOVE_ALL } from './now-playlist';
+import { NowPlaylistActions } from './now-playlist';
 import { YoutubeMediaItemsMock } from '../../../../test/mocks/youtube.media.items';
 
 describe('The Now Playlist Reducer', () => {
@@ -23,16 +23,16 @@ describe('The Now Playlist Reducer', () => {
 
     it('should select the chosen video', () => {
       const state = { index: 0, videos: [...YoutubeMediaItemsMock] };
-      const actual = nowPlaylist(state, { type: SELECT, payload: YoutubeMediaItemsMock[0] });
-      const expected = state;
-      expect(actual.index).toBe(expected.index);
+      const actual = nowPlaylist(state, { type: NowPlaylistActions.SELECT, payload: YoutubeMediaItemsMock[0] });
+      const expected = YoutubeMediaItemsMock[0];
+      expect(actual.index).toBe(expected.id);
     });
 
     it('should queue the selected video to the list', () => {
       let videos = [...YoutubeMediaItemsMock];
       let newVideo = videos.pop();
       const state = { index: 0, videos: [...videos] };
-      const actual = nowPlaylist(state, { type: QUEUE, payload: newVideo });
+      const actual = nowPlaylist(state, { type: NowPlaylistActions.QUEUE, payload: newVideo });
       const expected = newVideo;
       expect(actual.videos.pop().etag).toBe(expected.etag);
     });

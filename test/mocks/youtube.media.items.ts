@@ -2,10 +2,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/H4cfKgflym7DapaZkWQCRP7M5eo\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "y0q2FzZnL84"
-    },
+    "id": "y0q2FzZnL84",
     "snippet": {
       "publishedAt": "2012-07-24T12:48:13.000Z",
       "channelId": "UCdgLMsydsrVjhpjf5KJz4Tw",
@@ -35,10 +32,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/WHIYcgxiboYgcsM4vv3iMom0uqI\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "BVfbosghkTg"
-    },
+    "id": "BVfbosghkTg",
     "snippet": {
       "publishedAt": "2012-05-18T15:01:14.000Z",
       "channelId": "UCRxLFt-qJHbT-zzeZt4eQpw",
@@ -68,10 +62,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/QzjoTbId5XtkSQ9sTNeIH6S0gpY\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "5PGvyjZtVKU"
-    },
+    "id": "5PGvyjZtVKU",
     "snippet": {
       "publishedAt": "2016-02-19T15:00:39.000Z",
       "channelId": "UCRxLFt-qJHbT-zzeZt4eQpw",
@@ -101,10 +92,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/kHjn4c0NK3JObCzaW9ZvGhJgGbk\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "YmoMjMl_Jxw"
-    },
+    "id": "YmoMjMl_Jxw",
     "snippet": {
       "publishedAt": "2015-03-23T14:15:11.000Z",
       "channelId": "UCRxLFt-qJHbT-zzeZt4eQpw",
@@ -134,10 +122,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/Yc-tSoCWl21spLSIEm_u8vJDB-w\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "s-1n3gigOEA"
-    },
+    "id": "s-1n3gigOEA",
     "snippet": {
       "publishedAt": "2015-09-18T05:11:14.000Z",
       "channelId": "UCt3WiECfu1X3WPHp6DWpEzQ",
@@ -167,10 +152,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/-UFZyWdMhViSwhD7ob_WfljmmAI\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "NA9QXtZiGuU"
-    },
+    "id": "NA9QXtZiGuU",
     "snippet": {
       "publishedAt": "2012-10-08T20:34:31.000Z",
       "channelId": "UCRxLFt-qJHbT-zzeZt4eQpw",
@@ -200,10 +182,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/q58Z5t6OtKgT3Di1qLLOFmuVMJk\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "GeMIvnaOkFU"
-    },
+    "id": "GeMIvnaOkFU",
     "snippet": {
       "publishedAt": "2015-06-12T19:44:26.000Z",
       "channelId": "UC51vipQTSsLlj8Iyp6plFfg",
@@ -233,10 +212,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/vgQVyX68JAYHFrjszKpb9wI4C3s\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "9h5VvBpxuQc"
-    },
+    "id": "9h5VvBpxuQc",
     "snippet": {
       "publishedAt": "2015-04-15T16:38:53.000Z",
       "channelId": "UC8mnXeOlR9hC2w8aYqY9WNQ",
@@ -266,10 +242,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/WKRLp1UgnL7UKGqgPFx-c3WRU_E\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "-LTI1cjVAeQ"
-    },
+    "id": "-LTI1cjVAeQ",
     "snippet": {
       "publishedAt": "2015-06-05T21:00:01.000Z",
       "channelId": "UCSNxIry_FPFcQDFRbi3VOAw",
@@ -299,10 +272,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/O91PX6Z-hikKb5U4DgG3eGxNfqE\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "rLa33BoxUyc"
-    },
+    "id": "rLa33BoxUyc",
     "snippet": {
       "publishedAt": "2015-06-11T15:16:01.000Z",
       "channelId": "UCRxLFt-qJHbT-zzeZt4eQpw",
@@ -332,10 +302,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/m8Y5U8U-z7jcs6CdBaMx593AwSM\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "pdSnenB-wUk"
-    },
+    "id": "pdSnenB-wUk",
     "snippet": {
       "publishedAt": "2015-07-24T16:02:56.000Z",
       "channelId": "UC-uC8tfchhyy2tFwZJ2yXjw",
@@ -365,10 +332,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/V9bpaosQtGXp40VtaSeBNcJmNio\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "AOyK_dwZnJE"
-    },
+    "id": "AOyK_dwZnJE",
     "snippet": {
       "publishedAt": "2015-04-21T19:56:33.000Z",
       "channelId": "UC8mnXeOlR9hC2w8aYqY9WNQ",
@@ -398,10 +362,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/r6_25OC95u-SCESz695__0gHyso\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "8oOXJPi1WcY"
-    },
+    "id": "8oOXJPi1WcY",
     "snippet": {
       "publishedAt": "2015-07-07T19:06:00.000Z",
       "channelId": "UC51vipQTSsLlj8Iyp6plFfg",
@@ -431,10 +392,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/ECxrwiZeLOVksu56KJKtkVc6YuE\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "auuy8LRFPB0"
-    },
+    "id": "auuy8LRFPB0",
     "snippet": {
       "publishedAt": "2012-07-17T12:59:25.000Z",
       "channelId": "UCUwYay26Ta7_-8t4VPBpvig",
@@ -464,10 +422,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/H9WcpiHpCu4ItU2pj-xnFSuaLPM\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "QEwhSkmPa-g"
-    },
+    "id": "QEwhSkmPa-g",
     "snippet": {
       "publishedAt": "2015-08-30T21:21:08.000Z",
       "channelId": "UC8AQ-HrWxaGz5KzDPLpXaOg",
@@ -497,10 +452,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/aBr9ip_WNyaiYsZDjTj397zQNxw\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "YBc9GtMREcg"
-    },
+    "id": "YBc9GtMREcg",
     "snippet": {
       "publishedAt": "2013-04-16T14:40:16.000Z",
       "channelId": "UCdgLMsydsrVjhpjf5KJz4Tw",
@@ -530,10 +482,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/aXQ6UL82SBLYiJQMGmk_X-WsCh4\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "kyQMi2Vznio"
-    },
+    "id": "kyQMi2Vznio",
     "snippet": {
       "publishedAt": "2016-01-07T16:57:14.000Z",
       "channelId": "UC5EDpsUum4DTo5IHB-1kUtw",
@@ -563,10 +512,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/-hAnf3CweShO-PA7UnJBhuoJwwk\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "K4Au8CbLLaI"
-    },
+    "id": "K4Au8CbLLaI",
     "snippet": {
       "publishedAt": "2012-07-18T14:38:33.000Z",
       "channelId": "UCUwYay26Ta7_-8t4VPBpvig",
@@ -596,10 +542,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/uiQWNiLC29JeqQqUK02UMP_rRoo\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "-VHmluDUw1c"
-    },
+    "id": "-VHmluDUw1c",
     "snippet": {
       "publishedAt": "2012-04-05T09:10:05.000Z",
       "channelId": "UCZJRQPEapb7yERI4tiOLnAA",
@@ -629,10 +572,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/SSokvFVdE6FI0K6mynfcjhY-puU\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "rxZ6-GftB9E"
-    },
+    "id": "rxZ6-GftB9E",
     "snippet": {
       "publishedAt": "2015-09-16T03:06:40.000Z",
       "channelId": "UC3lJloVnSk7KtphIxiUF71g",
@@ -662,10 +602,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/g8cu9h1hTB9sYwK8-68rE46wrIE\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "-9O0SBskwys"
-    },
+    "id": "-9O0SBskwys",
     "snippet": {
       "publishedAt": "2012-06-19T15:11:49.000Z",
       "channelId": "UC5J-hZ4wNf7OlkzIn49LHoQ",
@@ -695,10 +632,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/yHL_s8oZTxCOInC83nVVyVUDQF0\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "VGfJa6ThrQ0"
-    },
+    "id": "VGfJa6ThrQ0",
     "snippet": {
       "publishedAt": "2015-09-15T19:52:36.000Z",
       "channelId": "UC8AQ-HrWxaGz5KzDPLpXaOg",
@@ -728,10 +662,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/gJAiMzhPDmxdcCmEHujxKVWfU0c\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "BWOOtEWzUao"
-    },
+    "id": "BWOOtEWzUao",
     "snippet": {
       "publishedAt": "2015-12-26T16:25:36.000Z",
       "channelId": "UCBLVubiyI1PYfFUAxw_QANA",
@@ -761,10 +692,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/ohbce19ZsSA0JkkuiNJiEUuqQo8\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "f4ISS2YkweE"
-    },
+    "id": "f4ISS2YkweE",
     "snippet": {
       "publishedAt": "2014-05-23T15:11:17.000Z",
       "channelId": "UCizyzjKlLYwrBbf9ivgL-QA",
@@ -794,10 +722,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/uAG0D09J2-GzTRiYASEwKsfe2Cc\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "uESgeBYRUNM"
-    },
+    "id": "uESgeBYRUNM",
     "snippet": {
       "publishedAt": "2015-04-27T16:28:05.000Z",
       "channelId": "UCdqwITLX1E73_XlZFcHquyw",
@@ -827,10 +752,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/hVb5xqwm6U4u6CPjnVeIdwV-Iwg\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "wJTUnH-xoao"
-    },
+    "id": "wJTUnH-xoao",
     "snippet": {
       "publishedAt": "2015-10-05T15:08:00.000Z",
       "channelId": "UCdtxFxmrZXH-npqWm1WLUPA",
@@ -860,10 +782,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/eOzMCcPqg9uXNYS_JNjwHM4bPlw\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "uEFEPTxn8B8"
-    },
+    "id": "uEFEPTxn8B8",
     "snippet": {
       "publishedAt": "2015-09-02T23:08:07.000Z",
       "channelId": "UC8jW3tCB1935mlgfEvlM5xQ",
@@ -893,10 +812,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/nfTEMkWK7OlReyA8SyIj1G5FLHM\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "yidGXDnJwmc"
-    },
+    "id": "yidGXDnJwmc",
     "snippet": {
       "publishedAt": "2014-03-25T17:30:51.000Z",
       "channelId": "UCJ1MDcNfGJLa71sQN8kqeEA",
@@ -926,10 +842,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/WHRvSm3FR2p9lKXp-38_q6FbyAE\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "z7_ImChBwo8"
-    },
+    "id": "z7_ImChBwo8",
     "snippet": {
       "publishedAt": "2011-07-07T10:04:00.000Z",
       "channelId": "UCYuVLa772VBLc7_AK9qZ8Kw",
@@ -959,10 +872,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/4ebjaksD_FAKtlJkBV3CyzsAqus\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "0Hacljir21o"
-    },
+    "id": "0Hacljir21o",
     "snippet": {
       "publishedAt": "2015-04-27T16:48:01.000Z",
       "channelId": "UCdqwITLX1E73_XlZFcHquyw",
@@ -992,10 +902,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/84Hv6bNDwNIqmx6F-AvlfoV0-ww\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "45HSCtYAt3E"
-    },
+    "id": "45HSCtYAt3E",
     "snippet": {
       "publishedAt": "2012-10-13T10:33:36.000Z",
       "channelId": "UC96QKj2zsV_OsRDCsZUUe3w",
@@ -1025,10 +932,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/IHhDxhxHqE5lDJlSBGQ54AIyvRU\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "J7hzqdfLn2E"
-    },
+    "id": "J7hzqdfLn2E",
     "snippet": {
       "publishedAt": "2015-12-14T00:38:42.000Z",
       "channelId": "UCpELbld3SG4J19BkKMaLRCw",
@@ -1058,10 +962,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/0yqcf89sGe4-nzrvnZHTog8K4qI\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "GGQjTFhpaQE"
-    },
+    "id": "GGQjTFhpaQE",
     "snippet": {
       "publishedAt": "2014-07-21T05:59:52.000Z",
       "channelId": "UCOqu_UCcqdXhJ0XNPTcppiQ",
@@ -1091,10 +992,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/9O8Gjf0Tt1epVZDoxX-e4jRa6V0\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "wi1Qjb0G2iE"
-    },
+    "id": "wi1Qjb0G2iE",
     "snippet": {
       "publishedAt": "2012-07-18T09:05:33.000Z",
       "channelId": "UCdgLMsydsrVjhpjf5KJz4Tw",
@@ -1124,10 +1022,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/VPkmDZHIA02JvEvwBsBEWfbUjEI\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "I1le_uwPb_4"
-    },
+    "id": "I1le_uwPb_4",
     "snippet": {
       "publishedAt": "2015-08-06T06:31:18.000Z",
       "channelId": "UC8AQ-HrWxaGz5KzDPLpXaOg",
@@ -1157,10 +1052,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/Td8Ia058LutKEI3hsGNjD4fuUkY\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "D82bpAZIucc"
-    },
+    "id": "D82bpAZIucc",
     "snippet": {
       "publishedAt": "2012-10-16T00:32:38.000Z",
       "channelId": "UCOKbKYJzfs4GYBsHMBCTnxA",
@@ -1190,10 +1082,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/0RPXBClgKDYYCStMQrn0F5mU_pc\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "MI4d6Dc6_LQ"
-    },
+    "id": "MI4d6Dc6_LQ",
     "snippet": {
       "publishedAt": "2011-02-13T16:40:40.000Z",
       "channelId": "UC6quikdtGjv-Ceqf_A4nWvA",
@@ -1223,10 +1112,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/ff2vs9JQU7xi4oZXzdNh68hZizU\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "VLdU1ITvkzI"
-    },
+    "id": "VLdU1ITvkzI",
     "snippet": {
       "publishedAt": "2012-11-27T10:04:09.000Z",
       "channelId": "UCCOIcdii1bQmfSPHeNNw4Qw",
@@ -1256,10 +1142,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/tbcZor60O7hWE_LCZmVgGXiiqvw\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "LKc08blfKyQ"
-    },
+    "id": "LKc08blfKyQ",
     "snippet": {
       "publishedAt": "2009-12-15T05:04:34.000Z",
       "channelId": "UCGTRVtqFVuq-aakGH9xNi4g",
@@ -1289,10 +1172,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/uf1uivmOiqxFMB_fQZwwsMIGCsU\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "vFSlr8YPavk"
-    },
+    "id": "vFSlr8YPavk",
     "snippet": {
       "publishedAt": "2012-10-05T16:03:22.000Z",
       "channelId": "UCRxLFt-qJHbT-zzeZt4eQpw",
@@ -1322,10 +1202,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/8K8R1kqmzy29-gWTbaJS-XxZdC4\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "vXiAJiVhecE"
-    },
+    "id": "vXiAJiVhecE",
     "snippet": {
       "publishedAt": "2013-02-16T12:43:36.000Z",
       "channelId": "UCD0s_8m7taW8v_6uaVpXPFg",
@@ -1355,10 +1232,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/_esXtue9S7qxNQ5mtjSzsZgSQCg\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "c2F739ceia0"
-    },
+    "id": "c2F739ceia0",
     "snippet": {
       "publishedAt": "2014-07-17T10:25:36.000Z",
       "channelId": "UCs9AN-WTBsWP72aewXlNKUA",
@@ -1388,10 +1262,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/0egA_okHtU5XRgXzwnDjSgQ_uTU\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "AHv5GXEWDno"
-    },
+    "id": "AHv5GXEWDno",
     "snippet": {
       "publishedAt": "2013-06-13T18:23:47.000Z",
       "channelId": "UC8vH6q8YYsa9-N0iUfWgbKA",
@@ -1421,10 +1292,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/qIcepg9vmDXSj67RNErrc_yYv74\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "AUWDguE3lLg"
-    },
+    "id": "AUWDguE3lLg",
     "snippet": {
       "publishedAt": "2011-09-03T05:33:43.000Z",
       "channelId": "UCgJnRbAsRZWJAjZVZMxZLvw",
@@ -1454,10 +1322,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/3FgI7Ltxz2IpXj9nM-xANIg30v4\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "O2Piakn1Llk"
-    },
+    "id": "O2Piakn1Llk",
     "snippet": {
       "publishedAt": "2015-03-29T02:00:03.000Z",
       "channelId": "UCvn-HVrAGYEKsVx6gW3MeNQ",
@@ -1487,10 +1352,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/aOlhihTLuPBHzsXkksqGBy4TLAA\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "MeHBqrUNhYc"
-    },
+    "id": "MeHBqrUNhYc",
     "snippet": {
       "publishedAt": "2015-09-26T04:09:43.000Z",
       "channelId": "UCffpSp7DkBcR4y2YwRCjC4Q",
@@ -1520,10 +1382,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/JE5IPHyLzJO5xkOQEbtsJ4g3YZM\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "CnPVgd59NQo"
-    },
+    "id": "CnPVgd59NQo",
     "snippet": {
       "publishedAt": "2013-03-01T06:42:25.000Z",
       "channelId": "UC6BW-9bCy3lD-TKFMugKEqw",
@@ -1553,10 +1412,7 @@ export let YoutubeMediaItemsMock = [
   {
     "kind": "youtube#searchResult",
     "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/xW-bPlb7kReZDySDpwGgA7fhfj8\"",
-    "id": {
-      "kind": "youtube#video",
-      "videoId": "l5G2HhqOiEc"
-    },
+    "id": "l5G2HhqOiEc",
     "snippet": {
       "publishedAt": "2015-10-15T08:24:13.000Z",
       "channelId": "UCy_3Dqo2sV1gEqLx3Vsk3fQ",
