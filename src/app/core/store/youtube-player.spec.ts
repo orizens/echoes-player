@@ -13,7 +13,7 @@ import {
 
 // Load the implementations that should be tested
 import { player } from './youtube-player';
-import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE } from './youtube-player';
+import { PlayerActions } from './youtube-player';
 import { YoutubeMediaMock } from '../../../../test/mocks/youtube.media.item';
 
 describe('The Youtube Player reducer', () => {
@@ -34,7 +34,7 @@ describe('The Youtube Player reducer', () => {
 
     it('should set the new media id by the new PLAYED youtube media item', () => {
         const state = Object.assign({}, mockedState);
-        const actual = player(state, { type: PLAY, payload: YoutubeMediaMock });
+        const actual = player(state, { type: PlayerActions.PLAY, payload: YoutubeMediaMock });
         const expected = state;
         expect(actual.mediaId.videoId).toBe(YoutubeMediaMock.id.videoId);
     });
@@ -44,7 +44,7 @@ describe('The Youtube Player reducer', () => {
         mediaId: 'mocked',
         showPlayer: false
       });
-      const actual = player(state, { type: TOGGLE_PLAYER, payload: true });
+      const actual = player(state, { type: PlayerActions.TOGGLE_PLAYER, payload: true });
       const expected = state;
       expect(actual.showPlayer).toBe(!expected.showPlayer);
     });
@@ -54,7 +54,7 @@ describe('The Youtube Player reducer', () => {
         mediaId: 'mocked',
         playerState: 0
       });
-      const actual = player(state, { type: STATE_CHANGE, payload: 1 });
+      const actual = player(state, { type: PlayerActions.STATE_CHANGE, payload: 1 });
       const expected = state;
       expect(actual.playerState).toBe(1);
     });
