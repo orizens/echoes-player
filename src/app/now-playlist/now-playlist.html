@@ -5,7 +5,7 @@
 	<ul class="nav nav-list xux-maker xnicer-ux">
 		<li class="now-playlist-track"
 			[ngClass]="{
-				'active': playlist?.index === index
+				'active': playlist?.index === video.id
 			}"
 			*ngFor="let video of playlist?.videos | search:playlist.filter; let index = index"
 			>

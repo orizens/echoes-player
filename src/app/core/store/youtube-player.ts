@@ -1,10 +1,8 @@
+import { Injectable } from '@angular/core';
 import { ActionReducer, Action } from '@ngrx/store';
+import { PlayerActions } from './youtube-player.actions';
 
-export const PLAY = 'PLAY';
-export const QUEUE = 'REMOVE';
-export const TOGGLE_PLAYER = 'TOGGLE_PLAYER';
-export const STATE_CHANGE = 'STATE_CHANGE';
-export const FULLSCREEN = 'FULLSCREEN';
+export * from './youtube-player.actions';
 
 export interface YoutubePlayerState {
     mediaId: { videoId: string },
@@ -27,19 +25,19 @@ let initialPlayerState: YoutubePlayerState = {
 export const player: ActionReducer<YoutubePlayerState> = (state: YoutubePlayerState = initialPlayerState, action: Action) => {
 
     switch (action.type) {
-        case PLAY:
+        case PlayerActions.PLAY:
             return playVideo(state, action.payload);
 
-        case QUEUE:
+        case PlayerActions.QUEUE:
             return state;
 
-        case TOGGLE_PLAYER:
+        case PlayerActions.TOGGLE_PLAYER:
             return toggleVisibility(state);
 
-        case STATE_CHANGE:
+        case PlayerActions.STATE_CHANGE:
             return changePlayerState(state, action.payload);
 
-        case FULLSCREEN:
+        case PlayerActions.FULLSCREEN:
             return Object.assign({}, state, { isFullscreen: !state.isFullscreen })
 
         default:

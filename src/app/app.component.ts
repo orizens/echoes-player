@@ -8,21 +8,19 @@ import {FORM_PROVIDERS} from '@angular/common';
 import { InfiniteScroll } from 'angular2-infinite-scroll';
 // DIRECTIVES/COMPONENTS
 // import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
-// import { YoutubeVideos } from './youtube-videos/youtube-videos';
-// import { UserArea } from './user-area/user-area';
 import { YoutubePlayer } from './youtube-player/youtube-player';
 import { NowPlaylist } from './now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter';
 
 // SERVICES
-import { UserManager } from './core/services/user-manager.service';
 import { YoutubeSearch } from './core/services/youtube.search';
 import { YoutubePlayerService } from './core/services/youtube-player.service';
 import { NowPlaylistService } from './core/services/now-playlist.service';
-import { YoutubeVideosInfo } from './core/services/youtube-videos-info.service';
 
-import { YoutubePlayerState } from './core/store/youtube-player.ts';
+import { EchoesState } from './core/store';
+import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player.ts';
 import { Observable } from "rxjs/Observable";
+import { Store } from '@ngrx/store';
 import { YoutubeMediaPlaylist } from './core/store/now-playlist';
 /*
  * App Component
@@ -30,11 +28,7 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
  */
 @Component({
   selector: 'app',
-  providers: [...FORM_PROVIDERS, YoutubeSearch,
-    YoutubePlayerService, NowPlaylistService, UserManager,
-    NowPlaylistService,
-    YoutubeVideosInfo
-  ],
+  providers: [ ...FORM_PROVIDERS ],
   directives: [
     InfiniteScroll,
     YoutubePlayer,
@@ -50,9 +44,12 @@ export class App {
   public player: Observable<YoutubePlayerState>;
   public nowPlaylist: Observable<YoutubeMediaPlaylist>;
 
-  constructor(public youtubeSearch: YoutubeSearch,
+  constructor(
+    private store: Store<EchoesState>,
+    public youtubeSearch: YoutubeSearch,
     public playerService: YoutubePlayerService,
-    public nowPlaylistService: NowPlaylistService
+    public nowPlaylistService: NowPlaylistService,
+    private playerActions: PlayerActions
   ) {
     this.player = this.playerService.player$;
     this.nowPlaylist = nowPlaylistService.playlist$;
@@ -66,9 +63,10 @@ export class App {
     this.youtubeSearch.searchMore();
   }
 
-  selectVideo (media: GoogleApiYouTubeSearchResource) {
-    this.playerService.playVideo(media);
-    this.nowPlaylistService.updateIndexByMedia(media);
+  selectVideo (media: GoogleApiYouTubeVideoResource) {
+    // this.playerService.playVideo(media);
+    this.store.dispatch(this.playerActions.playVideo(media));
+    this.nowPlaylistService.updateIndexByMedia(media.id);
   }
 
   handleVideoEnded (state) {
@@ -79,15 +77,15 @@ export class App {
 
   playNextVideo (player) {
     this.nowPlaylistService.selectNextIndex();
-    this.selectVideo(this.nowPlaylistService.getCurrent());
+    this.playerService.playVideo(this.nowPlaylistService.getCurrent());
   }
 
   sortVideo (media: GoogleApiYouTubeSearchResource) {
 
   }
 
-  isLastIndex () {
-    // return this.nowPlaylist.index + 1 === this.nowPlaylist.length;
+  isLastIndex() {
+    
   }
 }
 
@@ -106,12 +104,12 @@ export class App {
 // </section>
 // <app-loader></app-loader>
 // <content-viewer></content-viewer>
-// <youtube-player 
+// <youtube-player
 //   id="youtube-player-container"
 //   [player]="player"
 //   (ended)="handleVideoEnded($event)"
 //   (playNext)="playNextVideo($event)"
-//   player-id="player" 
+//   player-id="player"
 //   auto-next
 // ></youtube-player>`
 // }

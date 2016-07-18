@@ -12,5 +12,17 @@ export class YoutubeVideosInfo {
       http: this.http,
       idKey: 'id'
     });
+    this.api.list = function(id) {
+  		this.config.set(this.idKey, id);
+  		this.isSearching = true;
+  		return this.http.get(this.url, { search: this.config })
+        .map(res => res.json().items);
+  	}
   }
+
+  fetchVideoData (mediaId: string) {
+		return this.api
+			.list(mediaId)
+			.map(items => items[0])
+	}
 }

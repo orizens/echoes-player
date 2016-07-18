@@ -13,6 +13,11 @@ import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 // import {HTTP_PROVIDERS} from '@angular2/http';
 import { provideStore } from '@ngrx/store';
 import store from './app/core/store';
+import { actions } from './app/core/store';
+import { runEffects } from '@ngrx/effects';
+import effects from './app/core/effects'
+
+import services from './app/core/services';
 
 import 'rxjs/Rx';
 
@@ -40,7 +45,10 @@ export function main(initialHmrState?: any): Promise<any> {
 
 		// ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy }),
     // ...APP_PROVIDERS,
-    provideStore(store)
+    services,
+    provideStore(store),
+    runEffects(effects),
+    actions
   ])
   .then(decorateComponentRef)
   .catch(err => console.error(err));

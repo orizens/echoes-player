@@ -21,7 +21,6 @@ export class NowPlaylist {
 	ngOnInit(){}
 
 	selectVideo (media) {
-		this.nowPlaylistService.selectVideo(media);
 		this.select.next(media);
 	}
 

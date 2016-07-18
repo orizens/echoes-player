@@ -3,7 +3,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { PLAY, QUEUE, TOGGLE_PLAYER, STATE_CHANGE, FULLSCREEN, YoutubePlayerState } from '../store/youtube-player';
+import { PlayerActions, YoutubePlayerState } from '../store/youtube-player';
 
 @Injectable()
 export class YoutubePlayerService {
@@ -51,11 +51,11 @@ export class YoutubePlayerService {
     const id = media.id.videoId ? media.id.videoId : media.id;
     this.player.loadVideoById(id);
     this.play();
-    this.store.dispatch({ type: PLAY, payload: media });
+    // this.store.dispatch({ type: PLAY, payload: media });
   }
 
   togglePlayer() {
-    this.store.dispatch({ type: TOGGLE_PLAYER, payload: true });
+    this.store.dispatch({ type: PlayerActions.TOGGLE_PLAYER, payload: true });
   }
 
   isPlaying () {
@@ -99,7 +99,7 @@ export class YoutubePlayerService {
           // service.playerState = YT.PlayerState.PLAYING;
       }
       console.log('state changed', state);
-      store.dispatch({ type: STATE_CHANGE, payload: state });
+      store.dispatch({ type: PlayerActions.STATE_CHANGE, payload: state });
     }
   }
 
@@ -119,6 +119,6 @@ export class YoutubePlayerService {
       width = this.defaultSizes.width;
     }
         this.player.setSize(width, height);
-        this.store.dispatch({ type: FULLSCREEN });
+        this.store.dispatch({ type: PlayerActions.FULLSCREEN });
   }
 }

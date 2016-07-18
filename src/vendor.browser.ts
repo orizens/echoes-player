@@ -20,6 +20,10 @@ import '@angularclass/request-idle-callback';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+// ngrx
+import '@ngrx/store';
+import '@ngrx/core';
+
 if ('production' === ENV) {
   // Production
 

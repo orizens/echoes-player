@@ -1,22 +1,17 @@
+import { Injectable } from '@angular/core'
 import { ActionReducer, Action } from '@ngrx/store';
+import { NowPlaylistActions } from './now-playlist.actions';
 
-export const SELECT = 'SELECT';
-export const QUEUE = 'QUEUE';
-export const REMOVE = 'REMOVE';
-export const UPDATE_INDEX = 'UPDATE_INDEX';
-export const FILTER_CHANGE = 'FILTER_CHANGE';
-export const REMOVE_ALL = 'REMOVE_ALL';
-export const SELECT_NEXT = 'SELECT_NEXT';
-export const QUEUE_VIDEOS = 'QUEUE_VIDEOS';
+export * from './now-playlist.actions';
 
 export interface YoutubeMediaPlaylist {
     videos: GoogleApiYouTubeVideoResource[],
-    index: number,
+    index: string,
     filter: string
 }
 let initialState: YoutubeMediaPlaylist = {
     videos: [],
-    index: 0,
+    index: '',
     filter: ''
 }
 export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (state: YoutubeMediaPlaylist = initialState, action: Action) => {
@@ -24,29 +19,29 @@ export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (state: YoutubeM
     let isDifferent = (media: GoogleApiYouTubeVideoResource) => media.id !== action.payload.id;
 
     switch (action.type) {
-        case SELECT:
-            return Object.assign({}, state, { index: state.videos.findIndex(matchMedia) });
+        case NowPlaylistActions.SELECT:
+            return Object.assign({}, state, { index: action.payload.id });
 
-        case QUEUE:
+        case NowPlaylistActions.QUEUE:
             return Object.assign({}, state, { videos: addMedia(state.videos, action.payload) });
 
-        case QUEUE_VIDEOS:
+        case NowPlaylistActions.QUEUE_VIDEOS:
             return Object.assign({}, state, { videos: addMedias(state.videos, action.payload) });
 
-        case REMOVE:
+        case NowPlaylistActions.REMOVE:
             return Object.assign({}, state, { videos: state.videos.filter(isDifferent) });
 
         // updates index by media
-        case UPDATE_INDEX:
-            return Object.assign({}, state, { index: getIndexByMedia(state.videos, action.payload) });
+        case NowPlaylistActions.UPDATE_INDEX:
+            return Object.assign({}, state, { index: action.payload });
 
-        case FILTER_CHANGE:
+        case NowPlaylistActions.FILTER_CHANGE:
             return Object.assign({}, state, { filter: action.payload });
 
-        case REMOVE_ALL:
+        case NowPlaylistActions.REMOVE_ALL:
             return Object.assign({}, state, { videos: [], filter: '', index: 0 });
 
-         case SELECT_NEXT:
+        case NowPlaylistActions.SELECT_NEXT:
             return Object.assign({}, state, { index: selectNextIndex(state.videos, state.index) })
 
         default:
@@ -70,23 +65,16 @@ function addMedias(videos, medias) {
     });
     return videos.concat(newVideos);
 }
-function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], index: number) {
-    let nextIndex: number = index + 1;
+
+function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], index: string): string {
+    let currentIndex: number = videos.findIndex(video => video.id === index);
+    let nextIndex = currentIndex + 1;
     if (!videos.length) {
-        nextIndex = videos.length;
+        nextIndex = 0;
     }
     if (videos.length === nextIndex) {
         nextIndex = 0;
     }
 
-    return nextIndex;
-}
-
-function getIndexByMedia(videos: GoogleApiYouTubeVideoResource[], media: GoogleApiYouTubeVideoResource) {
-    const mediaId = media.id;
-    let nextIndex: number = 0;
-    if (videos.length) {
-        nextIndex = videos.findIndex(video => video.id === mediaId);
-    }
-    return nextIndex === -1 ? 0 : nextIndex;
+    return videos[nextIndex].id || '';
 }
