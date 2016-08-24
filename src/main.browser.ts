@@ -12,12 +12,16 @@ import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
 // import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from '@angular2/router';
 // import {HTTP_PROVIDERS} from '@angular2/http';
 import { provideStore } from '@ngrx/store';
+import { instrumentStore } from '@ngrx/store-devtools';
+import { useLogMonitor } from '@ngrx/store-log-monitor';
+import { runEffects } from '@ngrx/effects';
+
 import store from './app/core/store';
 import { actions } from './app/core/store';
-import { runEffects } from '@ngrx/effects';
 import effects from './app/core/effects'
 
 import services from './app/core/services';
+
 
 import 'rxjs/Rx';
 
@@ -48,7 +52,13 @@ export function main(initialHmrState?: any): Promise<any> {
     services,
     provideStore(store),
     runEffects(effects),
-    actions
+    actions,
+    instrumentStore({
+      monitor: useLogMonitor({
+        position: 'right',
+        visible: false
+      })
+    })
   ])
   .then(decorateComponentRef)
   .catch(err => console.error(err));

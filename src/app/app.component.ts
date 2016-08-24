@@ -5,12 +5,13 @@ import {Component} from '@angular/core';
 // import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {FORM_PROVIDERS} from '@angular/common';
 
-import { InfiniteScroll } from 'angular2-infinite-scroll';
+// import { InfiniteScroll } from 'angular2-infinite-scroll';
 // DIRECTIVES/COMPONENTS
-// import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
+import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 import { YoutubePlayer } from './youtube-player/youtube-player';
 import { NowPlaylist } from './now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter';
+import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
 
 // SERVICES
 import { YoutubeSearch } from './core/services/youtube.search';
@@ -33,7 +34,8 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
     InfiniteScroll,
     YoutubePlayer,
     NowPlaylist,
-    NowPlaylistFilter
+    NowPlaylistFilter,
+    'development' === ENV ? StoreLogMonitorComponent : null
   ],
   pipes: [],
   styles: [],
@@ -85,7 +87,7 @@ export class App {
   }
 
   isLastIndex() {
-    
+
   }
 }
 
