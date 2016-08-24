@@ -1,6 +1,11 @@
 import { ElementRef } from '@angular/core';
-import { Observable, Subscription } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { AxisResolver } from './axis-resolver';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/timer';
+import 'rxjs/add/operator/throttle';
+import 'rxjs/add/operator/filter';
 
 export class Scroller {
 	public scrollDownDistance: number;
@@ -29,16 +34,17 @@ export class Scroller {
 		private infiniteScrollThrottle: number,
 		private isImmediate: boolean,
 		private horizontal: boolean = false,
-		private alwaysCallback: boolean = false
+		private alwaysCallback: boolean = false,
+		private scrollDisabled: boolean = false
 	) {
-		this.isContainerWindow = toString.call(this.windowElement).includes('Window');
+		this.isContainerWindow = Object.prototype.toString.call(this.windowElement).includes('Window');
 		this.documentElement = this.isContainerWindow ? this.windowElement.document.documentElement : null;
 		this.handleInfiniteScrollDistance(infiniteScrollDownDistance, infiniteScrollUpDistance);
 
 		// if (attrs.infiniteScrollParent != null) {
 		// 	attachEvent(angular.element(elem.parent()));
 		// }
-		this.handleInfiniteScrollDisabled(false);
+		this.handleInfiniteScrollDisabled(scrollDisabled);
 		this.defineContainer();
 		this.createInterval();
 		this.axis = new AxisResolver(!this.horizontal);
@@ -46,10 +52,11 @@ export class Scroller {
 
 	defineContainer () {
 		if (this.isContainerWindow) {
-			this.attachEvent(this.windowElement);
+			this.container = this.windowElement;
 		} else {
 			this.container = this.windowElement.nativeElement;
 		}
+		this.attachEvent(this.container);
 	}
 
 	createInterval () {
@@ -113,7 +120,7 @@ export class Scroller {
 		}
 		const shouldScroll: boolean = remaining <= containerBreakpoint;
 		const triggerCallback: boolean = (this.alwaysCallback || shouldScroll) && this.scrollEnabled;
-		const shouldClearInterval = shouldScroll && this.checkInterval;
+		const shouldClearInterval = !shouldScroll && this.checkInterval;
 		// if (this.useDocumentBottom) {
 		// 	container.totalToScroll = this.height(this.$elementRef.nativeElement.ownerDocument);
 		// }
@@ -171,11 +178,11 @@ export class Scroller {
 
 	attachEvent (newContainer: Window | ElementRef | any) {
 		this.clean();
-		this.container = newContainer;
 		if (newContainer) {
 			const throttle: number = this.infiniteScrollThrottle;
 			this.disposeScroll = Observable.fromEvent(this.container, 'scroll')
-				.debounce(ev => Observable.timer(throttle))
+				.throttle(ev => Observable.timer(throttle))
+				.filter(ev => this.scrollEnabled)
 				.subscribe(ev => this.handler())
 		}
 	}
@@ -186,11 +193,7 @@ export class Scroller {
 		}
 	}
 
-	handleInfiniteScrollDisabled (enableScroll: boolean) {
-		this.scrollEnabled = !enableScroll;
-		// if (this.scrollEnabled && checkWhenEnabled) {
-		// 	checkWhenEnabled = false;
-		// 	return handler();
-		// }
+	handleInfiniteScrollDisabled (scrollDisabled: boolean) {
+		this.scrollEnabled = !scrollDisabled;
 	}
 }
