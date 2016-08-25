@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { NgModel, NgIf } from '@angular/common';
+// import { NgModel, NgIf } from '@angular/common';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { YoutubeMediaPlaylist } from '../core/store/now-playlist';
 
 @Component({
 	selector: 'now-playlist-filter',
 	template: require('./now-playlist-filter.html'),
-	directives: [ NgModel ],
+	// directives: [ NgModel ],
 	styles: [`
 		:host [hidden] {
 			display: none;

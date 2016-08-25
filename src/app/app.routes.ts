@@ -1,5 +1,5 @@
-import { WebpackAsyncRoute } from '@angularclass/webpack-toolkit';
-import { RouterConfig } from '@angular/router';
+// import { WebpackAsyncRoute } from '@angularclass/webpack-toolkit';
+import { Routes, RouterModule } from '@angular/router';
 import { YoutubeVideos } from './youtube-videos';
 import { UserArea } from './user-area';
 // import { Home } from './home';
@@ -7,7 +7,7 @@ import { UserArea } from './user-area';
 
 // import { DataResolver } from './app.resolver';
 
-export const routes: RouterConfig = [
+export const ROUTES: Routes = [
   { path: '',      component: YoutubeVideos },
   { path: 'user',  component: UserArea }
   // make sure you match the component type string to the require in asyncRoutes

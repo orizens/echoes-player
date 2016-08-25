@@ -14,7 +14,7 @@
 		<i class="fa fa-search" *ngIf="isFilterEmpty()"></i>
 		<i class="fa fa-remove text-danger" *ngIf="!isFilterEmpty()" (click)="resetSearchFilter()"></i>
 		<input type="search" name="playlist-search"
-			[ngModel]="playlist?.filter"
+			[value]="playlist?.filter"
 			#searchFilter
 			(input)="handleFilterChange(searchFilter.value)">
 	</div>

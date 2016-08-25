@@ -3,15 +3,15 @@
  */
 import {Component} from '@angular/core';
 // import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-import {FORM_PROVIDERS} from '@angular/common';
+// import {FORM_PROVIDERS} from '@angular/common';
 
-// import { InfiniteScroll } from 'angular2-infinite-scroll';
+import { InfiniteScroll } from 'angular2-infinite-scroll';
 // DIRECTIVES/COMPONENTS
-import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
-import { YoutubePlayer } from './youtube-player/youtube-player';
-import { NowPlaylist } from './now-playlist';
-import { NowPlaylistFilter } from './now-playlist-filter';
-import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
+// import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
+// import { YoutubePlayer } from './youtube-player/youtube-player';
+// import { NowPlaylist } from './now-playlist';
+// import { NowPlaylistFilter } from './now-playlist-filter';
+// import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
 
 // SERVICES
 import { YoutubeSearch } from './core/services/youtube.search';
@@ -29,16 +29,16 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS ],
+  // providers: [ ],
   directives: [
     InfiniteScroll,
-    YoutubePlayer,
-    NowPlaylist,
-    NowPlaylistFilter,
-    'development' === ENV ? StoreLogMonitorComponent : null
+    // YoutubePlayer,
+    // NowPlaylist,
+    // NowPlaylistFilter,
+    // 'development' === ENV ? StoreLogMonitorComponent : null
   ],
-  pipes: [],
-  styles: [],
+  // pipes: [],
+  // styles: [],
   template: require('./app.html')
 })
 export class App {

@@ -2,15 +2,24 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "strictNullChecks": false,
+    "baseUrl": "./src",
+    "paths": [
+    ],
+    "lib": [
+      "dom",
+      "es6"
+    ]
   },
   "exclude": [
     "node_modules",
-    "typings/main.d.ts",
-    "typings/main"
+    "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,

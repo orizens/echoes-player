@@ -1,7 +1,6 @@
 import {
-  beforeEachProviders,
-  inject,
-  it, xit
+  addProviders,
+  inject
 } from '@angular/core/testing';
 
 // Load the implementations that should be tested
@@ -10,10 +9,10 @@ import { App } from './app.component';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
-  beforeEachProviders(() => [
-    // AppState,
+  beforeEach(() => addProviders([
+    AppState,
     App
-  ]);
+  ]));
 
   xit('should have a start', inject([ App ], (app) => {
     console.log(app);

@@ -1,25 +1,25 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { NgForm } from '@angular/common'; 
+// import { NgForm } from '@angular/common'; 
       
 @Component({
   selector: 'player-search',
   template: `
     <div class="search-panel">
-      <form class="navbar-form form-search navbar-left" id="media-explorer">
+      <form class="navbar-form form-search navbar-left" id="media-explorer"
+        (ngSubmit)="onSearch(query.value)">
         <div class="form-group">
-          <input placeholder="Explore Media" id="media-search" type="search" class="form-control" autocomplete="off" name="media-search"
-            [(ngModel)]="searchQuery"
-            (input)="onQueryChange()"
+          <input placeholder="Explore Media" id="media-search" type="search" class="form-control" autocomplete="off"
+            [value]="searchQuery.query" #query name="query"
+            (input)="onQueryChange(query.value)"
             >
-          <button class="btn btn-transparent btn-submit" type="submit" title="search with echoes"
-            (click)="onSearch()">
+          <button class="btn btn-transparent btn-submit" type="submit" title="search with echoes">
             <i class="fa fa-search"></i>
           </button>
         </div>
       </form>
     </div>
   `,
-  directives: [ NgForm ],
+  // directives: [ NgForm ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayerSearch implements OnInit {
@@ -27,19 +27,21 @@ export class PlayerSearch implements OnInit {
   @Output() change = new EventEmitter();
   @Output() search = new EventEmitter();
 
-  private searchQuery: string = '';
+  private searchQuery = {
+    query: ''
+  };
 
   constructor() { }
 
   ngOnInit() {
-    this.searchQuery = this.query.query;
+    this.searchQuery.query = this.query.query;
   }
 
-  onQueryChange() {
-    this.change.next(this.searchQuery);
+  onQueryChange(query: string) {
+    this.change.next(query);
   }
 
-  onSearch() {
-    this.search.next(this.searchQuery);
+  onSearch(query: string) {
+    this.search.next(query);
   }
 }

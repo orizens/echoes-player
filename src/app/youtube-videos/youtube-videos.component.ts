@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { NgModel } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../core/store';
@@ -18,9 +17,7 @@ import { YoutubeList } from '../core/components/youtube-list/youtube-list';
 @Component({
   selector: 'youtube-videos.youtube-videos',
   directives: [
-    PlayerSearchComponent,
-    YoutubeList,
-    NgModel
+    YoutubeList
   ],
   template: `
     <nav class="navbar col-md-12" player-resizer="fullscreen">
