@@ -1,11 +1,6 @@
-/*
- * Angular 2 decorators and services
- */
 import {Component} from '@angular/core';
-// import {RouteConfig, Router, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
-// import {FORM_PROVIDERS} from '@angular/common';
-
-import { InfiniteScroll } from 'angular2-infinite-scroll';
+import { FORM_DIRECTIVES } from '@angular/common';
+// import { InfiniteScroll } from 'angular2-infinite-scroll';
 // DIRECTIVES/COMPONENTS
 // import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 // import { YoutubePlayer } from './youtube-player/youtube-player';
@@ -31,7 +26,8 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
   selector: 'app',
   // providers: [ ],
   directives: [
-    InfiniteScroll,
+    FORM_DIRECTIVES
+    // InfiniteScroll,
     // YoutubePlayer,
     // NowPlaylist,
     // NowPlaylistFilter,
@@ -45,6 +41,7 @@ export class App {
   public start = true;
   public player: Observable<YoutubePlayerState>;
   public nowPlaylist: Observable<YoutubeMediaPlaylist>;
+  public localState = { value: "oren" };
 
   constructor(
     private store: Store<EchoesState>,

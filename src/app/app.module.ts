@@ -12,6 +12,7 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
 // DIRECTIVES
+// import { InfiniteScroll } from 'angular2-infinite-scroll';
 import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
 
 // COMPONENTS
@@ -61,7 +62,8 @@ const APP_PROVIDERS = services;
     NowPlaylistFilter,
     YoutubeVideos,
     UserArea,
-    PlayerSearch
+    PlayerSearch,
+    InfiniteScroll
     // StoreLogMonitorComponent
   ],
   imports: [ // import Angular's modules
@@ -81,13 +83,13 @@ const APP_PROVIDERS = services;
   ]
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef) {}
-  hmrOnInit(store) {
-    if (!store || !store.state) return;
-    console.log('HMR store', store);
+  // constructor(public appRef: ApplicationRef) {}
+  // hmrOnInit(store) {
+    // if (!store || !store.state) return;
+    // console.log('HMR store', store);
     // this.appState.state = store.state;
     // delete store.state;
-  }
+  // }
   // hmrOnDestroy(store) {
   //   var cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
   //   // recreate elements

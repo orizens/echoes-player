@@ -15,6 +15,20 @@
     "lib": [
       "dom",
       "es6"
+    ],
+    "types": [
+      "core-js",
+      "hammerjs",
+      "jasmine",
+      "node",
+      "protractor",
+      "selenium-webdriver",
+      "source-map",
+      "uglify-js",
+      "webpack",
+      "gapi",
+      "gapi.youtube",
+      "youtube"
     ]
   },
   "exclude": [
