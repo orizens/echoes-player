@@ -14,9 +14,8 @@ describe('App', () => {
     App
   ]));
 
-  xit('should have a start', inject([ App ], (app) => {
-    console.log(app);
-    expect(app.start).toEqual(true);
+  it('should have a url', inject([ App ], (app) => {
+    expect(app.start).toBe(true);
   }));
 
 });

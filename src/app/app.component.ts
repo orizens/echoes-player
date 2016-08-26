@@ -1,12 +1,9 @@
-import {Component} from '@angular/core';
-import { FORM_DIRECTIVES } from '@angular/common';
-// import { InfiniteScroll } from 'angular2-infinite-scroll';
-// DIRECTIVES/COMPONENTS
-// import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
-// import { YoutubePlayer } from './youtube-player/youtube-player';
-// import { NowPlaylist } from './now-playlist';
-// import { NowPlaylistFilter } from './now-playlist-filter';
-// import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
+/*
+ * Angular 2 decorators and services
+ */
+import { Component, ViewEncapsulation } from '@angular/core';
+// import { FORM_DIRECTIVES } from '@angular/common';
+import { AppState } from './app.service';
 
 // SERVICES
 import { YoutubeSearch } from './core/services/youtube.search';
@@ -24,17 +21,11 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
  */
 @Component({
   selector: 'app',
-  // providers: [ ],
-  directives: [
-    FORM_DIRECTIVES
-    // InfiniteScroll,
-    // YoutubePlayer,
-    // NowPlaylist,
-    // NowPlaylistFilter,
-    // 'development' === ENV ? StoreLogMonitorComponent : null
-  ],
-  // pipes: [],
-  // styles: [],
+  encapsulation: ViewEncapsulation.None,
+  // directives: [ FORM_DIRECTIVES ],
+  // styleUrls: [
+  //   './app.style.css'
+  // ],
   template: require('./app.html')
 })
 export class App {
@@ -88,27 +79,34 @@ export class App {
   }
 }
 
+/*
+ * Please review the https://github.com/AngularClass/angular2-examples/ repo for
+ * more angular app examples that you may copy/paste
+ * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
+ * For help or questions please contact us at @AngularClass on twitter
+ * or our chat on Slack at https://AngularClass.com/slack-join
+ */
 
-// const futureApp = {
-// template: `
-// <section class="sidebar">
-//   <app-nav></app-nav>
-//   <div class="sidebar-pane">
-//     <now-playlist
-//       [playlist]="nowPlaylist"
-//       (select)="selectVideo($event)"
-//       (sort)="sortVideo($event)"
-//     ></now-playlist>
-//   </div>
-// </section>
-// <app-loader></app-loader>
-// <content-viewer></content-viewer>
-// <youtube-player
-//   id="youtube-player-container"
-//   [player]="player"
-//   (ended)="handleVideoEnded($event)"
-//   (playNext)="playNextVideo($event)"
-//   player-id="player"
-//   auto-next
-// ></youtube-player>`
-// }
+ // const futureApp = {
+ // template: `
+ // <section class="sidebar">
+ //   <app-nav></app-nav>
+ //   <div class="sidebar-pane">
+ //     <now-playlist
+ //       [playlist]="nowPlaylist"
+ //       (select)="selectVideo($event)"
+ //       (sort)="sortVideo($event)"
+ //     ></now-playlist>
+ //   </div>
+ // </section>
+ // <app-loader></app-loader>
+ // <content-viewer></content-viewer>
+ // <youtube-player
+ //   id="youtube-player-container"
+ //   [player]="player"
+ //   (ended)="handleVideoEnded($event)"
+ //   (playNext)="playNextVideo($event)"
+ //   player-id="player"
+ //   auto-next
+ // ></youtube-player>`
+ // }

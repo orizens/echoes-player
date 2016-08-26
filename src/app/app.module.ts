@@ -10,11 +10,10 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
  */
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
-
-// MODULES
-// import { InfiniteScroll } from 'angular2-infinite-scroll';
-// import { InfiniteScrollModule } from './core/directives/infinite-scroll';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+// App is our top level component
+import { App } from './app.component';
+import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+import { AppState } from './app.service';
 
 // COMPONENTS
 import { YoutubePlayer } from './youtube-player/youtube-player';
@@ -22,7 +21,12 @@ import { NowPlaylist } from './now-playlist';
 import { NowPlaylistFilter } from './now-playlist-filter';
 import { YoutubeVideos, PlayerSearch } from './youtube-videos';
 import { UserArea } from './user-area';
-// import { StoreLogMonitorComponent } from '@ngrx/store-log-monitor';
+
+// import { Home } from './home';
+// import { About } from './about';
+// import { NoContent } from './no-content';
+
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 // SERVICES
 import { YoutubeSearch } from './core/services/youtube.search';
@@ -39,17 +43,12 @@ import { actions } from './core/store';
 import effects from './core/effects';
 
 import 'rxjs/Rx';
-// App is our top level component
-import { App } from './app.component';
-// import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-// import { AppState } from './app.service';
-
 // Application wide providers
-const APP_PROVIDERS = services;
-// [
+const APP_PROVIDERS = [
   // ...APP_RESOLVER_PROVIDERS,
-  // AppState
-// ];
+  AppState,
+  ...services
+];
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -64,7 +63,6 @@ const APP_PROVIDERS = services;
     YoutubeVideos,
     UserArea,
     PlayerSearch
-    // StoreLogMonitorComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -72,8 +70,6 @@ const APP_PROVIDERS = services;
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     StoreModule.provideStore(store),
-    // runEffects(effects),
-    // actions
     InfiniteScrollModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
@@ -84,17 +80,18 @@ const APP_PROVIDERS = services;
   ]
 })
 export class AppModule {
-  // constructor(public appRef: ApplicationRef) {}
+  // constructor(public appRef: ApplicationRef, public appState: AppState) {}
   // hmrOnInit(store) {
-    // if (!store || !store.state) return;
-    // console.log('HMR store', store);
-    // this.appState.state = store.state;
-    // delete store.state;
+  //   if (!store || !store.state) return;
+  //   console.log('HMR store', store);
+  //   this.appState._state = store.state;
+  //   this.appRef.tick();
+  //   delete store.state;
   // }
   // hmrOnDestroy(store) {
   //   var cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
   //   // recreate elements
-  //   var state = this.appState.state;
+  //   var state = this.appState._state;
   //   store.state = state;
   //   store.disposeOldHosts = createNewHosts(cmpLocation)
   //   // remove styles
