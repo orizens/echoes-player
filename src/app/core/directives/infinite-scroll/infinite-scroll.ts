@@ -1,8 +1,10 @@
-import { Directive, ElementRef, Input, Output, HostListener, EventEmitter, OnDestroy, OnInit, OnChanges, SimpleChanges, NgZone } from '@angular/core';
+import { Directive, ElementRef, Input, Output, EventEmitter, OnDestroy, OnInit, OnChanges, SimpleChanges, NgZone } from '@angular/core';
 import { Scroller } from './scroller';
+import { AxisResolver } from './axis-resolver';
 
 @Directive({
-  selector: '[infinite-scroll]'
+  selector: '[infinite-scroll]',
+  providers: [ ]
 })
 export class InfiniteScroll implements OnDestroy, OnInit, OnChanges {
   public scroller: Scroller;
@@ -19,7 +21,7 @@ export class InfiniteScroll implements OnDestroy, OnInit, OnChanges {
   @Output() scrolled = new EventEmitter();
   @Output() scrolledUp = new EventEmitter();
 
-  constructor(private element: ElementRef, private zone: NgZone) {}
+  constructor(private element: ElementRef, private zone: NgZone, private axis: AxisResolver) {}
 
   ngOnInit() {
     const containerElement = this.scrollWindow ? window : this.element;
@@ -27,14 +29,14 @@ export class InfiniteScroll implements OnDestroy, OnInit, OnChanges {
         this.onScrollDown.bind(this), this.onScrollUp.bind(this),
         this._distanceDown, this._distanceUp, {}, this._throttle,
         this._immediate, this._horizontal, this._alwaysCallback,
-        this._disabled);
+        this._disabled, this.axis);
   }
 
   ngOnDestroy () {
     this.scroller.clean();
   }
 
-  ngOnChanges(changes:SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     if(changes['_disabled'] && this.scroller){
       this.scroller.handleInfiniteScrollDisabled(changes['_disabled'].currentValue);
     }

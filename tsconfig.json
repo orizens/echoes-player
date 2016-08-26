@@ -25,10 +25,7 @@
       "selenium-webdriver",
       "source-map",
       "uglify-js",
-      "webpack",
-      "gapi",
-      "gapi.youtube",
-      "youtube"
+      "webpack"
     ]
   },
   "exclude": [

@@ -90,7 +90,7 @@
     "@types/webpack": "^1.12.29",
     "@types/youtube": "0.0.26",
     "angular2-hmr": "~0.8.0",
-    "angular2-infinite-scroll": "^0.1.8",
+    "angular2-infinite-scroll": "^0.2.0",
     "awesome-typescript-loader": "1.1.1",
     "codelyzer": "~0.0.21",
     "copy-webpack-plugin": "^3.0.1",

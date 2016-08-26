@@ -164,9 +164,6 @@ module.exports = {
         test: /\.(jpg|png|gif)$/,
         loader: 'file'
       },
-      // support for .html as raw text
-      // { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] },
-
       // LESS
       {
         test: /\.less$/,
@@ -225,12 +222,12 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: 'src/assets',
       to: 'assets'
+    },
+    {
+      from: 'src/fonts',
+      to: 'fonts'
     }]),
 
-    // static assets
-    new CopyWebpackPlugin([ 
-      { from: 'src/fonts', to: 'fonts' },
-    ]),
     /*
      * Plugin: HtmlWebpackPlugin
      * Description: Simplifies creation of HTML files to serve your webpack bundles.

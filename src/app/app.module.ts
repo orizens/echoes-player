@@ -11,9 +11,10 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 
-// DIRECTIVES
+// MODULES
 // import { InfiniteScroll } from 'angular2-infinite-scroll';
-import { InfiniteScroll } from './core/directives/infinite-scroll/infinite-scroll';
+// import { InfiniteScrollModule } from './core/directives/infinite-scroll';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 // COMPONENTS
 import { YoutubePlayer } from './youtube-player/youtube-player';
@@ -35,7 +36,7 @@ import { runEffects } from '@ngrx/effects';
 
 import store from './core/store';
 import { actions } from './core/store';
-import effects from './core/effects'
+import effects from './core/effects';
 
 import 'rxjs/Rx';
 // App is our top level component
@@ -62,8 +63,7 @@ const APP_PROVIDERS = services;
     NowPlaylistFilter,
     YoutubeVideos,
     UserArea,
-    PlayerSearch,
-    InfiniteScroll
+    PlayerSearch
     // StoreLogMonitorComponent
   ],
   imports: [ // import Angular's modules
@@ -71,9 +71,10 @@ const APP_PROVIDERS = services;
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    StoreModule.provideStore(store)
+    StoreModule.provideStore(store),
     // runEffects(effects),
     // actions
+    InfiniteScrollModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
