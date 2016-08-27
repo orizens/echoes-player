@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { NgModel, NgClass, AsyncPipe } from '@angular/common'
 import { Observable } from 'rxjs/Observable';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { YoutubePlayerState } from '../core/store/youtube-player';
@@ -7,7 +6,6 @@ import { YoutubePlayerState } from '../core/store/youtube-player';
 @Component({
 	selector: 'youtube-player',
 	template: require('./youtube-player.html'),
-	directives: [NgModel, NgClass],
 	styles: [
 		`.navbar-brand {
 			text-transform: lowercase;
