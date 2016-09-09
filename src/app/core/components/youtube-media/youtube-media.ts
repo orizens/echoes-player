@@ -1,12 +1,10 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { NgClass } from '@angular/common';
 import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d';
 import './youtube-media.less';
 
 @Component({
 	selector: 'youtube-media',
 	template: require('./youtube-media.html'),
-	directives: [ NgClass ],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubeMedia {

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { NgClass } from '@angular/common';
 import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d';
 import "./youtube-playlist.less";
 
@@ -13,7 +12,6 @@ import "./youtube-playlist.less";
 			}
 		}
 	` ],
-	directives: [ NgClass ],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlaylist {

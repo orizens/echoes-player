@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { NgFor } from '@angular/common';
 import { YoutubeMedia } from '../youtube-media/youtube-media';
 import './youtube-list.less';
 
@@ -17,7 +16,6 @@ import './youtube-list.less';
 		</li>
 	</ul>
 	`,
-	directives: [NgFor, YoutubeMedia ],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubeList {
