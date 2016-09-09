@@ -1,47 +1,74 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, AfterContentInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { Store} from '@ngrx/store';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from "rxjs/Subscription";
 import { window } from '@angular/platform-browser/src/facade/browser';
-// import { NgClass } from '@angular/common';
-import { YoutubePlayerService } from '../core/services/youtube-player.service';
-import { NowPlaylistService } from '../core/services/now-playlist.service';
-import { UserManager } from '../core/services/user-manager.service';
-import { user } from '../core/store/user-manager';
+
+import { YoutubePlayerService, NowPlaylistService, UserManager, Authorization } from '../core/services';
+import { user, UserProfile } from '../core/store/user-manager';
 import { EchoesState } from '../core/store';
 
 @Component({
 	selector: 'user-area.user-area',
-	template: require('./user-area.html'),
+	template: `
+	<article>
+		<h2>My Area</h2>
+		<p *ngIf="!isSignIn()" class="well">
+			To view your playlists in youtube, you need to sign in.
+			<button class="btn btn-lg btn-danger"
+				(click)="signInUser()">
+				<i class="fa fa-google-plus"></i> Sign In
+			</button>
+		</p>
+		<section class="videos-list">
+			<h3>My Playlists</h3>
+			<div class="list-unstyled ux-maker youtube-items-container clearfix">
+				<youtube-playlist
+					*ngFor="let playlist of playlists$ | async"
+					[media]="playlist"
+					(play)="playSelectedPlaylist(playlist)"
+					(queue)="queueSelectedPlaylist(playlist)">
+				</youtube-playlist>
+			</div>
+		</section>
+	</article>
+	`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserArea implements AfterContentInit {
-	playlists: Observable<GoogleApiYouTubePlaylistResource[]>;
+export class UserArea implements OnInit, OnDestroy {
+	playlists$: Observable<GoogleApiYouTubePlaylistResource[]>;
+	user$: Observable<UserProfile>;
+	private disposeUser$: Subscription;
 
 	constructor(
 		public youtubePlayer: YoutubePlayerService,
 		private nowPlaylistService: NowPlaylistService,
 		private userManager: UserManager,
-		public store: Store<EchoesState>) {
-		this.playlists = this.store.select(state => state.user.playlists);
+		private authorization: Authorization,
+		public store: Store<EchoesState>) {}
+
+	ngOnInit () {
+		this.playlists$ = this.store.select(state => state.user.playlists);
+		this.user$ = this.store.select(state => state.user);
+		this.disposeUser$ = this.user$.subscribe(user => this.getPlaylists(user.access_token));
 	}
 
-	ngAfterContentInit() {
-		this.userManager.api$.subscribe(value => {
-			// this.userManager.attachSignIn();
-			console.log('user',value)
-		});
-		// let timeoutId = window.setTimeout(() => {
-		// 	this.userManager.authAndSignIn();
-		// 	window.clearTimeout(timeoutId);
-		// }, 1000);
+	ngOnDestroy () {
+		this.disposeUser$.unsubscribe();
+	}
+
+	signInUser () {
+		this.authorization.signIn();
 	}
 
 	isSignIn () {
-		return this.userManager.isSignIn();
+		return this.authorization.isSignIn();
 	}
 
-	getPlaylists () {
-		this.userManager.getPlaylists();
+	getPlaylists (token: string) {
+		if (token) {
+			return this.userManager.getPlaylists(token);
+		}
 	}
 
 	playSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {

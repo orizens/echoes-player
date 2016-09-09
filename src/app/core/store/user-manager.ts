@@ -11,7 +11,7 @@ export interface UserProfile {
 }
 
 let initialUserState = {
-    access_token: null,
+    access_token: '',
     playlists: []
 }
 export const user: ActionReducer<UserProfile> = (state = initialUserState, action: Action) => {
@@ -25,7 +25,7 @@ export const user: ActionReducer<UserProfile> = (state = initialUserState, actio
 
         case LOG_OUT:
             return Object.assign({}, {
-                access_token: null,
+                access_token: '',
                 playlists: []
             });
 

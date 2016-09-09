@@ -30,9 +30,6 @@ import { NowPlaying, NowPlaylist, NowPlaylistFilter } from './now-playing';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 // SERVICES
-import { YoutubeSearch } from './core/services/youtube.search';
-import { YoutubePlayerService } from './core/services/youtube-player.service';
-import { NowPlaylistService } from './core/services/now-playlist.service';
 import services from './core/services';
 
 // NGRX
@@ -48,7 +45,7 @@ import 'rxjs/Rx';
 const APP_PROVIDERS = [
   // ...APP_RESOLVER_PROVIDERS,
   AppState,
-  ...services
+  services
 ];
 
 /**
