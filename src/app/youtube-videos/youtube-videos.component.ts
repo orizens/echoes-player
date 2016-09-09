@@ -24,9 +24,6 @@ import './youtube-videos.less';
           (search)="search($event)"
         ></player-search>
       </div>
-      <div class="pull-right">
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-      </div>
     </nav>
     <section class="videos-list">
       <youtube-list

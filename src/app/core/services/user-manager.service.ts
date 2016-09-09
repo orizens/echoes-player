@@ -39,10 +39,18 @@ export class UserManager {
 		this._config.set('pageToken', '');
 	}
 
-	getPlaylists (token: string) {
+	setAccessToken(token: string) {
+		// TODO - extract to a reducer
+		return this._config.set('access_token', token);
+	}
+
+	getPlaylists () {
+		const accessToken = this._config.get('access_token');
+		if (!accessToken || '' === accessToken) {
+			return;
+		}
 		// TODO - extract to a reducer
 		this.isSearching = true;
-		this._config.set('pageToken', token);
 		return this.http.get(this.url, { search: this._config })
 			.toPromise()
 			.then(response => response.json())

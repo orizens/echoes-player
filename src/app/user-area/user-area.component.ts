@@ -50,7 +50,10 @@ export class UserArea implements OnInit, OnDestroy {
 	ngOnInit () {
 		this.playlists$ = this.store.select(state => state.user.playlists);
 		this.user$ = this.store.select(state => state.user);
-		this.disposeUser$ = this.user$.subscribe(user => this.getPlaylists(user.access_token));
+		this.disposeUser$ = this.user$.subscribe(user => {
+			this.userManager.setAccessToken(user.access_token);
+			this.getPlaylists();
+		});
 	}
 
 	ngOnDestroy () {
@@ -65,10 +68,8 @@ export class UserArea implements OnInit, OnDestroy {
 		return this.authorization.isSignIn();
 	}
 
-	getPlaylists (token: string) {
-		if (token) {
-			return this.userManager.getPlaylists(token);
-		}
+	getPlaylists () {
+		return this.userManager.getPlaylists();
 	}
 
 	playSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {
