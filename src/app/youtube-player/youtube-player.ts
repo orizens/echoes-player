@@ -9,12 +9,6 @@ import './player-controls/player-controls.less';
 @Component({
 	selector: 'youtube-player',
 	template: require('./youtube-player.html'),
-	styles: [
-		`.navbar-brand {
-			text-transform: lowercase;
-			color: white;
-		}`
-	],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayer implements OnInit {
@@ -69,5 +63,11 @@ export class YoutubePlayer implements OnInit {
 
 	onThumbClick () {
 		return true;
+	}
+
+	getMediaThumb () {
+		const hasMedia = this.player && this.player.media.snippet.thumbnails;
+		const mediaThumbUrl = hasMedia ? this.player.media.snippet.thumbnails.default.url : '';
+		return mediaThumbUrl;
 	}
 }
