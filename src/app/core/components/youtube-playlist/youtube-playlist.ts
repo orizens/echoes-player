@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d';
+import "./youtube-playlist.less";
 
 @Component({
 	selector: 'youtube-playlist',
@@ -27,7 +28,7 @@ export class YoutubePlaylist {
 	}
 
 	ngOnInit(){
-		
+
 	}
 
     playPlaylist (media: GoogleApiYouTubePlaylistResource) {

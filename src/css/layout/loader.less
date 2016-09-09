@@ -1,0 +1,29 @@
+@import url(../core/global.less);
+
+#loader {
+	.transform(translate(-50%, -50%));
+	position: fixed;
+	top: 50%;
+	left: 60%;
+	height: 121px;
+	z-index: 1000;
+	padding: 20px;
+	border-radius: 10px;
+	color: @brand-primary;
+	background: rgba(0,0,0,.9);
+	opacity: 1;
+
+	i {
+		font-size: 80px;
+	}
+
+	&.hide-loader {
+		.transform(translate(-40%, -50%));
+		opacity: 0;
+	}
+}
+@media (max-width: 767px) {
+	#loader {
+		left: 50%;
+	}
+}

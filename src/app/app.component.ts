@@ -31,8 +31,6 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
 export class App {
   public start = true;
   public player: Observable<YoutubePlayerState>;
-  public nowPlaylist: Observable<YoutubeMediaPlaylist>;
-  public localState = { value: "oren" };
 
   constructor(
     private store: Store<EchoesState>,
@@ -42,7 +40,6 @@ export class App {
     private playerActions: PlayerActions
   ) {
     this.player = this.playerService.player$;
-    this.nowPlaylist = nowPlaylistService.playlist$;
   }
 
   onScroll () {

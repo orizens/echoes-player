@@ -13,6 +13,7 @@ import { EchoesVideos } from '../core/store/youtube-videos';
 
 import { PlayerSearch as PlayerSearchComponent } from './player-search.component';
 import { YoutubeList } from '../core/components/youtube-list/youtube-list';
+import './youtube-videos.less';
 
 @Component({
   selector: 'youtube-videos.youtube-videos',
@@ -20,8 +21,8 @@ import { YoutubeList } from '../core/components/youtube-list/youtube-list';
     YoutubeList
   ],
   template: `
-    <nav class="navbar col-md-12" player-resizer="fullscreen">
-      <div class="navbar-header">
+    <nav class="navbar col-xs-12" player-resizer="fullscreen">
+      <div class="navbar-header pull-left">
         <player-search
           [query]="playerSearch$ | async"
           (change)="resetPageToken()"

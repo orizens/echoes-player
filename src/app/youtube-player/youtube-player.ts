@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit
 import { Observable } from 'rxjs/Observable';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { YoutubePlayerState } from '../core/store/youtube-player';
+import './youtube-player.less';
+import './media-info/media-info.less';
+import './player-controls/player-controls.less';
 
 @Component({
 	selector: 'youtube-player',
@@ -58,5 +61,13 @@ export class YoutubePlayer implements OnInit {
 
 	toggleFullScreen () {
 		this.playerService.setSize();
+	}
+
+	hasContent () {
+		return Object.keys(this.player.media).length;
+	}
+
+	onThumbClick () {
+		return true;
 	}
 }

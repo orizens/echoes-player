@@ -1,0 +1,75 @@
+@import url(../core/global.less);
+
+// helpers
+#container-features {
+	.full-width {
+		.container-main {
+			margin-left: 0;
+			margin-top: 60px;
+		}
+	}
+}
+
+// actual code
+.container-main {
+	transition: margin .3s ease-out;
+	margin-left: 0;
+}
+@media (min-width: 320px) {
+	.container-fluid.container-main {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+@media (min-width: 1024px) {
+	.container-main.drawer-opened {
+		margin-left: @drawer-width;
+	}
+}
+.transition-in {
+	// .transform(translate3d(0,0%,0));
+	opacity: 1;
+}
+.transition-out {
+	// .transform(translate3d(-100%,0%,0));
+	opacity: 1;
+}
+
+.youtube-item,
+.youtube-video {
+
+	&.ng-enter {
+		.transform(translate3d(-50px,0%,0));
+		opacity: 0;
+	}
+
+	&.ng-leave {
+		.transform(translate3d(50px,0%,0));
+		opacity: 0;
+	}
+}
+
+.search-results {
+	transition: all .3s ease-out;
+	// transform: translatex(00rem);
+
+	&.ng-enter {
+		// transform: translatex(0rem);
+		opacity: 0;
+	}
+	&.ng-leave {
+		// transform: translatex(0rem);
+		opacity: 1;
+		position: fixed;
+		top: 0;
+	}
+	&.ng-enter-active {
+		// transform: translatex(20rem);
+		opacity: 1;
+	}
+
+	&.ng-leave-active {
+		// transform: translatex(20rem);
+		opacity: 0;
+	}
+}

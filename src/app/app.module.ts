@@ -17,10 +17,10 @@ import { AppState } from './app.service';
 
 // COMPONENTS
 import { YoutubePlayer } from './youtube-player/youtube-player';
-import { NowPlaylist } from './now-playlist';
-import { NowPlaylistFilter } from './now-playlist-filter';
 import { YoutubeVideos, PlayerSearch } from './youtube-videos';
 import { UserArea } from './user-area';
+import { Navigator } from './navigator';
+import { NowPlaying, NowPlaylist, NowPlaylistFilter } from './now-playing';
 
 // import { Home } from './home';
 // import { About } from './about';
@@ -58,11 +58,13 @@ const APP_PROVIDERS = [
   declarations: [
     App,
     YoutubePlayer,
+    NowPlaying,
     NowPlaylist,
     NowPlaylistFilter,
     YoutubeVideos,
     UserArea,
-    PlayerSearch
+    PlayerSearch,
+    Navigator
   ],
   imports: [ // import Angular's modules
     BrowserModule,

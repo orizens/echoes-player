@@ -1,17 +1,21 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { YoutubeMedia } from '../youtube-media/youtube-media';
+import './youtube-list.less';
 
 @Component({
 	selector: 'youtube-list',
 	template: `
-		<youtube-media
-			*ngFor="let media of list"
-			[media]="media"
-			(play)="playSelectedVideo(media)"
-			(queue)="queueSelectedVideo(media)"
-			(add)="addVideo(media)">
-		</youtube-media>
+	<ul class="list-unstyled clearfix">
+		<li class="pull-left youtube-list-item" *ngFor="let media of list">
+			<youtube-media
+				[media]="media"
+				(play)="playSelectedVideo(media)"
+				(queue)="queueSelectedVideo(media)"
+				(add)="addVideo(media)">
+			</youtube-media>
+		</li>
+	</ul>
 	`,
 	directives: [NgFor, YoutubeMedia ],
 	changeDetection: ChangeDetectionStrategy.OnPush

@@ -171,6 +171,32 @@ module.exports = {
       {
         test: /\.(jpg|png|gif)$/,
         loader: 'file'
+      },
+
+      {
+        test: /\.less$/,
+        loader: 'style!css!less'
+      },
+
+      // FONTS
+      {
+        test: /\.woff$/,
+        loader: 'url?limit=100000&name=./fonts/[name]/[hash].[ext]'
+      }, {
+        test: /\.eot$/,
+        loader: 'file'
+      }, {
+        test: /\.svg$/,
+        loader: 'url?limit=100000&name=./fonts/[name]/[hash].[ext]'
+      },
+      // the url-loader uses DataUrls.
+      // the file-loader emits files.
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url?limit=10000&minetype=application/font-woff'
+      }, {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file'
       }
     ]
 
@@ -202,6 +228,8 @@ module.exports = {
       name: ['polyfills', 'vendor'].reverse()
     }),
 
+    // Adds CSS
+    // new ExtractTextPlugin('[name].[chunkhash].style.css'),
     /*
      * Plugin: CopyWebpackPlugin
      * Description: Copy files and directories in webpack.

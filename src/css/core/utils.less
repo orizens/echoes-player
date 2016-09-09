@@ -1,0 +1,111 @@
+@import url(../echoes-variables.less);
+/* applying a nicer UX*/
+.nicer-ux *,
+.ux-maker {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition:    all 0.3s ease-out;
+    -ms-transition:     all 0.3s ease-out;
+    -o-transition:      all 0.3s ease-out;
+    transition:         all 0.3s ease-out;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* flex box rules */
+.flex-container-vertical {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    height: 100%;
+}
+
+.flex-container-horizontal {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    width: 100%;
+}
+.flex-container {
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-flex: 1 0 30%;
+}
+.flex-item {
+    -webkit-flex: 1;
+    flex:1;
+    // min-height: 0;
+}
+
+// 3d flip
+.card .face
+{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: all .8s ease;
+}
+
+.card .front
+{
+    -webkit-transform: perspective(400px) rotateY(0deg);
+    transform: perspective(400px) rotateY(0deg);
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+}
+
+.card .back
+{
+    -webkit-transform: perspective(400px) rotateY(-179.9deg);
+    transform: perspective(400px) rotateY(-179.9deg);
+    opacity: 0;
+}
+
+/*.card:hover .face.back, .card:focus .face.back
+{
+    -webkit-transform: perspective(400px) rotateY(179.9deg);
+    transform: perspective(400px) rotateY(179.9deg);
+}
+
+.card:hover .face.front, .card:focus .face.front
+{
+    -webkit-transform: perspective(400px) rotateY(0deg);
+    transform: perspective(400px) rotateY(0deg);
+}*/
+.show-description .face.front {
+    -webkit-transform: perspective(400px) rotateY(179.9deg);
+    transform: perspective(400px) rotateY(179.9deg);
+}
+.show-description .face.back {
+    -webkit-transform: perspective(400px) rotateY(0deg);
+    transform: perspective(400px) rotateY(0deg);
+    opacity: 1;
+}
+input,
+a,
+button,
+select {
+    // removes the blue overlay in chrome android
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -moz-tap-highlight-color: rgba(0,0,0,0);
+    -ms-tap-highlight-color: rgba(0,0,0,0);
+    tap-highlight-color: rgba(0,0,0,0);
+    // removes the orange border when on focus
+    outline: none;
+}
+
+.dropdown .dropdown-toggle {
+    cursor: pointer;
+}
+.btn-transparent {
+    background-color: transparent !important;
+}
+
+// .bg-primary {
+//     background-color: @brand-primary !important;
+// }
+.text-primary {
+    color: @brand-primary !important;
+}

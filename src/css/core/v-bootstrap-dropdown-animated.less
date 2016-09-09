@@ -1,0 +1,83 @@
+.scale(@scaleX, @scaley) {
+  -webkit-transform: scale(@scaleX, @scaley);
+  -moz-transform: scale(@scaleX, @scaley);
+  -ms-transform: scale(@scaleX, @scaley);
+  transform: scale(@scaleX, @scaley);
+}
+.move(@scalex, @scaley, @translatex, @translatey) {
+  -webkit-transform: scale(@scalex, @scaley) translate(@translatex, @translatey);
+  -moz-transform: scale(@scalex, @scaley) translate(@translatex, @translatey);
+  -ms-transform: scale(@scalex, @scaley) translate(@translatex, @translatey);
+  transform: scale(@scalex, @scaley) translate(@translatex, @translatey);
+}
+.transform-origin(@tr-position){
+  -webkit-transform-origin: @tr-position;
+  -moz-transform-origin: @tr-position;
+  -ms-transform-origin: @tr-position;
+  transform-origin: @tr-position;
+}
+.animation-fill-mode(@anim-mode) {
+  -webkit-animation-fill-mode: @anim-mode;
+  -moz-animation-fill-mode: @anim-mode;
+  -ms-animation-fill-mode: @anim-mode;
+  animation-fill-mode: @anim-mode;
+}
+.flip-outx(@pers, @deg){
+  -webkit-transform: perspective(@pers) rotateX(@deg);
+  transform: perspective(@pers) rotateX(@deg);
+}
+.material-reveal(@pers, @scale){
+  -webkit-transform: perspective(@pers) scale(@scale, @scale);
+  -moz-transform: perspective(@pers) scale(@scale, @scale);
+  -ms-transform: perspective(@pers) scale(@scale, @scale);
+  transform: perspective(@pers) scale(@scale, @scale);
+}
+.open > .uib-dropdown-menu.dropdown-menu {
+  // .move(1, 1, 0, 0);
+  .material-reveal(800px, 1);
+}
+.uib-dropdown-menu.dropdown-menu {
+  .transform-origin(top left);
+  .animation-fill-mode(forwards);
+  // .scale(1, 0);
+  // .move(1, 0, 0, 0);
+  .material-reveal(800px, 0);
+  .transition(all 0.2s ease-out);
+  display: block;
+}
+.dropup {
+  &.dropup-right .uib-dropdown-menu.dropdown-menu {
+    .transform-origin(bottom right);
+  }
+  .uib-dropdown-menu.dropdown-menu {
+    .transform-origin(bottom);
+    // .move(1,0, 0, -12px)
+    .material-reveal(800px, 90deg);
+  }
+}
+.open.dropup .uib-dropdown-menu.dropdown-menu {
+  // .move(1, 1, 0, -12px)
+  .material-reveal(800px, 0deg);
+}
+.dropdown-menu-fade {
+  opacity: 0;
+}
+.open > .dropdown-menu-fade {
+  opacity: 1;
+}
+.navbar .nav > li > .uib-dropdown-menu.dropdown-menu:after {
+
+}
+.dropup > .uib-dropdown-menu.dropdown-menu:after {
+  @bg-dark-color: #323538;
+  border-bottom: 0;
+  border-top: 6px solid @bg-dark-color;
+  top: auto;
+  display: inline-block;
+  bottom: -7px;
+  content: '';
+  position: absolute;
+  left: 50%;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+}

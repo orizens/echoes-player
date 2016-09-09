@@ -1,0 +1,124 @@
+@import url(../core/global.less);
+@media (min-width: 320px) {
+	.navbar {
+		background-image: none;
+		background-color: darken(@navbar-default-bg, 2%);
+		transition: transform .3s ease-out;
+
+		&.navbar-fixed-top {
+			padding: 0;
+			z-index: 1070;
+
+			&.fullscreen {
+				transform: translatey(-60px);
+			}
+		}
+
+		.navbar-brand {
+			margin: 0;
+			text-transform: uppercase;
+			// font-size: 1em;
+			position: relative;
+			padding: 0 3px;
+			display: inline-block;
+			line-height: 40px;
+		}
+
+		.navbar-header {
+			width: auto;
+			margin-right: 7px;
+
+		}
+
+		.navbar-collapse {
+			clear: both;
+		}
+		.container-fluid {
+			padding: 0;
+		}
+	}
+	.navbar .form-search {
+		border: none;
+		float: left;
+		padding: 6px 0;
+		margin-right: 0;
+
+		.form-group {
+			margin: 2px 0;
+		}
+		.form-control {
+			line-height: 2em;
+			height: 2em;
+		}
+	}
+	.navbar .navbar-collapse {
+		border: none;
+	}
+	.nav-header-fluid {
+		position: relative;
+	}
+
+	.navbar-nav > li > .dropdown-toggle {
+		padding: 10px 15px;
+		color: @navbar-default-link-color;
+	}
+
+	&.navbar-transparent {
+		background-color: transparent;
+		color: @inverse;
+	}
+
+	.btn-group.open .dropdown-toggle {
+		background-color: rgba(0,0,0, .1);
+	}
+}
+
+@media (min-width: 768px) {
+	.navbar {
+
+		.container {
+			.container-fluid;
+			padding: 0;
+		}
+
+		.navbar-collapse {
+			clear: none;
+		}
+		.form-search {
+			margin: 0;
+			padding: 5px 7px 0 3px;
+		}
+
+		.sidebar-toggle {
+			padding: 9px 10px;
+		}
+	}
+	.navbar-fixed-top {
+		box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+		border-width: 0;
+	}
+}
+@media (min-width: 1024px) {
+	.navbar .navbar-brand {
+		font-size: 1.4em;
+	}
+}
+
+@media (min-width: 1280px) {
+	.navbar .navbar-brand {
+		padding-left: 5px;
+	}
+}
+
+.dropdown-menu.uib-dropdown-menu {
+	border-radius: 0;
+	box-shadow: 0 0 3px black;
+	max-height: 250px;
+}
+.navbar .open .uib-dropdown-menu.dropdown-menu > li a,
+.dropdown-menu.uib-dropdown-menu > li a{
+	padding: 1.2rem;
+}
+.navbar .open .uib-dropdown-menu.dropdown-menu {
+	background-color: @dropdown-bg !important;
+}

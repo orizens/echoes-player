@@ -1,0 +1,76 @@
+@import url(../../css/core/global.less);
+
+youtube-videos {
+	display: block;
+}
+.youtube-videos {
+
+	.navbar {
+	    position: fixed;
+	    z-index: 1010;
+	    right: 0;
+	    top: 0;
+	    border-bottom-color: #ccc;
+	    border-radius: 0;
+        transition: width .3s ease-out;
+	}
+
+	.form-search .form-group {
+
+		ul.ng-hide {
+			transition: all 0.3s ease-out;
+			display: block !important;
+		    transform: translateY(-7rem);
+		}
+	}
+
+	.sidebar-toggle {
+	    margin-left: -1rem;
+	    display: none;
+	}
+
+	.navbar-toggle.btn-primary {
+		border: none;
+		margin: 3px 0;
+		background-color: @btn-primary-bg;
+	    border-color: @btn-primary-border;
+	}
+}
+.drawer-closed .youtube-videos {
+	.navbar {
+		width: 100%;
+	}
+
+	.sidebar-toggle.visible-xs-inline-block {
+		display: block !important;
+	}
+}
+
+@media (min-width: 320px) {
+	.youtube-videos {
+		padding-top: 11rem;
+		padding-left: 2rem;
+		position: relative;
+
+		.navbar {
+			.sidebar-toggle {
+				padding: 1rem 1rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.youtube-videos {
+		padding-top: 10rem;
+		padding-left: 0;
+
+		.videos-list {
+			padding-left: 1.6rem;
+		}
+		.navbar {
+		    width: ~"calc(100% - 29.6rem)";
+		    padding: 0 15px;
+		}
+	}
+}

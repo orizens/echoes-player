@@ -1,0 +1,193 @@
+/* ===== Primary Styles ========================================================
+   Author: Oren Farhi, http://orizens.com
+   ========================================================================== */
+/* Application */
+@import url(../../node_modules/bootstrap/less/bootstrap.less);
+// @import url(../../node_modules/font-awesome/less/font-awesome.less);
+@import url(./core/global.less);
+@import url(./core/utils.less);
+// @fa-font-path:        "/";
+
+@import url(./layout/container.less);
+@import url(./layout/loader.less);
+@import url(./layout/navbar.less);
+@import url(./layout/sidebar.less);
+@import url(./core/v-bootstrap-dropdown-animated.less);
+
+.btn:focus {
+	outline: none;
+}
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 10px 0 10px 10px;
+	box-shadow: 0 0px 10px black;
+	left: 0;
+}
+footer p {
+	margin: 0;
+}
+iframe {
+	border:none;
+}
+
+/* end of scrollbar */
+.brand i.icon-headphones {
+}
+
+.row-fluid input[type="search"].search-query {
+	font-size: 29px;
+	height: 38px;
+	line-height: 38px;
+	margin-right: 20px;
+}
+/* search module */
+
+.navbar-fixed-top .navbar-inner {
+	text-shadow: none;
+	border-color: #111;
+	border: none;
+}
+/* navigation */
+.nav-list [class^="icon-"] {
+	margin-right: 8px;
+}
+
+/* results */
+.fade-out {
+	opacity: 0;
+}
+
+// .main-view.ng-leave {
+// 	transform: translatex(-100%);
+// }
+
+// .main-view.ng-enter {
+// 	transform: translatex(0);
+// }
+/* youtube styles */
+
+.show-description .btn.btn-mini.media-desc {
+	color: #efefef;
+	background: rgb(71, 68, 68);
+}
+
+/* facebook like */
+.facebook-like {
+	height: 26px;
+}
+.fullscreen .facebook-like {
+	display: none;
+}
+/* for the facebook page like*/
+.fb_iframe_widget {
+	max-height: 20px;
+}
+
+/* playlist info */
+.playlist-info li a {
+	color: white;
+	border: none;
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 20px;
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+.active a {
+	.active-link-style();
+}
+.social-badge {
+	padding: 10px 0;
+}
+/* Mobile Phones */
+@media (max-width: 767px) {
+	body {
+		padding: 0;
+		overflow-y: scroll;
+	}
+
+	.navbar-fixed-bottom {
+		position: fixed;
+	}
+
+	.navbar-fixed-top .navbar-inner,
+	.navbar-fixed-bottom .navbar-inner {
+		padding: 0;
+		border: none;
+	}
+
+	.youtube-toolbar.navbar.navbar-inner {
+		width: 100%;
+		padding: 0;
+	}
+	.youtube-player .current-track-info-container .btn-info {
+		width: 100%;
+		max-width:235px;
+	}
+	.youtube-player .current-playlist-info .btn-info {
+		width: 100%;
+	}
+	.youtube-player .current-track-info-container .dropdown-menu {
+		left: auto;
+		right: 0;
+	}
+
+	.youtube-item:hover {
+	    -webkit-box-shadow: none;
+	    -moz-box-shadow: none;
+	    box-shadow: none;
+	}
+
+	/* player controls */
+	.volume-up, .volume-down {
+		display: none;
+	}
+	.icon-search {
+		top: 22px;
+		right: 21px;
+	}
+	.youtube-player .icon-refresh {
+		display: none;
+	}
+	.nav.donation {
+		display: none;
+	}
+}
+@media (max-width: 979px) and (min-width: 768px) {
+	.navbar-fixed-bottom {
+		position: fixed;
+	}
+	.navbar-fixed-top .navbar-inner,
+	.navbar-fixed-bottom .navbar-inner {
+		padding: 0;
+	}
+	.navbar-fixed-bottom .navbar-inner {
+		/*width: 840px;*/
+	}
+	.span2 {
+		width: 172px;
+	}
+}
+@media (max-width: 979px) {
+	.total-results {
+		display: none;
+	}
+}
+@media (min-width: 1000px) {
+	.youtube-item:hover .media-title .front {
+		background: rgba(255, 255, 255, 0.9);
+	}
+	.youtube-playlist-item:hover .front {
+		background: rgba(255, 255, 255, 0.9);
+	}
+}
+@media (min-width: 1200px) {
+	.row-fluid .span3 {
+		width: 24%;
+	}
+}
