@@ -21,6 +21,7 @@ import { PlayerActions } from '../core/store/youtube-player.ts';
       [playlist]="nowPlaylist | async"
       (select)="selectVideo($event)"
       (sort)="sortVideo($event)"
+      (remove)="removeVideo($event)"
     ></now-playlist>
   </div>
   `,
@@ -57,4 +58,8 @@ export class NowPlaying implements OnInit {
   clearPlaylist () {
 		this.nowPlaylistService.clearPlaylist();
 	}
+
+  removeVideo (media) {
+    this.nowPlaylistService.removeVideo(media);
+  }
 }

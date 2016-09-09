@@ -10,7 +10,7 @@ import './now-playlist.less';
 		[ngClass]="{
 			'transition-in': playlist?.videos?.length
 		}">
-		<ul class="nav nav-list xux-maker xnicer-ux">
+		<ul class="nav nav-list ux-maker nicer-ux">
 			<li class="now-playlist-track"
 				[ngClass]="{
 					'active': playlist?.index === video.id
@@ -47,7 +47,6 @@ export class NowPlaylist {
 	}
 
 	removeVideo (media: GoogleApiYouTubeSearchResource) {
-		// this.nowPlaylistService.removeVideo(media);
 		this.remove.next(media);
 	}
 
