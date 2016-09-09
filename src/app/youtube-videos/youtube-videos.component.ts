@@ -11,7 +11,6 @@ import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { PlayerSearch } from '../core/store/player-search';
 import { EchoesVideos } from '../core/store/youtube-videos';
 
-import { PlayerSearch as PlayerSearchComponent } from './player-search.component';
 import { YoutubeList } from '../core/components/youtube-list/youtube-list';
 import './youtube-videos.less';
 
