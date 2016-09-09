@@ -6,9 +6,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { AppState } from './app.service';
 
 // SERVICES
-import { YoutubeSearch } from './core/services/youtube.search';
-import { YoutubePlayerService } from './core/services/youtube-player.service';
-import { NowPlaylistService } from './core/services/now-playlist.service';
+import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
 
 import { EchoesState } from './core/store';
 import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player.ts';
@@ -23,7 +21,6 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   // directives: [ FORM_DIRECTIVES ],
-  // styleUrls: [
   //   './app.style.css'
   // ],
   template: require('./app.html')

@@ -11,14 +11,10 @@ import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { PlayerSearch } from '../core/store/player-search';
 import { EchoesVideos } from '../core/store/youtube-videos';
 
-import { YoutubeList } from '../core/components/youtube-list/youtube-list';
 import './youtube-videos.less';
 
 @Component({
   selector: 'youtube-videos.youtube-videos',
-  directives: [
-    YoutubeList
-  ],
   template: `
     <nav class="navbar col-xs-12" player-resizer="fullscreen">
       <div class="navbar-header pull-left">
@@ -64,9 +60,8 @@ export class YoutubeVideos implements OnInit {
   }
 
   search (query: string) {
-    if (query.length) {
-      this.youtubeSearch.search(query, false);
-    }
+    // workaround until switched to new form
+    if (!query.hasOwnProperty('isTrusted')) this.youtubeSearch.search(query, false);
   }
 
   playSelectedVideo (media: GoogleApiYouTubeSearchResource) {

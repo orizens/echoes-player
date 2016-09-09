@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { YoutubePlayerService } from '../core/services/youtube-player.service';
+import { YoutubePlayerService } from '../core/services';
 import { YoutubePlayerState } from '../core/store/youtube-player';
 import './youtube-player.less';
 import './media-info/media-info.less';
@@ -26,6 +26,9 @@ export class YoutubePlayer implements OnInit {
 		// this.playerService.player$.subscribe((player) => this.player = player);
 		this.title = this.playerService.player$.map(player => player.media.snippet.title);
 		this.playerService.registerListener('ended', this.onStop.bind(this));
+		this.playerService.player$
+			.take(1)
+      .subscribe(player => player.isFullscreen = false);
 	}
 
 	playVideo () {

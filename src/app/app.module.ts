@@ -16,6 +16,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState } from './app.service';
 
 // COMPONENTS
+import { CORE_COMPONENTS } from "./core/components";
 import { YoutubePlayer } from './youtube-player/youtube-player';
 import { YoutubeVideos, PlayerSearch } from './youtube-videos';
 import { UserArea } from './user-area';
@@ -57,6 +58,7 @@ const APP_PROVIDERS = [
   bootstrap: [ App ],
   declarations: [
     App,
+    ...CORE_COMPONENTS,
     YoutubePlayer,
     NowPlaying,
     NowPlaylist,

@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-// import { NgForm } from '@angular/common'; 
-      
+// import { NgForm } from '@angular/common';
+
 @Component({
   selector: 'player-search',
   template: `
     <div class="search-panel">
       <form class="navbar-form form-search navbar-left" id="media-explorer"
         (ngSubmit)="onSearch(query.value)">
-        <div class="form-group">
+        <div class="form-group clearfix">
           <input placeholder="Explore Media" id="media-search" type="search" class="form-control" autocomplete="off"
             [value]="searchQuery.query" #query name="query"
             (input)="onQueryChange(query.value)"
@@ -19,7 +19,6 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
       </form>
     </div>
   `,
-  // directives: [ NgForm ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayerSearch implements OnInit {
