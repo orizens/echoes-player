@@ -44,10 +44,13 @@ export class UserManager {
 		return this._config.set('access_token', token);
 	}
 
-	getPlaylists () {
+	getPlaylists (isNewPage: boolean) {
 		const accessToken = this._config.get('access_token');
 		if (!accessToken || '' === accessToken) {
 			return;
+		}
+		if (isNewPage) {
+			this.resetPageToken();
 		}
 		// TODO - extract to a reducer
 		this.isSearching = true;
@@ -57,7 +60,8 @@ export class UserManager {
 			.then(response => {
 				this.nextPageToken = response.nextPageToken;
 				this.isSearching = false;
-				this.store.dispatch({ type: ADD_PLAYLISTS, payload: response.items })
+				this.store.dispatch({ type: ADD_PLAYLISTS, payload: response.items });
+				this.searchMore();
 				return response;
 			});
 
@@ -67,8 +71,9 @@ export class UserManager {
 	}
 
 	searchMore() {
-		if (!this.isSearching && this.items.length) {
+		if (!this.isSearching && this.nextPageToken) {
 			this._config.set('pageToken', this.nextPageToken);
+			this.getPlaylists(false);
 		}
 	}
 
@@ -83,5 +88,11 @@ export class UserManager {
 				const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
 				return this.youtubeVideosInfo.api.list(videoIds);
 			});
+	}
+
+	isTokenValid (token) {
+		const accessToken = this._config.get('access_token');
+		// TODO - should check if the current accessToken is still valid - google api
+		return accessToken === token;
 	}
 }

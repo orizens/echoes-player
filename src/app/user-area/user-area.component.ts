@@ -51,8 +51,11 @@ export class UserArea implements OnInit, OnDestroy {
 		this.playlists$ = this.store.select(state => state.user.playlists);
 		this.user$ = this.store.select(state => state.user);
 		this.disposeUser$ = this.user$.subscribe(user => {
-			this.userManager.setAccessToken(user.access_token);
-			this.getPlaylists();
+			const isTokenValid = this.userManager.isTokenValid(user.access_token);
+			if (!isTokenValid) {
+				this.userManager.setAccessToken(user.access_token);
+				this.getPlaylists();
+			}
 		});
 	}
 
@@ -69,7 +72,7 @@ export class UserArea implements OnInit, OnDestroy {
 	}
 
 	getPlaylists () {
-		return this.userManager.getPlaylists();
+		return this.userManager.getPlaylists(true);
 	}
 
 	playSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {
