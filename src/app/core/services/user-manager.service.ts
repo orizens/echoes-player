@@ -3,7 +3,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { ADD_PLAYLISTS, UPDATE_TOKEN } from '../store/user-manager';
+import { UserProfileActions } from '../store/user-manager';
 import { YOUTUBE_API_KEY } from './constants';
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
@@ -22,7 +22,8 @@ export class UserManager {
 		private http: Http,
 		private zone: NgZone,
 		private store: Store<any>,
-		private youtubeVideosInfo: YoutubeVideosInfo
+		private youtubeVideosInfo: YoutubeVideosInfo,
+		private userProfileActions: UserProfileActions
 		) {
 		this.playlistInfo = new YoutubeApiService({
 			url: 'https://www.googleapis.com/youtube/v3/playlistItems',
@@ -60,7 +61,7 @@ export class UserManager {
 			.then(response => {
 				this.nextPageToken = response.nextPageToken;
 				this.isSearching = false;
-				this.store.dispatch({ type: ADD_PLAYLISTS, payload: response.items });
+				this.store.dispatch(this.userProfileActions.addPlaylists(response.items));
 				this.searchMore();
 				return response;
 			});

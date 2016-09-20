@@ -3,7 +3,7 @@ import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Store } from '@ngrx/store';
-import { UPDATE_TOKEN } from '../store/user-manager';
+import { UserProfileActions } from '../store/user-manager';
 import { CLIENT_ID} from './constants';
 import { GapiLoader } from "./gapi-loader.service";
 
@@ -16,7 +16,8 @@ export class Authorization {
 	constructor(
 		private zone: NgZone,
 		private store: Store<any>,
-		private gapiLoader: GapiLoader
+		private gapiLoader: GapiLoader,
+		private userProfileActions: UserProfileActions
 		) {
 		this.loadAuth();
 	}
@@ -57,7 +58,7 @@ export class Authorization {
 	onLoginSuccess(response) {
 		const token = response.getAuthResponse().access_token;
 		this.isSignedIn = true;
-		this.store.dispatch({ type: UPDATE_TOKEN, payload: token });
+		this.store.dispatch(this.userProfileActions.updateToken(token));
 	}
 
 	onLoginFailed (response) {
