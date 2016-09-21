@@ -20,13 +20,9 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  // directives: [ FORM_DIRECTIVES ],
-  //   './app.style.css'
-  // ],
   template: require('./app.html')
 })
 export class App {
-  public start = true;
   public player: Observable<YoutubePlayerState>;
 
   constructor(
@@ -37,14 +33,6 @@ export class App {
     private playerActions: PlayerActions
   ) {
     this.player = this.playerService.player$;
-  }
-
-  onScroll () {
-    if (this.start) {
-      this.start = false;
-      return;
-    }
-    this.youtubeSearch.searchMore();
   }
 
   selectVideo (media: GoogleApiYouTubeVideoResource) {

@@ -4,18 +4,18 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Store } from '@ngrx/store';
 import { UserProfileActions } from '../store/user-manager';
+import { EchoesState } from '../store/';
 import { CLIENT_ID} from './constants';
 import { GapiLoader } from "./gapi-loader.service";
 
 @Injectable()
 export class Authorization {
 	private isSignedIn: boolean = false;
-	private auth2: any;
 	private _googleAuth: any;
 
 	constructor(
 		private zone: NgZone,
-		private store: Store<any>,
+		private store: Store<EchoesState>,
 		private gapiLoader: GapiLoader,
 		private userProfileActions: UserProfileActions
 		) {
@@ -30,7 +30,14 @@ export class Authorization {
 				if (authInstance && authInstance.currentUser) {
 					return this._googleAuth = authInstance;
 				}
-				this.authorize();
+				this.authorize()
+					.then(GoogleAuth => {
+						const isSignedIn = GoogleAuth.isSignedIn.get();
+						this._googleAuth = GoogleAuth;
+						if (isSignedIn) {
+							this.signIn();
+						}
+					});
 			});
 	}
 
@@ -38,8 +45,7 @@ export class Authorization {
 		const authOptions = {
 			client_id: `${CLIENT_ID}.apps.googleusercontent.com`
 		};
-		return window.gapi.auth2.init(authOptions)
-			.then(GoogleAuth => this._googleAuth = GoogleAuth);
+		return window.gapi.auth2.init(authOptions);
 	}
 
 	signIn () {

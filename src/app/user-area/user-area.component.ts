@@ -1,19 +1,20 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Store} from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Subscription } from "rxjs/Subscription";
 import { window } from '@angular/platform-browser/src/facade/browser';
 
 import { YoutubePlayerService, NowPlaylistService, UserManager, Authorization } from '../core/services';
 import { user, UserProfile } from '../core/store/user-manager';
 import { EchoesState } from '../core/store';
 
+import './user-area.less';
+
 @Component({
 	selector: 'user-area.user-area',
 	template: `
-	<article>
-		<h2>My Area</h2>
-		<p *ngIf="!isSignIn()" class="well">
+	<article class="col-md-12">
+		<h2>My Area - <small>My Playlists</small></h2>
+		<p *ngIf="!isSignIn()" class="well lead">
 			To view your playlists in youtube, you need to sign in.
 			<button class="btn btn-lg btn-danger"
 				(click)="signInUser()">
@@ -21,7 +22,6 @@ import { EchoesState } from '../core/store';
 			</button>
 		</p>
 		<section class="videos-list">
-			<h3>My Playlists</h3>
 			<div class="list-unstyled ux-maker youtube-items-container clearfix">
 				<youtube-playlist
 					*ngFor="let playlist of playlists$ | async"
@@ -35,10 +35,9 @@ import { EchoesState } from '../core/store';
 	`,
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserArea implements OnInit, OnDestroy {
+export class UserArea implements OnInit {
 	playlists$: Observable<GoogleApiYouTubePlaylistResource[]>;
 	user$: Observable<UserProfile>;
-	private disposeUser$: Subscription;
 
 	constructor(
 		public youtubePlayer: YoutubePlayerService,
@@ -50,17 +49,6 @@ export class UserArea implements OnInit, OnDestroy {
 	ngOnInit () {
 		this.playlists$ = this.store.select(state => state.user.playlists);
 		this.user$ = this.store.select(state => state.user);
-		this.disposeUser$ = this.user$.subscribe(user => {
-			const isTokenValid = this.userManager.isTokenValid(user.access_token);
-			if (!isTokenValid) {
-				this.userManager.setAccessToken(user.access_token);
-				this.getPlaylists();
-			}
-		});
-	}
-
-	ngOnDestroy () {
-		this.disposeUser$.unsubscribe();
 	}
 
 	signInUser () {

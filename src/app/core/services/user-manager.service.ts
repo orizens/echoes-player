@@ -56,26 +56,23 @@ export class UserManager {
 		// TODO - extract to a reducer
 		this.isSearching = true;
 		return this.http.get(this.url, { search: this._config })
-			.toPromise()
-			.then(response => response.json())
-			.then(response => {
-				this.nextPageToken = response.nextPageToken;
-				this.isSearching = false;
-				this.store.dispatch(this.userProfileActions.addPlaylists(response.items));
-				this.searchMore();
-				return response;
-			});
+			.map(response => response.json());
 
 			// .then(fetchContentDetails)
 			// .then(addDuration)
 			// .then(finalize);
 	}
 
-	searchMore() {
+	// DEPRECATED - invoked via an effect
+	searchMore(pageToken?: string) {
 		if (!this.isSearching && this.nextPageToken) {
 			this._config.set('pageToken', this.nextPageToken);
 			this.getPlaylists(false);
 		}
+	}
+
+	updatePageToken(pageToken: string) {
+		this._config.set('pageToken', pageToken);
 	}
 
 	resetPageToken () {
