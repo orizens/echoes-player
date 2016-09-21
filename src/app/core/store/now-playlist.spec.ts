@@ -1,9 +1,6 @@
 import {
-  it,
   inject,
   async,
-  describe,
-  expect
 } from '@angular/core/testing';
 
 import { nowPlaylist, NowPlaylistActions } from './now-playlist';

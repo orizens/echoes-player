@@ -16,6 +16,11 @@ import './youtube-videos.less';
 @Component({
   selector: 'youtube-videos.youtube-videos',
   template: `
+  <article
+    infinite-scroll
+    [infiniteScrollDistance]="2"
+    (scrolled)="searchMore()"
+    [immediateCheck]="true">
     <nav class="navbar col-xs-12" player-resizer="fullscreen">
       <div class="navbar-header pull-left">
         <player-search
@@ -23,9 +28,6 @@ import './youtube-videos.less';
           (change)="resetPageToken()"
           (search)="search($event)"
         ></player-search>
-      </div>
-      <div class="pull-right">
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
       </div>
     </nav>
     <section class="videos-list">
@@ -35,6 +37,7 @@ import './youtube-videos.less';
         (queue)="queueSelectedVideo($event)"
       ></youtube-list>
     </section>
+  </article>
   `
 })
 export class YoutubeVideos implements OnInit {
@@ -76,5 +79,9 @@ export class YoutubeVideos implements OnInit {
 
   resetPageToken() {
     this.youtubeSearch.resetPageToken();
+  }
+
+  searchMore () {
+    this.youtubeSearch.searchMore();
   }
 }
