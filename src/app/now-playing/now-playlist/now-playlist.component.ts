@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { YoutubeMediaPlaylist } from '../../core/store/now-playlist';
-import { SearchPipe } from '../../core/pipes/search.pipe';
+
 import './now-playlist.less';
 
 @Component({
@@ -29,8 +29,7 @@ import './now-playlist.less';
 			</li>
 		</ul>
 	</section>
-	`,
-	pipes: [SearchPipe]
+	`
 })
 export class NowPlaylist {
 	@Input() playlist: YoutubeMediaPlaylist;

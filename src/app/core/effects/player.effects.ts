@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Effect, StateUpdates, toPayload } from '@ngrx/effects';
+import { Effect, Actions } from '@ngrx/effects';
 
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -13,24 +13,29 @@ import { YoutubeVideosInfo } from '../services/youtube-videos-info.service';
 export class PlayerEffects {
 
   constructor(
-    private store$: StateUpdates<EchoesState>,
+    private actions$: Actions,
+    // private store$: StateUpdates<EchoesState>,
     private playerActions: PlayerActions,
     private youtubePlayerService: YoutubePlayerService,
     private youtubeVideosInfo: YoutubeVideosInfo
   ){}
 
-  @Effect() playVideo$ = this.store$
-    .whenAction(PlayerActions.PLAY)
-    .map<GoogleApiYouTubeSearchResource>(toPayload)
+  @Effect() playVideo$ = this.actions$
+    .ofType(PlayerActions.PLAY)
+    // .whenAction(PlayerActions.PLAY)
+    // .map<GoogleApiYouTubeSearchResource>(toPayload)
+
+    .map(action => action.payload)
     .switchMap(media => Observable
       .of(this.youtubePlayerService.playVideo(media))
       .map(media => this.playerActions.playStarted(media))
     );
 
-  @Effect() loadAndPlay$ = this.store$
-    .whenAction(PlayerActions.LOAD_AND_PLAY)
-    .map<GoogleApiYouTubeSearchResource>(toPayload)
-    .switchMap(media => this.youtubeVideosInfo.fetchVideoData(media.id.videoId)
+  @Effect() loadAndPlay$ = this.actions$
+    .ofType(PlayerActions.LOAD_AND_PLAY)
+    // .map<GoogleApiYouTubeSearchResource>(toPayload)
+    .map(action => action.payload)
+    .switchMap((media: any) => this.youtubeVideosInfo.fetchVideoData(media.id.videoId)
       .map(media => this.playerActions.playVideo(media))
     );
 }

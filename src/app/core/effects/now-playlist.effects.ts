@@ -3,7 +3,7 @@ import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
-import { Effect, StateUpdates, toPayload } from '@ngrx/effects';
+import { Effect, Actions } from '@ngrx/effects';
 import { EchoesState } from "../store";
 import { NowPlaylistActions } from "../store/now-playlist.actions";
 
@@ -14,25 +14,22 @@ import { YoutubeVideosInfo } from '../services/youtube-videos-info.service';
 export class NowPlaylistEffects {
 
   constructor(
-    private store$: StateUpdates<EchoesState>,
+    private actions$: Actions,
     private nowPlaylistActions: NowPlaylistActions,
     private nowPlaylistService: NowPlaylistService,
     private youtubeVideosInfo: YoutubeVideosInfo
   ){}
 
-  @Effect() queueVideoReady$ = this.store$
-    .whenAction(NowPlaylistActions.QUEUE_LOAD_VIDEO)
-    .map<GoogleApiYouTubeSearchResource>(toPayload)
-    .switchMap(media => this.youtubeVideosInfo.fetchVideoData(media.id.videoId)
+  @Effect() queueVideoReady$ = this.actions$
+    .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)
+    .map(action => action.payload)
+    .switchMap((media: GoogleApiYouTubeSearchResource) => this.youtubeVideosInfo.fetchVideoData(media.id.videoId)
       .map(media => this.nowPlaylistActions.queueVideo(media))
       .catch(() => Observable.of(this.nowPlaylistActions.queueFailed(media)))
     );
 
-  @Effect() queueLoadVideoSuccess$ = this.store$
-    .whenAction(NowPlaylistActions.QUEUE_LOAD_VIDEO_SUCCESS)
-    .map<any>(toPayload)
-    .map(media => {
-      console.log('', media)
-      return this.nowPlaylistActions.updateIndexByMedia(media)
-    });
+  @Effect() queueLoadVideoSuccess$ = this.actions$
+    .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO_SUCCESS)
+    .map(action => action.payload)
+    .map(media => this.nowPlaylistActions.updateIndexByMedia(media));
 }
