@@ -17,12 +17,12 @@
       "es6"
     ],
     "types": [
-      "core-js",
+      /*"core-js",*/
       "hammerjs",
       "jasmine",
       "node",
-      "protractor",
-      "selenium-webdriver",
+      /*"protractor",*/
+      /*"selenium-webdriver",*/
       "source-map",
       "uglify-js",
       "webpack",
