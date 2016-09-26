@@ -3,9 +3,11 @@ import { Store} from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { window } from '@angular/platform-browser/src/facade/browser';
 
-import { YoutubePlayerService, NowPlaylistService, UserManager, Authorization } from '../core/services';
-import { user, UserProfile } from '../core/store/user-manager';
+import { YoutubePlayerService, NowPlaylistService, UserProfile, Authorization } from '../core/services';
+import { user, UserProfileData } from '../core/store/user-manager';
 import { EchoesState } from '../core/store';
+import { NowPlaylistActions } from '../core/store/now-playlist';
+import { PlayerActions } from '../core/store/youtube-player';
 
 import './user-area.less';
 
@@ -37,13 +39,15 @@ import './user-area.less';
 })
 export class UserArea implements OnInit {
 	playlists$: Observable<GoogleApiYouTubePlaylistResource[]>;
-	user$: Observable<UserProfile>;
+	user$: Observable<UserProfileData>;
 
 	constructor(
 		public youtubePlayer: YoutubePlayerService,
 		private nowPlaylistService: NowPlaylistService,
-		private userManager: UserManager,
+		private userProfile: UserProfile,
 		private authorization: Authorization,
+		private playerActions: PlayerActions,
+		private nowPlaylistActions: NowPlaylistActions,
 		public store: Store<EchoesState>) {}
 
 	ngOnInit () {
@@ -60,18 +64,21 @@ export class UserArea implements OnInit {
 	}
 
 	getPlaylists () {
-		return this.userManager.getPlaylists(true);
+		return this.userProfile.getPlaylists(true);
 	}
 
 	playSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {
-		this.userManager.fetchPlaylistItems(media.id)
+		const that = this;
+		this.userProfile.fetchPlaylistItems(media.id)
 			.then(response => {
-				this.nowPlaylistService.queueVideos(response.items);
-				this.youtubePlayer.playVideo(response.items[0]);
+				response.take(1).subscribe(items => {
+			    that.store.dispatch(that.nowPlaylistActions.queueVideos(items));
+					this.nowPlaylistService.updateIndexByMedia(items[0].id);
+					that.store.dispatch(that.playerActions.loadAndPlay(items[0]));
+				});
+				// this.nowPlaylistService.queueVideos(response.items);
+				// this.youtubePlayer.playVideo(response.items[0]);
 			});
-		// this.youtubePlayer.playVideo(media);
-		// this.queueSelectedVideo(media);
-		// this.nowPlaylistService.updateIndexByMedia(media);
 	}
 
 	queueSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {

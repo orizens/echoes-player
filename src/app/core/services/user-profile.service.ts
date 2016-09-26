@@ -10,7 +10,7 @@ import { YoutubeVideosInfo } from './youtube-videos-info.service';
 
 // https://www.googleapis.com/youtube/v3/playlistItems
 @Injectable()
-export class UserManager {
+export class UserProfile {
 	url: string = 'https://www.googleapis.com/youtube/v3/playlists';
 	private _config: URLSearchParams = new URLSearchParams();
 	isSearching: Boolean = false;
@@ -80,8 +80,9 @@ export class UserManager {
 	}
 
 	fetchPlaylistItems (playlistId: string) {
+		const token = this._config.get('access_token');
 		return this.playlistInfo
-			.list(playlistId)
+			.list(playlistId, token)
 			.then(response => {
 				const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
 				return this.youtubeVideosInfo.api.list(videoIds);

@@ -3,7 +3,7 @@ import { UserProfileActions } from './user-profile.actions';
 
 export * from './user-profile.actions';
 
-export interface UserProfile {
+export interface UserProfileData {
   access_token: string,
   playlists: GoogleApiYouTubePlaylistResource[],
   data?: any,
@@ -16,7 +16,7 @@ let initialUserState = {
   data: {},
   nextPageToken: ''
 }
-export const user: ActionReducer<UserProfile> = (state = initialUserState, action: Action) => {
+export const user: ActionReducer<UserProfileData> = (state = initialUserState, action: Action) => {
 
   switch (action.type) {
     case UserProfileActions.ADD_PLAYLISTS:

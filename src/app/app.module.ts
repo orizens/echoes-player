@@ -40,12 +40,15 @@ import store from './core/store';
 import { actions } from './core/store';
 import effects from './core/effects';
 
+import { NOTIFY_PROVIDERS, NOTIFY_GLOBAL_OPTIONS } from '@ngrx/notify';
+
 import 'rxjs/Rx';
 // Application wide providers
 const APP_PROVIDERS = [
   // ...APP_RESOLVER_PROVIDERS,
   AppState,
-  services
+  services,
+  NOTIFY_PROVIDERS
 ];
 
 type StoreType = {

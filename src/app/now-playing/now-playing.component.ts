@@ -6,6 +6,7 @@ import { EchoesState } from '../core/store';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { YoutubeMediaPlaylist } from '../core/store/now-playlist';
 import { PlayerActions } from '../core/store/youtube-player.ts';
+import { Notify } from "@ngrx/notify";
 
 @Component({
   selector: 'now-playing',
@@ -33,7 +34,8 @@ export class NowPlaying implements OnInit {
   constructor(
     private store: Store<EchoesState>,
     public nowPlaylistService: NowPlaylistService,
-    private playerActions: PlayerActions
+    private playerActions: PlayerActions,
+    private notify: Notify
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,18 @@ export class NowPlaying implements OnInit {
   selectVideo (media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(this.playerActions.playVideo(media));
     this.nowPlaylistService.updateIndexByMedia(media.id);
+
+    this.notify.open(`Now Playing: ${media.snippet.title}`, {
+      icon: media.snippet.thumbnails['high'].url,
+      body: media.snippet.description
+    })
+    // Automatically close the notification after 5 seconds
+    .takeUntil(Observable.timer(5000))
+    // Close the notification after it has been clicked once
+    .take(1)
+    .subscribe(notification => {
+      // console.log('notification closed!');
+    });
   }
 
   sortVideo () { }

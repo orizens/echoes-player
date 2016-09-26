@@ -50,7 +50,8 @@ export class Authorization {
 
 	signIn () {
 		const run = (fn) => (r) => this.zone.run(() => fn.call(this, r));
-		const signOptions = { scope: 'profile email' };
+		const scope = 'profile email https://www.googleapis.com/auth/youtube';
+		const signOptions = { scope };
 		if (this._googleAuth) {
 			this._googleAuth
 				.signIn(signOptions)

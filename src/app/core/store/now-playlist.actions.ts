@@ -38,4 +38,10 @@ export class NowPlaylistActions {
   static REMOVE_ALL = 'REMOVE_ALL';
   static SELECT_NEXT = 'SELECT_NEXT';
   static QUEUE_VIDEOS = 'QUEUE_VIDEOS';
+  queueVideos(videos: any): Action {
+    return {
+      type: NowPlaylistActions.QUEUE_VIDEOS,
+      payload: videos
+    }
+  }
 }

@@ -35,7 +35,7 @@ export class PlayerEffects {
     .ofType(PlayerActions.LOAD_AND_PLAY)
     // .map<GoogleApiYouTubeSearchResource>(toPayload)
     .map(action => action.payload)
-    .switchMap((media: any) => this.youtubeVideosInfo.fetchVideoData(media.id.videoId)
+    .switchMap((media: any) => this.youtubeVideosInfo.fetchVideoData(media.id || media.id.videoId)
       .map(media => this.playerActions.playVideo(media))
     );
 }

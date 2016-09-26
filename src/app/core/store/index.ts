@@ -4,7 +4,7 @@ import { compose } from "@ngrx/core/compose";
 import { videos, EchoesVideos } from './youtube-videos';
 import { player, YoutubePlayerState, PlayerActions} from './youtube-player';
 import { nowPlaylist, YoutubeMediaPlaylist, NowPlaylistActions} from './now-playlist';
-import { user, UserProfile, UserProfileActions } from './user-manager';
+import { user, UserProfileData, UserProfileActions } from './user-manager';
 import { search, PlayerSearch} from './player-search';
 import { localStorageSync } from './ngrx-store-localstorage';
 
@@ -16,7 +16,7 @@ export interface EchoesState {
   videos: EchoesVideos;
   player: YoutubePlayerState;
   nowPlaylist: YoutubeMediaPlaylist;
-  user: UserProfile;
+  user: UserProfileData;
   search: PlayerSearch;
 }
 

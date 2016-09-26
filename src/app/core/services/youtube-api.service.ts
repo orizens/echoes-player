@@ -1,4 +1,4 @@
-import { Http, URLSearchParams, Response } from '@angular/http';
+import { Http, URLSearchParams, Response, RequestOptionsArgs, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { YOUTUBE_API_KEY, CLIENT_ID} from './constants';
@@ -37,10 +37,14 @@ export class YoutubeApiService {
 		this.config.set('pageToken', '');
 	}
 
-	list(id){
+	list(id, token?){
 		this.config.set(this.idKey, id);
 		this.isSearching = true;
-		return this.http.get(this.url, { search: this.config })
+		let options: RequestOptionsArgs = {
+			search: this.config,
+			headers: token ? new Headers({ Authorization: `Bearer ${token}` }) : new Headers()
+		};
+		return this.http.get(this.url, options)
 			.toPromise()
 			.then(response => response.json())
 			.then(response => {
