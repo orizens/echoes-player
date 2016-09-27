@@ -12,50 +12,37 @@ import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { App } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InteralStateType } from './app.service';
+// import { AppState, InteralStateType } from './app.service';
 
 // COMPONENTS
 import { CORE_COMPONENTS } from "./core/components";
-import { YoutubePlayer } from './youtube-player/youtube-player';
-import { YoutubeVideos, PlayerSearch } from './youtube-videos';
-import { UserArea } from './user-area';
-import { Navigator } from './navigator';
-import { NowPlaying, NowPlaylist, NowPlaylistFilter } from './now-playing';
-import { SearchPipe } from './core/pipes/search.pipe';
-// import { Home } from './home';
-// import { About } from './about';
-// import { NoContent } from './no-content';
 
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { YoutubePlayerModule } from './youtube-player';
+import { YoutubeVideosModule } from './youtube-videos';
+import { UserAreaModule } from './user-area';
+import { NavigatorModule } from './navigator';
+import { NowPlayingModule } from './now-playing';
 
+import { CoreModule } from './core';
 // SERVICES
-import services from './core/services';
-
-// NGRX
-import { Store, StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-
-import store from './core/store';
-import { actions } from './core/store';
-import effects from './core/effects';
+import { APP_SERVICES } from './core/services';
 
 import { NOTIFY_PROVIDERS, NOTIFY_GLOBAL_OPTIONS } from '@ngrx/notify';
 
 import 'rxjs/Rx';
+
 // Application wide providers
 const APP_PROVIDERS = [
-  // ...APP_RESOLVER_PROVIDERS,
-  AppState,
-  services,
+  // AppState,
+  APP_SERVICES,
   NOTIFY_PROVIDERS
 ];
 
-type StoreType = {
-  state: InteralStateType,
-  restoreInputValues: () => void,
-  disposeOldHosts: () => void
-};
+// type StoreType = {
+//   state: InteralStateType,
+//   restoreInputValues: () => void,
+//   disposeOldHosts: () => void
+// };
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -63,32 +50,24 @@ type StoreType = {
 @NgModule({
   bootstrap: [ App ],
   declarations: [
-    App,
-    ...CORE_COMPONENTS,
-    YoutubePlayer,
-    NowPlaying,
-    NowPlaylist,
-    NowPlaylistFilter,
-    YoutubeVideos,
-    UserArea,
-    PlayerSearch,
-    Navigator,
-    SearchPipe
+    App
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
-    StoreModule.provideStore(store),
-    ...effects.map(effect => EffectsModule.run(effect)),
-    InfiniteScrollModule
+    CoreModule,
+
+    YoutubeVideosModule,
+    NavigatorModule,
+    UserAreaModule,
+    NowPlayingModule,
+    YoutubePlayerModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS,
-    // runEffects(effects),
-    actions
+    APP_PROVIDERS
   ]
 })
 export class AppModule {

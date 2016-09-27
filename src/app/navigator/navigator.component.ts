@@ -8,8 +8,8 @@ import './navigator.less';
 	template: `
   <ul id="library-nav" class="nav nav-list nicer-ux library-nav navigator" navigator>
     <li class="nav-header">Library</li>
-    <li [ngClass]="{ active: isActive('explore') }"><a [routerLink]="['']"><i class="fa fa-music"></i>Explore</a></li>
-    <li [ngClass]="{ active: isActive('user') }"><a [routerLink]="['user']"><i class="fa fa-heart"></i>My Playlists</a></li>
+		<li [ngClass]="{ active: isActive('explore') }"><a [routerLink]="['']"><i class="fa fa-music"></i>Explore</a></li>
+		<li [ngClass]="{ active: isActive('user') }"><a [routerLink]="['user']"><i class="fa fa-heart"></i>My Playlists</a></li>
   </ul>
   `,
 	changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,3 +28,6 @@ export class Navigator implements OnInit {
 		return label === this.activeRoute;
 	}
 }
+
+// <li [ngClass]="{ active: isActive('explore') }"><a [routerLink]="['']"><i class="fa fa-music"></i>Explore</a></li>
+// <li [ngClass]="{ active: isActive('user') }"><a [routerLink]="['user']"><i class="fa fa-heart"></i>My Playlists</a></li>

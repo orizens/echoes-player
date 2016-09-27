@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/take';
+
 import { YoutubePlayerService } from '../core/services';
 import { YoutubePlayerState } from '../core/store/youtube-player';
+
 import './youtube-player.less';
 import './media-info/media-info.less';
 import './player-controls/player-controls.less';

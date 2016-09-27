@@ -1,4 +1,5 @@
 import 'rxjs/add/operator/switchMapTo';
+import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 

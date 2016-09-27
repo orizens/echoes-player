@@ -1,3 +1,6 @@
+import { NgModule } from '@angular/core';
+import { Store, StoreModule } from '@ngrx/store';
+
 import { ActionReducer, Action, combineReducers } from '@ngrx/store';
 import { compose } from "@ngrx/core/compose";
 // reducers
@@ -20,13 +23,27 @@ export interface EchoesState {
   search: PlayerSearch;
 }
 
-export const actions = [
+const actions = [
   NowPlaylistActions,
   PlayerActions,
   UserProfileActions
 ];
 
-export default compose(
+const composeStore = compose(
   localStorageSync(['videos', 'player', 'nowPlaylist', 'search'], true),
   combineReducers
 )({ videos, player, nowPlaylist, user, search });
+
+@NgModule({
+  imports: [
+    StoreModule.provideStore(composeStore),
+  ],
+  declarations: [
+
+  ],
+  exports: [
+
+  ],
+  providers: [ ...actions ]
+})
+export class CoreStoreModule {};
