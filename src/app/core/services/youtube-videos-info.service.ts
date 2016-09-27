@@ -13,7 +13,8 @@ export class YoutubeVideosInfo {
       idKey: 'id'
     });
     this.api.list = function(id) {
-  		this.config.set(this.idKey, id);
+      const videoId = id.videoId || id;
+  		this.config.set(this.idKey, videoId);
   		this.isSearching = true;
   		return this.http.get(this.url, { search: this.config })
         .map(res => res.json().items);
