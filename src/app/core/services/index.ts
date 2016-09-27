@@ -14,7 +14,7 @@ export * from './youtube-videos-info.service';
 export * from './gapi-loader.service';
 export * from './authorization.service';
 
-export default [
+export const APP_SERVICES = [
   UserProfile,
   YoutubeSearch,
   YoutubePlayerService,
