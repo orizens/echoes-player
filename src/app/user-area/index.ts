@@ -3,11 +3,13 @@ import { CoreStoreModule } from '../core/store';
 import { CoreModule } from '../core';
 
 import { UserArea } from './user-area.component';
+import { routing } from './user-area.routing';
 
 @NgModule({
   imports: [
     CoreStoreModule,
-    CoreModule
+    CoreModule,
+    routing
   ],
   declarations: [
     UserArea
