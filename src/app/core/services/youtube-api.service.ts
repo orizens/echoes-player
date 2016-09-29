@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { YOUTUBE_API_KEY, CLIENT_ID} from './constants';
 interface YoutubeApiServiceOptions {
-	url: string,
-	http: Http,
-	idKey: string
+	url?: string,
+	http?: Http,
+	idKey?: string,
+	config? : any
 }
 
 export class YoutubeApiService {
@@ -16,18 +17,32 @@ export class YoutubeApiService {
 	items: Array<any> = [];
 	config: URLSearchParams = new URLSearchParams();
 	nextPageToken: string;
+	private accessToken: string;
 
 	constructor(options: YoutubeApiServiceOptions) {
+		this.resetConfig();
 		if (options) {
 			this.url = options.url;
 			this.http = options.http;
-			this.idKey = options.idKey;
+			this.idKey = options.idKey || '';
+			if (options.config) {
+				this.setConfig(options.config);
+			}
 		}
-		this.resetConfig();
+	}
+
+	setConfig(config) {
+		Object.keys(config).forEach(option => {
+			this.config.set(option, config[option]);
+		})
 	}
 
 	setToken(token: string) {
-		this.config.set('access_token', token);
+		this.accessToken = token;
+	}
+
+	hasToken (): boolean {
+		return this.accessToken.length > 0;
 	}
 
 	resetConfig() {
@@ -36,9 +51,21 @@ export class YoutubeApiService {
 		this.config.set('maxResults', '50');
 		this.config.set('pageToken', '');
 	}
-
+	getList() {
+		const accessToken = this.accessToken;
+		this.isSearching = true;
+		let options: RequestOptionsArgs = {
+			search: this.config,
+			headers: accessToken ? new Headers({ Authorization: `Bearer ${accessToken}` }) : new Headers()
+		};
+		return this.http.get(this.url, options)
+			.map(response => response.json());
+	}
 	list(id, token?){
-		this.config.set(this.idKey, id);
+		if (this.idKey) {
+			this.config.set(this.idKey, id);
+		}
+
 		this.isSearching = true;
 		let options: RequestOptionsArgs = {
 			search: this.config,

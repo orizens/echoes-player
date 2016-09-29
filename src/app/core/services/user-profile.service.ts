@@ -1,29 +1,20 @@
 import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { UserProfileActions } from '../store/user-manager';
-import { YOUTUBE_API_KEY } from './constants';
+
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 
-// https://www.googleapis.com/youtube/v3/playlistItems
 @Injectable()
 export class UserProfile {
-	url: string = 'https://www.googleapis.com/youtube/v3/playlists';
-	private _config: URLSearchParams = new URLSearchParams();
 	isSearching: Boolean = false;
-	items: Array<any> = [];
-	private nextPageToken: string;
 	public playlistInfo: YoutubeApiService;
+	public playlists: YoutubeApiService;
 
 	constructor(
 		private http: Http,
 		private zone: NgZone,
-		private store: Store<any>,
 		private youtubeVideosInfo: YoutubeVideosInfo,
-		private userProfileActions: UserProfileActions
 		) {
 		this.playlistInfo = new YoutubeApiService({
 			url: 'https://www.googleapis.com/youtube/v3/playlistItems',
@@ -33,54 +24,44 @@ export class UserProfile {
 		// TODO - extract to a Model / Reducer?
 		// Reducer - because nextPageToken is changed
 		// Model - new _config should be recreated easily with a new nextPageToken
-		this._config.set('part', 'snippet,id,contentDetails');
-		this._config.set('key', YOUTUBE_API_KEY);
-		this._config.set('mine', 'true');
-		this._config.set('maxResults', '50');
-		this._config.set('pageToken', '');
+		this.playlists = new YoutubeApiService({
+			url: 'https://www.googleapis.com/youtube/v3/playlists',
+			http: this.http,
+			config: {
+				mine: 'true',
+				part: 'snippet,id,contentDetails'
+			}
+		});
 	}
 
 	setAccessToken(token: string) {
 		// TODO - extract to a reducer
-		return this._config.set('access_token', token);
+		return this.playlists.setToken(token);
 	}
 
 	getPlaylists (isNewPage: boolean) {
-		const accessToken = this._config.get('access_token');
-		if (!accessToken || '' === accessToken) {
+		const hasAccessToken = this.playlists.hasToken();
+		if (!hasAccessToken) {
 			return;
 		}
 		if (isNewPage) {
-			this.resetPageToken();
+			this.playlists.resetPageToken();
 		}
-		// TODO - extract to a reducer
+		// TODO - extract to a reducer or/and an @Effect - SEARCH_START, SEARCH_COMPLETED
 		this.isSearching = true;
-		return this.http.get(this.url, { search: this._config })
-			.map(response => response.json());
-
-			// .then(fetchContentDetails)
-			// .then(addDuration)
-			// .then(finalize);
-	}
-
-	// DEPRECATED - invoked via an effect
-	searchMore(pageToken?: string) {
-		if (!this.isSearching && this.nextPageToken) {
-			this._config.set('pageToken', this.nextPageToken);
-			this.getPlaylists(false);
-		}
+		return this.playlists.getList();
 	}
 
 	updatePageToken(pageToken: string) {
-		this._config.set('pageToken', pageToken);
+		this.playlists.config.set('pageToken', pageToken);
 	}
 
 	resetPageToken () {
-		this._config.set('pageToken', '');
+		this.playlists.config.set('pageToken', '');
 	}
 
 	fetchPlaylistItems (playlistId: string) {
-		const token = this._config.get('access_token');
+		const token = this.playlists.config.get('access_token');
 		return this.playlistInfo
 			.list(playlistId, token)
 			.then(response => {
@@ -90,7 +71,7 @@ export class UserProfile {
 	}
 
 	isTokenValid (token) {
-		const accessToken = this._config.get('access_token');
+		const accessToken = this.playlists.config.get('access_token');
 		// TODO - should check if the current accessToken is still valid - google api
 		return accessToken === token;
 	}
