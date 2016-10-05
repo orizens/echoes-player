@@ -1,4 +1,5 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone} from '@angular/core';
+import { Http } from '@angular/http';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
@@ -17,7 +18,8 @@ export class Authorization {
 		private zone: NgZone,
 		private store: Store<EchoesState>,
 		private gapiLoader: GapiLoader,
-		private userProfileActions: UserProfileActions
+		private userProfileActions: UserProfileActions,
+		public http: Http
 		) {
 		this.loadAuth();
 	}
@@ -27,15 +29,23 @@ export class Authorization {
 		this.gapiLoader
 			.load('auth2')
 			.subscribe(authInstance => {
+				// gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
+				// 	console.log('authState changed', authState);
+				// });
 				if (authInstance && authInstance.currentUser) {
 					return this._googleAuth = authInstance;
 				}
 				this.authorize()
 					.then(GoogleAuth => {
+						window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
+							console.log('authState changed', authState);
+						});
 						const isSignedIn = GoogleAuth.isSignedIn.get();
+						const authResponse = GoogleAuth.currentUser.get();
+						const hasAccessToken = authResponse.getAuthResponse().hasOwnProperty('access_token');
 						this._googleAuth = GoogleAuth;
-						if (isSignedIn) {
-							this.signIn();
+						if (isSignedIn && hasAccessToken) {
+							this.zone.run(() => this.handleSuccessLogin(authResponse));
 						}
 					});
 			});
@@ -43,7 +53,8 @@ export class Authorization {
 
 	authorize () {
 		const authOptions = {
-			client_id: `${CLIENT_ID}.apps.googleusercontent.com`
+			client_id: `${CLIENT_ID}.apps.googleusercontent.com`,
+			scope: 'profile email https://www.googleapis.com/auth/youtube'
 		};
 		return window.gapi.auth2.init(authOptions);
 	}
@@ -56,19 +67,19 @@ export class Authorization {
 			this._googleAuth
 				.signIn(signOptions)
 				.then(
-					run(this.onLoginSuccess),
-					run(this.onLoginFailed)
+					run(this.handleSuccessLogin),
+					run(this.handleFailedLogin)
 				);
 		}
 	}
 
-	onLoginSuccess(response) {
+	handleSuccessLogin(response) {
 		const token = response.getAuthResponse().access_token;
 		this.isSignedIn = true;
 		this.store.dispatch(this.userProfileActions.updateToken(token));
 	}
 
-	onLoginFailed (response) {
+	handleFailedLogin (response) {
 		console.log('FAILED TO LOGIN:', response);
 	}
 
