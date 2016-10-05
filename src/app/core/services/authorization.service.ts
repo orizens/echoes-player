@@ -13,6 +13,7 @@ import { GapiLoader } from "./gapi-loader.service";
 export class Authorization {
 	private isSignedIn: boolean = false;
 	private _googleAuth: any;
+	private _scope:string = 'profile email https://www.googleapis.com/auth/youtube';
 
 	constructor(
 		private zone: NgZone,
@@ -54,15 +55,14 @@ export class Authorization {
 	authorize () {
 		const authOptions = {
 			client_id: `${CLIENT_ID}.apps.googleusercontent.com`,
-			scope: 'profile email https://www.googleapis.com/auth/youtube'
+			scope: this._scope
 		};
 		return window.gapi.auth2.init(authOptions);
 	}
 
 	signIn () {
 		const run = (fn) => (r) => this.zone.run(() => fn.call(this, r));
-		const scope = 'profile email https://www.googleapis.com/auth/youtube';
-		const signOptions = { scope };
+		const signOptions = { scope: this._scope };
 		if (this._googleAuth) {
 			this._googleAuth
 				.signIn(signOptions)
