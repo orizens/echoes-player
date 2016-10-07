@@ -4,8 +4,7 @@ import { Effect, Actions } from '@ngrx/effects';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 
-import { EchoesState } from "../store";
-import { PlayerActions } from "../store/youtube-player.actions";
+import { PlayerActions } from "../store/youtube-player";
 import { YoutubePlayerService } from '../services/youtube-player.service';
 import { YoutubeVideosInfo } from '../services/youtube-videos-info.service';
 
@@ -14,7 +13,6 @@ export class PlayerEffects {
 
   constructor(
     private actions$: Actions,
-    // private store$: StateUpdates<EchoesState>,
     private playerActions: PlayerActions,
     private youtubePlayerService: YoutubePlayerService,
     private youtubeVideosInfo: YoutubeVideosInfo

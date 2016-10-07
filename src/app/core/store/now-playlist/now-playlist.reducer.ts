@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core'
 import { ActionReducer, Action } from '@ngrx/store';
 import { NowPlaylistActions } from './now-playlist.actions';
 
-export * from './now-playlist.actions';
-
 export interface YoutubeMediaPlaylist {
     videos: GoogleApiYouTubeVideoResource[],
     index: string,

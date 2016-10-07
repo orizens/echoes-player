@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { window } from '@angular/platform-browser/src/facade/browser';
 
 import { YoutubePlayerService, NowPlaylistService, UserProfile, Authorization } from '../core/services';
-import { user, UserProfileData } from '../core/store/user-manager';
+import { user, UserProfileData } from '../core/store/user-profile';
 import { EchoesState } from '../core/store';
 import { NowPlaylistActions } from '../core/store/now-playlist';
 import { PlayerActions } from '../core/store/youtube-player';

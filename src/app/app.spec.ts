@@ -6,7 +6,7 @@ import {
 // Load the implementations that should be tested
 import { App } from './app.component';
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
-import { PlayerActions } from './core/store/youtube-player.ts';
+import { PlayerActions } from './core/store/youtube-player';
 import { Notify } from "@ngrx/notify";
 import { Store } from "@ngrx/store";
 

@@ -30,6 +30,8 @@ import effects from './effects';
     CoreStoreModule,
     SearchPipe
   ],
-  providers: []
+  providers: [
+
+  ]
 })
 export class CoreModule { }

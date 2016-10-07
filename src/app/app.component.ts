@@ -9,7 +9,7 @@ import { AppState } from './app.service';
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
 
 import { EchoesState } from './core/store';
-import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player.ts';
+import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player';
 import { Observable } from "rxjs/Observable";
 import { Store } from '@ngrx/store';
 import { YoutubeMediaPlaylist } from './core/store/now-playlist';

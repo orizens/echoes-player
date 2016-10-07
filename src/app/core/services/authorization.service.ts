@@ -4,7 +4,7 @@ import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Store } from '@ngrx/store';
-import { UserProfileActions } from '../store/user-manager';
+import { UserProfileActions } from '../store/user-profile';
 import { EchoesState } from '../store/';
 import { CLIENT_ID} from './constants';
 import { GapiLoader } from "./gapi-loader.service";
@@ -19,7 +19,7 @@ export class Authorization {
 		private zone: NgZone,
 		private store: Store<EchoesState>,
 		private gapiLoader: GapiLoader,
-		private userProfileActions: UserProfileActions,
+		private userProfileActions: UserProfileActions, 
 		public http: Http
 		) {
 		this.loadAuth();

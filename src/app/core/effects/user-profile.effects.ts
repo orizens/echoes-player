@@ -5,8 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-import { EchoesState } from "../store";
-import { UserProfileActions } from '../store/user-profile.actions';
+import { UserProfileActions } from '../store/user-profile';
 
 import { UserProfile } from '../services/user-profile.service';
 
@@ -15,7 +14,6 @@ export class UserProfileEffects {
 
   constructor(
     private actions$: Actions,
-    // private store$: StateUpdates<EchoesState>,
     private userProfileActions: UserProfileActions,
     private userProfile: UserProfile
   ){}
