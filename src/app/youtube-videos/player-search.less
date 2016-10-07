@@ -1,0 +1,66 @@
+@import url(../../css/core/global.less);
+
+.search-panel {
+  .form-search {
+  	margin: 0 5px 0 0;
+  	position: relative;
+  	.form-group {
+  		background-color: @input-bg;
+  		border-radius: 3px;
+
+  		> div {
+  			float: left !important;
+  		}
+      ul.ng-hide {
+        transition: all 0.3s ease-out;
+        display: block !important;
+        transform: translateY(-7rem);
+      }
+  	}
+  	input.form-control {
+  		width: 25rem;
+  		border: none;
+  		box-shadow: none;
+  	}
+  	.btn-submit {
+  		padding: 3px 7px;
+  		color: @navbar-default-link-active-color;
+  	}
+
+  	.dropdown-menu {
+  		box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 8px 0px;
+  		transform: translatey(0rem);
+  		max-height: none;
+  		background-color: white;
+  		opacity: 1;
+  		> li.active a {
+  			color: @inverse;
+  		}
+  		> li a {
+  			color: #444;
+  			line-height: 3;
+  		}
+  	}
+  }
+}
+@media (min-width: 320px) {
+	.form-search {
+		.btn-submit {
+			position: absolute;
+			right: 5px;
+			top: 8px;
+		}
+	}
+}
+@media (min-width: 460px) {
+	.form-search {
+		input.form-control {
+			display: inline-block;
+		}
+		.btn-submit {
+			position: relative;
+			top: auto;
+			right: auto;
+		}
+	}
+}

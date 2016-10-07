@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 // import { NgForm } from '@angular/common';
 
+import './player-search.less';
+
 @Component({
   selector: 'player-search',
   template: `

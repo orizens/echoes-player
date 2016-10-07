@@ -99,7 +99,7 @@
     "@types/webpack": "^1.12.29",
     "@types/youtube": "0.0.26",
     "angular2-hmr": "0.8.0",
-    "angular2-infinite-scroll": "0.2.2",
+    "angular2-infinite-scroll": "^0.2.3",
     "angular2-template-loader": "0.5.0",
     "awesome-typescript-loader": "2.2.1",
     "bootstrap": "^3.3.7",
