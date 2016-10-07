@@ -51,10 +51,13 @@ describe('App', () => {
     expect(actual).toHaveBeenCalled();
   }));
 
-  it('should dispatch a play video action when the player control next is clicked', inject([ App, Store ], (app, store) => {
+  it('should dispatch a play video action when the player control next is clicked', inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
     app.ngOnInit();
     app.playNextVideo({});
-    const actual = store.dispatch;
-    expect(actual).toHaveBeenCalled();
+    const actuals = [
+      store.dispatch,
+      playerActions.playVideo
+    ];
+    actuals.forEach(actual => expect(actual).toHaveBeenCalled());
   }));
 });
