@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
@@ -13,6 +14,7 @@ import effects from './effects';
   imports: [
     InfiniteScrollModule,
     CommonModule,
+    FormsModule,
     CoreStoreModule,
     ...effects.map(effect => EffectsModule.run(effect)),
   ],
@@ -24,6 +26,7 @@ import effects from './effects';
     InfiniteScrollModule,
     ...CORE_COMPONENTS,
     CommonModule,
+    FormsModule,
     CoreStoreModule,
     SearchPipe
   ],
