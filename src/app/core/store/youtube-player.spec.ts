@@ -1,10 +1,6 @@
 import {
-  it,
   inject,
   async,
-  describe,
-  expect,
-  beforeEachProviders
 } from '@angular/core/testing';
 
 // import {Component, provide} from 'angular2/core';
@@ -14,7 +10,7 @@ import {
 // Load the implementations that should be tested
 import { player } from './youtube-player';
 import { PlayerActions } from './youtube-player';
-import { YoutubeMediaMock } from '../../../../test/mocks/youtube.media.item';
+import { YoutubeMediaMock } from '../../../../tests/mocks/youtube.media.item';
 
 describe('The Youtube Player reducer', () => {
     const mockedState = {

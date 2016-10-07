@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 
 import { nowPlaylist, NowPlaylistActions } from './now-playlist';
-import { YoutubeMediaItemsMock } from '../../../../test/mocks/youtube.media.items';
+import { YoutubeMediaItemsMock } from '../../../../tests/mocks/youtube.media.items';
 
 describe('The Now Playlist Reducer', () => {
     it('should return current state when no valid actions have been made', () => {
