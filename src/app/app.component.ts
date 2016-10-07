@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 // import { FORM_DIRECTIVES } from '@angular/common';
 import { AppState } from './app.service';
 
@@ -23,7 +23,7 @@ import { Notify } from "@ngrx/notify";
   encapsulation: ViewEncapsulation.None,
   template: require('./app.html')
 })
-export class App {
+export class App implements OnInit {
   public player: Observable<YoutubePlayerState>;
 
   constructor(
@@ -34,6 +34,9 @@ export class App {
     private playerActions: PlayerActions,
     private notify: Notify
   ) {
+  }
+
+  ngOnInit() {
     this.player = this.playerService.player$;
     this.notify.requestPermission().subscribe(permission => {
       if (permission) {
@@ -56,7 +59,7 @@ export class App {
 
   playNextVideo (player) {
     this.nowPlaylistService.selectNextIndex();
-    this.playerService.playVideo(this.nowPlaylistService.getCurrent());
+    this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
   }
 
   sortVideo (media: GoogleApiYouTubeSearchResource) {

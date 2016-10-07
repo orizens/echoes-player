@@ -29,7 +29,7 @@ export class Authorization {
 		// attempt to SILENT authorize
 		this.gapiLoader
 			.load('auth2')
-			.subscribe(authInstance => {
+			.subscribe((authInstance: any) => {
 				// gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
 				// 	console.log('authState changed', authState);
 				// });

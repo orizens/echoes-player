@@ -27,7 +27,7 @@ describe('App', () => {
         { provide: YoutubeSearch, useClass: class YoutubeSearch {} },
         { provide: YoutubePlayerService, useValue: youtubePlayerService },
         { provide: PlayerActions, useValue: jasmine.createSpyObj('PlayerActions', ['playVideo']) },
-        { provide: NowPlaylistService, useValue: jasmine.createSpyObj('NowPlaylistService', ['updateIndexByMedia']) },
+        { provide: NowPlaylistService, useValue: jasmine.createSpyObj('NowPlaylistService', ['updateIndexByMedia', 'selectNextIndex', 'getCurrent']) },
         { provide: Notify, useValue: notifyMock },
         { provide: Store, useValue: jasmine.createSpyObj('Store', [ 'dispatch', 'subscribe' ]) }
       ]
@@ -39,13 +39,22 @@ describe('App', () => {
   }));
 
   it('should create a reference to the player$ Observable', inject([ App ], (app) => {
+    app.ngOnInit();
     const expected = app.playerService.player$;
     const actual = app.player;
     expect(actual).toBe(expected);
   }));
 
   it('should request permission to show notifications', inject([ App, Notify ], (app, notify) => {
+    app.ngOnInit();
     const actual = notify.requestPermission;
+    expect(actual).toHaveBeenCalled();
+  }));
+
+  it('should dispatch a play video action when the player control next is clicked', inject([ App, Store ], (app, store) => {
+    app.ngOnInit();
+    app.playNextVideo({});
+    const actual = store.dispatch;
     expect(actual).toHaveBeenCalled();
   }));
 });

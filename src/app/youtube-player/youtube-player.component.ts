@@ -15,19 +15,24 @@ import './player-controls/player-controls.less';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayer implements OnInit {
-	@Input() player: YoutubePlayerState;
+	@Input() player: any;
 	@Output() ended = new EventEmitter();
 	@Output() playNext = new EventEmitter();
 	@Output() play = new EventEmitter();
 
 	title: Observable<string>;
+	mediaThumbnail: Observable<string>;
 
 	constructor(public playerService: YoutubePlayerService) {
 	}
 
 	ngOnInit(){
 		// this.playerService.player$.subscribe((player) => this.player = player);
-		this.title = this.playerService.player$.map(player => player.media.snippet.title);
+		// this.title = this.player.map(player => player.media.snippet.title);
+		// this.mediaThumbnail = this.player.map(player => {
+			// debugger
+			// return player.media.snippet.thumbnails.default.url || ''
+		// });
 		this.playerService.registerListener('ended', this.onStop.bind(this));
 		this.playerService.player$
 			.take(1)
@@ -35,7 +40,7 @@ export class YoutubePlayer implements OnInit {
 	}
 
 	playVideo () {
-		this.playerService.play();
+		// this.playerService.play();
 		this.play.next(this.player.media);
 	}
 
@@ -69,11 +74,5 @@ export class YoutubePlayer implements OnInit {
 
 	onThumbClick () {
 		return true;
-	}
-
-	getMediaThumb () {
-		const hasMedia = this.player && this.player.media.snippet.thumbnails;
-		const mediaThumbUrl = hasMedia ? this.player.media.snippet.thumbnails.default.url : '';
-		return mediaThumbUrl;
 	}
 }

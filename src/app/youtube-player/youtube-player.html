@@ -15,10 +15,11 @@
 					<aside class="pull-left"
 						title="maximize / minimize"
 						(click)="toggleFullScreen()">
-						<img src="{{ getMediaThumb() }}">
+						<img src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
+						<!-- <img src="{{ getMediaThumb() }}"> -->
 						<i class="fa fa-arrows-alt" [ngClass]="{ 'invisible': !hasContent() }"></i>
 					</aside>
-					<a class="title">{{ title | async }}</a>
+					<a class="title">{{ player?.media?.snippet?.title }}</a>
 				</h3>
 			</article>
 		</div>
