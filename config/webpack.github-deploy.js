@@ -5,7 +5,7 @@ const helpers = require('./helpers');
 const ghDeploy = require('./github-deploy');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const ghpages = require('gh-pages');
-const webpackConfig = ghDeploy.getWebpackConfigModule(); // the settings that are common to prod and dev
+const webpackConfig = ghDeploy.getWebpackConfigModule()(); // the settings that are common to prod and dev
 
 
 /**
@@ -14,7 +14,6 @@ const webpackConfig = ghDeploy.getWebpackConfigModule(); // the settings that ar
 const GIT_REMOTE_NAME = 'origin';
 const COMMIT_MESSAGE = 'Updates';
 const GH_REPO_NAME = ghDeploy.getRepoName(GIT_REMOTE_NAME);
-
 const METADATA = webpackMerge(webpackConfig.metadata, {
   /**
    * Prefixing the REPO name to the baseUrl for router support.
