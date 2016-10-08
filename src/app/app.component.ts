@@ -2,18 +2,16 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-// import { FORM_DIRECTIVES } from '@angular/common';
-import { AppState } from './app.service';
 
 // SERVICES
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
 
 import { EchoesState } from './core/store';
 import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { YoutubeMediaPlaylist } from './core/store/now-playlist';
-import { Notify } from "@ngrx/notify";
+import { Notify } from '@ngrx/notify';
 /*
  * App Component
  * Top Level Component

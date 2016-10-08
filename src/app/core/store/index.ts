@@ -4,12 +4,12 @@ import { Store, StoreModule } from '@ngrx/store';
 import { ActionReducer, Action, combineReducers } from '@ngrx/store';
 import { compose } from "@ngrx/core/compose";
 // reducers
-import { videos, EchoesVideos } from './youtube-videos';
+import { videos, EchoesVideos, YoutubeVideosActions } from './youtube-videos';
 import { player, YoutubePlayerState, PlayerActions} from './youtube-player';
 import { nowPlaylist, YoutubeMediaPlaylist, NowPlaylistActions} from './now-playlist';
 import { user, UserProfileData, UserProfileActions } from './user-profile';
-import { search, PlayerSearch} from './player-search';
-import { localStorageSync } from './ngrx-store-localstorage';
+import { search, PlayerSearch, PlayerSearchActions } from './player-search';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -26,7 +26,9 @@ export interface EchoesState {
 const actions = [
   NowPlaylistActions,
   PlayerActions,
-  UserProfileActions
+  UserProfileActions,
+  YoutubeVideosActions,
+  PlayerSearchActions
 ];
 
 const composeStore = compose(

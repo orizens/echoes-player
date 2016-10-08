@@ -1,10 +1,11 @@
 import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ADD, RESET } from '../store/youtube-videos';
-import { UPDATE_QUERY } from '../store/player-search';
+import { EchoesState } from '../store';
+import { YoutubeVideosActions } from '../store/youtube-videos';
+import { PlayerSearchActions } from '../store/player-search';
 import { YOUTUBE_API_KEY } from './constants';
-import { YoutubeApiService } from './youtube-api.service'; 
+import { YoutubeApiService } from './youtube-api.service';
 
 @Injectable()
 export class YoutubeSearch {
@@ -15,7 +16,7 @@ export class YoutubeSearch {
 	private _config: URLSearchParams = new URLSearchParams();
 	private nextPageToken: string;
 
-	constructor(private http: Http, private store: Store<any>) {
+	constructor(private http: Http, private store: Store<EchoesState>) {
     this.api = new YoutubeApiService({
       url: this.url,
       http: http,
@@ -32,11 +33,11 @@ export class YoutubeSearch {
 
 		if (shouldBeReset || isNewSearch) {
 			this.resetPageToken();
-			this.store.dispatch({ type: RESET });
+			this.store.dispatch({ type: YoutubeVideosActions.RESET });
 		}
 		if (query) {
 			this.api.config.set('q', query);
-			this.store.dispatch({ type: UPDATE_QUERY, payload: query });
+			this.store.dispatch({ type: PlayerSearchActions.UPDATE_QUERY, payload: query });
 		}
 		this.isSearching = true;
 		return this.api.list('video')
@@ -44,7 +45,7 @@ export class YoutubeSearch {
 				let itemsAmount = this.items.length;
 				this.isSearching = false;
 				this.items.splice(itemsAmount, 0, ...response.items);
-				this.store.dispatch({ type: ADD, payload: [ ...response.items ] })
+				this.store.dispatch({ type: YoutubeVideosActions.ADD, payload: [ ...response.items ] })
 				return response;
 			});
 

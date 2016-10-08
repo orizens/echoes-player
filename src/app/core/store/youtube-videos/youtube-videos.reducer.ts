@@ -1,21 +1,18 @@
 import { ActionReducer, Action } from '@ngrx/store';
-
-export const ADD = 'ADD';
-export const REMOVE = 'REMOVE';
-export const RESET = 'RESET';
+import { YoutubeVideosActions } from './youtube-videos.actions';
 
 export interface EchoesVideos extends Array<GoogleApiYouTubeSearchResource>{};
 
 export const videos: ActionReducer<GoogleApiYouTubeSearchResource[]> = (state: EchoesVideos = [], action: Action) => {
 
     switch (action.type) {
-        case ADD:
-            return addVideos(state, action.payload);
+        case YoutubeVideosActions.ADD:
+            return [...state, ...action.payload];
 
-        case REMOVE:
+        case YoutubeVideosActions.REMOVE:
             return state;
 
-        case RESET:
+        case YoutubeVideosActions.RESET:
             return [];
 
         default:
