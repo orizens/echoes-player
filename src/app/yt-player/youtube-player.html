@@ -1,0 +1,60 @@
+<div class="youtube-player"
+	[ngClass]="{
+		'show-youtube-player': player?.showPlayer,
+		'fullscreen': player?.isFullscreen
+	}">
+	<div class="yt-player ux-maker">
+		<div id="player" class="ux-maker"></div>
+	</div>
+
+	<div class="container-fluid">
+
+		<div class="col-md-5 col-md-offset-0 col-sm-5 col-sm-offset-0 col-xs-offset-1">
+			<article class="media-info">
+				<h3 class="yt-media-title ellipsis hidden-xs">
+					<aside class="pull-left"
+						title="maximize / minimize"
+						(click)="toggleFullScreen()">
+						<img src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
+						<!-- <img src="{{ getMediaThumb() }}"> -->
+						<i class="fa fa-arrows-alt" [ngClass]="{ 'invisible': !hasContent() }"></i>
+					</aside>
+					<a class="title">{{ player?.media?.snippet?.title }}</a>
+				</h3>
+			</article>
+		</div>
+
+		<div class="col-md-4 col-sm-4 col-xs-10 controls-container nicer-ux"
+			[ngClass]="{ 'yt-playing': isPlaying() }">
+
+			<div class="btn-group player-controls">
+					<button title="show / hide"
+						(click)="togglePlayer()"
+						class="btn btn-default btn-lg navbar-btn show-player visible-xs"><i class="fa fa-chevron-up"></i></button>
+
+					<button title="play previous track"
+						class="btn btn-default btn-lg navbar-btn previous"
+						ng-click="vm.playPreviousTrack()"
+						ng-disabled="!vm.playlistHasTracks()">
+						<i class="fa fa-step-backward"></i></button>
+
+					<button title="pause"
+						class="btn btn-default btn-lg navbar-btn pause"
+						(click)="pauseVideo()">
+						<i class="fa fa-pause"></i></button>
+
+					<button title="play"
+						class="btn btn-default btn-lg navbar-btn play"
+						(click)="playVideo()">
+						<i class="fa fa-play"></i></button>
+
+					<button title="play next track"
+						class="btn btn-default btn-lg navbar-btn next"
+						(click)="playNextTrack()"
+						><i class="fa fa-step-forward"></i></button>
+			</div>
+
+		</div>
+
+	</div>
+</div>
