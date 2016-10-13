@@ -3,9 +3,10 @@
 		'show-youtube-player': player?.showPlayer,
 		'fullscreen': player?.isFullscreen
 	}">
-	<div class="yt-player ux-maker">
-		<div id="player" class="ux-maker"></div>
-	</div>
+	<yt-player class="yt-player nicer-ux"
+		(ready)="setupPlayer($event)"
+		(change)="updatePlayerState($event)"
+	></yt-player>
 
 	<div class="container-fluid">
 

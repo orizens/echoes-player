@@ -1,13 +1,11 @@
 <!-- YOUTUBE PLAYER -->
-<section class="navbar navbar-default navbar-fixed-bottom youtube-player">
-	<youtube-player id="youtube-player-container"
-		[player]="player | async"
-		(ended)="handleVideoEnded($event)"
-		(playNext)="playNextVideo($event)"
-		player-id="player"
-		auto-next
-	></youtube-player>
-</section>
+<youtube-player class="navbar navbar-default navbar-fixed-bottom youtube-player"
+	[player]="player | async"
+	(ended)="handleVideoEnded($event)"
+	(playNext)="playNextVideo($event)"
+	player-id="player"
+	auto-next
+></youtube-player>
 
 <!-- SIDEBAR -->
 <div id="sidebar" class="sidebar sidebar-left-fixed well ux-maker"
