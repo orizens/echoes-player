@@ -28,14 +28,14 @@ export class YoutubePlayerService {
     // in production mode, the youtube iframe api script tag is loaded
     // before the bundle.js, so the 'onYouTubeIfarmeAPIReady' has
     // already been triggered
-    // TODO: handle this in build or in nicer in code
-    window['onYouTubeIframeAPIReady'] = () => {
-      if (window['YT']) {
-        this.player = this.createPlayer(() => { });
+    const createPlayer = () => {
+      if (window.YT.Player) {
+        this.player = this.createPlayer(() => {});
       }
     };
-    if (window.YT && window.YT.Player) {
-      this.player = this.createPlayer(() => {});
+    window['onYouTubeIframeAPIReady'] = createPlayer;
+    if (window.YT) {
+      createPlayer();
     }
   }
 
