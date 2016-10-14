@@ -27,21 +27,22 @@ export class YoutubePlayer implements OnInit {
 	}
 
 	ngOnInit(){
-		// this.playerService.player$.subscribe((player) => this.player = player);
-		// this.title = this.player.map(player => player.media.snippet.title);
-		// this.mediaThumbnail = this.player.map(player => {
-			// debugger
-			// return player.media.snippet.thumbnails.default.url || ''
-		// });
-		this.playerService.registerListener('ended', this.onStop.bind(this));
 		this.playerService.player$
 			.take(1)
       .subscribe(player => player.isFullscreen = false);
 	}
 
+	setupPlayer (player) {
+		this.playerService.setupPlayer(player);
+	}
+
+	updatePlayerState (event) {
+		this.playerService.onPlayerStateChange(event);
+	}
+
 	playVideo () {
-		// this.playerService.play();
-		this.play.next(this.player.media);
+		this.playerService.play();
+		// this.play.next(this.player.media);
 	}
 
 	isPlaying () {

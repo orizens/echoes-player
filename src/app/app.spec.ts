@@ -6,9 +6,10 @@ import {
 // Load the implementations that should be tested
 import { App } from './app.component';
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
-import { PlayerActions } from './core/store/youtube-player.ts';
+import { PlayerActions } from './core/store/youtube-player';
 import { Notify } from "@ngrx/notify";
 import { Store } from "@ngrx/store";
+import { Observable } from 'rxjs/Observable';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
@@ -16,10 +17,9 @@ describe('App', () => {
     let youtubePlayerService = jasmine.createSpyObj('YoutubePlayerService', [ 'playVideo' ]);
     youtubePlayerService.player$ = {};
     let notifyMock = {
-      subscribe: () => {},
+      subscribe: (fn) => fn(),
       requestPermission: () => notifyMock
     };
-    spyOn(notifyMock, 'requestPermission').and.callThrough();
 
     return TestBed.configureTestingModule({
       providers: [
@@ -46,9 +46,14 @@ describe('App', () => {
   }));
 
   it('should request permission to show notifications', inject([ App, Notify ], (app, notify) => {
+    spyOn(notify, 'subscribe').and.callThrough();
+    spyOn(notify, 'requestPermission').and.callFake(() => notify);
     app.ngOnInit();
-    const actual = notify.requestPermission;
-    expect(actual).toHaveBeenCalled();
+    const actuals = [
+      notify.requestPermission,
+      notify.subscribe
+    ];
+    actuals.forEach(actual => expect(actual).toHaveBeenCalled());
   }));
 
   it('should dispatch a play video action when the player control next is clicked', inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
@@ -59,5 +64,35 @@ describe('App', () => {
       playerActions.playVideo
     ];
     actuals.forEach(actual => expect(actual).toHaveBeenCalled());
+  }));
+
+  it('should select a video in playlist', inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
+    const media = { id: 'mocked-media-object' };
+    const expected = media.id;
+    const specs = [
+      { actual: playerActions.playVideo, expected: media },
+      { actual: app.nowPlaylistService.updateIndexByMedia, expected: media.id }
+    ];
+    app.selectVideo(media);
+    specs.forEach(spec => expect(spec.actual).toHaveBeenCalledWith(spec.expected));
+  }));
+
+  it('should play the next video while not in the end of the playlist', inject([ App ], (app) => {
+    spyOn(app, 'isLastIndex').and.returnValue(false);
+    spyOn(app, 'playNextVideo');
+    const actuals = [
+      app.isLastIndex,
+      app.playNextVideo,
+    ];
+    app.handleVideoEnded({});
+    actuals.forEach(actual => expect(actual).toHaveBeenCalled());
+  }));
+
+  it('should NOT play the next video when it reached the end of the playlist', inject([ App ], (app) => {
+    spyOn(app, 'isLastIndex').and.returnValue(true);
+    spyOn(app, 'playNextVideo');
+    const actual = app.playNextVideo;
+    app.handleVideoEnded({});
+    expect(actual).not.toHaveBeenCalled();
   }));
 });

@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { CORE_COMPONENTS } from './components';
+import { YoutubePlayerModule } from './components/yt-player';
 import { SearchPipe } from './pipes/search.pipe';
 
 import { CoreStoreModule } from './store';
@@ -16,6 +17,7 @@ import effects from './effects';
     CommonModule,
     FormsModule,
     CoreStoreModule,
+    YoutubePlayerModule,
     ...effects.map(effect => EffectsModule.run(effect)),
   ],
   declarations: [
@@ -28,8 +30,11 @@ import effects from './effects';
     CommonModule,
     FormsModule,
     CoreStoreModule,
+    YoutubePlayerModule,
     SearchPipe
   ],
-  providers: []
+  providers: [
+
+  ]
 })
 export class CoreModule { }

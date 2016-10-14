@@ -8,9 +8,9 @@ import {
 // import {MockBackend} from 'angular2/http/testing';
 
 // Load the implementations that should be tested
-import { player } from './youtube-player';
-import { PlayerActions } from './youtube-player';
-import { YoutubeMediaMock } from '../../../../tests/mocks/youtube.media.item';
+import { player } from './youtube-player.reducer';
+import { PlayerActions } from './youtube-player.actions';
+import { YoutubeMediaMock } from '../../../../../tests/mocks/youtube.media.item';
 
 describe('The Youtube Player reducer', () => {
     const mockedState = {

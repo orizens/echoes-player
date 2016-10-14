@@ -9,9 +9,6 @@ import { PlayerActions, YoutubePlayerState } from '../store/youtube-player';
 export class YoutubePlayerService {
   public player: YT.Player;
   public player$: Observable<YoutubePlayerState>;
-  private listeners: any = {
-    ended: []
-  };
   private isFullscreen: boolean = false;
   private defaultSizes = {
       height: 270,
@@ -19,24 +16,12 @@ export class YoutubePlayerService {
   };
 
   constructor (public store: Store<any>, private zone: NgZone) {
-    this.setupPlayer();
     this.player$ = this.store.select(store => store.player);
     this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen });
   }
 
-  setupPlayer () {
-    // in production mode, the youtube iframe api script tag is loaded
-    // before the bundle.js, so the 'onYouTubeIfarmeAPIReady' has
-    // already been triggered
-    // TODO: handle this in build or in nicer in code
-    window['onYouTubeIframeAPIReady'] = () => {
-      if (window['YT']) {
-        this.player = this.createPlayer(() => { });
-      }
-    };
-    if (window.YT && window.YT.Player) {
-      this.player = this.createPlayer(() => {});
-    }
+  setupPlayer (player) {
+    this.player = player;
   }
 
   play () {
@@ -67,58 +52,34 @@ export class YoutubePlayerService {
       : false;
     return isPlayerPlaying;
   }
-  // createPlayer (elementId, height, width, videoId, callback) {
-  createPlayer (callback) {
-    const store = this.store;
-    const service = this;
-    const defaultSizes = this.defaultSizes;
-    return new window.YT.Player('player', {
-        height: defaultSizes.height,
-        width: defaultSizes.width,
-        videoId: '',
-        // playerVars: playerVars,
-        events: {
-            onReady: () => {},
-            onStateChange: (ev) => this.zone.run(() => onPlayerStateChange(ev))
-        }
-    });
 
-    function onPlayerStateChange (event) {
-      const state = event.data;
-      let autoNext = false;
-      // play the next song if its not the end of the playlist
-      // should add a "repeat" feature
-      if (state === YT.PlayerState.ENDED) {
-        service.listeners.ended.forEach(callback => callback(state));
-      }
-
-      if (state === YT.PlayerState.PAUSED) {
-          // service.playerState = YT.PlayerState.PAUSED;
-      }
-      if (state === YT.PlayerState.PLAYING) {
-          // service.playerState = YT.PlayerState.PLAYING;
-      }
-      console.log('state changed', state);
-      store.dispatch({ type: PlayerActions.STATE_CHANGE, payload: state });
+  onPlayerStateChange (event) {
+    const state = event.data;
+    let autoNext = false;
+    // play the next song if its not the end of the playlist
+    // should add a "repeat" feature
+    if (state === YT.PlayerState.ENDED) {
+      // this.listeners.ended.forEach(callback => callback(state));
     }
-  }
 
-  registerListener (eventName: string, callback: Function) {
-    this.listeners[eventName].push(callback);
+    if (state === YT.PlayerState.PAUSED) {
+      // service.playerState = YT.PlayerState.PAUSED;
+    }
+    if (state === YT.PlayerState.PLAYING) {
+      // service.playerState = YT.PlayerState.PLAYING;
+    }
+    console.log('state changed', state);
+    this.store.dispatch({ type: PlayerActions.STATE_CHANGE, payload: state });
   }
 
   setSize () {
-    let height: number;
-    let width: number;
+    let { height, width } = this.defaultSizes;
 
     if (!this.isFullscreen) {
       height = window.innerHeight;
-          width = window.innerWidth;
-    } else {
-      height = this.defaultSizes.height;
-      width = this.defaultSizes.width;
+      width = window.innerWidth;
     }
-        this.player.setSize(width, height);
-        this.store.dispatch({ type: PlayerActions.FULLSCREEN });
+    this.player.setSize(width, height);
+    this.store.dispatch({ type: PlayerActions.FULLSCREEN });
   }
 }

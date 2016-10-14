@@ -4,8 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-import { EchoesState } from "../store";
-import { NowPlaylistActions } from "../store/now-playlist.actions";
+import { NowPlaylistActions } from "../store/now-playlist";
 
 import { NowPlaylistService } from '../services/now-playlist.service';
 import { YoutubeVideosInfo } from '../services/youtube-videos-info.service';

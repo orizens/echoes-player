@@ -183,10 +183,11 @@
 }
 
 .show-youtube-player.youtube-player {
+	yt-player {
+		z-index: @zindex-navbar-fixed;
+	}
 	.yt-player {
 		transform: translate3d(-10%,-90%,0) scale(.8, .8);
-		z-index: @zindex-navbar-fixed;
-
 	}
 	.social-shares {
 		display: block;

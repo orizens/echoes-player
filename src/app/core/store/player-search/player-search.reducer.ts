@@ -1,7 +1,5 @@
 import { ActionReducer, Action } from '@ngrx/store';
-
-export const UPDATE_QUERY = 'UPDATE_QUERY';
-export const UPDATE_FILTER = 'UPDATE_FILTER';
+import { PlayerSearchActions } from './player-search.actions';
 
 export interface PlayerSearch {
     query: string,
@@ -14,10 +12,10 @@ let initialState: PlayerSearch = {
 export const search: ActionReducer<PlayerSearch> = (state: PlayerSearch = initialState, action: Action) => {
 
     switch (action.type) {
-        case UPDATE_QUERY:
+        case PlayerSearchActions.UPDATE_QUERY:
             return Object.assign({}, state, { query: action.payload });
 
-        case UPDATE_FILTER:
+        case PlayerSearchActions.UPDATE_FILTER:
             return state;
 
         default:

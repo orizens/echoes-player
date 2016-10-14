@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { EchoesState } from '../core/store';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { YoutubeMediaPlaylist } from '../core/store/now-playlist';
-import { PlayerActions } from '../core/store/youtube-player.ts';
+import { PlayerActions } from '../core/store/youtube-player';
 import { Notify } from "@ngrx/notify";
 
 @Component({

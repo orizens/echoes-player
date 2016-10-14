@@ -3,8 +3,8 @@ import {
   async,
 } from '@angular/core/testing';
 
-import { nowPlaylist, NowPlaylistActions } from './now-playlist';
-import { YoutubeMediaItemsMock } from '../../../../tests/mocks/youtube.media.items';
+import { nowPlaylist, NowPlaylistActions } from './index';
+import { YoutubeMediaItemsMock } from '../../../../../tests/mocks/youtube.media.items';
 
 describe('The Now Playlist Reducer', () => {
     it('should return current state when no valid actions have been made', () => {
