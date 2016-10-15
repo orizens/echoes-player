@@ -3,10 +3,10 @@
 		'show-youtube-player': player?.showPlayer,
 		'fullscreen': player?.isFullscreen
 	}">
-	<yt-player class="yt-player nicer-ux"
+	<youtube-player class="yt-player nicer-ux"
 		(ready)="setupPlayer($event)"
 		(change)="updatePlayerState($event)"
-	></yt-player>
+	></youtube-player>
 
 	<div class="container-fluid">
 

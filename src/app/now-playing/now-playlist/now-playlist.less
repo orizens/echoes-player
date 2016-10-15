@@ -42,6 +42,25 @@
 				right: 10px;
 				top: 11px;
 			}
+			.track-number {
+        position: absolute;
+        left: 1.5rem;
+        padding: 0.5rem;
+        background-color: rgba(0,0,0,.9);
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      .playlist-track {
+        // position: absolute;
+        display: none;
+        // right: 1rem;
+        // top: 4rem;
+        font-size: 1rem;
+      }
+      &.playlist-media .playlist-track {
+        display: inline-block;
+      }
 
 			&.sv-helper {
 				background: #323538;
@@ -108,7 +127,7 @@
 			}
 			a:hover {
 				.remove-track {
-					transform: translatex(-2rem);
+					transform: translatex(-1rem);
 				}
 			}
 		}

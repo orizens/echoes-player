@@ -16,7 +16,7 @@ import { App } from './app.component';
 // COMPONENTS
 import { CORE_COMPONENTS } from "./core/components";
 
-import { YoutubePlayerModule } from './youtube-player';
+import { PlayerModule } from './youtube-player';
 import { YoutubeVideosModule } from './youtube-videos';
 import { UserAreaModule } from './user-area';
 import { NavigatorModule } from './navigator';
@@ -61,7 +61,7 @@ const APP_PROVIDERS = [
     NavigatorModule,
     UserAreaModule,
     NowPlayingModule,
-    YoutubePlayerModule
+    PlayerModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

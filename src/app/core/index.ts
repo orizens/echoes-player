@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { YoutubePlayerModule } from 'ng2-youtube-player';
 import { CORE_COMPONENTS } from './components';
-import { YoutubePlayerModule } from './components/yt-player';
+// import { YoutubePlayerModule } from './components/yt-player';
 import { SearchPipe } from './pipes/search.pipe';
 
 import { CoreStoreModule } from './store';

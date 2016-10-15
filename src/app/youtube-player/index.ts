@@ -14,4 +14,4 @@ import { YoutubePlayer } from './youtube-player.component';
     YoutubePlayer
   ]
 })
-export class YoutubePlayerModule { }
+export class PlayerModule { }

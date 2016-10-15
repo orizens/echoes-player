@@ -10,7 +10,7 @@ import './media-info/media-info.less';
 import './player-controls/player-controls.less';
 
 @Component({
-	selector: 'youtube-player',
+	selector: 'player',
 	template: require('./youtube-player.html'),
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
