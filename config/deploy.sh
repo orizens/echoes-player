@@ -2,7 +2,7 @@
 if [ "$TRAVIS_BRANCH" == "master" ]; then
   git config --global user.email "farhioren+travis@gmail.com"
   git config --global user.name "travis-ci"
-  npm run release
+  npm run build:prod
   cd dist
   git init
   git add .
