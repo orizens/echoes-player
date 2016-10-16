@@ -1,9 +1,9 @@
 import { ActionReducer, Action } from '@ngrx/store';
 import { YoutubeVideosActions } from './youtube-videos.actions';
+type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | Object;
+export interface EchoesVideos extends Array<GoogleApiYoutubeVideo>{};
 
-export interface EchoesVideos extends Array<GoogleApiYouTubeSearchResource>{};
-
-export const videos: ActionReducer<GoogleApiYouTubeSearchResource[]> = (state: EchoesVideos = [], action: Action) => {
+export const videos: ActionReducer<EchoesVideos> = (state: EchoesVideos = [], action: Action) => {
 
   switch (action.type) {
     case YoutubeVideosActions.ADD:
