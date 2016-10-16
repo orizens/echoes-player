@@ -3,8 +3,8 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
   git config --global user.email "farhioren+travis@gmail.com"
   git config --global user.name "travis-ci"
   npm run build:prod
-  git fetch
-  git checkout origin/gh-pages
+  git fetch -all
+  git checkout -b gh-pages origin/gh-pages
   rm *.*
   rm -rf fonts
   rm -rf assets
