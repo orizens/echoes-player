@@ -16,19 +16,10 @@ export class YoutubeMedia {
 	showDesc = false;
 	isPlaying = false;
 
-	constructor () {
+	constructor () {}
 
-	}
-
-	ngOnInit(){
-		if (this.media.statistics) {
-			this.media.statistics.likeCount = parseInt(this.media.statistics.likeCount);
-			this.media.statistics.viewCount = parseInt(this.media.statistics.viewCount);
-		}
-	}
-
-    playVideo (media: YoutubeMediaResource) {
-    	this.play.next(media);
+  playVideo (media: YoutubeMediaResource) {
+  	this.play.next(media);
 	}
 
 	queueVideo(media: YoutubeMediaResource) {

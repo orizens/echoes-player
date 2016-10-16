@@ -50,7 +50,7 @@
 					<i class="fa fa-info-circle"></i>
 				</span>
 
-				<span class="item-action"><i class="fa fa-clock-o"></i>{{ media.time}}</span>
+				<span class="item-action"><i class="fa fa-clock-o"></i>{{ media.contentDetails?.duration }}</span>
 
 				<span class="item-likes item-action" rel="tooltip" title="Number of Likes">
 					<i class="fa fa-thumbs-up"></i> {{ media.statistics?.likeCount | number:'2.0'}}

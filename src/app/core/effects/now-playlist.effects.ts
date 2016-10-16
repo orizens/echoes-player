@@ -22,7 +22,7 @@ export class NowPlaylistEffects {
   @Effect() queueVideoReady$ = this.actions$
     .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)
     .map(action => action.payload)
-    .switchMap((media: GoogleApiYouTubeSearchResource) => this.youtubeVideosInfo.fetchVideoData(media.id.videoId)
+    .switchMap((media: GoogleApiYouTubeVideoResource) => this.youtubeVideosInfo.fetchVideoData(media.id)
       .map(media => this.nowPlaylistActions.queueVideo(media))
       .catch(() => Observable.of(this.nowPlaylistActions.queueFailed(media)))
     );
