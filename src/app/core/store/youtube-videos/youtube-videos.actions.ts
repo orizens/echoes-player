@@ -22,4 +22,11 @@ export class YoutubeVideosActions {
       type: YoutubeVideosActions.RESET
     }
   }
+  static UPDATE_METADATA = '[YoutubeVideos] UPDATE_METADATA';
+  updateMetaData(videos): Action {
+    return {
+      type: YoutubeVideosActions.UPDATE_METADATA,
+      payload: videos
+    }
+  }
 }

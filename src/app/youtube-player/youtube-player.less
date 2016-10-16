@@ -101,6 +101,7 @@
 	&.fullscreen.show-youtube-player {
 		@toolbar-position-on-hover: -55px;
 		.container-fluid {
+			z-index: @zindex-modal-background;
 			position: fixed;
 			.transform(translatey(40px));
 			opacity: 0;
@@ -183,9 +184,6 @@
 }
 
 .show-youtube-player.youtube-player {
-	yt-player {
-		z-index: @zindex-navbar-fixed;
-	}
 	.yt-player {
 		transform: translate3d(-10%,-90%,0) scale(.8, .8);
 	}
