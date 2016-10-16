@@ -10,8 +10,6 @@ env:
   - secure: WZg+QI6a2dy6afRjeRypsIaXLiKueizEY/mRgRzjbqwRQSBttHdCVR2Hdba7R59myJBzsKLVceHD3nbEKVUc/eYo+oQtQsL/t44rq3HeGYoGt1qq87qk03GsA0/X7600NA1tenDkk7TtAy2RVBa7vHtanHMfpcgogIFXfKqqsqU=
   - secure: ZjBfq/AblPpn54B9V9KUp+bwlASMZkzzCBa3G9pOhPDaGStY3I5PpHBxmbk+QzleC2auJLwL3Fpwip4CnzHT+5aD+VMwIjqb+PKGSdRhRUjIJMSchwxhXeUU1l9FcF30jH+Fw/r1Nq2Fw/LRNGXGqLezIBcBjcAB0KA9svgZz2w=
 
-before_install:
-  - export CHROME_BIN=chromium-browser
 install:
 # - npm install -g protractor babel
 - npm install karma-es6-shim
