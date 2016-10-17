@@ -19,7 +19,7 @@ export class YoutubeApiService {
   nextPageToken: string;
   private accessToken: string;
 
-  constructor(options: YoutubeApiServiceOptions) {
+  constructor(options: YoutubeApiServiceOptions | any) {
       this.resetConfig();
       if (options) {
           this.url = options.url;
