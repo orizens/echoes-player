@@ -18,29 +18,28 @@ describe('The Youtube Videos reducer', () => {
 
     it('should ADD videos', () => {
         const state = [...mockedState];
-        const actual = videos(state, { type: YoutubeVideosActions.ADD, payload: YoutubeMediaItemsMock });
-        const expected = [...state, ...YoutubeMediaItemsMock];
-        expect(actual.length).toBe(expected.length);
+        const actual = videos(state, { type: YoutubeVideosActions.ADD, payload: YoutubeMediaMock });
+        const expected = state;
+        expect(actual.mediaId.videoId).toBe(YoutubeMediaMock.id.videoId);
     });
 
-    it('should empty the state when RESET', () => {
-      const state = [...YoutubeMediaItemsMock];
-      const actual = videos(state, { type: YoutubeVideosActions.RESET });
-      const expected = 0;
-      expect(actual.length).toEqual(expected);
+    it('should toggle visibility of the player', () => {
+      const state = Object.assign({}, mockedState, {
+        mediaId: 'mocked',
+        showPlayer: false
+      });
+      const actual = videos(state, { type: YoutubeVideosActions.TOGGLE_PLAYER, payload: true });
+      const expected = state;
+      expect(actual.showPlayer).toBe(!expected.showPlayer);
     });
 
-    it('should replace add new 50 objects when updating data when state is empty', () => {
-      const state = [...mockedState];
-      const actual = videos(state, { type: YoutubeVideosActions.UPDATE_METADATA, payload: YoutubeMediaItemsMock });
-      const expected = YoutubeMediaItemsMock.length;
-      expect(actual.length).toBe(expected);
-    });
-
-    it('should replace 50 objects when updating data when state is not empty', () => {
-      const state = [...YoutubeMediaItemsMock, ...YoutubeMediaItemsMock];
-      const actual = videos(state, { type: YoutubeVideosActions.UPDATE_METADATA, payload: YoutubeMediaItemsMock });
-      const expected = state.length;
-      expect(actual.length).toBe(expected);
+    it('should change the state of the player', () => {
+      const state = Object.assign({}, mockedState, {
+        mediaId: 'mocked',
+        playerState: 0
+      });
+      const actual = videos(state, { type: YoutubeVideosActions.STATE_CHANGE, payload: 1 });
+      const expected = state;
+      expect(actual.playerState).toBe(1);
     });
 });

@@ -19,7 +19,10 @@ export class UserProfile {
 		this.playlistInfo = new YoutubeApiService({
 			url: 'https://www.googleapis.com/youtube/v3/playlistItems',
 			http: this.http,
-			idKey: 'playlistId'
+			idKey: 'playlistId',
+			config: {
+				mine: 'true'
+			}
 		});
 		// TODO - extract to a Model / Reducer?
 		// Reducer - because nextPageToken is changed
@@ -35,7 +38,8 @@ export class UserProfile {
 	}
 
 	setAccessToken(token: string) {
-		// TODO - extract to a reducer
+		// TODO - should save token once for all services
+		this.playlistInfo.setToken(token);
 		return this.playlists.setToken(token);
 	}
 
@@ -61,9 +65,10 @@ export class UserProfile {
 	}
 
 	fetchPlaylistItems (playlistId: string) {
-		const token = this.playlists.config.get('access_token');
+		// const token = this.playlists.config.get('access_token');
+		this.playlistInfo.config.delete('pageToken');
 		return this.playlistInfo
-			.list(playlistId, token)
+			.list(playlistId)
 			.then(response => {
 				const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
 				return this.youtubeVideosInfo.api.list(videoIds);
