@@ -94,9 +94,10 @@ export class YoutubeApiService {
 
   createHeaders () {
     const accessToken = this.accessToken;
-    const headersOptions = {
-      'authorization': accessToken ? `Bearer ${accessToken}` : ''
-    };
+    const headersOptions = {};
+    if (accessToken) {
+      headersOptions['authorization'] = `Bearer ${accessToken}`;
+    }
     return new Headers(headersOptions);
   }
 }
