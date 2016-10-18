@@ -6,7 +6,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { Http } from '@angular/http';
 import { YoutubeApiService } from './youtube-api.service';
 
-fdescribe('YoutubeApiService', () => {
+describe('YoutubeApiService', () => {
   let service;
   
   // beforeEach(() => {
