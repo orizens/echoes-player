@@ -2,7 +2,7 @@ import { ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { AxisResolver } from './axis-resolver';
-import { PositionResolver } from './position-resolver';
+import { PositionResolver, PositionResolverFactory } from './position-resolver';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/throttle';
@@ -27,7 +27,7 @@ export class Scroller {
   private disposeScroll: Subscription;
   public lastScrollPosition: number = 0;
   // private axis: AxisResolver;
-  private _timeout: any;
+  private positionResolver: PositionResolver;
 
   constructor(
     private windowElement: Window | ElementRef | any,
@@ -43,7 +43,7 @@ export class Scroller {
     private horizontal: boolean = false,
     private alwaysCallback: boolean = false,
     private scrollDisabled: boolean = false,
-    private positionResolver: PositionResolver
+    private _positionResolver: PositionResolverFactory
   ) {
     this.isContainerWindow = Object.prototype.toString.call(this.windowElement).includes('Window');
     this.documentElement = this.isContainerWindow ? this.windowElement.document.documentElement : null;
@@ -54,7 +54,7 @@ export class Scroller {
     // }
     this.handleInfiniteScrollDisabled(scrollDisabled);
     this.defineContainer();
-    this.positionResolver.config({
+    this.positionResolver = this._positionResolver.create({
       container: this.container,
       documentElement: this.documentElement,
       isContainerWindow: this.isContainerWindow,

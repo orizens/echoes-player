@@ -1,17 +1,17 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 
 @Injectable()
+export class AxisResolverFactory {
+  constructor() {}
+
+  create (vertical: boolean = true) {
+    return new AxisResolver(vertical);
+  }
+}
+
 export class AxisResolver {
-  private vertical: boolean; // else horizontal
-
-  constructor() {
-    this.setVertical(true);
+  constructor (private vertical: boolean = true) {
   }
-
-  setVertical(vertical: boolean = true) {
-    this.vertical = vertical;
-  }
-
   clientHeightKey() {return this.vertical ? 'clientHeight' : 'clientWidth'}
   offsetHeightKey() {return this.vertical ? 'offsetHeight' : 'offsetWidth'}
   scrollHeightKey() {return this.vertical ? 'scrollHeight' : 'scrollWidth'}
