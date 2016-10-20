@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="" class="wood">
 <head>
-
-  <title><%= webpackConfig.metadata.title %></title>
-
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="<%= webpackConfig.metadata.title %>">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+
+  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
 
   <% if (webpackConfig.htmlElements.headTags) { %>
   <!-- Configured Head Tags  -->
@@ -16,9 +15,9 @@
   <% } %>
 
   <!-- base url -->
-  <!-- <base href="<%= webpackConfig.metadata.baseUrl %>"> -->
+  <!-- <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>"> -->
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans' rel='stylesheet' type='text/css'>
-  <!-- <link rel="stylesheet" href="assets/css/style.css?rev=@@hash"> -->
+
 </head>
 
 <body>
@@ -38,7 +37,7 @@
     ga('send', 'pageview');
   </script> -->
 
-  <% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR !== true) { %>
+  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
@@ -46,5 +45,5 @@
 
 </body>
   <script src="https://apis.google.com/js/platform.js?onload=apiLoaded" async defer></script>
-  <!-- <script src="//www.youtube.com/iframe_api"></script> -->
+
 </html>

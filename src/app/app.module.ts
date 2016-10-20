@@ -26,19 +26,19 @@ import { CoreModule } from './core';
 // SERVICES
 import { APP_SERVICES } from './core/services';
 
-import { NOTIFY_PROVIDERS, NOTIFY_GLOBAL_OPTIONS } from '@ngrx/notify';
+// import { NOTIFY_PROVIDERS, NOTIFY_GLOBAL_OPTIONS } from '@ngrx/notify';
 
 import 'rxjs/Rx';
 
 // Application wide providers
 const APP_PROVIDERS = [
   // AppState,
-  APP_SERVICES,
-  NOTIFY_PROVIDERS
+  APP_SERVICES
+  // NOTIFY_PROVIDERS
 ];
 
 // type StoreType = {
-//   state: InteralStateType,
+//   state: InternalStateType,
 //   restoreInputValues: () => void,
 //   disposeOldHosts: () => void
 // };
@@ -70,7 +70,7 @@ const APP_PROVIDERS = [
 })
 export class AppModule {
   // constructor(public appRef: ApplicationRef, public appState: AppState) {}
-  //
+
   // hmrOnInit(store: StoreType) {
   //   if (!store || !store.state) return;
   //   console.log('HMR store', JSON.stringify(store, null, 2));
@@ -81,12 +81,12 @@ export class AppModule {
   //     let restoreInputValues = store.restoreInputValues;
   //     setTimeout(restoreInputValues);
   //   }
-  //
+
   //   this.appRef.tick();
   //   delete store.state;
   //   delete store.restoreInputValues;
   // }
-  //
+
   // hmrOnDestroy(store: StoreType) {
   //   const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
   //   // save state
@@ -99,7 +99,7 @@ export class AppModule {
   //   // remove styles
   //   removeNgStyles();
   // }
-  //
+
   // hmrAfterDestroy(store: StoreType) {
   //   // display new elements
   //   store.disposeOldHosts();
@@ -107,3 +107,4 @@ export class AppModule {
   // }
 
 }
+

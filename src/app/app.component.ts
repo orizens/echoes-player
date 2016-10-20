@@ -11,7 +11,7 @@ import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { YoutubeMediaPlaylist } from './core/store/now-playlist';
-import { Notify } from '@ngrx/notify';
+// import { Notify } from '@ngrx/notify';
 /*
  * App Component
  * Top Level Component
@@ -29,18 +29,18 @@ export class App implements OnInit {
     public youtubeSearch: YoutubeSearch,
     public playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
-    private playerActions: PlayerActions,
-    private notify: Notify
+    private playerActions: PlayerActions
+    // private notify: Notify
   ) {
   }
 
   ngOnInit() {
     this.player = this.playerService.player$;
-    this.notify.requestPermission().subscribe(permission => {
-      if (permission) {
-        console.log('OK to notify');
-      }
-    });
+    // this.notify.requestPermission().subscribe(permission => {
+    //   if (permission) {
+    //     console.log('OK to notify');
+    //   }
+    // });
   }
 
   selectVideo (media: GoogleApiYouTubeVideoResource) {

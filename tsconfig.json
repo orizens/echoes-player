@@ -10,14 +10,13 @@
     "noEmitHelpers": true,
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "paths": [
-    ],
+    "paths": {
+    },
     "lib": [
       "dom",
       "es6"
     ],
     "types": [
-      /*"core-js",*/
       "hammerjs",
       "jasmine",
       "node",
