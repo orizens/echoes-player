@@ -19,10 +19,10 @@ My services include:
 # Tech Stack
 
 ## Included ngrx solutions:  
-- [ngrx/store](http://github.com/ngrx/store)   
-- [ngrx/effects](http://github.com/ngrx/effects)   
-- ~~[ngrx/notify](http://github.com/ngrx/notify)~~ (disabled until upgrade)   
-- [ngrx-store-localstorage](https://github.com/btroncone/ngrx-store-localstorage)  
+- [ngrx/store](http://github.com/ngrx/store) - State Management a la "[Redux](https://github.com/reactjs/redux)" based on RxJs  
+- [ngrx/effects](http://github.com/ngrx/effects) - Side Effects layer for ngrx/store  
+- ~~[ngrx/notify](http://github.com/ngrx/notify)~~ (disabled until upgrade) - reactive web notifications 
+- [ngrx-store-localstorage](https://github.com/btroncone/ngrx-store-localstorage) - local sotrage support for ngrx/store  
 
 ## Included Technologies & Libraries
 - [Angular JS v2.x](http://angular.io) 
