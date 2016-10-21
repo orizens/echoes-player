@@ -4,19 +4,25 @@ It's fun & easy to listen or watch videos from youtube with Echoes.
 What if youtube was designed to be used as music player?
 This repository is an implementation of Echoes Player with angular 2 - It's still a work in progress aimed at learning angular 2.
 
-
 Echoes Player is also available as a [Chrome Application](https://chrome.google.com/webstore/detail/echoes-player/aaenpaopfebcmdaegggjbkhaedlbbkde)
 
 It can be regarded as the Media Player experience for youtube listening pleasure.
-## Tech Stack
 
-### Included ngrx solutions:  
+## Angular 2 Consulting Services
+I'm a Senior Javascript Engineer & A Front End Consultant.
+My services include:  
+- consulting to companies and startups on how to approach code in their projects and keep it maintainable.  
+- I provide project bootstrapping and development - while afterwards, I integrate it on site and guide the team on it.  
+
+# Tech Stack
+
+## Included ngrx solutions:  
 - ngrx/store 
 - ngrx/effects 
 - ~~ngrx/notify~~ (disabled until upgrade) 
 - ngrx-store-localstorage 
 
-### Libraries
+## Included Technologies & Libraries
 - Angular JS v2.x
 - Bootstrap v3.x (LESS)
 - Typescript 2
