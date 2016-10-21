@@ -14,16 +14,18 @@ My services include:
 - consulting to companies and startups on how to approach code in their projects and keep it maintainable.  
 - I provide project bootstrapping and development - while afterwards, I integrate it on site and guide the team on it.  
 
+[contact](http://orizens.com/contact)
+
 # Tech Stack
 
 ## Included ngrx solutions:  
-- ngrx/store 
-- ngrx/effects 
-- ~~ngrx/notify~~ (disabled until upgrade) 
-- ngrx-store-localstorage 
+- [ngrx/store](http://github.com/ngrx/store)   
+- [ngrx/effects](http://github.com/ngrx/effects)   
+- ~~[ngrx/notify](http://github.com/ngrx/notify)~~ (disabled until upgrade)   
+- [ngrx-store-localstorage](https://github.com/btroncone/ngrx-store-localstorage)  
 
 ## Included Technologies & Libraries
-- Angular JS v2.x
+- [Angular JS v2.x](http://angular.io) 
 - Bootstrap v3.x (LESS)
 - Typescript 2
 - ES6 / ES2015 (using Loader Spec)
@@ -51,15 +53,8 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
 # Table of Contents
 * [File Structure](#file-structure)
 * [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Installing](#installing)
-    * [Running the app](#running-the-app)
 * [Configuration](#configuration)
-* [Contributing](#contributing)
-* [TypeScript](#typescript)
 * [@Types](#types)
-* [Frequently asked questions](#frequently-asked-questions)
-* [Support, Questions, or Feedback](#support-questions-or-feedback)
 * [License](#license)
 
 
@@ -105,7 +100,7 @@ angular2-webpack-starter/
 
 ```
 
-# Getting Started
+# Development Guide
 
 ### build files
 ```bash
