@@ -14,7 +14,7 @@ My services include:
 - consulting to companies and startups on how to approach code in their projects and keep it maintainable.  
 - I provide project bootstrapping and development - while afterwards, I integrate it on site and guide the team on it.  
 
-[contact](http://orizens.com/contact)
+[Contact Me Here](http://orizens.com/contact)
 
 # Tech Stack
 
@@ -59,7 +59,7 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
 * [License](#license)
 
 
-## File Structure (adopted form angularclass)
+## File Structure (adopted from angularclass)
 I use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
 ```
 angular2-webpack-starter/
