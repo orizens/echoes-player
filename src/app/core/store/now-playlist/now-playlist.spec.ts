@@ -3,7 +3,7 @@ import {
   async,
 } from '@angular/core/testing';
 
-import { nowPlaylist, NowPlaylistActions } from './index';
+import { nowPlaylist, NowPlaylistActions, YoutubeMediaPlaylist } from './index';
 import { YoutubeMediaItemsMock } from '../../../../../tests/mocks/youtube.media.items';
 
 describe('The Now Playlist Reducer', () => {
@@ -16,7 +16,10 @@ describe('The Now Playlist Reducer', () => {
 
     it('should select the chosen video', () => {
       const state = { index: 0, videos: [...YoutubeMediaItemsMock], filter: '' };
-      const actual = nowPlaylist(state, { type: NowPlaylistActions.SELECT, payload: YoutubeMediaItemsMock[0] });
+      const actual = nowPlaylist(state, {
+        type: NowPlaylistActions.SELECT,
+        payload: YoutubeMediaItemsMock[0]
+      });
       const expected = YoutubeMediaItemsMock[0];
       expect(actual.index).toBe(expected.id);
     });

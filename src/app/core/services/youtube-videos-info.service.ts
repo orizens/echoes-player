@@ -17,24 +17,24 @@ export class YoutubeVideosInfo {
     });
     this.api.list = function(id) {
       const videoId = id.videoId || id;
-  		this.config.set(this.idKey, videoId);
-  		this.isSearching = true;
-  		return this.http.get(this.url, { search: this.config })
+      this.config.set(this.idKey, videoId);
+      this.isSearching = true;
+      return this.http.get(this.url, { search: this.config })
         .map(res => res.json().items);
-  	}
+    };
   }
 
   fetchVideoData (mediaId: string) {
-		return this.api
-			.list(mediaId)
-			.map(items => items[0])
-	}
+    return this.api
+      .list(mediaId)
+      .map(items => items[0]);
+  }
 
   fetchVideosData (mediaIds: string) {
-		return this.api
-			.list(mediaIds)
-			.map(items => items)
-	}
+    return this.api
+      .list(mediaIds)
+      .map(items => items);
+  }
 
   mediaToFriendlyDuration (media) {
     let newMedia = Object.assign({}, media);
@@ -43,20 +43,20 @@ export class YoutubeVideosInfo {
   }
 
   toFriendlyDuration (time) {
-		var t = time.split("PT")[1];
-		var ts = [];
-		if (t) {
-			t = t.replace(/(H|M)/g, ":")
-			.replace("S", "");
-			ts = t.split(":");
-			ts = ts.map(function(d){
-				return d.length === 1 ? "0" + d : d;
-			});
-		} else {
-			t = time.split("P")[1];
-			t = t.replace("D", "");
-			ts = [parseInt(t) * 24, ':00:00'];
-		}
-		return ts.join(":");
-	}
+    let t = time.split('PT')[1];
+    let ts = [];
+    if (t) {
+      t = t.replace(/(H|M)/g, ':')
+      .replace('S', '');
+      ts = t.split(':');
+      ts = ts.map(function(d){
+        return d.length === 1 ? '0' + d : d;
+      });
+    } else {
+      t = time.split('P')[1];
+      t = t.replace('D', '');
+      ts = [parseInt(t, 10) * 24, ':00:00'];
+    }
+    return ts.join(':');
+  }
 }

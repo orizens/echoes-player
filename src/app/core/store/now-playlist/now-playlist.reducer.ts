@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import { ActionReducer, Action } from '@ngrx/store';
 import { NowPlaylistActions } from './now-playlist.actions';
 
 export interface YoutubeMediaPlaylist {
-    videos: GoogleApiYouTubeVideoResource[],
-    index: string,
-    filter: string
+    videos: GoogleApiYouTubeVideoResource[];
+    index: string;
+    filter: string;
 }
 let initialState: YoutubeMediaPlaylist = {
     videos: [],
     index: '',
     filter: ''
-}
-export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (state: YoutubeMediaPlaylist = initialState, action: Action) => {
+};
+export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (
+    state: YoutubeMediaPlaylist = initialState,
+    action: Action) => {
+
     let matchMedia = (media: GoogleApiYouTubeVideoResource) => media.id === action.payload.id;
     let isDifferent = (media: GoogleApiYouTubeVideoResource) => media.id !== action.payload.id;
 
@@ -40,12 +43,12 @@ export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (state: YoutubeM
             return Object.assign({}, state, { videos: [], filter: '', index: 0 });
 
         case NowPlaylistActions.SELECT_NEXT:
-            return Object.assign({}, state, { index: selectNextIndex(state.videos, state.index) })
+            return Object.assign({}, state, { index: selectNextIndex(state.videos, state.index) });
 
         default:
             return state;
     }
-}
+};
 
 function addMedia(videos: GoogleApiYouTubeVideoResource[], media: any) {
     const newMedia = [...videos].findIndex(video => video.id === media.id);

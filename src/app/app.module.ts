@@ -14,7 +14,7 @@ import { App } from './app.component';
 // import { AppState, InteralStateType } from './app.service';
 
 // COMPONENTS
-import { CORE_COMPONENTS } from "./core/components";
+import { CORE_COMPONENTS } from './core/components';
 
 import { PlayerModule } from './youtube-player';
 import { YoutubeVideosModule } from './youtube-videos';

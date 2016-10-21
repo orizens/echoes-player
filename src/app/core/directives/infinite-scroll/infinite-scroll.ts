@@ -1,4 +1,8 @@
-import { Directive, ElementRef, Input, Output, EventEmitter, OnDestroy, OnInit, OnChanges, SimpleChanges, NgZone } from '@angular/core';
+import {
+  Directive, ElementRef, Input,
+  Output, EventEmitter, OnDestroy,
+  OnInit, OnChanges, SimpleChanges, NgZone
+} from '@angular/core';
 import { Scroller, InfiniteScrollEvent } from './scroller';
 import { PositionResolverFactory } from './position-resolver';
 
@@ -44,7 +48,7 @@ export class InfiniteScroll implements OnDestroy, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes['_disabled'] && this.scroller){
+    if (changes['_disabled'] && this.scroller) {
       this.scroller.handleInfiniteScrollDisabled(changes['_disabled'].currentValue);
     }
   }

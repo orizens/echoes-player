@@ -3,6 +3,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { EchoesState } from '../store';
 import { PlayerActions, YoutubePlayerState } from '../store/youtube-player';
 
 @Injectable()
@@ -15,9 +16,13 @@ export class YoutubePlayerService {
       width: 367
   };
 
-  constructor (public store: Store<any>, private zone: NgZone) {
-    this.player$ = this.store.select(store => store.player);
-    this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen });
+  constructor (
+    private store: Store<EchoesState>,
+    private zone: NgZone,
+    private playerActions: PlayerActions
+    ) {
+    this.player$ = this.store.select(_store => _store.player);
+    this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen; });
   }
 
   setupPlayer (player) {
@@ -40,7 +45,7 @@ export class YoutubePlayerService {
   }
 
   togglePlayer() {
-    this.store.dispatch({ type: PlayerActions.TOGGLE_PLAYER, payload: true });
+    this.store.dispatch(this.playerActions.togglePlayer(true));
   }
 
   isPlaying () {
@@ -68,8 +73,7 @@ export class YoutubePlayerService {
     if (state === YT.PlayerState.PLAYING) {
       // service.playerState = YT.PlayerState.PLAYING;
     }
-    console.log('state changed', state);
-    this.store.dispatch({ type: PlayerActions.STATE_CHANGE, payload: state });
+    this.store.dispatch(this.playerActions.updateState(state));
   }
 
   setSize () {
@@ -80,6 +84,6 @@ export class YoutubePlayerService {
       width = window.innerWidth;
     }
     this.player.setSize(width, height);
-    this.store.dispatch({ type: PlayerActions.FULLSCREEN });
+    this.store.dispatch(this.playerActions.fullScreen());
   }
 }

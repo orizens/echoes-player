@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import {
+  Component, EventEmitter, Input,
+  Output, ChangeDetectionStrategy, OnInit
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
@@ -10,70 +13,70 @@ import './media-info/media-info.less';
 import './player-controls/player-controls.less';
 
 @Component({
-	selector: 'player',
-	template: require('./youtube-player.html'),
-	changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'player',
+  template: require('./youtube-player.html'),
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayer implements OnInit {
-	@Input() player: any;
-	@Output() ended = new EventEmitter();
-	@Output() playNext = new EventEmitter();
-	@Output() play = new EventEmitter();
+  @Input() player: any;
+  @Output() ended = new EventEmitter();
+  @Output() playNext = new EventEmitter();
+  @Output() play = new EventEmitter();
 
-	title: Observable<string>;
-	mediaThumbnail: Observable<string>;
+  title: Observable<string>;
+  mediaThumbnail: Observable<string>;
 
-	constructor(public playerService: YoutubePlayerService) {
-	}
+  constructor(public playerService: YoutubePlayerService) {
+  }
 
-	ngOnInit(){
-		this.playerService.player$
-			.take(1)
+  ngOnInit() {
+    this.playerService.player$
+      .take(1)
       .subscribe(player => player.isFullscreen = false);
-	}
+  }
 
-	setupPlayer (player) {
-		this.playerService.setupPlayer(player);
-	}
+  setupPlayer (player) {
+    this.playerService.setupPlayer(player);
+  }
 
-	updatePlayerState (event) {
-		this.playerService.onPlayerStateChange(event);
-	}
+  updatePlayerState (event) {
+    this.playerService.onPlayerStateChange(event);
+  }
 
-	playVideo () {
-		this.playerService.play();
-		// this.play.next(this.player.media);
-	}
+  playVideo () {
+    this.playerService.play();
+    // this.play.next(this.player.media);
+  }
 
-	isPlaying () {
-		return this.playerService.isPlaying();
-	}
+  isPlaying () {
+    return this.playerService.isPlaying();
+  }
 
-	pauseVideo () {
-		this.playerService.pause();
-	}
+  pauseVideo () {
+    this.playerService.pause();
+  }
 
-	togglePlayer () {
-		this.playerService.togglePlayer();
-	}
+  togglePlayer () {
+    this.playerService.togglePlayer();
+  }
 
-	playNextTrack () {
-		this.playNext.next(this.player);
-	}
+  playNextTrack () {
+    this.playNext.next(this.player);
+  }
 
-	onStop (state: YT.PlayerState) {
-		this.ended.next(state);
-	}
+  onStop (state: YT.PlayerState) {
+    this.ended.next(state);
+  }
 
-	toggleFullScreen () {
-		this.playerService.setSize();
-	}
+  toggleFullScreen () {
+    this.playerService.setSize();
+  }
 
-	hasContent () {
-		return Object.keys(this.player.media).length;
-	}
+  hasContent () {
+    return Object.keys(this.player.media).length;
+  }
 
-	onThumbClick () {
-		return true;
-	}
+  onThumbClick () {
+    return true;
+  }
 }

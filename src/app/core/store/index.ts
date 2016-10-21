@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { Store, StoreModule } from '@ngrx/store';
 
 import { ActionReducer, Action, combineReducers } from '@ngrx/store';
-import { compose } from "@ngrx/core/compose";
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { compose } from '@ngrx/core/compose';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // reducers
 import { videos, EchoesVideos, YoutubeVideosActions } from './youtube-videos';
-import { player, YoutubePlayerState, PlayerActions} from './youtube-player';
-import { nowPlaylist, YoutubeMediaPlaylist, NowPlaylistActions} from './now-playlist';
+import { player, YoutubePlayerState, PlayerActions } from './youtube-player';
+import { nowPlaylist, YoutubeMediaPlaylist, NowPlaylistActions } from './now-playlist';
 import { user, UserProfileData, UserProfileActions } from './user-profile';
 import { search, PlayerSearch, PlayerSearchActions } from './player-search';
 import { localStorageSync } from 'ngrx-store-localstorage';
@@ -43,7 +43,7 @@ const composeStore = compose(
     StoreModule.provideStore(composeStore),
     // Note that you must instrument after importing StoreModule
     StoreDevtoolsModule.instrumentStore({
-      maxAge: 5
+      // maxAge: 5
     })
   ],
   declarations: [

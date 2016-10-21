@@ -1,10 +1,13 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import {
+  Component, ChangeDetectionStrategy, OnInit,
+  EventEmitter, Input, Output
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../core/store';
 
-import { NowPlaylistActions } from "../core/store/now-playlist";
-import { PlayerActions } from "../core/store/youtube-player";
+import { NowPlaylistActions } from '../core/store/now-playlist';
+import { PlayerActions } from '../core/store/youtube-player';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
@@ -53,13 +56,13 @@ export class YoutubeVideos implements OnInit {
     public youtubePlayer: YoutubePlayerService
   ) {
     this.videos$ = store.select(state => state.videos);
-    this.playerSearch$ = store.select(state => state.search)
+    this.playerSearch$ = store.select(state => state.search);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.playerSearch$
       .take(1)
-      .subscribe(ps => this.search(ps.query))
+      .subscribe(ps => this.search(ps.query));
   }
 
   search (query: string) {
@@ -70,7 +73,7 @@ export class YoutubeVideos implements OnInit {
   playSelectedVideo (media: GoogleApiYouTubeSearchResource) {
     this.store.dispatch(this.playerActions.loadAndPlay(media));
     this.nowPlaylistService.updateIndexByMedia(media.id.videoId);
-    this.store.dispatch(this.nowPlaylistActions.queueLoadVideo(media))
+    this.store.dispatch(this.nowPlaylistActions.queueLoadVideo(media));
   }
 
   queueSelectedVideo (media: GoogleApiYouTubeSearchResource) {

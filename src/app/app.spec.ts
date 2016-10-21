@@ -7,27 +7,31 @@ import {
 import { App } from './app.component';
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
 import { PlayerActions } from './core/store/youtube-player';
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
-    let youtubePlayerService = jasmine.createSpyObj('YoutubePlayerService', [ 'playVideo' ]);
-    youtubePlayerService.player$ = {};
+    let youtubePlayerServiceSpy = jasmine.createSpyObj('YoutubePlayerService', [ 'playVideo' ]);
+    youtubePlayerServiceSpy.player$ = {};
     let notifyMock = {
       subscribe: (fn) => fn(),
       requestPermission: () => notifyMock
     };
-
+    const nowPlaylistSpy = jasmine.createSpyObj('NowPlaylistService', [
+      'updateIndexByMedia', 'selectNextIndex', 'getCurrent'
+    ]);
+    const storeSpy = jasmine.createSpyObj('Store', [ 'dispatch', 'subscribe' ]);
+    const playerActionsSpy = jasmine.createSpyObj('PlayerActions', ['playVideo']);
     return TestBed.configureTestingModule({
       providers: [
         App,
         { provide: YoutubeSearch, useClass: class YoutubeSearch {} },
-        { provide: YoutubePlayerService, useValue: youtubePlayerService },
-        { provide: PlayerActions, useValue: jasmine.createSpyObj('PlayerActions', ['playVideo']) },
-        { provide: NowPlaylistService, useValue: jasmine.createSpyObj('NowPlaylistService', ['updateIndexByMedia', 'selectNextIndex', 'getCurrent']) },
-        { provide: Store, useValue: jasmine.createSpyObj('Store', [ 'dispatch', 'subscribe' ]) }
+        { provide: YoutubePlayerService, useValue: youtubePlayerServiceSpy },
+        { provide: PlayerActions, useValue: playerActionsSpy },
+        { provide: NowPlaylistService, useValue: nowPlaylistSpy },
+        { provide: Store, useValue: storeSpy }
       ]
     });
   });
@@ -55,17 +59,19 @@ describe('App', () => {
     actuals.forEach(actual => expect(actual).toHaveBeenCalled());
   }));
   */
-  it('should dispatch a play video action when the player control next is clicked', inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
-    app.ngOnInit();
-    app.playNextVideo({});
-    const actuals = [
-      store.dispatch,
-      playerActions.playVideo
-    ];
-    actuals.forEach(actual => expect(actual).toHaveBeenCalled());
+  it('should dispatch a play video action when the player control next is clicked',
+  inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
+      app.ngOnInit();
+      app.playNextVideo({});
+      const actuals = [
+        store.dispatch,
+        playerActions.playVideo
+      ];
+      actuals.forEach(actual => expect(actual).toHaveBeenCalled());
   }));
 
-  it('should select a video in playlist', inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
+  it('should select a video in playlist',
+  inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
     const media = { id: 'mocked-media-object' };
     const expected = media.id;
     const specs = [
@@ -87,7 +93,8 @@ describe('App', () => {
     actuals.forEach(actual => expect(actual).toHaveBeenCalled());
   }));
 
-  it('should NOT play the next video when it reached the end of the playlist', inject([ App ], (app) => {
+  it('should NOT play the next video when it reached the end of the playlist',
+  inject([ App ], (app) => {
     spyOn(app, 'isLastIndex').and.returnValue(true);
     spyOn(app, 'playNextVideo');
     const actual = app.playNextVideo;

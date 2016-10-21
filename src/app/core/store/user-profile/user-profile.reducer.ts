@@ -4,18 +4,18 @@ import { UserProfileActions } from './user-profile.actions';
 export * from './user-profile.actions';
 
 export interface UserProfileData {
-  access_token: string,
-  playlists: GoogleApiYouTubePlaylistResource[],
-  data?: any,
-  nextPageToken?: string
-}
+  access_token: string;
+  playlists: GoogleApiYouTubePlaylistResource[];
+  data?: any;
+  nextPageToken?: string;
+};
 
 let initialUserState = {
   access_token: '',
   playlists: [],
   data: {},
   nextPageToken: ''
-}
+};
 export const user: ActionReducer<UserProfileData> = (state = initialUserState, action: Action) => {
 
   switch (action.type) {
@@ -40,4 +40,4 @@ export const user: ActionReducer<UserProfileData> = (state = initialUserState, a
     default:
     return state;
   }
-}
+};

@@ -48,16 +48,16 @@ export class NowPlaying implements OnInit {
   sortVideo () { }
 
   updateFilter (searchFilter: string) {
-		this.nowPlaylistService.updateFilter(searchFilter);
-	}
+    this.nowPlaylistService.updateFilter(searchFilter);
+  }
 
-	resetFilter () {
-		this.nowPlaylistService.updateFilter('');
-	}
+  resetFilter () {
+    this.nowPlaylistService.updateFilter('');
+  }
 
   clearPlaylist () {
-		this.nowPlaylistService.clearPlaylist();
-	}
+    this.nowPlaylistService.clearPlaylist();
+  }
 
   removeVideo (media) {
     this.nowPlaylistService.removeVideo(media);

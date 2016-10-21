@@ -12,6 +12,7 @@ import { AppModule } from './app';
 import './css/style.less';
 // this is long because i use webpack2
 // https://github.com/gowravshekar/font-awesome-webpack/issues/20
+// tslint:disable-next-line
 import 'style!css!less!font-awesome-webpack/font-awesome-styles.loader!font-awesome-webpack/font-awesome.config.js';
 
 

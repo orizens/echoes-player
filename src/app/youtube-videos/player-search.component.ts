@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component, OnInit, Input, Output,
+  EventEmitter, ChangeDetectionStrategy
+} from '@angular/core';
 // import { NgForm } from '@angular/common';
 
 import './player-search.less';
@@ -10,7 +13,8 @@ import './player-search.less';
       <form class="navbar-form form-search navbar-left" id="media-explorer"
         (ngSubmit)="onSearch(query.value)">
         <div class="form-group clearfix">
-          <input placeholder="Explore Media" id="media-search" type="search" class="form-control" autocomplete="off"
+          <input placeholder="Explore Media" id="media-search" 
+            type="search" class="form-control" autocomplete="off"
             [value]="searchQuery.query" #query name="query"
             (input)="onQueryChange(query.value)"
             >

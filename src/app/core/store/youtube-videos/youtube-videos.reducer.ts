@@ -1,7 +1,7 @@
 import { ActionReducer, Action } from '@ngrx/store';
 import { YoutubeVideosActions } from './youtube-videos.actions';
 type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | Object;
-export interface EchoesVideos extends Array<GoogleApiYoutubeVideo>{};
+export interface EchoesVideos extends Array<GoogleApiYoutubeVideo> {};
 
 export const videos: ActionReducer<EchoesVideos> = (state: EchoesVideos = [], action: Action) => {
 
@@ -24,8 +24,4 @@ export const videos: ActionReducer<EchoesVideos> = (state: EchoesVideos = [], ac
     default:
       return state;
   }
-}
-
-export function addVideos(state: EchoesVideos, videos: GoogleApiYouTubeSearchResource[]) {
-  return state.concat(videos);
-}
+};

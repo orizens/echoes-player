@@ -3,28 +3,51 @@ import { Action } from '@ngrx/store';
 
 @Injectable()
 export class PlayerActions {
-  static PLAY = 'PLAY';
+  static PLAY = '[Player] PLAY';
+  static LOAD_AND_PLAY = '[Player] LOAD_AND_PLAY';
+  static QUEUE = '[Player] REMOVE';
+  static PLAY_STARTED = '[Player] PLAY_STARTED';
+  static TOGGLE_PLAYER = '[Player] TOGGLE_PLAYER';
+  static STATE_CHANGE = '[Player] STATE_CHANGE';
+  static FULLSCREEN = '[Player] FULLSCREEN';
+
   playVideo(media: GoogleApiYouTubeVideoResource): Action {
     return {
       type: PlayerActions.PLAY,
       payload: media
-    }
+    };
   }
-  static LOAD_AND_PLAY = 'LOAD_AND_PLAY';
+
   loadAndPlay(media: GoogleApiYouTubeSearchResource): Action {
     return {
       type: PlayerActions.LOAD_AND_PLAY,
       payload: media
-    }
+    };
   }
-  static PLAY_STARTED = 'PLAY_STARTED';
+
   playStarted(media): Action {
     return {
       type: PlayerActions.PLAY_STARTED
-    }
+    };
   }
-  static QUEUE = 'REMOVE';
-  static TOGGLE_PLAYER = 'TOGGLE_PLAYER';
-  static STATE_CHANGE = 'STATE_CHANGE';
-  static FULLSCREEN = 'FULLSCREEN';
+
+  updateState(state: number): Action {
+    return {
+      type: PlayerActions.STATE_CHANGE,
+      payload: state
+    };
+  }
+
+  togglePlayer(visible: boolean = true): Action {
+    return {
+      type: PlayerActions.TOGGLE_PLAYER,
+      payload: visible
+    };
+  }
+
+  fullScreen(): Action {
+    return {
+      type: PlayerActions.FULLSCREEN
+    };
+  }
 }

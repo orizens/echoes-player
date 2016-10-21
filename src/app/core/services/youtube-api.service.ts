@@ -1,12 +1,12 @@
 import { Http, URLSearchParams, Response, RequestOptionsArgs, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
-import { YOUTUBE_API_KEY, CLIENT_ID} from './constants';
+import { YOUTUBE_API_KEY, CLIENT_ID } from './constants';
 interface YoutubeApiServiceOptions {
-  url?: string,
-  http?: Http,
-  idKey?: string,
-  config? : any
+  url?: string;
+  http?: Http;
+  idKey?: string;
+  config?: any;
 }
 
 export class YoutubeApiService {
@@ -34,7 +34,7 @@ export class YoutubeApiService {
   setConfig(config) {
       Object.keys(config).forEach(option => {
           this.config.set(option, config[option]);
-      })
+      });
   }
 
   setToken(token: string) {
@@ -62,7 +62,7 @@ export class YoutubeApiService {
           .map(response => response.json());
   }
 
-  list(id){
+  list(id) {
     if (this.idKey) {
         this.config.set(this.idKey, id);
     }

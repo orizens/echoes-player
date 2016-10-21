@@ -1,1 +1,1 @@
-export * from "./youtube-media";
+export * from './youtube-media';

@@ -3,18 +3,13 @@ import {
   async,
 } from '@angular/core/testing';
 
-// import {Component, provide} from 'angular2/core';
-// import {BaseRequestOptions, Http} from 'angular2/http';
-// import {MockBackend} from 'angular2/http/testing';
-
-// Load the implementations that should be tested
-import { player } from './youtube-player.reducer';
+import { player, YoutubePlayerState } from './youtube-player.reducer';
 import { PlayerActions } from './youtube-player.actions';
 import { YoutubeMediaMock } from '../../../../../tests/mocks/youtube.media.item';
 
 describe('The Youtube Player reducer', () => {
     const mockedState = {
-      mediaId: 'mocked...',
+      mediaId: { videoId: 'NONE'},
       index: 0,
       media: {},
       showPlayer: true,
@@ -23,7 +18,7 @@ describe('The Youtube Player reducer', () => {
     };
     it('should return current state when no valid actions have been made', () => {
         const state = Object.assign({}, mockedState);
-        const actual = player(state, {type: 'INVALID_ACTION', payload: {}});
+        const actual = player(<YoutubePlayerState>state, {type: 'INVALID_ACTION', payload: {}});
         const expected = state;
         expect(actual).toBe(expected);
     });

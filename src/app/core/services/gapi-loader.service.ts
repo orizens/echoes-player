@@ -3,7 +3,7 @@ import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import { CLIENT_ID} from './constants';
+import { CLIENT_ID } from './constants';
 
 
 @Injectable()

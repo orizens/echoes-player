@@ -22,11 +22,10 @@ export class Scroller {
   public immediateCheck: boolean;
   public useDocumentBottom: boolean;
   public checkInterval: number;
+  public lastScrollPosition: number = 0;
   private documentElement: Window | ElementRef | any;
   private isContainerWindow: boolean;
   private disposeScroll: Subscription;
-  public lastScrollPosition: number = 0;
-  // private axis: AxisResolver;
   private positionResolver: PositionResolver;
 
   constructor(
@@ -46,7 +45,9 @@ export class Scroller {
     private _positionResolver: PositionResolverFactory
   ) {
     this.isContainerWindow = Object.prototype.toString.call(this.windowElement).includes('Window');
-    this.documentElement = this.isContainerWindow ? this.windowElement.document.documentElement : null;
+    this.documentElement = this.isContainerWindow
+      ? this.windowElement.document.documentElement
+      : null;
     this.handleInfiniteScrollDistance(infiniteScrollDownDistance, infiniteScrollUpDistance);
 
     // if (attrs.infiniteScrollParent != null) {
@@ -63,7 +64,7 @@ export class Scroller {
     this.createInterval();
   }
 
-  defineContainer () {
+  defineContainer() {
     if (this.isContainerWindow) {
       this.container = this.windowElement;
     } else {
@@ -72,7 +73,7 @@ export class Scroller {
     this.attachEvent(this.container);
   }
 
-  createInterval () {
+  createInterval() {
     if (this.isImmediate) {
       this.checkInterval = this.$interval(() => {
         return this.handler();
@@ -80,7 +81,7 @@ export class Scroller {
     }
   }
 
-  handler () {
+  handler() {
     const container = this.positionResolver.calculatePoints(this.$elementRef);
     const scrollingDown: boolean = this.lastScrollPosition < container.scrolledUntilNow;
     this.lastScrollPosition = container.scrolledUntilNow;
@@ -103,8 +104,8 @@ export class Scroller {
     this.checkWhenEnabled = shouldScroll;
 
     if (triggerCallback) {
-      const infiniteScrollEvent: InfiniteScrollEvent = { 
-        currentScrollPosition: container.scrolledUntilNow 
+      const infiniteScrollEvent: InfiniteScrollEvent = {
+        currentScrollPosition: container.scrolledUntilNow
       };
       if (scrollingDown) {
         this.infiniteScrollDownCallback(infiniteScrollEvent);
@@ -117,12 +118,12 @@ export class Scroller {
     }
   }
 
-  handleInfiniteScrollDistance (scrollDownDistance: number | any, scrollUpDistance: number | any) {
+  handleInfiniteScrollDistance(scrollDownDistance: number | any, scrollUpDistance: number | any) {
     this.scrollDownDistance = parseFloat(scrollDownDistance) || 0;
     this.scrollUpDistance = parseFloat(scrollUpDistance) || 0;
   }
 
-  attachEvent (newContainer: Window | ElementRef | any) {
+  attachEvent(newContainer: Window | ElementRef | any) {
     this.clean();
     if (newContainer) {
       const throttle: number = this.infiniteScrollThrottle;
@@ -142,13 +143,13 @@ export class Scroller {
     }
   }
 
-  clean () {
+  clean() {
     if (this.disposeScroll) {
       this.disposeScroll.unsubscribe();
     }
   }
 
-  handleInfiniteScrollDisabled (scrollDisabled: boolean) {
+  handleInfiniteScrollDisabled(scrollDisabled: boolean) {
     this.scrollEnabled = !scrollDisabled;
   }
 }
