@@ -3,6 +3,8 @@ import { Store, StoreModule } from '@ngrx/store';
 
 import { ActionReducer, Action, combineReducers } from '@ngrx/store';
 import { compose } from "@ngrx/core/compose";
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+
 // reducers
 import { videos, EchoesVideos, YoutubeVideosActions } from './youtube-videos';
 import { player, YoutubePlayerState, PlayerActions} from './youtube-player';
@@ -39,6 +41,10 @@ const composeStore = compose(
 @NgModule({
   imports: [
     StoreModule.provideStore(composeStore),
+    // Note that you must instrument after importing StoreModule
+    StoreDevtoolsModule.instrumentStore({
+      maxAge: 5
+    })
   ],
   declarations: [
 

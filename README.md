@@ -23,6 +23,7 @@ My services include:
 - [ngrx/effects](http://github.com/ngrx/effects) - Side Effects layer for ngrx/store  
 - ~~[ngrx/notify](http://github.com/ngrx/notify)~~ (disabled until upgrade) - reactive web notifications 
 - [ngrx-store-localstorage](https://github.com/btroncone/ngrx-store-localstorage) - local sotrage support for ngrx/store  
+- [ngrx/store-devtools](https://github.com/ngrx/store-devtools) - a connector to [redux devtool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US) for chrome  
 
 ## Included Technologies & Libraries
 - [Angular JS v2.x](http://angular.io) 
