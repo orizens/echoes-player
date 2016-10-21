@@ -7,7 +7,6 @@ import {
 import { App } from './app.component';
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
 import { PlayerActions } from './core/store/youtube-player';
-import { Notify } from "@ngrx/notify";
 import { Store } from "@ngrx/store";
 import { Observable } from 'rxjs/Observable';
 
@@ -28,7 +27,6 @@ describe('App', () => {
         { provide: YoutubePlayerService, useValue: youtubePlayerService },
         { provide: PlayerActions, useValue: jasmine.createSpyObj('PlayerActions', ['playVideo']) },
         { provide: NowPlaylistService, useValue: jasmine.createSpyObj('NowPlaylistService', ['updateIndexByMedia', 'selectNextIndex', 'getCurrent']) },
-        { provide: Notify, useValue: notifyMock },
         { provide: Store, useValue: jasmine.createSpyObj('Store', [ 'dispatch', 'subscribe' ]) }
       ]
     });
@@ -45,6 +43,7 @@ describe('App', () => {
     expect(actual).toBe(expected);
   }));
 
+  /*
   it('should request permission to show notifications', inject([ App, Notify ], (app, notify) => {
     spyOn(notify, 'subscribe').and.callThrough();
     spyOn(notify, 'requestPermission').and.callFake(() => notify);
@@ -55,7 +54,7 @@ describe('App', () => {
     ];
     actuals.forEach(actual => expect(actual).toHaveBeenCalled());
   }));
-
+  */
   it('should dispatch a play video action when the player control next is clicked', inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
     app.ngOnInit();
     app.playNextVideo({});
