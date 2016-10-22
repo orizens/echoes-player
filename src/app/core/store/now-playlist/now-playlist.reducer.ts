@@ -45,6 +45,9 @@ export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (
         case NowPlaylistActions.SELECT_NEXT:
             return Object.assign({}, state, { index: selectNextIndex(state.videos, state.index) });
 
+        case NowPlaylistActions.SELECT_PREVIOUS:
+            return Object.assign({}, state, { index: selectPreviousIndex(state.videos, state.index) });
+
         default:
             return state;
     }
@@ -78,4 +81,14 @@ function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], index: string)
     }
 
     return videos[nextIndex].id || '';
+}
+
+function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], index: string): string {
+    let currentIndex: number = videos.findIndex(video => video.id === index);
+    let previousIndex = currentIndex - 1;
+    if (!videos.length || previousIndex < 0) {
+        previousIndex = 0;
+    }
+
+    return videos[previousIndex].id || '';
 }

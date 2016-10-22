@@ -29,7 +29,7 @@ import './now-playlist.less';
             title="Drag to sort">
           <span class="video-title">{{ video.snippet.title }}</span>
           <span class="badge badge-info">
-            {{ toFriendlyDuration(video.contentDetails.duration) }}
+            {{ video.contentDetails.duration }}
           </span>
           <span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
             (click)="removeVideo(video)"><i class="fa fa-remove"></i></span>
@@ -48,25 +48,6 @@ export class NowPlaylist {
   constructor() { }
 
   ngOnInit() { }
-
-  // TODO - extract to video info service
-  toFriendlyDuration (time) {
-    let t = time.split('PT')[1];
-    let ts = [];
-    if (t) {
-      t = t.replace(/(H|M)/g, ':')
-      .replace('S', '');
-      ts = t.split(':');
-      ts = ts.map(function(d){
-        return d.length === 1 ? '0' + d : d;
-      });
-    } else {
-      t = time.split('P')[1];
-      t = t.replace('D', '');
-      ts = [parseInt(t, 10) * 24, ':00:00'];
-    }
-    return ts.join(':');
-  }
 
   selectVideo (media) {
     this.select.next(media);

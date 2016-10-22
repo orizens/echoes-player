@@ -70,14 +70,14 @@ export class YoutubeVideos implements OnInit {
     if (!query.hasOwnProperty('isTrusted')) this.youtubeSearch.search(query, false);
   }
 
-  playSelectedVideo (media: GoogleApiYouTubeSearchResource) {
+  playSelectedVideo (media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(this.playerActions.loadAndPlay(media));
-    this.nowPlaylistService.updateIndexByMedia(media.id.videoId);
-    this.store.dispatch(this.nowPlaylistActions.queueLoadVideo(media));
+    this.store.dispatch(this.nowPlaylistActions.queueVideo(media));
+    this.store.dispatch(this.nowPlaylistActions.selectVideo(media));
   }
 
-  queueSelectedVideo (media: GoogleApiYouTubeSearchResource) {
-    this.store.dispatch(this.nowPlaylistActions.queueLoadVideo(media));
+  queueSelectedVideo (media: GoogleApiYouTubeVideoResource) {
+    this.store.dispatch(this.nowPlaylistActions.queueVideo(media));
   }
 
   resetPageToken() {

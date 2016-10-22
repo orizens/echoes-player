@@ -48,6 +48,10 @@ export class NowPlaylistService {
     this.store.dispatch({ type: NowPlaylistActions.SELECT_NEXT });
   }
 
+  selectPreviousIndex() {
+    this.store.dispatch({ type: NowPlaylistActions.SELECT_PREVIOUS });
+  }
+
   getCurrent() {
     let media;
     this.playlist$.take(1).subscribe(playlist => {

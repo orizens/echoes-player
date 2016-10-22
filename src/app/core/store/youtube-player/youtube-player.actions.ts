@@ -18,7 +18,7 @@ export class PlayerActions {
     };
   }
 
-  loadAndPlay(media: GoogleApiYouTubeSearchResource): Action {
+  loadAndPlay(media: GoogleApiYouTubeVideoResource): Action {
     return {
       type: PlayerActions.LOAD_AND_PLAY,
       payload: media

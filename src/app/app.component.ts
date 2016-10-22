@@ -60,6 +60,11 @@ export class App implements OnInit {
     this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
   }
 
+  playPreviousVideo (player) {
+    this.nowPlaylistService.selectPreviousIndex();
+    this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
+  }
+
   sortVideo (media: GoogleApiYouTubeSearchResource) {
 
   }

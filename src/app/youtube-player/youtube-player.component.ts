@@ -1,7 +1,4 @@
-import {
-  Component, EventEmitter, Input,
-  Output, ChangeDetectionStrategy, OnInit
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
@@ -18,9 +15,10 @@ import './player-controls/player-controls.less';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayer implements OnInit {
-  @Input() player: any;
+  @Input() player: YoutubePlayerState;
   @Output() ended = new EventEmitter();
-  @Output() playNext = new EventEmitter();
+  @Output() playNext = new EventEmitter<YoutubePlayerState>();
+  @Output() playPrevious = new EventEmitter<YoutubePlayerState>();
   @Output() play = new EventEmitter();
 
   title: Observable<string>;
@@ -62,6 +60,10 @@ export class YoutubePlayer implements OnInit {
 
   playNextTrack () {
     this.playNext.next(this.player);
+  }
+
+  playPreviousTrack () {
+    this.playPrevious.next(this.player);
   }
 
   onStop (state: YT.PlayerState) {

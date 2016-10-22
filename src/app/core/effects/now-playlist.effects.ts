@@ -11,21 +11,22 @@ import { YoutubeVideosInfo } from '../services/youtube-videos-info.service';
 
 @Injectable()
 export class NowPlaylistEffects {
-  @Effect()
-  queueVideoReady$ = this.actions$
-    .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)
-    .map(action => action.payload)
-    .switchMap((media: GoogleApiYouTubeVideoResource) =>
-      this.youtubeVideosInfo.fetchVideoData(media.id)
-        .map(video => this.nowPlaylistActions.queueVideo(video))
-        .catch(video => Observable.of(this.nowPlaylistActions.queueFailed(video)))
-    );
+  // @Effect()
+  // queueVideoReady$ = this.actions$
+    // .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)
+    // .map(action => action.payload)
+    // .catch(video => Observable.of(this.nowPlaylistActions.queueFailed(video)));
+    // .switchMap((media: GoogleApiYouTubeVideoResource) =>
+    //   this.youtubeVideosInfo.fetchVideoData(media.id)
+    //     .map(video => this.nowPlaylistActions.queueVideo(video))
+    //     .catch(video => Observable.of(this.nowPlaylistActions.queueFailed(video)))
 
-  @Effect()
-  queueLoadVideoSuccess$ = this.actions$
-    .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO_SUCCESS)
-    .map(action => action.payload)
-    .map(media => this.nowPlaylistActions.updateIndexByMedia(media));
+  // @Effect()
+  // queueLoadVideoSuccess$ = this.actions$
+  //   .ofType(NowPlaylistActions.QUEUE)
+  //   .map(action => action.payload)
+  //   .map(video => this.nowPlaylistActions.queueVideo(video));
+    // .map((media: GoogleApiYouTubeVideoResource) => this.nowPlaylistActions.updateIndexByMedia(media.id));
 
   constructor(
     private actions$: Actions,
