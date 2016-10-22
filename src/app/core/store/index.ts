@@ -38,13 +38,18 @@ const composeStore = compose(
   combineReducers
 )({ videos, player, nowPlaylist, user, search });
 
+const optionalImports = [];
+
+if ('production' !== ENV) {
+    // Note that you must instrument after importing StoreModule
+    optionalImports.push(StoreDevtoolsModule.instrumentStore({
+      // maxAge: 5
+    }));
+}
 @NgModule({
   imports: [
     StoreModule.provideStore(composeStore),
-    // Note that you must instrument after importing StoreModule
-    StoreDevtoolsModule.instrumentStore({
-      // maxAge: 5
-    })
+    ...optionalImports
   ],
   declarations: [
 
