@@ -1,3 +1,4 @@
+/* tslint:disable */
 export let YoutubeMediaItemsMock = [
   {
    "kind": "youtube#video",

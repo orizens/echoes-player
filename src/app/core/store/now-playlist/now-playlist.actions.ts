@@ -55,6 +55,6 @@ export class NowPlaylistActions {
     return {
       type: NowPlaylistActions.SELECT,
       payload: media
-    }
+    };
   }
 }

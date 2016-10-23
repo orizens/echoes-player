@@ -7,6 +7,7 @@ import {
 import { App } from './app.component';
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
 import { PlayerActions } from './core/store/youtube-player';
+import { AppLayoutActions } from './core/store/app-layout';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -22,14 +23,16 @@ describe('App', () => {
     const nowPlaylistSpy = jasmine.createSpyObj('NowPlaylistService', [
       'updateIndexByMedia', 'selectNextIndex', 'getCurrent'
     ]);
-    const storeSpy = jasmine.createSpyObj('Store', [ 'dispatch', 'subscribe' ]);
+    const storeSpy = jasmine.createSpyObj('Store', [ 'dispatch', 'subscribe', 'select' ]);
     const playerActionsSpy = jasmine.createSpyObj('PlayerActions', ['playVideo']);
+    const appLayoutActionsSpy = jasmine.createSpyObj('AppLayoutActions', ['toggleSidebar']);
     return TestBed.configureTestingModule({
       providers: [
         App,
         { provide: YoutubeSearch, useClass: class YoutubeSearch {} },
         { provide: YoutubePlayerService, useValue: youtubePlayerServiceSpy },
         { provide: PlayerActions, useValue: playerActionsSpy },
+        { provide: AppLayoutActions, useValue: appLayoutActionsSpy },
         { provide: NowPlaylistService, useValue: nowPlaylistSpy },
         { provide: Store, useValue: storeSpy }
       ]

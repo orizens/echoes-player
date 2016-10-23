@@ -13,6 +13,7 @@ import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { PlayerSearch } from '../core/store/player-search';
 import { EchoesVideos } from '../core/store/youtube-videos';
+import { AppLayoutActions, AppLayout } from '../core/store/app-layout';
 
 import './youtube-videos.less';
 
@@ -24,7 +25,11 @@ import './youtube-videos.less';
     [infiniteScrollDistance]="2"
     (scrolled)="searchMore()"
     [immediateCheck]="true">
-    <nav class="navbar col-xs-12" player-resizer="fullscreen">
+    <nav class="navbar col-xs-12">
+      <span class="btn btn-navbar btn-link pull-left ux-maker sidebar-toggle visible-xs-inline-block"
+        (click)="toggleSidebar()">
+        <i class="fa fa-bars"></i>
+      </span>
       <div class="navbar-header pull-left">
         <player-search
           [query]="playerSearch$ | async"
@@ -46,6 +51,7 @@ import './youtube-videos.less';
 export class YoutubeVideos implements OnInit {
   videos$: Observable<EchoesVideos>;
   playerSearch$: Observable<PlayerSearch>;
+  appLayout$: Observable<AppLayout>;
 
   constructor(
     private youtubeSearch: YoutubeSearch,
@@ -53,10 +59,12 @@ export class YoutubeVideos implements OnInit {
     private store: Store<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
     private playerActions: PlayerActions,
-    public youtubePlayer: YoutubePlayerService
+    public youtubePlayer: YoutubePlayerService,
+    private appLayoutActions: AppLayoutActions
   ) {
     this.videos$ = store.select(state => state.videos);
     this.playerSearch$ = store.select(state => state.search);
+    this.appLayout$ = store.select(state => state.appLayout);
   }
 
   ngOnInit() {
@@ -86,5 +94,15 @@ export class YoutubeVideos implements OnInit {
 
   searchMore () {
     this.youtubeSearch.searchMore();
+  }
+
+  get _sidebarExpanded(): boolean {
+    let sidebarExpanded: boolean;
+    this.appLayout$.take(1).subscribe(appLayout => sidebarExpanded = appLayout.sidebarExpanded);
+    return sidebarExpanded;
+  }
+
+  toggleSidebar() {
+    return this.store.dispatch(this.appLayoutActions.toggleSidebar());
   }
 }

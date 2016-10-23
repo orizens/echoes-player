@@ -10,10 +10,11 @@
 
 <!-- SIDEBAR -->
 <div id="sidebar" class="sidebar sidebar-left-fixed well ux-maker"
-	drawer-closed="closed"
+	[class.closed]="!_sidebarExpanded"
 	>
 	<nav class="navbar navbar-transparent" player-resizer="fullscreen">
-		<div class="navbar-brand col-md-12" drawer-toggle="drawer-opened">
+		<div class="navbar-brand col-md-12" drawer-toggle="drawer-opened"
+			(click)="toggleSidebar()">
 			<span class="btn btn-navbar btn-link ux-maker sidebar-toggle">
 				<i class="fa fa-bars"></i>
 			</span>
@@ -25,15 +26,11 @@
 	<now-playing></now-playing>
 
 </div>
-<!-- <div class="modal-backdrop sidebar-backdrop" drawer-toggle></div> -->
-
-<div class="app-loader">
-	<!-- <loader></loader> -->
-</div>
 
 <!-- MAIN CONTENT -->
 <div class="container-fluid container-main drawer-opened"
-	drawer-closed="drawer-closed" drawer-not-closed="drawer-opened"
+	[class.drawer-opened]="_sidebarExpanded"
+	[class.drawer-closed]="!_sidebarExpanded"
 	>
 	<div class="row-fluid" >
 		<!-- SEARCH RESULTS AREA -->

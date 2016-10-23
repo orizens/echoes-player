@@ -11,6 +11,7 @@ import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { YoutubeMediaPlaylist } from './core/store/now-playlist';
+import { AppLayoutActions } from './core/store/app-layout';
 // import { Notify } from '@ngrx/notify';
 /*
  * App Component
@@ -23,19 +24,22 @@ import { YoutubeMediaPlaylist } from './core/store/now-playlist';
 })
 export class App implements OnInit {
   public player: Observable<YoutubePlayerState>;
+  public appLayout$: Observable<any>;
 
   constructor(
     private store: Store<EchoesState>,
     public youtubeSearch: YoutubeSearch,
     public playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
-    private playerActions: PlayerActions
+    private playerActions: PlayerActions,
+    private appLayoutActions: AppLayoutActions
     // private notify: Notify
   ) {
   }
 
   ngOnInit() {
     this.player = this.playerService.player$;
+    this.appLayout$ = this.store.select(_state => _state.appLayout);
     // this.notify.requestPermission().subscribe(permission => {
     //   if (permission) {
     //     console.log('OK to notify');
@@ -69,8 +73,16 @@ export class App implements OnInit {
 
   }
 
-  isLastIndex() {
+  isLastIndex () { }
 
+  get _sidebarExpanded(): boolean {
+    let sidebarExpanded: boolean;
+    this.appLayout$.take(1).subscribe(appLayout => sidebarExpanded = appLayout.sidebarExpanded);
+    return sidebarExpanded;
+  }
+
+  toggleSidebar () {
+    return this.store.dispatch(this.appLayoutActions.toggleSidebar());
   }
 }
 

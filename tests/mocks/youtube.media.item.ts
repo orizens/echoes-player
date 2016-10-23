@@ -1,3 +1,4 @@
+/* tslint:disable */
 export let YoutubeMediaMock = {
   "kind": "youtube#searchResult",
   "etag": "\"q5k97EMVGxODeKcDgp8gnMu79wM/ms1isEChRlNREE1F9UOkqY3Ihe8\"",

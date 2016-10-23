@@ -11,6 +11,7 @@ import { player, YoutubePlayerState, PlayerActions } from './youtube-player';
 import { nowPlaylist, YoutubeMediaPlaylist, NowPlaylistActions } from './now-playlist';
 import { user, UserProfileData, UserProfileActions } from './user-profile';
 import { search, PlayerSearch, PlayerSearchActions } from './player-search';
+import { appLayout, AppLayoutActions } from './app-layout';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 /**
@@ -23,6 +24,7 @@ export interface EchoesState {
   nowPlaylist: YoutubeMediaPlaylist;
   user: UserProfileData;
   search: PlayerSearch;
+  appLayout: any;
 }
 
 const actions = [
@@ -30,13 +32,14 @@ const actions = [
   PlayerActions,
   UserProfileActions,
   YoutubeVideosActions,
-  PlayerSearchActions
+  PlayerSearchActions,
+  AppLayoutActions
 ];
 
 const composeStore = compose(
   localStorageSync(['videos', 'player', 'nowPlaylist', 'search'], true),
   combineReducers
-)({ videos, player, nowPlaylist, user, search });
+)({ videos, player, nowPlaylist, user, search, appLayout });
 
 const optionalImports = [];
 
