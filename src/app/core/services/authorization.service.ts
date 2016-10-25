@@ -2,7 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { Http } from '@angular/http';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
+import 'rxjs/add/observable/fromPromise';
 import { Store } from '@ngrx/store';
 import { UserProfileActions } from '../store/user-profile';
 import { EchoesState } from '../store/';
@@ -37,7 +37,7 @@ export class Authorization {
           return this._googleAuth = authInstance;
         }
         this.authorize()
-          .then(googleAuth => {
+          .subscribe((googleAuth: any) => {
             window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
               console.log('authState changed', authState);
             });
@@ -57,19 +57,15 @@ export class Authorization {
       client_id: `${CLIENT_ID}.apps.googleusercontent.com`,
       scope: this._scope
     };
-    return window.gapi.auth2.init(authOptions);
+    return Observable.fromPromise(window.gapi.auth2.init(authOptions));
   }
 
   signIn() {
     const run = (fn) => (r) => this.zone.run(() => fn.call(this, r));
     const signOptions = { scope: this._scope };
     if (this._googleAuth) {
-      this._googleAuth
-        .signIn(signOptions)
-        .then(
-        run(this.handleSuccessLogin),
-        run(this.handleFailedLogin)
-        );
+      Observable.fromPromise(this._googleAuth.signIn(signOptions))
+        .subscribe(this.handleSuccessLogin, this.handleFailedLogin);
     }
   }
 
