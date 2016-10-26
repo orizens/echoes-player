@@ -26,11 +26,11 @@ import './youtube-videos.less';
     (scrolled)="searchMore()"
     [immediateCheck]="true">
     <nav class="navbar col-xs-12">
-      <span class="btn btn-navbar btn-link pull-left ux-maker sidebar-toggle visible-xs-inline-block"
-        (click)="toggleSidebar()">
-        <i class="fa fa-bars"></i>
-      </span>
-      <div class="navbar-header pull-left">
+      <div class="navbar-header">
+        <button class="btn btn-navbar btn-link ux-maker pull-left sidebar-toggle"
+          (click)="toggleSidebar()">
+          <i class="fa fa-bars"></i>
+        </button>
         <player-search
           [query]="playerSearch$ | async"
           (change)="resetPageToken()"

@@ -16,6 +16,7 @@ import { user, UserProfileData } from '../core/store/user-profile';
 import { EchoesState } from '../core/store';
 import { NowPlaylistActions } from '../core/store/now-playlist';
 import { PlayerActions } from '../core/store/youtube-player';
+import { AppLayoutActions } from '../core/store/app-layout';
 
 import './user-area.less';
 
@@ -26,7 +27,8 @@ import './user-area.less';
     <user-nav 
       [profile]="(user$ | async)?.profile"
       (signIn)="signInUser()"
-      (signOut)="signOut()">
+      (signOut)="signOut()"
+      (menu)="toggleSidebar()">
     </user-nav>
     <p *ngIf="!isSignIn()" class="well lead">
       To view your playlists in youtube, you need to sign in.
@@ -59,7 +61,9 @@ export class UserArea implements OnInit {
     private authorization: Authorization,
     private playerActions: PlayerActions,
     private nowPlaylistActions: NowPlaylistActions,
-    public store: Store<EchoesState>) {}
+    private appLayoutActions: AppLayoutActions,
+    public store: Store<EchoesState>
+  ) {}
 
   ngOnInit () {
     this.playlists$ = this.store.select(state => state.user.playlists);
@@ -98,5 +102,9 @@ export class UserArea implements OnInit {
 
   queueSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {
     // this.nowPlaylistService.queueVideo(media);
+  }
+
+  toggleSidebar() {
+    return this.store.dispatch(this.appLayoutActions.toggleSidebar());
   }
 }

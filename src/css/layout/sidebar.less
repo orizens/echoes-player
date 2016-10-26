@@ -2,6 +2,8 @@
 
 // helpers
 @sidebar-color: #323538;
+@navbar-new-height: 5rem;
+
 .closed-sidebar() {
 	.sidebar-left-fixed.closed {
 		.transform(translatex(-300px));
@@ -46,13 +48,16 @@
 		background-color: @sidebar-color;
 		padding-bottom: 30%;
 		border: none;
-	    border-radius: 0;
+		border-radius: 0;
 
-	    .navbar-brand {
-	    	background-color: rgba(0,0,0, .2);
-	    	float: none;
-	    	width: 100%;
-	    }
+		.navbar-brand {
+			background-color: rgba(0,0,0, .2);
+			float: none;
+			width: 100%;
+			line-height: @navbar-new-height;
+			height: @navbar-new-height;
+			padding-left: 1.5rem;
+		}
 		// should be displayed
 		&.closed {
 			// transform: translatex(0px);
@@ -100,7 +105,7 @@
 
 	.sidebar-pane {
 		min-height: 0;
-		margin-top: 10.5rem;
+		margin-top: 11rem;
 
 		.nav-header {
 			line-height: 26px;

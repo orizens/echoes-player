@@ -18,6 +18,7 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /*
  * Webpack Constants
@@ -121,10 +122,10 @@ module.exports = function (options) {
          * Returns file content as string
          *
          */
-        {
-          test: /\.css$/,
-          loaders: ['to-string-loader', 'css-loader']
-        },
+        // {
+        //   test: /\.css$/,
+        //   loaders: ['to-string-loader', 'css-loader']
+        // },
 
         /* Raw loader support for *.html
          * Returns file content as string
@@ -146,9 +147,16 @@ module.exports = function (options) {
 
         {
           test: /\.less$/,
-          loader: 'style!css!less'
+          loader: ExtractTextPlugin.extract('css!less')
+          // loader: ExtractTextPlugin.extract({
+          //   loader: [ 'css-loader?sourceMap!less-loader'],
+          //   fallbackLoader: 'style-loader'
+          //   // query: {
+          //   //   sourceMap: true
+          //   // } 
+          // })
         },
-
+        
         // FONTS
         {
           test: /\.woff$/,
@@ -229,7 +237,7 @@ module.exports = function (options) {
           from: 'src/assets',
           to: 'assets'
         }, { 
-	  from: 'src/meta'
+	        from: 'src/meta'
         },{
           from: 'src/fonts',
           to: 'fonts'
@@ -296,6 +304,7 @@ module.exports = function (options) {
        */
       new LoaderOptionsPlugin({}),
 
+      new ExtractTextPlugin('style.css')
     ],
 
     /*

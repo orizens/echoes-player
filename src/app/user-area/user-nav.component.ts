@@ -6,7 +6,13 @@ import { GoogleBasicProfile } from '../core/store/user-profile';
   template: `
     <nav class="row navbar navbar-default">
       <div class="container-fluid">
-        <h2 class="navbar-brand">My Profile - <small>My Playlists</small></h2>
+        <h2 class="navbar-brand">
+          <button class="btn btn-navbar text-primary btn-link ux-maker pull-left sidebar-toggle"
+            (click)="toggleSidebar()">
+            <i class="fa fa-bars"></i>
+          </button>
+          My Profile - <small>My Playlists</small>
+        </h2>
         <section class="nav navbar-nav navbar-right navbar-text">
           <span class="btn btn-link navbar-link navbar-btn"
             *ngIf="isSignIn()"
@@ -32,6 +38,7 @@ export class UserNav implements OnInit {
 
   @Output() signIn = new EventEmitter();
   @Output() signOut = new EventEmitter();
+  @Output() menu = new EventEmitter();
 
   constructor() { }
 
@@ -47,5 +54,9 @@ export class UserNav implements OnInit {
 
   isSignIn () {
     return this.profile.imageUrl && this.profile.imageUrl.length;
+  }
+
+  toggleSidebar () {
+    this.menu.next();
   }
 }
