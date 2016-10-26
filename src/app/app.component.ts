@@ -11,7 +11,7 @@ import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { YoutubeMediaPlaylist } from './core/store/now-playlist';
-import { AppLayoutActions } from './core/store/app-layout';
+import { AppLayoutActions, AppLayout } from './core/store/app-layout';
 // import { Notify } from '@ngrx/notify';
 /*
  * App Component
@@ -24,7 +24,8 @@ import { AppLayoutActions } from './core/store/app-layout';
 })
 export class App implements OnInit {
   public player: Observable<YoutubePlayerState>;
-  public appLayout$: Observable<any>;
+  public nowPlaylist$: Observable<YoutubeMediaPlaylist>;
+  public appLayout$: Observable<AppLayout>;
 
   constructor(
     private store: Store<EchoesState>,
@@ -39,16 +40,11 @@ export class App implements OnInit {
 
   ngOnInit() {
     this.player = this.playerService.player$;
+    this.nowPlaylist$ = this.nowPlaylistService.playlist$;
     this.appLayout$ = this.store.select(_state => _state.appLayout);
-    // this.notify.requestPermission().subscribe(permission => {
-    //   if (permission) {
-    //     console.log('OK to notify');
-    //   }
-    // });
   }
 
   selectVideo (media: GoogleApiYouTubeVideoResource) {
-    // this.playerService.playVideo(media);
     this.store.dispatch(this.playerActions.playVideo(media));
     this.nowPlaylistService.updateIndexByMedia(media.id);
   }
@@ -73,7 +69,9 @@ export class App implements OnInit {
 
   }
 
-  isLastIndex () { }
+  isLastIndex () {
+    return this.nowPlaylistService.isInLastTrack();
+  }
 
   get _sidebarExpanded(): boolean {
     let sidebarExpanded: boolean;

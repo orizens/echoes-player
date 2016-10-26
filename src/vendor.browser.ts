@@ -22,9 +22,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/switchMapTo';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/combineLatest';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/observable/toPromise';
+
+import 'rxjs/Rx';
 
 if ('production' === ENV) {
   // Production

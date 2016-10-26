@@ -63,4 +63,13 @@ export class NowPlaylistService {
   updateIndexByMedia(mediaId: string) {
     this.store.dispatch(this.nowPlaylistActions.updateIndexByMedia(mediaId));
   }
+
+  isInLastTrack(): boolean {
+    let nowPlaylist: YoutubeMediaPlaylist;
+    this.playlist$.take(1).subscribe(_nowPlaylist => nowPlaylist = _nowPlaylist);
+    const currentVideoId = nowPlaylist.index;
+    const indexOfCurrentVideo = nowPlaylist.videos.findIndex(video => video.id === currentVideoId);
+    const isCurrentLast = indexOfCurrentVideo + 1 === nowPlaylist.videos.length;
+    return isCurrentLast;
+  }
 }

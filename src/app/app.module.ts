@@ -28,8 +28,6 @@ import { APP_SERVICES } from './core/services';
 
 // import { NOTIFY_PROVIDERS, NOTIFY_GLOBAL_OPTIONS } from '@ngrx/notify';
 
-import 'rxjs/Rx';
-
 // Application wide providers
 const APP_PROVIDERS = [
   // AppState,

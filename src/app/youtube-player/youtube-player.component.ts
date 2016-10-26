@@ -39,6 +39,9 @@ export class YoutubePlayer implements OnInit {
 
   updatePlayerState (event) {
     this.playerService.onPlayerStateChange(event);
+    if (event.data === YT.PlayerState.ENDED) {
+      this.ended.next(event.data);
+    }
   }
 
   playVideo () {
