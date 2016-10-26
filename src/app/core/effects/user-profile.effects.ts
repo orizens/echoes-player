@@ -5,12 +5,18 @@ import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-import { UserProfileActions } from '../store/user-profile';
+import { UserProfileActions, GoogleBasicProfile } from '../store/user-profile';
 
 import { UserProfile } from '../services/user-profile.service';
 
 @Injectable()
 export class UserProfileEffects {
+
+  constructor(
+    private actions$: Actions,
+    private userProfileActions: UserProfileActions,
+    private userProfile: UserProfile
+  ) { }
 
   @Effect()
   updateToken$ = this.actions$
@@ -19,6 +25,7 @@ export class UserProfileEffects {
     .map((token: string) => this.userProfile.setAccessToken(token))
     .switchMap(token => this.userProfile.getPlaylists(true))
     .map(response => this.userProfileActions.updateData(response));
+
 
   @Effect()
   addUserPlaylists$ = this.actions$
@@ -47,9 +54,10 @@ export class UserProfileEffects {
     })
     .map(response => this.userProfileActions.updateData(response));
 
-  constructor(
-    private actions$: Actions,
-    private userProfileActions: UserProfileActions,
-    private userProfile: UserProfile
-  ) { }
+  @Effect()
+  userProfileRecieved$ = this.actions$
+    .ofType(UserProfileActions.USER_PROFILE_RECIEVED)
+    .map(action => action.payload)
+    .map(profile  => this.userProfile.toUserJson(profile))
+    .map((profile: GoogleBasicProfile) => this.userProfileActions.updateUserProfile(profile));
 }

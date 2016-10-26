@@ -20,10 +20,14 @@ import { PlayerActions } from '../core/store/youtube-player';
 import './user-area.less';
 
 @Component({
-  selector: 'user-area.user-area',
+  selector: 'user-area',
   template: `
   <article class="col-md-12">
-    <h2>My Area - <small>My Playlists</small></h2>
+    <user-nav 
+      [profile]="(user$ | async)?.profile"
+      (signIn)="signInUser()"
+      (signOut)="signOut()">
+    </user-nav>
     <p *ngIf="!isSignIn()" class="well lead">
       To view your playlists in youtube, you need to sign in.
       <button class="btn btn-lg btn-danger"
@@ -42,8 +46,7 @@ import './user-area.less';
       </div>
     </section>
   </article>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  `
 })
 export class UserArea implements OnInit {
   playlists$: Observable<GoogleApiYouTubePlaylistResource[]>;
@@ -65,6 +68,10 @@ export class UserArea implements OnInit {
 
   signInUser () {
     this.authorization.signIn();
+  }
+
+  signOut () {
+    this.authorization.signOut();
   }
 
   isSignIn () {

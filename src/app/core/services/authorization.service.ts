@@ -65,14 +65,16 @@ export class Authorization {
     const signOptions = { scope: this._scope };
     if (this._googleAuth) {
       Observable.fromPromise(this._googleAuth.signIn(signOptions))
-        .subscribe(this.handleSuccessLogin, this.handleFailedLogin);
+        .subscribe(response => this.handleSuccessLogin(response), error => this.handleFailedLogin(error));
     }
   }
 
   handleSuccessLogin(response) {
     const token = response.getAuthResponse().access_token;
+    const profile = response.getBasicProfile();
     this.isSignedIn = true;
     this.store.dispatch(this.userProfileActions.updateToken(token));
+    this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
   }
 
   handleFailedLogin(response) {
@@ -81,5 +83,13 @@ export class Authorization {
 
   isSignIn() {
     return this.isSignedIn;
+  }
+
+  signOut () {
+    return Observable.fromPromise(this._googleAuth.signOut())
+      .subscribe(response => {
+        this.isSignedIn = false;
+        this.store.dispatch(this.userProfileActions.signOut());
+      });
   }
 }

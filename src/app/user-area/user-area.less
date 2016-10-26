@@ -1,7 +1,28 @@
-.user-area {
+user-area {
+  @line-height: 4rem;
+
+  article {
+    padding-bottom: @line-height;
+  }
   h2 {
     small {
       color: gray;
     }
+  }
+  .navbar-text {
+    margin: 0;
+    line-height: @line-height;
+  }
+  
+  .navbar-brand {
+    line-height: @line-height;
+  }
+  .user-icon {
+    width: 4rem;
+    height: 4rem;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    box-shadow: 0 0 1px rgba(0,0,0,.5);
   }
 }

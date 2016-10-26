@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
+import { GoogleBasicProfile } from './user-profile.reducer';
+
 @Injectable()
 export class UserProfileActions {
   static UPDATE = '[UserProfile] UPDATE';
@@ -9,6 +11,8 @@ export class UserProfileActions {
   static LOG_OUT = '[UserProfile] LOG_OUT';
   static UPDATE_NEXT_PAGE_TOKEN = '[UserProfile] UPDATE_NEXT_PAGE_TOKEN';
   static USER_PROFILE_COMPLETED = '[UserProfile] USER_PROFILE_COMPLETED';
+  static UPDATE_USER_PROFILE = '[UserProfile] UPDATE_USER_PROFILE';
+  static USER_PROFILE_RECIEVED = '[UserProfile] USER_PROFILE_RECIEVED';
 
   updateData(data: any) {
     return {
@@ -47,6 +51,20 @@ export class UserProfileActions {
   userProfileCompleted() {
     return {
       type: UserProfileActions.USER_PROFILE_COMPLETED
+    };
+  }
+
+  userProfileRecieved (profile: any) {
+    return {
+      type: UserProfileActions.USER_PROFILE_RECIEVED,
+      payload: profile
+    };
+  }
+
+  updateUserProfile (profile: GoogleBasicProfile) {
+    return {
+      type: UserProfileActions.UPDATE_USER_PROFILE,
+      payload: profile
     };
   }
 }

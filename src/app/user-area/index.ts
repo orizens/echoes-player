@@ -3,6 +3,7 @@ import { CoreStoreModule } from '../core/store';
 import { CoreModule } from '../core';
 
 import { UserArea } from './user-area.component';
+import { UserNav } from './user-nav.component';
 import { routing } from './user-area.routing';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { routing } from './user-area.routing';
     routing
   ],
   declarations: [
-    UserArea
+    UserArea,
+    UserNav
   ],
   exports: [
     UserArea

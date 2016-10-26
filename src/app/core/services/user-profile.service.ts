@@ -5,6 +5,8 @@ import { window } from '@angular/platform-browser/src/facade/browser';
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 
+import { GoogleBasicProfile } from '../store/user-profile';
+
 @Injectable()
 export class UserProfile {
   isSearching: Boolean = false;
@@ -79,5 +81,14 @@ export class UserProfile {
     const accessToken = this.playlists.config.get('access_token');
     // TODO - should check if the current accessToken is still valid - google api
     return accessToken === token;
+  }
+
+  toUserJson (profile): GoogleBasicProfile {
+    let _profile: GoogleBasicProfile = {};
+    if (profile) {
+      _profile.imageUrl = profile.getImageUrl();
+      _profile.name = profile.getName();
+    }
+    return _profile;
   }
 }
