@@ -23,7 +23,7 @@ import './user-area.less';
 @Component({
   selector: 'user-area',
   template: `
-  <article class="col-md-12">
+  <article>
     <user-nav 
       [profile]="(user$ | async)?.profile"
       (signIn)="signInUser()"

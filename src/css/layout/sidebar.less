@@ -6,7 +6,7 @@
 
 .closed-sidebar() {
 	.sidebar-left-fixed.closed {
-		.transform(translatex(-30rem));
+		.transform(translatex(0rem));
 
 		// + .modal-backdrop {
 		// 	display: none;
@@ -100,6 +100,11 @@
 			line-height: @navbar-new-height;
 			height: @navbar-new-height;
 			padding-left: 1.5rem;
+
+			.fa {
+				font-size: 2.5rem;
+				margin: 0 -.3rem;
+			}
 		}
 		// should be displayed
 		&.closed {
@@ -154,7 +159,20 @@
 		}
 
 		&.closed {
-			transform: translatex(-30rem);
+			// transform: translatex(-30rem);
+			width: @sidebar-closed-width;
+
+			.text {
+				display: none;
+			}
+			.navbar {
+				width: @sidebar-closed-width;
+			}
+			.navbar-brand {
+				width: @sidebar-closed-width;
+				padding: 0;
+				text-align: center;
+			}
 		}
 	}
 }
