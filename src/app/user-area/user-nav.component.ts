@@ -1,17 +1,19 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { GoogleBasicProfile } from '../core/store/user-profile';
 
+import './user-nav.less';
+
 @Component({
   selector: 'user-nav',
   template: `
-    <nav class="row navbar navbar-default">
+    <nav class="row navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <h2 class="navbar-brand">
           <button class="btn btn-navbar text-primary btn-link ux-maker pull-left sidebar-toggle"
             (click)="toggleSidebar()">
             <i class="fa fa-bars"></i>
           </button>
-          My Profile - <small>My Playlists</small>
+          <i class="fa fa-heart"></i> My Profile - <small>My Playlists</small>
         </h2>
         <section class="nav navbar-nav navbar-right navbar-text">
           <span class="btn btn-link navbar-link navbar-btn"

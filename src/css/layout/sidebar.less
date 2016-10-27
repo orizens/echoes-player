@@ -6,7 +6,7 @@
 
 .closed-sidebar() {
 	.sidebar-left-fixed.closed {
-		.transform(translatex(-300px));
+		.transform(translatex(-30rem));
 
 		// + .modal-backdrop {
 		// 	display: none;
@@ -42,13 +42,56 @@
 // the code
 @media (min-width: 320px) {
 	.sidebar {
+		// flex setup
+		display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: initial;
+    align-self: auto;
+		
+		height: 100%;
+		width: @drawer-width;
 		z-index: @zindex-navbar-fixed;
 		// by default should be hidden
-		transform: translatex(-300px);
+		transform: translatex(-30rem);
 		background-color: @sidebar-color;
 		padding-bottom: 30%;
 		border: none;
 		border-radius: 0;
+
+		// FLEX LAYOUT START
+		nav {
+			flex-grow: 3;
+			flex-shrink: 1;
+			flex-basis: 0;
+		}
+
+		now-playing {
+			flex-grow: 16;
+			flex-shrink: 0;
+			flex-basis: 0rem;
+			display: flex;
+			flex-direction: column;
+			
+			.sidebar-pane {
+				flex: 1 1 0;
+				display: flex;
+				flex-direction: column;
+			}
+
+			now-playlist-filter {
+				flex-grow: 0;
+				flex-shrink: 1;
+				flex-basis: 0rem;
+			}
+
+			now-playlist {
+				flex: 1 1 0;
+				overflow-y: auto;
+				padding-bottom: 30rem;
+			}
+		}
+		// FLEX LAYOUT END
 
 		.navbar-brand {
 			background-color: rgba(0,0,0, .2);
@@ -70,15 +113,42 @@
 		+ .modal-backdrop {
 			display: none;
 		}
+
+		.navbar {
+			margin-bottom: 10px;
+			border-bottom: none;
+			// position: fixed;
+			// top: 0;
+			width: 29.5rem;
+			z-index: 1030;
+			background-color: rgb(50, 53, 56);
+			border-radius: 0;
+		}
+
+		.sidebar-pane {
+			// hidden for hiding top shadow while exposing bottom shadow
+			overflow-y: hidden;
+
+			.nav-header {
+				line-height: 26px;
+			}
+		}
 	}
 }
 @media (min-width: 768px) {
 	.sidebar {
+		transition: transform .3s ease-out;
+		transform: none;
+
 		&.closed + .modal-backdrop {
 			display: none;
 		}
 		+ .modal-backdrop {
 			display: none;
+		}
+
+		&.closed {
+			transform: translatex(-30rem);
 		}
 	}
 }
@@ -91,25 +161,13 @@
 	top: 0;
 	left: 0;
 	margin: 0;
-	padding: 5rem 0 35rem;
+	// padding: 5rem 0 35rem;
+	padding: 0rem;
 }
 .sidebar {
-	height: 100%;
-	width: @drawer-width;
-
-	overflow-y: auto;
 
 	h3 {
 		margin: 0;
-	}
-
-	.sidebar-pane {
-		min-height: 0;
-		margin-top: 11rem;
-
-		.nav-header {
-			line-height: 26px;
-		}
 	}
 
 	.nav-header {
@@ -127,17 +185,6 @@
 		text-shadow: none;
 		box-shadow: none;
 		z-index: 10;
-	}
-
-	.navbar {
-		margin-bottom: 10px;
-		border-bottom: none;
-  	position: fixed;
-    top: 0;
-    width: 29.5rem;
-    z-index: 1030;
-		background-color: rgb(50, 53, 56);
-    border-radius: 0;
 	}
 
 	a {
@@ -166,17 +213,6 @@
 	}
 
 	.closed-sidebar();
-}
-
-@media (min-width: 768px) {
-	.sidebar {
-		transition: transform .3s ease-out;
-		transform: none;
-
-		&.closed {
-			transform: translatex(-300px);
-		}
-	}
 }
 
 @media (min-width: 1024px) {

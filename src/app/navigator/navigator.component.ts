@@ -8,7 +8,6 @@ import './navigator.less';
   selector: 'navigator',
   template: `
   <ul id="library-nav" class="nav nav-list nicer-ux library-nav navigator" navigator>
-    <li class="nav-header">Library</li>
     <li [class.active]="isActive('explore')">
       <a [routerLink]="['']"><i class="fa fa-music"></i>Explore</a>
     </li>

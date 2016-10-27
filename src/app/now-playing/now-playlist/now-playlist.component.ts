@@ -6,7 +6,7 @@ import './now-playlist.less';
 @Component({
   selector: 'now-playlist',
   template: `
-  <section class="now-playlist"
+  <section class="now-playlist ux-maker"
     [ngClass]="{
       'transition-in': playlist?.videos?.length
     }">
