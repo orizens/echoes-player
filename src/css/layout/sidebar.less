@@ -61,7 +61,7 @@
 
 		// FLEX LAYOUT START
 		nav {
-			flex-grow: 3;
+			flex-grow: 4;
 			flex-shrink: 1;
 			flex-basis: 0;
 		}
@@ -139,6 +139,12 @@
 	.sidebar {
 		transition: transform .3s ease-out;
 		transform: none;
+
+		nav {
+			flex-grow: 3;
+			flex-shrink: 1;
+			flex-basis: 0;
+		}
 
 		&.closed + .modal-backdrop {
 			display: none;

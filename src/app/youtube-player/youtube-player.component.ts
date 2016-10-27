@@ -6,7 +6,6 @@ import { YoutubePlayerService } from '../core/services';
 import { YoutubePlayerState } from '../core/store/youtube-player';
 
 import './youtube-player.less';
-import './media-info/media-info.less';
 import './player-controls/player-controls.less';
 
 @Component({
@@ -79,9 +78,5 @@ export class YoutubePlayer implements OnInit {
 
   hasContent () {
     return Object.keys(this.player.media).length;
-  }
-
-  onThumbClick () {
-    return true;
   }
 }

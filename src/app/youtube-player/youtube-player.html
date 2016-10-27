@@ -12,7 +12,7 @@
     <div class="social-shares">
       <button title="minimize player"
         (click)="togglePlayer()" 
-        class="btn btn-sm btn-primary navbar-btn show-player pull-right visible-md visible-lg">
+        class="btn btn-sm btn-primary navbar-btn show-player pull-right">
         <i class="fa fa-chevron-up"></i>
       </button>
     </div>
@@ -26,29 +26,18 @@
 
 	<div class="container-fluid">
 
-		<div class="col-md-5 col-md-offset-0 col-sm-5 col-sm-offset-0 col-xs-offset-1">
-			<article class="media-info">
-				<h3 class="yt-media-title ellipsis hidden-xs">
-					<aside class="pull-left"
-						title="maximize / minimize"
-						(click)="toggleFullScreen()">
-						<img src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
-						<!-- <img src="{{ getMediaThumb() }}"> -->
-						<i class="fa fa-arrows-alt" [ngClass]="{ 'invisible': !hasContent() }"></i>
-					</aside>
-					<a class="title">{{ player?.media?.snippet?.title }}</a>
-				</h3>
-			</article>
+		<div class="col-md-5 col-xs-8">
+			<media-info
+				[player]="player"
+				[minimized]="!hasContent()"
+				(thumbClick)="toggleFullScreen()"
+			></media-info>
 		</div>
 
-		<div class="col-md-4 col-sm-4 col-xs-10 controls-container nicer-ux"
+		<div class="col-md-4 col-xs-4 controls-container nicer-ux"
 			[ngClass]="{ 'yt-playing': isPlaying() }">
 
 			<div class="btn-group player-controls">
-					<button title="show / hide"
-						(click)="togglePlayer()"
-						class="btn btn-default btn-lg navbar-btn show-player visible-xs"><i class="fa fa-chevron-up"></i></button>
-
 					<button title="play previous track"
 						class="btn btn-default btn-lg navbar-btn previous"
 						(click)="playPreviousTrack()"
