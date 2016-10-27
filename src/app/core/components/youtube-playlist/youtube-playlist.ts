@@ -5,13 +5,6 @@ import './youtube-playlist.less';
 @Component({
   selector: 'youtube-playlist',
   template: require('./youtube-playlist.html'),
-  styles: [`
-    @media (min-width: 768px) {
-      .youtube-item {
-          width: 25%;
-      }
-    }
-  ` ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlaylist {

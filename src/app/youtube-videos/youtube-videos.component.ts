@@ -38,13 +38,11 @@ import './youtube-videos.less';
         ></player-search>
       </div>
     </nav>
-    <section class="videos-list">
-      <youtube-list
-        [list]="videos$ | async"
-        (play)="playSelectedVideo($event)"
-        (queue)="queueSelectedVideo($event)"
-      ></youtube-list>
-    </section>
+    <youtube-list
+      [list]="videos$ | async"
+      (play)="playSelectedVideo($event)"
+      (queue)="queueSelectedVideo($event)"
+    ></youtube-list>
   </article>
   `
 })
