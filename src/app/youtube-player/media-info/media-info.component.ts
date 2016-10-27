@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 import './media-info.less';
 
 @Component({
-  moduleId: module.id,
   selector: 'media-info',
   template: `
   <article class="media-info ellipsis">
