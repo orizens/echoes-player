@@ -10,7 +10,7 @@
 
 <!-- SIDEBAR -->
 <div id="sidebar" class="sidebar sidebar-left-fixed well ux-maker"
-	[class.closed]="!_sidebarExpanded"
+	[class.closed]="!(appLayout$ | async).sidebarExpanded"
 	>
 	<nav class="navbar navbar-transparent">
 		<div class="navbar-brand col-md-12"
@@ -18,6 +18,9 @@
 			<span class="text">Ech</span>
 			<i class="fa fa-headphones text-primary"></i>
 			<span class="text">es</span>
+			<button class="btn btn-navbar btn-link ux-maker sidebar-toggle pull-right hidden-lg">
+				<i class="fa fa-bars"></i>
+			</button>
 		</div>
 		<navigator></navigator>
 	</nav>
@@ -27,10 +30,7 @@
 </div>
 
 <!-- MAIN CONTENT -->
-<div class="container-fluid container-main drawer-opened"
-	[class.drawer-opened]="_sidebarExpanded"
-	[class.drawer-closed]="!_sidebarExpanded"
-	>
+<div class="container-fluid container-main">
 	<div class="row-fluid ux-maker clearfix main-view">
 			<router-outlet></router-outlet>
 	</div>

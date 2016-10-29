@@ -29,11 +29,11 @@
 			padding: 9px 10px;
 
 			// position: absolute;
-		    top: 0px;
-		    z-index: 10000;
-		    display: block;
-		    background: transparent;
-		    border: none;
+			top: 0px;
+			z-index: 10000;
+			display: block;
+			background: transparent;
+			border: none;
 			box-shadow: none;
 			.transition(all .3s ease-out);
 		}
@@ -60,11 +60,11 @@
 		border-radius: 0;
 
 		// FLEX LAYOUT START
-		nav {
-			flex-grow: 4;
-			flex-shrink: 1;
-			flex-basis: 0;
-		}
+		// nav {
+		// 	flex-grow: 4;
+		// 	flex-shrink: 1;
+		// 	flex-basis: 0;
+		// }
 
 		now-playing {
 			flex-grow: 16;
@@ -144,12 +144,6 @@
 	.sidebar {
 		transition: transform .3s ease-out;
 		transform: none;
-
-		nav {
-			flex-grow: 3;
-			flex-shrink: 1;
-			flex-basis: 0;
-		}
 
 		&.closed + .modal-backdrop {
 			display: none;

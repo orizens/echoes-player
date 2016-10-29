@@ -73,12 +73,6 @@ export class App implements OnInit {
     return this.nowPlaylistService.isInLastTrack();
   }
 
-  get _sidebarExpanded(): boolean {
-    let sidebarExpanded: boolean;
-    this.appLayout$.take(1).subscribe(appLayout => sidebarExpanded = appLayout.sidebarExpanded);
-    return sidebarExpanded;
-  }
-
   toggleSidebar () {
     return this.store.dispatch(this.appLayoutActions.toggleSidebar());
   }
