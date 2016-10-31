@@ -144,11 +144,6 @@ module.exports = function (options) {
           test: /\.(jpg|png|gif)$/,
           loader: 'file'
         },
-
-        {
-          test: /\.less$/,
-          loader: 'style!css?sourceMap!less?sourceMap'
-        },
         
         // FONTS
         {

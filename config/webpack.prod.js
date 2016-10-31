@@ -17,6 +17,7 @@ const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplaceme
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -238,9 +239,18 @@ module.exports = function (env) {
 
       //   }
       // }),
+      new ExtractTextPlugin('style.css')
 
     ],
 
+    module: {
+      rules: [
+        {
+          test: /\.less$/,
+          loader: ExtractTextPlugin.extract('css!less')
+        }
+      ]
+    },
     /*
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration

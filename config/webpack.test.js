@@ -166,6 +166,11 @@ module.exports = function (options) {
             /\.(e2e|spec)\.ts$/,
             /node_modules/
           ]
+        },
+
+        {
+          test: /\.less$/,
+          loader: 'style!css!less'
         }
 
       ]

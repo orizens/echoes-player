@@ -83,7 +83,14 @@ module.exports = function (options) {
       library: 'ac_[name]',
       libraryTarget: 'var',
     },
-
+    module: {
+      rules: [
+        {
+          test: /\.less$/,
+          loader: 'style!css?sourceMap!less?sourceMap'
+        }
+      ]
+    },
     plugins: [
 
       /**
