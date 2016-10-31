@@ -18,7 +18,7 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /*
  * Webpack Constants
@@ -122,10 +122,10 @@ module.exports = function (options) {
          * Returns file content as string
          *
          */
-        // {
-        //   test: /\.css$/,
-        //   loaders: ['to-string-loader', 'css-loader']
-        // },
+        {
+          test: /\.css$/,
+          loaders: ['to-string-loader', 'css-loader']
+        },
 
         /* Raw loader support for *.html
          * Returns file content as string
@@ -147,14 +147,7 @@ module.exports = function (options) {
 
         {
           test: /\.less$/,
-          loader: ExtractTextPlugin.extract('css!less')
-          // loader: ExtractTextPlugin.extract({
-          //   loader: [ 'css-loader?sourceMap!less-loader'],
-          //   fallbackLoader: 'style-loader'
-          //   // query: {
-          //   //   sourceMap: true
-          //   // } 
-          // })
+          loader: 'style!css?sourceMap!less?sourceMap'
         },
         
         // FONTS
@@ -302,9 +295,7 @@ module.exports = function (options) {
        *
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
-      new LoaderOptionsPlugin({}),
-
-      new ExtractTextPlugin('style.css')
+      new LoaderOptionsPlugin({})
     ],
 
     /*

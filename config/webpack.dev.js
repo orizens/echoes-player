@@ -41,7 +41,7 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#devtool
      * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
      */
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
 
     /**
      * Options affecting the output of the compilation.
@@ -119,9 +119,9 @@ module.exports = function (options) {
        *
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
-      new LoaderOptionsPlugin({
-        debug: true,
-        options: {
+      // new LoaderOptionsPlugin({
+      //   debug: true,
+      //   options: {
 
           /**
            * Static analysis linter for TypeScript advanced options configuration
@@ -129,14 +129,14 @@ module.exports = function (options) {
            *
            * See: https://github.com/wbuchwalter/tslint-loader
            */
-          tslint: {
-            emitErrors: false,
-            failOnHint: false,
-            resourcePath: 'src'
-          },
+      //     tslint: {
+      //       emitErrors: false,
+      //       failOnHint: false,
+      //       resourcePath: 'src'
+      //     },
 
-        }
-      }),
+      //   }
+      // }),
 
     ],
 
