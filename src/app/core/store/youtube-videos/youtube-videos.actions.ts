@@ -8,7 +8,7 @@ export class YoutubeVideosActions {
   static RESET = '[YoutubeVideos] RESET';
   static UPDATE_METADATA = '[YoutubeVideos] UPDATE_METADATA';
 
-  addVideo(videos: GoogleApiYouTubeVideoResource[]): Action {
+  addVideos(videos: GoogleApiYouTubeVideoResource[]): Action {
     return {
       type: YoutubeVideosActions.ADD,
       payload: videos

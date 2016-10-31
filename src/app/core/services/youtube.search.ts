@@ -16,7 +16,10 @@ export class YoutubeSearch {
   private _config: URLSearchParams = new URLSearchParams();
   private nextPageToken: string;
 
-  constructor(private http: Http, private store: Store<EchoesState>) {
+  constructor(
+    private http: Http,
+    private store: Store<EchoesState>,
+    public youtubeVideosActions: YoutubeVideosActions) {
     this.api = new YoutubeApiService({
       url: this.url,
       http: http,
@@ -33,7 +36,7 @@ export class YoutubeSearch {
 
     if (shouldBeReset || isNewSearch) {
       this.resetPageToken();
-      this.store.dispatch({ type: YoutubeVideosActions.RESET });
+      this.store.dispatch(this.youtubeVideosActions.reset());
     }
     if (query) {
       this.api.config.set('q', query);
@@ -45,7 +48,7 @@ export class YoutubeSearch {
         let itemsAmount = this.items.length;
         this.isSearching = false;
         this.items.splice(itemsAmount, 0, ...response.items);
-        this.store.dispatch({ type: YoutubeVideosActions.ADD, payload: [ ...response.items ] });
+        this.store.dispatch(this.youtubeVideosActions.addVideos([ ...response.items ]));
         return response;
       });
 
