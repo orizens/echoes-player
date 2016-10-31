@@ -54,8 +54,7 @@ export function playVideo(
     media: GoogleApiYoutubeVideo) {
     return Object.assign({}, state, {
         mediaId: media.id,
-        media,
-        showPlayer: true
+        media
     });
 }
 

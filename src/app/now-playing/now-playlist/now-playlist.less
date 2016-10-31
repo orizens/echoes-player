@@ -20,7 +20,6 @@
 			> .active > a {
 				@active-color: rgba(10,10,10, .5);
 				color: white;
-				padding: 10px 61px 10px 15px;
 				box-shadow: inset 0px 0px 6px @active-color;
 				border-right: 6px solid @brand-primary;
 				background: @active-color;
@@ -72,11 +71,15 @@
 			}
 
 			.video-thumb {
-				height: 48px;
-				width: 64px;
+				height: 4.8rem;
+				width: 6.4rem;
 				float: left;
 				margin-right: 8px;
 				cursor: ns-resize;
+				img {
+					height: 100%;
+					width: 100%;
+				}
 			}
 
 			.remove-track {
@@ -87,14 +90,19 @@
 			}
 
 			a {
-				min-height: 70px;
-				padding: 10px 61px 18px 15px;
+				min-height: 8.5rem;
+				padding: 1rem 2rem 1rem 1.5rem;
 			}
 
 			.badge-info {
-				.badge-abs-right();
-				border-radius: @radius;
-				background: @brand-primary;
+				border-radius: 0;
+				background: @dark;
+				margin: 0 auto;
+				display: block;
+				font-size: 1rem;
+				margin-top: -0.6rem;
+				z-index: 10;
+				position: relative;
 			}
 		}
 
@@ -125,11 +133,11 @@
 	.closed now-playlist {
 		.now-playlist-track {
 			a, a.active {
-				padding: 0 0 0 1.5rem;
+				padding: 1rem 0 0 1.5rem;
 				min-height: 5rem;
 			}
 			span {
-				display: none;
+				display: none !important;
 			}
 			.track-number {
 				display: block;

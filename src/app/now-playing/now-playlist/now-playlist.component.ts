@@ -24,13 +24,15 @@ import './now-playlist.less';
             title="Includes specific cued tracks - soon to come..."
           ></span>
           <span class="track-number">{{ index + 1 }}</span>
-          <img class="video-thumb" draggable="false" 
+          <section class="video-thumb">
+            <img draggable="false" 
             src="{{ video.snippet.thumbnails.default.url }}" 
             title="Drag to sort">
+            <span class="badge badge-info">
+              {{ video.contentDetails.duration }}
+            </span>
+          </section>
           <span class="video-title">{{ video.snippet.title }}</span>
-          <span class="badge badge-info">
-            {{ video.contentDetails.duration }}
-          </span>
           <span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
             (click)="removeVideo(video)"><i class="fa fa-remove"></i></span>
         </a>

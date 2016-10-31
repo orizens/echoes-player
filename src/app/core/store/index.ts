@@ -37,7 +37,7 @@ const actions = [
 ];
 
 const composeStore = compose(
-  localStorageSync(['videos', 'player', 'nowPlaylist', 'search'], true),
+  localStorageSync(['videos', 'player', 'nowPlaylist', 'search', 'appLayout'], true),
   combineReducers
 )({ videos, player, nowPlaylist, user, search, appLayout });
 
