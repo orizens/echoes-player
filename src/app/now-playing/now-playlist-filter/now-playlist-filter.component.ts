@@ -6,7 +6,7 @@ import './now-playlist-filter.less';
   selector: 'now-playlist-filter',
   template: `
   <h3 class="nav-header user-playlists-filter">
-    Now Playing
+    <span class="text">Now Playing</span>
     <button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
       [disabled]="playlist?.videos?.length === 0"
       (click)="clearPlaylist()">

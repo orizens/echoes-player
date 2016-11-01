@@ -1,18 +1,12 @@
 @import url(../../../css/echoes-variables.less);
 
 @media (min-width: 320px) {
+	@track-badge-index: 10;
+	@track-button: 15;
+
 	.now-playlist {
 		position: relative;
-		// top: -30px;
 		opacity: 0;
-		// min-height: 0;
-		// margin-top: 11px;
-	  // padding-top: 3.6rem;
-
-		// &.transition-in {
-			// opacity: 1;
-			// top: 0;
-		// }
 
 		.nav-list {
 			overflow-x: hidden;
@@ -30,17 +24,10 @@
 		}
 
 		.now-playlist-track {
-			@radius: 4px;
-
 			cursor: pointer;
 			opacity: 1;
 			transform: translate3d(0, 0, 0);
 
-			.badge-abs-right(){
-				position: absolute;
-				right: 10px;
-				top: 11px;
-			}
 			.track-number {
         position: absolute;
         left: 1.5rem;
@@ -51,10 +38,7 @@
       }
 
       .playlist-track {
-        // position: absolute;
         display: none;
-        // right: 1rem;
-        // top: 4rem;
         font-size: 1rem;
       }
       &.playlist-media .playlist-track {
@@ -75,7 +59,7 @@
 				width: 6.4rem;
 				float: left;
 				margin-right: 8px;
-				cursor: ns-resize;
+				// cursor: ns-resize;
 				img {
 					height: 100%;
 					width: 100%;
@@ -87,6 +71,8 @@
 				top: 4rem;
 				right: 0rem;
 				transform: translatex(-1rem);
+				display: block;
+				z-index: @track-button;
 			}
 
 			a {
@@ -101,7 +87,7 @@
 				display: block;
 				font-size: 1rem;
 				margin-top: -0.6rem;
-				z-index: 10;
+				z-index: @track-badge-index;
 				position: relative;
 			}
 		}

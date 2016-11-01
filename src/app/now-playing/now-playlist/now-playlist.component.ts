@@ -27,7 +27,7 @@ import './now-playlist.less';
           <section class="video-thumb">
             <img draggable="false" 
             src="{{ video.snippet.thumbnails.default.url }}" 
-            title="Drag to sort">
+            xtitle="Drag to sort">
             <span class="badge badge-info">
               {{ video.contentDetails.duration }}
             </span>
