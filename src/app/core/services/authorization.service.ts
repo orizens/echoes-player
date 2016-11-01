@@ -29,14 +29,15 @@ export class Authorization {
     // attempt to SILENT authorize
     this.gapiLoader
       .load('auth2')
-      .subscribe((authInstance: any) => {
+      .switchMap(response => this.authorize())
+      // .subscribe((authInstance: any) => {
         // gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
         // 	console.log('authState changed', authState);
         // });
-        if (authInstance && authInstance.currentUser) {
-          return this._googleAuth = authInstance;
-        }
-        this.authorize()
+        // if (authInstance && authInstance.currentUser) {
+        //   return this._googleAuth = authInstance;
+        // }
+        // this.authorize()
           .subscribe((googleAuth: any) => {
             window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
               console.log('authState changed', authState);
@@ -48,7 +49,7 @@ export class Authorization {
             if (isSignedIn && hasAccessToken) {
               this.zone.run(() => this.handleSuccessLogin(authResponse));
             }
-          });
+          // });
       });
   }
 
