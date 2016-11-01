@@ -1,21 +1,28 @@
 @import url(../../../css/echoes-variables.less);
 
 .player-controls {
+	@btn-color: whitesmoke;
 	button {
-		padding: 10px 20px;
+		padding: 1.5rem 2rem;
 		box-shadow: inset 0 0 0 #000;
 		border: none;
 		border-bottom: 4px solid #333;
 		background: transparent;
-		color:whitesmoke;
+		color:@btn-color;
 	}
 
 	.btn {
 		border: none;
 		background: transparent;
-		color:whitesmoke;
+		color:@btn-color;
 		border-radius: 0;
 		outline: none;
+		font-size: 1.3rem;
+
+		&:hover {
+			background: transparent;
+			color: @btn-color;
+		}
 	}
 
 	.pause {
@@ -30,9 +37,9 @@
 	.pause {
 		border: 0;
 		border-radius: 50% !important;
-		padding: 1rem 1.5rem;
 		background-color: @brand-primary;
-		font-size: 1rem;
-	    margin: 0.5rem 0;
+    padding: 0.8rem 1.3rem;
+    font-size: 2rem;
+    margin: 0.3rem 0;
 	}
 }
