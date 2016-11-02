@@ -13,32 +13,6 @@
 		// }
 	}
 }
-
-.sidebar-toggle() {
-	#sidebar-menu-toggler {
-		// position: fixed;
-		// top: 0;
-		z-index: 10000;
-		display: inline-block;
-
-		&.opened {
-			.transform(translatex(-12px));
-		}
-		.btn-navbar {
-			margin: 0;
-			padding: 9px 10px;
-
-			// position: absolute;
-			top: 0px;
-			z-index: 10000;
-			display: block;
-			background: transparent;
-			border: none;
-			box-shadow: none;
-			.transition(all .3s ease-out);
-		}
-	}
-}
 // the code
 @media (min-width: 320px) {
 	.sidebar {
@@ -60,12 +34,6 @@
 		border-radius: 0;
 
 		// FLEX LAYOUT START
-		// nav {
-		// 	flex-grow: 4;
-		// 	flex-shrink: 1;
-		// 	flex-basis: 0;
-		// }
-
 		now-playing {
 			flex-grow: 16;
 			flex-shrink: 0;
@@ -172,9 +140,7 @@
 		}
 	}
 }
-@media (max-width: 1024px) {
-	.sidebar-toggle();
-}
+
 .sidebar-left-fixed {
 	position: fixed;
 	bottom: 0;
@@ -219,20 +185,6 @@
 	+ .modal-backdrop {
 		z-index: 1029;
 	}
-}
-
-.ios {
-	.sidebar-left-fixed {
-		padding: 64px 0;
-	}
-
-	.sidebar-toggle();
-
-	#sidebar-menu-toggler {
-		top: 1px;
-	}
-
-	.closed-sidebar();
 }
 
 @media (min-width: 1024px) {
