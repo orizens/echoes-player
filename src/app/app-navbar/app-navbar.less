@@ -1,20 +1,20 @@
 @import url(../../css/core/global.less);
 
 @media (min-width: 320px) {
-  user-nav {
+  app-navbar {
     nav.navbar {
       margin-left: 0;
     }
   }
 }
 @media (min-width: 768px) {
-  user-nav {
+  app-navbar {
     nav.navbar {
       margin-left: @drawer-width;
     }
   }
 
-  .closed + .container-main user-nav .navbar {
+  .closed + .container-main app-navbar .navbar {
     margin-left: @sidebar-closed-width;
   }
 }

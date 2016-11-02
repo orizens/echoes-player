@@ -4,7 +4,6 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { window } from '@angular/platform-browser/src/facade/browser';
 
 import {
   YoutubePlayerService,
@@ -12,11 +11,9 @@ import {
   UserProfile,
   Authorization
 } from '../core/services';
-import { user, UserProfileData } from '../core/store/user-profile';
 import { EchoesState } from '../core/store';
 import { NowPlaylistActions } from '../core/store/now-playlist';
 import { PlayerActions } from '../core/store/youtube-player';
-import { AppLayoutActions } from '../core/store/app-layout';
 
 import './user-area.less';
 
@@ -24,12 +21,9 @@ import './user-area.less';
   selector: 'user-area',
   template: `
   <article>
-    <user-nav 
-      [profile]="(user$ | async)?.profile"
-      (signIn)="signInUser()"
-      (signOut)="signOut()"
-      (menu)="toggleSidebar()">
-    </user-nav>
+    <app-navbar>
+      <i class="fa fa-heart"></i> My Profile - <small>My Playlists</small>
+    </app-navbar>
     <p *ngIf="!isSignIn()" class="well lead">
       To view your playlists in youtube, you need to sign in.
       <button class="btn btn-lg btn-danger"
@@ -52,7 +46,6 @@ import './user-area.less';
 })
 export class UserArea implements OnInit {
   playlists$: Observable<GoogleApiYouTubePlaylistResource[]>;
-  user$: Observable<UserProfileData>;
 
   constructor(
     public youtubePlayer: YoutubePlayerService,
@@ -61,21 +54,15 @@ export class UserArea implements OnInit {
     private authorization: Authorization,
     private playerActions: PlayerActions,
     private nowPlaylistActions: NowPlaylistActions,
-    private appLayoutActions: AppLayoutActions,
     public store: Store<EchoesState>
   ) {}
 
   ngOnInit () {
     this.playlists$ = this.store.select(state => state.user.playlists);
-    this.user$ = this.store.select(state => state.user);
   }
 
   signInUser () {
     this.authorization.signIn();
-  }
-
-  signOut () {
-    this.authorization.signOut();
   }
 
   isSignIn () {
@@ -102,9 +89,5 @@ export class UserArea implements OnInit {
 
   queueSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {
     // this.nowPlaylistService.queueVideo(media);
-  }
-
-  toggleSidebar() {
-    return this.store.dispatch(this.appLayoutActions.toggleSidebar());
   }
 }
