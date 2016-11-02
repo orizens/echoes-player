@@ -11,8 +11,7 @@ import { GapiLoader } from './gapi-loader.service';
 
 @Injectable()
 export class Authorization {
-  private isSignedIn: boolean = false;
-  private _googleAuth: any;
+  private _googleAuth: GoogleAuthResponse;
   private _scope: string = 'profile email https://www.googleapis.com/auth/youtube';
 
   constructor(
@@ -29,27 +28,14 @@ export class Authorization {
     // attempt to SILENT authorize
     this.gapiLoader
       .load('auth2')
-      .switchMap(response => this.authorize())
-      // .subscribe((authInstance: any) => {
-        // gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
-        // 	console.log('authState changed', authState);
-        // });
-        // if (authInstance && authInstance.currentUser) {
-        //   return this._googleAuth = authInstance;
-        // }
-        // this.authorize()
-          .subscribe((googleAuth: any) => {
-            window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
-              console.log('authState changed', authState);
-            });
-            const isSignedIn = googleAuth.isSignedIn.get();
-            const authResponse = googleAuth.currentUser.get();
-            const hasAccessToken = authResponse.getAuthResponse().hasOwnProperty('access_token');
-            this._googleAuth = googleAuth;
-            if (isSignedIn && hasAccessToken) {
-              this.zone.run(() => this.handleSuccessLogin(authResponse));
-            }
-          // });
+      .switchMap(() => this.authorize())
+      .do((googleAuth: GoogleAuthResponse) => this.saveGoogleAuth(googleAuth))
+      .do((googleAuth: GoogleAuthResponse) => this.listenToGoogleAuthSignIn(googleAuth))
+      .filter((googleAuth: GoogleAuthResponse) => this.isSignIn())
+      .filter((googleAuth: GoogleAuthResponse) => this.hasAccessToken(googleAuth))
+      .map((googleAuth: GoogleAuthResponse) => googleAuth.currentUser.get())
+      .subscribe((googleUser: GoogleAuthCurrentUser) => {
+        this.zone.run(() => this.handleSuccessLogin(googleUser));
       });
   }
 
@@ -61,19 +47,32 @@ export class Authorization {
     return Observable.fromPromise(window.gapi.auth2.init(authOptions));
   }
 
+  private hasAccessToken (googleAuth: GoogleAuthResponse): boolean {
+    return googleAuth && googleAuth.currentUser.get().getAuthResponse().hasOwnProperty('access_token');
+  }
+
+  private saveGoogleAuth (googleAuth: GoogleAuthResponse): GoogleAuthResponse {
+    this._googleAuth = googleAuth;
+    return googleAuth;
+  }
+
+  private listenToGoogleAuthSignIn (googleAuth: GoogleAuthResponse) {
+    window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
+      console.log('authState changed', authState);
+    });
+  }
+
   signIn() {
-    const run = (fn) => (r) => this.zone.run(() => fn.call(this, r));
-    const signOptions = { scope: this._scope };
+    const signOptions: GoogleAuthSignInOptions = { scope: this._scope };
     if (this._googleAuth) {
       Observable.fromPromise(this._googleAuth.signIn(signOptions))
         .subscribe(response => this.handleSuccessLogin(response), error => this.handleFailedLogin(error));
     }
   }
 
-  handleSuccessLogin(response) {
-    const token = response.getAuthResponse().access_token;
-    const profile = response.getBasicProfile();
-    this.isSignedIn = true;
+  handleSuccessLogin(googleUser: GoogleAuthCurrentUser) {
+    const token = googleUser.getAuthResponse().access_token;
+    const profile = googleUser.getBasicProfile();
     this.store.dispatch(this.userProfileActions.updateToken(token));
     this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
   }
@@ -83,13 +82,12 @@ export class Authorization {
   }
 
   isSignIn() {
-    return this.isSignedIn;
+    return this._googleAuth && this._googleAuth.isSignedIn.get();
   }
 
   signOut () {
     return Observable.fromPromise(this._googleAuth.signOut())
       .subscribe(response => {
-        this.isSignedIn = false;
         this.store.dispatch(this.userProfileActions.signOut());
       });
   }
