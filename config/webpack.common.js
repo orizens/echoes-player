@@ -57,7 +57,7 @@ module.exports = function (options) {
     entry: {
 
       'polyfills': './src/polyfills.browser.ts',
-      'vendor': './src/vendor.browser.ts',
+      'thirdparty': './src/vendor.browser.ts',
       'main': './src/main.browser.ts'
 
     },
@@ -197,7 +197,7 @@ module.exports = function (options) {
        * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
        */
       new CommonsChunkPlugin({
-        name: ['polyfills', 'vendor'].reverse()
+        name: ['polyfills', 'thirdparty'].reverse()
       }),
 
       /**

@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/do';
+
 import { Store } from '@ngrx/store';
 import { UserProfileActions } from '../store/user-profile';
 import { EchoesState } from '../store/';

@@ -2,6 +2,11 @@ import { Http, URLSearchParams, Response, RequestOptionsArgs, Headers } from '@a
 import { Injectable } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { YOUTUBE_API_KEY, CLIENT_ID } from './constants';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/observable/fromPromise';
+
 interface YoutubeApiServiceOptions {
   url?: string;
   http?: Http;

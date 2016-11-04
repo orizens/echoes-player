@@ -153,13 +153,15 @@ module.exports = function (env) {
 
 
         beautify: false, //prod
-        mangle: {
-          screw_ie8: true,
-          keep_fnames: true
-        }, //prod
-        compress: {
-          screw_ie8: true
-        }, //prod
+        mangle: true,
+        // mangle: {
+        //   screw_ie8: true,
+        //   keep_fnames: true
+        // }, //prod
+        compress: true,
+        // compress: {
+        //   screw_ie8: true
+        // }, //prod
         comments: false //prod
       }),
 

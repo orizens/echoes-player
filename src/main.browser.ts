@@ -14,7 +14,16 @@ import './css/style.less';
 // https://github.com/gowravshekar/font-awesome-webpack/issues/20
 // tslint:disable-next-line
 import 'style!css!less!font-awesome-webpack/font-awesome-styles.loader!font-awesome-webpack/font-awesome.config.js';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/switchMapTo';
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/toPromise';
 
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/fromPromise';
 
 /*
  * Bootstrap our Angular app with a top level NgModule
