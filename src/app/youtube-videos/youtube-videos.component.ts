@@ -1,8 +1,6 @@
-import {
-  Component, ChangeDetectionStrategy, OnInit,
-  EventEmitter, Input, Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../core/store';
 
@@ -46,9 +44,10 @@ import './youtube-videos.less';
   </article>
   `
 })
-export class YoutubeVideosComponent implements OnInit {
+export class YoutubeVideosComponent implements OnInit, OnDestroy {
   videos$: Observable<EchoesVideos>;
   playerSearch$: Observable<PlayerSearch>;
+  unsubscribePlayerSearch: Subscription;
 
   constructor(
     private youtubeSearch: YoutubeSearch,
@@ -64,9 +63,13 @@ export class YoutubeVideosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.playerSearch$
+    this.unsubscribePlayerSearch = this.playerSearch$
       .take(1)
       .subscribe(ps => this.search(ps.query));
+  }
+
+  ngOnDestroy () {
+    this.unsubscribePlayerSearch.unsubscribe();
   }
 
   search (query: string) {
