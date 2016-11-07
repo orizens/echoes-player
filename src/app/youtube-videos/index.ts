@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from '../core';
 
-import { YoutubeVideos } from './youtube-videos.component';
+import { YoutubeVideosComponent } from './youtube-videos.component';
 import { PlayerSearch } from './player-search.component';
 import { routing } from './youtube-videos.routing';
 
@@ -11,11 +11,11 @@ import { routing } from './youtube-videos.routing';
     routing
   ],
   declarations: [
-    YoutubeVideos,
+    YoutubeVideosComponent,
     PlayerSearch
   ],
   exports: [
-    YoutubeVideos
+    YoutubeVideosComponent
   ],
   providers: []
 })

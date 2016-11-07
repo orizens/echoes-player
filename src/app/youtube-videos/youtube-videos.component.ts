@@ -18,7 +18,7 @@ import { AppLayoutActions } from '../core/store/app-layout';
 import './youtube-videos.less';
 
 @Component({
-  selector: 'youtube-videos.youtube-videos',
+  selector: 'youtube-videos',
   template: `
   <article
     infinite-scroll
@@ -46,7 +46,7 @@ import './youtube-videos.less';
   </article>
   `
 })
-export class YoutubeVideos implements OnInit {
+export class YoutubeVideosComponent implements OnInit {
   videos$: Observable<EchoesVideos>;
   playerSearch$: Observable<PlayerSearch>;
 
