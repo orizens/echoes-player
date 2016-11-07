@@ -125,7 +125,7 @@
 			border-bottom: none;
 			// position: fixed;
 			// top: 0;
-			width: 29.5rem;
+			/*width: 29.5rem;*/
 			z-index: 1030;
 			background-color: rgb(50, 53, 56);
 			border-radius: 0;
@@ -144,7 +144,7 @@
 }
 @media (min-width: 768px) {
 	.sidebar {
-		transition: transform .3s ease-out;
+		transition: transform, width .3s ease-out;
 		transform: none;
 
 		&.closed + .modal-backdrop {
@@ -162,10 +162,10 @@
 				display: none;
 			}
 			.navbar {
-				width: @sidebar-closed-width;
+				/*width: @sidebar-closed-width;*/
 			}
 			.navbar-brand {
-				width: @sidebar-closed-width;
+				/*width: @sidebar-closed-width;*/
 				padding: 0;
 				text-align: center;
 			}
