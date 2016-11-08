@@ -23,7 +23,7 @@ import './youtube-videos.less';
     [infiniteScrollDistance]="2"
     (scrolled)="searchMore()"
     [immediateCheck]="true">
-    <nav class="navbar col-xs-12">
+    <nav class="navbar navbar-fixed-top">
       <div class="navbar-header">
         <button class="btn btn-navbar btn-link ux-maker pull-left sidebar-toggle"
           (click)="toggleSidebar()">

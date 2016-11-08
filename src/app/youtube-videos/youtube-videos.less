@@ -6,20 +6,12 @@ youtube-videos {
 youtube-videos {
 
 	.navbar {
-	    position: fixed;
-	    z-index: 1010;
-	    right: 0;
-	    top: 0;
-	    border-bottom-color: #ccc;
-	    border-radius: 0;
-        transition: width .3s ease-out;
-
+	    z-index: 1020;
 	}
 }
 .closed + .container-main youtube-videos {
 	.navbar {
-		width: 100%;
-		left: @sidebar-closed-width;
+		margin-left: @sidebar-closed-width;
 	}
 }
 
@@ -39,7 +31,7 @@ youtube-videos {
 			padding-left: 1.6rem;
 		}
 		.navbar {
-		    width: ~"calc(100% - 29.6rem)";
+		    margin-left: @drawer-width;
 		    padding: 0 1.5rem;
 		}
 	}
