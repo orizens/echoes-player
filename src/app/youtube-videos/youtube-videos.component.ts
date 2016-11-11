@@ -9,7 +9,7 @@ import { PlayerActions } from '../core/store/youtube-player';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
-import { PlayerSearch } from '../core/store/player-search';
+import { PlayerSearch, PlayerSearchActions } from '../core/store/player-search';
 import { EchoesVideos } from '../core/store/youtube-videos';
 import { AppLayoutActions } from '../core/store/app-layout';
 
@@ -35,6 +35,23 @@ import './youtube-videos.less';
           (search)="search($event)"
         ></player-search>
       </div>
+      <div class="btn-group btn-group-sm navbar-btn nav-toolbar">
+        <button class="btn btn-default" 
+          [class.active]="(playerSearch$ | async).queryParams.preset === ''"
+          (click)="updatePreset('')">
+          Any
+        </button>
+        <button class="btn btn-default" 
+          [class.active]="(playerSearch$ | async).queryParams.preset === 'full album'"
+          (click)="updatePreset('full album')">
+          Albums
+        </button>
+        <button class="btn btn-default" 
+          [class.active]="(playerSearch$ | async).queryParams.preset === 'live'"
+          (click)="updatePreset('live')">
+          Live
+        </button>
+      </div>
     </nav>
     <youtube-list
       [list]="videos$ | async"
@@ -44,7 +61,7 @@ import './youtube-videos.less';
   </article>
   `
 })
-export class YoutubeVideosComponent implements OnInit, OnDestroy {
+export class YoutubeVideosComponent implements OnInit {
   videos$: Observable<EchoesVideos>;
   playerSearch$: Observable<PlayerSearch>;
   unsubscribePlayerSearch: Subscription;
@@ -56,25 +73,22 @@ export class YoutubeVideosComponent implements OnInit, OnDestroy {
     private nowPlaylistActions: NowPlaylistActions,
     private playerActions: PlayerActions,
     public youtubePlayer: YoutubePlayerService,
-    private appLayoutActions: AppLayoutActions
+    private appLayoutActions: AppLayoutActions,
+    private playerSearchActions: PlayerSearchActions
   ) {
     this.videos$ = store.select(state => state.videos);
     this.playerSearch$ = store.select(state => state.search);
   }
 
   ngOnInit() {
-    this.unsubscribePlayerSearch = this.playerSearch$
-      .take(1)
-      .subscribe(ps => this.search(ps.query));
-  }
-
-  ngOnDestroy () {
-    this.unsubscribePlayerSearch.unsubscribe();
+    this.search(this.searchQuery);
   }
 
   search (query: string) {
     // workaround until switched to new form
-    if (!query.hasOwnProperty('isTrusted')) this.youtubeSearch.search(query, false);
+    if (!query.hasOwnProperty('isTrusted')) {
+      this.youtubeSearch.search(query, false, this.searchParams);
+    }
   }
 
   playSelectedVideo (media: GoogleApiYouTubeVideoResource) {
@@ -92,10 +106,27 @@ export class YoutubeVideosComponent implements OnInit, OnDestroy {
   }
 
   searchMore () {
-    this.youtubeSearch.searchMore();
+    this.youtubeSearch.searchMore(this.searchParams);
   }
 
   toggleSidebar() {
     return this.store.dispatch(this.appLayoutActions.toggleSidebar());
+  }
+
+  updatePreset(preset: string) {
+    this.youtubeSearch.setPreset(preset);
+    this.youtubeSearch.search(this.searchQuery, false, this.searchParams);
+  }
+
+  get searchParams () {
+    let params;
+    this.playerSearch$.take(1).subscribe(ps => params = ps.queryParams);
+    return params;
+  }
+
+  get searchQuery () {
+    let query;
+    this.playerSearch$.take(1).subscribe(ps => query = ps.query);
+    return query;
   }
 }

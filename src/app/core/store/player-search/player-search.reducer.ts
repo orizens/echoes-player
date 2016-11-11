@@ -4,10 +4,21 @@ import { PlayerSearchActions } from './player-search.actions';
 export interface PlayerSearch {
   query: string;
   filter: string;
+  queryParams: {
+    preset: string;
+    duration: number;
+  };
+}
+interface SearchQueryParam {
+  [property: string]: any;
 }
 let initialState: PlayerSearch = {
   query: '',
-  filter: ''
+  filter: '',
+  queryParams: {
+    preset: '',
+    duration: -1
+  }
 };
 export const search: ActionReducer<PlayerSearch> = (
   state: PlayerSearch = initialState,
@@ -20,7 +31,12 @@ export const search: ActionReducer<PlayerSearch> = (
     case PlayerSearchActions.UPDATE_FILTER:
       return state;
 
+    case PlayerSearchActions.UPDATE_QUERY_PARAM:
+      const queryParams = Object.assign({}, state.queryParams, action.payload);
+      return Object.assign({}, state, { queryParams });
+
     default:
-      return state;
+      // upgrade policy - for when the initialState has changed
+      return Object.assign({}, initialState, state);
   }
 };
