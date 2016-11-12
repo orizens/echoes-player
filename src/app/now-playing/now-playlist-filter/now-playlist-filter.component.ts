@@ -6,9 +6,9 @@ import './now-playlist-filter.less';
   selector: 'now-playlist-filter',
   template: `
   <h3 class="nav-header user-playlists-filter">
-    <span class="text">Now Playing</span>
+    <span class="text">Now Playing <span *ngIf="!isPlaylistEmpty()">({{ playlistLength }})</span></span>
     <button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
-      [disabled]="playlist?.videos?.length === 0"
+      [disabled]="isPlaylistEmpty()"
       (click)="clearPlaylist()">
       <span class="fa fa-trash-o"></span>
     </button>
@@ -24,7 +24,7 @@ import './now-playlist-filter.less';
         (click)="resetSearchFilter()"
       ></i>
       <input type="search" name="playlist-search"
-        [value]="playlist?.filter"
+        [value]="playlist.filter"
         #searchFilter
         (input)="handleFilterChange(searchFilter.value)">
     </div>
@@ -62,5 +62,13 @@ export class NowPlaylistFilter {
 
   clearPlaylist () {
     this.clear.next('');
+  }
+
+  isPlaylistEmpty() {
+    return this.playlistLength === 0;
+  }
+
+  get playlistLength () {
+    return this.playlist.videos.length;
   }
 }

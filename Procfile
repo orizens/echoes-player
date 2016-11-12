@@ -1,0 +1,1 @@
+web: npm install && npm run build:prod && node_modules/http-server/bin/http-server dist --cors -p $PORT

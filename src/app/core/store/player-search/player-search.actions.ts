@@ -5,6 +5,8 @@ import { Action } from '@ngrx/store';
 export class PlayerSearchActions {
   static UPDATE_QUERY = '[PlayerSearch] UPDATE_QUERY';
   static UPDATE_FILTER = '[PlayerSearch] UPDATE_FILTER';
+  static UPDATE_QUERY_PARAM = '[PlayerSearch] UPDATE_QUERY_PARAM';
+  static SEARCH_NEW_QUERY = '[PlayerSearch] SEARCH_NEW_QUERY';
 
   updateQuery(query: string): Action {
     return {
@@ -16,6 +18,20 @@ export class PlayerSearchActions {
   updateFilter(): Action {
     return {
       type: PlayerSearchActions.UPDATE_FILTER
+    };
+  }
+
+  updateQueryParam(queryParam: any) {
+    return {
+      type: PlayerSearchActions.UPDATE_QUERY_PARAM,
+      payload: queryParam
+    };
+  }
+
+  searchNewQuery() {
+    return {
+      type: PlayerSearchActions.SEARCH_NEW_QUERY
+      // payload: { query, params }
     };
   }
 }

@@ -18,6 +18,7 @@ const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -153,13 +154,15 @@ module.exports = function (env) {
 
 
         beautify: false, //prod
-        mangle: {
-          screw_ie8: true,
-          keep_fnames: true
-        }, //prod
-        compress: {
-          screw_ie8: true
-        }, //prod
+        mangle: true,
+        // mangle: {
+        //   screw_ie8: true,
+        //   keep_fnames: true
+        // }, //prod
+        compress: true,
+        // compress: {
+        //   screw_ie8: true
+        // }, //prod
         comments: false //prod
       }),
 
@@ -239,6 +242,11 @@ module.exports = function (env) {
 
       //   }
       // }),
+      new CopyWebpackPlugin([{
+          from: 'config/heroku',
+          to: './'
+        }
+      ]),
       new ExtractTextPlugin('style.css')
 
     ],

@@ -15,7 +15,12 @@
 @import url(./layout/sidebar.less);
 @import url(./core/v-bootstrap-dropdown-animated.less);
 
-.btn:focus {
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
 	outline: none;
 }
 footer {

@@ -1,8 +1,6 @@
-import {
-  Component, ChangeDetectionStrategy, OnInit,
-  EventEmitter, Input, Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../core/store';
 
@@ -11,14 +9,14 @@ import { PlayerActions } from '../core/store/youtube-player';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
-import { PlayerSearch } from '../core/store/player-search';
+import { PlayerSearch, PlayerSearchActions } from '../core/store/player-search';
 import { EchoesVideos } from '../core/store/youtube-videos';
 import { AppLayoutActions } from '../core/store/app-layout';
 
 import './youtube-videos.less';
 
 @Component({
-  selector: 'youtube-videos.youtube-videos',
+  selector: 'youtube-videos',
   template: `
   <article
     infinite-scroll
@@ -33,6 +31,23 @@ import './youtube-videos.less';
           (search)="search($event)"
         ></player-search>
       </div>
+      <div class="btn-group btn-group-sm navbar-btn nav-toolbar">
+        <button class="btn btn-default" 
+          [class.active]="(playerSearch$ | async).queryParams.preset === ''"
+          (click)="updatePreset('')">
+          Any
+        </button>
+        <button class="btn btn-default" 
+          [class.active]="(playerSearch$ | async).queryParams.preset === 'full album'"
+          (click)="updatePreset('full album')">
+          Albums
+        </button>
+        <button class="btn btn-default" 
+          [class.active]="(playerSearch$ | async).queryParams.preset === 'live'"
+          (click)="updatePreset('live')">
+          Live
+        </button>
+      </div>
     </app-navbar>
     <youtube-list
       [list]="videos$ | async"
@@ -42,9 +57,10 @@ import './youtube-videos.less';
   </article>
   `
 })
-export class YoutubeVideos implements OnInit {
+export class YoutubeVideosComponent implements OnInit {
   videos$: Observable<EchoesVideos>;
   playerSearch$: Observable<PlayerSearch>;
+  unsubscribePlayerSearch: Subscription;
 
   constructor(
     private youtubeSearch: YoutubeSearch,
@@ -53,21 +69,22 @@ export class YoutubeVideos implements OnInit {
     private nowPlaylistActions: NowPlaylistActions,
     private playerActions: PlayerActions,
     public youtubePlayer: YoutubePlayerService,
-    private appLayoutActions: AppLayoutActions
+    private appLayoutActions: AppLayoutActions,
+    private playerSearchActions: PlayerSearchActions
   ) {
     this.videos$ = store.select(state => state.videos);
     this.playerSearch$ = store.select(state => state.search);
   }
 
   ngOnInit() {
-    this.playerSearch$
-      .take(1)
-      .subscribe(ps => this.search(ps.query));
+    this.search(this.searchQuery);
   }
 
   search (query: string) {
     // workaround until switched to new form
-    if (!query.hasOwnProperty('isTrusted')) this.youtubeSearch.search(query, false);
+    if (!query.hasOwnProperty('isTrusted')) {
+      this.youtubeSearch.search(query, false, this.searchParams);
+    }
   }
 
   playSelectedVideo (media: GoogleApiYouTubeVideoResource) {
@@ -85,6 +102,23 @@ export class YoutubeVideos implements OnInit {
   }
 
   searchMore () {
-    this.youtubeSearch.searchMore();
+    this.youtubeSearch.searchMore(this.searchParams);
+  }
+
+  updatePreset(preset: string) {
+    this.youtubeSearch.setPreset(preset);
+    this.youtubeSearch.search(this.searchQuery, false, this.searchParams);
+  }
+
+  get searchParams () {
+    let params;
+    this.playerSearch$.take(1).subscribe(ps => params = ps.queryParams);
+    return params;
+  }
+
+  get searchQuery () {
+    let query;
+    this.playerSearch$.take(1).subscribe(ps => query = ps.query);
+    return query;
   }
 }

@@ -58,7 +58,8 @@
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "npm run webdriver-manager update",
     "webpack-dev-server": "webpack-dev-server",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "server:heroku": "http-server dist --cors -p $PORT"
   },
   "dependencies": {
     "@angular/common": "2.1.0",

@@ -2,46 +2,60 @@
 
 .player-controls {
 	@btn-color: whitesmoke;
-	button {
-		padding: 1.5rem 2rem;
-		box-shadow: inset 0 0 0 #000;
+	@btn-control-font-size:  1.3rem;
+	@btn-control-padding:  1.5rem 2rem;
+	@btn-control-primary-color: @brand-primary;
+	@btn-primary-font-size: 1.8rem;
+
+	.button-style () {
 		border: none;
-		border-bottom: 4px solid #333;
 		background: transparent;
-		color:@btn-color;
+		color: @btn-color;
+		border-radius: 0;
+		outline: none;
+		font-size: @btn-control-font-size;
 	}
 
 	.btn {
-		border: none;
-		background: transparent;
-		color:@btn-color;
-		border-radius: 0;
-		outline: none;
-		font-size: 1.3rem;
-
-		&:hover {
-			background: transparent;
-			color: @btn-color;
+		&.next,
+		&.previous {
+			padding: @btn-control-padding;
 		}
 	}
+	.btn {
+		.button-style();
+		
+		&:hover {
+			.button-style();
+		}
 
-	.pause {
-		display: none;
+		&.pause {
+			display: none;
+		}
+
+		&.play,
+		&.pause {
+			border: 0;
+			border-radius: 50% !important;
+			background-color: @btn-control-primary-color;
+			padding: 0.9rem 1.4rem;
+			margin: 0.3rem 0 !important;
+			font-size: @btn-primary-font-size;
+		}
 	}
 
 	.show-player {
 		transform: translatey(0);
 	}
 
-	.play,
-	.play:hover
-	.pause,
-	.pause:hover {
-		border: 0;
-		border-radius: 50% !important;
-		background-color: @brand-primary;
-    padding: 0.8rem 1.3rem;
-    font-size: 2rem;
-    margin: 0.3rem 0;
+}
+
+.yt-playing .player-controls {
+	.play {
+		display: none;
+	}
+
+	.pause {
+		display: inline-block;
 	}
 }

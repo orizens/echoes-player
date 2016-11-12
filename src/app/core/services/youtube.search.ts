@@ -19,7 +19,9 @@ export class YoutubeSearch {
   constructor(
     private http: Http,
     private store: Store<EchoesState>,
-    public youtubeVideosActions: YoutubeVideosActions) {
+    public youtubeVideosActions: YoutubeVideosActions,
+    public playerSearchActions: PlayerSearchActions
+    ) {
     this.api = new YoutubeApiService({
       url: this.url,
       http: http,
@@ -30,7 +32,7 @@ export class YoutubeSearch {
     this.api.config.set('type', 'video');
   }
 
-  search(query: string, dontReset: Boolean) {
+  search(query: string, dontReset: Boolean, params?: any) {
     const isNewSearch = query && query !== this.api.config.get('q');
     const shouldBeReset = !dontReset;
 
@@ -39,32 +41,33 @@ export class YoutubeSearch {
       this.store.dispatch(this.youtubeVideosActions.reset());
     }
     if (query) {
-      this.api.config.set('q', query);
+      const preset = params ? params.preset : '';
+      this.api.config.set('q', `${query} ${preset}`);
       this.store.dispatch({ type: PlayerSearchActions.UPDATE_QUERY, payload: query });
     }
     this.isSearching = true;
     return this.api.list('video')
       .then(response => {
-        let itemsAmount = this.items.length;
+        // let itemsAmount = this.items.length;
         this.isSearching = false;
-        this.items.splice(itemsAmount, 0, ...response.items);
+        // this.items.splice(itemsAmount, 0, ...response.items);
         this.store.dispatch(this.youtubeVideosActions.addVideos([ ...response.items ]));
         return response;
       });
-
-      // .then(fetchContentDetails)
-      // .then(addDuration)
-      // .then(finalize);
   }
 
-  searchMore() {
-    if (!this.isSearching && this.items.length) {
+  searchMore(params: any) {
+    if (!this.isSearching) {
       this.api.config.set('pageToken', this.api.nextPageToken);
-      this.search(this.api.config.get('q'), true);
+      this.search(this.api.config.get('q'), true, params);
     }
   }
 
   resetPageToken () {
     this.api.resetPageToken();
+  }
+
+  setPreset (preset: string) {
+    this.store.dispatch(this.playerSearchActions.updateQueryParam({ preset }));
   }
 }
