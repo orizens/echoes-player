@@ -27,7 +27,7 @@ import './app-navbar.less';
             (click)="signOutUser()">
             <i class="fa fa-sign-out"></i>
             Sign Out
-            <img [src]="(user$ | async)?.profile.imageUrl" class="user-icon">
+            <img [src]="(user$ | async).profile.imageUrl" class="user-icon">
           </span>
           <span class="btn btn-link navbar-link navbar-btn"
             *ngIf="!isSignIn()"

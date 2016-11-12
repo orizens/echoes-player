@@ -5,22 +5,6 @@ youtube-videos {
 }
 .youtube-videos {
 
-	.navbar {
-	    position: fixed;
-	    z-index: 1010;
-	    right: 0;
-	    top: 0;
-	    border-bottom-color: #ccc;
-	    border-radius: 0;
-        transition: width .3s ease-out;
-
-	}
-}
-.closed + .container-main .youtube-videos {
-	.navbar {
-		width: 100%;
-		left: @sidebar-closed-width;
-	}
 }
 
 @media (min-width: 320px) {
@@ -37,10 +21,6 @@ youtube-videos {
 
 		.videos-list {
 			padding-left: 1.6rem;
-		}
-		.navbar {
-		    width: ~"calc(100% - 29.6rem)";
-		    padding: 0 1.5rem;
 		}
 	}
 }

@@ -25,19 +25,15 @@ import './youtube-videos.less';
     [infiniteScrollDistance]="2"
     (scrolled)="searchMore()"
     [immediateCheck]="true">
-    <nav class="navbar col-xs-12">
+    <app-navbar>
       <div class="navbar-header">
-        <button class="btn btn-navbar btn-link ux-maker pull-left sidebar-toggle"
-          (click)="toggleSidebar()">
-          <i class="fa fa-bars"></i>
-        </button>
         <player-search
           [query]="playerSearch$ | async"
           (change)="resetPageToken()"
           (search)="search($event)"
         ></player-search>
       </div>
-    </nav>
+    </app-navbar>
     <youtube-list
       [list]="videos$ | async"
       (play)="playSelectedVideo($event)"
@@ -90,9 +86,5 @@ export class YoutubeVideos implements OnInit {
 
   searchMore () {
     this.youtubeSearch.searchMore();
-  }
-
-  toggleSidebar() {
-    return this.store.dispatch(this.appLayoutActions.toggleSidebar());
   }
 }
