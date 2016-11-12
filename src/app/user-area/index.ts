@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CoreStoreModule } from '../core/store';
 import { CoreModule } from '../core';
+import { AppNavbarModule } from '../app-navbar';
 
 import { UserArea } from './user-area.component';
-import { UserNav } from './user-nav.component';
 import { routing } from './user-area.routing';
 
 @NgModule({
   imports: [
     CoreStoreModule,
     CoreModule,
+    AppNavbarModule,
     routing
   ],
   declarations: [
-    UserArea,
-    UserNav
+    UserArea
   ],
   exports: [
     UserArea

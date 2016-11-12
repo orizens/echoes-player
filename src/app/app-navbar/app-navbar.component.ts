@@ -1,10 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { GoogleBasicProfile } from '../core/store/user-profile';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
-import './user-nav.less';
+import { user, UserProfileData, GoogleBasicProfile } from '../core/store/user-profile';
+import { UserProfile, Authorization } from '../core/services';
+import { AppLayoutActions } from '../core/store/app-layout';
+import { EchoesState } from '../core/store';
+
+import './app-navbar.less';
 
 @Component({
-  selector: 'user-nav',
+  selector: 'app-navbar',
   template: `
     <nav class="row navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -13,7 +19,7 @@ import './user-nav.less';
             (click)="toggleSidebar()">
             <i class="fa fa-bars"></i>
           </button>
-          <i class="fa fa-heart"></i> My Profile - <small>My Playlists</small>
+          <ng-content></ng-content>
         </h2>
         <section class="nav navbar-nav navbar-right navbar-text">
           <span class="btn btn-link navbar-link navbar-btn"
@@ -21,7 +27,7 @@ import './user-nav.less';
             (click)="signOutUser()">
             <i class="fa fa-sign-out"></i>
             Sign Out
-            <img [src]="profile.imageUrl" class="user-icon">
+            <img [src]="(user$ | async).profile.imageUrl" class="user-icon">
           </span>
           <span class="btn btn-link navbar-link navbar-btn"
             *ngIf="!isSignIn()"
@@ -32,33 +38,45 @@ import './user-nav.less';
         </section>
       </div>
     </nav>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  `
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserNav implements OnInit {
-  @Input() profile: GoogleBasicProfile = {};
+export class AppNavbar implements OnInit {
+  private user$: Observable<UserProfileData>;
+
+  // @Input() profile: GoogleBasicProfile = {};
 
   @Output() signIn = new EventEmitter();
   @Output() signOut = new EventEmitter();
   @Output() menu = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private authorization: Authorization,
+    private appLayoutActions: AppLayoutActions,
+    private userProfile: UserProfile,
+    private store: Store<EchoesState>
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.user$ = this.store.select(state => state.user);
+  }
 
   signInUser () {
+    this.authorization.signIn();
     this.signIn.next();
   }
 
   signOutUser () {
+    this.authorization.signOut();
     this.signOut.next();
   }
 
   isSignIn () {
-    return this.profile.imageUrl && this.profile.imageUrl.length;
+    return this.authorization.isSignIn();
   }
 
-  toggleSidebar () {
+  toggleSidebar() {
     this.menu.next();
+    return this.store.dispatch(this.appLayoutActions.toggleSidebar());
   }
 }

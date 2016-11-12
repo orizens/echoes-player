@@ -21,6 +21,7 @@ import { YoutubeVideosModule } from './youtube-videos';
 import { UserAreaModule } from './user-area';
 import { NavigatorModule } from './navigator';
 import { NowPlayingModule } from './now-playing';
+import { AppNavbarModule } from './app-navbar';
 
 import { CoreModule } from './core';
 // SERVICES
@@ -55,11 +56,12 @@ const APP_PROVIDERS = [
     RouterModule.forRoot(ROUTES, { useHash: true }),
     CoreModule,
 
+    AppNavbarModule,
     YoutubeVideosModule,
     NavigatorModule,
     UserAreaModule,
     NowPlayingModule,
-    PlayerModule
+    PlayerModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
