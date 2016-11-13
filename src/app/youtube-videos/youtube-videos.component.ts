@@ -31,23 +31,11 @@ import './youtube-videos.less';
           (search)="search($event)"
         ></player-search>
       </div>
-      <div class="btn-group btn-group-sm navbar-btn nav-toolbar">
-        <button class="btn btn-default" 
-          [class.active]="(playerSearch$ | async).queryParams.preset === ''"
-          (click)="updatePreset('')">
-          Any
-        </button>
-        <button class="btn btn-default" 
-          [class.active]="(playerSearch$ | async).queryParams.preset === 'full album'"
-          (click)="updatePreset('full album')">
-          Albums
-        </button>
-        <button class="btn btn-default" 
-          [class.active]="(playerSearch$ | async).queryParams.preset === 'live'"
-          (click)="updatePreset('live')">
-          Live
-        </button>
-      </div>
+      <button-group class="nav-toolbar"
+        [buttons]="presets"
+        [selectedButton]="(playerSearch$ | async).queryParams.preset"
+        (buttonClick)="updatePreset($event)"
+      ></button-group>
     </app-navbar>
     <youtube-list
       [list]="videos$ | async"
@@ -61,6 +49,12 @@ export class YoutubeVideosComponent implements OnInit {
   videos$: Observable<EchoesVideos>;
   playerSearch$: Observable<PlayerSearch>;
   unsubscribePlayerSearch: Subscription;
+
+  presets: any[] = [
+    { label: 'Any', value: '' },
+    { label: 'Albums', value: 'full album' },
+    { label: 'Live', value: 'live' },
+  ]
 
   constructor(
     private youtubeSearch: YoutubeSearch,
