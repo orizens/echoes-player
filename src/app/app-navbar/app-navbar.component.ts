@@ -19,8 +19,15 @@ import './app-navbar.less';
             (click)="toggleSidebar()">
             <i class="fa fa-bars"></i>
           </button>
-          <ng-content></ng-content>
         </h2>
+        <button type="button" class="navbar-toggle collapsed pull-left navbar-nav"
+          (click)="toggleCollapse()">
+          <i class="fa fa-angle-double-up" [class.fa-angle-double-down]="isCollapsed"></i>
+        </button>
+        <div class="collapse navbar-collapse navbar-nav"
+          [class.collapse]="isCollapsed">
+          <ng-content></ng-content>
+        </div>
         <section class="nav navbar-nav navbar-right navbar-text">
           <span class="btn btn-link navbar-link navbar-btn"
             *ngIf="isSignIn()"
@@ -43,6 +50,7 @@ import './app-navbar.less';
 })
 export class AppNavbar implements OnInit {
   private user$: Observable<UserProfileData>;
+  private isCollapsed: boolean = true;
 
   // @Input() profile: GoogleBasicProfile = {};
 
@@ -78,5 +86,9 @@ export class AppNavbar implements OnInit {
   toggleSidebar() {
     this.menu.next();
     return this.store.dispatch(this.appLayoutActions.toggleSidebar());
+  }
+
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed;
   }
 }
