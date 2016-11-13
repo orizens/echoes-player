@@ -12,6 +12,11 @@ export interface PlayerSearch {
 interface SearchQueryParam {
   [property: string]: any;
 }
+
+export interface PresetParam {
+  label: string;
+  value: any;
+}
 let initialState: PlayerSearch = {
   query: '',
   filter: '',

@@ -9,7 +9,7 @@ import { PlayerActions } from '../core/store/youtube-player';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
-import { PlayerSearch, PlayerSearchActions } from '../core/store/player-search';
+import { PlayerSearch, PlayerSearchActions, PresetParam } from '../core/store/player-search';
 import { EchoesVideos } from '../core/store/youtube-videos';
 import { AppLayoutActions } from '../core/store/app-layout';
 
@@ -50,11 +50,11 @@ export class YoutubeVideosComponent implements OnInit {
   playerSearch$: Observable<PlayerSearch>;
   unsubscribePlayerSearch: Subscription;
 
-  presets: any[] = [
+  presets: PresetParam[] = [
     { label: 'Any', value: '' },
     { label: 'Albums', value: 'full album' },
-    { label: 'Live', value: 'live' },
-  ]
+    { label: 'Live', value: 'live' }
+  ];
 
   constructor(
     private youtubeSearch: YoutubeSearch,
@@ -99,8 +99,8 @@ export class YoutubeVideosComponent implements OnInit {
     this.youtubeSearch.searchMore(this.searchParams);
   }
 
-  updatePreset(preset: string) {
-    this.youtubeSearch.setPreset(preset);
+  updatePreset(preset: PresetParam) {
+    this.youtubeSearch.setPreset(preset.value);
     this.youtubeSearch.search(this.searchQuery, false, this.searchParams);
   }
 
