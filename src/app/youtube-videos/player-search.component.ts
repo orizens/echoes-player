@@ -1,7 +1,4 @@
-import {
-  Component, OnInit, Input, Output,
-  EventEmitter, ChangeDetectionStrategy
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 // import { NgForm } from '@angular/common';
 
 import './player-search.less';
@@ -10,12 +7,12 @@ import './player-search.less';
   selector: 'player-search',
   template: `
     <form class="navbar-form form-search" id="media-explorer"
-      (ngSubmit)="onSearch(query.value)">
+      (ngSubmit)="onSearch(mediaSearch.value)">
       <div class="form-group clearfix">
         <input placeholder="Explore Media" id="media-search" 
           type="search" class="form-control" autocomplete="off"
-          [value]="searchQuery.query" #query name="query"
-          (input)="onQueryChange(query.value)"
+          [value]="searchQuery.query" #mediaSearch name="mediaSearch"
+          (input)="onQueryChange(mediaSearch.value)"
           >
         <button class="btn btn-transparent btn-submit" type="submit" title="search with echoes">
           <i class="fa fa-search"></i>
@@ -34,10 +31,13 @@ export class PlayerSearch implements OnInit {
     query: ''
   };
 
+  @ViewChild('mediaSearch') mediaSearch;
+
   constructor() { }
 
   ngOnInit() {
     this.searchQuery.query = this.query.query;
+    // console.log(this.mediaSearch);
   }
 
   onQueryChange(query: string) {
@@ -45,6 +45,7 @@ export class PlayerSearch implements OnInit {
   }
 
   onSearch(query: string) {
+    this.mediaSearch.nativeElement.blur();
     this.search.next(query);
   }
 }

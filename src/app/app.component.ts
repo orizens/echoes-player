@@ -49,28 +49,8 @@ export class App implements OnInit {
     this.nowPlaylistService.updateIndexByMedia(media.id);
   }
 
-  handleVideoEnded (state) {
-    if (!this.isLastIndex()) {
-      this.playNextVideo(state);
-    }
-  }
-
-  playNextVideo (player) {
-    this.nowPlaylistService.selectNextIndex();
-    this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
-  }
-
-  playPreviousVideo (player) {
-    this.nowPlaylistService.selectPreviousIndex();
-    this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
-  }
-
   sortVideo (media: GoogleApiYouTubeSearchResource) {
 
-  }
-
-  isLastIndex () {
-    return this.nowPlaylistService.isInLastTrack();
   }
 
   toggleSidebar () {

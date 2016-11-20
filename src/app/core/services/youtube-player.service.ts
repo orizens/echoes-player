@@ -21,7 +21,7 @@ export class YoutubePlayerService {
     private zone: NgZone,
     private playerActions: PlayerActions
     ) {
-    this.player$ = this.store.select(_store => _store.player);
+    this.player$ = this.store.select(state => state.player);
     this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen; });
   }
 
@@ -46,16 +46,6 @@ export class YoutubePlayerService {
 
   togglePlayer() {
     this.store.dispatch(this.playerActions.togglePlayer(true));
-  }
-
-  isPlaying () {
-    // because YT is not loaded yet 1 is used - YT.PlayerState.PLAYING
-    const isPlayerReady: any = this.player && this.player.getPlayerState;
-    const playerState = isPlayerReady ? this.player.getPlayerState() : {};
-    const isPlayerPlaying = isPlayerReady
-      ? playerState !== YT.PlayerState.ENDED && playerState !== YT.PlayerState.PAUSED
-      : false;
-    return isPlayerPlaying;
   }
 
   onPlayerStateChange (event) {

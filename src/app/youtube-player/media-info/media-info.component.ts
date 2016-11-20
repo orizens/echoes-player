@@ -10,7 +10,7 @@ import './media-info.less';
         title="maximize / minimize"
         (click)="handleThumbClick()">
         <img src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
-        <i class="fa fa-arrows-alt" [ngClass]="{ 'invisible': minimized }"></i>
+        <i class="fa fa-arrows-alt" [ngClass]="{ 'invisible': _minimized }"></i>
       </aside>
       <a class="title">{{ player?.media?.snippet?.title }}</a>
     </h3>
@@ -20,7 +20,7 @@ import './media-info.less';
 })
 export class MediaInfoComponent implements OnInit {
   @Input() player: any = {};
-  @Input() minimized: boolean = false;
+  @Input() minimized: GoogleApiYouTubeVideoResource;
   @Output() thumbClick = new EventEmitter();
 
   constructor() { }
@@ -29,5 +29,9 @@ export class MediaInfoComponent implements OnInit {
 
   handleThumbClick () {
     this.thumbClick.next();
+  }
+
+  get _minimized () {
+    return !this.minimized.hasOwnProperty('id');
   }
 }

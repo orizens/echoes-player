@@ -1,10 +1,9 @@
 <div class="youtube-player"
 	[ngClass]="{
-		'show-youtube-player': player?.showPlayer,
-		'fullscreen': player?.isFullscreen
+		'show-youtube-player': (player$ | async).showPlayer,
+		'fullscreen': (player$ | async).isFullscreen
 	}">
-	<div class="yt-player ux-maker"
-    ng-show="hasContent()">
+	<div class="yt-player ux-maker">
     <div class="overlay text-center" title="maximize player to medium size" 
       (click)="togglePlayer()"
       ><i class="fa fa-expand"></i>
@@ -16,50 +15,25 @@
         <i class="fa fa-chevron-up"></i>
       </button>
     </div>
-
 		<youtube-player class="nicer-ux"
 			(ready)="setupPlayer($event)"
 			(change)="updatePlayerState($event)"
 		></youtube-player>
-
 	</div>
 
 	<div class="container-fluid">
 
 		<div class="col-md-5 col-xs-7">
 			<media-info
-				[player]="player"
-				[minimized]="!hasContent()"
+				[player]="player$ | async"
+				[minimized]="media$ | async"
 				(thumbClick)="toggleFullScreen()"
 			></media-info>
 		</div>
 
 		<div class="col-md-4 col-xs-5 controls-container nicer-ux"
-			[ngClass]="{ 'yt-playing': isPlaying() }">
-
-			<div class="btn-group player-controls">
-					<button title="play previous track"
-						class="btn btn-default btn-lg navbar-btn previous"
-						(click)="playPreviousTrack()"
-						ng-disabled="!vm.playlistHasTracks()">
-						<i class="fa fa-step-backward"></i></button>
-
-					<button title="pause"
-						class="btn btn-default btn-lg navbar-btn pause"
-						(click)="pauseVideo()">
-						<i class="fa fa-pause"></i></button>
-
-					<button title="play"
-						class="btn btn-default btn-lg navbar-btn play"
-						(click)="playVideo()">
-						<i class="fa fa-play"></i></button>
-
-					<button title="play next track"
-						class="btn btn-default btn-lg navbar-btn next"
-						(click)="playNextTrack()"
-						><i class="fa fa-step-forward"></i></button>
-			</div>
-
+			[class.yt-playing]="isPlayerPlaying$ | async">
+			<player-controls [media]="media$ | async" (play)="playVideo($event)" (pause)="pauseVideo()" (next)="playNextTrack()" (previous)="playPreviousTrack()"></player-controls>
 		</div>
 
 	</div>

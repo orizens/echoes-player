@@ -1,12 +1,13 @@
+import { EchoesState } from '../core/store';
+import { Store } from '@ngrx/store';
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
-import { YoutubePlayerService } from '../core/services';
-import { YoutubePlayerState } from '../core/store/youtube-player';
+import { NowPlaylistService, YoutubePlayerService } from '../core/services';
+import { getCurrentMedia, isPlayerPlaying, PlayerActions, YoutubePlayerState } from '../core/store/youtube-player';
 
 import './youtube-player.less';
-import './player-controls/player-controls.less';
 
 @Component({
   selector: 'player',
@@ -14,22 +15,23 @@ import './player-controls/player-controls.less';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayer implements OnInit {
-  @Input() player: YoutubePlayerState;
-  @Output() ended = new EventEmitter();
-  @Output() playNext = new EventEmitter<YoutubePlayerState>();
-  @Output() playPrevious = new EventEmitter<YoutubePlayerState>();
-  @Output() play = new EventEmitter();
+  player$: Observable<YoutubePlayerState>;
+  media$: Observable<any>;
+  isPlayerPlaying$: Observable<boolean>;
 
-  title: Observable<string>;
-  mediaThumbnail: Observable<string>;
-
-  constructor(public playerService: YoutubePlayerService) {
+  constructor(
+    private playerService: YoutubePlayerService,
+    public nowPlaylistService: NowPlaylistService,
+    private playerActions: PlayerActions,
+    private store: Store<EchoesState>,
+  ) {
   }
 
   ngOnInit() {
-    this.playerService.player$
-      .take(1)
-      .subscribe(player => player.isFullscreen = false);
+    this.player$ = this.playerService.player$;
+    this.media$ = getCurrentMedia(this.player$);
+    this.isPlayerPlaying$ = isPlayerPlaying(this.player$);
+    this.store.dispatch(this.playerActions.resetFullScreen());
   }
 
   setupPlayer (player) {
@@ -39,17 +41,12 @@ export class YoutubePlayer implements OnInit {
   updatePlayerState (event) {
     this.playerService.onPlayerStateChange(event);
     if (event.data === YT.PlayerState.ENDED) {
-      this.ended.next(event.data);
+      this.handleVideoEnded(event.data);
     }
   }
 
-  playVideo () {
-    this.playerService.play();
-    // this.play.next(this.player.media);
-  }
-
-  isPlaying () {
-    return this.playerService.isPlaying();
+  playVideo (media: any) {
+    this.store.dispatch(this.playerActions.playVideo(media));
   }
 
   pauseVideo () {
@@ -60,23 +57,27 @@ export class YoutubePlayer implements OnInit {
     this.playerService.togglePlayer();
   }
 
-  playNextTrack () {
-    this.playNext.next(this.player);
-  }
-
-  playPreviousTrack () {
-    this.playPrevious.next(this.player);
-  }
-
-  onStop (state: YT.PlayerState) {
-    this.ended.next(state);
-  }
-
   toggleFullScreen () {
     this.playerService.setSize();
   }
 
-  hasContent () {
-    return Object.keys(this.player.media).length;
+  playNextTrack (player) {
+    this.nowPlaylistService.selectNextIndex();
+    this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
+  }
+
+  playPreviousTrack (player) {
+    this.nowPlaylistService.selectPreviousIndex();
+    this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
+  }
+
+  handleVideoEnded (state: YT.PlayerState) {
+    if (!this.isLastIndex()) {
+      this.playPreviousTrack(state);
+    }
+  }
+
+  isLastIndex () {
+    return this.nowPlaylistService.isInLastTrack();
   }
 }
