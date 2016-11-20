@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs/Rx';
 import { NgModule } from '@angular/core';
 import { Store, StoreModule } from '@ngrx/store';
+import 'rxjs/add/operator/let';
 
 import { ActionReducer, Action, combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
@@ -11,7 +13,7 @@ import { player, YoutubePlayerState, PlayerActions } from './youtube-player';
 import { nowPlaylist, YoutubeMediaPlaylist, NowPlaylistActions } from './now-playlist';
 import { user, UserProfileData, UserProfileActions } from './user-profile';
 import { search, PlayerSearch, PlayerSearchActions } from './player-search';
-import { appLayout, AppLayoutActions } from './app-layout';
+import { appLayout, AppLayoutActions, AppLayout, getSidebarExpanded } from './app-layout';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 /**
@@ -24,7 +26,7 @@ export interface EchoesState {
   nowPlaylist: YoutubeMediaPlaylist;
   user: UserProfileData;
   search: PlayerSearch;
-  appLayout: any;
+  appLayout: AppLayout;
 }
 
 const actions = [
@@ -63,3 +65,9 @@ if ('production' !== ENV) {
   providers: [ ...actions ]
 })
 export class CoreStoreModule {};
+
+// shared selectors
+function getAppLayoutState(state$: Observable<EchoesState>) {
+  return state$.select(state => state.appLayout);
+}
+export const getSidebarCollapsed = compose(getSidebarExpanded, getAppLayoutState);

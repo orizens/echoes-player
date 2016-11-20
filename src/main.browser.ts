@@ -21,6 +21,7 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/let';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromPromise';

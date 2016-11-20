@@ -22,6 +22,7 @@ import { UserAreaModule } from './user-area';
 import { NavigatorModule } from './navigator';
 import { NowPlayingModule } from './now-playing';
 import { AppNavbarModule } from './app-navbar';
+import { AppBrandModule } from './app-brand';
 
 import { CoreModule } from './core';
 // SERVICES
@@ -62,6 +63,7 @@ const APP_PROVIDERS = [
     UserAreaModule,
     NowPlayingModule,
     PlayerModule,
+    AppBrandModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

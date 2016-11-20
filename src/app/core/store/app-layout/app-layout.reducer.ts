@@ -1,3 +1,6 @@
+import '@ngrx/core/add/operator/select';
+import { combineLatest } from 'rxjs/observable/combineLatest';
+import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { ActionReducer, Action } from '@ngrx/store';
 import { AppLayoutActions } from './app-layout.actions';
@@ -26,3 +29,7 @@ export const appLayout: ActionReducer<AppLayout> = (
       return state;
   }
 };
+
+export function getSidebarExpanded($state: Observable<AppLayout>) {
+  return $state.select(state => state.sidebarExpanded);
+}

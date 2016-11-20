@@ -1,17 +1,14 @@
-/*
- * Angular 2 decorators and services
- */
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-
+import 'rxjs/add/operator/let';
 // SERVICES
 import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
 
-import { EchoesState } from './core/store';
+import { EchoesState, getSidebarCollapsed } from './core/store';
 import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { YoutubeMediaPlaylist } from './core/store/now-playlist';
-import { AppLayoutActions, AppLayout } from './core/store/app-layout';
+import { AppLayout, AppLayoutActions } from './core/store/app-layout';
 // import { Notify } from '@ngrx/notify';
 /*
  * App Component
@@ -20,11 +17,26 @@ import { AppLayoutActions, AppLayout } from './core/store/app-layout';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  template: require('./app.html')
+  template: `
+    <player class="navbar navbar-default navbar-fixed-bottom youtube-player"></player>
+
+    <div id="sidebar" class="sidebar sidebar-left-fixed ux-maker"
+      [class.closed]="sidebarCollapsed$ | async">
+      <nav class="navbar navbar-transparent">
+        <app-brand></app-brand>
+        <navigator></navigator>
+      </nav>
+      <now-playing></now-playing>
+    </div>
+
+    <div class="container-fluid container-main">
+      <router-outlet></router-outlet>
+    </div>
+  `
 })
 export class App implements OnInit {
   public nowPlaylist$: Observable<YoutubeMediaPlaylist>;
-  public appLayout$: Observable<AppLayout>;
+  public sidebarCollapsed$: Observable<any>;
 
   constructor(
     private store: Store<EchoesState>,
@@ -39,7 +51,7 @@ export class App implements OnInit {
 
   ngOnInit() {
     this.nowPlaylist$ = this.nowPlaylistService.playlist$;
-    this.appLayout$ = this.store.select(_state => _state.appLayout);
+    this.sidebarCollapsed$ = this.store.let(getSidebarCollapsed);
   }
 
   selectVideo (media: GoogleApiYouTubeVideoResource) {
