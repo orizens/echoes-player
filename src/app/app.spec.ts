@@ -43,10 +43,10 @@ describe('App', () => {
     expect(app).toBeDefined();
   }));
 
-  it('should create a reference to the player$ Observable', inject([ App ], (app) => {
+  it('should create a reference to the playlist$ Observable', inject([ App ], (app) => {
     app.ngOnInit();
-    const expected = app.playerService.player$;
-    const actual = app.player;
+    const expected = app.nowPlaylistService.playlist$;
+    const actual = app.nowPlaylist$;
     expect(actual).toBe(expected);
   }));
 
@@ -62,16 +62,6 @@ describe('App', () => {
     actuals.forEach(actual => expect(actual).toHaveBeenCalled());
   }));
   */
-  it('should dispatch a play video action when the player control next is clicked',
-  inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
-      app.ngOnInit();
-      app.playNextVideo({});
-      const actuals = [
-        store.dispatch,
-        playerActions.playVideo
-      ];
-      actuals.forEach(actual => expect(actual).toHaveBeenCalled());
-  }));
 
   it('should select a video in playlist',
   inject([ App, Store, PlayerActions ], (app, store, playerActions) => {
@@ -83,25 +73,5 @@ describe('App', () => {
     ];
     app.selectVideo(media);
     specs.forEach(spec => expect(spec.actual).toHaveBeenCalledWith(spec.expected));
-  }));
-
-  it('should play the next video while not in the end of the playlist', inject([ App ], (app) => {
-    spyOn(app, 'isLastIndex').and.returnValue(false);
-    spyOn(app, 'playNextVideo');
-    const actuals = [
-      app.isLastIndex,
-      app.playNextVideo,
-    ];
-    app.handleVideoEnded({});
-    actuals.forEach(actual => expect(actual).toHaveBeenCalled());
-  }));
-
-  it('should NOT play the next video when it reached the end of the playlist',
-  inject([ App ], (app) => {
-    spyOn(app, 'isLastIndex').and.returnValue(true);
-    spyOn(app, 'playNextVideo');
-    const actual = app.playNextVideo;
-    app.handleVideoEnded({});
-    expect(actual).not.toHaveBeenCalled();
   }));
 });

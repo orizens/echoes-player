@@ -16,7 +16,7 @@ describe('The Now Playlist Reducer', () => {
 
     it('should select the chosen video', () => {
       const state = { index: 0, videos: [...YoutubeMediaItemsMock], filter: '' };
-      const actual = nowPlaylist(state, {
+      const actual = nowPlaylist(<any>state, {
         type: NowPlaylistActions.SELECT,
         payload: YoutubeMediaItemsMock[0]
       });
@@ -28,7 +28,7 @@ describe('The Now Playlist Reducer', () => {
       let videos = [...YoutubeMediaItemsMock];
       let newVideo = videos.pop();
       const state = { index: 0, videos: [...videos], filter: '' };
-      const actual = nowPlaylist(state, { type: NowPlaylistActions.QUEUE, payload: newVideo });
+      const actual = nowPlaylist(<any>state, { type: NowPlaylistActions.QUEUE, payload: newVideo });
       const expected = newVideo;
       expect(actual.videos.pop().etag).toBe(expected.etag);
     });

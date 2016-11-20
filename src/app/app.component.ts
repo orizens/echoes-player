@@ -23,7 +23,6 @@ import { AppLayoutActions, AppLayout } from './core/store/app-layout';
   template: require('./app.html')
 })
 export class App implements OnInit {
-  public player: Observable<YoutubePlayerState>;
   public nowPlaylist$: Observable<YoutubeMediaPlaylist>;
   public appLayout$: Observable<AppLayout>;
 
@@ -39,7 +38,6 @@ export class App implements OnInit {
   }
 
   ngOnInit() {
-    this.player = this.playerService.player$;
     this.nowPlaylist$ = this.nowPlaylistService.playlist$;
     this.appLayout$ = this.store.select(_state => _state.appLayout);
   }
