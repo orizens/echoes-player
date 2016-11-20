@@ -11,6 +11,11 @@ import './youtube-player.less';
 
 @Component({
   selector: 'player',
+  host: {
+    class: 'youtube-player',
+    '[class.show-youtube-player]': '(player$ | async).showPlayer',
+    '[class.fullscreen]': '(player$ | async).isFullscreen'
+  },
   template: require('./youtube-player.html'),
   changeDetection: ChangeDetectionStrategy.OnPush
 })
