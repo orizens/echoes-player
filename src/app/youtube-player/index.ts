@@ -4,6 +4,7 @@ import { CoreModule } from '../core';
 import { YoutubePlayer } from './youtube-player.component';
 import { MediaInfoComponent } from './media-info';
 import { PlayerControlsComponent } from './player-controls/player-controls.component';
+import { PlayerResizerComponent } from './player-resizer/player-resizer.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { PlayerControlsComponent } from './player-controls/player-controls.compo
   declarations: [
     YoutubePlayer,
     MediaInfoComponent,
-    PlayerControlsComponent
+    PlayerControlsComponent,
+    PlayerResizerComponent
   ],
   exports: [
     YoutubePlayer

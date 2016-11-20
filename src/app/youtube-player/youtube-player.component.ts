@@ -16,7 +16,30 @@ import './youtube-player.less';
     '[class.show-youtube-player]': '(player$ | async).showPlayer',
     '[class.fullscreen]': '(player$ | async).isFullscreen'
   },
-  template: require('./youtube-player.html'),
+  template: `
+    <div class="yt-player ux-maker">
+      <player-resizer (toggle)="togglePlayer()" [fullScreen]="(player$ | async).showPlayer"></player-resizer>
+      <youtube-player class="nicer-ux"
+        (ready)="setupPlayer($event)"
+        (change)="updatePlayerState($event)"
+      ></youtube-player>
+    </div>
+    <div class="container-fluid">
+      <media-info class="col-md-5 col-xs-7"
+          [player]="player$ | async"
+          [minimized]="media$ | async"
+          (thumbClick)="toggleFullScreen()"
+      ></media-info>
+      <player-controls class="col-md-4 col-xs-5 controls-container nicer-ux" 
+        [class.yt-playing]="isPlayerPlaying$ | async"
+        [media]="media$ | async"
+        (play)="playVideo($event)" 
+        (pause)="pauseVideo()" 
+        (next)="playNextTrack()"
+        (previous)="playPreviousTrack()"
+      ></player-controls>
+    </div>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayer implements OnInit {
@@ -36,7 +59,7 @@ export class YoutubePlayer implements OnInit {
     this.player$ = this.playerService.player$;
     this.media$ = getCurrentMedia(this.player$);
     this.isPlayerPlaying$ = isPlayerPlaying(this.player$);
-    this.store.dispatch(this.playerActions.resetFullScreen());
+    this.store.dispatch(this.playerActions.reset());
   }
 
   setupPlayer (player) {

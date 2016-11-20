@@ -10,7 +10,7 @@ export class PlayerActions {
   static TOGGLE_PLAYER = '[Player] TOGGLE_PLAYER';
   static STATE_CHANGE = '[Player] STATE_CHANGE';
   static FULLSCREEN = '[Player] FULLSCREEN';
-  static FULLSCREEN_RESET = '[Player] FULLSCREEN_RESET';
+  static RESET = '[Player] RESET';
 
   playVideo(media: GoogleApiYouTubeVideoResource): Action {
     return {
@@ -52,9 +52,9 @@ export class PlayerActions {
     };
   }
 
-  resetFullScreen(): Action {
+  reset(): Action {
     return {
-      type: PlayerActions.FULLSCREEN_RESET
+      type: PlayerActions.RESET
     };
   }
 }

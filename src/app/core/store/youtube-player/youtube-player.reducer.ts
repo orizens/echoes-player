@@ -46,8 +46,11 @@ export const player: ActionReducer<YoutubePlayerState> = (
     case PlayerActions.FULLSCREEN:
       return Object.assign({}, state, { isFullscreen: !state.isFullscreen });
 
-    case PlayerActions.FULLSCREEN_RESET:
-      return Object.assign({}, state, { isFullscreen: false });
+    case PlayerActions.RESET:
+      return Object.assign({}, state, {
+        isFullscreen: false,
+        playerState: 0
+      });
 
     default:
       return state;
