@@ -22,7 +22,9 @@ import './user-area.less';
   template: `
   <article>
     <app-navbar>
-      <i class="fa fa-heart"></i> My Profile - <small>My Playlists</small>
+      <h3 class="navbar-text">
+        <i class="fa fa-heart"></i> My Profile - <small>My Playlists</small>
+      </h3>
     </app-navbar>
     <p *ngIf="!isSignIn()" class="well lead">
       To view your playlists in youtube, you need to sign in.
