@@ -6,7 +6,10 @@ import './now-playlist-filter.less';
   selector: 'now-playlist-filter',
   template: `
   <h3 class="nav-header user-playlists-filter">
-    <span class="text">Now Playing <span *ngIf="!isPlaylistEmpty()">({{ playlistLength }})</span></span>
+    <span class="text btn-transparent" title="Reveal now playing track"
+      (click)="onNowPlayingClick()">
+      Now Playing <span *ngIf="!isPlaylistEmpty()">({{ playlistLength }})</span>
+    </span>
     <button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
       [disabled]="isPlaylistEmpty()"
       (click)="clearPlaylist()">
@@ -43,6 +46,7 @@ export class NowPlaylistFilter {
   @Output() clear = new EventEmitter();
   @Output() filter = new EventEmitter();
   @Output() reset = new EventEmitter();
+  @Output() headerClick = new EventEmitter<void>();
 
   constructor() {
 
@@ -68,6 +72,9 @@ export class NowPlaylistFilter {
     return this.playlistLength === 0;
   }
 
+  onNowPlayingClick() {
+    this.headerClick.next();
+  }
   get playlistLength () {
     return this.playlist.videos.length;
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
@@ -6,6 +6,7 @@ import { EchoesState } from '../core/store';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { YoutubeMediaPlaylist } from '../core/store/now-playlist';
 import { PlayerActions } from '../core/store/youtube-player';
+import { NowPlaylist } from './now-playlist';
 
 @Component({
   selector: 'now-playing',
@@ -16,6 +17,7 @@ import { PlayerActions } from '../core/store/youtube-player';
       (clear)="clearPlaylist()"
       (filter)="updateFilter($event)"
       (reset)="resetFilter()"
+      (headerClick)="onHeaderClick()"
     ></now-playlist-filter>
     <now-playlist
       [playlist]="nowPlaylist | async"
@@ -29,6 +31,7 @@ import { PlayerActions } from '../core/store/youtube-player';
 })
 export class NowPlaying implements OnInit {
   public nowPlaylist: Observable<YoutubeMediaPlaylist>;
+  @ViewChild(NowPlaylist) nowPlaylistComponent: NowPlaylist;
 
   constructor(
     private store: Store<EchoesState>,
@@ -61,5 +64,9 @@ export class NowPlaying implements OnInit {
 
   removeVideo (media) {
     this.nowPlaylistService.removeVideo(media);
+  }
+
+  onHeaderClick() {
+    this.nowPlaylistComponent.scrollToActiveTrack()
   }
 }
