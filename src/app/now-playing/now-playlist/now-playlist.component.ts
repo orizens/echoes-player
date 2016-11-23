@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewChecked, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { YoutubeMediaPlaylist } from '../../core/store/now-playlist';
 
 import './now-playlist.less';
@@ -11,9 +11,9 @@ import './now-playlist.less';
       'transition-in': playlist?.videos?.length
     }">
     <ul class="nav nav-list ux-maker nicer-ux">
-      <li class="now-playlist-track"
+      <li class="now-playlist-track" #playlistTrack
         [ngClass]="{
-          'active': playlist?.index === video.id,
+          'active': isActiveMedia(video.id, playlistTrack),
           'playlist-media': isPlaylistMedia(video)
         }"
         *ngFor="let video of playlist?.videos | search:playlist.filter; let index = index"
@@ -39,17 +39,24 @@ import './now-playlist.less';
       </li>
     </ul>
   </section>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaylist {
+export class NowPlaylist implements AfterViewChecked {
   @Input() playlist: YoutubeMediaPlaylist;
   @Output() select = new EventEmitter();
   @Output() sort = new EventEmitter();
   @Output() remove = new EventEmitter();
 
+  private activeTrackElement: HTMLUListElement;
+
   constructor() { }
 
-  ngOnInit() { }
+  ngAfterViewChecked() {
+    if (this.activeTrackElement) {
+      this.activeTrackElement.scrollIntoView();
+    }
+  }
 
   selectVideo (media) {
     this.select.next(media);
@@ -63,6 +70,13 @@ export class NowPlaylist {
     this.sort.next(media);
   }
 
+  isActiveMedia(mediaId: string, trackElement: HTMLUListElement) {
+    const isActive = this.playlist.index === mediaId;
+    if (isActive) {
+      this.activeTrackElement = trackElement;
+    }
+    return isActive;
+  }
   // TODO - extract to a service
   isPlaylistMedia (media) {
     const hasTracksRegexp = new RegExp(
