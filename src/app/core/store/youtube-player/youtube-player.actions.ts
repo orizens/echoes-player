@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import { ActionCreatorFactory } from '../action-creator.util';
 
 @Injectable()
 export class PlayerActions {
@@ -11,6 +12,8 @@ export class PlayerActions {
   static STATE_CHANGE = '[Player] STATE_CHANGE';
   static FULLSCREEN = '[Player] FULLSCREEN';
   static RESET = '[Player] RESET';
+
+  togglePlayer = ActionCreatorFactory.create<boolean>(PlayerActions.TOGGLE_PLAYER, true);
 
   playVideo(media: GoogleApiYouTubeVideoResource): Action {
     return {
@@ -39,12 +42,12 @@ export class PlayerActions {
     };
   }
 
-  togglePlayer(visible: boolean = true): Action {
-    return {
-      type: PlayerActions.TOGGLE_PLAYER,
-      payload: visible
-    };
-  }
+  // togglePlayer(visible: boolean = true): Action {
+  //   return {
+  //     type: PlayerActions.TOGGLE_PLAYER,
+  //     payload: visible
+  //   };
+  // }
 
   fullScreen(): Action {
     return {
