@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import { ActionCreatorFactory } from '../action-creator.util';
 
 @Injectable()
 export class YoutubeVideosActions {
@@ -8,29 +9,8 @@ export class YoutubeVideosActions {
   static RESET = '[YoutubeVideos] RESET';
   static UPDATE_METADATA = '[YoutubeVideos] UPDATE_METADATA';
 
-  addVideos(videos: GoogleApiYouTubeVideoResource[]): Action {
-    return {
-      type: YoutubeVideosActions.ADD,
-      payload: videos
-    };
-  }
-
-  removeVideo(): Action {
-    return {
-      type: YoutubeVideosActions.REMOVE
-    };
-  }
-
-  reset(): Action {
-    return {
-      type: YoutubeVideosActions.RESET
-    };
-  }
-
-  updateMetaData(videos): Action {
-    return {
-      type: YoutubeVideosActions.UPDATE_METADATA,
-      payload: videos
-    };
-  }
+  addVideos = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource[]>(YoutubeVideosActions.ADD);
+  removeVideo = ActionCreatorFactory.create<void>(YoutubeVideosActions.REMOVE);
+  reset = ActionCreatorFactory.create<void>(YoutubeVideosActions.RESET);
+  updateMetaData = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource[]>(YoutubeVideosActions.UPDATE_METADATA);
 }
