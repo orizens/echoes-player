@@ -36,7 +36,7 @@ export class YoutubeVideosInfo {
       .map(items => items);
   }
 
-  mediaToFriendlyDuration (media) {
+  mediaToFriendlyDuration (media: GoogleApiYouTubeVideoResource) {
     let newMedia = Object.assign({}, media);
     newMedia.contentDetails.duration = this.toFriendlyDuration(media.contentDetails.duration);
     return newMedia;

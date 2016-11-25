@@ -22,9 +22,11 @@ export class YoutubeVideosEffects {
   updateVideosMetadata$ = this.actions$
     .ofType(YoutubeVideosActions.ADD)
     .map(action => action.payload)
-    .switchMap(medias => {
-      return this.youtubeVideosInfo.fetchVideosData(medias.map(media => media.id.videoId).join(','))
-      .map(videos => videos.map(video => this.youtubeVideosInfo.mediaToFriendlyDuration(video)))
-      .map(videos => this.youtubeVideosActions.updateMetaData(videos));
-    });
+    .map((medias: GoogleApiYouTubeSearchResource[]) => medias.map(media => media.id.videoId).join(','))
+    .switchMap((mediaIds: string) => this.youtubeVideosInfo.fetchVideosData(mediaIds)
+      .map((videos: GoogleApiYouTubeVideoResource[]) =>
+        videos.map(video => this.youtubeVideosInfo.mediaToFriendlyDuration(video)))
+      .map((videos: GoogleApiYouTubeVideoResource[]) =>
+        this.youtubeVideosActions.updateMetaData(videos))
+    );
 }
