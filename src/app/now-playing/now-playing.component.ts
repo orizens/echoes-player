@@ -67,6 +67,6 @@ export class NowPlaying implements OnInit {
   }
 
   onHeaderClick() {
-    this.nowPlaylistComponent.scrollToActiveTrack()
+    this.nowPlaylistComponent.scrollToActiveTrack();
   }
 }
