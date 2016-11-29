@@ -28,9 +28,9 @@ import './user-area.less';
     </app-navbar>
     <p *ngIf="!isSignIn()" class="well lead">
       To view your playlists in youtube, you need to sign in.
-      <button class="btn btn-lg btn-danger"
+      <button class="btn btn-lg btn-primary"
         (click)="signInUser()">
-        <i class="fa fa-google-plus"></i> Sign In
+        <i class="fa fa-google"></i> Sign In
       </button>
     </p>
     <section class="videos-list">
