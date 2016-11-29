@@ -24,8 +24,8 @@ export class YoutubeVideosEffects {
     .map(action => action.payload)
     .map((medias: GoogleApiYouTubeSearchResource[]) => medias.map(media => media.id.videoId).join(','))
     .switchMap((mediaIds: string) => this.youtubeVideosInfo.fetchVideosData(mediaIds)
-      .map((videos: GoogleApiYouTubeVideoResource[]) =>
-        videos.map(video => this.youtubeVideosInfo.mediaToFriendlyDuration(video)))
+      // .map((videos: GoogleApiYouTubeVideoResource[]) =>
+      //   videos.map(video => this.youtubeVideosInfo.mediaToFriendlyDuration(video)))
       .map((videos: GoogleApiYouTubeVideoResource[]) =>
         this.youtubeVideosActions.updateMetaData(videos))
     );

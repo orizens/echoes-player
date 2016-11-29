@@ -8,7 +8,7 @@ import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 import { CORE_COMPONENTS } from './components';
 // import { YoutubePlayerModule } from './components/yt-player';
-import { SearchPipe } from './pipes/search.pipe';
+import { PIPES } from './pipes';
 
 import { CoreStoreModule } from './store';
 import effects from './effects';
@@ -24,16 +24,16 @@ import effects from './effects';
   ],
   declarations: [
     ...CORE_COMPONENTS,
-    SearchPipe
+    ...PIPES
   ],
   exports: [
     InfiniteScrollModule,
     ...CORE_COMPONENTS,
+    ...PIPES,
     CommonModule,
     FormsModule,
     CoreStoreModule,
     YoutubePlayerModule,
-    SearchPipe
   ],
   providers: [
 

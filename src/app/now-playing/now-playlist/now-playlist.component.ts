@@ -29,7 +29,7 @@ import './now-playlist.less';
             src="{{ video.snippet.thumbnails.default.url }}" 
             xtitle="Drag to sort">
             <span class="badge badge-info">
-              {{ video.contentDetails.duration }}
+              {{ video.contentDetails.duration | toFriendlyDuration }}
             </span>
           </section>
           <span class="video-title">{{ video.snippet.title }}</span>
