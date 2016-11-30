@@ -45,3 +45,8 @@ export const search: ActionReducer<PlayerSearch> = (
       return Object.assign({}, initialState, state);
   }
 };
+
+export const searchRegister = {
+  reducer: { search },
+  actions: PlayerSearchActions
+};

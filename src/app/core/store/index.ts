@@ -1,47 +1,25 @@
 import { Observable } from 'rxjs/Rx';
 import { NgModule } from '@angular/core';
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import 'rxjs/add/operator/let';
 
-import { ActionReducer, Action, combineReducers } from '@ngrx/store';
+import { combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { getSidebarExpanded } from './app-layout';
+import { storeRegistry, registerReducers } from './store.registry';
 
-// reducers
-import { videos, EchoesVideos, YoutubeVideosActions } from './youtube-videos';
-import { player, YoutubePlayerState, PlayerActions } from './youtube-player';
-import { nowPlaylist, YoutubeMediaPlaylist, NowPlaylistActions } from './now-playlist';
-import { user, UserProfileData, UserProfileActions } from './user-profile';
-import { search, PlayerSearch, PlayerSearchActions } from './player-search';
-import { appLayout, AppLayoutActions, AppLayout, getSidebarExpanded } from './app-layout';
+import { reducersRegisters, EchoesState } from './reducers';
+
 import { localStorageSync } from 'ngrx-store-localstorage';
 
-/**
- * As mentioned, we treat each reducer like a table in a database. This means
- * our top level state interface is just a map of keys to inner state types.
- */
-export interface EchoesState {
-  videos: EchoesVideos;
-  player: YoutubePlayerState;
-  nowPlaylist: YoutubeMediaPlaylist;
-  user: UserProfileData;
-  search: PlayerSearch;
-  appLayout: AppLayout;
-}
-
-const actions = [
-  NowPlaylistActions,
-  PlayerActions,
-  UserProfileActions,
-  YoutubeVideosActions,
-  PlayerSearchActions,
-  AppLayoutActions
-];
+export { EchoesState } from './reducers';
+const { actions, reducers } = registerReducers(reducersRegisters);
 
 const composeStore = compose(
   localStorageSync(['videos', 'player', 'nowPlaylist', 'search', 'appLayout'], true),
   combineReducers
-)({ videos, player, nowPlaylist, user, search, appLayout });
+)(reducers);
 
 const optionalImports = [];
 

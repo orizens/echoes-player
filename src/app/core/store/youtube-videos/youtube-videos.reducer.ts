@@ -25,3 +25,8 @@ export const videos: ActionReducer<EchoesVideos> = (state: EchoesVideos = [], ac
       return state;
   }
 };
+
+export const videosRegister = {
+  reducer: { videos },
+  actions: YoutubeVideosActions
+};

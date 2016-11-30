@@ -1,0 +1,29 @@
+// reducers
+import { videosRegister, EchoesVideos } from './youtube-videos';
+import { playerRegister, YoutubePlayerState } from './youtube-player';
+import { nowPlaylistRegister, YoutubeMediaPlaylist } from './now-playlist';
+import { userRegister, UserProfileData } from './user-profile';
+import { searchRegister, PlayerSearch } from './player-search';
+import { appLayoutRegister, AppLayout } from './app-layout';
+
+/**
+ * As mentioned, we treat each reducer like a table in a database. This means
+ * our top level state interface is just a map of keys to inner state types.
+ */
+export interface EchoesState {
+  videos: EchoesVideos;
+  player: YoutubePlayerState;
+  nowPlaylist: YoutubeMediaPlaylist;
+  user: UserProfileData;
+  search: PlayerSearch;
+  appLayout: AppLayout;
+};
+
+export const reducersRegisters = [
+  videosRegister,
+  playerRegister,
+  nowPlaylistRegister,
+  userRegister,
+  searchRegister,
+  appLayoutRegister
+];

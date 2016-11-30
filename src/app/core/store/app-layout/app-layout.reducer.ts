@@ -30,6 +30,11 @@ export const appLayout: ActionReducer<AppLayout> = (
   }
 };
 
+export const appLayoutRegister = {
+  reducer: { appLayout },
+  actions: AppLayoutActions
+};
+
 export function getSidebarExpanded($state: Observable<AppLayout>) {
   return $state.select(state => state.sidebarExpanded);
 }

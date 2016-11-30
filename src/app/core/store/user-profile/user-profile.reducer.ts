@@ -51,3 +51,8 @@ export const user: ActionReducer<UserProfileData> = (state = initialUserState, a
     return state;
   }
 };
+
+export const userRegister = {
+  reducer: { user },
+  actions: UserProfileActions
+};

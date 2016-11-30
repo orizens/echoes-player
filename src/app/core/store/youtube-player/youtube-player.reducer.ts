@@ -57,6 +57,11 @@ export const player: ActionReducer<YoutubePlayerState> = (
   }
 };
 
+export const playerRegister = {
+  reducer: { player },
+  actions: PlayerActions
+};
+
 export function playVideo(
   state: YoutubePlayerState,
   media: GoogleApiYoutubeVideo) {

@@ -15,14 +15,7 @@ import { App } from './app.component';
 
 // COMPONENTS
 import { CORE_COMPONENTS } from './core/components';
-
-import { PlayerModule } from './youtube-player';
-import { YoutubeVideosModule } from './youtube-videos';
-import { UserAreaModule } from './user-area';
-import { NavigatorModule } from './navigator';
-import { NowPlayingModule } from './now-playing';
-import { AppNavbarModule } from './app-navbar';
-import { AppBrandModule } from './app-brand';
+import { APP_FEATURE_MODULES } from './app.feature.modules';
 
 import { CoreModule } from './core';
 // SERVICES
@@ -57,13 +50,7 @@ const APP_PROVIDERS = [
     RouterModule.forRoot(ROUTES, { useHash: true }),
     CoreModule,
 
-    AppNavbarModule,
-    YoutubeVideosModule,
-    NavigatorModule,
-    UserAreaModule,
-    NowPlayingModule,
-    PlayerModule,
-    AppBrandModule
+    ...APP_FEATURE_MODULES
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
