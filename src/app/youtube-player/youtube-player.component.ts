@@ -69,7 +69,8 @@ export class YoutubePlayer implements OnInit {
   updatePlayerState (event) {
     this.playerService.onPlayerStateChange(event);
     if (event.data === YT.PlayerState.ENDED) {
-      this.handleVideoEnded(event.data);
+      this.nowPlaylistService.trackEnded();
+      this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
     }
   }
 
@@ -97,12 +98,6 @@ export class YoutubePlayer implements OnInit {
   playPreviousTrack (player) {
     this.nowPlaylistService.selectPreviousIndex();
     this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
-  }
-
-  handleVideoEnded (state: YT.PlayerState) {
-    if (!this.isLastIndex()) {
-      this.playPreviousTrack(state);
-    }
   }
 
   isLastIndex () {

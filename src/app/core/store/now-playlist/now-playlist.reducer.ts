@@ -4,12 +4,12 @@ import { NowPlaylistActions } from './now-playlist.actions';
 
 export interface YoutubeMediaPlaylist {
   videos: GoogleApiYouTubeVideoResource[];
-  index: string;
+  selectedId: string;
   filter: string;
 }
 let initialState: YoutubeMediaPlaylist = {
   videos: [],
-  index: '',
+  selectedId: '',
   filter: ''
 };
 export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (
@@ -21,7 +21,7 @@ export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (
 
   switch (action.type) {
     case NowPlaylistActions.SELECT:
-      return Object.assign({}, state, { index: action.payload.id });
+      return Object.assign({}, state, { selectedId: action.payload.id });
 
     case NowPlaylistActions.QUEUE:
       return Object.assign({}, state, { videos: addMedia(state.videos, action.payload) });
@@ -34,19 +34,22 @@ export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (
 
     // updates index by media
     case NowPlaylistActions.UPDATE_INDEX:
-      return Object.assign({}, state, { index: action.payload });
+      return Object.assign({}, state, { selectedId: action.payload });
 
     case NowPlaylistActions.FILTER_CHANGE:
       return Object.assign({}, state, { filter: action.payload });
 
     case NowPlaylistActions.REMOVE_ALL:
-      return Object.assign({}, state, { videos: [], filter: '', index: 0 });
+      return Object.assign({}, state, { videos: [], filter: '', selectedId: 0 });
 
     case NowPlaylistActions.SELECT_NEXT:
-      return Object.assign({}, state, { index: selectNextIndex(state.videos, state.index) });
+      return Object.assign({}, state, { selectedId: selectNextIndex(state.videos, state.selectedId) });
 
     case NowPlaylistActions.SELECT_PREVIOUS:
-      return Object.assign({}, state, { index: selectPreviousIndex(state.videos, state.index) });
+      return Object.assign({}, state, { selectedId: selectPreviousIndex(state.videos, state.selectedId) });
+
+    case NowPlaylistActions.MEDIA_ENDED:
+      return selectNextOrPreviousTrack(state);
 
     default:
       return state;
@@ -75,8 +78,8 @@ function addMedias(videos, medias) {
   return videos.concat(newVideos);
 }
 
-function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], index: string): string {
-  let currentIndex: number = videos.findIndex(video => video.id === index);
+function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string): string {
+  let currentIndex: number = videos.findIndex(video => video.id === selectedId);
   let nextIndex = currentIndex + 1;
   if (!videos.length) {
     nextIndex = 0;
@@ -88,12 +91,23 @@ function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], index: string)
   return videos[nextIndex].id || '';
 }
 
-function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], index: string): string {
-  let currentIndex: number = videos.findIndex(video => video.id === index);
+function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string): string {
+  let currentIndex: number = videos.findIndex(video => video.id === selectedId);
   let previousIndex = currentIndex - 1;
   if (!videos.length || previousIndex < 0) {
     previousIndex = 0;
   }
 
   return videos[previousIndex].id || '';
+}
+
+function selectNextOrPreviousTrack(state: YoutubeMediaPlaylist): YoutubeMediaPlaylist {
+  const videosPlaylist = state.videos;
+  const currentId = state.selectedId;
+  const indexOfCurrentVideo = videosPlaylist.findIndex(video => currentId === video.id);
+  const isCurrentLast = indexOfCurrentVideo + 1 === videosPlaylist.length;
+  const nextId = isCurrentLast
+    ? videosPlaylist.length ? videosPlaylist[0].id : ''
+    : selectNextIndex(videosPlaylist, currentId);
+  return Object.assign({}, state, { selectedId: nextId });
 }

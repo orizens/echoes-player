@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import { ActionCreatorFactory } from '../action-creator.util';
 
 @Injectable()
 export class NowPlaylistActions {
@@ -15,6 +16,9 @@ export class NowPlaylistActions {
   static SELECT_NEXT = '[NOW PLAYLIST] SELECT_NEXT';
   static SELECT_PREVIOUS = '[NOW PLAYLIST] SELECT_PREVIOUS';
   static QUEUE_VIDEOS = '[NOW PLAYLIST] QUEUE_VIDEOS';
+  static MEDIA_ENDED = '[NOW PLAYLIST] MEDIA_ENDED';
+
+  mediaEnded = ActionCreatorFactory.create(NowPlaylistActions.MEDIA_ENDED);
 
   queueLoadVideo(media): Action {
     return {

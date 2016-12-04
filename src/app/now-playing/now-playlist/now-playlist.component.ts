@@ -74,7 +74,7 @@ export class NowPlaylist implements AfterViewChecked {
   }
 
   isActiveMedia(mediaId: string, trackElement: HTMLUListElement) {
-    const isActive = this.playlist.index === mediaId;
+    const isActive = this.playlist.selectedId === mediaId;
     if (isActive) {
       this.activeTrackElement = trackElement;
     }

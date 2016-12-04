@@ -52,10 +52,14 @@ export class NowPlaylistService {
     this.store.dispatch({ type: NowPlaylistActions.SELECT_PREVIOUS });
   }
 
+  trackEnded() {
+    this.store.dispatch(this.nowPlaylistActions.mediaEnded());
+  }
+
   getCurrent() {
     let media;
     this.playlist$.take(1).subscribe(playlist => {
-      media = playlist.videos.find(video => video.id === playlist.index);
+      media = playlist.videos.find(video => video.id === playlist.selectedId);
     });
     return media;
   }
@@ -67,7 +71,7 @@ export class NowPlaylistService {
   isInLastTrack(): boolean {
     let nowPlaylist: YoutubeMediaPlaylist;
     this.playlist$.take(1).subscribe(_nowPlaylist => nowPlaylist = _nowPlaylist);
-    const currentVideoId = nowPlaylist.index;
+    const currentVideoId = nowPlaylist.selectedId;
     const indexOfCurrentVideo = nowPlaylist.videos.findIndex(video => video.id === currentVideoId);
     const isCurrentLast = indexOfCurrentVideo + 1 === nowPlaylist.videos.length;
     return isCurrentLast;
