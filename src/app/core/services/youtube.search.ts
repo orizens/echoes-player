@@ -59,7 +59,7 @@ export class YoutubeSearch {
   searchMore(params: any) {
     if (!this.isSearching) {
       this.api.config.set('pageToken', this.api.nextPageToken);
-      this.search(this.api.config.get('q'), true, params);
+      this.search('', true, params);
     }
   }
 
