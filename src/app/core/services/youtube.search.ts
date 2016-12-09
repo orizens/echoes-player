@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
 import { YoutubeVideosActions } from '../store/youtube-videos';
 import { PlayerSearchActions } from '../store/player-search';
-import { YOUTUBE_API_KEY } from './constants';
 import { YoutubeApiService } from './youtube-api.service';
 
 @Injectable()
@@ -12,9 +11,7 @@ export class YoutubeSearch {
   url: string = 'https://www.googleapis.com/youtube/v3/search';
   api: YoutubeApiService;
   isSearching: Boolean = false;
-  items: Array<any> = [];
   private _config: URLSearchParams = new URLSearchParams();
-  private nextPageToken: string;
 
   constructor(
     private http: Http,
@@ -48,9 +45,7 @@ export class YoutubeSearch {
     this.isSearching = true;
     return this.api.list('video')
       .then(response => {
-        // let itemsAmount = this.items.length;
         this.isSearching = false;
-        // this.items.splice(itemsAmount, 0, ...response.items);
         this.store.dispatch(this.youtubeVideosActions.addVideos([ ...response.items ]));
         return response;
       });
