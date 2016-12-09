@@ -14,12 +14,13 @@ interface YoutubeApiServiceOptions {
   config?: any;
 }
 
+@Injectable()
 export class YoutubeApiService {
   url: string;
   http: Http;
   idKey: string;
   isSearching: Boolean = false;
-  items: Array<any> = [];
+  items: any[] = [];
   config: URLSearchParams = new URLSearchParams();
   nextPageToken: string;
   private accessToken: string;
@@ -87,7 +88,7 @@ export class YoutubeApiService {
       });
   }
 
-  searchMore() {
+  fetchNextPage() {
     if (!this.isSearching && this.items.length) {
       this.config.set('pageToken', this.nextPageToken);
     }

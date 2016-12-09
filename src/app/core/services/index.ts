@@ -1,3 +1,5 @@
+import { Http } from '@angular/http';
+import { YoutubeApiService } from './youtube-api.service';
 import { UserProfile } from './user-profile.service';
 import { YoutubeSearch } from './youtube.search';
 import { YoutubePlayerService } from './youtube-player.service';
@@ -5,6 +7,7 @@ import { NowPlaylistService } from './now-playlist.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { GapiLoader } from './gapi-loader.service';
 import { Authorization } from './authorization.service';
+import { YoutubeSearchApi, searchApiFactory } from './api/youtube-search.api';
 
 export * from './user-profile.service';
 export * from './youtube.search';
@@ -21,5 +24,6 @@ export const APP_SERVICES = [
   NowPlaylistService,
   YoutubeVideosInfo,
   GapiLoader,
-  Authorization
+  Authorization,
+  { provide: YoutubeSearchApi, useFactory: searchApiFactory(), deps: [Http] }
 ];

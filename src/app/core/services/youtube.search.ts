@@ -1,36 +1,25 @@
 import { Http, URLSearchParams, Response } from '@angular/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
 import { YoutubeVideosActions } from '../store/youtube-videos';
 import { PlayerSearchActions } from '../store/player-search';
-import { YoutubeApiService } from './youtube-api.service';
+import { YoutubeSearchApi } from './api/youtube-search.api';
 
 @Injectable()
 export class YoutubeSearch {
-  url: string = 'https://www.googleapis.com/youtube/v3/search';
-  api: YoutubeApiService;
   isSearching: Boolean = false;
-  private _config: URLSearchParams = new URLSearchParams();
 
   constructor(
     private http: Http,
     private store: Store<EchoesState>,
     public youtubeVideosActions: YoutubeVideosActions,
-    public playerSearchActions: PlayerSearchActions
-    ) {
-    this.api = new YoutubeApiService({
-      url: this.url,
-      http: http,
-      idKey: 'type'
-    });
-    this.api.config.set('part', 'snippet,id');
-    this.api.config.set('q', '');
-    this.api.config.set('type', 'video');
-  }
+    public playerSearchActions: PlayerSearchActions,
+    public youtubeSearchApi: YoutubeSearchApi
+    ) { }
 
   search(query: string, dontReset: Boolean, params?: any) {
-    const isNewSearch = query && query !== this.api.config.get('q');
+    const isNewSearch = query && query !== this.youtubeSearchApi.config.get('q');
     const shouldBeReset = !dontReset;
 
     if (shouldBeReset || isNewSearch) {
@@ -39,11 +28,11 @@ export class YoutubeSearch {
     }
     if (query) {
       const preset = params ? params.preset : '';
-      this.api.config.set('q', `${query} ${preset}`);
+      this.youtubeSearchApi.config.set('q', `${query} ${preset}`);
       this.store.dispatch({ type: PlayerSearchActions.UPDATE_QUERY, payload: query });
     }
     this.isSearching = true;
-    return this.api.list('video')
+    return this.youtubeSearchApi.list('video')
       .then(response => {
         this.isSearching = false;
         this.store.dispatch(this.youtubeVideosActions.addVideos([ ...response.items ]));
@@ -53,13 +42,13 @@ export class YoutubeSearch {
 
   searchMore(params: any) {
     if (!this.isSearching) {
-      this.api.config.set('pageToken', this.api.nextPageToken);
+      this.youtubeSearchApi.fetchNextPage();
       this.search('', true, params);
     }
   }
 
   resetPageToken () {
-    this.api.resetPageToken();
+    this.youtubeSearchApi.resetPageToken();
   }
 
   setPreset (preset: string) {

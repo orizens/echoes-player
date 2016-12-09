@@ -7,7 +7,7 @@ import { Http, HttpModule } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { YoutubeVideosActions } from '../store/youtube-videos';
 import { PlayerSearchActions } from '../store/player-search';
-import { YoutubeApiService } from './youtube-api.service';
+import { YoutubeSearchApi } from './api/youtube-search.api';
 import { YoutubeSearch } from './youtube.search';
 
 describe('Youtube Search Service', () => {
@@ -15,12 +15,12 @@ describe('Youtube Search Service', () => {
 
   beforeEach(() => {
     let storeSpy = jasmine.createSpyObj('Store', ['subscribe', 'dispatch']);
-    spyOn(YoutubeApiService.prototype, 'list').and.callFake(val => {
+    spyOn(YoutubeSearchApi.prototype, 'list').and.callFake(val => {
       return {
         then: (fn) => fn({ items: [ 'mock' ] })
       };
     });
-    spyOn(YoutubeApiService.prototype, 'resetPageToken');
+    spyOn(YoutubeSearchApi.prototype, 'resetPageToken');
 
     TestBed.configureTestingModule({
       imports: [ HttpModule ],
@@ -28,6 +28,7 @@ describe('Youtube Search Service', () => {
         YoutubeSearch,
         YoutubeVideosActions,
         PlayerSearchActions,
+        YoutubeSearchApi,
         { provide: Store, useValue: storeSpy }
       ]
     });
@@ -39,12 +40,12 @@ describe('Youtube Search Service', () => {
   }));
 
   it('should have an api instance', () => {
-    const actual = service.api;
+    const actual = service.youtubeSearchApi;
     expect(actual).toBeDefined();
   });
 
   it('should perform search with the api', () => {
-    const actual = service.api.list;
+    const actual = service.youtubeSearchApi.list;
     service.search('ozrics', true);
     expect(actual).toHaveBeenCalled();
   });
@@ -53,7 +54,7 @@ describe('Youtube Search Service', () => {
     const query = 'ozrics';
     service.search(query, true);
     service.searchMore({});
-    const actual = service.api.config.get('q');
+    const actual = service.youtubeSearchApi.config.get('q');
     const expected = query;
     expect(actual).toMatch(expected);
   });
@@ -61,7 +62,7 @@ describe('Youtube Search Service', () => {
   it('should NOT reset search when searching more', () => {
     const query = 'ozrics';
     service.searchMore({});
-    const actual = service.api.resetPageToken;
+    const actual = service.youtubeSearchApi.resetPageToken;
     expect(actual).not.toHaveBeenCalled();
   });
 });
