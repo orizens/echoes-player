@@ -20,7 +20,6 @@ export class YoutubeApiService {
   http: Http;
   idKey: string;
   isSearching: Boolean = false;
-  items: any[] = [];
   config: URLSearchParams = new URLSearchParams();
   nextPageToken: string;
   private accessToken: string;
@@ -89,7 +88,7 @@ export class YoutubeApiService {
   }
 
   fetchNextPage() {
-    if (!this.isSearching && this.items.length) {
+    if (!this.isSearching) {
       this.config.set('pageToken', this.nextPageToken);
     }
   }
