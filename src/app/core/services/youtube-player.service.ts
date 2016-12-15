@@ -39,9 +39,13 @@ export class YoutubePlayerService {
 
   playVideo(media: any) {
     const id = media.id.videoId ? media.id.videoId : media.id;
-    this.player.loadVideoById(id);
+    const loadedMedia = this.player.getVideoData();
+    const loadedMediaId = loadedMedia.video_id;
+    const isLoaded = '' !== loadedMediaId && id === loadedMediaId;
+    if (!isLoaded) {
+      this.player.loadVideoById(id);
+    }
     this.play();
-    // this.store.dispatch({ type: PLAY, payload: media });
   }
 
   togglePlayer() {

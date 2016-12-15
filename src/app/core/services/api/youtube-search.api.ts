@@ -1,12 +1,29 @@
-import { Inject, Injectable, OpaqueToken } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { YoutubeApiService } from '../youtube-api.service';
 
-// export const SearchApi = new OpaqueToken('SearchApi');
+/* 
+  a murder robot dog should be composed of:
+  murderer
+  driver
+  return Object.assign({}, state, murderer, driver)
+  
+  A Youtube Api Service Performs api requests to youtube
+  using Http Service Class 
+  it should support youtube's client api CRUD methods:
+  list, remove, insert, update (?check)
+  
+*/
 
+// i.e:
+// A Youtube Search Api should be composed of:
+//  a video searcher
+//  request config builder
+//  headers builder
+//  authorizer
 @Injectable()
 export class YoutubeSearchApi extends YoutubeApiService {
-  
+
 }
 
 export function searchApiFactory() {

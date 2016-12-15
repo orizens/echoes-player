@@ -35,28 +35,4 @@ export class YoutubeVideosInfo {
       .list(mediaIds)
       .map(items => items);
   }
-
-  mediaToFriendlyDuration (media: GoogleApiYouTubeVideoResource) {
-    let newMedia = Object.assign({}, media);
-    newMedia.contentDetails.duration = this.toFriendlyDuration(media.contentDetails.duration);
-    return newMedia;
-  }
-
-  toFriendlyDuration (time) {
-    let t = time.split('PT')[1];
-    let ts = [];
-    if (t) {
-      t = t.replace(/(H|M)/g, ':')
-      .replace('S', '');
-      ts = t.split(':');
-      ts = ts.map(function(d){
-        return d.length === 1 ? '0' + d : d;
-      });
-    } else {
-      t = time.split('P')[1];
-      t = t.replace('D', '');
-      ts = [parseInt(t, 10) * 24, ':00:00'];
-    }
-    return ts.join(':');
-  }
 }
