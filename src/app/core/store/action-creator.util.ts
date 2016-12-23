@@ -16,6 +16,9 @@ class ActionCreator<T> implements Action {
 
 export class ActionCreatorFactory {
   static create?<T>(type: string, defaultPayloadValue?: any) {
-    return (payload?: T) => new ActionCreator<T>(type, payload || defaultPayloadValue);
+    return (payload?: T) => {
+      const _payload = payload || typeof payload !== 'undefined' ? payload : defaultPayloadValue;
+      return new ActionCreator<T>(type, _payload);
+    };
   }
 }
