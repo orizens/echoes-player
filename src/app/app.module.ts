@@ -1,6 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
@@ -47,6 +47,7 @@ const APP_PROVIDERS = [
   imports: [ // import Angular's modules
     BrowserModule,
     HttpModule,
+    JsonpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     CoreModule,
 

@@ -4,6 +4,7 @@ import { CoreModule } from '../core';
 import { AppNavbarModule } from '../app-navbar';
 import { YoutubeVideosComponent } from './youtube-videos.component';
 import { PlayerSearch } from './player-search.component';
+import { TypeAheadComponent } from './typeahead.directive';
 import { routing } from './youtube-videos.routing';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { routing } from './youtube-videos.routing';
   ],
   declarations: [
     YoutubeVideosComponent,
-    PlayerSearch
+    PlayerSearch,
+    TypeAheadComponent
   ],
   exports: [
     YoutubeVideosComponent
