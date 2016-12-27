@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import 'rxjs/add/operator/let';
 
+import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
+// import { NgrxActionCreatorFactoryModule } from './action-creator.util';
+
 import { combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -32,13 +35,9 @@ if ('production' !== ENV) {
     StoreModule.provideStore(composeStore),
     ...optionalImports
   ],
-  declarations: [
-
-  ],
-  exports: [
-
-  ],
-  providers: [ ...actions ]
+  declarations: [],
+  exports: [],
+  providers: [ ...actions, ActionCreatorFactory ]
 })
 export class CoreStoreModule {};
 

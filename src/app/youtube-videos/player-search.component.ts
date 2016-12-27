@@ -1,5 +1,17 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-// import { NgForm } from '@angular/common';
+import { Jsonp, Response, URLSearchParams, RequestOptionsArgs } from '@angular/http';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  NgZone,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Observable } from 'rxjs/Rx';
 
 import './player-search.less';
 
@@ -9,9 +21,10 @@ import './player-search.less';
     <form class="navbar-form form-search" id="media-explorer"
       (ngSubmit)="onSearch(mediaSearch.value)">
       <div class="form-group clearfix">
-        <input placeholder="Explore Media" id="media-search" 
+        <input placeholder="Explore Media" id="media-search"
+          typeahead (typeaheadSelected)="handleSelectSuggestion($event)"
           type="search" class="form-control" autocomplete="off"
-          [value]="searchQuery.query" #mediaSearch name="mediaSearch"
+          [value]="query.query" #mediaSearch name="mediaSearch"
           (input)="onQueryChange(mediaSearch.value)"
           >
         <button class="btn btn-transparent btn-submit" type="submit" title="search with echoes">
@@ -22,10 +35,11 @@ import './player-search.less';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayerSearch implements OnInit {
+export class PlayerSearch {
   @Input() query;
   @Output() change = new EventEmitter();
   @Output() search = new EventEmitter();
+  @Output() typing = new EventEmitter<string>();
 
   private searchQuery = {
     query: ''
@@ -35,17 +49,20 @@ export class PlayerSearch implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.searchQuery.query = this.query.query;
-    // console.log(this.mediaSearch);
-  }
-
   onQueryChange(query: string) {
-    this.change.next(query);
+    this.change.emit(query);
   }
 
   onSearch(query: string) {
-    this.mediaSearch.nativeElement.blur();
-    this.search.next(query);
+    this.mediaSearch.element.nativeElement.blur();
+    this.search.emit(query);
+  }
+
+  handleSelectSuggestion(suggestion: string) {
+    this.selectSuggestion(suggestion);
+  }
+
+  selectSuggestion(suggestion: string) {
+    this.onSearch(suggestion);
   }
 }

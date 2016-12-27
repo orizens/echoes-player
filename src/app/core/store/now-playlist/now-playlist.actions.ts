@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { ActionCreatorFactory } from '../action-creator.util';
+// import { ActionCreatorFactory } from '../action-creator.util';
+import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 
 @Injectable()
 export class NowPlaylistActions {
@@ -18,6 +19,7 @@ export class NowPlaylistActions {
   static QUEUE_VIDEOS = '[NOW PLAYLIST] QUEUE_VIDEOS';
   static MEDIA_ENDED = '[NOW PLAYLIST] MEDIA_ENDED';
 
+  constructor(private acf: ActionCreatorFactory) {}
   mediaEnded = ActionCreatorFactory.create(NowPlaylistActions.MEDIA_ENDED);
 
   queueLoadVideo(media): Action {
