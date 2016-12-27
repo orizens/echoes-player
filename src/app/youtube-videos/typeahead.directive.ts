@@ -32,21 +32,31 @@ enum Key {
   template: `
   <template #suggestionsTplRef>
   <section class="list-group results" *ngIf="showSuggestions">
+    <div class="typeahead-backdrop" (click)="hideSuggestions()"></div>
     <button type="button" class="list-group-item"
-      *ngFor="let result of (results | async); let i = index;"
+      *ngFor="let result of results; let i = index;"
       [class.active]="markIsActive(i, result)"
       (click)="handleSelectSuggestion(result)">
       {{ result }}
     </button>
   </section>
   </template>
-  `
+  `,
+  styleUrls: [`
+  .typeahead-backdrop {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  `]
 })
 export class TypeAheadComponent implements OnInit, OnDestroy {
   @Output() typeaheadSelected = new EventEmitter<string>();
 
   private showSuggestions: boolean = false;
-  private results: Observable<string[]>;
+  private results: string[];
   private suggestionIndex: number = 0;
   private subscriptions: Subscription[];
   private activeResult: string;
@@ -56,7 +66,7 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
   @HostListener('keydown', ['$event'])
   handleEsc(event: KeyboardEvent) {
     if (event.keyCode === Key.Escape) {
-      this.showSuggestions = false;
+      this.hideSuggestions();
       event.preventDefault();
     }
   }
@@ -73,6 +83,7 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
       this.listenAndSuggest(),
       this.navigateWithArrows()
     ];
+    this.renderTemplate();
   }
 
   ngOnDestroy() {
@@ -95,17 +106,17 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
   }
 
   listenAndSuggest() {
-    this.results = Observable.fromEvent(this.element.nativeElement, 'keyup')
+    return Observable.fromEvent(this.element.nativeElement, 'keyup')
       .filter(this.validateKeyCode)
       .map((e: any) => e.target.value)
-      .debounceTime(500)
+      .debounceTime(400)
       .concat()
       .distinctUntilChanged()
-      .switchMap((query: string) => this.suggest(query));
-
-    return this.results.subscribe((results: string[]) => {
-      this.showSuggestions = true;
-      this.renderTemplate();
+      .switchMap((query: string) => this.suggest(query))
+      .subscribe((results: string[]) => {
+        this.results = results;
+        this.showSuggestions = true;
+        this.cdr.markForCheck();
     });
   }
 
@@ -125,7 +136,8 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
           this.suggestionIndex = topLimit;
         }
         this.showSuggestions = true;
-        this.renderTemplate();
+        // this.renderTemplate();
+        this.cdr.markForCheck();
       });
   }
   suggest(query: string) {
@@ -156,7 +168,7 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
     return isActive;
   }
   handleSelectSuggestion(suggestion: string) {
-    this.showSuggestions = false;
+    this.hideSuggestions();
     this.typeaheadSelected.emit(suggestion);
   }
 
@@ -167,5 +179,9 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
      && event.keyCode !== Key.ArrowUp
      && event.keyCode !== Key.ArrowRight
      && event.keyCode !== Key.ArrowDown;
+  }
+
+  hideSuggestions() {
+    this.showSuggestions = false;
   }
 }

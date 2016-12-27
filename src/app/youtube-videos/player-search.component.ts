@@ -30,7 +30,6 @@ import './player-search.less';
         <button class="btn btn-transparent btn-submit" type="submit" title="search with echoes">
           <i class="fa fa-search"></i>
         </button>
-        
       </div>
     </form>
   `,
