@@ -129,6 +129,7 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "ng2-youtube-player": "0.0.1",
+    "ngrx-action-creator-factory": "0.0.1",
     "ngrx-store-localstorage": "^0.1.5",
     "parse5": "^2.2.2",
     "phantomjs-prebuilt": "2.1.13",
