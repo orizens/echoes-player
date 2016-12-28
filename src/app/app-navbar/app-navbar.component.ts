@@ -20,15 +20,16 @@ import './app-navbar.less';
             <i class="fa fa-bars"></i>
           </button>
         </h2>
-        <button type="button" class="navbar-toggle collapsed pull-left navbar-nav"
+        <button type="button" class="navbar-toggle collapsed pull-right navbar-nav"
           (click)="toggleCollapse()">
           <i class="fa fa-angle-double-up" [class.fa-angle-double-down]="isCollapsed"></i>
         </button>
-        <div class="collapse navbar-collapse navbar-nav"
-          [class.collapse]="isCollapsed">
+        <div class="navbar-collapse navbar-nav"
+          >
           <ng-content></ng-content>
         </div>
-        <section class="nav navbar-nav navbar-right navbar-text">
+        <section class="nav navbar-nav navbar-right navbar-text navbar-actions"
+          [class.collapsed]="isCollapsed">
           <span class="btn btn-link navbar-link navbar-btn"
             *ngIf="isSignIn()"
             (click)="signOutUser()">

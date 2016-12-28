@@ -15,6 +15,9 @@
       box-shadow: 0 0 1px rgba(0,0,0,.5);
     }
 
+    .navbar-collapse {
+      display: inline-block;
+    }
     .navbar-text {
       margin: 0 2rem 0 0;
       line-height: 5rem;
@@ -23,12 +26,27 @@
     .navbar-brand {
       margin-left: 0 !important;
     }
+
+    .navbar-actions {
+      display: block;
+
+      &.collapsed {
+        display: none;
+      }
+    }
   }
 }
 @media (min-width: 768px) {
   app-navbar {
     nav.navbar {
       margin-left: @drawer-width;
+    }
+    .navbar-actions {
+      display: block;
+
+      &.collapsed {
+        display: block;
+      }
     }
   }
 
