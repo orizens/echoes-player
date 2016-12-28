@@ -5,13 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 
 export class ToFriendlyDurationPipe implements PipeTransform {
-  transform(value: any, args: any[]): any {
+  transform(value: any, args?: any[]): any {
     const time = <string>value;
     if (!time) {
       return '...';
     }
     return ['PT', 'H', 'M', 'S'].reduce((prev, cur, i, arr) => {
       const now = prev.rest.split(cur);
+      if (cur !== 'PT' && cur !== 'H' && !prev.rest.match(cur)) {
+        prev.new.push('00');
+      }
       if (now.length === 1) {
         return prev;
       }
