@@ -5,8 +5,15 @@ import {
 
 import { ToFriendlyDurationPipe } from './toFriendlyDuration.pipe';
 
-fdescribe('The toFriendlyDuration Pipe', () => {
+describe('The toFriendlyDuration Pipe', () => {
   const pipe = new ToFriendlyDurationPipe();
+
+  it('should render 3 dots when no valid value is provided', () => {
+    const duration = undefined;
+    const actual = pipe.transform(duration, []);
+    const expected = '...';
+    expect(actual).toBe(expected);
+  });
 
   it('should render hour, no minutes and seconds', () => {
     const duration = 'PT2H33S';
