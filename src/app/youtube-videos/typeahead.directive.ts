@@ -112,6 +112,7 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
       .debounceTime(400)
       .concat()
       .distinctUntilChanged()
+      .filter((query: string) => query.length > 0)
       .switchMap((query: string) => this.suggest(query))
       .subscribe((results: string[]) => {
         this.results = results;
