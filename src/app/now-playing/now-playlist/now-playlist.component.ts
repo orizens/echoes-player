@@ -34,7 +34,7 @@ import './now-playlist.less';
           </section>
           <span class="video-title">{{ video.snippet.title }}</span>
           <span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
-            (click)="removeVideo(video)"><i class="fa fa-remove"></i></span>
+            (click)="removeVideo(video)"><i class="fa fa-trash"></i></span>
         </a>
       </li>
     </ul>
