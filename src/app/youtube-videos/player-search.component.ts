@@ -19,6 +19,7 @@ import './player-search.less';
   selector: 'player-search',
   template: `
     <form class="navbar-form form-search" id="media-explorer"
+      #form="ngForm"
       (ngSubmit)="onSearch(mediaSearch.value)">
       <div class="form-group clearfix">
         <input placeholder="Explore Media" id="media-search"
@@ -40,10 +41,6 @@ export class PlayerSearch {
   @Output() change = new EventEmitter();
   @Output() search = new EventEmitter();
   @Output() typing = new EventEmitter<string>();
-
-  private searchQuery = {
-    query: ''
-  };
 
   @ViewChild('mediaSearch') mediaSearch;
 

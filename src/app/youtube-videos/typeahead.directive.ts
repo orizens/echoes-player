@@ -6,10 +6,12 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  Input,
   NgZone,
   OnDestroy,
   OnInit,
   Output,
+  TemplateRef,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -26,7 +28,14 @@ enum Key {
   ArrowUp = 38,
   ArrowDown = 40
 }
+/*
+ using an external template:
+ <input [typeaheadTpl]="itemTpl" >
 
+  <template #itemTpl let-result>
+    <strong>MY {{ result.result }}</strong>
+  </template>
+*/
 @Component({
   selector: '[typeahead]',
   template: `
@@ -37,7 +46,11 @@ enum Key {
       *ngFor="let result of results; let i = index;"
       [class.active]="markIsActive(i, result)"
       (click)="handleSelectSuggestion(result)">
-      {{ result }}
+      <span *ngIf="!typeaheadItemTpl"><i class="fa fa-search"></i> {{ result }}</span>
+      <template
+        [ngTemplateOutlet]="typeaheadItemTpl" 
+        [ngOutletContext]="{ $implicit: {result: result, index: i} }"
+      ></template>
     </button>
   </section>
   </template>
@@ -54,6 +67,7 @@ enum Key {
 })
 export class TypeAheadComponent implements OnInit, OnDestroy {
   @Output() typeaheadSelected = new EventEmitter<string>();
+  @Input() typeaheadItemTpl: TemplateRef<any>;
 
   private showSuggestions: boolean = false;
   private results: string[];
@@ -184,5 +198,9 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
 
   hideSuggestions() {
     this.showSuggestions = false;
+  }
+
+  hasItemTemplate() {
+    return this.typeaheadItemTpl !== undefined;
   }
 }
