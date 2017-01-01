@@ -7,7 +7,6 @@ import {
   EventEmitter,
   HostListener,
   Input,
-  NgZone,
   OnDestroy,
   OnInit,
   Output,
@@ -88,8 +87,8 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
   constructor(private element: ElementRef,
     private viewContainer: ViewContainerRef,
     private jsonp: Jsonp,
-    private cdr: ChangeDetectorRef,
-    private zone: NgZone) { }
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.subscriptions = [
