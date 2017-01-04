@@ -91,10 +91,11 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    const onkeyDown$ = this.onElementKeyDown();
     this.subscriptions = [
-      this.filterEnterEvent(),
+      this.filterEnterEvent(onkeyDown$),
       this.listenAndSuggest(),
-      this.navigateWithArrows()
+      this.navigateWithArrows(onkeyDown$)
     ];
     this.renderTemplate();
   }
@@ -109,8 +110,12 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
     this.cdr.markForCheck();
   }
 
-  filterEnterEvent() {
-    return Observable.fromEvent(this.element.nativeElement, 'keydown')
+  onElementKeyDown() {
+    return Observable.fromEvent(this.element.nativeElement, 'keydown').share();
+  }
+
+  filterEnterEvent(elementObs: Observable<{}>) {
+    return elementObs
       .filter((e: KeyboardEvent) => e.keyCode === Key.Enter)
       .subscribe((event: Event) => {
         event.preventDefault();
@@ -130,12 +135,13 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
       .subscribe((results: string[]) => {
         this.results = results;
         this.showSuggestions = true;
+        this.suggestionIndex = 0;
         this.cdr.markForCheck();
     });
   }
 
-  navigateWithArrows() {
-    return Observable.fromEvent(this.element.nativeElement, 'keydown')
+  navigateWithArrows(elementObs: Observable<{}>) {
+    return elementObs
       .filter((e: any) => e.keyCode === Key.ArrowDown || e.keyCode === Key.ArrowUp)
       .map((e: any) => e.keyCode)
       .subscribe((keyCode: number) => {
@@ -150,7 +156,6 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
           this.suggestionIndex = topLimit;
         }
         this.showSuggestions = true;
-        // this.renderTemplate();
         this.cdr.markForCheck();
       });
   }
