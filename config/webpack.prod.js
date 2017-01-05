@@ -88,7 +88,7 @@ module.exports = function (env) {
         {
           test: /\.scss$/,
           // loaders: ["style-loader", "css-loader", "sass-loader"],
-          loaders: ExtractTextPlugin.extract('css?sourceMap!sass')
+          loaders: ExtractTextPlugin.extract('css-loader?sourceMap!sass-loader')
         }
       ]
     },
