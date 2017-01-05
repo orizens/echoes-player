@@ -2,7 +2,7 @@
 $toolbar-position-on-hover: -55px;
 
 @media (min-width: 320px) {
-	.youtube-player {
+	player {
 		border: 0 !important;
 
 		.yt-player {
@@ -43,14 +43,8 @@ $toolbar-position-on-hover: -55px;
 	}
 }
 @media (min-width: 768px) {
-	.youtube-toolbar {
-		.donation {
-			display: none;
-		}
-	}
-
-	.youtube-player {
-		&.fullscreen.show-youtube-player {
+	player {
+		.fullscreen.show-youtube-player {
 			
 			.container-fluid {
 				width: 90%;
@@ -72,19 +66,9 @@ $toolbar-position-on-hover: -55px;
 		}
 	}
 }
-@media (min-width: 1024px) {
-	.donation {
-		display: block;
-
-		li form {
-			padding: 6px;
-		}
-	}
-
-}
 
 @media (max-width: 767px) {
-	.youtube-player {
+	player {
 		.controls-container {
 			padding: 0;
 		}
@@ -94,17 +78,17 @@ $toolbar-position-on-hover: -55px;
 	border-bottom: 4px solid $turquoise;
 }
 
-.youtube-player {
+player {
 	z-index: 1031 !important;
 
-	&.fullscreen .btn.fullscreen {
+	.fullscreen .btn.fullscreen {
 		@include control-button-active();
 		i {
 			@include transform(scale(.8) rotate(45deg));
 		}
 	}
 
-	&.fullscreen.show-youtube-player {
+	.fullscreen.show-youtube-player {
 		.container-fluid {
 			z-index: $zindex-modal-background;
 			position: fixed;
@@ -152,7 +136,7 @@ $toolbar-position-on-hover: -55px;
 		transform: translate3d(-40%, -42%, 0) scale(0.15, 0.15)
 	}
 
-	&.show-youtube-player .btn.show-player {
+	.show-youtube-player .btn.show-player {
 		transform: translatey(0rem);
 		@include control-button-active();
 	}
@@ -161,7 +145,7 @@ $toolbar-position-on-hover: -55px;
 	}
 }
 
-.show-youtube-player.youtube-player {
+player .show-youtube-player {
 	.yt-player {
 		transform: translate3d(-10%,-90%,0) scale(.8, .8);
 	}

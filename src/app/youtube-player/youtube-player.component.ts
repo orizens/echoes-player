@@ -12,11 +12,14 @@ import './youtube-player.scss';
 @Component({
   selector: 'player',
   host: {
-    class: 'youtube-player',
-    '[class.show-youtube-player]': '(player$ | async).showPlayer',
-    '[class.fullscreen]': '(player$ | async).isFullscreen'
+    class: 'youtube-player'
+    // '[class.show-youtube-player]': '(player$ | async).showPlayer',
+    // '[class.fullscreen]': '(player$ | async).isFullscreen'
   },
   template: `
+  <section 
+    [class.show-youtube-player]="(player$ | async).showPlayer"
+    [class.fullscreen]="(player$ | async).isFullscreen">
     <div class="yt-player ux-maker">
       <player-resizer (toggle)="togglePlayer()" [fullScreen]="(player$ | async).showPlayer"></player-resizer>
       <youtube-player class="nicer-ux"
@@ -39,6 +42,7 @@ import './youtube-player.scss';
         (previous)="playPreviousTrack()"
       ></player-controls>
     </div>
+  </section>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

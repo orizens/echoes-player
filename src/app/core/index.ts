@@ -15,11 +15,11 @@ import effects from './effects';
 
 @NgModule({
   imports: [
-    InfiniteScrollModule,
     CommonModule,
     FormsModule,
     CoreStoreModule,
     YoutubePlayerModule,
+    InfiniteScrollModule,
     ...effects.map(effect => EffectsModule.run(effect)),
   ],
   declarations: [
@@ -27,12 +27,12 @@ import effects from './effects';
     ...PIPES
   ],
   exports: [
-    InfiniteScrollModule,
-    ...CORE_COMPONENTS,
-    ...PIPES,
     CommonModule,
     FormsModule,
+    ...CORE_COMPONENTS,
+    ...PIPES,
     CoreStoreModule,
+    InfiniteScrollModule,
     YoutubePlayerModule,
   ],
   providers: [

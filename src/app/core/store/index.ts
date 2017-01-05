@@ -28,7 +28,7 @@ const optionalImports = [];
 
 if ('production' !== ENV) {
     // Note that you must instrument after importing StoreModule
-    optionalImports.push(StoreDevtoolsModule.instrumentOnlyWithExtension());
+    // optionalImports.push(StoreDevtoolsModule.instrumentOnlyWithExtension());
 }
 @NgModule({
   imports: [
