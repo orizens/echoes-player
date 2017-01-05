@@ -86,10 +86,6 @@ module.exports = function (env) {
     module: {
       rules: [
         {
-          test: /\.less$/,
-          loader: ExtractTextPlugin.extract('css!less')
-        },
-        {
           test: /\.scss$/,
           // loaders: ["style-loader", "css-loader", "sass-loader"],
           loaders: ExtractTextPlugin.extract('css?sourceMap!sass')

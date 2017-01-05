@@ -86,10 +86,6 @@ module.exports = function (options) {
     module: {
       rules: [
         {
-          test: /\.less$/,
-          loader: 'style!css?sourceMap!less?sourceMap'
-        },
-        {
           test: /\.scss$/,
           // loaders: ["style-loader", "css-loader", "sass-loader"],
           loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
@@ -167,8 +163,7 @@ module.exports = function (options) {
       watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
-      },
-      outputPath: helpers.root('dist')
+      }
     },
 
     /*
