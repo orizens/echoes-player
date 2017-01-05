@@ -83,13 +83,23 @@ module.exports = function (env) {
       chunkFilename: '[id].[chunkhash].chunk.js'
 
     },
-
+    module: {
+      rules: [
+        {
+          test: /\.scss$/,
+          // loaders: ["style-loader", "css-loader", "sass-loader"],
+          loaders: ExtractTextPlugin.extract('css-loader?sourceMap!sass-loader')
+        }
+      ]
+    },
+  
     /**
      * Add additional plugins to the compiler.
      *
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
+      new ExtractTextPlugin('[name].[contenthash].css'),
 
       /**
        * Plugin: WebpackMd5Hash
@@ -98,16 +108,6 @@ module.exports = function (env) {
        * See: https://www.npmjs.com/package/webpack-md5-hash
        */
       new WebpackMd5Hash(),
-
-      /**
-       * Plugin: DedupePlugin
-       * Description: Prevents the inclusion of duplicate code into your bundle
-       * and instead applies a copy of the function at runtime.
-       *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-       * See: https://github.com/webpack/docs/wiki/optimization#deduplication
-       */
-      // new DedupePlugin(), // see: https://github.com/angular/angular-cli/issues/1587
 
       /**
        * Plugin: DefinePlugin
@@ -154,16 +154,25 @@ module.exports = function (env) {
 
 
         beautify: false, //prod
-        mangle: true,
-        // mangle: {
-        //   screw_ie8: true,
-        //   keep_fnames: true
-        // }, //prod
-        compress: true,
-        // compress: {
-        //   screw_ie8: true
-        // }, //prod
-        comments: false //prod
+        output: {
+          comments: false
+        },
+        mangle: {
+          screw_ie8: true
+        }, //prod
+        compress: {
+          screw_ie8: true,
+          warnings: false,
+          conditionals: true,
+          unused: true,
+          comparisons: true,
+          sequences: true,
+          dead_code: true,
+          evaluate: true,
+          if_return: true,
+          join_vars: true,
+          negate_iife: false // we need this for lazy v8
+        }
       }),
 
       /**
@@ -177,15 +186,6 @@ module.exports = function (env) {
         /angular2-hmr/,
         helpers.root('config/modules/angular2-hmr-prod.js')
       ),
-
-      /**
-       * Plugin: IgnorePlugin
-       * Description: Don’t generate modules for requests matching the provided RegExp.
-       *
-       * See: http://webpack.github.io/docs/list-of-plugins.html#ignoreplugin
-       */
-
-      // new IgnorePlugin(/angular2-hmr/),
 
       /**
        * Plugin: CompressionPlugin
@@ -246,24 +246,8 @@ module.exports = function (env) {
           from: 'config/heroku',
           to: './'
         }
-      ]),
-      new ExtractTextPlugin('style.css')
-
+      ])
     ],
-
-    module: {
-      rules: [
-        {
-          test: /\.less$/,
-          loader: ExtractTextPlugin.extract('css!less')
-        },
-        {
-          test: /\.scss$/,
-          // loaders: ["style-loader", "css-loader", "sass-loader"],
-          loaders: ExtractTextPlugin.extract('css!sass')
-        }
-      ]
-    },
     /*
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration
