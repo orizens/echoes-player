@@ -13,7 +13,7 @@ import {
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Observable } from 'rxjs/Rx';
 
-import './player-search.less';
+import './player-search.scss';
 
 @Component({
   selector: 'player-search',

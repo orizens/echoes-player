@@ -1,8 +1,8 @@
-@import url(../../../css/echoes-variables.less);
+@import '../../../css/echoes-variables.scss';
 
 @media (min-width: 320px) {
-	@track-badge-index: 10;
-	@track-button: 15;
+	$track-badge-index: 10;
+	$track-button: 15;
 
 	.now-playlist {
 		position: relative;
@@ -12,11 +12,11 @@
 			overflow-x: hidden;
 
 			> .active > a {
-				@active-color: rgba(10,10,10, .5);
+				$active-color: rgba(10,10,10, .5);
 				color: white;
-				box-shadow: inset 0px 0px 6px @active-color;
-				border-right: 6px solid @brand-primary;
-				background: @active-color;
+				box-shadow: inset 0px 0px 6px $active-color;
+				border-right: 6px solid $brand-primary;
+				background: $active-color;
 			}
 			> :not(.active) a:hover {
 				background: rgba(10,10,10,.2);
@@ -71,7 +71,7 @@
 				right: 0rem;
 				transform: translatex(-1rem);
 				display: block;
-				z-index: @track-button;
+				z-index: $track-button;
 			}
 
 			a {
@@ -81,18 +81,18 @@
 
 			.badge-info {
 				border-radius: 0;
-				background: @dark;
+				background: $dark;
 				margin: 0 auto;
 				display: block;
 				font-size: 1rem;
 				margin-top: -0.6rem;
-				z-index: @track-badge-index;
+				z-index: $track-badge-index;
 				position: relative;
 			}
 		}
 
 		.as-sortable-placeholder {
-			background-color: @gray-darker;
+			background-color: $gray-darker;
 			border: 1px dashed white;
 		}
 

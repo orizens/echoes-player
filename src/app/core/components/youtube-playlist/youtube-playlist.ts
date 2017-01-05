@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d';
-import './youtube-playlist.less';
+import './youtube-playlist.scss';
 
 @Component({
   selector: 'youtube-playlist',

@@ -1,4 +1,4 @@
-@import url(../../css/core/global.less);
+@import '../../css/core/global.scss';
 
 @media (min-width: 320px) {
   app-navbar {
@@ -39,7 +39,7 @@
 @media (min-width: 768px) {
   app-navbar {
     nav.navbar {
-      margin-left: @drawer-width;
+      margin-left: $drawer-width;
     }
     .navbar-actions {
       display: block;
@@ -51,6 +51,6 @@
   }
 
   .closed + .container-main app-navbar .navbar {
-    margin-left: @sidebar-closed-width;
+    margin-left: $sidebar-closed-width;
   }
 }

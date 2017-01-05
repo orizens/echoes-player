@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { AppLayoutActions } from '../core/store/app-layout';
 import { Component, OnInit } from '@angular/core';
 
+import './app-brand.scss';
+
 @Component({
   selector: 'app-brand',
   template: `

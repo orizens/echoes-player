@@ -1,12 +1,12 @@
-@import url(../core/global.less);
+@import '../core/global.scss';
 
 // helpers
-@sidebar-color: #323538;
-@navbar-new-height: 5rem;
+$sidebar-color: #323538;
+$navbar-new-height: 5rem;
 
-.closed-sidebar() {
+@mixin closed-sidebar() {
 	.sidebar-left-fixed.closed {
-		.transform(translatex(0rem));
+		@include transform(translatex(0rem));
 
 		// + .modal-backdrop {
 		// 	display: none;
@@ -24,11 +24,11 @@
     align-self: auto;
 		
 		height: 100%;
-		width: @drawer-width;
-		z-index: @zindex-navbar-fixed;
+		width: $drawer-width;
+		z-index: $zindex-navbar-fixed;
 		// by default should be hidden
 		transform: translatex(-30rem);
-		background-color: @sidebar-color;
+		background-color: $sidebar-color;
 		padding-bottom: 30%;
 		border: none;
 		border-radius: 0;
@@ -66,15 +66,15 @@
 		.navbar-brand {
 			float: none;
 			width: 100%;
-			line-height: @navbar-new-height;
-			height: @navbar-new-height;
+			line-height: $navbar-new-height;
+			height: $navbar-new-height;
 			padding-left: 1.5rem;
 			color: rgb(50, 53, 56);
 
 			.fa {
 				font-size: 2.5rem;
 				margin: 0 -.3rem;
-				color: @clouds;
+				color: $clouds;
 			}
 		}
 		// should be displayed
@@ -126,7 +126,7 @@
 
 		&.closed {
 			// transform: translatex(-30rem);
-			width: @sidebar-closed-width;
+			width: $sidebar-closed-width;
 
 			.text {
 				display: none;
@@ -181,7 +181,7 @@
 	}
 
 	.active .nav-list li a{
-		background: @brand-primary;
+		background: $brand-primary;
 	}
 
 	+ .modal-backdrop {
@@ -190,7 +190,7 @@
 }
 
 @media (min-width: 1024px) {
-	.closed-sidebar();
+	@include closed-sidebar();
 
 	.sidebar {
 		// transform: translatex(0px);

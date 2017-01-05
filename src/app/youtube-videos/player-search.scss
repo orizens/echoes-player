@@ -1,4 +1,4 @@
-@import url(../../css/core/global.less);
+@import '../../css/core/global.scss';
 
 player-search {
 	display: inline-block;
@@ -8,7 +8,7 @@ player-search {
 		float: none;
 
   	.form-group {
-  		background-color: @input-bg;
+  		background-color: $input-bg;
   		border-radius: 3px;
 
   		> div {
@@ -27,7 +27,7 @@ player-search {
   	}
   	.btn-submit {
   		padding: .5rem 1rem;
-  		color: @navbar-default-link-active-color;
+  		color: $navbar-default-link-active-color;
   	}
 
   	.dropdown-menu {
@@ -37,7 +37,7 @@ player-search {
   		background-color: white;
   		opacity: 1;
   		> li.active a {
-  			color: @inverse;
+  			color: $inverse;
   		}
   		> li a {
   			color: #444;

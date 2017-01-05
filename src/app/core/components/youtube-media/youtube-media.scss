@@ -1,4 +1,4 @@
-@import url(../../../../css/core/global.less);
+@import '../../../../css/core/global.scss';
 
 .youtube-item {
 	&.show-description {
@@ -21,12 +21,12 @@
 }
 // playlist also using it
 @media (min-width: 320px) {
-	@bg-primary: rgba(255, 255, 255, 0.7);
-	@bg-shadow: rgba(0,0,0,.3);
-	@text-color: #333;
-	@text-dark: #000;
-	@bg-description: rgba(255, 255, 255, .9);
-	@icon-color: @gray-light;
+	$bg-primary: rgba(255, 255, 255, 0.7);
+	$bg-shadow: rgba(0,0,0,.3);
+	$text-color: #333;
+	$text-dark: #000;
+	$bg-description: rgba(255, 255, 255, .9);
+	$icon-color: $gray-light;
 
 	.youtube-item {
 		width: 100%;
@@ -54,15 +54,15 @@
 
 		.front {
 			padding: 0px;
-			background: @bg-primary;
-			box-shadow: 0 1px 30px -5px @bg-shadow;
+			background: $bg-primary;
+			box-shadow: 0 1px 30px -5px $bg-shadow;
 			position: relative;
 		}
 
 		.title {
 			height: 27px;
 			margin: 0;
-			color: @text-color;
+			color: $text-color;
 		}
 
 		.media-thumb:hover {
@@ -80,15 +80,15 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			background: @brand-primary;
-			color: @inverse;
+			background: $brand-primary;
+			color: $inverse;
 			border: none;
 		}
 
 		.item-is-playing {
 			display: none;
-			color: @brand-primary;
-			text-shadow: 0 0px 1px @brand-primary;
+			color: $brand-primary;
+			text-shadow: 0 0px 1px $brand-primary;
 
 			i {
 				margin: 2px 4px 0 0;
@@ -105,7 +105,7 @@
 			clear: both;
 			height: 149px;
 			border: none;
-			background-color: @inverse;
+			background-color: $inverse;
 			padding: 0;
 			box-shadow: none;
 			margin-bottom: 0;
@@ -126,7 +126,7 @@
 		.description {
 			height: 199px;
 			overflow: hidden;
-			background-color: @bg-description;
+			background-color: $bg-description;
 			position: absolute;
 			top: 0px;
 			left:0;
@@ -135,7 +135,7 @@
 			box-sizing: border-box;
 			word-wrap:break-word;
 			font-size: 16px;
-			color: @text-dark;
+			color: $text-dark;
 			width: 100%;
 		}
 
@@ -170,13 +170,13 @@
 				bottom: 9px;
 				font-size: 2rem;
 				right: 5px;
-				color: @icon-color;
+				color: $icon-color;
 				background-color: transparent;
 				border: none;
 			}
 
 			.badge {
-				background-color: @brand-primary;
+				background-color: $brand-primary;
 				border-radius: 0;
 				vertical-align: middle;
 			}
@@ -252,12 +252,12 @@
 @media (min-width: 768px) {
 	.youtube-item {
 		.play-media {
-			.transform(translate(-50%, -50%));
+			@include transform(translate(-50%, -50%));
 		}
 	}
 }
 @media (max-width: 767px) {
 	.youtube-item .play-media {
-		.transform(translate(-50%, -50%));
+		@include transform(translate(-50%, -50%));
 	}
 }

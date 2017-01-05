@@ -1,4 +1,4 @@
-@import url(../echoes-variables.less);
+@import '../echoes-variables.scss';
 /* applying a nicer UX*/
 .nicer-ux *,
 .ux-maker {
@@ -107,5 +107,5 @@ select {
 //     background-color: @brand-primary !important;
 // }
 .text-primary {
-    color: @brand-primary !important;
+    color: $brand-primary !important;
 }

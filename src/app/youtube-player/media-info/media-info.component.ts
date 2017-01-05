@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import './media-info.less';
+import './media-info.scss';
 
 @Component({
   selector: 'media-info',

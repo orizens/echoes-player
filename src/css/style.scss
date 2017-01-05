@@ -2,18 +2,19 @@
    Author: Oren Farhi, http://orizens.com
    ========================================================================== */
 /* Application */
-@import url(../../node_modules/bootstrap/less/bootstrap.less);
-@import url(./echoes-variables.less);
-// @import url(../../node_modules/font-awesome/less/font-awesome.less);
-@import url(./core/global.less);
-@import url(./core/utils.less);
-// @fa-font-path:        "/";
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import './echoes-variables.scss';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import './core/global.scss';
+@import './core/utils.scss';
 
-@import url(./layout/container.less);
-@import url(./layout/loader.less);
-@import url(./layout/navbar.less);
-@import url(./layout/sidebar.less);
-@import url(./core/v-bootstrap-dropdown-animated.less);
+@import './layout/sidebar.scss';
+@import './layout/navbar.scss';
+@import './layout/container.scss';
+@import './layout/loader.scss';
+
+$fa-font-path: '../fonts' !default;
+@import '~font-awesome/scss/font-awesome';
 
 .btn:focus,
 .btn:active:focus,
@@ -102,7 +103,7 @@ iframe {
 }
 
 .active a {
-	.active-link-style();
+	@include active-link-style();
 }
 .social-badge {
 	padding: 10px 0;

@@ -1,4 +1,4 @@
-@import url(../../../css/core/global.less);
+@import '../../../css/core/global.scss';
 
 .user-playlists-filter {
 	position: relative;
@@ -12,7 +12,7 @@
 	}
 
 	.btn-clear {
-		color: @alizarin;
+		color: $alizarin;
 
 		&:disabled {
 			color: grey;
@@ -23,11 +23,11 @@
 		position: absolute;
 		right: 0;
 		top: 0.6rem;
-		background: darken(@bg-dark-color, 3%);
+		background: darken($bg-dark-color, 3%);
 		padding-left: 5px;
 
 		input {
-			background: darken(@bg-dark-color, 3%);
+			background: darken($bg-dark-color, 3%);
 			border: none;
 			padding: 0 3px;
 			margin-bottom: 0;

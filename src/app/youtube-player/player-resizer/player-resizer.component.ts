@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import './player-resizer.less';
+import './player-resizer.scss';
 
 @Component({
   selector: 'player-resizer',

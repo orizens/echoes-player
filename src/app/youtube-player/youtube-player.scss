@@ -1,5 +1,5 @@
-@import url(../../css/core/global.less);
-@toolbar-position-on-hover: -55px;
+@import '../../css/core/global.scss';
+$toolbar-position-on-hover: -55px;
 
 @media (min-width: 320px) {
 	.youtube-player {
@@ -61,7 +61,7 @@
 				transform: translate3d(0,-100%,0) scale(1, 1);
 
 				&:hover + .container-fluid {
-					.transform(translatey(@toolbar-position-on-hover));
+					@include transform(translatey($toolbar-position-on-hover));
 				}
 			}
 		}
@@ -90,29 +90,29 @@
 		}
 	}
 }
-.control-button-active(){
-	border-bottom: 4px solid @turquoise;
+@mixin control-button-active() {
+	border-bottom: 4px solid $turquoise;
 }
 
 .youtube-player {
 	z-index: 1031 !important;
 
 	&.fullscreen .btn.fullscreen {
-		.control-button-active();
+		@include control-button-active();
 		i {
-			.transform(scale(.8) rotate(45deg));
+			@include transform(scale(.8) rotate(45deg));
 		}
 	}
 
 	&.fullscreen.show-youtube-player {
 		.container-fluid {
-			z-index: @zindex-modal-background;
+			z-index: $zindex-modal-background;
 			position: fixed;
-			.transform(translatey(40px));
+			@include transform(translatey(40px));
 			opacity: 0;
 
 			&:hover {
-				.transform(translatey(@toolbar-position-on-hover));
+				@include transform(translatey($toolbar-position-on-hover));
 				opacity: .6;
 			}
 		}
@@ -121,15 +121,15 @@
 			transform: translate3d(0,-100%,0) scale(1, 1);
 
 			&:hover + .container-fluid {
-				.transform(translatey(@toolbar-position-on-hover));
+				@include transform(translatey($toolbar-position-on-hover));
 			}
 		}
 	}
 
 	.container-fluid {
 		padding: 0;
-		z-index: @zindex-navbar-fixed;
-		background-color: @gray-darker;
+		z-index: $zindex-navbar-fixed;
+		background-color: $gray-darker;
 		position: relative;
 		transition: all .3s ease-out;
 	}
@@ -137,12 +137,12 @@
 	.nav.navbar-nav .dropdown-menu,
 	.nav.navbar-nav .open .dropdown-menu {
 		box-shadow: 0 0 5px black;
-		background: @bg-dark-color;
+		background: $bg-dark-color;
 		border-radius: 0;
 	}
 
 	.yt-player {
-		z-index: @zindex-modal-background;
+		z-index: $zindex-modal-background;
 		position: absolute;
 		left: 0;
 		top:0;
@@ -154,7 +154,7 @@
 
 	&.show-youtube-player .btn.show-player {
 		transform: translatey(0rem);
-		.control-button-active();
+		@include control-button-active();
 	}
 	.social-shares {
 		display: none;

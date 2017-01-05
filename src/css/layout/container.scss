@@ -1,14 +1,4 @@
-@import url(../core/global.less);
-
-// helpers
-#container-features {
-	.full-width {
-		.container-main {
-			margin-left: 0;
-			margin-top: 60px;
-		}
-	}
-}
+@import '../core/global.scss';
 
 // actual code
 .container-main {
@@ -23,12 +13,12 @@
 }
 @media (min-width: 768px) {
 	.closed + .container-main {
-		margin-left: @sidebar-closed-width;
+		margin-left: $sidebar-closed-width;
 	}
 }
 @media (min-width: 1024px) {
 	.container-main {
-		margin-left: @drawer-width;
+		margin-left: $drawer-width;
 	}
 }
 .transition-in {

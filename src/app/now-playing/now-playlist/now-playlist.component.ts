@@ -1,7 +1,7 @@
 import { AfterViewChecked, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { YoutubeMediaPlaylist } from '../../core/store/now-playlist';
 
-import './now-playlist.less';
+import './now-playlist.scss';
 
 @Component({
   selector: 'now-playlist',

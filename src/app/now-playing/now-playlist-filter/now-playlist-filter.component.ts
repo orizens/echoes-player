@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { YoutubeMediaPlaylist } from '../../core/store/now-playlist';
-import './now-playlist-filter.less';
+import './now-playlist-filter.scss';
 
 @Component({
   selector: 'now-playlist-filter',

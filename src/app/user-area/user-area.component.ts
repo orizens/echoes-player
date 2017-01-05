@@ -15,7 +15,7 @@ import { EchoesState } from '../core/store';
 import { NowPlaylistActions } from '../core/store/now-playlist';
 import { PlayerActions } from '../core/store/youtube-player';
 
-import './user-area.less';
+import './user-area.scss';
 
 @Component({
   selector: 'user-area',

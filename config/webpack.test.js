@@ -171,6 +171,10 @@ module.exports = function (options) {
         {
           test: /\.less$/,
           loader: 'style!css!less'
+        },
+        {
+          test: /\.scss$/,
+          loader: 'style!css!scss'
         }
 
       ]

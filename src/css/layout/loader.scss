@@ -1,7 +1,7 @@
-@import url(../core/global.less);
+@import '../core/global.scss';
 
-#loader {
-	.transform(translate(-50%, -50%));
+@mixin loader {
+	@include transform(translate(-50%, -50%));
 	position: fixed;
 	top: 50%;
 	left: 60%;
@@ -9,7 +9,7 @@
 	z-index: 1000;
 	padding: 20px;
 	border-radius: 10px;
-	color: @brand-primary;
+	color: $brand-primary;
 	background: rgba(0,0,0,.9);
 	opacity: 1;
 
@@ -18,7 +18,7 @@
 	}
 
 	&.hide-loader {
-		.transform(translate(-40%, -50%));
+		@include transform(translate(-40%, -50%));
 		opacity: 0;
 	}
 }

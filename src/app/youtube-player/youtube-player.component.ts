@@ -7,7 +7,7 @@ import 'rxjs/add/operator/take';
 import { NowPlaylistService, YoutubePlayerService } from '../core/services';
 import { getCurrentMedia, isPlayerPlaying, PlayerActions, YoutubePlayerState } from '../core/store/youtube-player';
 
-import './youtube-player.less';
+import './youtube-player.scss';
 
 @Component({
   selector: 'player',

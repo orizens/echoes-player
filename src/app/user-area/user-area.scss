@@ -1,9 +1,9 @@
 user-area {
-  @user-nav-line-height: 5rem;
+  $user-nav-line-height: 5rem;
 
   article {
-    padding-bottom: @user-nav-line-height;
-    padding-top: (@user-nav-line-height + 2rem);
+    padding-bottom: $user-nav-line-height;
+    padding-top: ($user-nav-line-height + 2rem);
   }
   h2 {
     small {
@@ -18,10 +18,10 @@ user-area {
   }
   .navbar-text {
     margin: 0 2rem 0 0;
-    line-height: @user-nav-line-height;
+    line-height: $user-nav-line-height;
   }
   
   .navbar-brand {
-    line-height: @user-nav-line-height;
+    line-height: $user-nav-line-height;
   }
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { YoutubeMedia } from '../youtube-media/youtube-media';
-import './youtube-list.less';
+import './youtube-list.scss';
 
 @Component({
   selector: 'youtube-list',

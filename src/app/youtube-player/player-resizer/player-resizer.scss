@@ -1,11 +1,11 @@
-@import url(../../../css/core/global.less);
+@import '../../../css/core/global.scss';
 
 @media (min-width: 320px) {
   player-resizer {
     .full-screen.show-player {
       transform: scale(5);
       background-color: transparent;
-      color: @brand-primary;
+      color: $brand-primary;
       border: none;
       left: 14rem;
       position: absolute;

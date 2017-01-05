@@ -7,7 +7,7 @@ import { UserProfile, Authorization } from '../core/services';
 import { AppLayoutActions } from '../core/store/app-layout';
 import { EchoesState } from '../core/store';
 
-import './app-navbar.less';
+import './app-navbar.scss';
 
 @Component({
   selector: 'app-navbar',

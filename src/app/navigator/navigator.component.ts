@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import './navigator.less';
+import './navigator.scss';
 
 @Component({
   selector: 'navigator',

@@ -88,6 +88,11 @@ module.exports = function (options) {
         {
           test: /\.less$/,
           loader: 'style!css?sourceMap!less?sourceMap'
+        },
+        {
+          test: /\.scss$/,
+          // loaders: ["style-loader", "css-loader", "sass-loader"],
+          loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap']
         }
       ]
     },

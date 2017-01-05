@@ -1,32 +1,32 @@
-@import url(../../../css/echoes-variables.less);
+@import '../../../css/echoes-variables.scss';
 
 .player-controls {
-	@btn-color: whitesmoke;
-	@btn-control-font-size:  1.3rem;
-	@btn-control-padding:  1.5rem 2rem;
-	@btn-control-primary-color: @brand-primary;
-	@btn-primary-font-size: 1.8rem;
+	$btn-color: whitesmoke;
+	$btn-control-font-size:  1.3rem;
+	$btn-control-padding:  1.5rem 2rem;
+	$btn-control-primary-color: $brand-primary;
+	$btn-primary-font-size: 1.8rem;
 
-	.button-style () {
+	@mixin button-style () {
 		border: none;
 		background: transparent;
-		color: @btn-color;
+		color: $btn-color;
 		border-radius: 0;
 		outline: none;
-		font-size: @btn-control-font-size;
+		font-size: $btn-control-font-size;
 	}
 
 	.btn {
 		&.next,
 		&.previous {
-			padding: @btn-control-padding;
+			padding: $btn-control-padding;
 		}
 	}
 	.btn {
-		.button-style();
+		@include button-style();
 		
 		&:hover {
-			.button-style();
+			@include button-style();
 		}
 
 		&.pause {
@@ -37,10 +37,10 @@
 		&.pause {
 			border: 0;
 			border-radius: 50% !important;
-			background-color: @btn-control-primary-color;
+			background-color: $btn-control-primary-color;
 			padding: 0.9rem 1.4rem;
 			margin: 0.3rem 0 !important;
-			font-size: @btn-primary-font-size;
+			font-size: $btn-primary-font-size;
 		}
 	}
 

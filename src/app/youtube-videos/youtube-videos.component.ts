@@ -13,7 +13,7 @@ import { PlayerSearch, PlayerSearchActions, PresetParam } from '../core/store/pl
 import { EchoesVideos } from '../core/store/youtube-videos';
 import { AppLayoutActions } from '../core/store/app-layout';
 
-import './youtube-videos.less';
+import './youtube-videos.scss';
 
 @Component({
   selector: 'youtube-videos',

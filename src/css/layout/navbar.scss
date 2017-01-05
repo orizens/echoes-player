@@ -1,10 +1,11 @@
-@import url(../core/global.less);
+@import '../core/global.scss';
+
 @media (min-width: 320px) {
-	@navbar-new-height: 3rem;
+	$navbar-new-height: 3rem;
 
 	.navbar {
 		background-image: none;
-		background-color: darken(@navbar-default-bg, 2%);
+		background-color: darken($navbar-default-bg, 2%);
 		transition: transform, margin-left .3s ease-out;
 
 		&.navbar-fixed-top {
@@ -33,7 +34,7 @@
 		.navbar-header {
 			width: auto;
 			margin-right: 7px;
-			line-height: @navbar-new-height;
+			line-height: $navbar-new-height;
 		}
 
 		.navbar-collapse {
@@ -66,12 +67,12 @@
 
 	.navbar-nav > li > .dropdown-toggle {
 		padding: 10px 15px;
-		color: @navbar-default-link-color;
+		color: $navbar-default-link-color;
 	}
 
 	&.navbar-transparent {
 		background-color: transparent;
-		color: @inverse;
+		color: $inverse;
 	}
 
 	.btn-group.open .dropdown-toggle {
@@ -83,7 +84,11 @@
 	.navbar {
 
 		.container {
-			.container-fluid;
+      // @extend container-fluid;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
 			padding: 0;
 		}
 
@@ -122,5 +127,5 @@
 	padding: 1.2rem;
 }
 .navbar .open .uib-dropdown-menu.dropdown-menu {
-	background-color: @dropdown-bg !important;
+	background-color: $dropdown-bg !important;
 }

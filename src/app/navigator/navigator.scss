@@ -1,4 +1,4 @@
-@import url(../../css/echoes-variables.less);
+@import '../../css/echoes-variables.scss';
 
 .navigator.library-nav {
 	.nav-header {
@@ -14,19 +14,19 @@
 	}
 
 	.active a {
-		@active-color: rgba(10,10,10, .5);
+		$active-color: rgba(10,10,10, .5);
 		color: white;
-		box-shadow: inset 0px 0px 6px @active-color;
-		background: @active-color;
+		box-shadow: inset 0px 0px 6px $active-color;
+		background: $active-color;
 
 		i {
-			color: @brand-primary;
+			color: $brand-primary;
 		}
 	}
 }
 @media (min-width: 768px) {
 	.closed navigator {
-		width: @sidebar-closed-width;
+		width: $sidebar-closed-width;
 		a {
 			text-align: right;
 		}

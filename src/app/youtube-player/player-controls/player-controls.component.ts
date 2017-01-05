@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import './player-controls.less';
+import './player-controls.scss';
 
 @Component({
   selector: 'player-controls',

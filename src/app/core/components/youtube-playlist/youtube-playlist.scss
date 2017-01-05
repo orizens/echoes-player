@@ -1,4 +1,4 @@
-@import url(../../../../css/core/global.less);
+@import '../../../../css/core/global.scss';
 
 @media (min-width: 320px) {
 	youtube-playlist {
@@ -20,7 +20,7 @@
 			}
 
 			.icon-loading {
-				color: @brand-primary;
+				color: $brand-primary;
 			}
 		}
 	}

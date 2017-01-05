@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import './button-group.component.less';
+import './button-group.component.scss';
 
 export interface ButtonGroupButton {
   label: string;
