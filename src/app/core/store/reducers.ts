@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 // reducers
 import { videosRegister, EchoesVideos } from './youtube-videos';
 import { playerRegister, YoutubePlayerState } from './youtube-player';
@@ -27,3 +28,15 @@ export const reducersRegisters = [
   searchRegister,
   appLayoutRegister
 ];
+
+export const getVideos$ = (state$: Observable<EchoesState>): Observable<EchoesVideos> => {
+  return state$.select(state => state.videos);
+};
+
+export const getPlayer$ = (state$: Observable<EchoesState>): Observable<YoutubePlayerState> => {
+  return state$.select(state => state.player);
+};
+
+export const getPlayerSearch$ = (state$: Observable<EchoesState>): Observable<PlayerSearch> => {
+  return state$.select(state => state.search);
+};

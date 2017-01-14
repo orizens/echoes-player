@@ -50,3 +50,7 @@ export const searchRegister = {
   reducer: { search },
   actions: PlayerSearchActions
 };
+
+export const getQuery = (state: PlayerSearch) => state.query;
+export const getQueryParams = (state: PlayerSearch) => state.queryParams;
+export const getQueryParamPreset = (state: PlayerSearch) => state.queryParams.preset;

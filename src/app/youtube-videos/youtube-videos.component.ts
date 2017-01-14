@@ -1,6 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../core/store';
 
@@ -9,11 +7,14 @@ import { PlayerActions } from '../core/store/youtube-player';
 import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
-import { PlayerSearch, PlayerSearchActions, PresetParam } from '../core/store/player-search';
-import { EchoesVideos } from '../core/store/youtube-videos';
+import { PlayerSearchActions, PresetParam } from '../core/store/player-search';
 import { AppLayoutActions } from '../core/store/app-layout';
+// selectors
+import { getVideos$, getPlayerSearch$ } from '../core/store/reducers';
+import { getQuery, getQueryParams } from '../core/store/player-search/player-search.reducer';
 
 import './youtube-videos.scss';
+import { State } from '../ngrx-state.decorator';
 
 @Component({
   selector: 'youtube-videos',
@@ -46,9 +47,10 @@ import './youtube-videos.scss';
   `
 })
 export class YoutubeVideosComponent implements OnInit {
-  videos$: Observable<EchoesVideos>;
-  playerSearch$: Observable<PlayerSearch>;
-  unsubscribePlayerSearch: Subscription;
+  videos$ = this.store.let(getVideos$);
+  playerSearch$ = this.store.let(getPlayerSearch$);
+  // @State(getVideos$) videos$;
+  // @State(getPlayerSearch$) playerSearch$;
 
   presets: PresetParam[] = [
     { label: 'Any', value: '' },
@@ -65,10 +67,7 @@ export class YoutubeVideosComponent implements OnInit {
     public youtubePlayer: YoutubePlayerService,
     private appLayoutActions: AppLayoutActions,
     private playerSearchActions: PlayerSearchActions
-  ) {
-    this.videos$ = store.select(state => state.videos);
-    this.playerSearch$ = store.select(state => state.search);
-  }
+  ) { }
 
   ngOnInit() {
     this.search(this.searchQuery);
@@ -105,14 +104,18 @@ export class YoutubeVideosComponent implements OnInit {
   }
 
   get searchParams () {
-    let params;
-    this.playerSearch$.take(1).subscribe(ps => params = ps.queryParams);
-    return params;
+    return this.getSearchParameter(getQueryParams);
   }
 
   get searchQuery () {
-    let query;
-    this.playerSearch$.take(1).subscribe(ps => query = ps.query);
-    return query;
+    return this.getSearchParameter(getQuery);
+  }
+
+  private getSearchParameter (selector) {
+    let _value;
+    this.playerSearch$.take(1)
+      .map(selector)
+      .subscribe(state => _value = state);
+    return _value;
   }
 }
