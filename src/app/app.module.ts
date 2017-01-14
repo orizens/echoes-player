@@ -2,7 +2,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+// import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -22,11 +22,13 @@ import { CoreModule } from './core';
 import { APP_SERVICES } from './core/services';
 
 // import { NOTIFY_PROVIDERS, NOTIFY_GLOBAL_OPTIONS } from '@ngrx/notify';
+import { BOOTSTRAP_TO_ACTION_PROVIDER } from './ngrx-state.decorator';
 
 // Application wide providers
 const APP_PROVIDERS = [
   // AppState,
-  APP_SERVICES
+  APP_SERVICES,
+  BOOTSTRAP_TO_ACTION_PROVIDER
   // NOTIFY_PROVIDERS
 ];
 
