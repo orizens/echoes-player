@@ -8,6 +8,11 @@ export interface PlayerSearch {
     preset: string;
     duration: number;
   };
+  pageToken: {
+    next: string;
+    prev: string;
+  };
+  isSearching: boolean;
 }
 interface SearchQueryParam {
   [property: string]: any;
@@ -23,26 +28,45 @@ let initialState: PlayerSearch = {
   queryParams: {
     preset: '',
     duration: -1
-  }
+  },
+  pageToken: {
+    next: '',
+    prev: ''
+  },
+  isSearching: false
 };
 export const search: ActionReducer<PlayerSearch> = (
   state: PlayerSearch = initialState,
   action: Action) => {
 
   switch (action.type) {
-    case PlayerSearchActions.UPDATE_QUERY:
-      return Object.assign({}, state, { query: action.payload });
-
-    case PlayerSearchActions.UPDATE_FILTER:
-      return state;
+    case PlayerSearchActions.SEARCH_NEW_QUERY:
+    return Object.assign({}, state, {
+      query: action.payload,
+      isSearching: true
+    });
 
     case PlayerSearchActions.UPDATE_QUERY_PARAM:
       const queryParams = Object.assign({}, state.queryParams, action.payload);
       return Object.assign({}, state, { queryParams });
 
+    case PlayerSearchActions.SEARCH_RESULTS_RETURNED:
+    const { nextPageToken, prevPageToken } = action.payload;
+    const statePageToken = state.pageToken;
+    const pageToken = {
+      next: nextPageToken || statePageToken.next,
+      prev: prevPageToken || statePageToken.prev
+    };
+    return Object.assign({}, state, { pageToken,
+      isSearching: false
+    });
+
+    case PlayerSearchActions.SEARCH_STARTED:
+    return Object.assign({}, state, { isSearching: true });
+
     default:
-      // upgrade policy - for when the initialState has changed
-      return Object.assign({}, initialState, state);
+    // upgrade policy - for when the initialState has changed
+    return Object.assign({}, initialState, state);
   }
 };
 

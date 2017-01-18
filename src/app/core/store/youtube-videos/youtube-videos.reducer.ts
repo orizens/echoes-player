@@ -2,25 +2,33 @@ import { Observable } from 'rxjs/Rx';
 import { ActionReducer, Action } from '@ngrx/store';
 import { YoutubeVideosActions } from './youtube-videos.actions';
 type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | Object;
-export interface EchoesVideos extends Array<GoogleApiYoutubeVideo> {};
+export interface EchoesVideos {
+  videos: GoogleApiYoutubeVideo[];
+  isSearching: boolean;
+}
 
-export const videos: ActionReducer<EchoesVideos> = (state: EchoesVideos = [], action: Action) => {
+let initialState: EchoesVideos = {
+  videos: [],
+  isSearching: false
+};
+
+export const videos: ActionReducer<EchoesVideos> = (
+  state: EchoesVideos = initialState,
+  action: Action
+  ) => {
 
   switch (action.type) {
     case YoutubeVideosActions.ADD:
-      return [...state, ...action.payload];
+      return Object.assign({}, state, { videos: [...state.videos, ...action.payload] });
 
     case YoutubeVideosActions.REMOVE:
       return state;
 
     case YoutubeVideosActions.RESET:
-      return [];
+      return Object.assign({}, state, { videos: [] });
 
-    case YoutubeVideosActions.UPDATE_METADATA:
-      const amountOfResults = 50;
-      const bottomLimit = state.length === 0 ? state.length : state.length - amountOfResults;
-      const copyOfLastState = [...state].filter((video, index) => index < bottomLimit);
-      return [...copyOfLastState, ...action.payload];
+    case YoutubeVideosActions.SEARCH_STARTED:
+      return Object.assign({}, state, { isSearching: action.payload });
 
     default:
       return state;

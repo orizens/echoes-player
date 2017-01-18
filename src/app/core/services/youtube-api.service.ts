@@ -78,9 +78,8 @@ export class YoutubeApiService {
         headers: this.createHeaders()
     };
     return this.http.get(this.url, options)
-      .toPromise()
-      .then(response => response.json())
-      .then(response => {
+      .map(response => response.json())
+      .map(response => {
           this.nextPageToken = response.nextPageToken;
           this.isSearching = false;
           return response;

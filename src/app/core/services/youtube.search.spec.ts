@@ -15,12 +15,12 @@ describe('Youtube Search Service', () => {
 
   beforeEach(() => {
     let storeSpy = jasmine.createSpyObj('Store', ['subscribe', 'dispatch']);
-    let youtubeSearchApiSpy = jasmine.createSpyObj('youtubeSearchApiSpy', 
+    let youtubeSearchApiSpy = jasmine.createSpyObj('youtubeSearchApiSpy',
       [ 'setConfig', 'setToken', 'fetchNextPage', 'resetPageToken' ]
     );
     youtubeSearchApiSpy.list = (val) => {
       return {
-        then: (fn) => fn({ items: [ 'mock' ] })
+        subscribe: (fn) => fn({ items: [ 'mock' ] })
       };
     };
     youtubeSearchApiSpy.config = {

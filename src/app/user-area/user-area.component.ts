@@ -78,7 +78,7 @@ export class UserArea implements OnInit {
   playSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {
     const that = this;
     this.userProfile.fetchPlaylistItems(media.id)
-      .then(response => {
+      .subscribe(response => {
         response.take(1).subscribe(items => {
           that.store.dispatch(that.nowPlaylistActions.queueVideos(items));
           this.nowPlaylistService.updateIndexByMedia(items[0].id);

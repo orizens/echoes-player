@@ -14,19 +14,23 @@ export class YoutubeVideosEffects {
   constructor(
     public actions$: Actions,
     public youtubeVideosActions: YoutubeVideosActions,
-    public youtubeSearch: YoutubeSearch,
     public youtubeVideosInfo: YoutubeVideosInfo
   ) {}
 
   @Effect()
   updateVideosMetadata$ = this.actions$
-    .ofType(YoutubeVideosActions.ADD)
+    .ofType(YoutubeVideosActions.ADD_FOR_PROCESSING)
     .map(action => action.payload)
     .map((medias: GoogleApiYouTubeSearchResource[]) => medias.map(media => media.id.videoId).join(','))
-    .switchMap((mediaIds: string) => this.youtubeVideosInfo.fetchVideosData(mediaIds)
-      // .map((videos: GoogleApiYouTubeVideoResource[]) =>
-      //   videos.map(video => this.youtubeVideosInfo.mediaToFriendlyDuration(video)))
+    .mergeMap((mediaIds: string) => this.youtubeVideosInfo.fetchVideosData(mediaIds)
       .map((videos: GoogleApiYouTubeVideoResource[]) =>
-        this.youtubeVideosActions.updateMetaData(videos))
-    );
+        this.youtubeVideosActions.addVideos(videos))
+    )
+    .catch(error => Observable.of({ type: 'ERROR_IN_FETCH', payload: error }));
+
+  // @Effect()
+  // endSearch$ = this.actions$
+  //   .ofType(YoutubeVideosActions.ADD)
+  //   .map(action => action.payload)
+  //   .map(videos => this.youtubeVideosActions.searchStarted(false));
 }

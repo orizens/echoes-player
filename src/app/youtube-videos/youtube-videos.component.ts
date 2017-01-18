@@ -8,13 +8,14 @@ import { YoutubeSearch } from '../core/services/youtube.search';
 import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { PlayerSearchActions, PresetParam } from '../core/store/player-search';
+import { YoutubeVideosActions } from '../core/store/youtube-videos';
 import { AppLayoutActions } from '../core/store/app-layout';
 // selectors
 import { getVideos$, getPlayerSearch$ } from '../core/store/reducers';
 import { getQuery, getQueryParams } from '../core/store/player-search/player-search.reducer';
 
 import './youtube-videos.scss';
-import { State } from '../ngrx-state.decorator';
+// import { State } from '../ngrx-state.decorator';
 
 @Component({
   selector: 'youtube-videos',
@@ -38,8 +39,9 @@ import { State } from '../ngrx-state.decorator';
         (buttonClick)="updatePreset($event)"
       ></button-group>
     </app-navbar>
+    <loading-indicator [isLoading]="(playerSearch$ | async).isSearching"></loading-indicator>
     <youtube-list
-      [list]="videos$ | async"
+      [list]="(videos$ | async).videos"
       (play)="playSelectedVideo($event)"
       (queue)="queueSelectedVideo($event)"
     ></youtube-list>
@@ -59,25 +61,22 @@ export class YoutubeVideosComponent implements OnInit {
   ];
 
   constructor(
+    private store: Store<EchoesState>,
     private youtubeSearch: YoutubeSearch,
     private nowPlaylistService: NowPlaylistService,
-    private store: Store<EchoesState>,
+
     private nowPlaylistActions: NowPlaylistActions,
     private playerActions: PlayerActions,
-    public youtubePlayer: YoutubePlayerService,
     private appLayoutActions: AppLayoutActions,
     private playerSearchActions: PlayerSearchActions
   ) { }
 
   ngOnInit() {
-    this.search(this.searchQuery);
+    this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
   }
 
   search (query: string) {
-    // workaround until switched to new form
-    if (!query.hasOwnProperty('isTrusted')) {
-      this.youtubeSearch.search(query, false, this.searchParams);
-    }
+    this.store.dispatch(this.playerSearchActions.searchNewQuery(query));
   }
 
   playSelectedVideo (media: GoogleApiYouTubeVideoResource) {
@@ -91,31 +90,14 @@ export class YoutubeVideosComponent implements OnInit {
   }
 
   resetPageToken() {
-    this.youtubeSearch.resetPageToken();
+    this.store.dispatch(this.playerSearchActions.resetPageToken());
   }
 
   searchMore () {
-    this.youtubeSearch.searchMore(this.searchParams);
+    this.store.dispatch(this.playerSearchActions.searchMoreForQuery());
   }
 
   updatePreset(preset: PresetParam) {
-    this.youtubeSearch.setPreset(preset.value);
-    this.youtubeSearch.search(this.searchQuery, false, this.searchParams);
-  }
-
-  get searchParams () {
-    return this.getSearchParameter(getQueryParams);
-  }
-
-  get searchQuery () {
-    return this.getSearchParameter(getQuery);
-  }
-
-  private getSearchParameter (selector) {
-    let _value;
-    this.playerSearch$.take(1)
-      .map(selector)
-      .subscribe(state => _value = state);
-    return _value;
+    this.store.dispatch(this.playerSearchActions.updateQueryParam({ preset: preset.value }));
   }
 }

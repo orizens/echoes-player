@@ -55,7 +55,8 @@ $brand-secondary:           $green-sea;
 $brand-success:             $emerald;
 $brand-warning:             $sun-flower;
 $brand-danger:              $alizarin;
-$brand-info:                $peter-river;
+// $brand-info:                $peter-river;
+$brand-info:                $emerald;
 
 
 //== Scaffolding
@@ -135,12 +136,6 @@ $border-radius-small:       0px;
 
 //** Default font-size in components
 $component-font-size-base:  ceil($font-size-base * 0.833); // ~15px
-
-// Border-radius
-$border-radius-base:        4px;
-$border-radius-large:       6px;
-$border-radius-small:       3px;
-
 
 //== Buttons
 //
@@ -501,7 +496,7 @@ $state-success-bg:            #dff0d8;
 $state-success-border:        darken(adjust-hue($state-success-bg, -10), 5%);
 
 $state-info-text:             $brand-info;
-$state-info-bg:               #d9edf7;
+$state-info-bg:               $gray-dark;
 $state-info-border:           darken(adjust-hue($state-info-bg, -10), 7%);
 
 $state-warning-text:          $brand-warning;
@@ -512,6 +507,29 @@ $state-danger-text:           $brand-danger;
 $state-danger-bg:             #f2dede;
 $state-danger-border:         darken(adjust-hue($state-danger-bg, -10), 5%);
 
+//== Alerts
+//
+//## Define alert colors, border radius, and padding.
+
+$alert-padding:               15px !default;
+$alert-border-radius:         $border-radius-small !default;
+$alert-link-font-weight:      bold !default;
+
+$alert-success-bg:            $state-success-bg !default;
+$alert-success-text:          $state-success-text !default;
+$alert-success-border:        $state-success-border !default;
+
+$alert-info-bg:               $state-info-bg !default;
+$alert-info-text:             $state-info-text !default;
+$alert-info-border:           $state-info-border !default;
+
+$alert-warning-bg:            $state-warning-bg !default;
+$alert-warning-text:          $state-warning-text !default;
+$alert-warning-border:        $state-warning-border !default;
+
+$alert-danger-bg:             $state-danger-bg !default;
+$alert-danger-text:           $state-danger-text !default;
+$alert-danger-border:         $state-danger-border !default;
 
 // Code
 //

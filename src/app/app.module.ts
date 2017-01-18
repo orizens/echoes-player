@@ -22,13 +22,13 @@ import { CoreModule } from './core';
 import { APP_SERVICES } from './core/services';
 
 // import { NOTIFY_PROVIDERS, NOTIFY_GLOBAL_OPTIONS } from '@ngrx/notify';
-import { BOOTSTRAP_TO_ACTION_PROVIDER } from './ngrx-state.decorator';
+// import { BOOTSTRAP_TO_ACTION_PROVIDER } from './ngrx-state.decorator';
 
 // Application wide providers
 const APP_PROVIDERS = [
   // AppState,
-  APP_SERVICES,
-  BOOTSTRAP_TO_ACTION_PROVIDER
+  APP_SERVICES
+  // BOOTSTRAP_TO_ACTION_PROVIDER
   // NOTIFY_PROVIDERS
 ];
 

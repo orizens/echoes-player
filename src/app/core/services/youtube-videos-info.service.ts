@@ -4,7 +4,7 @@ import { YoutubeApiService } from './youtube-api.service';
 
 @Injectable()
 export class YoutubeVideosInfo {
-  public api: any;
+  public api: YoutubeApiService;
 
   constructor(private http: Http) {
     this.api = new YoutubeApiService({

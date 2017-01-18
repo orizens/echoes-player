@@ -71,7 +71,7 @@ export class UserProfile {
     this.playlistInfo.config.delete('pageToken');
     return this.playlistInfo
       .list(playlistId)
-      .then(response => {
+      .switchMap(response => {
         const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
         return this.youtubeVideosInfo.api.list(videoIds);
       });

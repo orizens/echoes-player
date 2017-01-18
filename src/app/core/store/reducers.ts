@@ -40,3 +40,7 @@ export const getPlayer$ = (state$: Observable<EchoesState>): Observable<YoutubeP
 export const getPlayerSearch$ = (state$: Observable<EchoesState>): Observable<PlayerSearch> => {
   return state$.select(state => state.search);
 };
+
+export const getAppLayout$ = ($state: Observable<EchoesState>): Observable<AppLayout> => {
+  return $state.select(state => state.appLayout);
+};

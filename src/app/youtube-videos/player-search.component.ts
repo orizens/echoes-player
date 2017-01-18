@@ -51,8 +51,9 @@ export class PlayerSearch {
   }
 
   onSearch(query: string) {
+    const _query = query || this.mediaSearch.element.nativeElement.value;
     this.mediaSearch.element.nativeElement.blur();
-    this.search.emit(query);
+    this.search.emit(_query);
   }
 
   handleSelectSuggestion(suggestion: string) {

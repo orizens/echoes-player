@@ -7,9 +7,11 @@ import { AppLayoutActions } from './app-layout.actions';
 
 export interface AppLayout {
   sidebarExpanded: boolean;
+  requestInProcess: boolean;
 }
 let initialState: any = {
-  sidebarExpanded: true
+  sidebarExpanded: true,
+  requestInProcess: false
 };
 export const appLayout: ActionReducer<AppLayout> = (
   state: AppLayout = initialState,

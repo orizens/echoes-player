@@ -127,7 +127,7 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
     return Observable.fromEvent(this.element.nativeElement, 'keyup')
       .filter(this.validateKeyCode)
       .map((e: any) => e.target.value)
-      .debounceTime(400)
+      .debounceTime(300)
       .concat()
       .distinctUntilChanged()
       .filter((query: string) => query.length > 0)
