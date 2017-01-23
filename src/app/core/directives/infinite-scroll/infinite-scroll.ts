@@ -1,16 +1,21 @@
+import { InfiniteScrollEvent } from './models';
 import {
-  Directive, ElementRef, Input,
-  Output, EventEmitter, OnDestroy,
-  OnInit, OnChanges, SimpleChanges, NgZone
+  Directive, ElementRef, Input, Output,
+  EventEmitter, OnDestroy, OnInit,
+  SimpleChanges, NgZone
 } from '@angular/core';
-import { Scroller, InfiniteScrollEvent } from './scroller';
 import { PositionResolverFactory } from './position-resolver';
+import { ScrollRegister, ScrollRegisterConfig } from './scroll-register';
+import { ScrollResolver } from './scroll-resolver';
+import { Subscription } from 'rxjs/Rx';
+
 
 @Directive({
   selector: '[infinite-scroll]'
 })
-export class InfiniteScroll implements OnDestroy, OnInit, OnChanges {
-  public scroller: Scroller;
+export class InfiniteScroll implements OnDestroy, OnInit {
+  @Output() scrolled = new EventEmitter<InfiniteScrollEvent>();
+  @Output() scrolledUp = new EventEmitter<InfiniteScrollEvent>();
 
   @Input('infiniteScrollDistance') _distanceDown: number = 2;
   @Input('infiniteScrollUpDistance') _distanceUp: number = 1.5;
@@ -20,44 +25,74 @@ export class InfiniteScroll implements OnDestroy, OnInit, OnChanges {
   @Input('immediateCheck') _immediate: boolean = false;
   @Input('horizontal') _horizontal: boolean = false;
   @Input('alwaysCallback') _alwaysCallback: boolean = false;
+  @Input()
+  set debounce(value: string | boolean) {
+    this.throttleType = value === '' || !!value ? 'debounce' : 'throttle';
+  }
 
-  @Output() scrolled = new EventEmitter<InfiniteScrollEvent>();
-  @Output() scrolledUp = new EventEmitter<InfiniteScrollEvent>();
+  private throttleType: string = 'throttle';
+  private disposeScroller: Subscription;
 
   constructor(
     private element: ElementRef,
     private zone: NgZone,
-    private positionResolverFactory: PositionResolverFactory
+    private positionResolverFactory: PositionResolverFactory,
+    private scrollRegister: ScrollRegister,
+    private scrollerResolver: ScrollResolver
   ) {}
 
   ngOnInit() {
     if (typeof window !== 'undefined') {
       const containerElement = this.scrollWindow ? window : this.element;
-      this.scroller = new Scroller(containerElement, setInterval, this.element,
-          this.onScrollDown.bind(this), this.onScrollUp.bind(this),
-          this._distanceDown, this._distanceUp, {}, this._throttle,
-          this._immediate, this._horizontal, this._alwaysCallback,
-          this._disabled, this.positionResolverFactory);
+      const positionResolver = this.positionResolverFactory.create({
+        windowElement: containerElement,
+        horizontal: this._horizontal
+      });
+      const scrollResolverConfig = {
+        distance: {
+          down: this._distanceDown,
+          up: this._distanceUp
+        }
+      };
+      const options: ScrollRegisterConfig = {
+        container: positionResolver.container,
+        throttleType: this.throttleType,
+        throttleDuration: this._throttle,
+        filterBefore: () => !this._disabled,
+        mergeMap: () => positionResolver.calculatePoints(this.element),
+        scrollHandler: (container) => {
+          const scrollStats = this.scrollerResolver.getScrollStats(container, scrollResolverConfig);
+          if (this.shouldTriggerEvents(scrollStats.shouldScroll)) {
+            const infiniteScrollEvent: InfiniteScrollEvent = {
+              currentScrollPosition: container.scrolledUntilNow
+            };
+            if (scrollStats.isScrollingDown) {
+              this.onScrollDown(infiniteScrollEvent);
+            } else {
+              this.onScrollUp(infiniteScrollEvent);
+            }
+          }
+        }
+      };
+      this.disposeScroller = this.scrollRegister.attachEvent(options);
     }
+  }
+
+  shouldTriggerEvents(shouldScroll: boolean) {
+    return (this._alwaysCallback || shouldScroll) && !this._disabled;
   }
 
   ngOnDestroy () {
-    if (this.scroller) {
-      this.scroller.clean();
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['_disabled'] && this.scroller) {
-      this.scroller.handleInfiniteScrollDisabled(changes['_disabled'].currentValue);
+    if (this.disposeScroller) {
+      this.disposeScroller.unsubscribe();
     }
   }
 
   onScrollDown(data: InfiniteScrollEvent = { currentScrollPosition: 0 }) {
-    this.zone.run(() => this.scrolled.next(data));
+    this.zone.run(() => this.scrolled.emit(data));
   }
 
   onScrollUp(data: InfiniteScrollEvent = { currentScrollPosition: 0 }) {
-    this.zone.run(() => this.scrolledUp.next(data));
+    this.zone.run(() => this.scrolledUp.emit(data));
   }
 }
