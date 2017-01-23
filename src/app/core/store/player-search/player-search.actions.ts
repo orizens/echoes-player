@@ -8,7 +8,8 @@ export class PlayerSearchActions {
   //   type: 'UPDATE_FILTER',
   //   payload: string
   // })
-  // updateFilter
+  // @ActionCreator<string>(PlayerSearchActions.UPDATE_FILTER)
+  // update;
   static UPDATE_FILTER = '[PlayerSearch] UPDATE_FILTER';
   static UPDATE_QUERY_PARAM = '[PlayerSearch] UPDATE_QUERY_PARAM';
   static SEARCH_NEW_QUERY = '[PlayerSearch] SEARCH_NEW_QUERY';
