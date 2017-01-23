@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core';
-import { CoreStoreModule } from '../core/store';
+import { SharedModule } from '../shared';
 
 import { Navigator } from './navigator.component';
 
 @NgModule({
   imports: [
     CoreModule,
-    CoreStoreModule,
+    SharedModule,
     RouterModule
   ],
   declarations: [

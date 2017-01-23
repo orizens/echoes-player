@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared';
 import { CoreModule } from '../core';
 
 import { NowPlaying } from './now-playing.component';
@@ -7,6 +8,7 @@ import { NowPlaylistFilter } from './now-playlist-filter';
 
 @NgModule({
   imports: [
+    SharedModule,
     CoreModule
   ],
   declarations: [

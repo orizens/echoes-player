@@ -18,6 +18,7 @@ import { CORE_COMPONENTS } from './core/components';
 import { APP_FEATURE_MODULES } from './app.feature.modules';
 
 import { CoreModule } from './core';
+import { SharedModule } from './shared';
 // SERVICES
 import { APP_SERVICES } from './core/services';
 
@@ -51,6 +52,7 @@ const APP_PROVIDERS = [
     HttpModule,
     JsonpModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
+    SharedModule,
     CoreModule,
 
     ...APP_FEATURE_MODULES

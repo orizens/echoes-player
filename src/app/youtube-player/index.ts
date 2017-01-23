@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from '../core';
+import { SharedModule } from '../shared';
 
 import { YoutubePlayer } from './youtube-player.component';
 import { MediaInfoComponent } from './media-info';
@@ -8,6 +9,7 @@ import { PlayerResizerComponent } from './player-resizer/player-resizer.componen
 
 @NgModule({
   imports: [
+    SharedModule,
     CoreModule
   ],
   declarations: [
