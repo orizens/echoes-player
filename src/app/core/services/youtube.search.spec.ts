@@ -61,7 +61,7 @@ describe('Youtube Search Service', () => {
   xit('should search with same value when searching more', () => {
     const query = 'ozrics';
     service.search(query, true);
-    service.searchMore({});
+    service.searchMore();
     const actual = service.youtubeSearchApi.config.get('q');
     const expected = query;
     expect(actual).toMatch(expected);
@@ -69,7 +69,7 @@ describe('Youtube Search Service', () => {
 
   it('should NOT reset search when searching more', () => {
     const query = 'ozrics';
-    service.searchMore({});
+    service.searchMore();
     const actual = service.youtubeSearchApi.resetPageToken;
     expect(actual).not.toHaveBeenCalled();
   });
