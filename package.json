@@ -98,7 +98,7 @@
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^1.12.34",
     "@types/youtube": "0.0.28",
-    "angular2-infinite-scroll": "0.2.8",
+    "angular2-infinite-scroll": "0.3.0",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^2.2.1",
     "bootstrap": "3.3.7",
