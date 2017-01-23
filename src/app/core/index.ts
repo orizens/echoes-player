@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
+import { throwIfAlreadyLoaded } from './module-imports.guards';
 
 import { CoreStoreModule } from './store';
 import effects from './effects';
@@ -20,4 +21,8 @@ import { APP_SERVICES } from './services';
     ...APP_SERVICES
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    throwIfAlreadyLoaded(parentModule, 'CoreModule');
+  }
+}
