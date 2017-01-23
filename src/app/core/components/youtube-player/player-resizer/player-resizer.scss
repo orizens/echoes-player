@@ -1,0 +1,36 @@
+@import '../../../../../css/core/global.scss';
+
+@media (min-width: 320px) {
+  player-resizer {
+    .full-screen.show-player {
+      transform: scale(5);
+      background-color: transparent;
+      color: $brand-primary;
+      border: none;
+      left: 14rem;
+      position: absolute;
+      font-size: 4rem;
+      top: 12rem;
+      padding: 1rem 2.5rem;
+    }
+    .icon-max {
+      display: block;
+    }
+
+    .icon-minimize {
+      display: none;
+    }
+  }
+
+  .show-youtube-player player-resizer {
+    display: block;
+
+    .icon-max {
+      display: none;
+    }
+
+    .icon-minimize {
+      display: block;
+    }
+  }
+}

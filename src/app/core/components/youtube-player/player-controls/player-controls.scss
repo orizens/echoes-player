@@ -1,0 +1,61 @@
+@import '../../../../../css/echoes-variables.scss';
+
+.player-controls {
+	$btn-color: whitesmoke;
+	$btn-control-font-size:  1.3rem;
+	$btn-control-padding:  1.5rem 2rem;
+	$btn-control-primary-color: $brand-primary;
+	$btn-primary-font-size: 1.8rem;
+
+	@mixin button-style () {
+		border: none;
+		background: transparent;
+		color: $btn-color;
+		border-radius: 0;
+		outline: none;
+		font-size: $btn-control-font-size;
+	}
+
+	.btn {
+		&.next,
+		&.previous {
+			padding: $btn-control-padding;
+		}
+	}
+	.btn {
+		@include button-style();
+		
+		&:hover {
+			@include button-style();
+		}
+
+		&.pause {
+			display: none;
+		}
+
+		&.play,
+		&.pause {
+			border: 0;
+			border-radius: 50% !important;
+			background-color: $btn-control-primary-color;
+			padding: 0.9rem 1.4rem;
+			margin: 0.3rem 0 !important;
+			font-size: $btn-primary-font-size;
+		}
+	}
+
+	.show-player {
+		transform: translatey(0);
+	}
+
+}
+
+.yt-playing .player-controls {
+	.play {
+		display: none;
+	}
+
+	.pause {
+		display: inline-block;
+	}
+}

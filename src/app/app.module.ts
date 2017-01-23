@@ -14,13 +14,13 @@ import { App } from './app.component';
 // import { AppState, InteralStateType } from './app.service';
 
 // COMPONENTS
-import { CORE_COMPONENTS } from './core/components';
+import { APP_CORE_MODULES } from './core/components';
 import { APP_FEATURE_MODULES } from './app.feature.modules';
 
 import { CoreModule } from './core';
 import { SharedModule } from './shared';
 // SERVICES
-import { APP_SERVICES } from './core/services';
+// import { APP_SERVICES } from './core/services';
 
 // import { NOTIFY_PROVIDERS, NOTIFY_GLOBAL_OPTIONS } from '@ngrx/notify';
 // import { BOOTSTRAP_TO_ACTION_PROVIDER } from './ngrx-state.decorator';
@@ -28,7 +28,7 @@ import { APP_SERVICES } from './core/services';
 // Application wide providers
 const APP_PROVIDERS = [
   // AppState,
-  APP_SERVICES
+  // APP_SERVICES
   // BOOTSTRAP_TO_ACTION_PROVIDER
   // NOTIFY_PROVIDERS
 ];
@@ -55,6 +55,7 @@ const APP_PROVIDERS = [
     SharedModule,
     CoreModule,
 
+    ...APP_CORE_MODULES,
     ...APP_FEATURE_MODULES
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

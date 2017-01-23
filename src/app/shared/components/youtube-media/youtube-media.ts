@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d';
 import './youtube-media.scss';
 
 @Component({
@@ -18,15 +17,15 @@ export class YoutubeMedia {
 
   constructor () {}
 
-  playVideo (media: YoutubeMediaResource) {
+  playVideo (media: GoogleApiYouTubeVideoResource) {
     this.play.next(media);
   }
 
-  queueVideo(media: YoutubeMediaResource) {
+  queueVideo(media: GoogleApiYouTubeVideoResource) {
     this.queue.next(media);
   }
 
-  addVideo (media: YoutubeMediaResource) {
+  addVideo (media: GoogleApiYouTubeVideoResource) {
     this.add.next(media);
   }
 

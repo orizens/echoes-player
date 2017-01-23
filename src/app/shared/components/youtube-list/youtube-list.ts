@@ -19,7 +19,7 @@ import './youtube-list.scss';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubeList {
-  @Input() list: any;
+  @Input() list: GoogleApiYouTubeVideoResource[];
   @Output() play = new EventEmitter();
   @Output() queue = new EventEmitter();
   @Output() add = new EventEmitter();

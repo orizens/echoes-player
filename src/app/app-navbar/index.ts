@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CoreModule } from '../core';
 import { SharedModule } from '../shared';
 
 import { AppNavbar } from './app-navbar.component';
 
 @NgModule({
   imports: [
-    SharedModule,
-    CoreModule
+    SharedModule
   ],
   declarations: [
     AppNavbar

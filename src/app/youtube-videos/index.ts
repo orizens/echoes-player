@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CoreModule } from '../core';
 import { SharedModule } from '../shared';
 
 import { AppNavbarModule } from '../app-navbar';
@@ -12,7 +11,6 @@ import { routing } from './youtube-videos.routing';
 @NgModule({
   imports: [
     SharedModule,
-    CoreModule,
     AppNavbarModule,
     routing
   ],

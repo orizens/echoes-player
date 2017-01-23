@@ -4,6 +4,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { CoreStoreModule } from './store';
 import effects from './effects';
 
+import { APP_SERVICES } from './services';
+
 @NgModule({
   imports: [
     CoreStoreModule,
@@ -15,7 +17,7 @@ import effects from './effects';
     CoreStoreModule,
   ],
   providers: [
-
+    ...APP_SERVICES
   ]
 })
 export class CoreModule { }

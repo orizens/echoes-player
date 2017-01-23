@@ -1,0 +1,55 @@
+@import '../../../../../css/core/global.scss';
+
+.user-playlists-filter {
+	position: relative;
+  // float: none;
+  // width: 29.5rem;
+  background-color: #323538;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+	&.nav-header {
+		box-shadow: -1rem -0.2rem 2rem #000 !important;
+	}
+
+	.btn-clear {
+		color: $alizarin;
+
+		&:disabled {
+			color: grey;
+		}
+	}
+
+	.playlist-filter {
+		position: absolute;
+		right: 0;
+		top: 0.6rem;
+		background: darken($bg-dark-color, 3%);
+		padding-left: 5px;
+
+		input {
+			background: darken($bg-dark-color, 3%);
+			border: none;
+			padding: 0 3px;
+			margin-bottom: 0;
+		}
+	}
+}
+@media (min-width: 768px) {
+	now-playlist-filter {
+		.text.btn-transparent {
+			cursor: pointer;
+		}
+	}
+	.closed now-playlist-filter {
+		.text,
+		.playlist-filter,
+		.btn-save {
+			display: none;
+		}
+
+		.nav-header.user-playlists-filter {
+			padding: 0 1rem;
+			text-align: center;
+		}
+	}
+}
