@@ -6,7 +6,7 @@ import './youtube-list.scss';
   selector: 'youtube-list',
   template: `
   <ul class="list-unstyled clearfix">
-    <li class="pull-left youtube-list-item" *ngFor="let media of list">
+    <li class="youtube-list-item" *ngFor="let media of list">
       <youtube-media
         [media]="media"
         (play)="playSelectedVideo(media)"
@@ -19,12 +19,12 @@ import './youtube-list.scss';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubeList {
-  @Input() list: GoogleApiYouTubeVideoResource[];
+  @Input() list: GoogleApiYouTubeVideoResource[] = [];
   @Output() play = new EventEmitter();
   @Output() queue = new EventEmitter();
   @Output() add = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   playSelectedVideo(media) {
     this.play.next(media);

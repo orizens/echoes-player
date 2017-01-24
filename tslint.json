@@ -11,7 +11,7 @@
       "variables-before-functions"
     ],
     "no-any": false,
-    "no-inferrable-types": false,
+    "no-inferrable-types": [ false ],
     "no-internal-module": true,
     "no-var-requires": false,
     "typedef": [
@@ -62,7 +62,7 @@
     "no-switch-case-fall-through": true,
     "no-unreachable": true,
     "no-unused-expression": true,
-    "no-unused-variable": false,
+    "no-unused-variable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
     "radix": true,
@@ -108,7 +108,7 @@
       false
     ],
     "jsdoc-format": true,
-    "no-consecutive-blank-lines": false,
+    "no-consecutive-blank-lines": [ false ],
     "no-constructor-vars": false,
     "one-line": [
       true,

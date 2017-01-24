@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 // import { InfiniteScrollModule } from './directives/infinite-scroll';
@@ -13,6 +14,7 @@ import { PIPES } from './pipes';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     YoutubePlayerModule,
     InfiniteScrollModule,
   ],

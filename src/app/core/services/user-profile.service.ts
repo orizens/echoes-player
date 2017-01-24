@@ -4,6 +4,7 @@ import { window } from '@angular/platform-browser/src/facade/browser';
 
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
+import { Authorization } from './authorization.service';
 
 import { GoogleBasicProfile } from '../store/user-profile';
 
@@ -12,11 +13,13 @@ export class UserProfile {
   isSearching: Boolean = false;
   public playlistInfo: YoutubeApiService;
   public playlists: YoutubeApiService;
+  public playlistApi: YoutubeApiService;
 
   constructor(
     private http: Http,
     private zone: NgZone,
     private youtubeVideosInfo: YoutubeVideosInfo,
+    private authorization: Authorization
   ) {
     this.playlistInfo = new YoutubeApiService({
       url: 'https://www.googleapis.com/youtube/v3/playlistItems',
@@ -25,7 +28,7 @@ export class UserProfile {
       config: {
         mine: 'true'
       }
-    });
+    }, authorization);
     // TODO - extract to a Model / Reducer?
     // Reducer - because nextPageToken is changed
     // Model - new _config should be recreated easily with a new nextPageToken
@@ -36,13 +39,15 @@ export class UserProfile {
         mine: 'true',
         part: 'snippet,id,contentDetails'
       }
-    });
-  }
-
-  setAccessToken(token: string) {
-    // TODO - should save token once for all services
-    this.playlistInfo.setToken(token);
-    return this.playlists.setToken(token);
+    }, authorization);
+    this.playlistApi = new YoutubeApiService({
+      url: 'https://www.googleapis.com/youtube/v3/playlists',
+      http: this.http,
+      idKey: 'id',
+      config: {
+        part: 'snippet,id,contentDetails'
+      }
+    }, authorization);
   }
 
   getPlaylists(isNewPage: boolean) {
@@ -64,6 +69,10 @@ export class UserProfile {
 
   resetPageToken() {
     this.playlists.config.set('pageToken', '');
+  }
+
+  fetchPlaylist(playlistId: string) {
+    return this.playlistApi.list(playlistId);
   }
 
   fetchPlaylistItems(playlistId: string) {

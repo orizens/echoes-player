@@ -1,0 +1,53 @@
+playlist-cover {
+  $transparent-bg: rgba(255,255,255, .5);
+  display: block;
+
+  .playlist-cover {
+    position: relative;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+
+    .cover-bg {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: blur(5px);
+      transform: scale(1.2);
+      height: 14rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .playlist-thumbnail {
+      img {
+        border: 1px solid $transparent-bg;
+      }
+    }
+  
+    h4 {
+      margin: 0;
+      line-height: 5rem;
+
+      span {
+        font-weight: normal;
+        position: relative;
+        background-color: $transparent-bg;
+        padding: 1rem;
+      }
+    }
+
+    .actions {
+
+      .btn {
+        color: white;
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}

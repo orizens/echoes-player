@@ -15,6 +15,13 @@ import { GapiLoader } from './gapi-loader.service';
 export class Authorization {
   private _googleAuth: GoogleAuthResponse;
   private _scope: string = 'profile email https://www.googleapis.com/auth/youtube';
+  private _accessToken: string;
+  set accessToken(value) {
+    this._accessToken = value;
+  }
+  get accessToken() {
+    return this._accessToken;
+  }
 
   constructor(
     private zone: NgZone,

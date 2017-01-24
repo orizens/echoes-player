@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs/Rx';
+import { EchoesState } from '../';
 import { ActionReducer, Action } from '@ngrx/store';
 import { UserProfileActions } from './user-profile.actions';
 
@@ -6,21 +8,23 @@ export * from './user-profile.actions';
 export interface UserProfileData {
   access_token: string;
   playlists: GoogleApiYouTubePlaylistResource[];
-  data?: any;
+  data?: {};
   nextPageToken?: string;
   profile: GoogleBasicProfile;
+  viewedPlaylist?: string;
 };
  export interface GoogleBasicProfile {
   name?: string;
   imageUrl?: string;
  }
 
-let initialUserState = {
+let initialUserState: UserProfileData = {
   access_token: '',
   playlists: [],
   data: {},
   nextPageToken: '',
-  profile: {}
+  profile: {},
+  viewedPlaylist: ''
 };
 export const user: ActionReducer<UserProfileData> = (state = initialUserState, action: Action) => {
 
@@ -47,6 +51,9 @@ export const user: ActionReducer<UserProfileData> = (state = initialUserState, a
     case UserProfileActions.UPDATE_USER_PROFILE:
     return Object.assign({}, state, { profile: action.payload });
 
+    case UserProfileActions.VIEWED_PLAYLIST:
+    return Object.assign({}, state, { viewedPlaylist: action.payload });
+
     default:
     return state;
   }
@@ -55,4 +62,11 @@ export const user: ActionReducer<UserProfileData> = (state = initialUserState, a
 export const userRegister = {
   reducer: { user },
   actions: UserProfileActions
+};
+
+export const getUserPlaylists$ = (state$: Observable<EchoesState>) => {
+  return state$.select(state => state.user.playlists);
+};
+export const getUserViewPlaylist$ = (state$: Observable<EchoesState>) => {
+  return state$.select(state => state.user.viewedPlaylist);
 };

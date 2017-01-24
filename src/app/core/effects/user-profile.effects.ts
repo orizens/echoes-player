@@ -1,13 +1,13 @@
 import 'rxjs/add/operator/switchMapTo';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { UserProfileActions, GoogleBasicProfile } from '../store/user-profile';
 
 import { UserProfile } from '../services/user-profile.service';
+import { Authorization } from '../services/authorization.service';
 
 @Injectable()
 export class UserProfileEffects {
@@ -15,14 +15,15 @@ export class UserProfileEffects {
   constructor(
     private actions$: Actions,
     private userProfileActions: UserProfileActions,
-    private userProfile: UserProfile
+    private userProfile: UserProfile,
+    private auth: Authorization
   ) { }
 
   @Effect()
   updateToken$ = this.actions$
     .ofType(UserProfileActions.UPDATE_TOKEN)
     .map(action => action.payload)
-    .map((token: string) => this.userProfile.setAccessToken(token))
+    .map((token: string) => this.auth.accessToken = token)
     .switchMap(token => this.userProfile.getPlaylists(true))
     .map(response => this.userProfileActions.updateData(response));
 

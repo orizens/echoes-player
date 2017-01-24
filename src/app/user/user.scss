@@ -1,9 +1,9 @@
-user-area {
+user {
   $user-nav-line-height: 5rem;
 
   article {
     padding-bottom: $user-nav-line-height;
-    padding-top: ($user-nav-line-height + 2rem);
+    padding-top: ($user-nav-line-height + 4rem);
   }
   h2 {
     small {

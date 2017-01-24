@@ -1,6 +1,5 @@
+import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
-
 import { GoogleBasicProfile } from './user-profile.reducer';
 
 @Injectable()
@@ -13,6 +12,9 @@ export class UserProfileActions {
   static USER_PROFILE_COMPLETED = '[UserProfile] USER_PROFILE_COMPLETED';
   static UPDATE_USER_PROFILE = '[UserProfile] UPDATE_USER_PROFILE';
   static USER_PROFILE_RECIEVED = '[UserProfile] USER_PROFILE_RECIEVED';
+  static VIEWED_PLAYLIST = '[UserProfile] VIEWED_PLAYLIST';
+
+  setViewPlaylist = ActionCreatorFactory.create<string>(UserProfileActions.VIEWED_PLAYLIST);
 
   updateData(data: any) {
     return {

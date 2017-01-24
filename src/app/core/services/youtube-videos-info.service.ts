@@ -1,12 +1,13 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { YoutubeApiService } from './youtube-api.service';
+import { Authorization } from './authorization.service';
 
 @Injectable()
 export class YoutubeVideosInfo {
   public api: YoutubeApiService;
 
-  constructor(private http: Http) {
+  constructor(private http: Http, auth: Authorization) {
     this.api = new YoutubeApiService({
       url: 'https://www.googleapis.com/youtube/v3/videos',
       http: this.http,
@@ -14,7 +15,7 @@ export class YoutubeVideosInfo {
       config: {
         part: 'snippet,contentDetails,statistics'
       }
-    });
+    }, auth);
     this.api.list = function(id) {
       const videoId = id.videoId || id;
       this.config.set(this.idKey, videoId);
