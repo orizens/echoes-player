@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import 'rxjs/add/operator/let';
 
 import { EchoesState, getSidebarCollapsed$ } from './core/store';
 import { Store } from '@ngrx/store';
+import 'rxjs/add/operator/let';
 // import { Notify } from '@ngrx/notify';
 
 @Component({
