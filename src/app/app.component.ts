@@ -1,14 +1,8 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import 'rxjs/add/operator/let';
-// SERVICES
-import { YoutubeSearch, YoutubePlayerService, NowPlaylistService } from './core/services';
 
-import { EchoesState, getSidebarCollapsed } from './core/store';
-import { YoutubePlayerState, PlayerActions } from './core/store/youtube-player';
-import { Observable } from 'rxjs/Observable';
+import { EchoesState, getSidebarCollapsed$ } from './core/store';
 import { Store } from '@ngrx/store';
-import { YoutubeMediaPlaylist } from './core/store/now-playlist';
-import { AppLayout, AppLayoutActions } from './core/store/app-layout';
 // import { Notify } from '@ngrx/notify';
 
 @Component({
@@ -32,14 +26,12 @@ import { AppLayout, AppLayoutActions } from './core/store/app-layout';
   `
 })
 export class App implements OnInit {
-  sidebarCollapsed$: Observable<boolean>;
+  sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
 
   constructor(
     private store: Store<EchoesState>
   ) {
   }
 
-  ngOnInit() {
-    this.sidebarCollapsed$ = this.store.let(getSidebarCollapsed);
-  }
+  ngOnInit() {}
 }

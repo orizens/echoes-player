@@ -45,4 +45,4 @@ export class CoreStoreModule {};
 function getAppLayoutState(state$: Observable<EchoesState>) {
   return state$.select(state => state.appLayout);
 }
-export const getSidebarCollapsed = compose(getSidebarExpanded, getAppLayoutState);
+export const getSidebarCollapsed$ = compose(getSidebarExpanded, getAppLayoutState);
