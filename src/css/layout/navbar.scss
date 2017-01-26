@@ -44,21 +44,6 @@
 			padding: 0;
 		}
 	}
-	.navbar .form-search {
-		border: none;
-		float: left;
-		padding: 0;
-		margin-right: 0;
-
-		.form-group {
-			margin: 0.9rem 0 0.8rem 0;
-			padding: 0;
-		}
-		.form-control {
-			line-height: 2rem;
-			height: 2rem;
-		}
-	}
 	.navbar .navbar-collapse {
 		border: none;
 	}
@@ -96,10 +81,6 @@
 		.navbar-collapse {
 			clear: none;
 		}
-		.form-search {
-			margin: 0;
-			padding: 0px 7px 0 3px;
-		}
 	}
 	.navbar-fixed-top {
 		box-shadow: 0 1px 7px rgba(0,0,0,0.5);
@@ -117,17 +98,4 @@
 	.navbar .navbar-brand {
 		padding-left: 5px;
 	}
-}
-
-.dropdown-menu.uib-dropdown-menu {
-	border-radius: 0;
-	box-shadow: 0 0 3px black;
-	max-height: 250px;
-}
-.navbar .open .uib-dropdown-menu.dropdown-menu > li a,
-.dropdown-menu.uib-dropdown-menu > li a{
-	padding: 1.2rem;
-}
-.navbar .open .uib-dropdown-menu.dropdown-menu {
-	background-color: $dropdown-bg !important;
 }
