@@ -81,7 +81,6 @@ export class YoutubeVideosComponent implements OnInit {
 
   playSelectedVideo (media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(this.playerActions.loadAndPlay(media));
-    this.store.dispatch(this.nowPlaylistActions.queueVideo(media));
     this.store.dispatch(this.nowPlaylistActions.selectVideo(media));
   }
 

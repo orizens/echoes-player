@@ -1,17 +1,26 @@
 import 'rxjs/add/operator/switchMapTo';
 import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { NowPlaylistActions } from '../store/now-playlist';
 
 import { NowPlaylistService } from '../services/now-playlist.service';
-import { YoutubeVideosInfo } from '../services/youtube-videos-info.service';
 
 @Injectable()
 export class NowPlaylistEffects {
-  // @Effect()
+  constructor(
+    private actions$: Actions,
+    private nowPlaylistActions: NowPlaylistActions,
+    private nowPlaylistService: NowPlaylistService,
+  ) {}
+
+  @Effect()
+  queueVideo$ = this.actions$
+    .ofType(NowPlaylistActions.SELECT)
+    .map(toPayload)
+    .map((media: GoogleApiYouTubeVideoResource) => this.nowPlaylistActions.queueVideo(media));
+
   // queueVideoReady$ = this.actions$
     // .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)
     // .map(action => action.payload)
@@ -28,11 +37,5 @@ export class NowPlaylistEffects {
   //   .map(video => this.nowPlaylistActions.queueVideo(video));
     // .map((media: GoogleApiYouTubeVideoResource) => this.nowPlaylistActions.updateIndexByMedia(media.id));
 
-  constructor(
-    private actions$: Actions,
-    private nowPlaylistActions: NowPlaylistActions,
-    private nowPlaylistService: NowPlaylistService,
-    private youtubeVideosInfo: YoutubeVideosInfo
-  ) { }
 
 }
