@@ -41,6 +41,10 @@ export const getPlayerSearch$ = (state$: Observable<EchoesState>): Observable<Pl
   return state$.select(state => state.search);
 };
 
+export const getPlayerSearchResults$ = (state$: Observable<EchoesState>): Observable<any[]> => {
+  return state$.select(state => state.search.results);
+};
+
 export const getAppLayout$ = ($state: Observable<EchoesState>): Observable<AppLayout> => {
   return $state.select(state => state.appLayout);
 };

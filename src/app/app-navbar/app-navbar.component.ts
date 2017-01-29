@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { user, UserProfileData, GoogleBasicProfile } from '../core/store/user-profile';
+import { UserProfileData } from '../core/store/user-profile';
 import { UserProfile, Authorization } from '../core/services';
 import { AppLayoutActions } from '../core/store/app-layout';
 import { EchoesState } from '../core/store';

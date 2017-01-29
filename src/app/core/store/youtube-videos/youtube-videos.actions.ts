@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { ActionCreatorFactory } from '../action-creator.util';
 
+// DEPRECATED
 @Injectable()
 export class YoutubeVideosActions {
   static ADD = '[YoutubeVideos] ADD_VIDEOS';

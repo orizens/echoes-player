@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Rx';
 import { ActionReducer, Action } from '@ngrx/store';
 import { YoutubeVideosActions } from './youtube-videos.actions';
 type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | Object;
+//DEPRECATED
 export interface EchoesVideos {
   videos: GoogleApiYoutubeVideo[];
   isSearching: boolean;

@@ -1,3 +1,4 @@
+import { YoutubeVideosInfo } from '../services';
 import { YoutubeVideosActions } from '../store/youtube-videos/youtube-videos.actions';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
-import { PlayerSearch, PlayerSearchActions } from '../store/player-search';
+import { PlayerSearchActions } from '../store/player-search';
 
 import { YoutubeSearch } from '../services/youtube.search';
 
@@ -19,7 +20,8 @@ export class PlayerSearchEffects {
     private store: Store<EchoesState>,
     private playerSearchActions: PlayerSearchActions,
     private youtubeVideosActions: YoutubeVideosActions,
-    private youtubeSearch: YoutubeSearch
+    private youtubeSearch: YoutubeSearch,
+    private youtubeVideosInfo: YoutubeVideosInfo
   ) { }
 
   @Effect()
@@ -32,19 +34,24 @@ export class PlayerSearchEffects {
       this.youtubeSearch.resetPageToken();
       return this.youtubeSearch.search(store.search.query, store.search.queryParams)
         .map((youtubeResponse) =>
-          this.playerSearchActions.searchResultsReturned(youtubeResponse))
+          this.playerSearchActions.searchResultsReturned(youtubeResponse));
     });
 
   @Effect()
   resetVideos$ = this.actions$
     .ofType(PlayerSearchActions.SEARCH_NEW_QUERY)
-    .map(() => this.youtubeVideosActions.reset());
+    .map(() => this.playerSearchActions.resetResults());
 
   @Effect()
   searchResultsReturned$ = this.actions$
     .ofType(PlayerSearchActions.SEARCH_RESULTS_RETURNED)
     .map(toPayload)
-    .map((youtubeResponse) => this.youtubeVideosActions.addForProcessing(youtubeResponse.items));
+    .map((medias: { items: GoogleApiYouTubeSearchResource[] }) => medias.items.map(media => media.id.videoId).join(','))
+    .mergeMap((mediaIds: string) => this.youtubeVideosInfo.fetchVideosData(mediaIds)
+      .map((videos: GoogleApiYouTubeVideoResource[]) =>
+        this.playerSearchActions.addResults(videos))
+      );
+    // .map((youtubeResponse) => this.youtubeVideosActions.addForProcessing(youtubeResponse.items));
 
   @Effect()
   searchMoreForQuery$ = this.actions$
@@ -63,6 +70,9 @@ export class PlayerSearchEffects {
   searchMoreSearchStarted$ = this.actions$
     .ofType(PlayerSearchActions.SEARCH_MORE_FOR_QUERY)
     .map(toPayload)
+    .withLatestFrom(this.store)
+    .map((latest: any[]) => latest[1])
+    .filter((store: EchoesState) => !store.search.isSearching)
     .map(() => this.playerSearchActions.searchStarted());
 
   @Effect()
@@ -73,7 +83,7 @@ export class PlayerSearchEffects {
   @Effect()
   resetVideosAfterParamUpdate$ = this.actions$
     .ofType(PlayerSearchActions.UPDATE_QUERY_PARAM)
-    .map(() => this.youtubeVideosActions.reset());
+    .map(() => this.playerSearchActions.resetResults());
 
   @Effect()
   resetPageToken$ = this.actions$

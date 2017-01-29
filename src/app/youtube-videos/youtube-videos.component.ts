@@ -1,18 +1,14 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../core/store';
 
 import { NowPlaylistActions } from '../core/store/now-playlist';
 import { PlayerActions } from '../core/store/youtube-player';
-import { YoutubeSearch } from '../core/services/youtube.search';
-import { YoutubePlayerService } from '../core/services/youtube-player.service';
 import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { PlayerSearchActions, PresetParam } from '../core/store/player-search';
-import { YoutubeVideosActions } from '../core/store/youtube-videos';
 import { AppLayoutActions } from '../core/store/app-layout';
 // selectors
-import { getVideos$, getPlayerSearch$ } from '../core/store/reducers';
-import { getQuery, getQueryParams } from '../core/store/player-search/player-search.reducer';
+import { getPlayerSearch$, getPlayerSearchResults$ } from '../core/store/reducers';
 
 import './youtube-videos.scss';
 // import { State } from '../ngrx-state.decorator';
@@ -41,7 +37,7 @@ import './youtube-videos.scss';
     </app-navbar>
     <loading-indicator [isLoading]="(playerSearch$ | async).isSearching"></loading-indicator>
     <youtube-list
-      [list]="(videos$ | async).videos"
+      [list]="videos$ | async"
       (play)="playSelectedVideo($event)"
       (queue)="queueSelectedVideo($event)"
     ></youtube-list>
@@ -49,7 +45,7 @@ import './youtube-videos.scss';
   `
 })
 export class YoutubeVideosComponent implements OnInit {
-  videos$ = this.store.let(getVideos$);
+  videos$ = this.store.let(getPlayerSearchResults$);
   playerSearch$ = this.store.let(getPlayerSearch$);
   // @State(getVideos$) videos$;
   // @State(getPlayerSearch$) playerSearch$;
@@ -62,7 +58,6 @@ export class YoutubeVideosComponent implements OnInit {
 
   constructor(
     private store: Store<EchoesState>,
-    private youtubeSearch: YoutubeSearch,
     private nowPlaylistService: NowPlaylistService,
 
     private nowPlaylistActions: NowPlaylistActions,

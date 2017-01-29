@@ -1,4 +1,4 @@
-import { ActionReducer, Action } from '@ngrx/store';
+import { Action, ActionReducer } from '@ngrx/store';
 import { PlayerSearchActions } from './player-search.actions';
 
 export interface PlayerSearch {
@@ -13,7 +13,9 @@ export interface PlayerSearch {
     prev: string;
   };
   isSearching: boolean;
+  results: any[];
 }
+
 interface SearchQueryParam {
   [property: string]: any;
 }
@@ -33,7 +35,8 @@ let initialState: PlayerSearch = {
     next: '',
     prev: ''
   },
-  isSearching: false
+  isSearching: false,
+  results: []
 };
 export const search: ActionReducer<PlayerSearch> = (
   state: PlayerSearch = initialState,
@@ -57,12 +60,19 @@ export const search: ActionReducer<PlayerSearch> = (
       next: nextPageToken || statePageToken.next,
       prev: prevPageToken || statePageToken.prev
     };
-    return Object.assign({}, state, { pageToken,
-      isSearching: false
-    });
+    return Object.assign({}, state, { pageToken });
 
     case PlayerSearchActions.SEARCH_STARTED:
     return Object.assign({}, state, { isSearching: true });
+
+    case PlayerSearchActions.ADD_RESULTS:
+    return Object.assign({}, state, {
+      results: [...state.results, ...action.payload ],
+      isSearching: false
+    });
+
+    case PlayerSearchActions.RESET_RESULTS:
+    return Object.assign({}, state, { results: [] });
 
     default:
     // upgrade policy - for when the initialState has changed

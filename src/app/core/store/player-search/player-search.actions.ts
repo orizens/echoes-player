@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 
 @Injectable()
@@ -20,6 +19,10 @@ export class PlayerSearchActions {
   static SEARCH_CURRENT_QUERY = '[PlayerSearch] SEARCH_CURRENT_QUERY';
   static SEARCH_STARTED = '[PlayerSearch] SEARCH_STARTED';
 
+  // Results Actions
+  static ADD_RESULTS = '[PlayerSearch] ADD_RESULTS';
+  static RESET_RESULTS = '[PlayerSearch] RESET_RESULTS';
+
   getSuggestions = ActionCreatorFactory.create<string>(PlayerSearchActions.GET_SUGGESTIONS);
   searchCurrentQuery = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_CURRENT_QUERY);
   searchNewQuery = ActionCreatorFactory.create<string>(PlayerSearchActions.SEARCH_NEW_QUERY);
@@ -29,4 +32,6 @@ export class PlayerSearchActions {
   resetPageToken = ActionCreatorFactory.create<any>(PlayerSearchActions.RESET_PAGE_TOKEN);
   searchResultsReturned = ActionCreatorFactory.create<any>(PlayerSearchActions.SEARCH_RESULTS_RETURNED);
   searchStarted = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_STARTED);
+  addResults = ActionCreatorFactory.create(PlayerSearchActions.ADD_RESULTS);
+  resetResults = ActionCreatorFactory.create(PlayerSearchActions.RESET_RESULTS);
 }
