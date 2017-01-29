@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
-import { YoutubeVideosActions } from '../store/youtube-videos';
 import { YoutubeSearchApi } from './api/youtube-search.api';
 
 @Injectable()
@@ -9,7 +8,6 @@ export class YoutubeSearch {
 
   constructor(
     private store: Store<EchoesState>,
-    public youtubeVideosActions: YoutubeVideosActions,
     public youtubeSearchApi: YoutubeSearchApi
     ) { }
 

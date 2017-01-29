@@ -1,5 +1,4 @@
 import { YoutubeVideosInfo } from '../services';
-import { YoutubeVideosActions } from '../store/youtube-videos/youtube-videos.actions';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
 import 'rxjs/add/operator/switchMapTo';
@@ -19,7 +18,6 @@ export class PlayerSearchEffects {
     private actions$: Actions,
     private store: Store<EchoesState>,
     private playerSearchActions: PlayerSearchActions,
-    private youtubeVideosActions: YoutubeVideosActions,
     private youtubeSearch: YoutubeSearch,
     private youtubeVideosInfo: YoutubeVideosInfo
   ) { }

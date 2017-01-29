@@ -5,7 +5,6 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { Http, HttpModule } from '@angular/http';
 import { Store } from '@ngrx/store';
-import { YoutubeVideosActions } from '../store/youtube-videos';
 import { PlayerSearchActions } from '../store/player-search';
 import { YoutubeSearchApi } from './api/youtube-search.api';
 import { YoutubeSearch } from './youtube.search';
@@ -34,7 +33,6 @@ describe('Youtube Search Service', () => {
       imports: [ HttpModule ],
       providers: [
         YoutubeSearch,
-        YoutubeVideosActions,
         PlayerSearchActions,
         { provide: YoutubeSearchApi, useValue: youtubeSearchApiSpy },
         { provide: Store, useValue: storeSpy }
