@@ -12,6 +12,7 @@ interface YoutubeApiServiceOptions {
   idKey?: string;
   authService?: Authorization;
   config?: any;
+  authorize?: boolean;
 }
 
 @Injectable()
@@ -19,12 +20,16 @@ export class YoutubeApiService {
   url: string;
   http: Http;
   idKey: string;
+  authorize: boolean = false;
   isSearching: Boolean = false;
   config: URLSearchParams = new URLSearchParams();
   nextPageToken: string;
 
-  constructor(options: YoutubeApiServiceOptions | any, private authService: Authorization) {
+  constructor(options: YoutubeApiServiceOptions | any, private authService?: Authorization) {
     this.resetConfig();
+    if (authService) {
+      this.authorize = true;
+    }
     if (options) {
       this.url = options.url;
       this.http = options.http;
@@ -94,7 +99,7 @@ export class YoutubeApiService {
   createHeaders() {
     const accessToken = this.authService.accessToken;
     const headersOptions = {};
-    if (accessToken) {
+    if (accessToken && this.authorize) {
       headersOptions['authorization'] = `Bearer ${accessToken}`;
     }
     return new Headers(headersOptions);

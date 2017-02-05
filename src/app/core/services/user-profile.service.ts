@@ -1,6 +1,5 @@
-import { Http, URLSearchParams, Response } from '@angular/http';
+import { Http } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
-import { window } from '@angular/platform-browser/src/facade/browser';
 
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
@@ -38,7 +37,7 @@ export class UserProfile {
       config: {
         mine: 'true',
         part: 'snippet,id,contentDetails'
-      }
+      },
     }, authorization);
     this.playlistApi = new YoutubeApiService({
       url: 'https://www.googleapis.com/youtube/v3/playlists',
@@ -46,7 +45,7 @@ export class UserProfile {
       idKey: 'id',
       config: {
         part: 'snippet,id,contentDetails'
-      }
+      },
     }, authorization);
   }
 
