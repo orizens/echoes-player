@@ -97,7 +97,7 @@ export class YoutubeApiService {
   }
 
   createHeaders() {
-    const accessToken = this.authService.accessToken;
+    const accessToken = this.authService && this.authService.accessToken;
     const headersOptions = {};
     if (accessToken && this.authorize) {
       headersOptions['authorization'] = `Bearer ${accessToken}`;
