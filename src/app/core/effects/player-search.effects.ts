@@ -60,7 +60,7 @@ export class PlayerSearchEffects {
     .filter((store: EchoesState) => !store.search.isSearching)
     .mergeMap((store: EchoesState) =>
       this.youtubeSearch.searchMore(store.search.pageToken.next)
-      .search('', store.search.queryParams)
+      .search(store.search.query, store.search.queryParams)
       .map(youtubeResponse => this.playerSearchActions.searchResultsReturned(youtubeResponse)));
 
   @Effect()
