@@ -17,7 +17,7 @@ export class YoutubeSearch {
 
   search(query: string, params?: any) {
     if (query || '' === query) {
-      const preset = params ? ` params.preset` : '';
+      const preset = params ? ` ${params.preset}` : '';
       this._apiOptions.q = `${query}${preset}`;
     }
     return this.youtubeDataApi.list(this._api, this._apiOptions);
