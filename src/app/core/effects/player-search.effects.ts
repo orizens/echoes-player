@@ -28,12 +28,12 @@ export class PlayerSearchEffects {
     .map(toPayload)
     .withLatestFrom(this.store)
     .map((latest: any[]) => latest[1])
-    .switchMap((store: EchoesState) => {
-      this.youtubeSearch.resetPageToken();
-      return this.youtubeSearch.search(store.search.query, store.search.queryParams)
-        .map((youtubeResponse) =>
-          this.playerSearchActions.searchResultsReturned(youtubeResponse));
-    });
+    .switchMap((store: EchoesState) =>
+      this.youtubeSearch.resetPageToken()
+      .search(store.search.query, store.search.queryParams)
+      .map((youtubeResponse) => this.playerSearchActions.searchResultsReturned(youtubeResponse))
+      .catch((err) => Observable.of(this.playerSearchActions.errorInSearch(err)))
+    );
 
   @Effect()
   resetVideos$ = this.actions$
@@ -58,11 +58,10 @@ export class PlayerSearchEffects {
     .withLatestFrom(this.store)
     .map((latest: any[]) => latest[1])
     .filter((store: EchoesState) => !store.search.isSearching)
-    .mergeMap((store: EchoesState) => {
-      this.youtubeSearch.searchMore();
-      return this.youtubeSearch.search('', store.search.queryParams)
-        .map(youtubeResponse => this.playerSearchActions.searchResultsReturned(youtubeResponse));
-    });
+    .mergeMap((store: EchoesState) =>
+      this.youtubeSearch.searchMore(store.search.pageToken.next)
+      .search('', store.search.queryParams)
+      .map(youtubeResponse => this.playerSearchActions.searchResultsReturned(youtubeResponse)));
 
   @Effect()
   searchMoreSearchStarted$ = this.actions$

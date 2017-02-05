@@ -2,40 +2,27 @@
  * Testing a Service
  * More info: https://angular.io/docs/ts/latest/guide/testing.html
  */
-import { TestBed, async, inject } from '@angular/core/testing';
-import { Http, HttpModule } from '@angular/http';
-import { Store } from '@ngrx/store';
+import { TestBed, inject } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
 import { PlayerSearchActions } from '../store/player-search';
-import { YoutubeSearchApi } from './api/youtube-search.api';
+import { YoutubeDataApi } from './youtube-data-api.service';
 import { YoutubeSearch } from './youtube.search';
 
 describe('Youtube Search Service', () => {
   let service: YoutubeSearch;
+  let youtubeDataApiSpy: YoutubeDataApi;
 
   beforeEach(() => {
-    let storeSpy = jasmine.createSpyObj('Store', ['subscribe', 'dispatch']);
-    let youtubeSearchApiSpy = jasmine.createSpyObj('youtubeSearchApiSpy',
-      [ 'setConfig', 'setToken', 'fetchNextPage', 'resetPageToken' ]
+    youtubeDataApiSpy = jasmine.createSpyObj('youtubeDataApiSpy',
+      [ 'list' ]
     );
-    youtubeSearchApiSpy.list = (val) => {
-      return {
-        subscribe: (fn) => fn({ items: [ 'mock' ] })
-      };
-    };
-    youtubeSearchApiSpy.config = {
-      q: '',
-      get: (q) => { youtubeSearchApiSpy.config.q },
-      set: (q) => { youtubeSearchApiSpy.config.q = q }
-    };
-    spyOn(youtubeSearchApiSpy, 'list').and.callThrough();
 
     TestBed.configureTestingModule({
       imports: [ HttpModule ],
       providers: [
         YoutubeSearch,
         PlayerSearchActions,
-        { provide: YoutubeSearchApi, useValue: youtubeSearchApiSpy },
-        { provide: Store, useValue: storeSpy }
+        { provide: YoutubeDataApi, useValue: youtubeDataApiSpy },
       ]
     });
   });
@@ -45,30 +32,45 @@ describe('Youtube Search Service', () => {
     service = youtubeSearch;
   }));
 
-  it('should have an api instance', () => {
-    const actual = service.youtubeSearchApi;
+  it('should have a search method', () => {
+    const actual = service.search;
     expect(actual).toBeDefined();
   });
 
   it('should perform search with the api', () => {
-    const actual = service.youtubeSearchApi.list;
-    service.search('ozrics', true);
+    const actual = youtubeDataApiSpy.list;
+    service.search('ozrics');
     expect(actual).toHaveBeenCalled();
   });
 
-  xit('should search with same value when searching more', () => {
+  it('should search with same value when searching more', () => {
     const query = 'ozrics';
-    service.search(query, true);
-    service.searchMore();
-    const actual = service.youtubeSearchApi.config.get('q');
-    const expected = query;
-    expect(actual).toMatch(expected);
+    const nextPageToken = 'fdsaf#42441';
+    service.search(query);
+    service.searchMore(nextPageToken);
+    service.search(query);
+    const actual = youtubeDataApiSpy.list;
+    const expected = {
+      part: 'snippet,id',
+      q: query,
+      type: 'video',
+      pageToken: nextPageToken
+    };
+    expect(actual).toHaveBeenCalledWith('search', expected);
   });
 
-  it('should NOT reset search when searching more', () => {
+  it('should reset the page token', () => {
     const query = 'ozrics';
-    service.searchMore();
-    const actual = service.youtubeSearchApi.resetPageToken;
-    expect(actual).not.toHaveBeenCalled();
+    service.searchMore('fakePageToken$#@$$!');
+    service.resetPageToken();
+    service.search(query);
+    const actual = youtubeDataApiSpy.list;
+    const expected = {
+      part: 'snippet,id',
+      q: query,
+      type: 'video',
+      pageToken: ''
+    };
+    expect(actual).toHaveBeenCalledWith('search', expected);
   });
 });

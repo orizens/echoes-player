@@ -1,30 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { EchoesState } from '../store';
-import { YoutubeSearchApi } from './api/youtube-search.api';
+import { YoutubeDataApi } from './youtube-data-api.service';
 
 @Injectable()
 export class YoutubeSearch {
+  private _api: string = 'search';
+  private _apiOptions = {
+    part: 'snippet,id',
+    q: '',
+    type: 'video',
+    pageToken: ''
+  };
 
   constructor(
-    private store: Store<EchoesState>,
-    public youtubeSearchApi: YoutubeSearchApi
+    private youtubeDataApi: YoutubeDataApi
     ) { }
 
   search(query: string, params?: any) {
-    if (query) {
-      const preset = params ? params.preset : '';
-      this.youtubeSearchApi.config.set('q', `${query} ${preset}`);
+    if (query || '' === query) {
+      const preset = params ? ` params.preset` : '';
+      this._apiOptions.q = `${query}${preset}`;
     }
-    // this.store.dispatch(this.youtubeVideosActions.searchStarted(true));
-    return this.youtubeSearchApi.list('video');
+    return this.youtubeDataApi.list(this._api, this._apiOptions);
   }
 
-  searchMore() {
-    return this.youtubeSearchApi.fetchNextPage();
+  searchMore(nextPageToken: string) {
+    this._apiOptions.pageToken = nextPageToken;
+    return this;
   }
 
   resetPageToken () {
-    return this.youtubeSearchApi.resetPageToken();
+    this._apiOptions.pageToken = '';
+    return this;
   }
 }

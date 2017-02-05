@@ -22,6 +22,7 @@ export class PlayerSearchActions {
   // Results Actions
   static ADD_RESULTS = '[PlayerSearch] ADD_RESULTS';
   static RESET_RESULTS = '[PlayerSearch] RESET_RESULTS';
+  static ERROR_RESULTS = '[PlayerSearch] ERROR_RESULTS';
 
   getSuggestions = ActionCreatorFactory.create<string>(PlayerSearchActions.GET_SUGGESTIONS);
   searchCurrentQuery = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_CURRENT_QUERY);
@@ -34,4 +35,5 @@ export class PlayerSearchActions {
   searchStarted = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_STARTED);
   addResults = ActionCreatorFactory.create(PlayerSearchActions.ADD_RESULTS);
   resetResults = ActionCreatorFactory.create(PlayerSearchActions.RESET_RESULTS);
+  errorInSearch = ActionCreatorFactory.create<any>(PlayerSearchActions.ERROR_RESULTS);
 }
