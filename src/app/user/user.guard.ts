@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private authorization: Authorization, private router: Router) {}
 
   canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    console.log('AuthGuard#canActivate called', { state });
+    // console.log('AuthGuard#canActivate called', { state });
     let url: string = state.url;
     return this.checkLogin(url);
   }

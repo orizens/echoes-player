@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs/Rx';
 import { Injectable, NgZone } from '@angular/core';
 import { Http } from '@angular/http';
 import { window } from '@angular/platform-browser/src/facade/browser';
@@ -16,6 +17,8 @@ export class Authorization {
   private _googleAuth: GoogleAuthResponse;
   private _scope: string = 'profile email https://www.googleapis.com/auth/youtube';
   private _accessToken: string;
+  private autoSignInTimer: Subscription;
+
   set accessToken(value) {
     this._accessToken = value;
   }
@@ -80,10 +83,28 @@ export class Authorization {
   }
 
   handleSuccessLogin(googleUser: GoogleAuthCurrentUser) {
-    const token = googleUser.getAuthResponse().access_token;
+    const authResponse = googleUser.getAuthResponse();
+    const token = authResponse.access_token;
     const profile = googleUser.getBasicProfile();
+    const MILLISECOND = 1000;
+    const expireTimeInMs = parseInt(authResponse.expires_in, 10) * MILLISECOND;
     this.store.dispatch(this.userProfileActions.updateToken(token));
     this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
+    if (this.autoSignInTimer) {
+      this.autoSignInTimer.unsubscribe();
+    }
+    this.autoSignInTimer = this.startTimerToNextAuth(expireTimeInMs);
+  }
+
+  startTimerToNextAuth(timeInMs: number): Subscription {
+    return Observable.timer(timeInMs)
+      .timeInterval()
+      .switchMap(() => this.authorize())
+        .do((googleAuth: GoogleAuthResponse) => this.saveGoogleAuth(googleAuth))
+        .map((googleAuth: GoogleAuthResponse) => googleAuth.currentUser.get())
+        .subscribe((googleUser: GoogleAuthCurrentUser) => {
+          this.zone.run(() => this.handleSuccessLogin(googleUser));
+        });
   }
 
   handleFailedLogin(response) {
