@@ -1,5 +1,4 @@
 import {
-  AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
@@ -68,10 +67,6 @@ export class NowPlaylist implements OnChanges {
       this.scrollToActiveTrack();
     }
   }
-
-  // ngAfterViewChecked() {
-  //   this.scrollToActiveTrack();
-  // }
 
   scrollToActiveTrack() {
     if (this.activeTrackElement) {
