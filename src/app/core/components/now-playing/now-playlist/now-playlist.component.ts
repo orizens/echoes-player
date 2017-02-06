@@ -1,4 +1,12 @@
-import { AfterViewChecked, ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output
+} from '@angular/core';
 import { YoutubeMediaPlaylist } from '../../../store/now-playlist';
 
 import './now-playlist.scss';
@@ -42,7 +50,7 @@ import './now-playlist.scss';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaylist implements AfterViewChecked {
+export class NowPlaylist implements OnChanges {
   @Input() playlist: YoutubeMediaPlaylist;
   @Output() select = new EventEmitter();
   @Output() sort = new EventEmitter();
@@ -52,9 +60,19 @@ export class NowPlaylist implements AfterViewChecked {
 
   constructor() { }
 
-  ngAfterViewChecked() {
-    this.scrollToActiveTrack();
+  ngOnChanges(changes) {
+    const hasChanges = this.hasChanges(changes.playlist);
+    const currentPlaylist = hasChanges && changes.playlist.currentValue.videos;
+    const prevPlaylist = hasChanges && changes.playlist.previousValue.videos;
+    if (hasChanges && this.activeTrackElement && !this.hasVideoRemoved(currentPlaylist, prevPlaylist)) {
+      this.scrollToActiveTrack();
+    }
   }
+
+  // ngAfterViewChecked() {
+  //   this.scrollToActiveTrack();
+  // }
+
   scrollToActiveTrack() {
     if (this.activeTrackElement) {
       this.activeTrackElement.scrollIntoView();
@@ -88,5 +106,13 @@ export class NowPlaylist implements AfterViewChecked {
     );
     const tracks = media.snippet.description.match(hasTracksRegexp);
     return Array.isArray(tracks);
+  }
+
+  private hasVideoRemoved(currentPlaylist, prevPlaylist) {
+    return currentPlaylist.length < prevPlaylist.length;
+  }
+
+  private hasChanges(changes) {
+    return changes.hasOwnProperty('currentValue') && changes.hasOwnProperty('previousValue');
   }
 }
