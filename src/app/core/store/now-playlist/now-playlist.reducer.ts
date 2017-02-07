@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { ActionReducer, Action } from '@ngrx/store';
 import { NowPlaylistActions } from './now-playlist.actions';
 
@@ -40,16 +39,20 @@ export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (
       return Object.assign({}, state, { filter: action.payload });
 
     case NowPlaylistActions.REMOVE_ALL:
-      return Object.assign({}, state, { videos: [], filter: '', selectedId: 0 });
+      return Object.assign({}, state, { videos: [], filter: '', selectedId: '' });
 
     case NowPlaylistActions.SELECT_NEXT:
-      return Object.assign({}, state, { selectedId: selectNextIndex(state.videos, state.selectedId) });
+      return Object.assign({}, state, {
+        selectedId: selectNextIndex(state.videos, state.selectedId, state.filter)
+      });
 
     case NowPlaylistActions.SELECT_PREVIOUS:
-      return Object.assign({}, state, { selectedId: selectPreviousIndex(state.videos, state.selectedId) });
+      return Object.assign({}, state, {
+        selectedId: selectPreviousIndex(state.videos, state.selectedId, state.filter)
+      });
 
     case NowPlaylistActions.MEDIA_ENDED:
-      return selectNextOrPreviousTrack(state);
+      return selectNextOrPreviousTrack(state, state.filter);
 
     default:
       return state;
@@ -63,8 +66,11 @@ export const nowPlaylistRegister = {
 
 function addMedia(videos: GoogleApiYouTubeVideoResource[], media: any) {
   const newMedia = [...videos].findIndex(video => video.id === media.id);
-  const newVideos = newMedia === -1 ? videos.push(media) : videos;
-  return [...videos];
+  const newMedias = [];
+  if (newMedia === -1) {
+    newMedias.push(media);
+  }
+  return [...videos, ...newMedias];
 }
 
 function addMedias(videos, medias) {
@@ -78,36 +84,38 @@ function addMedias(videos, medias) {
   return videos.concat(newVideos);
 }
 
-function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string): string {
-  let currentIndex: number = videos.findIndex(video => video.id === selectedId);
+function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string, filter: string): string {
+  const filteredVideos = videos.filter(video => JSON.stringify(video).includes(filter));
+  const currentIndex: number = filteredVideos.findIndex(video => video.id === selectedId);
   let nextIndex = currentIndex + 1;
-  if (!videos.length) {
+  if (!filteredVideos.length) {
     nextIndex = 0;
   }
-  if (videos.length === nextIndex) {
+  if (filteredVideos.length === nextIndex) {
     nextIndex = 0;
   }
 
-  return videos[nextIndex].id || '';
+  return filteredVideos[nextIndex].id || '';
 }
 
-function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string): string {
-  let currentIndex: number = videos.findIndex(video => video.id === selectedId);
+function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string, filter: string): string {
+  const filteredVideos = videos.filter(video => JSON.stringify(video).includes(filter));
+  const currentIndex: number = filteredVideos.findIndex(video => video.id === selectedId);
   let previousIndex = currentIndex - 1;
-  if (!videos.length || previousIndex < 0) {
+  if (!filteredVideos.length || previousIndex < 0) {
     previousIndex = 0;
   }
 
-  return videos[previousIndex].id || '';
+  return filteredVideos[previousIndex].id || '';
 }
 
-function selectNextOrPreviousTrack(state: YoutubeMediaPlaylist): YoutubeMediaPlaylist {
+function selectNextOrPreviousTrack(state: YoutubeMediaPlaylist, filter: string): YoutubeMediaPlaylist {
   const videosPlaylist = state.videos;
   const currentId = state.selectedId;
   const indexOfCurrentVideo = videosPlaylist.findIndex(video => currentId === video.id);
   const isCurrentLast = indexOfCurrentVideo + 1 === videosPlaylist.length;
   const nextId = isCurrentLast
     ? videosPlaylist.length ? videosPlaylist[0].id : ''
-    : selectNextIndex(videosPlaylist, currentId);
+    : selectNextIndex(videosPlaylist, currentId, filter);
   return Object.assign({}, state, { selectedId: nextId });
 }

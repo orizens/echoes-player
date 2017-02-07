@@ -45,11 +45,11 @@ export class NowPlaylistService {
   }
 
   selectNextIndex() {
-    this.store.dispatch({ type: NowPlaylistActions.SELECT_NEXT });
+    this.store.dispatch(this.nowPlaylistActions.selectNext());
   }
 
   selectPreviousIndex() {
-    this.store.dispatch({ type: NowPlaylistActions.SELECT_PREVIOUS });
+    this.store.dispatch(this.nowPlaylistActions.selectPrevious());
   }
 
   trackEnded() {

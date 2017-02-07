@@ -35,10 +35,54 @@ describe('The Now Playlist Reducer', () => {
     expect(actual.videos.pop().etag).toBe(expected.etag);
   });
 
-  it('should select the next track when media ended and not at end of playlist', () => {
+  it('should select the NEXT track when media ended and not at end of playlist', () => {
     const state = { selectedId: YoutubeMediaItemsMock[4].id, videos: [...YoutubeMediaItemsMock], filter: '' };
     const actual = nowPlaylist(<any>state, nowPlaylistActions.mediaEnded());
     const expected = state.videos[5];
     expect(actual.selectedId).toMatch(expected.id);
+  });
+
+  it('should select the correct NEXT track when filter is with a value', () => {
+    const videos = [...YoutubeMediaItemsMock];
+    const filter = '2015';
+    const filteredVideos = videos.filter(video => JSON.stringify(video).includes(filter));
+    const state = {
+      videos,
+      filter,
+      selectedId: filteredVideos[0].id
+    };
+    const newState = nowPlaylist(<any>state, nowPlaylistActions.selectNext());
+    const actual = newState.selectedId;
+    const expected = filteredVideos[1].id;
+    expect(actual).toMatch(expected);
+  });
+
+  it('should select the correct PREVIOUS track when filter is with a value', () => {
+    const videos = [...YoutubeMediaItemsMock];
+    const filter = '2015';
+    const filteredVideos = videos.filter(video => JSON.stringify(video).includes(filter));
+    const state = {
+      videos,
+      filter,
+      selectedId: filteredVideos[1].id
+    };
+    const newState = nowPlaylist(<any>state, nowPlaylistActions.selectPrevious());
+    const actual = newState.selectedId;
+    const expected = filteredVideos[0].id;
+    expect(actual).toMatch(expected);
+  });
+
+  it('should remove all videos and reset the selected ID and filter', () => {
+    const videos = [...YoutubeMediaItemsMock];
+    const filter = '2015';
+    const state = {
+      videos,
+      filter,
+      selectedId: videos[5].id
+    };
+    const newState = nowPlaylist(<any>state, nowPlaylistActions.removeAll());
+    const actual = newState;
+    const expected = { videos: [], selectedId: '', filter: '' };
+    expect(actual).toEqual(expected);
   });
 });

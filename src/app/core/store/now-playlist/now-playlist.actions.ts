@@ -20,6 +20,9 @@ export class NowPlaylistActions {
   static MEDIA_ENDED = '[NOW PLAYLIST] MEDIA_ENDED';
 
   mediaEnded = ActionCreatorFactory.create(NowPlaylistActions.MEDIA_ENDED);
+  selectNext = ActionCreatorFactory.create(NowPlaylistActions.SELECT_NEXT);
+  selectPrevious = ActionCreatorFactory.create(NowPlaylistActions.SELECT_PREVIOUS);
+  removeAll = ActionCreatorFactory.create(NowPlaylistActions.REMOVE_ALL);
 
   queueLoadVideo(media): Action {
     return {
