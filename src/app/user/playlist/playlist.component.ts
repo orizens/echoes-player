@@ -60,7 +60,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
     this.userPlayerService.queueVideo(media);
   }
 
-  playSelectedVideo(media: GoogleApiYouTubeVideoResource) {
+  playVideo(media: GoogleApiYouTubeVideoResource) {
     this.userPlayerService.playVideo(media);
   }
 
