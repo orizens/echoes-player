@@ -84,8 +84,12 @@ function addMedias(videos, medias) {
   return videos.concat(newVideos);
 }
 
+function filterVideos(videos: GoogleApiYouTubeVideoResource[], filter: string) {
+  return videos.filter(video => JSON.stringify(video).toLowerCase().includes(filter.toLowerCase()));
+}
+
 function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string, filter: string): string {
-  const filteredVideos = videos.filter(video => JSON.stringify(video).includes(filter));
+  const filteredVideos = filterVideos(videos, filter);
   const currentIndex: number = filteredVideos.findIndex(video => video.id === selectedId);
   let nextIndex = currentIndex + 1;
   if (!filteredVideos.length) {
@@ -99,7 +103,7 @@ function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: st
 }
 
 function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string, filter: string): string {
-  const filteredVideos = videos.filter(video => JSON.stringify(video).includes(filter));
+  const filteredVideos = filterVideos(videos, filter);
   const currentIndex: number = filteredVideos.findIndex(video => video.id === selectedId);
   let previousIndex = currentIndex - 1;
   if (!filteredVideos.length || previousIndex < 0) {

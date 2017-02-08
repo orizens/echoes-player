@@ -85,4 +85,19 @@ describe('The Now Playlist Reducer', () => {
     const expected = { videos: [], selectedId: '', filter: '' };
     expect(actual).toEqual(expected);
   });
+
+  it('should filter with lower case the when selecting NEXT/PREVIOUS track', () => {
+    const videos = [...YoutubeMediaItemsMock];
+    const filter = 'Full';
+    const filteredVideos = videos.filter(video => JSON.stringify(video).toLowerCase().includes(filter.toLowerCase()));
+    const state = {
+      videos,
+      filter,
+      selectedId: filteredVideos[0].id
+    };
+    const newState = nowPlaylist(<any>state, nowPlaylistActions.selectNext());
+    const actual = newState.selectedId;
+    const expected = filteredVideos[1].id;
+    expect(actual).toMatch(expected);
+  });
 });
