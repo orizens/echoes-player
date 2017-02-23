@@ -245,6 +245,10 @@ module.exports = function (env) {
       new CopyWebpackPlugin([{
           from: 'config/heroku',
           to: './'
+        },
+        {
+          from: 'CNAME',
+          to: './'
         }
       ])
     ],
