@@ -1,7 +1,6 @@
 import '@ngrx/core/add/operator/select';
 import { Observable } from 'rxjs/Rx';
-import { Injectable } from '@angular/core';
-import { ActionReducer, Action } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { PlayerActions } from './youtube-player.actions';
 
 type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | GoogleApiYouTubeSearchResource;
@@ -26,9 +25,7 @@ let initialPlayerState: YoutubePlayerState = {
   playerState: 0,
   isFullscreen: false
 };
-export const player: ActionReducer<YoutubePlayerState> = (
-  state: YoutubePlayerState = initialPlayerState,
-  action: Action) => {
+export function player (state: YoutubePlayerState = initialPlayerState, action: Action): YoutubePlayerState {
 
   switch (action.type) {
     case PlayerActions.PLAY:

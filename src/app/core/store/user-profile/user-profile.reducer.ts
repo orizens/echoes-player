@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Rx';
 import { EchoesState } from '../';
-import { ActionReducer, Action } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { UserProfileActions } from './user-profile.actions';
 
 export * from './user-profile.actions';
@@ -26,7 +26,7 @@ let initialUserState: UserProfileData = {
   profile: {},
   viewedPlaylist: ''
 };
-export const user: ActionReducer<UserProfileData> = (state = initialUserState, action: Action) => {
+export function user(state = initialUserState, action: Action): UserProfileData {
 
   switch (action.type) {
     case UserProfileActions.ADD_PLAYLISTS:

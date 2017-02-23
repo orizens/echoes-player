@@ -1,4 +1,4 @@
-import { ActionReducer, Action } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { NowPlaylistActions } from './now-playlist.actions';
 
 export interface YoutubeMediaPlaylist {
@@ -11,13 +11,8 @@ let initialState: YoutubeMediaPlaylist = {
   selectedId: '',
   filter: ''
 };
-export const nowPlaylist: ActionReducer<YoutubeMediaPlaylist> = (
-  state: YoutubeMediaPlaylist = initialState,
-  action: Action) => {
-
-  let matchMedia = (media: GoogleApiYouTubeVideoResource) => media.id === action.payload.id;
+export function nowPlaylist(state: YoutubeMediaPlaylist = initialState, action: Action): YoutubeMediaPlaylist {
   let isDifferent = (media: GoogleApiYouTubeVideoResource) => media.id !== action.payload.id;
-
   switch (action.type) {
     case NowPlaylistActions.SELECT:
       return Object.assign({}, state, { selectedId: action.payload.id });

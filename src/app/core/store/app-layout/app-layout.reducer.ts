@@ -1,8 +1,6 @@
 import '@ngrx/core/add/operator/select';
-import { combineLatest } from 'rxjs/observable/combineLatest';
 import { Observable } from 'rxjs/Rx';
-import { Injectable } from '@angular/core';
-import { ActionReducer, Action } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { AppLayoutActions } from './app-layout.actions';
 
 export interface AppLayout {
@@ -13,10 +11,7 @@ let initialState: any = {
   sidebarExpanded: true,
   requestInProcess: false
 };
-export const appLayout: ActionReducer<AppLayout> = (
-  state: AppLayout = initialState,
-  action: Action) => {
-
+export function appLayout (state: AppLayout = initialState, action: Action): AppLayout {
   switch (action.type) {
     case AppLayoutActions.SIDEBAR_EXPAND:
       return Object.assign({}, state, { sidebarExpanded: true });

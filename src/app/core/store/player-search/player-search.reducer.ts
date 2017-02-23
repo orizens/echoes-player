@@ -1,4 +1,4 @@
-import { Action, ActionReducer } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { PlayerSearchActions } from './player-search.actions';
 
 export interface PlayerSearch {
@@ -38,45 +38,43 @@ let initialState: PlayerSearch = {
   isSearching: false,
   results: []
 };
-export const search: ActionReducer<PlayerSearch> = (
-  state: PlayerSearch = initialState,
-  action: Action) => {
+export function search(state: PlayerSearch = initialState, action: Action): PlayerSearch {
 
   switch (action.type) {
     case PlayerSearchActions.SEARCH_NEW_QUERY:
-    return Object.assign({}, state, {
-      query: action.payload,
-      isSearching: true
-    });
+      return Object.assign({}, state, {
+        query: action.payload,
+        isSearching: true
+      });
 
     case PlayerSearchActions.UPDATE_QUERY_PARAM:
       const queryParams = Object.assign({}, state.queryParams, action.payload);
       return Object.assign({}, state, { queryParams });
 
     case PlayerSearchActions.SEARCH_RESULTS_RETURNED:
-    const { nextPageToken, prevPageToken } = action.payload;
-    const statePageToken = state.pageToken;
-    const pageToken = {
-      next: nextPageToken || statePageToken.next,
-      prev: prevPageToken || statePageToken.prev
-    };
-    return Object.assign({}, state, { pageToken });
+      const { nextPageToken, prevPageToken } = action.payload;
+      const statePageToken = state.pageToken;
+      const pageToken = {
+        next: nextPageToken || statePageToken.next,
+        prev: prevPageToken || statePageToken.prev
+      };
+      return Object.assign({}, state, { pageToken });
 
     case PlayerSearchActions.SEARCH_STARTED:
-    return Object.assign({}, state, { isSearching: true });
+      return Object.assign({}, state, { isSearching: true });
 
     case PlayerSearchActions.ADD_RESULTS:
-    return Object.assign({}, state, {
-      results: [...state.results, ...action.payload ],
-      isSearching: false
-    });
+      return Object.assign({}, state, {
+        results: [...state.results, ...action.payload],
+        isSearching: false
+      });
 
     case PlayerSearchActions.RESET_RESULTS:
-    return Object.assign({}, state, { results: [] });
+      return Object.assign({}, state, { results: [] });
 
     default:
-    // upgrade policy - for when the initialState has changed
-    return Object.assign({}, initialState, state);
+      // upgrade policy - for when the initialState has changed
+      return Object.assign({}, initialState, state);
   }
 };
 
