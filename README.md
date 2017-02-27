@@ -11,8 +11,8 @@ Echoes Player is also available as a [Chrome Application](https://chrome.google.
 It can be regarded as the Media Player experience for youtube listening pleasure.
 
 <p align="center">
-  <a href="https://angularclass.com" target="_blank">
-    <img src="https://cloud.githubusercontent.com/assets/878660/23353758/bf65142e-fcd6-11e6-860e-fac3cbcb1eac.jpg" alt="Webpack and Angular 2" width="500" height="320"/>
+  <a href="https://echoesplayer.com" target="_blank">
+    <img src="https://cloud.githubusercontent.com/assets/878660/23353758/bf65142e-fcd6-11e6-860e-fac3cbcb1eac.jpg" alt="Webpack and Angular 2" width="75%"/>
   </a>
 </p>
 
@@ -24,7 +24,7 @@ My services include:
 
 [Contact Me Here](http://orizens.com/contact)
 
-  <a href="https://angularclass.com" target="_blank">
+  <a href="https://orizens.com" target="_blank">
     <img src="https://cloud.githubusercontent.com/assets/878660/23353771/d0adbd12-fcd6-11e6-96be-7a236f8819d9.png" alt="Webpack and Angular 2" width="20%"/>
   </a>
 
