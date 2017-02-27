@@ -1,22 +1,32 @@
 [![Build Status](https://travis-ci.org/orizens/echoes-ng2.svg?branch=master)](https://travis-ci.org/orizens/echoes-ng2) [![Code Climate](https://codeclimate.com/github/orizens/echoes-ng2/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-ng2)
 
-# Echoes Player - Angular2 Version
+# Echoes Player - Angular (+2) Version
 Echoes is a great youtube player developed by [Oren Farhi](http://orizens.com).
 It's fun & easy to listen or watch videos from youtube with Echoes.
 What if youtube was designed to be used as music player?
-This repository is an implementation of Echoes Player with angular 2 - It's still a work in progress aimed at learning angular 2.
+This repository is an implementation of Echoes Player with Angular (+2)- It's still a work in progress aimed at learning angular 2.
 
 Echoes Player is also available as a [Chrome Application](https://chrome.google.com/webstore/detail/echoes-player/aaenpaopfebcmdaegggjbkhaedlbbkde)
 
 It can be regarded as the Media Player experience for youtube listening pleasure.
 
-## Angular 2 Consulting Services
+<p align="center">
+  <a href="https://angularclass.com" target="_blank">
+    <img src="https://cloud.githubusercontent.com/assets/878660/23353758/bf65142e-fcd6-11e6-860e-fac3cbcb1eac.jpg" alt="Webpack and Angular 2" width="500" height="320"/>
+  </a>
+</p>
+
+## Angular Consulting Services at Orizens
 I'm a Senior Javascript Engineer & A Front End Consultant.
 My services include:  
 - consulting to companies and startups on how to approach code in their projects and keep it maintainable.  
 - I provide project bootstrapping and development - while afterwards, I integrate it on site and guide the team on it.  
 
 [Contact Me Here](http://orizens.com/contact)
+
+  <a href="https://angularclass.com" target="_blank">
+    <img src="https://cloud.githubusercontent.com/assets/878660/23353771/d0adbd12-fcd6-11e6-96be-7a236f8819d9.png" alt="Webpack and Angular 2" width="20%"/>
+  </a>
 
 # Tech Stack
 
@@ -28,11 +38,11 @@ My services include:
 - [ngrx/store-devtools](https://github.com/ngrx/store-devtools) - a connector to [redux devtool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US) for chrome  
 
 ## Included Technologies & Libraries
-- [Angular JS v2.x](http://angular.io) 
-- Bootstrap v3.x (LESS)
-- Typescript 2
+- [Angular +2.x](http://angular.io) 
+- Bootstrap v3.x (SASS)
+- Typescript 2.x
 - ES6 / ES2015 (using Loader Spec)
-- Webpack 2
+- Webpack 2.x
 
 ## What's Inside
 This is a clone and modification of [AngularClass angular2 webpack starter](http://github.com/angularclass/angular2-webpack-starter).  
