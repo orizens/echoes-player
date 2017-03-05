@@ -9,8 +9,10 @@ import './youtube-list.scss';
     <li class="youtube-list-item" *ngFor="let media of list">
       <youtube-media
         [media]="media"
+        [status]="getMediaStatus(media)"
         (play)="playSelectedVideo(media)"
         (queue)="queueSelectedVideo(media)"
+        (unqueue)="unqueueSelectedVideo(media)"
         (add)="addVideo(media)">
       </youtube-media>
     </li>
@@ -20,21 +22,33 @@ import './youtube-list.scss';
 })
 export class YoutubeList {
   @Input() list: GoogleApiYouTubeVideoResource[] = [];
+  @Input() queued: GoogleApiYouTubeVideoResource[] = [];
   @Output() play = new EventEmitter();
   @Output() queue = new EventEmitter();
   @Output() add = new EventEmitter();
+  @Output() unqueue = new EventEmitter();
 
   constructor() {}
 
   playSelectedVideo(media) {
-    this.play.next(media);
+    this.play.emit(media);
   }
 
   queueSelectedVideo(media) {
-    this.queue.next(media);
+    this.queue.emit(media);
   }
 
   addVideo(media) {
-    this.add.next(media);
+    this.add.emit(media);
+  }
+
+  unqueueSelectedVideo(media) {
+    this.unqueue.emit(media);
+  }
+
+  getMediaStatus(media: GoogleApiYouTubeVideoResource) {
+    return {
+      queued: this.queued.find(queue => queue.id === media.id)
+    };
   }
 }

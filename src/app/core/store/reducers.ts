@@ -26,18 +26,22 @@ export const reducersRegisters = [
   appLayoutRegister
 ];
 
-export const getPlayer$ = (state$: Observable<EchoesState>): Observable<YoutubePlayerState> => {
+export function getPlayer$ (state$: Observable<EchoesState>): Observable<YoutubePlayerState> {
   return state$.select(state => state.player);
 };
 
-export const getPlayerSearch$ = (state$: Observable<EchoesState>): Observable<PlayerSearch> => {
+export function getPlayerSearch$ (state$: Observable<EchoesState>): Observable<PlayerSearch> {
   return state$.select(state => state.search);
 };
 
-export const getPlayerSearchResults$ = (state$: Observable<EchoesState>): Observable<any[]> => {
+export function getPlayerSearchResults$ (state$: Observable<EchoesState>): Observable<any[]> {
   return state$.select(state => state.search.results);
 };
 
-export const getAppLayout$ = ($state: Observable<EchoesState>): Observable<AppLayout> => {
+export function getAppLayout$ ($state: Observable<EchoesState>): Observable<AppLayout> {
   return $state.select(state => state.appLayout);
+};
+
+export function getNowPlaylist$ ($state: Observable<EchoesState>): Observable<YoutubeMediaPlaylist> {
+  return $state.select(state => state.nowPlaylist);
 };

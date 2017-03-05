@@ -4,11 +4,10 @@ import { EchoesState } from '../core/store';
 
 import { NowPlaylistActions } from '../core/store/now-playlist';
 import { PlayerActions } from '../core/store/youtube-player';
-import { NowPlaylistService } from '../core/services/now-playlist.service';
 import { PlayerSearchActions, PresetParam } from '../core/store/player-search';
 import { AppLayoutActions } from '../core/store/app-layout';
 // selectors
-import { getPlayerSearch$, getPlayerSearchResults$ } from '../core/store/reducers';
+import { getPlayerSearch$, getPlayerSearchResults$, getNowPlaylist$ } from '../core/store/reducers';
 
 import './youtube-videos.scss';
 // import { State } from '../ngrx-state.decorator';
@@ -38,8 +37,10 @@ import './youtube-videos.scss';
     <loading-indicator [isLoading]="(playerSearch$ | async).isSearching"></loading-indicator>
     <youtube-list
       [list]="videos$ | async"
+      [queued]="(playlist$ | async).videos"
       (play)="playSelectedVideo($event)"
       (queue)="queueSelectedVideo($event)"
+      (unqueue)="removeVideoFromPlaylist($event)"
     ></youtube-list>
   </article>
   `
@@ -47,6 +48,7 @@ import './youtube-videos.scss';
 export class YoutubeVideosComponent implements OnInit {
   videos$ = this.store.let(getPlayerSearchResults$);
   playerSearch$ = this.store.let(getPlayerSearch$);
+  playlist$ = this.store.let(getNowPlaylist$);
   // @State(getVideos$) videos$;
   // @State(getPlayerSearch$) playerSearch$;
 
@@ -58,7 +60,6 @@ export class YoutubeVideosComponent implements OnInit {
 
   constructor(
     private store: Store<EchoesState>,
-    private nowPlaylistService: NowPlaylistService,
 
     private nowPlaylistActions: NowPlaylistActions,
     private playerActions: PlayerActions,
@@ -83,6 +84,9 @@ export class YoutubeVideosComponent implements OnInit {
     this.store.dispatch(this.nowPlaylistActions.queueVideo(media));
   }
 
+  removeVideoFromPlaylist(media: GoogleApiYouTubeVideoResource) {
+    this.store.dispatch(this.nowPlaylistActions.removeVideo(media));
+  }
   resetPageToken() {
     this.store.dispatch(this.playerSearchActions.resetPageToken());
   }

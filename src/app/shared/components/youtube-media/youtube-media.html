@@ -46,9 +46,13 @@
 					</a>
 				</h4>
 				<section class="media-actions clearfix">
-					<button class="btn btn-link add-to-playlist" title="Queue this video to now playlist"
+					<button *ngIf="!status.queued" class="btn btn-link add-to-playlist" title="Queue this video to now playlist"
 						(click)="queueVideo(media)">
 						<i class="fa fa-share"></i> Queue
+					</button>
+					<button *ngIf="status.queued" class="btn btn-danger add-to-playlist" title="Queue this video to now playlist"
+						(click)="removeVideoFromQueue(media)">
+						<i class="fa fa-trash"></i> Remove From Queue
 					</button>
 					<button class="btn btn-link add-to-playlist" disabled title="Add this video to a playlist"
 						(click)="addVideo(media)">

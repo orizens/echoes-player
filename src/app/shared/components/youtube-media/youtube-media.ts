@@ -1,6 +1,11 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import './youtube-media.scss';
 
+interface MediaStatus {
+  queued: boolean;
+  isPlaying: boolean;
+}
+
 @Component({
   selector: 'youtube-media',
   template: require('./youtube-media.html'),
@@ -8,9 +13,14 @@ import './youtube-media.scss';
 })
 export class YoutubeMedia {
   @Input() media: any;
-  @Output() play = new EventEmitter();
-  @Output() queue = new EventEmitter();
-  @Output() add = new EventEmitter();
+  @Input() status: MediaStatus = {
+    queued: false,
+    isPlaying: false
+  };
+  @Output() play = new EventEmitter<GoogleApiYouTubeVideoResource>();
+  @Output() queue = new EventEmitter<GoogleApiYouTubeVideoResource>();
+  @Output() add = new EventEmitter<GoogleApiYouTubeVideoResource>();
+  @Output() unqueue = new EventEmitter<GoogleApiYouTubeVideoResource>();
 
   showDesc = false;
   isPlaying = false;
@@ -18,18 +28,22 @@ export class YoutubeMedia {
   constructor () {}
 
   playVideo (media: GoogleApiYouTubeVideoResource) {
-    this.play.next(media);
+    this.play.emit(media);
   }
 
   queueVideo(media: GoogleApiYouTubeVideoResource) {
-    this.queue.next(media);
+    this.queue.emit(media);
   }
 
   addVideo (media: GoogleApiYouTubeVideoResource) {
-    this.add.next(media);
+    this.add.emit(media);
   }
 
   toggle (showDesc: Boolean) {
     this.showDesc = !showDesc;
+  }
+
+  removeVideoFromQueue(media: GoogleApiYouTubeVideoResource) {
+    this.unqueue.emit(media);
   }
 }
