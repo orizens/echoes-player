@@ -5,29 +5,14 @@ import {
   Input,
   OnChanges,
   Output,
-  transition, trigger, animate, style, state
 } from '@angular/core';
 import { YoutubeMediaPlaylist } from '../../../store/now-playlist';
-
+import { fadeOutAnimation } from '../../../../shared/animations';
 import './now-playlist.scss';
 
 @Component({
   animations: [
-    trigger('fadeIn', [
-      state('void', style({ opacity: 0, transform: 'translateY(-30%)' })),
-      transition(':enter', [
-        animate('0.3s linear', style({
-          opacity: 1,
-          transform: 'translateY(0%)'
-        }))
-      ]),
-      transition(':leave', [
-        animate('0.3s linear', style({
-          opacity: 0,
-          transform: 'translatex(-80%)'
-        }))
-      ])
-    ])
+    fadeOutAnimation()
   ],
   selector: 'now-playlist',
   template: `
