@@ -29,7 +29,7 @@ export class NowPlaylistService {
   }
 
   removeVideo(media) {
-    this.store.dispatch({ type: NowPlaylistActions.REMOVE, payload: media });
+    this.store.dispatch(this.nowPlaylistActions.removeVideo(media));
   }
 
   selectVideo(media) {

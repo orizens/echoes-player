@@ -23,6 +23,7 @@ export class NowPlaylistActions {
   selectNext = ActionCreatorFactory.create(NowPlaylistActions.SELECT_NEXT);
   selectPrevious = ActionCreatorFactory.create(NowPlaylistActions.SELECT_PREVIOUS);
   removeAll = ActionCreatorFactory.create(NowPlaylistActions.REMOVE_ALL);
+  removeVideo = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource>(NowPlaylistActions.REMOVE);
 
   queueLoadVideo(media): Action {
     return {

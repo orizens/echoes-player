@@ -4,19 +4,35 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  Output
+  Output,
+  transition, trigger, animate, style, state
 } from '@angular/core';
 import { YoutubeMediaPlaylist } from '../../../store/now-playlist';
 
 import './now-playlist.scss';
 
 @Component({
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0, transform: 'translateY(-30%)' })),
+      transition(':enter', [
+        animate('0.3s linear', style({
+          opacity: 1,
+          transform: 'translateY(0%)'
+        }))
+      ]),
+      transition(':leave', [
+        animate('0.3s linear', style({
+          opacity: 0,
+          transform: 'translatex(-80%)'
+        }))
+      ])
+    ])
+  ],
   selector: 'now-playlist',
   template: `
   <section class="now-playlist ux-maker"
-    [ngClass]="{
-      'transition-in': playlist?.videos?.length
-    }">
+    >
     <ul class="nav nav-list ux-maker nicer-ux">
       <li class="now-playlist-track" #playlistTrack
         [ngClass]="{
@@ -24,6 +40,7 @@ import './now-playlist.scss';
           'playlist-media': isPlaylistMedia(video)
         }"
         *ngFor="let video of playlist?.videos | search:playlist.filter; let index = index"
+        [@fadeIn]
         >
         <a class="" title="{{ video.snippet.title }}"
           (click)="selectVideo(video)">
