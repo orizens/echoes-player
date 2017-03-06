@@ -48,7 +48,7 @@ export class YoutubeList {
 
   getMediaStatus(media: GoogleApiYouTubeVideoResource) {
     return {
-      queued: this.queued.find(queue => queue.id === media.id)
+      queued: this.queued.findIndex(queue => queue.id === media.id) >= 0
     };
   }
 }
