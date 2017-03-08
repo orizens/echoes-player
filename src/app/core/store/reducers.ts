@@ -45,3 +45,7 @@ export function getAppLayout$ ($state: Observable<EchoesState>): Observable<AppL
 export function getNowPlaylist$ ($state: Observable<EchoesState>): Observable<YoutubeMediaPlaylist> {
   return $state.select(state => state.nowPlaylist);
 };
+
+export function getActiveTrackId$ ($state: Observable<EchoesState>): Observable<string> {
+  return $state.select(state => state.nowPlaylist.selectedId);
+};

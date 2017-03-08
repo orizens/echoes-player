@@ -1,10 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { EchoesState } from '../../store';
 import { NowPlaylistService } from '../../services/now-playlist.service';
-import { YoutubeMediaPlaylist } from '../../store/now-playlist';
 import { PlayerActions } from '../../store/youtube-player';
 import { NowPlaylist } from './now-playlist';
 
@@ -13,14 +11,15 @@ import { NowPlaylist } from './now-playlist';
   template: `
   <div class="sidebar-pane">
     <now-playlist-filter
-      [playlist]="nowPlaylist | async"
+      [playlist]="nowPlaylist$ | async"
       (clear)="clearPlaylist()"
       (filter)="updateFilter($event)"
       (reset)="resetFilter()"
       (headerClick)="onHeaderClick()"
     ></now-playlist-filter>
     <now-playlist
-      [playlist]="nowPlaylist | async"
+      [playlist]="nowPlaylist$ | async"
+      [activeId]="activeTrackId$ | async"
       (select)="selectVideo($event)"
       (sort)="sortVideo($event)"
       (remove)="removeVideo($event)"
@@ -29,8 +28,10 @@ import { NowPlaylist } from './now-playlist';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaying implements OnInit {
-  public nowPlaylist: Observable<YoutubeMediaPlaylist>;
+export class NowPlaying {
+  public nowPlaylist$ = this.nowPlaylistService.playlist$;
+  public activeTrackId$ = this.nowPlaylistService.activeTrackId$;
+
   @ViewChild(NowPlaylist) nowPlaylistComponent: NowPlaylist;
 
   constructor(
@@ -38,10 +39,6 @@ export class NowPlaying implements OnInit {
     public nowPlaylistService: NowPlaylistService,
     private playerActions: PlayerActions
   ) {}
-
-  ngOnInit() {
-    this.nowPlaylist = this.nowPlaylistService.playlist$;
-  }
 
   selectVideo (media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(this.playerActions.playVideo(media));

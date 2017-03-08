@@ -3,8 +3,12 @@ import {
   Component,
   EventEmitter,
   Input,
+  NgZone,
   OnChanges,
   Output,
+  QueryList,
+  ViewChildren,
+  AfterViewChecked
 } from '@angular/core';
 import { YoutubeMediaPlaylist } from '../../../store/now-playlist';
 import { fadeOutAnimation } from '../../../../shared/animations';
@@ -51,23 +55,33 @@ import './now-playlist.scss';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaylist implements OnChanges {
+export class NowPlaylist implements OnChanges, AfterViewChecked {
   @Input() playlist: YoutubeMediaPlaylist;
+  @Input() activeId: string;
+
   @Output() select = new EventEmitter();
   @Output() sort = new EventEmitter();
   @Output() remove = new EventEmitter();
 
   private activeTrackElement: HTMLUListElement;
+  private hasActiveChanged: boolean = false;
 
-  constructor() { }
+  @ViewChildren(HTMLLIElement) tracks: QueryList<HTMLLIElement>;
+
+  constructor(private zone: NgZone) { }
+
+  ngAfterViewChecked() {
+    if (this.hasActiveChanged && this.activeTrackElement) {
+      this.zone.runOutsideAngular(() => this.scrollToActiveTrack());
+    }
+  }
 
   ngOnChanges(changes) {
-    const hasChanges = this.hasChanges(changes.playlist);
-    const currentPlaylist = hasChanges && changes.playlist.currentValue.videos;
-    const prevPlaylist = hasChanges && changes.playlist.previousValue.videos;
-    if (hasChanges && this.activeTrackElement && !this.hasVideoRemoved(currentPlaylist, prevPlaylist)) {
-      this.scrollToActiveTrack();
-    }
+    const activeId = changes.activeId;
+    const hasChanges = this.hasChanges(activeId);
+    const currentValue = hasChanges && changes.activeId.currentValue;
+    const prevValue = hasChanges && changes.activeId.previousValue;
+    this.hasActiveChanged = currentValue !== prevValue;
   }
 
   scrollToActiveTrack() {
@@ -105,11 +119,7 @@ export class NowPlaylist implements OnChanges {
     return Array.isArray(tracks);
   }
 
-  private hasVideoRemoved(currentPlaylist, prevPlaylist) {
-    return currentPlaylist.length < prevPlaylist.length;
-  }
-
   private hasChanges(changes) {
-    return changes.hasOwnProperty('currentValue') && changes.hasOwnProperty('previousValue');
+    return changes && changes.hasOwnProperty('currentValue') && changes.hasOwnProperty('previousValue');
   }
 }
