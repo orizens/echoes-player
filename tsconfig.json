@@ -27,7 +27,8 @@
       "webpack",
       "gapi.youtube",
       "gapi",
-      "youtube"
+      "youtube",
+      "gapi.auth2"
     ]
   },
   "exclude": [

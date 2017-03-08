@@ -88,6 +88,7 @@
     "@ngrx/store-devtools": "3.2.2",
     "@types/core-js": "^0.9.28",
     "@types/gapi": "0.0.29",
+    "@types/gapi.auth2": "0.0.34",
     "@types/gapi.youtube": "3.0.30",
     "@types/hammerjs": "^2.0.33",
     "@types/jasmine": "2.5.41",
