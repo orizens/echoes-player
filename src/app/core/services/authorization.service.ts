@@ -71,6 +71,13 @@ export class Authorization {
   private listenToGoogleAuthSignIn (googleAuth: GoogleAuthResponse) {
     window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
       console.log('authState changed', authState);
+      switch (authState) {
+        case false:
+          this.zone.run(() => this.store.dispatch(this.userProfileActions.signOut()));
+          break;
+
+        default:
+      }
     });
   }
 
@@ -87,7 +94,8 @@ export class Authorization {
     const token = authResponse.access_token;
     const profile = googleUser.getBasicProfile();
     const MILLISECOND = 1000;
-    const expireTimeInMs = parseInt(authResponse.expires_in, 10) * MILLISECOND;
+    const seconds: string = authResponse.expires_in;
+    const expireTimeInMs = parseInt(seconds, 10) * MILLISECOND;
     this.store.dispatch(this.userProfileActions.updateToken(token));
     this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
     if (this.autoSignInTimer) {
@@ -99,6 +107,7 @@ export class Authorization {
   startTimerToNextAuth(timeInMs: number): Subscription {
     return Observable.timer(timeInMs)
       .timeInterval()
+      .do(() => console.log('silent auto-authorizing..', {at: this._accessToken, time: new Date().toString() }))
       .switchMap(() => this.authorize())
         .do((googleAuth: GoogleAuthResponse) => this.saveGoogleAuth(googleAuth))
         .map((googleAuth: GoogleAuthResponse) => googleAuth.currentUser.get())
@@ -116,6 +125,7 @@ export class Authorization {
   }
 
   signOut () {
+    this.autoSignInTimer.unsubscribe();
     return Observable.fromPromise(this._googleAuth.signOut())
       .subscribe(response => {
         this.store.dispatch(this.userProfileActions.signOut());
