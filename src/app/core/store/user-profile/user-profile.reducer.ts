@@ -39,7 +39,10 @@ export function user(state = initialUserState, action: Action): UserProfileData 
     return Object.assign({}, {
       access_token: '',
       playlists: [],
-      profile: {}
+      profile: {},
+      data: {},
+      nextPageToken: '',
+      viewedPlaylist: ''
     });
 
     case UserProfileActions.UPDATE:
@@ -64,9 +67,13 @@ export const userRegister = {
   actions: UserProfileActions
 };
 
-export const getUserPlaylists$ = (state$: Observable<EchoesState>) => {
+export function getUserPlaylists$ (state$: Observable<EchoesState>) {
   return state$.select(state => state.user.playlists);
 };
-export const getUserViewPlaylist$ = (state$: Observable<EchoesState>) => {
+export function getUserViewPlaylist$ (state$: Observable<EchoesState>) {
   return state$.select(state => state.user.viewedPlaylist);
 };
+export function getIsUserSignedIn$ (state$: Observable<EchoesState>) {
+  return state$.select(state => {
+    return state.user.access_token !== ''});
+}
