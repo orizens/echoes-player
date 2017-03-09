@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { UserProfile, Authorization } from '../core/services';
 import { EchoesState } from '../core/store';
-import { getUserPlaylists$, getUserViewPlaylist$ } from '../core/store/user-profile';
+import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../core/store/user-profile';
 
 import './user.scss';
 
@@ -25,7 +25,7 @@ import './user.scss';
         </ul>
       </section>
     </app-navbar>
-    <p *ngIf="!isSignIn()" class="well lead">
+    <p *ngIf="!(isSignedIn$ | async)" class="well lead">
       To view your playlists in youtube, you need to sign in.
       <button class="btn btn-lg btn-primary"
         (click)="signInUser()">
@@ -39,6 +39,7 @@ import './user.scss';
 export class User implements OnInit {
   playlists$ = this.store.let(getUserPlaylists$);
   currentPlaylist$ = this.store.let(getUserViewPlaylist$);
+  isSignedIn$ = this.store.let(getIsUserSignedIn$);
 
   constructor(
     private userProfile: UserProfile,
@@ -50,10 +51,6 @@ export class User implements OnInit {
 
   signInUser () {
     this.authorization.signIn();
-  }
-
-  isSignIn () {
-    return this.authorization.isSignIn();
   }
 
   getPlaylists () {
