@@ -1,5 +1,5 @@
 import '@ngrx/core/add/operator/select';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
 import { AppLayoutActions } from './app-layout.actions';
 

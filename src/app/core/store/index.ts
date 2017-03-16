@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import 'rxjs/add/operator/let';
