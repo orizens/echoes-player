@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared';
+import { SharedModule } from '../../shared';
 
 import { AppNavbar } from './app-navbar.component';
 

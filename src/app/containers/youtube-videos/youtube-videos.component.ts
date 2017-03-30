@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { EchoesState } from '../core/store';
+import { EchoesState } from '../../core/store';
 
-import { NowPlaylistActions } from '../core/store/now-playlist';
-import { PlayerActions } from '../core/store/youtube-player';
-import { PlayerSearchActions, PresetParam } from '../core/store/player-search';
-import { AppLayoutActions } from '../core/store/app-layout';
+import { NowPlaylistActions } from '../../core/store/now-playlist';
+import { PlayerActions } from '../../core/store/youtube-player';
+import { PlayerSearchActions, PresetParam } from '../../core/store/player-search';
+import { AppLayoutActions } from '../../core/store/app-layout';
 // selectors
-import { getPlayerSearch$, getPlayerSearchResults$, getNowPlaylist$ } from '../core/store/reducers';
+import { getPlayerSearch$, getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
 
 import './youtube-videos.scss';
-// import { State } from '../ngrx-state.decorator';
 
 @Component({
   selector: 'youtube-videos',
@@ -49,8 +48,6 @@ export class YoutubeVideosComponent implements OnInit {
   videos$ = this.store.let(getPlayerSearchResults$);
   playerSearch$ = this.store.let(getPlayerSearch$);
   playlist$ = this.store.let(getNowPlaylist$);
-  // @State(getVideos$) videos$;
-  // @State(getPlayerSearch$) playerSearch$;
 
   presets: PresetParam[] = [
     { label: 'Any', value: '' },

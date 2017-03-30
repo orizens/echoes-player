@@ -1,43 +1,45 @@
 import { Observable } from 'rxjs/Observable';
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, combineReducers } from '@ngrx/store';
+import { compose } from '@ngrx/core/compose';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { localStorageSync } from 'ngrx-store-localstorage';
 import 'rxjs/add/operator/let';
 
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 // import { NgrxActionCreatorFactoryModule } from './action-creator.util';
 
-import { combineReducers } from '@ngrx/store';
-import { compose } from '@ngrx/core/compose';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { getSidebarExpanded } from './app-layout';
-import { storeRegistry, registerReducers } from './store.registry';
+import { EchoesState, EchoesReducers, EchoesActions } from './reducers';
+// import { registerReducers } from './store.registry';
 
-import { reducersRegisters, EchoesState } from './reducers';
-
-import { localStorageSync } from 'ngrx-store-localstorage';
+// import { storeFreeze } from 'ngrx-store-freeze';
 
 export { EchoesState } from './reducers';
-const { actions, reducers } = registerReducers(reducersRegisters);
-
-const composeStore = compose(
-  localStorageSync(['videos', 'player', 'nowPlaylist', 'search', 'appLayout'], true),
-  combineReducers
-)(reducers);
-
+// const storeAssets = registerReducers(getAppReducersRegistry());
+const actions = EchoesActions; // storeAssets.actions;
+const reducers = EchoesReducers; // storeAssets.reducers;
+// const storageConfig = ['videos', 'player', 'nowPlaylist', 'search', 'appLayout'];
+const composeStore = reducers;
 const optionalImports = [];
-
+const productionReducer = compose(localStorageSync(Object.keys(reducers), true), combineReducers)(reducers);
+// const productionReducer = combineReducers(reducers);
+// This is required for AOT
+export function appReducer(state: any, action: any) {
+  return productionReducer(state, action);
+}
 if ('production' !== ENV) {
     // Note that you must instrument after importing StoreModule
     optionalImports.push(StoreDevtoolsModule.instrumentOnlyWithExtension());
 }
 @NgModule({
   imports: [
-    StoreModule.provideStore(composeStore),
+    StoreModule.provideStore(appReducer),
     ...optionalImports
   ],
   declarations: [],
   exports: [],
-  providers: [ ...actions, ActionCreatorFactory ]
+  providers: [ ...actions ]
 })
 export class CoreStoreModule {};
 
@@ -45,4 +47,6 @@ export class CoreStoreModule {};
 function getAppLayoutState(state$: Observable<EchoesState>) {
   return state$.select(state => state.appLayout);
 }
-export const getSidebarCollapsed$ = compose(getSidebarExpanded, getAppLayoutState);
+export function getSidebarCollapsed$(state$: Observable<EchoesState>) {
+  return state$.select((state) => state.appLayout.sidebarExpanded);
+}

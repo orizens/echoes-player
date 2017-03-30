@@ -1,5 +1,5 @@
 import { UserPlayerService } from '../user-player.service';
-import { EchoesState } from '../../core/store';
+import { EchoesState } from '../../../core/store';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 

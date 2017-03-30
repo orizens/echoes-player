@@ -1,13 +1,12 @@
 import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import {
-  YoutubePlayerService,
   NowPlaylistService,
   UserProfile,
-} from '../core/services';
-import { EchoesState } from '../core/store';
-import { NowPlaylistActions } from '../core/store/now-playlist';
-import { PlayerActions } from '../core/store/youtube-player';
+} from '../../core/services';
+import { EchoesState } from '../../core/store';
+import { NowPlaylistActions } from '../../core/store/now-playlist';
+import { PlayerActions } from '../../core/store/youtube-player';
 
 @Injectable()
 export class UserPlayerService {

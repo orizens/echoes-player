@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { YoutubeMediaPlaylist } from '../../../store/now-playlist';
+import { NowPlaylistInterface } from '../../../store/now-playlist';
 import './now-playlist-filter.scss';
 
 @Component({
@@ -41,7 +41,7 @@ import './now-playlist-filter.scss';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NowPlaylistFilter {
-  @Input() playlist: YoutubeMediaPlaylist;
+  @Input() playlist: NowPlaylistInterface;
   // @Output() save = new EventEmitter();
   @Output() clear = new EventEmitter();
   @Output() filter = new EventEmitter();

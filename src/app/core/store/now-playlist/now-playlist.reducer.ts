@@ -1,18 +1,17 @@
 import { Action } from '@ngrx/store';
 import { NowPlaylistActions } from './now-playlist.actions';
 
-export interface YoutubeMediaPlaylist {
+export interface NowPlaylistInterface {
   videos: GoogleApiYouTubeVideoResource[];
   selectedId: string;
   filter: string;
 }
-let initialState: YoutubeMediaPlaylist = {
+let initialState: NowPlaylistInterface = {
   videos: [],
   selectedId: '',
   filter: ''
 };
-export function nowPlaylist(state: YoutubeMediaPlaylist = initialState, action: Action): YoutubeMediaPlaylist {
-  let isDifferent = (media: GoogleApiYouTubeVideoResource) => media.id !== action.payload.id;
+export function nowPlaylist(state: NowPlaylistInterface = initialState, action: Action): NowPlaylistInterface {
   switch (action.type) {
     case NowPlaylistActions.SELECT:
       return Object.assign({}, state, { selectedId: action.payload.id });
@@ -24,7 +23,7 @@ export function nowPlaylist(state: YoutubeMediaPlaylist = initialState, action: 
       return Object.assign({}, state, { videos: addMedias(state.videos, action.payload) });
 
     case NowPlaylistActions.REMOVE:
-      return Object.assign({}, state, { videos: state.videos.filter(isDifferent) });
+      return Object.assign({}, state, { videos: removeMedia(state.videos, action.payload) });
 
     // updates index by media
     case NowPlaylistActions.UPDATE_INDEX:
@@ -108,7 +107,7 @@ function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], selectedId
   return filteredVideos[previousIndex].id || '';
 }
 
-function selectNextOrPreviousTrack(state: YoutubeMediaPlaylist, filter: string): YoutubeMediaPlaylist {
+function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string): NowPlaylistInterface {
   const videosPlaylist = state.videos;
   const currentId = state.selectedId;
   const indexOfCurrentVideo = videosPlaylist.findIndex(video => currentId === video.id);
@@ -117,4 +116,8 @@ function selectNextOrPreviousTrack(state: YoutubeMediaPlaylist, filter: string):
     ? videosPlaylist.length ? videosPlaylist[0].id : ''
     : selectNextIndex(videosPlaylist, currentId, filter);
   return Object.assign({}, state, { selectedId: nextId });
+}
+
+function removeMedia(videos: GoogleApiYouTubeVideoResource[], media: GoogleApiYouTubeVideoResource): GoogleApiYouTubeVideoResource[] {
+  return videos.filter((_media: GoogleApiYouTubeVideoResource) => _media.id !== media.id);
 }

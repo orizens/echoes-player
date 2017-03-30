@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 
 // Load the implementations that should be tested
-import { App } from './app.component';
+import { AppComponent } from './app.component';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/let';
 
@@ -14,17 +14,17 @@ describe('App', () => {
     const storeSpy = jasmine.createSpyObj('Store', [ 'dispatch', 'subscribe', 'select', 'let' ]);
     return TestBed.configureTestingModule({
       providers: [
-        App,
+        AppComponent,
         { provide: Store, useValue: storeSpy }
       ]
     });
   });
 
-  it('should define an app component', inject([ App ], (app) => {
+  it('should define an app component', inject([ AppComponent ], (app) => {
     expect(app).toBeDefined();
   }));
 
-  xit('should create a reference to the playlist$ Observable', inject([ App ], (app) => {
+  xit('should create a reference to the playlist$ Observable', inject([ AppComponent ], (app) => {
     app.ngOnInit();
     const expected = app.nowPlaylistService.playlist$;
     const actual = app.nowPlaylist$;

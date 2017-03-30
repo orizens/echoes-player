@@ -1,7 +1,7 @@
 import { UserPlayerService } from '../user-player.service';
 import { ActivatedRoute } from '@angular/router';
-import { EchoesState } from '../../core/store';
-import { UserProfileActions } from '../../core/store/user-profile';
+import { EchoesState } from '../../../core/store';
+import { UserProfileActions } from '../../../core/store/user-profile';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 

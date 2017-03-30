@@ -1,18 +1,17 @@
 import { Observable } from 'rxjs/Observable';
 // reducers
-import { playerRegister, YoutubePlayerState } from './youtube-player';
-import { nowPlaylistRegister, YoutubeMediaPlaylist } from './now-playlist';
-import { userRegister, UserProfileData } from './user-profile';
-import { searchRegister, PlayerSearch } from './player-search';
-import { appLayoutRegister, AppLayout } from './app-layout';
-
+import { playerRegister, YoutubePlayerState, player, PlayerActions } from './youtube-player';
+import { nowPlaylistRegister, NowPlaylistInterface, nowPlaylist, NowPlaylistActions } from './now-playlist';
+import { userRegister, UserProfileData, user, UserProfileActions } from './user-profile';
+import { searchRegister, PlayerSearch, search, PlayerSearchActions } from './player-search';
+import { appLayoutRegister, AppLayout, appLayout, AppLayoutActions } from './app-layout';
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface EchoesState {
   player: YoutubePlayerState;
-  nowPlaylist: YoutubeMediaPlaylist;
+  nowPlaylist: NowPlaylistInterface;
   user: UserProfileData;
   search: PlayerSearch;
   appLayout: AppLayout;
@@ -24,6 +23,22 @@ export const reducersRegisters = [
   userRegister,
   searchRegister,
   appLayoutRegister
+];
+
+export let EchoesReducers = {
+  player,
+  nowPlaylist,
+  user,
+  search,
+  appLayout,
+};
+
+export let EchoesActions = [
+  PlayerActions,
+  NowPlaylistActions,
+  UserProfileActions,
+  PlayerSearchActions,
+  AppLayoutActions
 ];
 
 export function getPlayer$ (state$: Observable<EchoesState>): Observable<YoutubePlayerState> {
@@ -42,7 +57,7 @@ export function getAppLayout$ ($state: Observable<EchoesState>): Observable<AppL
   return $state.select(state => state.appLayout);
 };
 
-export function getNowPlaylist$ ($state: Observable<EchoesState>): Observable<YoutubeMediaPlaylist> {
+export function getNowPlaylist$ ($state: Observable<EchoesState>): Observable<NowPlaylistInterface> {
   return $state.select(state => state.nowPlaylist);
 };
 

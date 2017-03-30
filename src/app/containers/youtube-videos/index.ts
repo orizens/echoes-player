@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared';
+import { SharedModule } from '../../shared';
 
 import { AppNavbarModule } from '../app-navbar';
 import { YoutubeVideosComponent } from './youtube-videos.component';

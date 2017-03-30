@@ -10,7 +10,7 @@ import {
   ViewChildren,
   AfterViewChecked
 } from '@angular/core';
-import { YoutubeMediaPlaylist } from '../../../store/now-playlist';
+import { NowPlaylistInterface } from '../../../store/now-playlist';
 import { fadeOutAnimation } from '../../../../shared/animations';
 import './now-playlist.scss';
 
@@ -56,7 +56,7 @@ import './now-playlist.scss';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NowPlaylist implements OnChanges, AfterViewChecked {
-  @Input() playlist: YoutubeMediaPlaylist;
+  @Input() playlist: NowPlaylistInterface;
   @Input() activeId: string;
 
   @Output() select = new EventEmitter();

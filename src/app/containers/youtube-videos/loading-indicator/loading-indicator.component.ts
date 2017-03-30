@@ -17,11 +17,11 @@ import './loading-indicator.scss';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadingIndicatorComponent {
-  @Input() message: string = 'Searching More Videos...';
+  @Input() message = 'Searching More Videos...';
 
   @Input()
   @HostBinding('class.indicator-show')
-  isLoading: boolean = false;
+  isLoading = false;
 
   constructor() { }
 }

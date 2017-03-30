@@ -1,17 +1,11 @@
-import { Jsonp, Response, URLSearchParams, RequestOptionsArgs } from '@angular/http';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
-  NgZone,
-  OnInit,
   Output,
   ViewChild
 } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { Observable } from 'rxjs/Observable';
 
 import './player-search.scss';
 

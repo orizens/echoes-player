@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 import { EchoesState, getSidebarCollapsed$ } from './core/store';
 import { Store } from '@ngrx/store';
@@ -25,13 +25,11 @@ import 'rxjs/add/operator/let';
     </div>
   `
 })
-export class App implements OnInit {
+export class AppComponent {
   sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
 
   constructor(
     private store: Store<EchoesState>
   ) {
   }
-
-  ngOnInit() {}
 }
