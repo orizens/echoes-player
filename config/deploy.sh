@@ -3,6 +3,7 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
   git config --global user.email "farhioren+travis@gmail.com"
   git config --global user.name "travis-ci"
   npm run build:prod
+  npm run copy:domain
   if [ -d "./dist" ]; then
     echo "PRODUCTION BUILD CREATED";
     cd dist
