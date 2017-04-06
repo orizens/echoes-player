@@ -4,6 +4,7 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
   git config --global user.name "travis-ci"
   npm run build:prod
   npm run copy:domain
+  npm run copy:heroku
   if [ -d "./dist" ]; then
     echo "PRODUCTION BUILD CREATED";
     cd dist
