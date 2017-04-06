@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../shared';
 
-import { NowPlaying } from './now-playing.component';
-import { NowPlaylist } from './now-playlist';
-import { NowPlaylistFilter } from './now-playlist-filter';
+import { NowPlayingComponent } from './now-playing.component';
+import { NowPlaylistComponent } from './now-playlist';
+import { NowPlaylistFilterComponent } from './now-playlist-filter';
 
 @NgModule({
   imports: [
     SharedModule
   ],
   declarations: [
-    NowPlaying,
-    NowPlaylist,
-    NowPlaylistFilter
+    NowPlayingComponent,
+    NowPlaylistComponent,
+    NowPlaylistFilterComponent
   ],
   exports: [
-    NowPlaying
+    NowPlayingComponent
   ]
 })
 export class NowPlayingModule { }

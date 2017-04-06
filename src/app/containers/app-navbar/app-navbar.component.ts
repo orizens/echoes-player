@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
@@ -7,10 +7,10 @@ import { UserProfile, Authorization } from '../../core/services';
 import { AppLayoutActions } from '../../core/store/app-layout';
 import { EchoesState } from '../../core/store';
 
-import './app-navbar.scss';
-
 @Component({
   selector: 'app-navbar',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './app-navbar.scss' ],
   template: `
     <nav class="row navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -50,8 +50,8 @@ import './app-navbar.scss';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNavbar implements OnInit {
-  private user$: Observable<UserProfileData>;
-  private isCollapsed: boolean = true;
+  user$: Observable<UserProfileData>;
+  isCollapsed = true;
 
   // @Input() profile: GoogleBasicProfile = {};
 

@@ -6,11 +6,13 @@ export interface NowPlaylistInterface {
   selectedId: string;
   filter: string;
 }
-let initialState: NowPlaylistInterface = {
+
+const initialState: NowPlaylistInterface = {
   videos: [],
   selectedId: '',
   filter: ''
 };
+
 export function nowPlaylist(state: NowPlaylistInterface = initialState, action: Action): NowPlaylistInterface {
   switch (action.type) {
     case NowPlaylistActions.SELECT:

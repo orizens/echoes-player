@@ -3,25 +3,37 @@ import {
   Component,
   EventEmitter,
   Input,
-  NgZone,
   OnChanges,
   Output,
-  QueryList,
-  ViewChildren,
-  AfterViewChecked
+  ViewEncapsulation,
+  AfterViewChecked, NgZone,
 } from '@angular/core';
 import { NowPlaylistInterface } from '../../../store/now-playlist';
-import { fadeOutAnimation } from '../../../../shared/animations';
-import './now-playlist.scss';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
-  animations: [
-    fadeOutAnimation()
-  ],
   selector: 'now-playlist',
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0, transform: 'translateY(-30%)' })),
+      transition(':enter', [
+        animate('300ms ease-out', style({
+          opacity: 1,
+          transform: 'translateY(0%)'
+        }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({
+          opacity: 0,
+          transform: 'translatex(-80%)'
+        }))
+      ])
+    ])
+  ],
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './now-playlist.scss' ],
   template: `
-  <section class="now-playlist ux-maker"
-    >
+  <section class="now-playlist ux-maker">
     <ul class="nav nav-list ux-maker nicer-ux">
       <li class="now-playlist-track" #playlistTrack
         [ngClass]="{
@@ -55,20 +67,16 @@ import './now-playlist.scss';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaylist implements OnChanges, AfterViewChecked {
+export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
   @Input() playlist: NowPlaylistInterface;
-  @Input() activeId: string;
+  @Output() select = new EventEmitter<GoogleApiYouTubeSearchResource>();
+  // @Output() sort = new EventEmitter<GoogleApiYouTubeSearchResource>();
+  @Output() remove = new EventEmitter<GoogleApiYouTubeSearchResource>();
 
-  @Output() select = new EventEmitter();
-  @Output() sort = new EventEmitter();
-  @Output() remove = new EventEmitter();
+  public activeTrackElement: HTMLUListElement;
+  public hasActiveChanged = false;
 
-  private activeTrackElement: HTMLUListElement;
-  private hasActiveChanged: boolean = false;
-
-  @ViewChildren(HTMLLIElement) tracks: QueryList<HTMLLIElement>;
-
-  constructor(private zone: NgZone) { }
+  constructor(public zone: NgZone) { }
 
   ngAfterViewChecked() {
     if (this.hasActiveChanged && this.activeTrackElement) {
@@ -90,7 +98,7 @@ export class NowPlaylist implements OnChanges, AfterViewChecked {
     }
   }
 
-  selectVideo (media) {
+  selectVideo (media: GoogleApiYouTubeSearchResource) {
     this.select.next(media);
   }
 
@@ -98,8 +106,8 @@ export class NowPlaylist implements OnChanges, AfterViewChecked {
     this.remove.next(media);
   }
 
-  sortVideo (media) {
-    this.sort.next(media);
+  sortVideo (media: GoogleApiYouTubeSearchResource) {
+    // this.sort.next(media);
   }
 
   isActiveMedia(mediaId: string, trackElement: HTMLUListElement) {
@@ -117,6 +125,10 @@ export class NowPlaylist implements OnChanges, AfterViewChecked {
     );
     const tracks = media.snippet.description.match(hasTracksRegexp);
     return Array.isArray(tracks);
+  }
+
+  private hasVideoRemoved(currentPlaylist, prevPlaylist) {
+    return currentPlaylist.length < prevPlaylist.length;
   }
 
   private hasChanges(changes) {

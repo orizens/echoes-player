@@ -1,11 +1,11 @@
-import { YoutubeList } from './youtube-list';
-import { YoutubeMedia } from './youtube-media';
-import { YoutubePlaylist } from './youtube-playlist';
+import { YoutubeListComponent } from './youtube-list';
+import { YoutubeMediaComponent } from './youtube-media';
+import { YoutubePlaylistComponent } from './youtube-playlist';
 import { ButtonGroupComponent } from './button-group';
 
 export const CORE_COMPONENTS = [
-  YoutubeList,
-  YoutubeMedia,
-  YoutubePlaylist,
+  YoutubeListComponent,
+  YoutubeMediaComponent,
+  YoutubePlaylistComponent,
   ButtonGroupComponent
 ];

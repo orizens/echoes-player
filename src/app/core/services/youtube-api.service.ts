@@ -20,12 +20,13 @@ export class YoutubeApiService {
   url: string;
   http: Http;
   idKey: string;
-  authorize: boolean = false;
-  isSearching: Boolean = false;
+  authorize = false;
+  isSearching = false;
   config: URLSearchParams = new URLSearchParams();
   nextPageToken: string;
 
-  constructor(options: YoutubeApiServiceOptions | any, private authService?: Authorization) {
+  // constructor(options: YoutubeApiServiceOptions, private authService?: Authorization) {
+  constructor(options: any, private authService?: Authorization) {
     this.resetConfig();
     if (authService) {
       this.authorize = true;

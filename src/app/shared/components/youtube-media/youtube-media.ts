@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import './youtube-media.scss';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+// import './youtube-media.scss';
 
 interface MediaStatus {
   queued: boolean;
@@ -8,10 +8,12 @@ interface MediaStatus {
 
 @Component({
   selector: 'youtube-media',
-  template: require('./youtube-media.html'),
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './youtube-media.scss' ],
+  templateUrl: './youtube-media.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class YoutubeMedia {
+export class YoutubeMediaComponent {
   @Input() media: any;
   @Input() status: MediaStatus = {
     queued: false,

@@ -75,12 +75,3 @@ export function toggleVisibility(state: YoutubePlayerState) {
 export function changePlayerState(state: YoutubePlayerState, playerState: YT.PlayerState) {
   return Object.assign({}, state, { playerState: playerState });
 }
-
-export function getCurrentMedia(state$: Observable<YoutubePlayerState>) {
-  return state$.select(state => state.media);
-}
-
-export function isPlayerPlaying(state$: Observable<YoutubePlayerState>) {
-  return state$.select(state => state.playerState)
-    .map((playerState: YT.PlayerState) => playerState === 1);
-}

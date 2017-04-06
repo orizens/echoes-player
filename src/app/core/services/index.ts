@@ -16,12 +16,12 @@ export * from './gapi-loader.service';
 export * from './authorization.service';
 
 export const APP_SERVICES = [
-  UserProfile,
-  YoutubeSearch,
-  YoutubePlayerService,
-  NowPlaylistService,
-  YoutubeVideosInfo,
-  GapiLoader,
-  Authorization,
-  YoutubeDataApi
+  { provide: UserProfile, useClass: UserProfile },
+  { provide: YoutubeSearch, useClass: YoutubeSearch },
+  { provide: YoutubePlayerService, useClass: YoutubePlayerService },
+  { provide: NowPlaylistService, useClass: NowPlaylistService },
+  { provide: YoutubeVideosInfo, useClass: YoutubeVideosInfo },
+  { provide: GapiLoader, useClass: GapiLoader },
+  { provide: Authorization, useClass: Authorization },
+  { provide: YoutubeDataApi, useClass: YoutubeDataApi }
 ];

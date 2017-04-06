@@ -2,16 +2,14 @@ import { UserPlayerService } from '../user-player.service';
 import { ActivatedRoute } from '@angular/router';
 import { EchoesState } from '../../../core/store';
 import { UserProfileActions } from '../../../core/store/user-profile';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import './playlist.scss';
 
 @Component({
   selector: 'playlist',
-  host: {
-    'class': 'clearfix'
-  },
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./playlist.scss'],
   template: `
   <playlist-cover [playlist]="playlist"
     (play)="playPlaylist($event)"
@@ -26,8 +24,10 @@ import './playlist.scss';
   `
 })
 export class PlaylistComponent implements OnInit, OnDestroy {
-  private videos: GoogleApiYouTubeVideoResource[] = [];
-  private playlist: GoogleApiYouTubePlaylistResource;
+  public videos: GoogleApiYouTubeVideoResource[] = [];
+  public playlist: GoogleApiYouTubePlaylistResource;
+
+  @HostBinding('class.clearfix') style = true;
 
   constructor(
     private store: Store<EchoesState>,

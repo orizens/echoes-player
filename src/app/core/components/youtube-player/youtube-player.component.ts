@@ -1,21 +1,26 @@
+import { getPlayer$, getCurrentMedia$, getIsPlayerPlaying$ } from '../../store/youtube-player/youtube-player.selectors';
 import { EchoesState } from '../../store';
 import { Store } from '@ngrx/store';
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
 import { NowPlaylistService, YoutubePlayerService } from '../../services';
-import { getCurrentMedia, isPlayerPlaying, PlayerActions, YoutubePlayerState } from '../../store/youtube-player';
-
-import './youtube-player.scss';
+import { PlayerActions, YoutubePlayerState } from '../../store/youtube-player';
 
 @Component({
   selector: 'player',
-  host: {
-    class: 'youtube-player'
-    // '[class.show-youtube-player]': '(player$ | async).showPlayer',
-    // '[class.fullscreen]': '(player$ | async).isFullscreen'
-  },
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './youtube-player.scss' ],
   template: `
   <section 
     [class.show-youtube-player]="(player$ | async).showPlayer"
@@ -36,9 +41,9 @@ import './youtube-player.scss';
       <player-controls class="col-md-4 col-xs-5 controls-container nicer-ux" 
         [class.yt-playing]="isPlayerPlaying$ | async"
         [media]="media$ | async"
-        (play)="playVideo($event)" 
-        (pause)="pauseVideo()" 
+        (pause)="pauseVideo()"
         (next)="playNextTrack()"
+        (play)="playVideo($event)"
         (previous)="playPreviousTrack()"
       ></player-controls>
     </div>
@@ -46,10 +51,12 @@ import './youtube-player.scss';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class YoutubePlayer implements OnInit {
-  player$: Observable<YoutubePlayerState>;
-  media$: Observable<any>;
-  isPlayerPlaying$: Observable<boolean>;
+export class YoutubePlayerComponent implements OnInit {
+  player$ = this.store.let(getPlayer$);
+  media$ = this.store.let(getCurrentMedia$);
+  isPlayerPlaying$ = this.store.let(getIsPlayerPlaying$);
+
+  @HostBinding('class.youtube-player') style = true;
 
   constructor(
     private playerService: YoutubePlayerService,
@@ -60,9 +67,6 @@ export class YoutubePlayer implements OnInit {
   }
 
   ngOnInit() {
-    this.player$ = this.playerService.player$;
-    this.media$ = getCurrentMedia(this.player$);
-    this.isPlayerPlaying$ = isPlayerPlaying(this.player$);
     this.store.dispatch(this.playerActions.reset());
   }
 
@@ -78,7 +82,7 @@ export class YoutubePlayer implements OnInit {
     }
   }
 
-  playVideo (media: any) {
+  playVideo (media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(this.playerActions.playVideo(media));
   }
 
@@ -94,12 +98,12 @@ export class YoutubePlayer implements OnInit {
     this.playerService.setSize();
   }
 
-  playNextTrack (player) {
+  playNextTrack () {
     this.nowPlaylistService.selectNextIndex();
     this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
   }
 
-  playPreviousTrack (player) {
+  playPreviousTrack () {
     this.nowPlaylistService.selectPreviousIndex();
     this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
   }

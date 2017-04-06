@@ -1,9 +1,17 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
-import './playlist-cover.scss';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 
 @Component({
   selector: 'playlist-cover',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./playlist-cover.scss'],
   template: `
   <div class="playlist-cover clearfix">
     <div class="cover-bg" [ngStyle]="{ 'background-image': 'url(' + thumbUrl + ')' }"></div>

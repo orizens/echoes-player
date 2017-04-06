@@ -1,26 +1,20 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { YoutubeMediaResource } from '../../interfaces/youtube.media.resource.d';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import './youtube-playlist.scss';
 
 @Component({
   selector: 'youtube-playlist',
-  template: require('./youtube-playlist.html'),
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './youtube-playlist.scss' ],
+  templateUrl: './youtube-playlist.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class YoutubePlaylist {
-  @Input() media: GoogleApiYouTubePlaylistResource;
+export class YoutubePlaylistComponent {
+  // GoogleApiYouTubePlaylistResource
+  @Input() media: any;
   @Output() play = new EventEmitter();
   @Output() queue = new EventEmitter();
 
   isPlaying = false;
-
-  constructor() {
-
-  }
-
-  ngOnInit() {
-
-  }
 
   playPlaylist(media: GoogleApiYouTubePlaylistResource) {
     this.play.next(media);

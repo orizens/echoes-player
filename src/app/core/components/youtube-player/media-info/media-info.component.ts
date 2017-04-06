@@ -1,8 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import './media-info.scss';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
+// import './media-info.scss';
 
 @Component({
   selector: 'media-info',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './media-info.scss' ],
   template: `
   <article class="media-info ellipsis">
     <h3 class="yt-media-title ellipsis">

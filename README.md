@@ -39,177 +39,36 @@ My services include:
 
 ## Included Technologies & Libraries
 - [Angular +2.x](http://angular.io) 
+- Angular-cli
 - Bootstrap v3.x (SASS)
 - Typescript 2.x
 - ES6 / ES2015 (using Loader Spec)
 - Webpack 2.x
 
-## What's Inside
-This is a clone and modification of [AngularClass angular2 webpack starter](http://github.com/angularclass/angular2-webpack-starter).  
-It's a quite robust starter which includes inside everything needed to experiment with angular2, prepare for production and testing as well.
+# EchoesPlayer
 
-### Quick start
-**Make sure you have Node version >= 5.0 and NPM >= 3**
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
 
-```bash
-# install the repo with npm
-npm install
+## Development server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-# start the server
-npm start
+## Code scaffolding
 
-# use Hot Module Replacement (disabled for now)
-# npm run server:dev:hmr
-```
-go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your browser
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
-# Table of Contents
-* [File Structure](#file-structure)
-* [Getting Started](#getting-started)
-* [Configuration](#configuration)
-* [@Types](#types)
-* [License](#license)
+## Build
 
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## File Structure (adopted from angularclass)
-I use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
-```
-angular2-webpack-starter/
- ├──config/                    * our configuration
- |   ├──helpers.js             * helper functions for our configuration files
- |   ├──spec-bundle.js         * ignore this magic that sets up our angular 2 testing environment
- |   ├──karma.conf.js          * karma config for our unit tests
- |   ├──protractor.conf.js     * protractor config for our end-to-end tests
- │   ├──webpack.dev.js         * our development webpack config
- │   ├──webpack.prod.js        * our production webpack config
- │   └──webpack.test.js        * our testing webpack config
- │
- ├──src/                       * our source files that will be compiled to javascript
- |   ├──main.browser.ts        * our entry file for our browser environment
- │   │
- |   ├──index.html             * Index.html: where we generate our index page
- │   │
- |   ├──polyfills.ts           * our polyfills file
- │   │
- |   ├──vendor.ts              * our vendor file
- │   │
- │   ├──app/                   * WebApp: folder
- │   │   ├──app.spec.ts        * a simple test of components in app.ts
- │   │   ├──app.e2e.ts         * a simple end-to-end test for /
- │   │   └──app.ts             * App.ts: a simple version of our App component components
- │   │
- │   └──assets/                * static assets are served here
- │       ├──icon/              * our list of icons from www.favicon-generator.org
- │       ├──service-worker.js  * ignore this. Web App service worker that's not complete yet
- │       ├──robots.txt         * for search engines to crawl your website
- │       └──humans.txt          * for humans to know who the developers are
- │
- │
- ├──tslint.json                * typescript lint config
- ├──typedoc.json               * typescript documentation generator
- ├──tsconfig.json              * config that webpack uses for typescript
- ├──package.json               * what npm uses to manage it's dependencies
- └──webpack.config.js          * webpack main configuration file
+## Running unit tests
 
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-# Development Guide
+## Running end-to-end tests
 
-### build files
-```bash
-# development
-npm run build:dev
-# production
-npm run build:prod
-```
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
 
-### hot module replacement (disabled)
-```bash
-npm run server:dev:hmr
-```
+## Further help
 
-### watch and build files
-```bash
-npm run watch
-```
-
-### run tests
-```bash
-npm run test
-```
-
-### run end-to-end tests
-```bash
-# make sure you have your server running in another terminal
-npm run e2e
-```
-
-### run webdriver (for end-to-end)
-```bash
-npm run webdriver:update
-npm run webdriver:start
-```
-
-### run Protractor's elementExplorer (for end-to-end)
-```bash
-npm run webdriver:start
-# in another terminal
-npm run e2e:live
-```
-
-# Configuration
-Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
-
-### Visual Studio Code + Debugger for Chrome
-> Install [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) and see docs for instructions to launch Chrome 
-
-The included `.vscode` automatically connects to the webpack development server on port `3000`.
-
-# Types
-> When you include a module that doesn't include Type Definitions inside of the module you can include external Type Definitions with @types
-
-i.e, to have youtube api support, run this command in terminal: 
-```shell
-npm i @types/youtube @types/gapi @types/gapi.youtube
-``` 
-In some cases where your code editor doesn't support Typescript 2 yet or these types weren't listed in ```tsconfig.json```, add these to **"src/custom-typings.d.ts"** to make peace with the compile check: 
-```es6
-import '@types/gapi.youtube';
-import '@types/gapi';
-import '@types/youtube';
-```
-
-## Custom Type Definitions
-When including 3rd party modules you also need to include the type definition for the module
-if they don't provide one within the module. You can try to install it with @types
-
-```
-npm install @types/node
-npm install @types/lodash
-```
-
-If you can't find the type definition in the registry we can make an ambient definition in
-this file for now. For example
-
-```typescript
-declare module "my-module" {
-  export function doesSomething(value: string): string;
-}
-```
-
-
-If you're prototyping and you will fix the types later you can also declare it as type any
-
-```typescript
-declare var assert: any;
-declare var _: any;
-declare var $: any;
-```
-
-If you're importing a module that uses Node.js modules which are CommonJS you need to import as
-
-```typescript
-import * as _ from 'lodash';
-```
-# License
- [MIT](/LICENSE)
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

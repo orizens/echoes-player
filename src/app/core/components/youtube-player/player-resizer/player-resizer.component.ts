@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import './player-resizer.scss';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+// import './player-resizer.scss';
 
 @Component({
   selector: 'player-resizer',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './player-resizer.scss' ],
   template: `
     <button title="minimize / maximize player"
       [class.full-screen]="!fullScreen"

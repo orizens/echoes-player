@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../shared';
 
-import { YoutubePlayer } from './youtube-player.component';
+import { YoutubePlayerComponent } from './youtube-player.component';
 import { MediaInfoComponent } from './media-info';
 import { PlayerControlsComponent } from './player-controls/player-controls.component';
 import { PlayerResizerComponent } from './player-resizer/player-resizer.component';
@@ -11,13 +11,13 @@ import { PlayerResizerComponent } from './player-resizer/player-resizer.componen
     SharedModule
   ],
   declarations: [
-    YoutubePlayer,
+    YoutubePlayerComponent,
     MediaInfoComponent,
     PlayerControlsComponent,
     PlayerResizerComponent
   ],
   exports: [
-    YoutubePlayer
+    YoutubePlayerComponent
   ]
 })
 export class PlayerModule { }

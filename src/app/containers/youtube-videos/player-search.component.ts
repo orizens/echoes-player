@@ -1,16 +1,23 @@
+import { Jsonp, Response, URLSearchParams, RequestOptionsArgs } from '@angular/http';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
+  NgZone,
+  OnInit,
   Output,
-  ViewChild
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
-
-import './player-search.scss';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'player-search',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './player-search.scss' ],
   template: `
     <form class="navbar-form form-search" id="media-explorer"
       #form="ngForm"

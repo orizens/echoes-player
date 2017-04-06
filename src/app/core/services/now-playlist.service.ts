@@ -1,20 +1,22 @@
+import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import { EchoesState } from '../store';
-import { getActiveTrackId$, getNowPlaylist$ } from '../store/reducers';
 import { NowPlaylistActions, NowPlaylistInterface } from '../store/now-playlist';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 
 @Injectable()
 export class NowPlaylistService {
-  public playlist$ = this.store.let(getNowPlaylist$);
-  public activeTrackId$ = this.store.let(getActiveTrackId$);
+  public playlist$: Observable<NowPlaylistInterface>;
 
   constructor(
     public store: Store<EchoesState>,
     private youtubeVideosInfo: YoutubeVideosInfo,
     private nowPlaylistActions: NowPlaylistActions
-  ) {}
+  ) {
+    this.playlist$ = this.store.select(state => state.nowPlaylist);
+  }
 
   queueVideo(mediaId: string) {
     return this.youtubeVideosInfo.api

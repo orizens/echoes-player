@@ -6,11 +6,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import 'rxjs/add/operator/let';
 
-import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
+// import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 // import { NgrxActionCreatorFactoryModule } from './action-creator.util';
 
+import { environment } from '../../../environments/environment';
 import { getSidebarExpanded } from './app-layout';
-import { EchoesState, EchoesReducers, EchoesActions } from './reducers';
+import { getAppReducersRegistry, EchoesState, EchoesReducers, EchoesActions } from './reducers';
 // import { registerReducers } from './store.registry';
 
 // import { storeFreeze } from 'ngrx-store-freeze';
@@ -28,7 +29,7 @@ const productionReducer = compose(localStorageSync(Object.keys(reducers), true),
 export function appReducer(state: any, action: any) {
   return productionReducer(state, action);
 }
-if ('production' !== ENV) {
+if (!environment.production) {
     // Note that you must instrument after importing StoreModule
     optionalImports.push(StoreDevtoolsModule.instrumentOnlyWithExtension());
 }

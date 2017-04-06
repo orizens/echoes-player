@@ -1,10 +1,13 @@
 import { Subscription } from 'rxjs/Rx';
 import { Injectable, NgZone } from '@angular/core';
 import { Http } from '@angular/http';
-import { window } from '@angular/platform-browser/src/facade/browser';
+// import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
 
 import { Store } from '@ngrx/store';
 import { UserProfileActions } from '../store/user-profile';
@@ -14,8 +17,8 @@ import { GapiLoader } from './gapi-loader.service';
 
 @Injectable()
 export class Authorization {
-  private _googleAuth: GoogleAuthResponse;
-  private _scope: string = 'profile email https://www.googleapis.com/auth/youtube';
+  private _googleAuth: gapi.auth2.GoogleAuth;
+  private _scope = 'profile email https://www.googleapis.com/auth/youtube';
   private _accessToken: string;
   private autoSignInTimer: Subscription;
 
@@ -41,12 +44,12 @@ export class Authorization {
     this.gapiLoader
       .load('auth2')
       .switchMap(() => this.authorize())
-      .do((googleAuth: GoogleAuthResponse) => this.saveGoogleAuth(googleAuth))
-      .do((googleAuth: GoogleAuthResponse) => this.listenToGoogleAuthSignIn(googleAuth))
-      .filter((googleAuth: GoogleAuthResponse) => this.isSignIn())
-      .filter((googleAuth: GoogleAuthResponse) => this.hasAccessToken(googleAuth))
-      .map((googleAuth: GoogleAuthResponse) => googleAuth.currentUser.get())
-      .subscribe((googleUser: GoogleAuthCurrentUser) => {
+      .do((googleAuth: gapi.auth2.GoogleAuth) => this.saveGoogleAuth(googleAuth))
+      .do((googleAuth: gapi.auth2.GoogleAuth) => this.listenToGoogleAuthSignIn(googleAuth))
+      .filter((googleAuth: gapi.auth2.GoogleAuth) => this.isSignIn())
+      .filter((googleAuth: gapi.auth2.GoogleAuth) => this.hasAccessToken(googleAuth))
+      .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get())
+      .subscribe((googleUser: gapi.auth2.GoogleUser) => {
         this.zone.run(() => this.handleSuccessLogin(googleUser));
       });
   }
@@ -56,46 +59,38 @@ export class Authorization {
       client_id: `${CLIENT_ID}.apps.googleusercontent.com`,
       scope: this._scope
     };
-    return Observable.fromPromise(window.gapi.auth2.init(authOptions));
+    return Observable.fromPromise(window['gapi'].auth2.init(authOptions));
   }
 
-  private hasAccessToken (googleAuth: GoogleAuthResponse): boolean {
+  private hasAccessToken (googleAuth: gapi.auth2.GoogleAuth): boolean {
     return googleAuth && googleAuth.currentUser.get().getAuthResponse().hasOwnProperty('access_token');
   }
 
-  private saveGoogleAuth (googleAuth: GoogleAuthResponse): GoogleAuthResponse {
+  private saveGoogleAuth (googleAuth: gapi.auth2.GoogleAuth): gapi.auth2.GoogleAuth {
     this._googleAuth = googleAuth;
     return googleAuth;
   }
 
-  private listenToGoogleAuthSignIn (googleAuth: GoogleAuthResponse) {
-    window.gapi['auth2'].getAuthInstance().isSignedIn.listen(authState => {
+  private listenToGoogleAuthSignIn (googleAuth: gapi.auth2.GoogleAuth) {
+    window['gapi']['auth2'].getAuthInstance().isSignedIn.listen(authState => {
       console.log('authState changed', authState);
-      switch (authState) {
-        case false:
-          this.zone.run(() => this.store.dispatch(this.userProfileActions.signOut()));
-          break;
-
-        default:
-      }
     });
   }
 
   signIn() {
-    const signOptions: GoogleAuthSignInOptions = { scope: this._scope };
+    const signOptions: gapi.auth2.SigninOptions = { scope: this._scope };
     if (this._googleAuth) {
       Observable.fromPromise(this._googleAuth.signIn(signOptions))
-        .subscribe(response => this.handleSuccessLogin(response), error => this.handleFailedLogin(error));
+        .subscribe((response: any) => this.handleSuccessLogin(response), error => this.handleFailedLogin(error));
     }
   }
 
-  handleSuccessLogin(googleUser: GoogleAuthCurrentUser) {
+  handleSuccessLogin(googleUser: gapi.auth2.GoogleUser) {
     const authResponse = googleUser.getAuthResponse();
     const token = authResponse.access_token;
     const profile = googleUser.getBasicProfile();
     const MILLISECOND = 1000;
-    const seconds: string = authResponse.expires_in;
-    const expireTimeInMs = parseInt(seconds, 10) * MILLISECOND;
+    const expireTimeInMs = parseInt(authResponse.expires_in, 10) * MILLISECOND;
     this.store.dispatch(this.userProfileActions.updateToken(token));
     this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
     if (this.autoSignInTimer) {
@@ -107,11 +102,10 @@ export class Authorization {
   startTimerToNextAuth(timeInMs: number): Subscription {
     return Observable.timer(timeInMs)
       .timeInterval()
-      .do(() => console.log('silent auto-authorizing..', {at: this._accessToken, time: new Date().toString() }))
       .switchMap(() => this.authorize())
-        .do((googleAuth: GoogleAuthResponse) => this.saveGoogleAuth(googleAuth))
-        .map((googleAuth: GoogleAuthResponse) => googleAuth.currentUser.get())
-        .subscribe((googleUser: GoogleAuthCurrentUser) => {
+        .do((googleAuth: gapi.auth2.GoogleAuth) => this.saveGoogleAuth(googleAuth))
+        .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get())
+        .subscribe((googleUser: gapi.auth2.GoogleUser) => {
           this.zone.run(() => this.handleSuccessLogin(googleUser));
         });
   }
@@ -125,7 +119,6 @@ export class Authorization {
   }
 
   signOut () {
-    this.autoSignInTimer.unsubscribe();
     return Observable.fromPromise(this._googleAuth.signOut())
       .subscribe(response => {
         this.store.dispatch(this.userProfileActions.signOut());

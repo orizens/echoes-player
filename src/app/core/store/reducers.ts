@@ -5,6 +5,7 @@ import { nowPlaylistRegister, NowPlaylistInterface, nowPlaylist, NowPlaylistActi
 import { userRegister, UserProfileData, user, UserProfileActions } from './user-profile';
 import { searchRegister, PlayerSearch, search, PlayerSearchActions } from './player-search';
 import { appLayoutRegister, AppLayout, appLayout, AppLayoutActions } from './app-layout';
+
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
  * our top level state interface is just a map of keys to inner state types.
@@ -16,14 +17,6 @@ export interface EchoesState {
   search: PlayerSearch;
   appLayout: AppLayout;
 };
-
-export const reducersRegisters = [
-  playerRegister,
-  nowPlaylistRegister,
-  userRegister,
-  searchRegister,
-  appLayoutRegister
-];
 
 export let EchoesReducers = {
   player,
@@ -40,6 +33,16 @@ export let EchoesActions = [
   PlayerSearchActions,
   AppLayoutActions
 ];
+
+export function getAppReducersRegistry() {
+  return [
+    playerRegister,
+    nowPlaylistRegister,
+    userRegister,
+    searchRegister,
+    appLayoutRegister
+  ];
+};
 
 export function getPlayer$ (state$: Observable<EchoesState>): Observable<YoutubePlayerState> {
   return state$.select(state => state.player);
@@ -59,8 +62,4 @@ export function getAppLayout$ ($state: Observable<EchoesState>): Observable<AppL
 
 export function getNowPlaylist$ ($state: Observable<EchoesState>): Observable<NowPlaylistInterface> {
   return $state.select(state => state.nowPlaylist);
-};
-
-export function getActiveTrackId$ ($state: Observable<EchoesState>): Observable<string> {
-  return $state.select(state => state.nowPlaylist.selectedId);
 };

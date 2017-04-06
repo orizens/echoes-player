@@ -1,4 +1,4 @@
-interface StoreRegistry {
+interface IStoreRegistry {
   reducers: {};
   actions: any[];
 }
@@ -7,14 +7,14 @@ interface StoreReducerPackage {
   actions: any;
 }
 
-export const storeRegistry: StoreRegistry = {
-  reducers: {},
-  actions: []
+export class StoreRegistry {
+  static reducers = {};
+  static actions = [];
 };
 
-export function registerReducers(reducersRegisters: StoreReducerPackage[]): StoreRegistry {
+export function registerReducers(reducersRegisters: StoreReducerPackage[]): IStoreRegistry {
   reducersRegisters.forEach(reducerRegistry => registerReducer(reducerRegistry));
-  return storeRegistry;
+  return StoreRegistry;
 }
 
 export function registerReducer(reducerPackage: StoreReducerPackage) {
@@ -23,11 +23,11 @@ export function registerReducer(reducerPackage: StoreReducerPackage) {
 }
 
 function addReducer(reducer) {
-  Object.assign(storeRegistry.reducers, reducer);
-  return storeRegistry.reducers;
+  Object.assign(StoreRegistry.reducers, reducer);
+  return StoreRegistry.reducers;
 };
 
 function addActions(actionsClass) {
-  storeRegistry.actions.push(actionsClass);
-  return storeRegistry.actions;
+  StoreRegistry.actions.push(actionsClass);
+  return StoreRegistry.actions;
 }

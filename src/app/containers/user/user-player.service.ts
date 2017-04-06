@@ -1,6 +1,7 @@
 import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import {
+  YoutubePlayerService,
   NowPlaylistService,
   UserProfile,
 } from '../../core/services';

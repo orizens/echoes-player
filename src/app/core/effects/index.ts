@@ -3,7 +3,7 @@ import { NowPlaylistEffects } from './now-playlist.effects';
 import { UserProfileEffects } from './user-profile.effects';
 import { PlayerSearchEffects } from './player-search.effects';
 
-export default [
+export const AppEffects = [
   PlayerEffects,
   NowPlaylistEffects,
   UserProfileEffects,

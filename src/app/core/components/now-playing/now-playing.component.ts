@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { EchoesState } from '../../store';
 import { NowPlaylistService } from '../../services/now-playlist.service';
+import { NowPlaylistInterface } from '../../store/now-playlist';
 import { PlayerActions } from '../../store/youtube-player';
-import { NowPlaylist } from './now-playlist';
+import { NowPlaylistComponent } from './now-playlist';
 
 @Component({
   selector: 'now-playing',
@@ -19,26 +21,27 @@ import { NowPlaylist } from './now-playlist';
     ></now-playlist-filter>
     <now-playlist
       [playlist]="nowPlaylist$ | async"
-      [activeId]="activeTrackId$ | async"
       (select)="selectVideo($event)"
-      (sort)="sortVideo($event)"
       (remove)="removeVideo($event)"
     ></now-playlist>
   </div>
   `,
+      // (sort)="sortVideo($event)"
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaying {
-  public nowPlaylist$ = this.nowPlaylistService.playlist$;
-  public activeTrackId$ = this.nowPlaylistService.activeTrackId$;
-
-  @ViewChild(NowPlaylist) nowPlaylistComponent: NowPlaylist;
+export class NowPlayingComponent implements OnInit {
+  public nowPlaylist$: Observable<NowPlaylistInterface>;
+  @ViewChild(NowPlaylistComponent) nowPlaylistComponent: NowPlaylistComponent;
 
   constructor(
-    private store: Store<EchoesState>,
+    public store: Store<EchoesState>,
     public nowPlaylistService: NowPlaylistService,
-    private playerActions: PlayerActions
+    public playerActions: PlayerActions
   ) {}
+
+  ngOnInit() {
+    this.nowPlaylist$ = this.nowPlaylistService.playlist$;
+  }
 
   selectVideo (media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(this.playerActions.playVideo(media));

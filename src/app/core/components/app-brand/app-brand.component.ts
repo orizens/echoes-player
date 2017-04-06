@@ -1,12 +1,14 @@
 import { EchoesState } from '../../store';
 import { Store } from '@ngrx/store';
 import { AppLayoutActions } from '../../store/app-layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import './app-brand.scss';
+// import './app-brand.scss';
 
 @Component({
   selector: 'app-brand',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './app-brand.scss' ],
   template: `
   <div class="navbar-brand col-md-12 bg-primary"
     (click)="toggleSidebar()">

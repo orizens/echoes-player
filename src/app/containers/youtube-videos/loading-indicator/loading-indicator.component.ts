@@ -1,14 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding,
-  Input
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 
-import './loading-indicator.scss';
 
 @Component({
   selector: 'loading-indicator',
+  styleUrls: ['./loading-indicator.scss'],
+  encapsulation: ViewEncapsulation.None,
   template: `
   <div class="alert alert-info">
     <i class="fa fa-circle-o-notch fa-spin"></i> {{ message }}
@@ -17,11 +13,11 @@ import './loading-indicator.scss';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadingIndicatorComponent {
-  @Input() message = 'Searching More Videos...';
+  @Input() message: string = 'Searching More Videos...';
 
   @Input()
   @HostBinding('class.indicator-show')
-  isLoading = false;
+  isLoading: boolean = false;
 
   constructor() { }
 }

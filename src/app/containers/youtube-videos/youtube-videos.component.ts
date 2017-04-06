@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
 
@@ -9,10 +9,10 @@ import { AppLayoutActions } from '../../core/store/app-layout';
 // selectors
 import { getPlayerSearch$, getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
 
-import './youtube-videos.scss';
-
 @Component({
   selector: 'youtube-videos',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './youtube-videos.scss' ],
   template: `
   <article
     infinite-scroll
@@ -48,6 +48,8 @@ export class YoutubeVideosComponent implements OnInit {
   videos$ = this.store.let(getPlayerSearchResults$);
   playerSearch$ = this.store.let(getPlayerSearch$);
   playlist$ = this.store.let(getNowPlaylist$);
+  // @State(getVideos$) videos$;
+  // @State(getPlayerSearch$) playerSearch$;
 
   presets: PresetParam[] = [
     { label: 'Any', value: '' },

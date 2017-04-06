@@ -3,7 +3,7 @@ import {
   async,
 } from '@angular/core/testing';
 
-import { nowPlaylist, NowPlaylistActions, YoutubeMediaPlaylist } from './index';
+import { nowPlaylist, NowPlaylistActions } from './index';
 import { YoutubeMediaItemsMock } from '../../../../../tests/mocks/youtube.media.items';
 
 describe('The Now Playlist Reducer', () => {

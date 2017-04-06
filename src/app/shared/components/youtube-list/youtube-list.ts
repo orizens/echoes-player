@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
-import { YoutubeMedia } from '../youtube-media/youtube-media';
-import './youtube-list.scss';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import { YoutubeMediaComponent } from '../youtube-media/youtube-media';
+// import './youtube-list.scss';
 
 @Component({
   selector: 'youtube-list',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './youtube-list.scss' ],
   template: `
   <ul class="list-unstyled clearfix">
     <li class="youtube-list-item" *ngFor="let media of list">
@@ -20,7 +22,7 @@ import './youtube-list.scss';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class YoutubeList {
+export class YoutubeListComponent {
   @Input() list: GoogleApiYouTubeVideoResource[] = [];
   @Input() queued: GoogleApiYouTubeVideoResource[] = [];
   @Output() play = new EventEmitter();

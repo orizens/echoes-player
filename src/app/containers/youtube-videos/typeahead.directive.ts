@@ -31,14 +31,14 @@ enum Key {
  using an external template:
  <input [typeaheadTpl]="itemTpl" >
 
-  <template #itemTpl let-result>
+  <ng-template #itemTpl let-result>
     <strong>MY {{ result.result }}</strong>
-  </template>
+  </ng-template>
 */
 @Component({
   selector: '[typeahead]',
   template: `
-  <template #suggestionsTplRef>
+  <ng-template #suggestionsTplRef>
   <section class="list-group results" *ngIf="showSuggestions">
     <div class="typeahead-backdrop" (click)="hideSuggestions()"></div>
     <button type="button" class="list-group-item"
@@ -46,15 +46,15 @@ enum Key {
       [class.active]="markIsActive(i, result)"
       (click)="handleSelectSuggestion(result)">
       <span *ngIf="!typeaheadItemTpl"><i class="fa fa-search"></i> {{ result }}</span>
-      <template
+      <ng-template
         [ngTemplateOutlet]="typeaheadItemTpl" 
         [ngOutletContext]="{ $implicit: {result: result, index: i} }"
-      ></template>
+      ></ng-template>
     </button>
   </section>
-  </template>
+  </ng-template>
   `,
-  styleUrls: [`
+  styles: [`
   .typeahead-backdrop {
     position: fixed;
     bottom: 0;
@@ -68,9 +68,9 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
   @Output() typeaheadSelected = new EventEmitter<string>();
   @Input() typeaheadItemTpl: TemplateRef<any>;
 
-  private showSuggestions: boolean = false;
+  private showSuggestions = false;
   private results: string[];
-  private suggestionIndex: number = 0;
+  private suggestionIndex = 0;
   private subscriptions: Subscription[];
   private activeResult: string;
 
@@ -145,7 +145,7 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
       .filter((e: any) => e.keyCode === Key.ArrowDown || e.keyCode === Key.ArrowUp)
       .map((e: any) => e.keyCode)
       .subscribe((keyCode: number) => {
-        let step = keyCode === Key.ArrowDown ? 1 : -1;
+        const step = keyCode === Key.ArrowDown ? 1 : -1;
         const topLimit = 9;
         const bottomLimit = 0;
         this.suggestionIndex += step;

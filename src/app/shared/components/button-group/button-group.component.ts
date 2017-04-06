@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 
-import './button-group.component.scss';
+// import './button-group.component.scss';
 
 export interface ButtonGroupButton {
   label: string;
@@ -8,6 +16,8 @@ export interface ButtonGroupButton {
 }
 @Component({
   selector: 'button-group',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './button-group.component.scss' ],
   template: `
     <div class="btn-group btn-group-sm navbar-btn">
       <button class="btn btn-default"

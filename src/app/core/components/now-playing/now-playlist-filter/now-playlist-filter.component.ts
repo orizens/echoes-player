@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { NowPlaylistInterface } from '../../../store/now-playlist';
-import './now-playlist-filter.scss';
 
 @Component({
   selector: 'now-playlist-filter',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: [ './now-playlist-filter.scss' ],
   template: `
   <h3 class="nav-header user-playlists-filter">
     <span class="text btn-transparent" title="Reveal now playing track"
@@ -33,24 +34,17 @@ import './now-playlist-filter.scss';
     </div>
   </h3>
   `,
-  styles: [`
-    :host [hidden] {
-      display: none;
-    }
-  `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaylistFilter {
+export class NowPlaylistFilterComponent {
   @Input() playlist: NowPlaylistInterface;
   // @Output() save = new EventEmitter();
   @Output() clear = new EventEmitter();
   @Output() filter = new EventEmitter();
   @Output() reset = new EventEmitter();
-  @Output() headerClick = new EventEmitter<void>();
+  @Output() headerClick = new EventEmitter();
 
-  constructor() {
-
-  }
+  constructor() {}
 
   handleFilterChange (searchFilter: string) {
     this.filter.next(searchFilter);

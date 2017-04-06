@@ -85,6 +85,12 @@ export class UserProfile {
       });
   }
 
+  isTokenValid(token) {
+    const accessToken = this.playlists.config.get('access_token');
+    // TODO - should check if the current accessToken is still valid - google api
+    return accessToken === token;
+  }
+
   toUserJson (profile): GoogleBasicProfile {
     let _profile: GoogleBasicProfile = {};
     if (profile) {

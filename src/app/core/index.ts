@@ -3,14 +3,27 @@ import { EffectsModule } from '@ngrx/effects';
 import { throwIfAlreadyLoaded } from './module-imports.guards';
 
 import { CoreStoreModule } from './store';
-import effects from './effects';
+import { AppEffects } from './effects';
 
 import { APP_SERVICES } from './services';
+
+// export function AppEffectModules(effects: any[], runEffectFun) {
+//   return AppEffects.map(function(effect){
+//     return runEffectFun(effect);
+//   });
+// }
+const AppEffectModules = [
+  EffectsModule.run(AppEffects[0]),
+  EffectsModule.run(AppEffects[1]),
+  EffectsModule.run(AppEffects[2]),
+  EffectsModule.run(AppEffects[3])
+];
 
 @NgModule({
   imports: [
     CoreStoreModule,
-    ...effects.map(effect => EffectsModule.run(effect)),
+    // ...AppEffectModules(AppEffects, EffectsModule.run),
+    ...AppEffectModules,
   ],
   declarations: [
   ],
@@ -22,7 +35,7 @@ import { APP_SERVICES } from './services';
   ]
 })
 export class CoreModule {
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
-    throwIfAlreadyLoaded(parentModule, 'CoreModule');
-  }
+  // constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+  //   throwIfAlreadyLoaded(parentModule, 'CoreModule');
+  // }
 }

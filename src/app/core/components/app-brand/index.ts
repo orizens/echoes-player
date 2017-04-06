@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { AppBrandComponent }   from './app-brand.component';
+import { AppBrandComponent } from './app-brand.component';
 
 @NgModule({
   imports: [],

@@ -1,0 +1,37 @@
+@import '../../../../css/echoes-variables.scss';
+
+.navigator.library-nav {
+	.nav-header {
+		padding: 1rem 2px 1rem 15px;
+	}
+
+	> li a:hover {
+		background: rgba(10,10,10,.2);
+	}
+
+	.fa {
+		margin-right: 10px;
+	}
+
+	.active a {
+		$active-color: rgba(10,10,10, .5);
+		color: white;
+		box-shadow: inset 0px 0px 6px $active-color;
+		background: $active-color;
+
+		i {
+			color: $brand-primary;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.closed navigator {
+		width: $sidebar-closed-width;
+		a {
+			text-align: right;
+		}
+		.text {
+			display: none;
+		}
+	}
+}

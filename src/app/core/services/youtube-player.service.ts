@@ -1,6 +1,6 @@
 import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
-import { window } from '@angular/platform-browser/src/facade/browser';
+// import { window } from '@angular/platform-browser/src/facade/browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { EchoesState } from '../store';
@@ -10,7 +10,7 @@ import { PlayerActions, YoutubePlayerState } from '../store/youtube-player';
 export class YoutubePlayerService {
   public player: YT.Player;
   public player$: Observable<YoutubePlayerState>;
-  private isFullscreen: boolean = false;
+  private isFullscreen = false;
   private defaultSizes = {
       height: 270,
       width: 367
@@ -54,7 +54,7 @@ export class YoutubePlayerService {
 
   onPlayerStateChange (event) {
     const state = event.data;
-    let autoNext = false;
+    // let autoNext = false;
     // play the next song if its not the end of the playlist
     // should add a "repeat" feature
     if (state === YT.PlayerState.ENDED) {
