@@ -1,3 +1,7 @@
+## v 3.0.1 (2017/04/07) 
+### Updates
+* fixes app error - "likeCount" form statistics doesn't exist in search results
+
 ## v 3.0.0 (2017/04/06) 
 
 ### Updates

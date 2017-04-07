@@ -21,15 +21,15 @@
 
 				<section class="stats">
 					<span class="item-duration item-action pull-right">
-						<i class="fa fa-clock-o"></i> {{ media.contentDetails.duration | toFriendlyDuration }}
+						<i class="fa fa-clock-o"></i> {{ media.contentDetails?.duration | toFriendlyDuration }}
 					</span>
 
 					<span class="item-likes item-action" rel="tooltip" title="Likes">
-						<i class="fa fa-thumbs-up"></i> {{ media.statistics.likeCount | number:'2.0'}}
+						<i class="fa fa-thumbs-up"></i> {{ media.statistics?.likeCount | number:'2.0'}}
 					</span>
 
 					<span class="item-views item-action" rel="tooltip" title="Views">
-						<i class="fa fa-eye"></i> {{ media.statistics.viewCount | number:'2.0'}}
+						<i class="fa fa-eye"></i> {{ media.statistics?.viewCount | number:'2.0'}}
 					</span>
 				</section>
 
