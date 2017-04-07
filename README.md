@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/orizens/echoes-ng2.svg?branch=master)](https://travis-ci.org/orizens/echoes-ng2) [![Code Climate](https://codeclimate.com/github/orizens/echoes-ng2/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-ng2)
 
-# Echoes Player - Angular (+2) Version
+# Echoes Player - Angular Version (2nd Generation)
 Echoes is a great youtube player developed by [Oren Farhi](http://orizens.com).
 It's fun & easy to listen or watch videos from youtube with Echoes.
 What if youtube was designed to be used as music player?
@@ -12,7 +12,7 @@ It can be regarded as the Media Player experience for youtube listening pleasure
 
 <p align="center">
   <a href="https://echoesplayer.com" target="_blank">
-    <img src="https://cloud.githubusercontent.com/assets/878660/23353758/bf65142e-fcd6-11e6-860e-fac3cbcb1eac.jpg" alt="Webpack and Angular 2" width="75%"/>
+    <img src="https://cloud.githubusercontent.com/assets/878660/23353758/bf65142e-fcd6-11e6-860e-fac3cbcb1eac.jpg" alt="Webpack and Angular 4" width="75%"/>
   </a>
 </p>
 
@@ -38,8 +38,8 @@ My services include:
 - [ngrx/store-devtools](https://github.com/ngrx/store-devtools) - a connector to [redux devtool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US) for chrome  
 
 ## Included Technologies & Libraries
-- [Angular +2.x](http://angular.io) 
-- Angular-cli
+- [Angular +4.x](http://angular.io) 
+- [Angular CLI](https://cli.angular.io/)
 - Bootstrap v3.x (SASS)
 - Typescript 2.x
 - ES6 / ES2015 (using Loader Spec)
@@ -47,7 +47,7 @@ My services include:
 
 # EchoesPlayer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -59,6 +59,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+### Build for Production
+Run `npm run build:prod` to build the project minified for production with AOT.
 
 ## Running unit tests
 
