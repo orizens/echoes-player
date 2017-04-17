@@ -14,13 +14,7 @@ export class PlayerActions {
   static RESET = '[Player] RESET';
 
   togglePlayer = ActionCreatorFactory.create<boolean>(PlayerActions.TOGGLE_PLAYER, true);
-
-  playVideo(media: GoogleApiYouTubeVideoResource): Action {
-    return {
-      type: PlayerActions.PLAY,
-      payload: media
-    };
-  }
+  playVideo = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource>(PlayerActions.PLAY);
 
   loadAndPlay(media: GoogleApiYouTubeVideoResource): Action {
     return {

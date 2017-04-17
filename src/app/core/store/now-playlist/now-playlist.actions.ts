@@ -18,12 +18,14 @@ export class NowPlaylistActions {
   static SELECT_PREVIOUS = '[NOW PLAYLIST] SELECT_PREVIOUS';
   static QUEUE_VIDEOS = '[NOW PLAYLIST] QUEUE_VIDEOS';
   static MEDIA_ENDED = '[NOW PLAYLIST] MEDIA_ENDED';
+  static TOGGLE_REPEAT = '[NOW PLAYLIST] TOGGLE_REPEAT';
 
   mediaEnded = ActionCreatorFactory.create(NowPlaylistActions.MEDIA_ENDED);
   selectNext = ActionCreatorFactory.create(NowPlaylistActions.SELECT_NEXT);
   selectPrevious = ActionCreatorFactory.create(NowPlaylistActions.SELECT_PREVIOUS);
   removeAll = ActionCreatorFactory.create(NowPlaylistActions.REMOVE_ALL);
   removeVideo = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource>(NowPlaylistActions.REMOVE);
+  toggleRepeat = ActionCreatorFactory.create(NowPlaylistActions.TOGGLE_REPEAT);
 
   queueLoadVideo(media): Action {
     return {

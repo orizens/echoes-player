@@ -15,7 +15,7 @@ export interface YoutubePlayerState {
   playerState: number;
   isFullscreen: boolean;
 }
-let initialPlayerState: YoutubePlayerState = {
+const initialPlayerState: YoutubePlayerState = {
   mediaId: { videoId: 'NONE' },
   index: 0,
   media: {
@@ -50,7 +50,7 @@ export function player (state: YoutubePlayerState = initialPlayerState, action: 
       });
 
     default:
-      return state;
+      return { ...initialPlayerState, ...state };
   }
 };
 
