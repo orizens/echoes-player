@@ -5,12 +5,14 @@ export interface NowPlaylistInterface {
   videos: GoogleApiYouTubeVideoResource[];
   selectedId: string;
   filter: string;
+  repeat: boolean;
 }
 
 const initialState: NowPlaylistInterface = {
   videos: [],
   selectedId: '',
-  filter: ''
+  filter: '',
+  repeat: false
 };
 
 export function nowPlaylist(state: NowPlaylistInterface = initialState, action: Action): NowPlaylistInterface {
@@ -37,10 +39,11 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
     case NowPlaylistActions.REMOVE_ALL:
       return Object.assign({}, state, { videos: [], filter: '', selectedId: '' });
 
-    case NowPlaylistActions.SELECT_NEXT:
-      return Object.assign({}, state, {
-        selectedId: selectNextIndex(state.videos, state.selectedId, state.filter)
-      });
+    case NowPlaylistActions.SELECT_NEXT: {
+      return { ...state,
+        selectedId: selectNextIndex(state.videos, state.selectedId, state.filter, state.repeat)
+      };
+    }
 
     case NowPlaylistActions.SELECT_PREVIOUS:
       return Object.assign({}, state, {
@@ -49,6 +52,13 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
 
     case NowPlaylistActions.MEDIA_ENDED:
       return selectNextOrPreviousTrack(state, state.filter);
+
+    case NowPlaylistActions.TOGGLE_REPEAT: {
+      return {
+        ...state,
+        repeat: !state.repeat
+      };
+    };
 
     default:
       return state;
@@ -84,7 +94,7 @@ function filterVideos(videos: GoogleApiYouTubeVideoResource[], filter: string) {
   return videos.filter(video => JSON.stringify(video).toLowerCase().includes(filter.toLowerCase()));
 }
 
-function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string, filter: string): string {
+function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string, filter: string, isRepeat: boolean): string {
   const filteredVideos = filterVideos(videos, filter);
   const currentIndex: number = filteredVideos.findIndex(video => video.id === selectedId);
   let nextIndex = currentIndex + 1;
@@ -92,7 +102,7 @@ function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: st
     nextIndex = 0;
   }
   if (filteredVideos.length === nextIndex) {
-    nextIndex = 0;
+    nextIndex = isRepeat ? 0 : currentIndex;
   }
 
   return filteredVideos[nextIndex].id || '';
@@ -114,9 +124,18 @@ function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string):
   const currentId = state.selectedId;
   const indexOfCurrentVideo = videosPlaylist.findIndex(video => currentId === video.id);
   const isCurrentLast = indexOfCurrentVideo + 1 === videosPlaylist.length;
+  const getNextIdForPlaylist = () => {
+    let id = '';
+    if (videosPlaylist.length && !state.repeat) {
+      id = currentId;
+    } else if (videosPlaylist.length) {
+      id = videosPlaylist[0].id;
+    }
+    return id;
+  };
   const nextId = isCurrentLast
-    ? videosPlaylist.length ? videosPlaylist[0].id : ''
-    : selectNextIndex(videosPlaylist, currentId, filter);
+    ? getNextIdForPlaylist()
+    : selectNextIndex(videosPlaylist, currentId, filter, state.repeat);
   return Object.assign({}, state, { selectedId: nextId });
 }
 

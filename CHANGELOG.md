@@ -1,3 +1,7 @@
+## v 3.1.0 (2017/04/16) 
+### Updates
+* [NEW] - added "repeat" for playlist. now player will stop playing the playlist if repeat is off (default setting).
+
 ## v 3.0.1 (2017/04/07) 
 ### Updates
 * fixes app error - "likeCount" form statistics doesn't exist in search results

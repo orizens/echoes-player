@@ -76,4 +76,8 @@ export class NowPlaylistService {
     const isCurrentLast = indexOfCurrentVideo + 1 === nowPlaylist.videos.length;
     return isCurrentLast;
   }
+
+  toggleRepeat() {
+    this.store.dispatch(this.nowPlaylistActions.toggleRepeat());
+  }
 }

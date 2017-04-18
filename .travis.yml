@@ -1,20 +1,28 @@
-language: node_js
-sudo: false
-node_js:
-  - 6.9.1
+sudo: required
+dist: trusty
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 env:
   global:
-    - GH_REF: github.com/orizens/echoes-ng2.git
+    - GH_REF: github.com/orizens/echoes-player.git
     - secure: >-
         jN5Vb4B6cOFEfUMX+vllHEP1e2Re4PqzIs9q87o+/5Ma0RF4xvrXTeKeK1woIKteHnPrIhMBOUiCvBqcB58bB038UpOeZkEfFvugY53KNzZs7+NXRiMfB26IwoNQFhhJc2OK72JEOHfjAB5/NEvf/hEz2dEktV/S4NtE/3kUam9ahn72/Bls9D0yd+NK+wD4GFmSCy79gKE8hEXfD8i1jOOL/8gVg+oSXr3b796jSGXkuw1P5ljVXrNubghwjaB8iXT+xuseXhQ7b+HAxda1CJiAMNEDNBz6z9ihGWTc2pUjf7E0yWvSwjvbB0i2xnC5N40wiASZxNHlSsorclWgeBrpymwpL5/MTtG31oyUcUQZUGVEydoW3Ob7GnkWGV8FNC6xWQ+bZFCRrl8slQFCYqH2/+A7CiiZ0K2h4cfo9Dx7wJXRwMJoQMXwWCvt2N0ArY+LhESpqeaOP5Q5JUD8OPR5SilszeTAjy6Ni3ZdxYY5gpR4rBV4AAsEdcJc4QkI+cpgTxFxowBX4ZmAYmwJRxPhxvEW8fx6tbZlLclYxxONqjGkc9iCtPiEGmf0QXkLlyqsBB/DJWc6ZkInbW5RWygz81+bRZwIqg7JoFOwEy2xVTLhCC9fmfYInA+4zm8mvT+fwVhR1HxKU4lKyVWiethZagf3qAPc8adlE3Q/Omg=
+language: node_js
+node_js:
+  - stable
 install:
   - npm install karma-es6-shim
-  - npm install phantomjs
-  - npm install karma-phantomjs-launcher
   - npm install
-before_script: null
 script:
   - npm run test:ci
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
 after_script:
   - process.exit()
 after_success:

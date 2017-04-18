@@ -2,7 +2,7 @@
 $toolbar-position-on-hover: -55px;
 
 @media (min-width: 320px) {
-	player {
+	:host {
 		border: 0 !important;
 
 		.yt-player {
@@ -43,7 +43,7 @@ $toolbar-position-on-hover: -55px;
 	}
 }
 @media (min-width: 768px) {
-	player {
+	:host {
 		.fullscreen.show-youtube-player {
 			
 			.container-fluid {
@@ -68,7 +68,7 @@ $toolbar-position-on-hover: -55px;
 }
 
 @media (max-width: 767px) {
-	player {
+	:host {
 		.controls-container {
 			padding: 0;
 		}
@@ -78,8 +78,16 @@ $toolbar-position-on-hover: -55px;
 	border-bottom: 4px solid $turquoise;
 }
 
-player {
+:host {
 	z-index: 1031 !important;
+	.show-youtube-player {
+		.yt-player {
+			transform: translate3d(-10%,-90%,0) scale(.8, .8);
+		}
+		.social-shares {
+			display: block;
+		}
+	}
 
 	.fullscreen .btn.fullscreen {
 		@include control-button-active();
@@ -142,14 +150,5 @@ player {
 	}
 	.social-shares {
 		display: none;
-	}
-}
-
-player .show-youtube-player {
-	.yt-player {
-		transform: translate3d(-10%,-90%,0) scale(.8, .8);
-	}
-	.social-shares {
-		display: block;
 	}
 }

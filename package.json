@@ -1,6 +1,6 @@
 {
   "name": "echoes-player",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -55,15 +55,16 @@
     "karma-coverage-istanbul-reporter": "^0.2.2",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-phantomjs-launcher": "1.0.4",
+    "karma-spec-reporter": "0.0.31",
     "ng2-youtube-player": "0.0.2",
     "ngrx-action-creator-factory": "0.0.1",
     "ngrx-store-localstorage": "0.1.5",
+    "ngx-infinite-scroll": "0.4.1",
     "protractor": "~5.1.0",
     "rimraf": "2.6.1",
     "shx": "0.2.2",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "typescript": "2.2.2"
   }
 }

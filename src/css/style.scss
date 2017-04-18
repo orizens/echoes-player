@@ -128,17 +128,6 @@ iframe {
 		width: 100%;
 		padding: 0;
 	}
-	.youtube-player .current-track-info-container .btn-info {
-		width: 100%;
-		max-width:235px;
-	}
-	.youtube-player .current-playlist-info .btn-info {
-		width: 100%;
-	}
-	.youtube-player .current-track-info-container .dropdown-menu {
-		left: auto;
-		right: 0;
-	}
 
 	.youtube-item:hover {
 	    box-shadow: none;
@@ -152,9 +141,7 @@ iframe {
 		top: 22px;
 		right: 21px;
 	}
-	.youtube-player .icon-refresh {
-		display: none;
-	}
+
 	.nav.donation {
 		display: none;
 	}

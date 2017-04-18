@@ -1,6 +1,6 @@
 @import '../../../../../css/echoes-variables.scss';
 
-.player-controls {
+:host {
 	$btn-color: whitesmoke;
 	$btn-control-font-size:  1.3rem;
 	$btn-control-padding:  1.5rem 2rem;
@@ -18,7 +18,8 @@
 
 	.btn {
 		&.next,
-		&.previous {
+		&.previous,
+		&.repeat {
 			padding: $btn-control-padding;
 		}
 	}
@@ -48,14 +49,19 @@
 		transform: translatey(0);
 	}
 
-}
+	&.yt-playing .player-controls {
+		.play {
+			display: none;
+		}
 
-.yt-playing .player-controls {
-	.play {
-		display: none;
+		.pause {
+			display: inline-block;
+		}
 	}
 
-	.pause {
-		display: inline-block;
+	&.yt-repeat-on .player-controls {
+		.repeat {
+			color: $btn-control-primary-color;
+		}
 	}
 }
