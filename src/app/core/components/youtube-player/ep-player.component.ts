@@ -1,3 +1,4 @@
+import { NowPlaylistEffects } from '../../effects/now-playlist.effects';
 import { getPlayer$, getCurrentMedia$, getIsPlayerPlaying$ } from '../../store/youtube-player/youtube-player.selectors';
 import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
 import { EchoesState } from '../../store';
@@ -68,11 +69,14 @@ export class PlayerComponent implements OnInit {
     public nowPlaylistService: NowPlaylistService,
     private playerActions: PlayerActions,
     private store: Store<EchoesState>,
+    private nowPlaylistEffects: NowPlaylistEffects
   ) {
   }
 
   ngOnInit() {
     this.store.dispatch(this.playerActions.reset());
+    this.nowPlaylistEffects.loadNextTrack$
+      .subscribe((action) => this.playVideo(action.payload));
   }
 
   setupPlayer (player) {
@@ -82,8 +86,8 @@ export class PlayerComponent implements OnInit {
   updatePlayerState (event) {
     this.playerService.onPlayerStateChange(event);
     if (event.data === YT.PlayerState.ENDED) {
+      // this.store.dispatch(this.playerActions.loadNextTrack());
       this.nowPlaylistService.trackEnded();
-      this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
     }
   }
 

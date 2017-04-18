@@ -50,7 +50,7 @@ export function player (state: YoutubePlayerState = initialPlayerState, action: 
       });
 
     default:
-      return { ...initialPlayerState, ...state };
+      return state;
   }
 };
 

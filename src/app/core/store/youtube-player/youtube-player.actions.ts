@@ -12,9 +12,11 @@ export class PlayerActions {
   static STATE_CHANGE = '[Player] STATE_CHANGE';
   static FULLSCREEN = '[Player] FULLSCREEN';
   static RESET = '[Player] RESET';
+  static LOAD_NEXT_TRACK = '[PLAYER] LOAD_NEXT_TRACK';
 
   togglePlayer = ActionCreatorFactory.create<boolean>(PlayerActions.TOGGLE_PLAYER, true);
   playVideo = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource>(PlayerActions.PLAY);
+  loadNextTrack = ActionCreatorFactory.create(PlayerActions.LOAD_NEXT_TRACK);
 
   loadAndPlay(media: GoogleApiYouTubeVideoResource): Action {
     return {

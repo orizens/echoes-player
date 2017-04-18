@@ -124,8 +124,17 @@ function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string):
   const currentId = state.selectedId;
   const indexOfCurrentVideo = videosPlaylist.findIndex(video => currentId === video.id);
   const isCurrentLast = indexOfCurrentVideo + 1 === videosPlaylist.length;
+  const getNextIdForPlaylist = () => {
+    let id = '';
+    if (videosPlaylist.length && !state.repeat) {
+      id = currentId;
+    } else if (videosPlaylist.length) {
+      id = videosPlaylist[0].id;
+    }
+    return id;
+  };
   const nextId = isCurrentLast
-    ? videosPlaylist.length ? videosPlaylist[0].id : ''
+    ? getNextIdForPlaylist()
     : selectNextIndex(videosPlaylist, currentId, filter, state.repeat);
   return Object.assign({}, state, { selectedId: nextId });
 }
