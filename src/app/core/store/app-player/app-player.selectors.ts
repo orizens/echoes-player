@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs/Observable';
-import { YoutubePlayerState } from './youtube-player.reducer';
+import { AppPlayerState } from './app-player.reducer';
 import { EchoesState } from '../reducers';
 
-export function getPlayer$ (state$: Observable<EchoesState>): Observable<YoutubePlayerState> {
+export function getPlayer$ (state$: Observable<EchoesState>): Observable<AppPlayerState> {
   return state$.select(state => state.player);
 }
 
-export function getCurrentMedia$ (state$: Observable<EchoesState>): Observable<YoutubePlayerState> {
+export function getCurrentMedia$ (state$: Observable<EchoesState>): Observable<AppPlayerState> {
   return state$.select(state => state.player.media);
 }
 

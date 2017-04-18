@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import { ActionCreatorFactory } from '../action-creator.util';
 
 @Injectable()
-export class PlayerActions {
+export class AppPlayerActions {
   static PLAY = '[Player] PLAY';
   static LOAD_AND_PLAY = '[Player] LOAD_AND_PLAY';
   static QUEUE = '[Player] REMOVE';
@@ -14,46 +14,46 @@ export class PlayerActions {
   static RESET = '[Player] RESET';
   static LOAD_NEXT_TRACK = '[PLAYER] LOAD_NEXT_TRACK';
 
-  togglePlayer = ActionCreatorFactory.create<boolean>(PlayerActions.TOGGLE_PLAYER, true);
-  playVideo = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource>(PlayerActions.PLAY);
-  loadNextTrack = ActionCreatorFactory.create(PlayerActions.LOAD_NEXT_TRACK);
+  togglePlayer = ActionCreatorFactory.create<boolean>(AppPlayerActions.TOGGLE_PLAYER, true);
+  playVideo = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource>(AppPlayerActions.PLAY);
+  loadNextTrack = ActionCreatorFactory.create(AppPlayerActions.LOAD_NEXT_TRACK);
 
   loadAndPlay(media: GoogleApiYouTubeVideoResource): Action {
     return {
-      type: PlayerActions.LOAD_AND_PLAY,
+      type: AppPlayerActions.LOAD_AND_PLAY,
       payload: media
     };
   }
 
   playStarted(media): Action {
     return {
-      type: PlayerActions.PLAY_STARTED
+      type: AppPlayerActions.PLAY_STARTED
     };
   }
 
   updateState(state: number): Action {
     return {
-      type: PlayerActions.STATE_CHANGE,
+      type: AppPlayerActions.STATE_CHANGE,
       payload: state
     };
   }
 
   // togglePlayer(visible: boolean = true): Action {
   //   return {
-  //     type: PlayerActions.TOGGLE_PLAYER,
+  //     type: AppPlayerActions.TOGGLE_PLAYER,
   //     payload: visible
   //   };
   // }
 
   fullScreen(): Action {
     return {
-      type: PlayerActions.FULLSCREEN
+      type: AppPlayerActions.FULLSCREEN
     };
   }
 
   reset(): Action {
     return {
-      type: PlayerActions.RESET
+      type: AppPlayerActions.RESET
     };
   }
 }

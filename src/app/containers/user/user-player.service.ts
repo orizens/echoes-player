@@ -7,7 +7,7 @@ import {
 } from '../../core/services';
 import { EchoesState } from '../../core/store';
 import { NowPlaylistActions } from '../../core/store/now-playlist';
-import { PlayerActions } from '../../core/store/youtube-player';
+import { AppPlayerActions } from '../../core/store/app-player';
 
 @Injectable()
 export class UserPlayerService {
@@ -15,7 +15,7 @@ export class UserPlayerService {
   constructor(
     private nowPlaylistService: NowPlaylistService,
     private userProfile: UserProfile,
-    private playerActions: PlayerActions,
+    private playerActions: AppPlayerActions,
     private nowPlaylistActions: NowPlaylistActions,
     private store: Store<EchoesState>) { }
 

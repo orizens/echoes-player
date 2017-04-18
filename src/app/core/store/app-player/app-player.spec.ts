@@ -3,8 +3,8 @@ import {
   async,
 } from '@angular/core/testing';
 
-import { player, YoutubePlayerState } from './youtube-player.reducer';
-import { PlayerActions } from './youtube-player.actions';
+import { player, AppPlayerState } from './app-player.reducer';
+import { AppPlayerActions } from './app-player.actions';
 import { YoutubeMediaMock } from '../../../../../tests/mocks/youtube.media.item';
 
 describe('The Youtube Player reducer', () => {
@@ -18,14 +18,14 @@ describe('The Youtube Player reducer', () => {
     };
     it('should return current state when no valid actions have been made', () => {
         const state = Object.assign({}, mockedState);
-        const actual = player(<YoutubePlayerState>state, {type: 'INVALID_ACTION', payload: {}});
+        const actual = player(<AppPlayerState>state, {type: 'INVALID_ACTION', payload: {}});
         const expected = state;
         expect(actual).toBe(expected);
     });
 
     it('should set the new media id by the new PLAYED youtube media item', () => {
         const state = Object.assign({}, mockedState);
-        const actual = player(state, { type: PlayerActions.PLAY, payload: YoutubeMediaMock });
+        const actual = player(state, { type: AppPlayerActions.PLAY, payload: YoutubeMediaMock });
         const expected = state;
         expect(actual.mediaId.videoId).toBe(YoutubeMediaMock.id.videoId);
     });
@@ -35,7 +35,7 @@ describe('The Youtube Player reducer', () => {
         mediaId: 'mocked',
         showPlayer: false
       });
-      const actual = player(state, { type: PlayerActions.TOGGLE_PLAYER, payload: true });
+      const actual = player(state, { type: AppPlayerActions.TOGGLE_PLAYER, payload: true });
       const expected = state;
       expect(actual.showPlayer).toBe(!expected.showPlayer);
     });
@@ -45,7 +45,7 @@ describe('The Youtube Player reducer', () => {
         mediaId: 'mocked',
         playerState: 0
       });
-      const actual = player(state, { type: PlayerActions.STATE_CHANGE, payload: 1 });
+      const actual = player(state, { type: AppPlayerActions.STATE_CHANGE, payload: 1 });
       const expected = state;
       expect(actual.playerState).toBe(1);
     });

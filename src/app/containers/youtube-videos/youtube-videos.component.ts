@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
 
 import { NowPlaylistActions } from '../../core/store/now-playlist';
-import { PlayerActions } from '../../core/store/youtube-player';
+import { AppPlayerActions } from '../../core/store/app-player';
 import { PlayerSearchActions, PresetParam } from '../../core/store/player-search';
 import { AppLayoutActions } from '../../core/store/app-layout';
 // selectors
@@ -61,7 +61,7 @@ export class YoutubeVideosComponent implements OnInit {
     private store: Store<EchoesState>,
 
     private nowPlaylistActions: NowPlaylistActions,
-    private playerActions: PlayerActions,
+    private appPlayerActions: AppPlayerActions,
     private appLayoutActions: AppLayoutActions,
     private playerSearchActions: PlayerSearchActions
   ) { }
@@ -75,7 +75,7 @@ export class YoutubeVideosComponent implements OnInit {
   }
 
   playSelectedVideo (media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(this.playerActions.loadAndPlay(media));
+    this.store.dispatch(this.appPlayerActions.loadAndPlay(media));
     this.store.dispatch(this.nowPlaylistActions.selectVideo(media));
   }
 

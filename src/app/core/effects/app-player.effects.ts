@@ -8,17 +8,17 @@ import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { getSelectedMediaId$, getPlaylistVideos$, isPlayerInRepeat$ } from '../store/now-playlist/now-playlist.selectors';
 
-import { PlayerActions } from '../store/youtube-player';
+import { AppPlayerActions } from '../store/app-player';
 import { YoutubePlayerService } from '../services/youtube-player.service';
 import { YoutubeVideosInfo } from '../services/youtube-videos-info.service';
 
 @Injectable()
-export class PlayerEffects {
+export class AppPlayerEffects {
 
   constructor(
     public actions$: Actions,
     public store: Store<EchoesState>,
-    public playerActions: PlayerActions,
+    public appPlayerActions: AppPlayerActions,
     public youtubePlayerService: YoutubePlayerService,
     public youtubeVideosInfo: YoutubeVideosInfo,
     public nowPlaylistService: NowPlaylistService
@@ -26,18 +26,18 @@ export class PlayerEffects {
 
   @Effect()
   playVideo$ = this.actions$
-    .ofType(PlayerActions.PLAY)
+    .ofType(AppPlayerActions.PLAY)
     .map(toPayload)
     .switchMap(media => Observable
       .of(this.youtubePlayerService.playVideo(media))
-      .map(video => this.playerActions.playStarted(video))
+      .map(video => this.appPlayerActions.playStarted(video))
     );
 
   @Effect()
   loadAndPlay$ = this.actions$
-    .ofType(PlayerActions.LOAD_AND_PLAY)
+    .ofType(AppPlayerActions.LOAD_AND_PLAY)
     .map(toPayload)
     .switchMap((media: any) => this.youtubeVideosInfo.fetchVideoData(media.id || media.id.videoId)
-      .map(video => this.playerActions.playVideo(video))
+      .map(video => this.appPlayerActions.playVideo(video))
     );
 }

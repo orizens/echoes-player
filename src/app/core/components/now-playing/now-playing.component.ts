@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { EchoesState } from '../../store';
 import { NowPlaylistService } from '../../services/now-playlist.service';
 import { NowPlaylistInterface } from '../../store/now-playlist';
-import { PlayerActions } from '../../store/youtube-player';
+import { AppPlayerActions } from '../../store/app-player';
 import { NowPlaylistComponent } from './now-playlist';
 
 @Component({
@@ -36,7 +36,7 @@ export class NowPlayingComponent implements OnInit {
   constructor(
     public store: Store<EchoesState>,
     public nowPlaylistService: NowPlaylistService,
-    public playerActions: PlayerActions
+    public appPlayerActions: AppPlayerActions
   ) {}
 
   ngOnInit() {
@@ -44,7 +44,7 @@ export class NowPlayingComponent implements OnInit {
   }
 
   selectVideo (media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(this.playerActions.playVideo(media));
+    this.store.dispatch(this.appPlayerActions.playVideo(media));
     this.nowPlaylistService.updateIndexByMedia(media.id);
   }
 

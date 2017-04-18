@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 // reducers
-import { playerRegister, YoutubePlayerState, player, PlayerActions } from './youtube-player';
+import { playerRegister, AppPlayerState, player, AppPlayerActions } from './app-player';
 import { nowPlaylistRegister, NowPlaylistInterface, nowPlaylist, NowPlaylistActions } from './now-playlist';
 import { userRegister, UserProfileData, user, UserProfileActions } from './user-profile';
 import { searchRegister, PlayerSearch, search, PlayerSearchActions } from './player-search';
@@ -11,7 +11,7 @@ import { appLayoutRegister, AppLayout, appLayout, AppLayoutActions } from './app
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface EchoesState {
-  player: YoutubePlayerState;
+  player: AppPlayerState;
   nowPlaylist: NowPlaylistInterface;
   user: UserProfileData;
   search: PlayerSearch;
@@ -27,7 +27,7 @@ export let EchoesReducers = {
 };
 
 export let EchoesActions = [
-  PlayerActions,
+  AppPlayerActions,
   NowPlaylistActions,
   UserProfileActions,
   PlayerSearchActions,
@@ -42,10 +42,6 @@ export function getAppReducersRegistry() {
     searchRegister,
     appLayoutRegister
   ];
-};
-
-export function getPlayer$ (state$: Observable<EchoesState>): Observable<YoutubePlayerState> {
-  return state$.select(state => state.player);
 };
 
 export function getPlayerSearch$ (state$: Observable<EchoesState>): Observable<PlayerSearch> {

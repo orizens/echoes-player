@@ -1,13 +1,13 @@
 import '@ngrx/core/add/operator/select';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
-import { PlayerActions } from './youtube-player.actions';
+import { AppPlayerActions } from './app-player.actions';
 
 type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | GoogleApiYouTubeSearchResource;
 
-export * from './youtube-player.actions';
+export * from './app-player.actions';
 
-export interface YoutubePlayerState {
+export interface AppPlayerState {
   mediaId: { videoId: string };
   index: number;
   media?: GoogleApiYoutubeVideo | any;
@@ -15,7 +15,7 @@ export interface YoutubePlayerState {
   playerState: number;
   isFullscreen: boolean;
 }
-const initialPlayerState: YoutubePlayerState = {
+const initialPlayerState: AppPlayerState = {
   mediaId: { videoId: 'NONE' },
   index: 0,
   media: {
@@ -25,25 +25,25 @@ const initialPlayerState: YoutubePlayerState = {
   playerState: 0,
   isFullscreen: false
 };
-export function player (state: YoutubePlayerState = initialPlayerState, action: Action): YoutubePlayerState {
+export function player (state: AppPlayerState = initialPlayerState, action: Action): AppPlayerState {
 
   switch (action.type) {
-    case PlayerActions.PLAY:
+    case AppPlayerActions.PLAY:
       return playVideo(state, action.payload);
 
-    case PlayerActions.QUEUE:
+    case AppPlayerActions.QUEUE:
       return state;
 
-    case PlayerActions.TOGGLE_PLAYER:
+    case AppPlayerActions.TOGGLE_PLAYER:
       return toggleVisibility(state);
 
-    case PlayerActions.STATE_CHANGE:
+    case AppPlayerActions.STATE_CHANGE:
       return changePlayerState(state, action.payload);
 
-    case PlayerActions.FULLSCREEN:
+    case AppPlayerActions.FULLSCREEN:
       return Object.assign({}, state, { isFullscreen: !state.isFullscreen });
 
-    case PlayerActions.RESET:
+    case AppPlayerActions.RESET:
       return Object.assign({}, state, {
         isFullscreen: false,
         playerState: 0
@@ -56,11 +56,11 @@ export function player (state: YoutubePlayerState = initialPlayerState, action: 
 
 export const playerRegister = {
   reducer: { player },
-  actions: PlayerActions
+  actions: AppPlayerActions
 };
 
 export function playVideo(
-  state: YoutubePlayerState,
+  state: AppPlayerState,
   media: GoogleApiYoutubeVideo) {
   return Object.assign({}, state, {
     mediaId: media.id,
@@ -68,10 +68,10 @@ export function playVideo(
   });
 }
 
-export function toggleVisibility(state: YoutubePlayerState) {
+export function toggleVisibility(state: AppPlayerState) {
   return Object.assign({}, state, { showPlayer: !state.showPlayer });
 }
 
-export function changePlayerState(state: YoutubePlayerState, playerState: YT.PlayerState) {
+export function changePlayerState(state: AppPlayerState, playerState: YT.PlayerState) {
   return Object.assign({}, state, { playerState: playerState });
 }

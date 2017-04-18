@@ -1,5 +1,5 @@
 import { NowPlaylistEffects } from '../../effects/now-playlist.effects';
-import { getPlayer$, getCurrentMedia$, getIsPlayerPlaying$ } from '../../store/youtube-player/youtube-player.selectors';
+import { AppPlayerActions, AppPlayerState, getPlayer$, getCurrentMedia$, getIsPlayerPlaying$ } from '../../store/app-player';
 import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
 import { EchoesState } from '../../store';
 import { Store } from '@ngrx/store';
@@ -16,11 +16,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
 import { NowPlaylistService, YoutubePlayerService } from '../../services';
-import { PlayerActions, YoutubePlayerState } from '../../store/youtube-player';
 
 @Component({
-  selector: 'ep-player',
-  styleUrls: [ './ep-player.scss' ],
+  selector: 'app-player',
+  styleUrls: [ './app-player.scss' ],
   template: `
   <section 
     [class.show-youtube-player]="(player$ | async).showPlayer"
@@ -56,7 +55,7 @@ import { PlayerActions, YoutubePlayerState } from '../../store/youtube-player';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayerComponent implements OnInit {
+export class AppPlayerComponent implements OnInit {
   player$ = this.store.let(getPlayer$);
   media$ = this.store.let(getCurrentMedia$);
   isPlayerPlaying$ = this.store.let(getIsPlayerPlaying$);
@@ -67,7 +66,7 @@ export class PlayerComponent implements OnInit {
   constructor(
     private playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
-    private playerActions: PlayerActions,
+    private playerActions: AppPlayerActions,
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects
   ) {

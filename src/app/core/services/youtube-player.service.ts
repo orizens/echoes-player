@@ -4,12 +4,12 @@ import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { EchoesState } from '../store';
-import { PlayerActions, YoutubePlayerState } from '../store/youtube-player';
+import { AppPlayerActions, AppPlayerState } from '../store/app-player';
 
 @Injectable()
 export class YoutubePlayerService {
   public player: YT.Player;
-  public player$: Observable<YoutubePlayerState>;
+  public player$: Observable<AppPlayerState>;
   private isFullscreen = false;
   private defaultSizes = {
       height: 270,
@@ -19,7 +19,7 @@ export class YoutubePlayerService {
   constructor (
     private store: Store<EchoesState>,
     private zone: NgZone,
-    private playerActions: PlayerActions
+    private playerActions: AppPlayerActions
     ) {
     this.player$ = this.store.select(state => state.player);
     this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen; });
