@@ -36,12 +36,12 @@ import { PlayerActions, YoutubePlayerState } from '../../store/youtube-player';
       ></youtube-player>
     </div>
     <div class="container-fluid">
-      <media-info class="col-md-5 col-xs-7"
+      <media-info class="col-md-5 col-xs-6"
         [player]="player$ | async"
         [minimized]="media$ | async"
         (thumbClick)="toggleFullScreen()"
       ></media-info>
-      <player-controls class="col-md-4 col-xs-5 controls-container nicer-ux" 
+      <player-controls class="col-md-4 col-xs-6 controls-container nicer-ux" 
         [isRepeat]="isPlayerInRepeat$ | async"
         [playing]="isPlayerPlaying$ | async"
         [media]="media$ | async"
