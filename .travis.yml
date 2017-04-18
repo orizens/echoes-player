@@ -23,9 +23,17 @@ before_script:
   - sleep 3
 after_script:
   - process.exit()
-after_success:
-  - chmod +x ./config/deploy.sh
-  - ./config/deploy.sh
+# after_success:
+#   - chmod +x ./config/deploy.sh
+#   - ./config/deploy.sh
+deploy:
+  provider: pages
+  local_dir: ./dist
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  name: deployed commit $TRAVIS_COMMIT from travis
+  on:
+    branch: master
 cache:
   directories:
     - $HOME/.nvm
