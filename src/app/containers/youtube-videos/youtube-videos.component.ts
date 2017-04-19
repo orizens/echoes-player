@@ -15,7 +15,7 @@ import { getPlayerSearch$, getPlayerSearchResults$, getNowPlaylist$ } from '../.
   styleUrls: [ './youtube-videos.scss' ],
   template: `
   <article
-    infinite-scroll
+    infiniteScroll
     [infiniteScrollDistance]="2"
     (scrolled)="searchMore()"
     [immediateCheck]="true">
