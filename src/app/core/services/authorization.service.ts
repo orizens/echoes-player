@@ -1,4 +1,4 @@
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 import { Injectable, NgZone } from '@angular/core';
 import { Http } from '@angular/http';
 // import { window } from '@angular/platform-browser/src/facade/browser';
@@ -8,6 +8,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/timeInterval';
 
 import { Store } from '@ngrx/store';
 import { UserProfileActions } from '../store/user-profile';

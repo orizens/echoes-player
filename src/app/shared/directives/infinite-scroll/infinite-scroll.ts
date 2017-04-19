@@ -7,7 +7,7 @@ import {
 import { PositionResolverFactory } from './position-resolver';
 import { ScrollRegister, ScrollRegisterConfig } from './scroll-register';
 import { ScrollResolver } from './scroll-resolver';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Directive({

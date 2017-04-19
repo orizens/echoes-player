@@ -14,7 +14,12 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { Observable, Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/concat';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/share';
 
 enum Key {
   Backspace = 8,

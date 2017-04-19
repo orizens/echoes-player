@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
 import 'rxjs/add/operator/switchMapTo';
 import 'rxjs/add/operator/withLatestFrom';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
 
