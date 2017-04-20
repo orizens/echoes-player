@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared';
 import { AppNavbarModule } from '../app-navbar';
 
-import { User } from './user.component';
+import { UserComponent } from './user.component';
 import { PlaylistsComponent } from './playlists';
 import { PlaylistComponent, PlaylistCoverComponent, PlaylistResolver, PlaylistVideosResolver } from './playlist';
 
@@ -17,13 +17,13 @@ import { routing } from './user.routing';
     routing
   ],
   declarations: [
-    User,
+    UserComponent,
     PlaylistsComponent,
     PlaylistComponent,
     PlaylistCoverComponent
   ],
   exports: [
-    User
+    UserComponent
   ],
   providers: [ AuthGuard, UserPlayerService, PlaylistResolver, PlaylistVideosResolver ]
 })

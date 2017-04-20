@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 // reducers
 import { playerRegister, AppPlayerState, player, AppPlayerActions } from './app-player';
 import { nowPlaylistRegister, NowPlaylistInterface, nowPlaylist, NowPlaylistActions } from './now-playlist';
-import { userRegister, UserProfileData, user, UserProfileActions } from './user-profile';
+import { userRegister, IUserProfile, user, UserProfileActions } from './user-profile';
 import { searchRegister, PlayerSearch, search, PlayerSearchActions } from './player-search';
 import { appLayoutRegister, AppLayout, appLayout, AppLayoutActions } from './app-layout';
 
@@ -13,7 +13,7 @@ import { appLayoutRegister, AppLayout, appLayout, AppLayoutActions } from './app
 export interface EchoesState {
   player: AppPlayerState;
   nowPlaylist: NowPlaylistInterface;
-  user: UserProfileData;
+  user: IUserProfile;
   search: PlayerSearch;
   appLayout: AppLayout;
 };
