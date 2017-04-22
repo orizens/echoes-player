@@ -1,3 +1,9 @@
+## v 3.2.0 (2017/04/16) 
+### Updates
+* [NEW] - added user menu (top right) with links to source code
+* [NEW] - added version checker service for notifying about a new version of echoes
+* [UPDATE] - authorization check is done every 5 minutes
+
 ## v 3.1.0 (2017/04/16) 
 ### Updates
 * [NEW] - added "repeat" for playlist. now player will stop playing the playlist if repeat is off (default setting).

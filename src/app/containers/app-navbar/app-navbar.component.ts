@@ -1,3 +1,4 @@
+import { getAppVersion$ } from '../../core/store/app-layout';
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -29,11 +30,18 @@ import { EchoesState } from '../../core/store';
         </div>
         <section class="nav navbar-nav navbar-right navbar-text navbar-actions"
           [class.collapsed]="isCollapsed">
-          <app-navbar-user [signedIn]="isSignIn()" 
+          <app-navbar-user 
+            [signedIn]="isSignIn()" 
             [userImageUrl]="(user$ | async).profile.imageUrl"
             (signIn)="signInUser()"
             ></app-navbar-user>
-          <app-navbar-menu [signedIn]="isSignIn()" (signOut)="signOutUser()"></app-navbar-menu>
+          <app-navbar-menu 
+            [appVersion]="appVersion$ | async"            
+            [signedIn]="isSignIn()"
+            (signOut)="signOutUser()"
+            (versionUpdate)="updateVersion()"
+            (versionCheck)="checkVersion()"
+          ></app-navbar-menu>
         </section>
       </div>
     </nav>
@@ -43,6 +51,7 @@ import { EchoesState } from '../../core/store';
 export class AppNavbarComponent implements OnInit {
 
   user$ = this.store.let(getUser$);
+  appVersion$ = this.store.let(getAppVersion$);
   isCollapsed = true;
 
   @Output() signIn = new EventEmitter();
@@ -57,7 +66,7 @@ export class AppNavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user$ = this.store.select(state => state.user);
+    console.log('navbar init now...');
   }
 
   signInUser () {
@@ -81,5 +90,13 @@ export class AppNavbarComponent implements OnInit {
 
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  updateVersion() {
+    this.store.dispatch(this.appLayoutActions.updateAppVersion());
+  }
+
+  checkVersion() {
+    this.store.dispatch(this.appLayoutActions.checkVersion());
   }
 }

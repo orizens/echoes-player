@@ -5,6 +5,10 @@
     .list-group-item {
       padding: 0rem 1.5rem;
     }
+    .btn-toggle .update-indicator {
+      position: absolute;
+      transform: translateY(-8px);
+    }
     .menu-dropdown {
       position: absolute;
       right: 0;

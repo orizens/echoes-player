@@ -29,6 +29,7 @@ after_success:
   - npm run build:prod
   - npm run copy:domain
   - npm run copy:heroku
+  - npm run copy:package
 deploy:
   provider: pages
   local_dir: ./dist

@@ -6,6 +6,7 @@ import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { GapiLoader } from './gapi-loader.service';
 import { Authorization } from './authorization.service';
 import { YoutubeDataApi } from './youtube-data-api.service';
+import { VersionCheckerService } from './version-checker.service';
 
 export * from './user-profile.service';
 export * from './youtube.search';
@@ -14,6 +15,7 @@ export * from './now-playlist.service';
 export * from './youtube-videos-info.service';
 export * from './gapi-loader.service';
 export * from './authorization.service';
+export * from './version-checker.service';
 
 export const APP_SERVICES = [
   { provide: UserProfile, useClass: UserProfile },
@@ -23,5 +25,6 @@ export const APP_SERVICES = [
   { provide: YoutubeVideosInfo, useClass: YoutubeVideosInfo },
   { provide: GapiLoader, useClass: GapiLoader },
   { provide: Authorization, useClass: Authorization },
-  { provide: YoutubeDataApi, useClass: YoutubeDataApi }
+  { provide: YoutubeDataApi, useClass: YoutubeDataApi },
+  VersionCheckerService
 ];

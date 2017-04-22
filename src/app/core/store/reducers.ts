@@ -4,18 +4,16 @@ import { playerRegister, AppPlayerState, player, AppPlayerActions } from './app-
 import { nowPlaylistRegister, NowPlaylistInterface, nowPlaylist, NowPlaylistActions } from './now-playlist';
 import { userRegister, IUserProfile, user, UserProfileActions } from './user-profile';
 import { searchRegister, PlayerSearch, search, PlayerSearchActions } from './player-search';
-import { appLayoutRegister, AppLayout, appLayout, AppLayoutActions } from './app-layout';
+import { appLayoutRegister, IAppLayout, appLayout, AppLayoutActions } from './app-layout';
 
-/**
- * As mentioned, we treat each reducer like a table in a database. This means
- * our top level state interface is just a map of keys to inner state types.
- */
+// The top level Echoes Player application interface
+// each reducer is reponsible for manipulating a certain state
 export interface EchoesState {
   player: AppPlayerState;
   nowPlaylist: NowPlaylistInterface;
   user: IUserProfile;
   search: PlayerSearch;
-  appLayout: AppLayout;
+  appLayout: IAppLayout;
 };
 
 export let EchoesReducers = {
@@ -52,7 +50,7 @@ export function getPlayerSearchResults$ (state$: Observable<EchoesState>): Obser
   return state$.select(state => state.search.results);
 };
 
-export function getAppLayout$ ($state: Observable<EchoesState>): Observable<AppLayout> {
+export function getAppLayout$ ($state: Observable<EchoesState>): Observable<IAppLayout> {
   return $state.select(state => state.appLayout);
 };
 

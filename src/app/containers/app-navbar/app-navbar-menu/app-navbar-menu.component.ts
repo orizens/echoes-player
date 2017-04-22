@@ -15,9 +15,10 @@ enum Key {
 @Component({
   selector: 'app-navbar-menu',
   template: `
-    <button class="btn btn-navbar btn-link ux-maker"
+    <button class="btn btn-navbar btn-link ux-maker btn-toggle"
       (click)="toggleMenu()">
       <i class="fa fa-ellipsis-v"></i>
+      <i *ngIf="appVersion.isNewAvailable" class="update-indicator fa fa-dot-circle-o text-success"></i>
     </button>
     <div class="panel panel-default menu-dropdown"
       *ngIf="!hide">
@@ -28,8 +29,24 @@ enum Key {
         </a>
         <a class="list-group-item" href="https://travis-ci.org/orizens/echoes-player" target="_blank">
           <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
-          | version 0.3.2 
         </a>
+        <div class="list-group-item" target="_blank">
+          v.<a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank">
+            {{ appVersion.semver }} 
+            </a>
+          <button *ngIf="appVersion.isNewAvailable; else checkVersion" class="btn btn-success" title="click to update Echoes"
+            (click)="handleVersionUpdate()">
+            UPDATE AVAILABLE
+          </button>
+          <div *ngIf="appVersion.checkingForVersion" class="text-info">
+            checking for version...
+          </div>
+          <ng-template #checkVersion>
+            <button class="btn btn-info" (click)="handleVersionCheck()">
+            Check For Updates
+            </button>
+          </ng-template>
+        </div>
         <a class="list-group-item" href="http://orizens.com" target="_blank">
           Made with <i class="fa fa-heart text-danger"></i> By Orizens
         </a>
@@ -47,7 +64,14 @@ enum Key {
 export class AppNavbarMenuComponent implements OnInit {
   hide = true;
   @Input() signedIn = false;
+  @Input() appVersion = {
+    semver: '',
+    isNewAvailable: false,
+    checkingForVersion: false
+  };
   @Output() signOut = new EventEmitter();
+  @Output() versionUpdate = new EventEmitter();
+  @Output() versionCheck = new EventEmitter();
 
   @HostListener('keyup', ['$event'])
   handleKeyPress(event: KeyboardEvent) {
@@ -58,8 +82,7 @@ export class AppNavbarMenuComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   handleSignOut() {
     this.signOut.emit();
@@ -71,5 +94,13 @@ export class AppNavbarMenuComponent implements OnInit {
 
   toggleMenu() {
     this.hide = !this.hide;
+  }
+
+  handleVersionUpdate() {
+    this.versionUpdate.emit();
+  }
+
+  handleVersionCheck() {
+    this.versionCheck.emit();
   }
 }
