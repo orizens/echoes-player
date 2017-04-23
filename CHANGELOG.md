@@ -1,3 +1,7 @@
+## v 3.2.1 (2017/04/23) 
+### Updates
+* [FIX] - added auto sign in retry (3 times) and app refresh when there's an error (attempt to fix)
+
 ## v 3.2.0 (2017/04/23) 
 ### Updates
 * [NEW] - added user menu (top right) with links to source code

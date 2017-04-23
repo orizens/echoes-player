@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/timeInterval';
+import 'rxjs/add/operator/retry';
 
 import { Store } from '@ngrx/store';
 import { UserProfileActions } from '../store/user-profile';
@@ -56,6 +57,9 @@ export class Authorization {
   }
 
   authorize() {
+    if (this._googleAuth) {
+      console.log('signedIn?', this._googleAuth.isSignedIn.get());
+    }
     const authOptions = {
       client_id: `${CLIENT_ID}.apps.googleusercontent.com`,
       scope: this._scope
@@ -91,13 +95,11 @@ export class Authorization {
     const token = authResponse.access_token;
     const profile = googleUser.getBasicProfile();
     const MILLISECOND = 1000;
-    const expireTime = 60 * 5; //parseInt(authResponse.expires_in);
+    const expireTime = 60 * 5;
     const expireTimeInMs = expireTime * MILLISECOND;
     this.store.dispatch(this.userProfileActions.updateToken(token));
     this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
-    if (this.autoSignInTimer) {
-      this.autoSignInTimer.unsubscribe();
-    }
+    this.disposeAutoSignIn();
     this.autoSignInTimer = this.startTimerToNextAuth(expireTimeInMs);
   }
 
@@ -107,6 +109,11 @@ export class Authorization {
       .switchMap(() => this.authorize())
         .do((googleAuth: gapi.auth2.GoogleAuth) => this.saveGoogleAuth(googleAuth))
         .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get())
+        .retry(3)
+        .catch((error) => {
+          window.location.reload();
+          return error;
+        })
         .subscribe((googleUser: gapi.auth2.GoogleUser) => {
           this.zone.run(() => this.handleSuccessLogin(googleUser));
         });
@@ -121,9 +128,16 @@ export class Authorization {
   }
 
   signOut () {
+    this.disposeAutoSignIn();
     return Observable.fromPromise(this._googleAuth.signOut())
       .subscribe(response => {
         this.store.dispatch(this.userProfileActions.signOut());
       });
+  }
+
+  private disposeAutoSignIn() {
+    if (this.autoSignInTimer) {
+      this.autoSignInTimer.unsubscribe();
+    }
   }
 }
