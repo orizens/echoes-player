@@ -1,4 +1,4 @@
-## v 3.2.0 (2017/04/16) 
+## v 3.2.0 (2017/04/23) 
 ### Updates
 * [NEW] - added user menu (top right) with links to source code
 * [NEW] - added version checker service for notifying about a new version of echoes
