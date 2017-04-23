@@ -4,7 +4,7 @@
   [class.closed]="sidebarCollapsed$ | async">
   <nav class="navbar navbar-transparent">
     <app-brand></app-brand>
-    <app-navigator></app-navigator>
+    <app-navigator [closed]="sidebarCollapsed$ | async"></app-navigator>
   </nav>
   <now-playing></now-playing>
 </div>

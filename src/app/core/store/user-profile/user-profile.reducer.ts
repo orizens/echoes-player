@@ -5,7 +5,7 @@ import { UserProfileActions } from './user-profile.actions';
 
 export * from './user-profile.actions';
 
-export interface UserProfileData {
+export interface IUserProfile {
   access_token: string;
   playlists: GoogleApiYouTubePlaylistResource[];
   data?: {};
@@ -18,7 +18,7 @@ export interface UserProfileData {
   imageUrl?: string;
  }
 
-let initialUserState: UserProfileData = {
+const initialUserState: IUserProfile = {
   access_token: '',
   playlists: [],
   data: {},
@@ -26,7 +26,7 @@ let initialUserState: UserProfileData = {
   profile: {},
   viewedPlaylist: ''
 };
-export function user(state = initialUserState, action: Action): UserProfileData {
+export function user(state = initialUserState, action: Action): IUserProfile {
 
   switch (action.type) {
     case UserProfileActions.ADD_PLAYLISTS:
@@ -62,15 +62,4 @@ export function user(state = initialUserState, action: Action): UserProfileData 
 export const userRegister = {
   reducer: { user },
   actions: UserProfileActions
-};
-
-export const getUserPlaylists$ = (state$: Observable<EchoesState>) => {
-  return state$.select(state => state.user.playlists);
-};
-export const getUserViewPlaylist$ = (state$: Observable<EchoesState>) => {
-  return state$.select(state => state.user.viewedPlaylist);
-};
-export function getIsUserSignedIn$ (state$: Observable<EchoesState>) {
-  return state$.select(state => {
-    return state.user.access_token !== ''});
 };

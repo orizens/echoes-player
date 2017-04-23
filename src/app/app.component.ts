@@ -1,3 +1,4 @@
+import { VersionCheckerService } from './core/services/version-checker.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { EchoesState, getSidebarCollapsed$ } from './core/store';
 import { Store } from '@ngrx/store';
@@ -13,6 +14,9 @@ export class AppComponent {
   sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
 
   constructor(
-    private store: Store<EchoesState>
-  ) {}
+    private store: Store<EchoesState>,
+    private versionCheckerService: VersionCheckerService
+  ) {
+    versionCheckerService.start();
+  }
 }

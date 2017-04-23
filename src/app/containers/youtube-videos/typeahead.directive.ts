@@ -73,8 +73,8 @@ export class TypeAheadComponent implements OnInit, OnDestroy {
   @Output() typeaheadSelected = new EventEmitter<string>();
   @Input() typeaheadItemTpl: TemplateRef<any>;
 
-  private showSuggestions = false;
-  private results: string[];
+  showSuggestions = false;
+  results: string[];
   private suggestionIndex = 0;
   private subscriptions: Subscription[];
   private activeResult: string;

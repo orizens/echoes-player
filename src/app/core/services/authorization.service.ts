@@ -91,7 +91,8 @@ export class Authorization {
     const token = authResponse.access_token;
     const profile = googleUser.getBasicProfile();
     const MILLISECOND = 1000;
-    const expireTimeInMs = parseInt(authResponse.expires_in, 10) * MILLISECOND;
+    const expireTime = 60 * 5; //parseInt(authResponse.expires_in);
+    const expireTimeInMs = expireTime * MILLISECOND;
     this.store.dispatch(this.userProfileActions.updateToken(token));
     this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
     if (this.autoSignInTimer) {

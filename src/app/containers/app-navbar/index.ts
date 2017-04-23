@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared';
 
-import { AppNavbar } from './app-navbar.component';
+import { AppNavbarComponent } from './app-navbar.component';
+import { AppNavbarMenuComponent } from './app-navbar-menu';
+import { AppNavbarUserComponent } from './app-navbar-user';
 
 @NgModule({
   imports: [
     SharedModule
   ],
   declarations: [
-    AppNavbar
+    AppNavbarComponent,
+    AppNavbarMenuComponent,
+    AppNavbarUserComponent
   ],
   exports: [
-    AppNavbar
+    AppNavbarComponent
   ]
 })
 export class AppNavbarModule { }

@@ -1,13 +1,13 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { User } from './user.component';
+import { UserComponent } from './user.component';
 import { PlaylistsComponent } from './playlists';
 import { PlaylistComponent, PlaylistResolver, PlaylistVideosResolver } from './playlist';
 import { AuthGuard } from './user.guard';
 
 export const routing: ModuleWithProviders = RouterModule.forChild([
-  { path: 'user', component: User,
+  { path: 'user', component: UserComponent,
     children: [
     { path: '', redirectTo: 'playlists', pathMatch: 'full' },
     { path: 'playlists', component: PlaylistsComponent },

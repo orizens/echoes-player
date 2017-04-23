@@ -1,0 +1,26 @@
+@import '~css/core/global.scss';
+
+@media (min-width: 320px) {
+  :host {
+    .list-group-item {
+      padding: 0rem 1.5rem;
+    }
+    .btn-toggle .update-indicator {
+      position: absolute;
+      transform: translateY(-8px);
+    }
+    .menu-dropdown {
+      position: absolute;
+      right: 0;
+      min-width: 250px;
+
+      .menu-backdrop {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+}

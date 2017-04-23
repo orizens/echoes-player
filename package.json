@@ -1,6 +1,6 @@
 {
   "name": "echoes-player",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -9,6 +9,7 @@
     "build:prod": "ng build --prod",
     "copy:heroku": "shx cp -r ./config/heroku/*.* ./dist",
     "copy:domain": "shx cp CNAME ./dist",
+    "copy:package": "shx cp ./package.json ./dist/assets/",
     "test": "ng test",
     "test:ci": "ng test --single-run",
     "lint": "ng lint",
@@ -43,7 +44,6 @@
     "@types/gapi.youtube": "3.0.31",
     "@types/jasmine": "2.5.38",
     "@types/youtube": "0.0.28",
-    "angular2-infinite-scroll": "0.3.4",
     "bootstrap-sass": "3.3.7",
     "codelyzer": "~2.0.0",
     "font-awesome": "4.7.0",
@@ -59,7 +59,7 @@
     "ng2-youtube-player": "0.0.2",
     "ngrx-action-creator-factory": "0.0.1",
     "ngrx-store-localstorage": "0.1.5",
-    "ngx-infinite-scroll": "0.4.1",
+    "ngx-infinite-scroll": "0.4.3",
     "protractor": "~5.1.0",
     "rimraf": "2.6.1",
     "shx": "0.2.2",

@@ -1,8 +1,9 @@
+import { getAppVersion$ } from '../../core/store/app-layout';
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { UserProfileData } from '../../core/store/user-profile';
+import { getUser$, getUserPlaylists$ } from '../../core/store/user-profile/user-profile.selectors';
 import { UserProfile, Authorization } from '../../core/services';
 import { AppLayoutActions } from '../../core/store/app-layout';
 import { EchoesState } from '../../core/store';
@@ -24,36 +25,34 @@ import { EchoesState } from '../../core/store';
           (click)="toggleCollapse()">
           <i class="fa fa-angle-double-up" [class.fa-angle-double-down]="isCollapsed"></i>
         </button>
-        <div class="navbar-collapse navbar-nav"
-          >
+        <div class="navbar-collapse navbar-nav">
           <ng-content></ng-content>
         </div>
         <section class="nav navbar-nav navbar-right navbar-text navbar-actions"
           [class.collapsed]="isCollapsed">
-          <span class="btn btn-link navbar-link navbar-btn"
-            *ngIf="isSignIn()"
-            (click)="signOutUser()">
-            <i class="fa fa-sign-out"></i>
-            Sign Out
-            <img [src]="(user$ | async).profile.imageUrl" class="user-icon">
-          </span>
-          <span class="btn btn-link navbar-link navbar-btn"
-            *ngIf="!isSignIn()"
-            (click)="signInUser()">
-            <i class="fa fa-sign-in"></i>
-            Sign In
-          </span>
+          <app-navbar-user 
+            [signedIn]="isSignIn()" 
+            [userImageUrl]="(user$ | async).profile.imageUrl"
+            (signIn)="signInUser()"
+            ></app-navbar-user>
+          <app-navbar-menu 
+            [appVersion]="appVersion$ | async"            
+            [signedIn]="isSignIn()"
+            (signOut)="signOutUser()"
+            (versionUpdate)="updateVersion()"
+            (versionCheck)="checkVersion()"
+          ></app-navbar-menu>
         </section>
       </div>
     </nav>
   `
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppNavbar implements OnInit {
-  user$: Observable<UserProfileData>;
-  isCollapsed = true;
+export class AppNavbarComponent implements OnInit {
 
-  // @Input() profile: GoogleBasicProfile = {};
+  user$ = this.store.let(getUser$);
+  appVersion$ = this.store.let(getAppVersion$);
+  isCollapsed = true;
 
   @Output() signIn = new EventEmitter();
   @Output() signOut = new EventEmitter();
@@ -67,7 +66,6 @@ export class AppNavbar implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user$ = this.store.select(state => state.user);
   }
 
   signInUser () {
@@ -91,5 +89,13 @@ export class AppNavbar implements OnInit {
 
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  updateVersion() {
+    this.store.dispatch(this.appLayoutActions.updateAppVersion());
+  }
+
+  checkVersion() {
+    this.store.dispatch(this.appLayoutActions.checkVersion());
   }
 }

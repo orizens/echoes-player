@@ -3,11 +3,11 @@ import { Store } from '@ngrx/store';
 
 import { UserProfile, Authorization } from '../../core/services';
 import { EchoesState } from '../../core/store';
-import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../../core/store/user-profile';
+import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../../core/store/user-profile/user-profile.selectors';
 
 
 @Component({
-  selector: 'user',
+  selector: 'app-user',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./user.scss'],
   template: `
@@ -37,7 +37,7 @@ import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../
   </article>
   `
 })
-export class User implements OnInit {
+export class UserComponent implements OnInit {
   playlists$ = this.store.let(getUserPlaylists$);
   currentPlaylist$ = this.store.let(getUserViewPlaylist$);
   isSignedIn$ = this.store.let(getIsUserSignedIn$);

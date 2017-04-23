@@ -1,6 +1,6 @@
-@import '../../../../css/echoes-variables.scss';
+@import '~css/echoes-variables.scss';
 
-.navigator.library-nav {
+:host .library-nav {
 	.nav-header {
 		padding: 1rem 2px 1rem 15px;
 	}
@@ -25,10 +25,10 @@
 	}
 }
 @media (min-width: 768px) {
-	.closed navigator {
+	:host .closed {
 		width: $sidebar-closed-width;
 		a {
-			text-align: right;
+			text-indent: 0.6rem;
 		}
 		.text {
 			display: none;
