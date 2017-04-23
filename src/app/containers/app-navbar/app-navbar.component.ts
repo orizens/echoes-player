@@ -66,7 +66,6 @@ export class AppNavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('navbar init now...');
   }
 
   signInUser () {
