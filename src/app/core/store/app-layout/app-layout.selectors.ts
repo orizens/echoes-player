@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs/Observable';
-import { IAppLayout } from './app-layout.reducer';
+import { IAppSettings } from './app-layout.reducer';
 import { EchoesState } from '../reducers';
 
-export function getAppLayout$(state$: Observable<EchoesState>): Observable<IAppLayout> {
+export function getAppLayout$(state$: Observable<EchoesState>): Observable<IAppSettings> {
   return state$.select(state => state.appLayout);
 }
 

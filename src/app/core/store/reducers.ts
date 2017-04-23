@@ -4,7 +4,7 @@ import { playerRegister, AppPlayerState, player, AppPlayerActions } from './app-
 import { nowPlaylistRegister, NowPlaylistInterface, nowPlaylist, NowPlaylistActions } from './now-playlist';
 import { userRegister, IUserProfile, user, UserProfileActions } from './user-profile';
 import { searchRegister, PlayerSearch, search, PlayerSearchActions } from './player-search';
-import { appLayoutRegister, IAppLayout, appLayout, AppLayoutActions } from './app-layout';
+import { appLayoutRegister, IAppSettings, appLayout, AppLayoutActions } from './app-layout';
 
 // The top level Echoes Player application interface
 // each reducer is reponsible for manipulating a certain state
@@ -13,7 +13,7 @@ export interface EchoesState {
   nowPlaylist: NowPlaylistInterface;
   user: IUserProfile;
   search: PlayerSearch;
-  appLayout: IAppLayout;
+  appLayout: IAppSettings;
 };
 
 export let EchoesReducers = {
@@ -50,7 +50,7 @@ export function getPlayerSearchResults$ (state$: Observable<EchoesState>): Obser
   return state$.select(state => state.search.results);
 };
 
-export function getAppLayout$ ($state: Observable<EchoesState>): Observable<IAppLayout> {
+export function getAppLayout$ ($state: Observable<EchoesState>): Observable<IAppSettings> {
   return $state.select(state => state.appLayout);
 };
 

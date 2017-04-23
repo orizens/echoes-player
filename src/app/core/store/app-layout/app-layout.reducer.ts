@@ -8,7 +8,7 @@ export interface IAppVersion {
   isNewAvailable: boolean;
   checkingForVersion: boolean;
 }
-export interface IAppLayout {
+export interface IAppSettings {
   sidebarExpanded: boolean;
   requestInProcess: boolean;
   version: IAppVersion;
@@ -22,7 +22,7 @@ const initialState: any = {
     checkingForVersion: false
   }
 };
-export function appLayout (state: IAppLayout = initialState, action: Action): IAppLayout {
+export function appLayout (state: IAppSettings = initialState, action: Action): IAppSettings {
   switch (action.type) {
     case AppLayoutActions.SIDEBAR_EXPAND:
       return Object.assign({}, state, { sidebarExpanded: true });
@@ -55,11 +55,11 @@ export const appLayoutRegister = {
   actions: AppLayoutActions
 };
 
-export function getSidebarExpanded($state: Observable<IAppLayout>) {
+export function getSidebarExpanded($state: Observable<IAppSettings>) {
   return $state.select(state => state.sidebarExpanded);
 }
 
-function getVersion(state: IAppLayout, packageJson: any): IAppVersion {
+function getVersion(state: IAppSettings, packageJson: any): IAppVersion {
   const currentVersion = state.version.semver;
   const remoteVersion = packageJson.version;
   const version: IAppVersion = {
