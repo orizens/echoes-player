@@ -132,9 +132,7 @@ function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string):
 
 function getNextIdForPlaylist(videos: GoogleApiYouTubeVideoResource[], repeat: boolean, currentId: string = '') {
   let id = '';
-  if (videos.length && !repeat) {
-    id = currentId;
-  } else if (videos.length) {
+  if (videos.length && repeat) {
     id = videos[0].id;
   }
   return id;

@@ -6,7 +6,7 @@ import 'rxjs/add/observable/of';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { NowPlaylistActions } from '../store/now-playlist';
-import { getSelectedMediaId$, getPlaylistVideos$, isPlayerInRepeat$ } from '../store/now-playlist/now-playlist.selectors';
+import { getSelectedMedia$,getSelectedMediaId$, getPlaylistVideos$, isPlayerInRepeat$ } from '../store/now-playlist/now-playlist.selectors';
 
 import { NowPlaylistService } from '../services/now-playlist.service';
 
@@ -29,27 +29,14 @@ export class NowPlaylistEffects {
    * AND repeat is on
    * THEN play the first track
   **/
-  @Effect()
+  // @Effect()
   loadNextTrack$ = this.actions$
     .ofType(NowPlaylistActions.MEDIA_ENDED)
     .map(toPayload)
-    .withLatestFrom(
-      this.store.let(getSelectedMediaId$),
-      this.store.let(getPlaylistVideos$),
-      this.store.let(isPlayerInRepeat$)
-    )
-    .filter((states) => {
-      const currentId = states[1];
-      const mediaIds = states[2].map(video => video.id);
-      const isRepeatOn = states[3];
-      const lastIndexValue = mediaIds.length - 1;
-      const isCurrentLast = mediaIds.indexOf(currentId) === lastIndexValue;
-      return isRepeatOn || !isCurrentLast;
-    })
-    .map(states => {
-      const currentId = states[1];
-      const nextMedia = states[2].find(video => video.id === currentId);
-      return this.nowPlaylistActions.selectVideo(nextMedia);
+    .withLatestFrom(this.store.let(getSelectedMedia$))
+    .filter((states: [any, GoogleApiYouTubeVideoResource]) => states[1] && states[1].hasOwnProperty('id'))
+    .map((states: [any, GoogleApiYouTubeVideoResource]) => {
+      return this.nowPlaylistActions.selectVideo(states[1]);
     });
 
   // queueVideoReady$ = this.actions$

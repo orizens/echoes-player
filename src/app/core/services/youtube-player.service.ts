@@ -38,7 +38,7 @@ export class YoutubePlayerService {
   }
 
   playVideo(media: any) {
-    const id = media.id.videoId ? media.id.videoId : media.id;
+    const id = media.id && media.id.videoId ? media.id.videoId : media.id;
     const loadedMedia = this.player.getVideoData();
     const loadedMediaId = loadedMedia.video_id;
     const isLoaded = '' !== loadedMediaId && id === loadedMediaId;
