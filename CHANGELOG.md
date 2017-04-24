@@ -1,3 +1,7 @@
+## v 3.2.3 (2017/04/24) 
+### Updates 
+* [FIX] - fixed an issue with playing the last track in a playlist
+
 ## v 3.2.2 (2017/04/24) 
 ### Updates
 * [FIX] - attempt to catch errors when user's token is updated
