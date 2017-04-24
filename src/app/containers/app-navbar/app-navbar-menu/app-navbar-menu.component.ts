@@ -18,12 +18,18 @@ enum Key {
     <button class="btn btn-navbar btn-link ux-maker btn-toggle"
       (click)="toggleMenu()">
       <i class="fa fa-ellipsis-v"></i>
-      <i *ngIf="appVersion.isNewAvailable" class="update-indicator fa fa-dot-circle-o text-success"></i>
+      <i *ngIf="appVersion.isNewAvailable" class="pulse update-indicator fa fa-dot-circle-o text-success"></i>
     </button>
     <div class="panel panel-default menu-dropdown"
       *ngIf="!hide">
       <div class="menu-backdrop" (click)="hideMenu()"></div>
       <div class="list-group">
+        <div *ngIf="appVersion.isNewAvailable" class="list-group-item">
+          <button class="btn btn-success" title="click to update Echoes"
+            (click)="handleVersionUpdate()">
+            New Version Is Available - UPDATE AVAILABLE
+          </button>
+        </div>
         <a class="list-group-item" href="http://github.com/orizens/echoes-player" target="_blank">
           <i class="fa fa-github"></i> Source Code @Github
         </a>
@@ -34,18 +40,13 @@ enum Key {
           v.<a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank">
             {{ appVersion.semver }} 
             </a>
-          <button *ngIf="appVersion.isNewAvailable; else checkVersion" class="btn btn-success" title="click to update Echoes"
-            (click)="handleVersionUpdate()">
-            UPDATE AVAILABLE
+          <button *ngIf="!appVersion.isNewAvailable"
+            class="btn btn-info" (click)="handleVersionCheck()">
+            Check For Updates
           </button>
           <div *ngIf="appVersion.checkingForVersion" class="text-info">
             checking for version...
           </div>
-          <ng-template #checkVersion>
-            <button class="btn btn-info" (click)="handleVersionCheck()">
-            Check For Updates
-            </button>
-          </ng-template>
         </div>
         <a class="list-group-item" href="http://orizens.com" target="_blank">
           Made with <i class="fa fa-heart text-danger"></i> By Orizens

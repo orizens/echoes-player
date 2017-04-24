@@ -1,6 +1,7 @@
 import 'rxjs/add/operator/switchMapTo';
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/of';
+// import 'rxjs/add/observable/of';
+import { of } from 'rxjs/observable/of';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
@@ -24,7 +25,11 @@ export class UserProfileEffects {
     .ofType(UserProfileActions.UPDATE_TOKEN)
     .map(action => action.payload)
     .map((token: string) => this.auth.accessToken = token)
-    .switchMap(token => this.userProfile.getPlaylists(true))
+    .switchMap(token => this.userProfile.getPlaylists(true)
+      .catch((error: Error) => {
+        console.log('error in fetching user\'s playlists', error);
+        return of(error);
+      }))
     .map(response => this.userProfileActions.updateData(response));
 
 

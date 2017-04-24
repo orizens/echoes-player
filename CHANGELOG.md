@@ -1,3 +1,8 @@
+## v 3.2.2 (2017/04/24) 
+### Updates
+* [FIX] - attempt to catch errors when user's token is updated
+* [UPDATED] - new version indicator is now animated with pulse, "update version" is the first item in list now.
+
 ## v 3.2.1 (2017/04/23) 
 ### Updates
 * [FIX] - added auto sign in retry (3 times) and app refresh when there's an error (attempt to fix)
