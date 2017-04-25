@@ -29,7 +29,7 @@ export class NowPlaylistEffects {
    * AND repeat is on
    * THEN play the first track
   **/
-  // @Effect()
+  @Effect()
   loadNextTrack$ = this.actions$
     .ofType(NowPlaylistActions.MEDIA_ENDED)
     .map(toPayload)

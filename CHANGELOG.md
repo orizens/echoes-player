@@ -1,3 +1,7 @@
+## v 3.2.4 (2017/04/25) 
+### Updates
+* [FIX] - brings back uncommented Effect
+
 ## v 3.2.3 (2017/04/24) 
 ### Updates 
 * [FIX] - fixed an issue with playing the last track in a playlist
