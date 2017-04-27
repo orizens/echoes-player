@@ -37,7 +37,7 @@ export class NowPlaylistEffects {
     .filter((states: [any, GoogleApiYouTubeVideoResource]) => states[1] && states[1].hasOwnProperty('id'))
     .map((states: [any, GoogleApiYouTubeVideoResource]) => {
       return this.nowPlaylistActions.selectVideo(states[1]);
-    });
+    }).share();
 
   // queueVideoReady$ = this.actions$
     // .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)

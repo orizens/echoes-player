@@ -1,6 +1,6 @@
 import '@ngrx/core/add/operator/select';
 import { Observable } from 'rxjs/Observable';
-import { Action } from '@ngrx/store';
+import { Action, Dispatcher } from '@ngrx/store';
 import { AppPlayerActions } from './app-player.actions';
 
 type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | GoogleApiYouTubeSearchResource;
@@ -13,7 +13,11 @@ export interface AppPlayerState {
   media?: GoogleApiYoutubeVideo | any;
   showPlayer: boolean;
   playerState: number;
-  isFullscreen: boolean;
+  fullscreen: {
+    on: boolean;
+    height: number;
+    width: number;
+  };
 }
 const initialPlayerState: AppPlayerState = {
   mediaId: { videoId: 'NONE' },
@@ -23,7 +27,11 @@ const initialPlayerState: AppPlayerState = {
   },
   showPlayer: true,
   playerState: 0,
-  isFullscreen: false
+  fullscreen: {
+    on: false,
+    height: 270,
+    width: 367
+  }
 };
 export function player (state: AppPlayerState = initialPlayerState, action: Action): AppPlayerState {
 
@@ -40,8 +48,16 @@ export function player (state: AppPlayerState = initialPlayerState, action: Acti
     case AppPlayerActions.STATE_CHANGE:
       return changePlayerState(state, action.payload);
 
-    case AppPlayerActions.FULLSCREEN:
-      return Object.assign({}, state, { isFullscreen: !state.isFullscreen });
+    case AppPlayerActions.FULLSCREEN: {
+      const on = !state.fullscreen.on;
+      let { height, width } = initialPlayerState.fullscreen;
+      if (on) {
+        height = window.innerHeight;
+        width = window.innerWidth;
+      }
+      const fullscreen = { on, height, width };
+      return Object.assign({}, state, { fullscreen });
+    }
 
     case AppPlayerActions.RESET:
       return Object.assign({}, state, {
@@ -49,14 +65,14 @@ export function player (state: AppPlayerState = initialPlayerState, action: Acti
         playerState: 0
       });
 
-    default:
-      return state;
-  }
-};
+    case Dispatcher.INIT: {
+      const fullscreen = initialPlayerState.fullscreen;
+      return Object.assign({}, initialPlayerState, state, { fullscreen });
+    };
 
-export const playerRegister = {
-  reducer: { player },
-  actions: AppPlayerActions
+    default:
+      return Object.assign({}, initialPlayerState, state);
+  }
 };
 
 export function playVideo(

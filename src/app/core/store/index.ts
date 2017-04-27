@@ -11,15 +11,13 @@ import 'rxjs/add/operator/let';
 
 import { environment } from '../../../environments/environment';
 import { getSidebarExpanded } from './app-layout';
-import { getAppReducersRegistry, EchoesState, EchoesReducers, EchoesActions } from './reducers';
-// import { registerReducers } from './store.registry';
+import { EchoesState, EchoesReducers, EchoesActions } from './reducers';
 
 // import { storeFreeze } from 'ngrx-store-freeze';
 
 export { EchoesState } from './reducers';
-// const storeAssets = registerReducers(getAppReducersRegistry());
-const actions = EchoesActions; // storeAssets.actions;
-const reducers = EchoesReducers; // storeAssets.reducers;
+const actions = EchoesActions;
+const reducers = EchoesReducers;
 // const storageConfig = ['videos', 'player', 'nowPlaylist', 'search', 'appLayout'];
 const composeStore = reducers;
 const optionalImports = [];

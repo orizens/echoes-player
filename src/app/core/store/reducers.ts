@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs/Observable';
 // reducers
-import { playerRegister, AppPlayerState, player, AppPlayerActions } from './app-player';
-import { nowPlaylistRegister, NowPlaylistInterface, nowPlaylist, NowPlaylistActions } from './now-playlist';
-import { userRegister, IUserProfile, user, UserProfileActions } from './user-profile';
-import { searchRegister, PlayerSearch, search, PlayerSearchActions } from './player-search';
-import { appLayoutRegister, IAppSettings, appLayout, AppLayoutActions } from './app-layout';
+import { AppPlayerState, player, AppPlayerActions } from './app-player';
+import { NowPlaylistInterface, nowPlaylist, NowPlaylistActions } from './now-playlist';
+import { IUserProfile, user, UserProfileActions } from './user-profile';
+import { PlayerSearch, search, PlayerSearchActions } from './player-search';
+import { IAppSettings, appLayout, AppLayoutActions } from './app-layout';
 
 // The top level Echoes Player application interface
 // each reducer is reponsible for manipulating a certain state
@@ -31,16 +31,6 @@ export let EchoesActions = [
   PlayerSearchActions,
   AppLayoutActions
 ];
-
-export function getAppReducersRegistry() {
-  return [
-    playerRegister,
-    nowPlaylistRegister,
-    userRegister,
-    searchRegister,
-    appLayoutRegister
-  ];
-};
 
 export function getPlayerSearch$ (state$: Observable<EchoesState>): Observable<PlayerSearch> {
   return state$.select(state => state.search);

@@ -11,7 +11,6 @@ import {
 
 @Component({
   selector: 'media-info',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: [ './media-info.scss' ],
   template: `
   <article class="media-info ellipsis">

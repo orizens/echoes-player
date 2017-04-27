@@ -1,3 +1,4 @@
+import { getPlayerFullscreen$ } from '../store/app-player/app-player.selectors';
 import { NowPlaylistService } from '../services';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
@@ -6,7 +7,6 @@ import { Effect, Actions, toPayload } from '@ngrx/effects';
 
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
-import { getSelectedMediaId$, getPlaylistVideos$, isPlayerInRepeat$ } from '../store/now-playlist/now-playlist.selectors';
 
 import { AppPlayerActions } from '../store/app-player';
 import { YoutubePlayerService } from '../services/youtube-player.service';
@@ -40,4 +40,10 @@ export class AppPlayerEffects {
     .switchMap((media: any) => this.youtubeVideosInfo.fetchVideoData(media.id || media.id.videoId)
       .map(video => this.appPlayerActions.playVideo(video))
     );
+
+  @Effect({ dispatch: false })
+  toggleFullscreen$ = this.actions$
+    .ofType(AppPlayerActions.FULLSCREEN)
+    .withLatestFrom(this.store.let(getPlayerFullscreen$))
+    .do((states: [ any, {on, height, width} ]) => this.youtubePlayerService.setSize(states[1].height, states[1].width));
 }

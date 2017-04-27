@@ -21,15 +21,10 @@ import { EchoesState } from '../../core/store';
             <i class="fa fa-bars"></i>
           </button>
         </h2>
-        <button type="button" class="navbar-toggle collapsed pull-right navbar-nav"
-          (click)="toggleCollapse()">
-          <i class="fa fa-angle-double-up" [class.fa-angle-double-down]="isCollapsed"></i>
-        </button>
-        <div class="navbar-collapse navbar-nav">
+        <div class="navbar__content pull-left">
           <ng-content></ng-content>
         </div>
-        <section class="nav navbar-nav navbar-right navbar-text navbar-actions"
-          [class.collapsed]="isCollapsed">
+        <section class="pull-right navbar-text navbar-actions">
           <app-navbar-user 
             [signedIn]="isSignIn()" 
             [userImageUrl]="(user$ | async).profile.imageUrl"
@@ -52,7 +47,6 @@ export class AppNavbarComponent implements OnInit {
 
   user$ = this.store.let(getUser$);
   appVersion$ = this.store.let(getAppVersion$);
-  isCollapsed = true;
 
   @Output() signIn = new EventEmitter();
   @Output() signOut = new EventEmitter();
@@ -85,10 +79,6 @@ export class AppNavbarComponent implements OnInit {
   toggleSidebar() {
     this.menu.next();
     return this.store.dispatch(this.appLayoutActions.toggleSidebar());
-  }
-
-  toggleCollapse() {
-    this.isCollapsed = !this.isCollapsed;
   }
 
   updateVersion() {

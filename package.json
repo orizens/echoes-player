@@ -1,6 +1,6 @@
 {
   "name": "echoes-player",
-  "version": "3.2.4",
+  "version": "3.3.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -36,8 +36,8 @@
     "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@ngrx/core": "1.2.0",
-    "@ngrx/effects": "2.0.2",
-    "@ngrx/store": "2.2.1",
+    "@ngrx/effects": "2.0.3",
+    "@ngrx/store": "2.2.2",
     "@ngrx/store-devtools": "3.2.4",
     "@types/gapi": "0.0.30",
     "@types/gapi.auth2": "0.0.34",
@@ -59,7 +59,7 @@
     "ng2-youtube-player": "0.0.2",
     "ngrx-action-creator-factory": "0.0.1",
     "ngrx-store-localstorage": "0.1.5",
-    "ngx-infinite-scroll": "0.4.3",
+    "ngx-infinite-scroll": "0.5.1",
     "protractor": "~5.1.0",
     "rimraf": "2.6.1",
     "shx": "0.2.2",

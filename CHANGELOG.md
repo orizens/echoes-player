@@ -1,3 +1,9 @@
+## v 3.3.0 (2017/04/26) 
+* Made performance improvments to fullscreen mode
+* [UPDATE] - app user menu has been revamped for mobile devices
+* [NEW] - now playling playlist style has been upgraded with borders and improved with semantics & animations when toggling the sidebar 
+* [UPDATE] - player controls bar resized and enhanced
+
 ## v 3.2.4 (2017/04/25) 
 ### Updates
 * [FIX] - brings back uncommented Effect

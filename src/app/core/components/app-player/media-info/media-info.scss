@@ -1,6 +1,8 @@
-@import '../../../../../css/echoes-variables.scss';
+@import '~css/echoes-variables.scss';
 
-.media-info {
+:host {
+	$line-height: 5.5rem;
+
 	line-height: 1.5rem;
 
 	.yt-media-title {
@@ -9,7 +11,7 @@
 		display: inline-block;
 		max-width: 40rem;
 		font-size: 1.5rem;
-		line-height: 4.3rem;
+		line-height: $line-height;
 
 		aside {
 			position: relative;
@@ -17,12 +19,13 @@
 			cursor: pointer;
 
 			img {
-				height: 4rem;
+				height: $line-height;
 			}
 			.fa {
 				position: absolute;
 				right: 0;
 				bottom: 0;
+				background: rgba(0,0,0, .5);
 			}
 		}
 

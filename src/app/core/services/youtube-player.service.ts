@@ -1,40 +1,29 @@
 import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
-// import { window } from '@angular/platform-browser/src/facade/browser';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 import { EchoesState } from '../store';
-import { AppPlayerActions, AppPlayerState } from '../store/app-player';
+import { AppPlayerActions } from '../store/app-player';
 
 @Injectable()
 export class YoutubePlayerService {
   public player: YT.Player;
-  public player$: Observable<AppPlayerState>;
-  private isFullscreen = false;
-  private defaultSizes = {
-      height: 270,
-      width: 367
-  };
 
   constructor (
     private store: Store<EchoesState>,
     private zone: NgZone,
     private playerActions: AppPlayerActions
-    ) {
-    this.player$ = this.store.select(state => state.player);
-    this.player$.subscribe(player => { this.isFullscreen = player.isFullscreen; });
-  }
+    ) { }
 
   setupPlayer (player) {
     this.player = player;
   }
 
   play () {
-    this.player.playVideo();
+    this.zone.runOutsideAngular(() => this.player.playVideo());
   }
 
   pause () {
-    this.player.pauseVideo();
+    this.zone.runOutsideAngular(() => this.player.pauseVideo());
   }
 
   playVideo(media: any) {
@@ -43,7 +32,7 @@ export class YoutubePlayerService {
     const loadedMediaId = loadedMedia.video_id;
     const isLoaded = '' !== loadedMediaId && id === loadedMediaId;
     if (!isLoaded) {
-      this.player.loadVideoById(id);
+      this.zone.runOutsideAngular(() => this.player.loadVideoById(id));
     }
     this.play();
   }
@@ -70,14 +59,9 @@ export class YoutubePlayerService {
     this.store.dispatch(this.playerActions.updateState(state));
   }
 
-  setSize () {
-    let { height, width } = this.defaultSizes;
-
-    if (!this.isFullscreen) {
-      height = window.innerHeight;
-      width = window.innerWidth;
-    }
-    this.player.setSize(width, height);
-    this.store.dispatch(this.playerActions.fullScreen());
+  setSize (height, width) {
+    this.zone.runOutsideAngular(() => {
+      this.player.setSize(width, height);
+    });
   }
 }

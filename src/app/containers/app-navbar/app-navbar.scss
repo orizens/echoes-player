@@ -29,10 +29,6 @@
 
     .navbar-actions {
       display: block;
-
-      &.collapsed {
-        display: none;
-      }
     }
   }
 }
@@ -43,10 +39,6 @@
     }
     .navbar-actions {
       display: block;
-
-      &.collapsed {
-        display: block;
-      }
     }
   }
 

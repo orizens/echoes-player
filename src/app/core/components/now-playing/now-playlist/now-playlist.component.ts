@@ -37,19 +37,15 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
     <ul class="nav nav-list ux-maker nicer-ux">
       <li class="now-playlist-track" #playlistTrack
         [ngClass]="{
-          'active': isActiveMedia(video.id, playlistTrack),
-          'playlist-media': isPlaylistMedia(video)
+          'active': isActiveMedia(video.id, playlistTrack)
         }"
         *ngFor="let video of playlist?.videos | search:playlist.filter; let index = index"
         [@fadeIn]
         >
-        <a class="" title="{{ video.snippet.title }}"
+        <a class="now-playlist-track__trigger" title="{{ video.snippet.title }}"
           (click)="selectVideo(video)">
-          <span class="label label-primary fa fa-list-ul playlist-track"
-            title="Includes specific cued tracks - soon to come..."
-          ></span>
-          <span class="track-number">{{ index + 1 }}</span>
-          <section class="video-thumb">
+          <section class="video-thumb playlist-track__thumb">
+            <span class="track-number">{{ index + 1 }}</span>
             <img draggable="false" 
             src="{{ video.snippet.thumbnails.default.url }}" 
             xtitle="Drag to sort">
@@ -57,9 +53,15 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
               {{ video.contentDetails.duration | toFriendlyDuration }}
             </span>
           </section>
-          <span class="video-title">{{ video.snippet.title }}</span>
-          <span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
-            (click)="removeVideo(video)"><i class="fa fa-trash"></i></span>
+          <aside class="playlist-track__content">
+            <span class="label label-primary fa fa-list-ul playlist-track"
+              *ngIf="isPlaylistMedia(video)"
+              title="Includes specific cued tracks - soon to come..."
+            ></span>
+            <span class="video-title">{{ video.snippet.title }}</span>
+            <span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
+              (click)="removeVideo(video)"><i class="fa fa-trash"></i></span>
+          </aside>
         </a>
       </li>
     </ul>

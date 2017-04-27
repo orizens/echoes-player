@@ -1,11 +1,11 @@
-@import '../../../../../css/echoes-variables.scss';
+@import '~css/echoes-variables.scss';
 
 :host {
 	$btn-color: whitesmoke;
-	$btn-control-font-size:  1.3rem;
-	$btn-control-padding:  1.5rem 2rem;
+	$btn-control-font-size:  1.5rem;
+	$btn-control-padding:  1.5rem 1.7rem;
 	$btn-control-primary-color: $brand-primary;
-	$btn-primary-font-size: 1.8rem;
+	$btn-primary-font-size: 3rem;
 
 	@mixin button-style () {
 		border: none;
@@ -25,6 +25,8 @@
 	}
 	.btn {
 		@include button-style();
+		vertical-align: middle;
+    line-height: 0;
 		
 		&:hover {
 			@include button-style();
@@ -37,10 +39,9 @@
 		&.play,
 		&.pause {
 			border: 0;
-			border-radius: 50% !important;
-			background-color: $btn-control-primary-color;
+			color: $btn-control-primary-color;
 			padding: 0.9rem 1.4rem;
-			margin: 0.3rem 0 !important;
+			margin: 0;
 			font-size: $btn-primary-font-size;
 		}
 	}
@@ -49,6 +50,9 @@
 		transform: translatey(0);
 	}
 
+	.player-controls {
+		padding: .5rem;
+	}
 	&.yt-playing .player-controls {
 		.play {
 			display: none;

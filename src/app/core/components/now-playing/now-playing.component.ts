@@ -10,6 +10,7 @@ import { NowPlaylistComponent } from './now-playlist';
 
 @Component({
   selector: 'now-playing',
+  styleUrls: [ './now-playing.scss' ],
   template: `
   <div class="sidebar-pane">
     <now-playlist-filter

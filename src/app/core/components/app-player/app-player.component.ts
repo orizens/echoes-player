@@ -1,5 +1,9 @@
 import { NowPlaylistEffects } from '../../effects/now-playlist.effects';
-import { AppPlayerActions, AppPlayerState, getPlayer$, getCurrentMedia$, getIsPlayerPlaying$ } from '../../store/app-player';
+import {
+  AppPlayerActions, AppPlayerState,
+  getPlayerFullscreen$, getShowPlayer$,
+  getPlayer$, getCurrentMedia$, getIsPlayerPlaying$
+} from '../../store/app-player';
 import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
 import { EchoesState } from '../../store';
 import { Store } from '@ngrx/store';
@@ -22,12 +26,12 @@ import { NowPlaylistService, YoutubePlayerService } from '../../services';
   styleUrls: [ './app-player.scss' ],
   template: `
   <section 
-    [class.show-youtube-player]="(player$ | async).showPlayer"
-    [class.fullscreen]="(player$ | async).isFullscreen">
+    [class.show-youtube-player]="isShowPlayer$ | async"
+    [class.fullscreen]="(isPlayerFullscreen$ | async).on">
     <div class="yt-player ux-maker">
       <player-resizer 
         (toggle)="togglePlayer()"
-        [fullScreen]="(player$ | async).showPlayer"
+        [fullScreen]="isShowPlayer$ | async"
       ></player-resizer>
       <youtube-player class="nicer-ux"
         (ready)="setupPlayer($event)"
@@ -60,6 +64,8 @@ export class AppPlayerComponent implements OnInit {
   media$ = this.store.let(getCurrentMedia$);
   isPlayerPlaying$ = this.store.let(getIsPlayerPlaying$);
   isPlayerInRepeat$ = this.store.let(isPlayerInRepeat$);
+  isPlayerFullscreen$ = this.store.let(getPlayerFullscreen$);
+  isShowPlayer$ = this.store.let(getShowPlayer$);
 
   @HostBinding('class.youtube-player') style = true;
 
@@ -103,7 +109,7 @@ export class AppPlayerComponent implements OnInit {
   }
 
   toggleFullScreen () {
-    this.playerService.setSize();
+    this.store.dispatch(this.playerActions.fullScreen());
   }
 
   playNextTrack () {

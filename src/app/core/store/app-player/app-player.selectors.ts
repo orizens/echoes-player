@@ -15,6 +15,10 @@ export function getIsPlayerPlaying$ (state$: Observable<EchoesState>): Observabl
     .map((playerState: YT.PlayerState) => playerState === 1);
 }
 
-export function getShowPlayer(state$: Observable<EchoesState>): Observable<boolean> {
+export function getShowPlayer$(state$: Observable<EchoesState>): Observable<boolean> {
   return state$.select(state => state.player.showPlayer);
+}
+
+export function getPlayerFullscreen$(state$: Observable<EchoesState>) {
+  return state$.select(state => state.player.fullscreen);
 }
