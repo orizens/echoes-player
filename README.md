@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/orizens/echoes-player.svg?branch=master)](https://travis-ci.org/orizens/echoes-player) [![Code Climate](https://codeclimate.com/github/orizens/echoes-player/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-player)
 
 # Echoes Player - Angular Version (2nd Generation)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/orizens/echoes-player.svg)](https://greenkeeper.io/)
 Echoes is a great youtube player developed by [Oren Farhi](http://orizens.com).
 It's fun & easy to listen or watch videos from youtube with Echoes.
 What if youtube was designed to be used as music player?
