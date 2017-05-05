@@ -1,7 +1,8 @@
+import { YoutubePlayerService } from '../services';
 import { EchoesState } from '../store';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/switchMapTo';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs/observable/of';
 
 import { Injectable } from '@angular/core';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
@@ -17,6 +18,7 @@ export class NowPlaylistEffects {
     public store: Store<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
     private nowPlaylistService: NowPlaylistService,
+    private playerService: YoutubePlayerService
   ) {}
 
   @Effect()
@@ -38,6 +40,19 @@ export class NowPlaylistEffects {
     .map((states: [any, GoogleApiYouTubeVideoResource]) => {
       return this.nowPlaylistActions.selectVideo(states[1]);
     }).share();
+
+  @Effect()
+  selectBeforeSeekToTime$ = this.actions$
+    .ofType(NowPlaylistActions.SELECT_AND_SEEK_TO_TIME)
+    .map(toPayload)
+    .map((trackEvent) => this.nowPlaylistActions.updateIndexByMedia(trackEvent.media.id));
+
+  @Effect({ dispatch: false })
+  seekToTime$ = this.actions$
+    .ofType(NowPlaylistActions.SELECT_AND_SEEK_TO_TIME)
+    .map(toPayload)
+    .do((trackEvent) => this.playerService.seekTo(trackEvent))
+    .catch((error) => of({ type: 'ERROR_IN_SEEK', payload: error }));
 
   // queueVideoReady$ = this.actions$
     // .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)

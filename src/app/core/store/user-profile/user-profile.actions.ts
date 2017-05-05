@@ -16,12 +16,10 @@ export class UserProfileActions {
 
   setViewPlaylist = ActionCreatorFactory.create<string>(UserProfileActions.VIEWED_PLAYLIST);
 
-  updateData(data: any) {
-    return {
-      type: UserProfileActions.UPDATE,
-      payload: data
-    };
-  }
+  updateData = (data: any) => ({
+    type: UserProfileActions.UPDATE,
+    payload: data
+  })
 
   addPlaylists(playlists: Array<any>) {
     return {
@@ -30,12 +28,8 @@ export class UserProfileActions {
     };
   }
 
-  updateToken(token: string) {
-    return {
-      type: UserProfileActions.UPDATE_TOKEN,
-      payload: token
-    };
-  }
+  updateToken = (payload: string) =>
+    ({ type: UserProfileActions.UPDATE_TOKEN, payload });
 
   signOut() {
     return {

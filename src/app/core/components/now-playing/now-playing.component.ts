@@ -23,6 +23,7 @@ import { NowPlaylistComponent } from './now-playlist';
     <now-playlist
       [playlist]="nowPlaylist$ | async"
       (select)="selectVideo($event)"
+      (selectTrack)="selectTrackInVideo($event)"
       (remove)="removeVideo($event)"
     ></now-playlist>
   </div>
@@ -69,5 +70,10 @@ export class NowPlayingComponent implements OnInit {
 
   onHeaderClick() {
     this.nowPlaylistComponent.scrollToActiveTrack();
+  }
+
+  selectTrackInVideo(trackEvent: { time: string, media: GoogleApiYouTubeVideoResource}) {
+    this.store.dispatch(this.appPlayerActions.playVideo(trackEvent.media));
+    this.nowPlaylistService.seekToTrack(trackEvent);
   }
 }

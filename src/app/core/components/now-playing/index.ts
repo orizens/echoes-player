@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../../shared';
 
 import { NowPlayingComponent } from './now-playing.component';
-import { NowPlaylistComponent } from './now-playlist';
+import { NowPlaylistComponent, NowPlaylistTrackComponent } from './now-playlist';
 import { NowPlaylistFilterComponent } from './now-playlist-filter';
 
 @NgModule({
@@ -12,6 +12,7 @@ import { NowPlaylistFilterComponent } from './now-playlist-filter';
   declarations: [
     NowPlayingComponent,
     NowPlaylistComponent,
+    NowPlaylistTrackComponent,
     NowPlaylistFilterComponent
   ],
   exports: [
