@@ -34,7 +34,7 @@ enum Key {
         <a class="list-group-item" href="http://github.com/orizens/echoes-player" target="_blank">
           <i class="fa fa-github"></i> Source Code @Github
         </a>
-        <a class="list-group-item" href="https://travis-ci.org/orizens/echoes-player" target="_blank">
+        <a class="list-group-item" *ngIf="!hide" href="https://travis-ci.org/orizens/echoes-player" target="_blank">
           <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
         </a>
         <div class="list-group-item" target="_blank">

@@ -13,12 +13,12 @@
 
     @keyframes slideInDown {
         0% {
-            transform: translate3d(0,-100%,0) scale(0);
+            transform: scale(0.4);
             opacity: 0;
         }
 
         100% {
-            transform: translate3d(0,0,0) scale(1);
+            transform: scale(1);
             opacity: 1;
         }
     }
