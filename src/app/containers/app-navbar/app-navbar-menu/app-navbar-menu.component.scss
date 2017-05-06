@@ -11,6 +11,17 @@
       100% { transform: scale(1.5); opacity: 0;}
     }
 
+    @keyframes slideInDown {
+        0% {
+            transform: translate3d(0,-100%,0) scale(0);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translate3d(0,0,0) scale(1);
+            opacity: 1;
+        }
+    }
     .pulse {
       animation: pulse 2s infinite;
     }
@@ -23,8 +34,14 @@
     .menu-dropdown {
       position: absolute;
       right: 0;
+      top: -30rem;
       min-width: 250px;
 
+      &.slideInDown {
+        animation: slideInDown .5s 1;
+        top: 5rem;
+        transform-origin: top right;
+      }
       .menu-backdrop {
         position: fixed;
         top: 0;

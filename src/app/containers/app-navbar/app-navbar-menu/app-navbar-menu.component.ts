@@ -21,8 +21,9 @@ enum Key {
       <i *ngIf="appVersion.isNewAvailable" class="pulse update-indicator fa fa-dot-circle-o text-success"></i>
     </button>
     <div class="panel panel-default menu-dropdown"
-      *ngIf="!hide">
-      <div class="menu-backdrop" (click)="hideMenu()"></div>
+      [class.slideInDown]="!hide"
+      >
+      <div class="menu-backdrop" *ngIf="!hide" (click)="hideMenu()"></div>
       <div class="list-group">
         <div *ngIf="appVersion.isNewAvailable" class="list-group-item">
           <button class="btn btn-success" title="click to update Echoes"
