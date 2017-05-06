@@ -5,20 +5,21 @@ import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 
 @Injectable()
 export class NowPlaylistActions {
-  static QUEUE_LOAD_VIDEO = '[NOW PLAYLIST] QUEUE_LOAD_VIDEO';
-  static QUEUE = '[NOW PLAYLIST] QUEUE';
-  static QUEUE_LOAD_VIDEO_SUCCESS = '[NOW PLAYLIST] QUEUE_LOAD_VIDEO_SUCCESS';
-  static SELECT = '[NOW PLAYLIST] SELECT';
-  static REMOVE = '[NOW PLAYLIST] REMOVE';
-  static UPDATE_INDEX = '[NOW PLAYLIST] UPDATE_INDEX';
-  static QUEUE_FAILED = '[NOW PLAYLIST] QUEUE_FAILED';
-  static FILTER_CHANGE = '[NOW PLAYLIST] FILTER_CHANGE';
-  static REMOVE_ALL = '[NOW PLAYLIST] REMOVE_ALL';
-  static SELECT_NEXT = '[NOW PLAYLIST] SELECT_NEXT';
-  static SELECT_PREVIOUS = '[NOW PLAYLIST] SELECT_PREVIOUS';
-  static QUEUE_VIDEOS = '[NOW PLAYLIST] QUEUE_VIDEOS';
-  static MEDIA_ENDED = '[NOW PLAYLIST] MEDIA_ENDED';
-  static TOGGLE_REPEAT = '[NOW PLAYLIST] TOGGLE_REPEAT';
+  static QUEUE_LOAD_VIDEO = '[NowPlaylist] QUEUE_LOAD_VIDEO';
+  static QUEUE = '[NowPlaylist] QUEUE';
+  static QUEUE_LOAD_VIDEO_SUCCESS = '[NowPlaylist] QUEUE_LOAD_VIDEO_SUCCESS';
+  static SELECT = '[NowPlaylist] SELECT';
+  static REMOVE = '[NowPlaylist] REMOVE';
+  static UPDATE_INDEX = '[NowPlaylist] UPDATE_INDEX';
+  static QUEUE_FAILED = '[NowPlaylist] QUEUE_FAILED';
+  static FILTER_CHANGE = '[NowPlaylist] FILTER_CHANGE';
+  static REMOVE_ALL = '[NowPlaylist] REMOVE_ALL';
+  static SELECT_NEXT = '[NowPlaylist] SELECT_NEXT';
+  static SELECT_PREVIOUS = '[NowPlaylist] SELECT_PREVIOUS';
+  static QUEUE_VIDEOS = '[NowPlaylist] QUEUE_VIDEOS';
+  static MEDIA_ENDED = '[NowPlaylist] MEDIA_ENDED';
+  static TOGGLE_REPEAT = '[NowPlaylist] TOGGLE_REPEAT';
+  static SELECT_AND_SEEK_TO_TIME = '[NowPlaylist] SELECT_AND_SEEK_TO_TIME';
 
   mediaEnded = ActionCreatorFactory.create(NowPlaylistActions.MEDIA_ENDED);
   selectNext = ActionCreatorFactory.create(NowPlaylistActions.SELECT_NEXT);
@@ -26,6 +27,7 @@ export class NowPlaylistActions {
   removeAll = ActionCreatorFactory.create(NowPlaylistActions.REMOVE_ALL);
   removeVideo = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource>(NowPlaylistActions.REMOVE);
   toggleRepeat = ActionCreatorFactory.create(NowPlaylistActions.TOGGLE_REPEAT);
+  seekTo = ActionCreatorFactory.create<{time: string, media: GoogleApiYouTubeVideoResource}>(NowPlaylistActions.SELECT_AND_SEEK_TO_TIME);
 
   queueLoadVideo(media): Action {
     return {

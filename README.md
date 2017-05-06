@@ -75,3 +75,9 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Bundle analyze explorer
+[look at issue](https://github.com/angular/angular-cli/issues/4172) 
+1. make sure ```npm i source-map-explorer -g```
+1. ```ng build --prod --aot --sm``` (the sourcemap is for later steps)  
+1. ```cd dist && source-map-explorer A-FILE-WITH-HASH.js```

@@ -26,15 +26,20 @@ export class YoutubePlayerService {
     this.zone.runOutsideAngular(() => this.player.pauseVideo());
   }
 
-  playVideo(media: any) {
-    const id = media.id && media.id.videoId ? media.id.videoId : media.id;
+  playVideo(media: GoogleApiYouTubeVideoResource, seconds?: number) {
+    const id = media.id;
     const loadedMedia = this.player.getVideoData();
     const loadedMediaId = loadedMedia.video_id;
     const isLoaded = '' !== loadedMediaId && id === loadedMediaId;
     if (!isLoaded) {
-      this.zone.runOutsideAngular(() => this.player.loadVideoById(id));
+      this.zone.runOutsideAngular(() => this.player.loadVideoById(id, seconds || undefined));
     }
     this.play();
+  }
+
+  seekTo(trackEvent: { time: string, media: GoogleApiYouTubeVideoResource }) {
+    const seconds = this.toNumber(trackEvent.time);
+    this.zone.runOutsideAngular(() => this.player.seekTo(seconds, true));
   }
 
   togglePlayer() {
@@ -63,5 +68,22 @@ export class YoutubePlayerService {
     this.zone.runOutsideAngular(() => {
       this.player.setSize(width, height);
     });
+  }
+
+  /**
+   * converts time format of HH:MM:SS to seconds
+   * @param time string
+   */
+  toNumber(time: string): number {
+    const timeUnitRatio = {
+      '3': 60 * 60, // HH
+      '2': 60, // MM
+      '1': 1
+    };
+    return time.split(':').reverse()
+      .map((num: string) => parseInt(num, 10))
+      .reduce((acc: number, current: number, index: number, arr: number[]) => {
+        return acc + (current * +timeUnitRatio[index + 1]);
+      }, 0);
   }
 }

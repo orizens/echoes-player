@@ -7,9 +7,11 @@ import { NowPlaylistInterface } from '../../../store/now-playlist';
   styleUrls: [ './now-playlist-filter.scss' ],
   template: `
   <h3 class="nav-header user-playlists-filter">
-    <span class="text btn-transparent" title="Reveal now playing track"
-      (click)="onNowPlayingClick()">
-      Now Playing <span *ngIf="!isPlaylistEmpty()">({{ playlistLength }})</span>
+    <span class="playlist-header" (click)="onNowPlayingClick()">  
+      <i class="fa fa-play-circle-o"></i>
+      <span class="text btn-transparent playlist-count" title="Reveal now playing track">
+        Now Playing <span *ngIf="!isPlaylistEmpty()">({{ playlistLength }})</span>
+      </span>
     </span>
     <button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
       [disabled]="isPlaylistEmpty()"

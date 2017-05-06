@@ -18,7 +18,9 @@
 			color: grey;
 		}
 	}
-
+	.playlist-header {
+		cursor: pointer;
+	}
 	.playlist-filter {
 		position: absolute;
 		right: 0;
@@ -43,8 +45,14 @@
 	.closed now-playlist-filter {
 		.text,
 		.playlist-filter,
-		.btn-save {
+		.btn-save,
+		.playlist-count,
+		.btn-clear {
 			display: none;
+		}
+
+		.playlist-header {
+			font-size: 2rem;
 		}
 
 		.nav-header.user-playlists-filter {

@@ -39,30 +39,14 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         [ngClass]="{
           'active': isActiveMedia(video.id, playlistTrack)
         }"
-        *ngFor="let video of playlist?.videos | search:playlist.filter; let index = index"
-        [@fadeIn]
-        >
-        <a class="now-playlist-track__trigger" title="{{ video.snippet.title }}"
-          (click)="selectVideo(video)">
-          <section class="video-thumb playlist-track__thumb">
-            <span class="track-number">{{ index + 1 }}</span>
-            <img draggable="false" 
-            src="{{ video.snippet.thumbnails.default.url }}" 
-            xtitle="Drag to sort">
-            <span class="badge badge-info">
-              {{ video.contentDetails.duration | toFriendlyDuration }}
-            </span>
-          </section>
-          <aside class="playlist-track__content">
-            <span class="label label-primary fa fa-list-ul playlist-track"
-              *ngIf="isPlaylistMedia(video)"
-              title="Includes specific cued tracks - soon to come..."
-            ></span>
-            <span class="video-title">{{ video.snippet.title }}</span>
-            <span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
-              (click)="removeVideo(video)"><i class="fa fa-trash"></i></span>
-          </aside>
-        </a>
+        *ngFor="let video of playlist.videos | search:playlist.filter; let index = index"
+        [@fadeIn]>
+        <now-playlist-track
+          [video]="video" [index]="index"
+          (remove)="removeVideo($event)"
+          (select)="selectVideo(video)"
+          (selectTrack)="selectTrackInVideo($event)"
+        ></now-playlist-track>
       </li>
     </ul>
   </section>
@@ -71,9 +55,10 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
   @Input() playlist: NowPlaylistInterface;
-  @Output() select = new EventEmitter<GoogleApiYouTubeSearchResource>();
+  @Output() select = new EventEmitter<GoogleApiYouTubeVideoResource>();
+  @Output() selectTrack = new EventEmitter<{time: string, media: GoogleApiYouTubeVideoResource}>();
   // @Output() sort = new EventEmitter<GoogleApiYouTubeSearchResource>();
-  @Output() remove = new EventEmitter<GoogleApiYouTubeSearchResource>();
+  @Output() remove = new EventEmitter<GoogleApiYouTubeVideoResource>();
 
   public activeTrackElement: HTMLUListElement;
   public hasActiveChanged = false;
@@ -100,15 +85,15 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
     }
   }
 
-  selectVideo (media: GoogleApiYouTubeSearchResource) {
-    this.select.next(media);
+  selectVideo (media: GoogleApiYouTubeVideoResource) {
+    this.select.emit(media);
   }
 
-  removeVideo (media: GoogleApiYouTubeSearchResource) {
-    this.remove.next(media);
+  removeVideo (media: GoogleApiYouTubeVideoResource) {
+    this.remove.emit(media);
   }
 
-  sortVideo (media: GoogleApiYouTubeSearchResource) {
+  sortVideo (media: GoogleApiYouTubeVideoResource) {
     // this.sort.next(media);
   }
 
@@ -119,18 +104,9 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
     }
     return isActive;
   }
-  // TODO - extract to a service
-  isPlaylistMedia (media) {
-    const hasTracksRegexp = new RegExp(
-      '(([0-9]{0,1}[0-9]):([0-9][0-9]){0,1}:{0,1}([0-9][0-9]){0,1})',
-      'gm'
-    );
-    const tracks = media.snippet.description.match(hasTracksRegexp);
-    return Array.isArray(tracks);
-  }
 
-  private hasVideoRemoved(currentPlaylist, prevPlaylist) {
-    return currentPlaylist.length < prevPlaylist.length;
+  selectTrackInVideo(trackEvent: { time, media }) {
+    this.selectTrack.emit(trackEvent);
   }
 
   private hasChanges(changes) {

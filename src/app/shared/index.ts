@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { InfiniteScrollModule  } from 'ngx-infinite-scroll';
+import { NgxTypeaheadModule  } from 'ngx-typeahead';
 // import { InfiniteScrollModule } from './directives/infinite-scroll';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 // import { YoutubePlayerModule } from './components/yt-player';
@@ -17,6 +18,7 @@ import { PIPES } from './pipes';
     RouterModule,
     YoutubePlayerModule,
     InfiniteScrollModule,
+    NgxTypeaheadModule
   ],
   declarations: [
     ...CORE_COMPONENTS,
@@ -29,6 +31,7 @@ import { PIPES } from './pipes';
     ...PIPES,
     InfiniteScrollModule,
     YoutubePlayerModule,
+    NgxTypeaheadModule
   ],
   providers: [
 

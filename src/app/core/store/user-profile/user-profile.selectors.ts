@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs/Observable';
-import { GoogleBasicProfile } from './user-profile.reducer';
+import { IUserProfile } from './user-profile.reducer';
 import { EchoesState } from '../reducers';
 
-export function getUser$(state$: Observable<EchoesState>): Observable<GoogleBasicProfile> {
+export function getUser$(state$: Observable<EchoesState>): Observable<IUserProfile> {
   return state$.select(state => state.user);
 }
 

@@ -1,3 +1,8 @@
+## v 3.4.0 (2017/05/06) 
+* [NEW] - album tracks now features track listings in no playing playlist - playing single tracks in a media - click the green playlist icon to see tracks.  
+* [UPDATE] - user menu is now animated.   
+* [UPDATE] - added icon for reveal playing track in "now-playing" title  
+
 ## v 3.3.0 (2017/04/26) 
 * Made performance improvments to fullscreen mode
 * [UPDATE] - app user menu has been revamped for mobile devices

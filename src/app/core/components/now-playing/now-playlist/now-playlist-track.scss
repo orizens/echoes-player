@@ -1,0 +1,102 @@
+@import '~css/echoes-variables.scss';
+
+@media (min-width: 320px) {
+  :host {
+    $track-badge-index: 10;
+    $track-button: 15;
+    $track-border-color: #262829;
+    $track-badge-color: $dark;
+    $track-active-border-color: $brand-primary;
+    $track-bg-active-color: rgba(10,10,10, .5);
+    $remove-font-size: 1.5rem;
+    $playlist-font-size: 1.3rem;
+
+    .track-number {
+      position: absolute;
+      left: 1.5rem;
+      padding: 0.5rem;
+      background-color: rgba(0,0,0,.9);
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .playlist-track {
+      font-size: $playlist-font-size;
+      display: inline-block;
+      position: absolute;
+      top: 5rem;
+      right: 1rem;
+    }
+
+    // &.sv-helper {
+    // 	background: #323538;
+    // 	box-shadow: 0 0 1rem #000;
+    // }
+
+    .video-title {
+      font-size: small;
+    }
+
+    .video-thumb {
+      height: 4.8rem;
+      width: 6.4rem;
+      float: left;
+      margin-right: 8px;
+      // cursor: ns-resize;
+      img {
+        height: 100%;
+        width: 95%;
+      }
+    }
+
+    .remove-track {
+      position: absolute;
+      top: 1rem;
+      right: 0rem;
+      transform: translatex(-1rem);
+      // display: block;
+      z-index: $track-button;
+      font-size: $remove-font-size;
+    }
+
+    // .now-playlist-track__trigger {
+    a {
+      display: block;
+      min-height: 8.5rem;
+      text-decoration: none;
+      padding: 1rem 2rem 1rem 1.5rem;
+      border-bottom: 1px solid $track-border-color;
+    }
+
+    .badge-info {
+      border-radius: 0;
+      background: $track-badge-color;
+      margin: 0 auto;
+      display: block;
+      font-size: 1rem;
+      margin-top: 0;
+      z-index: $track-badge-index;
+      position: relative;
+    }
+
+    .track-tracks {
+      margin-top: 1.5rem;
+
+      .btn {
+        display: block;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  :host {
+    .track-tracks {
+
+      .btn {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
