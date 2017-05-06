@@ -9,7 +9,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
     <section class="video-thumb playlist-track__thumb">
       <span class="track-number">{{ index + 1 }}</span>
       <img draggable="false" 
-      src="{{ video.snippet.thumbnails.default.url }}" 
+      [src]="videoThumb" 
       xtitle="Drag to sort">
       <span class="badge badge-info">
         {{ video.contentDetails.duration | toFriendlyDuration }}
@@ -100,5 +100,10 @@ export class NowPlaylistTrackComponent implements OnInit {
     if (title) {
       this.selectTrack.emit({ time: title[0], media });
     }
+  }
+
+  get videoThumb () {
+    // the type of video is missing the thumbnails object
+    return this.video.snippet.thumbnails['default']['url'];
   }
 }
