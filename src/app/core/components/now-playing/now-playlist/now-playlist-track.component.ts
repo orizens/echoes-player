@@ -26,8 +26,9 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
       <span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
         (click)="remove.emit(video)"><i class="fa fa-trash"></i></span>
     </aside>
-    <article *ngIf="displayTracks" class="track-tracks">
-      <button type="button" class="btn btn-primary"
+    <article *ngIf="displayTracks" class="track-tracks list-group">
+      <aside class="album-tracks-heading">Tracks</aside>
+      <button type="button" class="list-group-item btn-transparent"
         *ngFor="let track of tracks"
         (click)="handleSelectTrack($event, track, video)">
         {{ track }}
