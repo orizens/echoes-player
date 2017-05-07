@@ -10,6 +10,7 @@
     $track-bg-active-color: rgba(10,10,10, .5);
     $remove-font-size: 1.5rem;
     $playlist-font-size: 1.3rem;
+    $text-color: #fff;
 
     .track-number {
       position: absolute;
@@ -77,14 +78,26 @@
       margin-top: 0;
       z-index: $track-badge-index;
       position: relative;
+      margin-right: 3px;
     }
 
     .track-tracks {
-      margin-top: 1.5rem;
+      margin: 1.5rem -2rem 0;
+      border-top: 1px solid $track-active-border-color;
 
-      .btn {
-        display: block;
-        font-size: 1.3rem;
+      .album-tracks-heading {
+        margin: 0 2rem;
+        color: $track-active-border-color;
+        font-size: 1.5rem;
+      }
+
+      .list-group-item {
+        border-color: $track-border-color;
+        color: $text-color;
+
+        &:hover {
+          color: $track-active-border-color;
+        }
       }
     }
   }

@@ -1,4 +1,5 @@
 {
+  "exclude": "tests/**/*.ts",
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],

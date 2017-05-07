@@ -1,3 +1,7 @@
+## v 3.4.1 (2017/05/06) 
+* [UPDATE] - updated album tracks parsing algorithm - now includes more rules for parsing more formats of tracks embeded in media description  
+* [UPDATE] - restyled tracks.  
+
 ## v 3.4.0 (2017/05/06) 
 * [NEW] - album tracks now features track listings in no playing playlist - playing single tracks in a media - click the green playlist icon to see tracks.  
 * [UPDATE] - user menu is now animated.   

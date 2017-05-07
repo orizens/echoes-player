@@ -13,10 +13,12 @@ import { APP_CONTAINER_MODULES } from './containers';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { AppAppComponent } from './core/components/app-app/app-app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppAppComponent
   ],
   imports: [
     BrowserModule,

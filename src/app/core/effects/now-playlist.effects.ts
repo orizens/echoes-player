@@ -1,4 +1,4 @@
-import { YoutubePlayerService } from '../services';
+import { MediaParserService, YoutubePlayerService } from '../services';
 import { EchoesState } from '../store';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/switchMapTo';
@@ -18,6 +18,7 @@ export class NowPlaylistEffects {
     public store: Store<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
     private nowPlaylistService: NowPlaylistService,
+    private mediaParser: MediaParserService,
     private playerService: YoutubePlayerService
   ) {}
 
@@ -51,24 +52,6 @@ export class NowPlaylistEffects {
   seekToTime$ = this.actions$
     .ofType(NowPlaylistActions.SELECT_AND_SEEK_TO_TIME)
     .map(toPayload)
-    .do((trackEvent) => this.playerService.seekTo(trackEvent))
+    .do((trackEvent) => this.playerService.seekTo(this.mediaParser.toNumber(trackEvent.time)))
     .catch((error) => of({ type: 'ERROR_IN_SEEK', payload: error }));
-
-  // queueVideoReady$ = this.actions$
-    // .ofType(NowPlaylistActions.QUEUE_LOAD_VIDEO)
-    // .map(action => action.payload)
-    // .catch(video => Observable.of(this.nowPlaylistActions.queueFailed(video)));
-    // .switchMap((media: GoogleApiYouTubeVideoResource) =>
-    //   this.youtubeVideosInfo.fetchVideoData(media.id)
-    //     .map(video => this.nowPlaylistActions.queueVideo(video))
-    //     .catch(video => Observable.of(this.nowPlaylistActions.queueFailed(video)))
-
-  // @Effect()
-  // queueLoadVideoSuccess$ = this.actions$
-  //   .ofType(NowPlaylistActions.QUEUE)
-  //   .map(action => action.payload)
-  //   .map(video => this.nowPlaylistActions.queueVideo(video));
-    // .map((media: GoogleApiYouTubeVideoResource) => this.nowPlaylistActions.updateIndexByMedia(media.id));
-
-
 }
