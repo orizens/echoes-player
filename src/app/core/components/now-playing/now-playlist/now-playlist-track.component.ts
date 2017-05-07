@@ -1,3 +1,4 @@
+import { MediaParserService } from '../../../services/media-parser.service';
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -47,40 +48,21 @@ export class NowPlaylistTrackComponent implements OnInit {
   displayTracks = false;
   tracks: string[] = [];
 
-  private HH_MM_SSre = /(\d{1,2}):\d{2}:?\d{0,2}/;
-
-  constructor() { }
+  constructor(public mediaParser: MediaParserService) { }
 
   ngOnInit() { }
 
   isPlaylistMedia (media: GoogleApiYouTubeVideoResource) {
-    const tracks = this.extractTracks(media);
+    const tracks = this.mediaParser.extractTracks(media);
     const isArray = Array.isArray(tracks);
-    return isArray;
+    if (isArray) {
+      this.parseAndSaveTracks(tracks);
+    }
+    return isArray && this.tracks.length;
   }
 
-  extractTracks(media: GoogleApiYouTubeVideoResource) {
-    // const re = /(([0-9]{0,1}[0-9]):([0-9][0-9]){0,1}:{0,1}([0-9][0-9]){0,1}\s*)([\w\s/]*[^ 0-9:/\n\b])/;
-    const LINE_WITH_TRACKre = /([a-zA-Z $().\d]){0,}(\d{1,2}:\d{2}:{0,1}\d{0,2})+([a-zA-Z $]){0,}/;
-    const hasTracksRegexp = new RegExp(LINE_WITH_TRACKre, 'gmi');
-    const tracks = media.snippet.description.match(hasTracksRegexp);
-    // make sure there's a first track
-    if (tracks && tracks.length && !tracks[0].includes('00:0')) {
-      tracks.unshift('00:00');
-    }
-    this.parseAndSaveTrack(tracks);
-    return tracks;
-  }
-
-  parseAndSaveTrack(tracks: string[]) {
-    if (tracks) {
-      const re = this.HH_MM_SSre;
-      this.tracks = tracks
-        .filter((track: string) => {
-          const isTrack = re.test(track);
-          return isTrack;
-        });
-    }
+  parseAndSaveTracks(tracks: string[]) {
+    this.tracks = this.mediaParser.parseTracks(tracks);
   }
 
   toggleTracks(media: GoogleApiYouTubeVideoResource) {
@@ -95,10 +77,9 @@ export class NowPlaylistTrackComponent implements OnInit {
 
   handleSelectTrack($event: Event, track: string, media: GoogleApiYouTubeVideoResource) {
     $event.stopImmediatePropagation();
-    const HH_MM_SSre = this.HH_MM_SSre;
-    const title = track.match(HH_MM_SSre);
-    if (title) {
-      this.selectTrack.emit({ time: title[0], media });
+    const time = this.mediaParser.extractTime(track);
+    if (time) {
+      this.selectTrack.emit({ time: time[0], media });
     }
   }
 

@@ -37,8 +37,7 @@ export class YoutubePlayerService {
     this.play();
   }
 
-  seekTo(trackEvent: { time: string, media: GoogleApiYouTubeVideoResource }) {
-    const seconds = this.toNumber(trackEvent.time);
+  seekTo(seconds: number) {
     this.zone.runOutsideAngular(() => this.player.seekTo(seconds, true));
   }
 
@@ -68,22 +67,5 @@ export class YoutubePlayerService {
     this.zone.runOutsideAngular(() => {
       this.player.setSize(width, height);
     });
-  }
-
-  /**
-   * converts time format of HH:MM:SS to seconds
-   * @param time string
-   */
-  toNumber(time: string): number {
-    const timeUnitRatio = {
-      '3': 60 * 60, // HH
-      '2': 60, // MM
-      '1': 1
-    };
-    return time.split(':').reverse()
-      .map((num: string) => parseInt(num, 10))
-      .reduce((acc: number, current: number, index: number, arr: number[]) => {
-        return acc + (current * +timeUnitRatio[index + 1]);
-      }, 0);
   }
 }
