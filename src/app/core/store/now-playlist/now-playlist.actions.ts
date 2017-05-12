@@ -10,6 +10,7 @@ export class NowPlaylistActions {
   static QUEUE_LOAD_VIDEO_SUCCESS = '[NowPlaylist] QUEUE_LOAD_VIDEO_SUCCESS';
   static SELECT = '[NowPlaylist] SELECT';
   static REMOVE = '[NowPlaylist] REMOVE';
+  static TOGGLE_SHUFFLE = '[NowPlaylist] TOGGLE_SHUFFLE';
   static UPDATE_INDEX = '[NowPlaylist] UPDATE_INDEX';
   static QUEUE_FAILED = '[NowPlaylist] QUEUE_FAILED';
   static FILTER_CHANGE = '[NowPlaylist] FILTER_CHANGE';
@@ -27,6 +28,7 @@ export class NowPlaylistActions {
   removeAll = ActionCreatorFactory.create(NowPlaylistActions.REMOVE_ALL);
   removeVideo = ActionCreatorFactory.create<GoogleApiYouTubeVideoResource>(NowPlaylistActions.REMOVE);
   toggleRepeat = ActionCreatorFactory.create(NowPlaylistActions.TOGGLE_REPEAT);
+  toggleShuffle = ActionCreatorFactory.create(NowPlaylistActions.TOGGLE_SHUFFLE);
   seekTo = ActionCreatorFactory.create<{time: string, media: GoogleApiYouTubeVideoResource}>(NowPlaylistActions.SELECT_AND_SEEK_TO_TIME);
 
   queueLoadVideo(media): Action {

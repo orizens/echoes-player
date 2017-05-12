@@ -6,6 +6,14 @@ export function isPlayerInRepeat$(state$: Observable<EchoesState>): Observable<b
   return state$.select(state => state.nowPlaylist.repeat);
 }
 
+export function isPlayerInShuffle$(state$: Observable<EchoesState>): Observable<boolean> {
+  return state$.select(state => state.nowPlaylist.shuffle);
+}
+
+export function getNowPlaylist$(state$: Observable<EchoesState>): Observable<NowPlaylistInterface> {
+  return state$.select(state => state.nowPlaylist);
+}
+
 export function getPlaylistVideos$(state$: Observable<EchoesState>): Observable<GoogleApiYouTubeVideoResource[]> {
   return state$.select(state => state.nowPlaylist.videos);
 }

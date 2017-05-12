@@ -6,13 +6,15 @@ export interface NowPlaylistInterface {
   selectedId: string;
   filter: string;
   repeat: boolean;
+  shuffle: boolean;
 }
 
 const initialState: NowPlaylistInterface = {
   videos: [],
   selectedId: '',
   filter: '',
-  repeat: false
+  repeat: false,
+  shuffle: false
 };
 
 export function nowPlaylist(state: NowPlaylistInterface = initialState, action: Action): NowPlaylistInterface {
@@ -44,6 +46,10 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
         selectedId: selectNextIndex(state.videos, state.selectedId, state.filter, state.repeat)
       };
     }
+    case NowPlaylistActions.TOGGLE_SHUFFLE:
+      return Object.assign({}, state, {
+        shuffle: !state.shuffle
+      });
 
     case NowPlaylistActions.SELECT_PREVIOUS:
       return Object.assign({}, state, {
@@ -53,12 +59,11 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
     case NowPlaylistActions.MEDIA_ENDED:
       return selectNextOrPreviousTrack(state, state.filter);
 
-    case NowPlaylistActions.TOGGLE_REPEAT: {
+    case NowPlaylistActions.TOGGLE_REPEAT:
       return {
         ...state,
         repeat: !state.repeat
       };
-    };
 
     default:
       return state;

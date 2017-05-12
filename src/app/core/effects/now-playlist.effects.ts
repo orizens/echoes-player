@@ -1,15 +1,21 @@
-import { MediaParserService, YoutubePlayerService } from '../services';
-import { EchoesState } from '../store';
+import { Injectable } from '@angular/core';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/switchMapTo';
 import { of } from 'rxjs/observable/of';
-
-import { Injectable } from '@angular/core';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
-import { NowPlaylistActions } from '../store/now-playlist';
-import { getSelectedMedia$,getSelectedMediaId$, getPlaylistVideos$, isPlayerInRepeat$ } from '../store/now-playlist/now-playlist.selectors';
-
+import { MediaParserService, YoutubePlayerService } from '../services';
 import { NowPlaylistService } from '../services/now-playlist.service';
+import { EchoesState } from '../store';
+import { NowPlaylistActions } from '../store/now-playlist';
+import { NowPlaylistInterface } from '../store/now-playlist/now-playlist.reducer';
+import {
+  getPlaylistVideos$,
+  getSelectedMedia$,
+  getSelectedMediaId$,
+  isPlayerInRepeat$,
+  getNowPlaylist$
+} from '../store/now-playlist/now-playlist.selectors';
+
 
 @Injectable()
 export class NowPlaylistEffects {
@@ -36,11 +42,21 @@ export class NowPlaylistEffects {
   loadNextTrack$ = this.actions$
     .ofType(NowPlaylistActions.MEDIA_ENDED)
     .map(toPayload)
-    .withLatestFrom(this.store.let(getSelectedMedia$))
-    .filter((states: [any, GoogleApiYouTubeVideoResource]) => states[1] && states[1].hasOwnProperty('id'))
-    .map((states: [any, GoogleApiYouTubeVideoResource]) => {
-      return this.nowPlaylistActions.selectVideo(states[1]);
-    }).share();
+    .withLatestFrom(this.store.let(getNowPlaylist$))
+    .map(([action, nowPlaylist]: [any, NowPlaylistInterface]) => {
+      let videoId = nowPlaylist.selectedId;
+      if ( nowPlaylist.shuffle && nowPlaylist.videos.length > 1 ) {
+        while ( videoId === nowPlaylist.selectedId) {
+          videoId = nowPlaylist.videos[this.getRandomInt(0, nowPlaylist.videos.length - 1)].id;
+        }
+      }
+      const mediaIds = nowPlaylist.videos.map(video => video.id);
+      const selectedMediaIndex = mediaIds.indexOf(videoId);
+      return nowPlaylist.videos[selectedMediaIndex];
+    })
+    .filter((video: GoogleApiYouTubeVideoResource) => video && !!video.id)
+    .map((video: GoogleApiYouTubeVideoResource) => this.nowPlaylistActions.selectVideo(video))
+    .share();
 
   @Effect()
   selectBeforeSeekToTime$ = this.actions$
@@ -54,4 +70,11 @@ export class NowPlaylistEffects {
     .map(toPayload)
     .do((trackEvent) => this.playerService.seekTo(this.mediaParser.toNumber(trackEvent.time)))
     .catch((error) => of({ type: 'ERROR_IN_SEEK', payload: error }));
+
+
+  private getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 }

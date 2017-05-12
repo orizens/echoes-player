@@ -81,6 +81,10 @@ export class NowPlaylistService {
     this.store.dispatch(this.nowPlaylistActions.toggleRepeat());
   }
 
+  toggleShuffle() {
+    this.store.dispatch(this.nowPlaylistActions.toggleShuffle());
+  }
+
   seekToTrack(trackEvent) {
     this.store.dispatch(this.nowPlaylistActions.seekTo(trackEvent));
   }

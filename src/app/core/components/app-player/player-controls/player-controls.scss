@@ -19,6 +19,7 @@
 	.btn {
 		&.next,
 		&.previous,
+		&.shuffle,
 		&.repeat {
 			padding: $btn-control-padding;
 		}
@@ -65,6 +66,12 @@
 
 	&.yt-repeat-on .player-controls {
 		.repeat {
+			color: $btn-control-primary-color;
+		}
+	}
+	
+	&.yt-shuffle-on .player-controls {
+		.shuffle {
 			color: $btn-control-primary-color;
 		}
 	}

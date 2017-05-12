@@ -21,6 +21,8 @@ export class PlayerControlsComponent {
   @Input() media: GoogleApiYouTubeVideoResource;
   @HostBinding('class.yt-repeat-on')
   @Input() isRepeat = false;
+  @HostBinding('class.yt-shuffle-on')
+  @Input() isShuffle = false;
   @HostBinding('class.yt-playing')
   @Input()
   playing = false;
@@ -29,6 +31,7 @@ export class PlayerControlsComponent {
   @Output() previous = new EventEmitter();
   @Output() next = new EventEmitter();
   @Output() repeat = new EventEmitter();
+  @Output() shuffle = new EventEmitter();
 
   controls = [
     { title: 'previous', icon: 'fa-step-backward', handler: this.handlePrevious, feature: 'previous' },
@@ -36,6 +39,7 @@ export class PlayerControlsComponent {
     { title: 'play', icon: 'fa-play', handler: this.handlePlay, feature: 'play' },
     { title: 'play next track', icon: 'fa-step-forward', handler: this.handleNext, feature: 'next' },
     { title: 'repeate playlist', icon: 'fa-refresh', handler: this.handleRepeat, feature: 'repeat' },
+    { title: 'shuffle playlist', icon: 'fa-random', handler: this.handleShuffle, feature: 'shuffle'}
   ];
 
   handlePlay() {
@@ -60,5 +64,9 @@ export class PlayerControlsComponent {
 
   handleControl(control) {
     control.handler.call(this);
+  }
+
+  handleShuffle(){
+    this.shuffle.emit();
   }
 }

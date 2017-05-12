@@ -4,7 +4,7 @@ import {
   getPlayerFullscreen$, getShowPlayer$,
   getPlayer$, getCurrentMedia$, getIsPlayerPlaying$
 } from '../../store/app-player';
-import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
+import { isPlayerInRepeat$, isPlayerInShuffle$ } from '../../store/now-playlist/now-playlist.selectors';
 import { EchoesState } from '../../store';
 import { Store } from '@ngrx/store';
 import {
@@ -46,6 +46,7 @@ import { NowPlaylistService, YoutubePlayerService } from '../../services';
       ></media-info>
       <player-controls class="col-md-4 col-xs-6 controls-container nicer-ux" 
         [isRepeat]="isPlayerInRepeat$ | async"
+        [isShuffle]="isShuffle$ | async"
         [playing]="isPlayerPlaying$ | async"
         [media]="media$ | async"
         (pause)="pauseVideo()"
@@ -53,6 +54,7 @@ import { NowPlaylistService, YoutubePlayerService } from '../../services';
         (play)="playVideo($event)"
         (previous)="playPreviousTrack()"
         (repeat)="toggleRepeat()"
+        (shuffle)="toggleShuffle()"
       ></player-controls>
     </div>
   </section>
@@ -64,6 +66,7 @@ export class AppPlayerComponent implements OnInit {
   media$ = this.store.let(getCurrentMedia$);
   isPlayerPlaying$ = this.store.let(getIsPlayerPlaying$);
   isPlayerInRepeat$ = this.store.let(isPlayerInRepeat$);
+  isShuffle$ = this.store.let(isPlayerInShuffle$);
   isPlayerFullscreen$ = this.store.let(getPlayerFullscreen$);
   isShowPlayer$ = this.store.let(getShowPlayer$);
 
@@ -128,5 +131,9 @@ export class AppPlayerComponent implements OnInit {
 
   toggleRepeat() {
     this.nowPlaylistService.toggleRepeat();
+  }
+
+  toggleShuffle() {
+    this.nowPlaylistService.toggleShuffle();
   }
 }
