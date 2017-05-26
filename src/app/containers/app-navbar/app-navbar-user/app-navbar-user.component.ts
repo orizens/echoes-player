@@ -3,10 +3,11 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 @Component({
   selector: 'app-navbar-user',
   template: `
-    <span class="btn btn-link navbar-link navbar-btn"
-      *ngIf="signedIn; else userNotSignedIn">
+    <a class="btn btn-link navbar-link navbar-btn"
+      *ngIf="signedIn; else userNotSignedIn"
+      [routerLink]="['../user']">
       <img [src]="userImageUrl" class="user-icon">
-    </span>
+    </a>
     <ng-template #userNotSignedIn>
       <span class="btn btn-link navbar-link navbar-btn"
         (click)="handleSignIn()">

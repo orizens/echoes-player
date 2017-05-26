@@ -1,9 +1,7 @@
-@import '../../../css/core/global.scss';
+@import '~css/core/global.scss';
 
-youtube-videos {
+:host {
 	display: block;
-}
-youtube-videos {
 
 	.nav-toolbar {
 		margin: 0.9rem .5rem;
@@ -12,8 +10,7 @@ youtube-videos {
 }
 
 @media (min-width: 320px) {
-	youtube-videos {
-		padding-top: 11rem;
+	:host {
 		position: relative;
 
 		.nav-toolbar {
@@ -25,8 +22,7 @@ youtube-videos {
 }
 
 @media (min-width: 768px) {
-	youtube-videos {
-		padding-top: 10rem;
+	:host {
 		padding-left: 0;
 
 		.nav-toolbar {

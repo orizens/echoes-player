@@ -1,3 +1,4 @@
+import { getSearchType$ } from '../store/player-search/player-search.selectors';
 import { YoutubeVideosInfo } from '../services';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
-import { PlayerSearchActions } from '../store/player-search';
+import { PlayerSearchActions, SearchTypes } from '../store/player-search';
 
 import { YoutubeSearch } from '../services/youtube.search';
 
@@ -31,26 +32,44 @@ export class PlayerSearchEffects {
     .map((latest: any[]) => latest[1])
     .switchMap((store: EchoesState) =>
       this.youtubeSearch.resetPageToken()
-      .search(store.search.query, store.search.queryParams)
+      .searchVideo(store.search.query, store.search.queryParams)
       .map((youtubeResponse) => this.playerSearchActions.searchResultsReturned(youtubeResponse))
       .catch((err) => Observable.of(this.playerSearchActions.errorInSearch(err)))
     );
 
   @Effect()
   resetVideos$ = this.actions$
-    .ofType(PlayerSearchActions.SEARCH_NEW_QUERY)
+    .ofType(
+      PlayerSearchActions.SEARCH_NEW_QUERY,
+      PlayerSearchActions.PLAYLISTS_SEARCH_START.action
+    )
     .map(() => this.playerSearchActions.resetResults());
 
   @Effect()
   searchResultsReturned$ = this.actions$
     .ofType(PlayerSearchActions.SEARCH_RESULTS_RETURNED)
     .map(toPayload)
+    .withLatestFrom(this.store.let(getSearchType$))
+    .map((states: [any[], string]) => {
+      if (states[1] === SearchTypes.VIDEO) {
+        return PlayerSearchActions.ADD_METADATA_TO_VIDEOS.creator(states[0]);
+      }
+      return PlayerSearchActions.ADD_PLAYLISTS_TO_RESULTS.creator(states[0]);
+    });
+
+  @Effect()
+  addPlaylistsToResults$ = this.actions$
+    .ofType(PlayerSearchActions.ADD_PLAYLISTS_TO_RESULTS.action)
+    .map(toPayload)
+    .map((result) => this.playerSearchActions.addResults(result.items));
+
+  @Effect()
+  addMetadataToVideos$ = this.actions$
+    .ofType(PlayerSearchActions.ADD_METADATA_TO_VIDEOS.action)
+    .map(toPayload)
     .map((medias: { items: GoogleApiYouTubeSearchResource[] }) => medias.items.map(media => media.id.videoId).join(','))
     .mergeMap((mediaIds: string) => this.youtubeVideosInfo.fetchVideosData(mediaIds)
-      .map((videos: GoogleApiYouTubeVideoResource[]) =>
-        this.playerSearchActions.addResults(videos))
-      );
-    // .map((youtubeResponse) => this.youtubeVideosActions.addForProcessing(youtubeResponse.items));
+      .map((videos: GoogleApiYouTubeVideoResource[]) => this.playerSearchActions.addResults(videos)));
 
   @Effect()
   searchMoreForQuery$ = this.actions$
@@ -59,10 +78,15 @@ export class PlayerSearchEffects {
     .withLatestFrom(this.store)
     .map((latest: any[]) => latest[1])
     .filter((store: EchoesState) => !store.search.isSearching)
-    .mergeMap((store: EchoesState) =>
-      this.youtubeSearch.searchMore(store.search.pageToken.next)
-      .search(store.search.query, store.search.queryParams)
-      .map(youtubeResponse => this.playerSearchActions.searchResultsReturned(youtubeResponse)));
+    .mergeMap((store: EchoesState) => {
+      this.youtubeSearch.searchMore(store.search.pageToken.next);
+      return this.youtubeSearch.searchFor(
+        store.search.searchType,
+        store.search.query,
+        store.search.queryParams,
+      )
+      .map(youtubeResponse => this.playerSearchActions.searchResultsReturned(youtubeResponse))
+    });
 
   @Effect()
   searchMoreSearchStarted$ = this.actions$
@@ -97,4 +121,17 @@ export class PlayerSearchEffects {
     .withLatestFrom(this.store)
     .map((latest: any[]) => latest[1])
     .map((store: EchoesState) => this.playerSearchActions.searchNewQuery(store.search.query));
+
+  // Playlists SEARCH EFFECTS
+  @Effect()
+  playlistsSearchStart$ = this.actions$
+    .ofType(PlayerSearchActions.PLAYLISTS_SEARCH_START.action)
+    .withLatestFrom(this.store)
+    .map((latest: any[]) => latest[1])
+    .switchMap((store: EchoesState) =>
+      this.youtubeSearch.searchForPlaylist(store.search.query, store.search.queryParams)
+      .map((youtubeResponse) => {
+        return this.playerSearchActions.addResults(youtubeResponse.items);
+      })
+    ).catch((err) => Observable.of(this.playerSearchActions.errorInSearch(err)));
 }

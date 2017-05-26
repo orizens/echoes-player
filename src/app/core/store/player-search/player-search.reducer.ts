@@ -1,13 +1,15 @@
 import { Action } from '@ngrx/store';
 import { PlayerSearchActions } from './player-search.actions';
 
-export interface PlayerSearch {
-  query: string;
-  filter: string;
-  queryParams: {
+export interface IQueryParam {
     preset: string;
     duration: number;
-  };
+}
+export interface IPlayerSearch {
+  query: string;
+  filter: string;
+  searchType: string;
+  queryParams: IQueryParam;
   pageToken: {
     next: string;
     prev: string;
@@ -15,18 +17,23 @@ export interface PlayerSearch {
   isSearching: boolean;
   results: any[];
 }
+export const SearchTypes = {
+  VIDEO: 'video',
+  PLAYLIST: 'playlist'
+};
 
-interface SearchQueryParam {
+interface ISearchQueryParam {
   [property: string]: any;
 }
 
-export interface PresetParam {
+export interface IPresetParam {
   label: string;
   value: any;
 }
-let initialState: PlayerSearch = {
+const initialState: IPlayerSearch = {
   query: '',
   filter: '',
+  searchType: SearchTypes.VIDEO,
   queryParams: {
     preset: '',
     duration: -1
@@ -38,7 +45,7 @@ let initialState: PlayerSearch = {
   isSearching: false,
   results: []
 };
-export function search(state: PlayerSearch = initialState, action: Action): PlayerSearch {
+export function search(state: IPlayerSearch = initialState, action: Action): IPlayerSearch {
 
   switch (action.type) {
     case PlayerSearchActions.SEARCH_NEW_QUERY:
@@ -72,6 +79,13 @@ export function search(state: PlayerSearch = initialState, action: Action): Play
     case PlayerSearchActions.RESET_RESULTS:
       return Object.assign({}, state, { results: [] });
 
+    case PlayerSearchActions.SEARCH_TYPE_UPDATE: {
+      return {
+        ...state,
+        searchType: action.payload
+      };
+    }
+
     default:
       // upgrade policy - for when the initialState has changed
       return Object.assign({}, initialState, state);
@@ -82,7 +96,3 @@ export const searchRegister = {
   reducer: { search },
   actions: PlayerSearchActions
 };
-
-export const getQuery = (state: PlayerSearch) => state.query;
-export const getQueryParams = (state: PlayerSearch) => state.queryParams;
-export const getQueryParamPreset = (state: PlayerSearch) => state.queryParams.preset;

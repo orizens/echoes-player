@@ -1,4 +1,5 @@
-button-group {
+:host {
+  display: inline-block;
   .btn {
     border: 0;
   }

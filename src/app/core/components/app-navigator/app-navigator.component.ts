@@ -35,8 +35,8 @@ export class AppNavigatorComponent implements OnInit {
   @Input() closed = false;
 
   public routes = [
-    { link: '/', icon: 'fa fa-music', label: 'Explore' },
-    { link: '/user', icon: 'fa fa-heart', label: 'My Profile' }
+    { link: '/', icon: 'fa fa-music', label: 'Explore' }
+    // { link: '/user', icon: 'fa fa-heart', label: 'My Profile' }
   ];
 
   constructor() { }

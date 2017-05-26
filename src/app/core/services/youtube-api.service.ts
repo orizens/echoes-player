@@ -15,7 +15,7 @@ interface YoutubeApiServiceOptions {
   authorize?: boolean;
 }
 
-@Injectable()
+// @Injectable()
 export class YoutubeApiService {
   url: string;
   http: Http;

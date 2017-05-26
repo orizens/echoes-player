@@ -17,8 +17,8 @@
     </div>
 
     <section class="item-actions">
-      <a [routerLink]="[ '/user/playlist', media.id ]">
-        <h4 class="title">
+      <a [routerLink]="[ '/user/playlist', media.id ]" [title]="media.snippet.title">
+        <h4 class="title ellipsis">
           {{ media.snippet.title }}
         </h4>
         <span class="item-action badge badge-info">

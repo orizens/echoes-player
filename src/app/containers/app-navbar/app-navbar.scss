@@ -2,6 +2,8 @@
 
 @media (min-width: 320px) {
   app-navbar {
+    display: block;
+  
     nav.navbar {
       margin-left: 0;
     }
@@ -13,6 +15,15 @@
       border-radius: 50%;
       border: 1px solid #fff;
       box-shadow: 0 0 1px rgba(0,0,0,.5);
+    }
+    .navbar-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .navbar__content {
+        flex: 2 0 0;
+      }
     }
 
     .navbar-collapse {
@@ -34,8 +45,9 @@
 }
 @media (min-width: 768px) {
   app-navbar {
-    nav.navbar {
+    nav.navbar.navbar-fixed-top {
       margin-left: $drawer-width;
+      padding-top: 1rem;      
     }
     .navbar-actions {
       display: block;

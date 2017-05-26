@@ -46,7 +46,7 @@ import { Observable } from 'rxjs/Observable';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayerSearch {
+export class PlayerSearchComponent {
   @Input() query;
   @Output() change = new EventEmitter();
   @Output() search = new EventEmitter();

@@ -5,7 +5,7 @@ import { NowPlaylistService } from './now-playlist.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { GapiLoader } from './gapi-loader.service';
 import { Authorization } from './authorization.service';
-import { YoutubeDataApi } from './youtube-data-api.service';
+import { YoutubeDataApi } from './youtube-data-api';
 import { VersionCheckerService } from './version-checker.service';
 import { MediaParserService } from './media-parser.service';
 

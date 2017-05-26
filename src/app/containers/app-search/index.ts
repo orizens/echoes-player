@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared';
 
+import { AppSearchComponent } from './app-search.component';
 import { AppNavbarModule } from '../app-navbar';
 import { YoutubeVideosComponent } from './youtube-videos.component';
-import { PlayerSearch } from './player-search.component';
+import { YoutubePlaylistsComponent } from './youtube-playlists.component';
+import { PlayerSearchComponent } from './player-search.component';
 import { TypeAheadComponent } from './typeahead.directive';
 import { LoadingIndicatorComponent } from './loading-indicator';
-import { routing } from './youtube-videos.routing';
+import { routing } from './app-search.routing';
 
 @NgModule({
   imports: [
@@ -15,14 +17,16 @@ import { routing } from './youtube-videos.routing';
     routing
   ],
   declarations: [
+    AppSearchComponent,
     YoutubeVideosComponent,
-    PlayerSearch,
+    YoutubePlaylistsComponent,
+    PlayerSearchComponent,
     TypeAheadComponent,
     LoadingIndicatorComponent
   ],
   exports: [
-    YoutubeVideosComponent
+    AppSearchComponent
   ],
   providers: []
 })
-export class YoutubeVideosModule { }
+export class AppSearchModule { }

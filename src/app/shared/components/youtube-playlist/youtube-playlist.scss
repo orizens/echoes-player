@@ -29,6 +29,9 @@
 @media (min-width: 768px) {
 	youtube-playlist {
 		width: 240px;
+		.item-actions a {
+			display: block;
+		}
 	}
 }
 @media (min-width: 767px) {

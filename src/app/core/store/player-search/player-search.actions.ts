@@ -18,6 +18,21 @@ export class PlayerSearchActions {
   static SEARCH_RESULTS_RETURNED = '[PlayerSearch] SERACH_RESULTS_RETURNED';
   static SEARCH_CURRENT_QUERY = '[PlayerSearch] SEARCH_CURRENT_QUERY';
   static SEARCH_STARTED = '[PlayerSearch] SEARCH_STARTED';
+  static SEARCH_TYPE_UPDATE = '[PlayerSearch] SEARCH_TYPE_UPDATE';
+  static ADD_PLAYLISTS_TO_RESULTS = {
+    action: '[PlayerSearch] ADD_PLAYLISTS_TO_RESULTS',
+    creator: (payload) => ({ payload, type: PlayerSearchActions.ADD_PLAYLISTS_TO_RESULTS.action })
+  };
+
+  static ADD_METADATA_TO_VIDEOS = {
+    action: '[PlayerSearch] ADD_METADATA_TO_VIDEOS',
+    creator: (payload) => ({ payload, type: PlayerSearchActions.ADD_METADATA_TO_VIDEOS.action })
+  };
+
+  static PLAYLISTS_SEARCH_START = {
+    action: '[PlayerSearch] PLAYLISTS_SEARCH_START',
+    creator: () => ({ type: PlayerSearchActions.PLAYLISTS_SEARCH_START.action })
+  };
 
   // Results Actions
   static ADD_RESULTS = '[PlayerSearch] ADD_RESULTS';
@@ -36,4 +51,5 @@ export class PlayerSearchActions {
   addResults = ActionCreatorFactory.create(PlayerSearchActions.ADD_RESULTS);
   resetResults = ActionCreatorFactory.create(PlayerSearchActions.RESET_RESULTS);
   errorInSearch = ActionCreatorFactory.create<any>(PlayerSearchActions.ERROR_RESULTS);
+  updateSearchType = ActionCreatorFactory.create<string>(PlayerSearchActions.SEARCH_TYPE_UPDATE);
 }

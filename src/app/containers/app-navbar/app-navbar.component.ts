@@ -14,17 +14,17 @@ import { EchoesState } from '../../core/store';
   styleUrls: [ './app-navbar.scss' ],
   template: `
     <nav class="row navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
+      <div class="navbar-container">
         <h2 class="navbar-brand">
           <button class="btn btn-navbar text-primary btn-link ux-maker pull-left sidebar-toggle"
             (click)="toggleSidebar()">
             <i class="fa fa-bars"></i>
           </button>
         </h2>
-        <div class="navbar__content pull-left">
+        <div class="navbar__content">
           <ng-content></ng-content>
         </div>
-        <section class="pull-right navbar-text navbar-actions">
+        <section class="navbar-text navbar-actions">
           <app-navbar-user 
             [signedIn]="isSignIn()" 
             [userImageUrl]="(user$ | async).profile.imageUrl"

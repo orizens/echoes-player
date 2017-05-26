@@ -1,12 +1,15 @@
-@import '../../../css/core/global.scss';
+@import '~css/core/global.scss';
 
 @media (min-width: 320px) {
+	$input-search-box-height: 4rem;
+	$input-search-box-width: 25rem;
+	$form-bg-color: $input-bg;
+
 	player-search {
 		display: inline-block;
 		
 		.form-search {
 			float: none;
-			margin: 0 5px 0 0;
 			position: relative;
 			border: 0;
 
@@ -34,24 +37,22 @@
 			}
 			
 			.form-group {
-				background-color: $input-bg;
+				background-color: $form-bg-color;
 				border-radius: 3px;
 				position: relative;
 			}
 
 			input.form-control {
-				width: 25rem;
-				line-height: 2rem;
-				height: 3.2rem;
+				width: $input-search-box-width;
+				height: $input-search-box-height;
 				border: none;
 				box-shadow: none;
 			}
 		}
 
-
 		.results {
 			position: absolute;
-			top: 4rem;
+			top: $input-search-box-height;
 			z-index: 10;
 			box-shadow: 0rem 0.3rem 3rem -0.5rem rgba(0,0,0,.5);
 		}
@@ -75,8 +76,6 @@
 
 @media (min-width: 768px) {
 	player-search {
-		.form-group {
-			margin: 0.9rem 0;			
-		}
+		
 	}
 }
