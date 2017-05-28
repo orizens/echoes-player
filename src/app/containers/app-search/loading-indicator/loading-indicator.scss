@@ -10,7 +10,7 @@ loading-indicator {
   transition: transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
   &.indicator-show {
-    transform: translatey(8rem);
+    transform: translatey(0rem);
   }
   .alert {
     box-shadow: 0 0 20px -3px #000;

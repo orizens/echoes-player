@@ -4,7 +4,7 @@ import { AppNavbarModule } from '../app-navbar';
 
 import { UserComponent } from './user.component';
 import { PlaylistsComponent } from './playlists';
-import { PlaylistComponent, PlaylistCoverComponent, PlaylistResolver, PlaylistVideosResolver } from './playlist';
+import { PlaylistViewComponent, PlaylistResolver, PlaylistVideosResolver } from '../../shared/components/playlist-view';
 
 import { AuthGuard } from './user.guard';
 import { UserPlayerService } from './user-player.service';
@@ -18,9 +18,7 @@ import { routing } from './user.routing';
   ],
   declarations: [
     UserComponent,
-    PlaylistsComponent,
-    PlaylistComponent,
-    PlaylistCoverComponent
+    PlaylistsComponent
   ],
   exports: [
     UserComponent

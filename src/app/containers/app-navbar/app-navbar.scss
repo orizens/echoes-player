@@ -2,6 +2,8 @@
 
 @media (min-width: 320px) {
   app-navbar {
+    $user-icon-size: 4rem;
+
     display: block;
   
     nav.navbar {
@@ -9,8 +11,8 @@
     }
 
     .user-icon {
-      width: 4rem;
-      height: 4rem;
+      width: $user-icon-size;
+      height: $user-icon-size;
       vertical-align: middle;
       border-radius: 50%;
       border: 1px solid #fff;
@@ -30,8 +32,7 @@
       display: inline-block;
     }
     .navbar-text {
-      margin: 0 2rem 0 0;
-      line-height: 5rem;
+      margin: 0;
     }
 
     .navbar-brand {
@@ -39,7 +40,10 @@
     }
 
     .navbar-actions {
-      display: block;
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      justify-content: flex-end;
     }
   }
 }
@@ -47,10 +51,8 @@
   app-navbar {
     nav.navbar.navbar-fixed-top {
       margin-left: $drawer-width;
-      padding-top: 1rem;      
-    }
-    .navbar-actions {
-      display: block;
+      padding-top: 1rem;
+      padding-right: 2rem;
     }
   }
 

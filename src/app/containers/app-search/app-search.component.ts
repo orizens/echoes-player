@@ -1,3 +1,4 @@
+import { getUserViewPlaylist$ } from '../../core/store/user-profile/user-profile.selectors';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
@@ -16,6 +17,7 @@ import { getPlayerSearch$ } from '../../core/store/reducers';
   <article
     infiniteScroll
     [infiniteScrollDistance]="2"
+    [infiniteScrollDisabled]="currentPlaylist$ | async"
     (scrolled)="searchMore()"
     [immediateCheck]="true">
     <app-navbar>
@@ -33,10 +35,13 @@ import { getPlayerSearch$ } from '../../core/store/reducers';
       ></button-group>
       <ul class="nav nav-tabs search-selector" role="tablist">
         <li *ngFor="let search of searchTypes"
-          (click)="updateSearchType(search.type)"
           routerLinkActive="active" 
           [routerLinkActiveOptions]="{ exact: true }">
           <a routerLink="{{ search.link }}">{{ search.label }}</a>
+        </li>
+        <li *ngIf="currentPlaylist$ | async"
+          class="active">
+          <a><i class="fa fa-chevron-right"></i> Playlist View</a>
         </li>
       </ul>
     </app-navbar>
@@ -47,6 +52,7 @@ import { getPlayerSearch$ } from '../../core/store/reducers';
 })
 export class AppSearchComponent implements OnInit {
   playerSearch$ = this.store.let(getPlayerSearch$);
+  currentPlaylist$ = this.store.let(getUserViewPlaylist$);
 
   presets: IPresetParam[] = [
     { label: 'Any', value: '' },
@@ -80,9 +86,5 @@ export class AppSearchComponent implements OnInit {
 
   updatePreset(preset: IPresetParam) {
     this.store.dispatch(this.playerSearchActions.updateQueryParam({ preset: preset.value }));
-  }
-
-  updateSearchType(searchType: string) {
-    this.store.dispatch(this.playerSearchActions.updateSearchType(searchType));
   }
 }

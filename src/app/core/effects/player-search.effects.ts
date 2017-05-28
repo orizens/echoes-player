@@ -32,7 +32,7 @@ export class PlayerSearchEffects {
     .map((latest: any[]) => latest[1])
     .switchMap((store: EchoesState) =>
       this.youtubeSearch.resetPageToken()
-      .searchVideo(store.search.query, store.search.queryParams)
+      .searchFor(store.search.searchType, store.search.query, store.search.queryParams)
       .map((youtubeResponse) => this.playerSearchActions.searchResultsReturned(youtubeResponse))
       .catch((err) => Observable.of(this.playerSearchActions.errorInSearch(err)))
     );

@@ -2,6 +2,7 @@ import { PlayerSearchActions, SearchTypes } from '../../core/store/player-search
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 // actions
 import { NowPlaylistActions } from '../../core/store/now-playlist';
@@ -19,12 +20,29 @@ import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reduc
       justify-content: center;
     }
   `],
+  animations: [
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter', [
+        animate('300ms ease-out', style({
+          opacity: 1
+        }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({
+          opacity: 0,
+          transform: 'translatex(-80%)'
+        }))
+      ])
+    ])
+  ],
   // styleUrls: [ './youtube-videos.scss' ],
   template: `
   <section class="videos-list">
     <div class="list-unstyled ux-maker youtube-items-container clearfix">
       <youtube-playlist
         *ngFor="let playlist of results$ | async"
+        link="/search/"
         [media]="playlist"
         (play)="playSelectedMedia(playlist)"
         (queue)="queueSelectedMedia(playlist)">

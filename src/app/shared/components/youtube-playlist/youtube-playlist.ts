@@ -11,6 +11,7 @@ import './youtube-playlist.scss';
 export class YoutubePlaylistComponent {
   // GoogleApiYouTubePlaylistResource
   @Input() media: any;
+  @Input() link = './';
   @Output() play = new EventEmitter();
   @Output() queue = new EventEmitter();
 

@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
 
@@ -74,15 +76,50 @@ export class UserProfile {
     return this.playlistApi.list(playlistId);
   }
 
-  fetchPlaylistItems(playlistId: string) {
+  fetchPlaylistItems(playlistId: string, pageToken = '') {
     // const token = this.playlists.config.get('access_token');
-    this.playlistInfo.config.delete('pageToken');
+    if ('' === pageToken) {
+      this.playlistInfo.config.delete('pageToken');
+    } else {
+      this.playlistInfo.config.set('pageToken', pageToken);
+    }
     return this.playlistInfo
       .list(playlistId)
       .switchMap(response => {
         const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
         return this.youtubeVideosInfo.api.list(videoIds);
       });
+  }
+
+  fetchAllPlaylistItems(playlistId: string) {
+    let items = [];
+    let subscriptions: Subscription[] = [];
+    let obs$;
+    const items$ = new Observable((observer) => {
+      obs$ = observer;
+    });
+    const fetchMetadata = (response) => {
+      const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
+      return this.youtubeVideosInfo.api.list(videoIds);
+    };
+    const fetchItems = (id, token) => {
+      this.playlistInfo.config.set('pageToken', token);
+      const sub = this.playlistInfo.list(id).subscribe((response) => {
+        const nextPageToken = response.nextPageToken;
+        items = items.concat(response.items);
+        if (nextPageToken) {
+          fetchItems(playlistId, nextPageToken);
+        } else {
+          obs$.next(items);
+          subscriptions.forEach(_s => _s.unsubscribe());
+          // obs$.complete();
+        }
+      });
+      subscriptions.push(sub);
+      return sub;
+    };
+    fetchItems(playlistId, '');
+    return items$.take(1);
   }
 
   isTokenValid(token) {

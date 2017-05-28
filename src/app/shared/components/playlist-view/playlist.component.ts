@@ -1,4 +1,4 @@
-import { UserPlayerService } from '../user-player.service';
+// import { UserPlayerService } from '../user-player.service';
 import { ActivatedRoute } from '@angular/router';
 import { EchoesState } from '../../../core/store';
 import { UserProfileActions } from '../../../core/store/user-profile';
@@ -7,8 +7,7 @@ import { Store } from '@ngrx/store';
 
 
 @Component({
-  selector: 'playlist',
-  encapsulation: ViewEncapsulation.None,
+  selector: 'playlist-view',
   styleUrls: ['./playlist.scss'],
   template: `
   <playlist-cover [playlist]="playlist"
@@ -23,7 +22,7 @@ import { Store } from '@ngrx/store';
   </section>
   `
 })
-export class PlaylistComponent implements OnInit, OnDestroy {
+export class PlaylistViewComponent implements OnInit, OnDestroy {
   public videos: GoogleApiYouTubeVideoResource[] = [];
   public playlist: GoogleApiYouTubePlaylistResource;
 
@@ -32,7 +31,7 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<EchoesState>,
     private route: ActivatedRoute,
-    private userPlayerService: UserPlayerService,
+    // private userPlayerService: UserPlayerService,
     private userProfileActions: UserProfileActions
   ) {
   }
@@ -53,18 +52,18 @@ export class PlaylistComponent implements OnInit, OnDestroy {
   }
 
   playPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
-    this.userPlayerService.playSelectedPlaylist(playlist);
+    // this.userPlayerService.playSelectedPlaylist(playlist);
   }
 
   queueVideo(media: GoogleApiYouTubeVideoResource) {
-    this.userPlayerService.queueVideo(media);
+    // this.userPlayerService.queueVideo(media);
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
-    this.userPlayerService.playVideo(media);
+    // this.userPlayerService.playVideo(media);
   }
 
   queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.userPlayerService.queuePlaylist(playlist);
+    // this.userPlayerService.queuePlaylist(playlist);
   }
 }

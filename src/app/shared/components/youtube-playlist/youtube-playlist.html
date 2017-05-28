@@ -17,7 +17,7 @@
     </div>
 
     <section class="item-actions">
-      <a [routerLink]="[ '/user/playlist', media.id ]" [title]="media.snippet.title">
+      <a [routerLink]="[ link + '/playlist', media.id ]" [title]="media.snippet.title">
         <h4 class="title ellipsis">
           {{ media.snippet.title }}
         </h4>

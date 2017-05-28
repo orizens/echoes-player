@@ -11,6 +11,6 @@ export class PlaylistVideosResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<GoogleApiYouTubeVideoResource[]> {
     const playlistId = route.params['id'];
-    return this.userProfile.fetchPlaylistItems(playlistId);
+    return this.userProfile.fetchAllPlaylistItems(playlistId);
   }
 }

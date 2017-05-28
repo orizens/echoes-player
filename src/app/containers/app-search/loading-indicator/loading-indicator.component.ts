@@ -13,11 +13,11 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulati
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadingIndicatorComponent {
-  @Input() message: string = 'Searching More Videos...';
+  @Input() message: string = 'Searching More ...';
 
   @Input()
   @HostBinding('class.indicator-show')
-  isLoading: boolean = false;
+  isLoading = false;
 
   constructor() { }
 }

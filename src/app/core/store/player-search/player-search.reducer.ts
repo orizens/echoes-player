@@ -85,6 +85,9 @@ export function search(state: IPlayerSearch = initialState, action: Action): IPl
         searchType: action.payload
       };
     }
+    case PlayerSearchActions.PLAYLISTS_SEARCH_START.action: {
+      return { ...state, isSearching: true };
+    }
 
     default:
       // upgrade policy - for when the initialState has changed

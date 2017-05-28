@@ -20,7 +20,7 @@ export class UserPlayerService {
     private store: Store<EchoesState>) { }
 
   playSelectedPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
-    this.userProfile.fetchPlaylistItems(playlist.id)
+    this.userProfile.fetchPlaylistItems(playlist.id, '')
       .subscribe((items: GoogleApiYouTubeVideoResource[]) => {
         this.store.dispatch(this.nowPlaylistActions.queueVideos(items));
         this.nowPlaylistService.updateIndexByMedia(items[0].id);
@@ -29,7 +29,7 @@ export class UserPlayerService {
   }
 
   queuePlaylist (playlist: GoogleApiYouTubePlaylistResource) {
-    this.userProfile.fetchPlaylistItems(playlist.id)
+    this.userProfile.fetchPlaylistItems(playlist.id, '')
       .subscribe((items: GoogleApiYouTubeVideoResource[]) => {
         this.store.dispatch(this.nowPlaylistActions.queueVideos(items));
         return items;

@@ -1,4 +1,4 @@
-import { PlayerSearchActions } from '../../core/store/player-search/player-search.actions';
+import { PlayerSearchActions, SearchTypes } from '../../core/store/player-search';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
@@ -34,6 +34,7 @@ export class YoutubeVideosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.store.dispatch(this.playerSearchActions.updateSearchType(SearchTypes.VIDEO));
     this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
   }
 
