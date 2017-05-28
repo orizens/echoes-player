@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: 'playlist-cover',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./playlist-cover.scss'],
   template: `
   <div class="playlist-cover clearfix">

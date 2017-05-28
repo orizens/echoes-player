@@ -16,7 +16,7 @@ import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../
       <h3 class="navbar-text">
         <i class="fa fa-heart"></i> My Profile - <small>My Playlists</small>
       </h3>
-      <section>
+      <section class="user-nav-tabs">
         <ul class="nav nav-tabs" role="tablist">
           <li [class.active]="!(currentPlaylist$ | async)"><a href="#/user">My Playlists</a></li>
           <li class="active"

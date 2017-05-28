@@ -16,7 +16,7 @@
 				(click)="playVideo(media)">
 
 				<div class="thumbnail">
-					<img src="{{ media.snippet.thumbnails.high.url }}">
+					<img [src]="thumb">
 				</div>
 
 				<section class="stats">

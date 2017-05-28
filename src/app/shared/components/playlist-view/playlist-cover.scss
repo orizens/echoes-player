@@ -1,10 +1,14 @@
-playlist-cover {
+:host {
   $transparent-bg: rgba(255,255,255, .5);
+  $cover-padding-size: 5rem 0;
+  $cover-blur-size: 20rem;
+  $cover-blur-value: 5px;
+  $cover-blur-scale: 1.2;
   display: block;
 
   .playlist-cover {
     position: relative;
-    padding: 2rem;
+    padding: $cover-padding-size;
     margin-bottom: 1rem;
     overflow: hidden;
 
@@ -12,9 +16,9 @@ playlist-cover {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      filter: blur(5px);
-      transform: scale(1.2);
-      height: 14rem;
+      filter: blur($cover-blur-value);
+      transform: scale(1.2$cover-blur-scale);
+      height: $cover-blur-size;
       position: absolute;
       top: 0;
       left: 0;
