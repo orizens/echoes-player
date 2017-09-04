@@ -1,7 +1,8 @@
 import { MediaParserService, YoutubePlayerService } from '../services';
 import { EchoesState } from '../store';
 import { Store } from '@ngrx/store';
-import 'rxjs/add/operator/switchMapTo';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/withLatestFrom';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';

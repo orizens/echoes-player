@@ -4,16 +4,13 @@ import { inject, TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs/Observable';
 import { MediaParserService, YoutubePlayerService } from '../services';
 import { Store } from '@ngrx/store';
-import 'rxjs/add/operator/switchMapTo';
-import 'rxjs/add/operator/withLatestFrom';
-import 'rxjs/add/observable/of';
 
 import { NowPlaylistActions, LoadPlaylistAction, LoadPlaylistEndAction, PlayPlaylistAction } from '../store/now-playlist';
 
 import { UserProfile } from '../services/user-profile.service';
 import { NowPlaylistEffects } from './now-playlist.effects';
 
-xdescribe('Now Playlist Effects', () => {
+describe('Now Playlist Effects', () => {
   let runner: EffectsRunner;
   let nowPlaylistEffects: NowPlaylistEffects;
 
