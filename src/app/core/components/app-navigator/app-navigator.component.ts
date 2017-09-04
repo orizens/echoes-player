@@ -1,46 +1,50 @@
-import { Route } from '@angular/router';
+import { Router } from '@angular/router';
+import { EchoesState } from '../../store';
+import { Store } from '@ngrx/store';
 import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
   OnInit,
-  Output,
-  ViewEncapsulation
 } from '@angular/core';
-
-// import './navigator.scss';
+import { getSearchType$, CSearchTypes } from '../../../core/store/player-search';
 
 @Component({
   selector: 'app-navigator',
-  // encapsulation: ViewEncapsulation.None,
   styleUrls: [ './app-navigator.scss' ],
   template: `
-  <ul class="nav nav-list nicer-ux library-nav navigator"
+  <div class="list-group"
     [class.closed]="closed">
-    <li *ngFor="let route of routes"
-      routerLinkActive="active" 
-      [routerLinkActiveOptions]="{ exact: true }"
-      >
-      <a routerLink="{{ route.link }}">
-        <i class="{{ route.icon }}"></i>
-        <span class="text">{{ route.label }}</span>
-      </a>
-    </li>
-  </ul>
+    <button class="list-group-item ux-maker"
+      *ngFor="let route of routes;"
+      (click)="go(route.link)">
+      <i class="{{ route.icon }}"></i>
+      <span class="text">{{ route.label }}</span>
+    </button>
+  </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNavigatorComponent implements OnInit {
   @Input() closed = false;
+  @Input() searchType = CSearchTypes.VIDEO;
 
+  public searchType$ = this.store.let(getSearchType$);
   public routes = [
-    { link: '/', icon: 'fa fa-music', label: 'Explore' }
+    { link: 'search', icon: 'fa fa-music', label: 'Explore' }
     // { link: '/user', icon: 'fa fa-heart', label: 'My Profile' }
   ];
 
-  constructor() { }
+  constructor(
+    private store: Store<EchoesState>,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  go(link) {
+    this.router.navigate([`/${link}/${this.searchType}s`]);
   }
 }

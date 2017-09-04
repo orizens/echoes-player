@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
-import { PlayerSearchActions, SearchTypes } from '../store/player-search';
+import { PlayerSearchActions, CSearchTypes } from '../store/player-search';
 
 import { YoutubeSearch } from '../services/youtube.search';
 
@@ -51,7 +51,7 @@ export class PlayerSearchEffects {
     .map(toPayload)
     .withLatestFrom(this.store.let(getSearchType$))
     .map((states: [any[], string]) => {
-      if (states[1] === SearchTypes.VIDEO) {
+      if (states[1] === CSearchTypes.VIDEO) {
         return PlayerSearchActions.ADD_METADATA_TO_VIDEOS.creator(states[0]);
       }
       return PlayerSearchActions.ADD_PLAYLISTS_TO_RESULTS.creator(states[0]);
@@ -85,7 +85,7 @@ export class PlayerSearchEffects {
         store.search.query,
         store.search.queryParams,
       )
-      .map(youtubeResponse => this.playerSearchActions.searchResultsReturned(youtubeResponse))
+      .map(youtubeResponse => this.playerSearchActions.searchResultsReturned(youtubeResponse));
     });
 
   @Effect()

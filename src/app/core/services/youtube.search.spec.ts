@@ -2,10 +2,10 @@
  * Testing a Service
  * More info: https://angular.io/docs/ts/latest/guide/testing.html
  */
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject, } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 import { PlayerSearchActions } from '../store/player-search';
-import { YoutubeDataApi } from './youtube-data-api.service';
+import { YoutubeDataApi } from './youtube-data-api';
 import { YoutubeSearch } from './youtube.search';
 
 describe('Youtube Search Service', () => {
@@ -14,7 +14,7 @@ describe('Youtube Search Service', () => {
 
   beforeEach(() => {
     youtubeDataApiSpy = jasmine.createSpyObj('youtubeDataApiSpy',
-      [ 'list' ]
+      [ 'list', 'delete', 'insert', 'update' ]
     );
 
     TestBed.configureTestingModule({

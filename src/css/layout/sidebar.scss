@@ -39,15 +39,9 @@ $navbar-new-height: 5rem;
 			float: none;
 			width: 100%;
 			line-height: $navbar-new-height;
-			height: $navbar-new-height;
+			// height: $navbar-new-height;
 			padding-left: 1.5rem;
 			color: rgb(50, 53, 56);
-
-			.fa {
-				font-size: 2.5rem;
-				margin: 0 -.3rem;
-				color: $clouds;
-			}
 		}
 		// should be displayed
 		&.closed {
@@ -100,12 +94,10 @@ $navbar-new-height: 5rem;
 			// transform: translatex(-30rem);
 			width: $sidebar-closed-width;
 
-			.text {
-				display: none;
-			}
-			.navbar {
-				/*width: @sidebar-closed-width;*/
-			}
+			// .text {
+			// 	display: none;
+			// }
+
 			.navbar-brand {
 				/*width: @sidebar-closed-width;*/
 				padding: 0;

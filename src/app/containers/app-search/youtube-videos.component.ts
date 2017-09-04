@@ -1,4 +1,4 @@
-import { PlayerSearchActions, SearchTypes } from '../../core/store/player-search';
+import { PlayerSearchActions, CSearchTypes } from '../../core/store/player-search';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
@@ -8,14 +8,17 @@ import { NowPlaylistActions } from '../../core/store/now-playlist';
 import { AppPlayerActions } from '../../core/store/app-player';
 // selectors
 import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
+import { getPlaylistVideos$ } from '../../core/store/now-playlist';
+import { getIsSearching$ } from '../../core/store/player-search';
 
 @Component({
   selector: 'youtube-videos',
   styleUrls: [ './youtube-videos.scss' ],
   template: `
+    <loader [message]="'Loading Awesome Media Results'" [loading]="loading$ | async"></loader>
     <youtube-list
       [list]="videos$ | async"
-      [queued]="(playlist$ | async).videos"
+      [queued]="playlistVideos$ | async"
       (play)="playSelectedVideo($event)"
       (queue)="queueSelectedVideo($event)"
       (unqueue)="removeVideoFromPlaylist($event)"
@@ -24,7 +27,8 @@ import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reduc
 })
 export class YoutubeVideosComponent implements OnInit {
   videos$ = this.store.let(getPlayerSearchResults$);
-  playlist$ = this.store.let(getNowPlaylist$);
+  playlistVideos$ = this.store.let(getPlaylistVideos$);
+  loading$ = this.store.let(getIsSearching$);
 
   constructor(
     private store: Store<EchoesState>,
@@ -34,7 +38,7 @@ export class YoutubeVideosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.store.dispatch(this.playerSearchActions.updateSearchType(SearchTypes.VIDEO));
+    this.store.dispatch(this.playerSearchActions.updateSearchType(CSearchTypes.VIDEO));
     this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
   }
 

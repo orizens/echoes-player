@@ -14,14 +14,10 @@ import {
   template: `
   <div class="playlist-cover clearfix">
     <div class="cover-bg" [ngStyle]="{ 'background-image': 'url(' + thumbUrl + ')' }"></div>
-    <button class="btn btn-transparent col-md-2 playlist-thumbnail"
-      (click)="play.emit(playlist)">
-      <img [src]="thumbUrl" title="Play All">
-    </button>
-    <div class="actions col-md-10">
-      <h4>
-        <span>{{ title }} ({{ total }} videos)</span>
-      </h4>
+    <div class="btn btn-transparent playlist-thumbnail">
+      <img [src]="thumbUrl">
+    </div>
+    <div class="actions">
       <button class="btn btn-lg ux-maker play-media bg-primary"
         (click)="play.emit(playlist)" title="play playlist">
         <i class="fa fa-play"></i>
@@ -57,8 +53,8 @@ export class PlaylistCoverComponent implements OnInit {
   }
 
   get thumbUrl() {
-    return this.playlist && this.playlist.snippet
-      ? this.playlist.snippet.thumbnails['default'].url
-      : '...';
+    const thumbnails = this.playlist.snippet.thumbnails;
+    const sizes = ['default', 'medium'];
+    return sizes.reduce((acc, size) => thumbnails.hasOwnProperty(size) && thumbnails[size].url , '');
   }
 }

@@ -1,7 +1,7 @@
 @import '~css/core/global.scss';
 
 @media (min-width: 320px) {
-	$input-search-box-height: 4rem;
+	$input-search-box-height: $input-height-base;
 	$input-search-box-width: 25rem;
 	$form-bg-color: $input-bg;
 

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
-import { UserProfile } from '../../../core/services';
+import { UserProfile } from '../services';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Injectable } from '@angular/core';
 

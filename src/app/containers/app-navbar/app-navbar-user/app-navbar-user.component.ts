@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
   template: `
     <a class="btn btn-link navbar-link navbar-btn"
       *ngIf="signedIn; else userNotSignedIn"
-      [routerLink]="['../user']">
+      [routerLink]="['/user']">
       <img [src]="userImageUrl" class="user-icon">
     </a>
     <ng-template #userNotSignedIn>

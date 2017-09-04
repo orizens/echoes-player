@@ -3,11 +3,19 @@
 @media (min-width: 320px) {
   app-navbar {
     $user-icon-size: 4rem;
+    $navbar-container-left-padding: 2.5rem;
+    $navbar-container-padding: 0.5rem 0;
 
     display: block;
   
     nav.navbar {
       margin-left: 0;
+    }
+
+    .navbar-brand {
+      line-height: 2;
+      float: none;
+      height: auto;
     }
 
     .user-icon {
@@ -22,9 +30,17 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      padding: $navbar-container-padding;
 
       .navbar__content {
         flex: 2 0 0;
+        padding-left: $navbar-container-left-padding;
+
+        .navbar__header {
+          .fa {
+            margin-right: 10px;
+          }
+        }
       }
     }
 
@@ -33,6 +49,7 @@
     }
     .navbar-text {
       margin: 0;
+      line-height: 2;
     }
 
     .navbar-brand {
@@ -44,6 +61,7 @@
       flex: 1;
       flex-direction: row;
       justify-content: flex-end;
+      padding-right: 1rem;
     }
   }
 }
@@ -51,8 +69,7 @@
   app-navbar {
     nav.navbar.navbar-fixed-top {
       margin-left: $drawer-width;
-      padding-top: 1rem;
-      padding-right: 2rem;
+      // padding-right: 2rem;
     }
   }
 

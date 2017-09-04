@@ -1,18 +1,20 @@
-@import '../../../../css/core/global.scss';
+@import '~css/core/global.scss';
 
-loading-indicator {
+:host {
   display: block;
   padding: 0 2rem;
   position: fixed;
   z-index: $zindex-navbar;
   min-width: 57rem;
-  transform: translatey(-20rem);
   transition: transform .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-
-  &.indicator-show {
+  transform: translatey(-20rem);
+  
+  &.show-loader {
     transform: translatey(0rem);
   }
+
   .alert {
     box-shadow: 0 0 20px -3px #000;
+    
   }
 }

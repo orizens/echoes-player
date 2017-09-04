@@ -4,7 +4,7 @@ import { AppNavbarModule } from '../app-navbar';
 
 import { UserComponent } from './user.component';
 import { PlaylistsComponent } from './playlists';
-import { PlaylistViewComponent, PlaylistResolver, PlaylistVideosResolver } from '../../shared/components/playlist-view';
+// import { PlaylistViewComponent, PlaylistResolver, PlaylistVideosResolver } from '../../shared/components/playlist-view';
 
 import { AuthGuard } from './user.guard';
 import { UserPlayerService } from './user-player.service';
@@ -23,6 +23,11 @@ import { routing } from './user.routing';
   exports: [
     UserComponent
   ],
-  providers: [ AuthGuard, UserPlayerService, PlaylistResolver, PlaylistVideosResolver ]
+  providers: [
+    AuthGuard,
+    UserPlayerService,
+    // PlaylistResolver,
+    // PlaylistVideosResolver
+  ]
 })
 export class UserModule { }

@@ -1,14 +1,16 @@
-import { PlayerSearchActions, SearchTypes } from '../../core/store/player-search';
+import { PlayerSearchActions, CSearchTypes } from '../../core/store/player-search';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 // actions
-import { NowPlaylistActions } from '../../core/store/now-playlist';
+import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '../../core/store/now-playlist';
 import { AppPlayerActions } from '../../core/store/app-player';
 // selectors
 import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
+import { getIsSearching$ } from '../../core/store/player-search';
+
 
 @Component({
   selector: 'youtube-playlists',
@@ -38,13 +40,14 @@ import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reduc
   ],
   // styleUrls: [ './youtube-videos.scss' ],
   template: `
+  <loader [message]="'Loading Awesome Playlists Results'" [loading]="isSearching$ | async"></loader>
   <section class="videos-list">
     <div class="list-unstyled ux-maker youtube-items-container clearfix">
       <youtube-playlist
         *ngFor="let playlist of results$ | async"
-        link="/search/"
+        link=""
         [media]="playlist"
-        (play)="playSelectedMedia(playlist)"
+        (play)="playPlaylist(playlist)"
         (queue)="queueSelectedMedia(playlist)">
       </youtube-playlist>
     </div>
@@ -53,6 +56,7 @@ import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reduc
 })
 export class YoutubePlaylistsComponent implements OnInit {
   results$ = this.store.let(getPlayerSearchResults$);
+  isSearching$ = this.store.let(getIsSearching$);
 
   constructor(
     private store: Store<EchoesState>,
@@ -62,16 +66,15 @@ export class YoutubePlaylistsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.store.dispatch(this.playerSearchActions.updateSearchType(SearchTypes.PLAYLIST));
+    this.store.dispatch(this.playerSearchActions.updateSearchType(CSearchTypes.PLAYLIST));
     this.store.dispatch(PlayerSearchActions.PLAYLISTS_SEARCH_START.creator());
   }
 
-  playSelectedMedia (media: GoogleApiYouTubeVideoResource) {
-    // this.store.dispatch(this.appPlayerActions.loadAndPlay(media));
-    // this.store.dispatch(this.nowPlaylistActions.selectVideo(media));
+  playPlaylist (media: GoogleApiYouTubeVideoResource) {
+    this.store.dispatch(new PlayPlaylistAction(media.id));
   }
 
   queueSelectedMedia (media: GoogleApiYouTubeVideoResource) {
-    // this.store.dispatch(this.nowPlaylistActions.queueVideo(media));
+    this.store.dispatch(new LoadPlaylistAction(media.id));
   }
 }

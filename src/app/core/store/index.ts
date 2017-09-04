@@ -6,9 +6,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import 'rxjs/add/operator/let';
 
-// import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
-// import { NgrxActionCreatorFactoryModule } from './action-creator.util';
-
 import { environment } from '../../../environments/environment';
 import { getSidebarExpanded } from './app-layout';
 import { EchoesState, EchoesReducers, EchoesActions } from './reducers';
@@ -40,7 +37,7 @@ if (!environment.production) {
   exports: [],
   providers: [ ...actions ]
 })
-export class CoreStoreModule {};
+export class CoreStoreModule {}
 
 // shared selectors
 function getAppLayoutState(state$: Observable<EchoesState>) {

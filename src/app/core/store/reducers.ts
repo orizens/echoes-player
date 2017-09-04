@@ -14,7 +14,7 @@ export interface EchoesState {
   user: IUserProfile;
   search: IPlayerSearch;
   appLayout: IAppSettings;
-};
+}
 
 export let EchoesReducers = {
   player,
@@ -36,12 +36,12 @@ export { getPlayerSearch$ } from './player-search';
 
 export function getPlayerSearchResults$ (state$: Observable<EchoesState>): Observable<any[]> {
   return state$.select(state => state.search.results);
-};
+}
 
 export function getAppLayout$ ($state: Observable<EchoesState>): Observable<IAppSettings> {
   return $state.select(state => state.appLayout);
-};
+}
 
 export function getNowPlaylist$ ($state: Observable<EchoesState>): Observable<NowPlaylistInterface> {
   return $state.select(state => state.nowPlaylist);
-};
+}

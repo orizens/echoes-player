@@ -1,9 +1,10 @@
 :host {
   $transparent-bg: rgba(255,255,255, .5);
-  $cover-padding-size: 5rem 0;
-  $cover-blur-size: 20rem;
+  $cover-padding-size: 9rem 0;
+  $cover-blur-size: 24rem;
   $cover-blur-value: 5px;
   $cover-blur-scale: 1.2;
+  $thumbnail-top: 56px;
   display: block;
 
   .playlist-cover {
@@ -26,6 +27,9 @@
     }
 
     .playlist-thumbnail {
+      position: absolute;
+      top: $thumbnail-top;
+
       img {
         border: 1px solid $transparent-bg;
       }
@@ -44,6 +48,7 @@
     }
 
     .actions {
+      transform: translateX(11rem) translateY(9rem);
 
       .btn {
         color: white;

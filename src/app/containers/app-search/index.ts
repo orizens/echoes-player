@@ -6,8 +6,7 @@ import { AppNavbarModule } from '../app-navbar';
 import { YoutubeVideosComponent } from './youtube-videos.component';
 import { YoutubePlaylistsComponent } from './youtube-playlists.component';
 import { PlayerSearchComponent } from './player-search.component';
-import { TypeAheadComponent } from './typeahead.directive';
-import { LoadingIndicatorComponent } from './loading-indicator';
+import { SearchNavigatorComponent } from './search-navigator';
 import { routing } from './app-search.routing';
 
 @NgModule({
@@ -21,8 +20,7 @@ import { routing } from './app-search.routing';
     YoutubeVideosComponent,
     YoutubePlaylistsComponent,
     PlayerSearchComponent,
-    TypeAheadComponent,
-    LoadingIndicatorComponent
+    SearchNavigatorComponent
   ],
   exports: [
     AppSearchComponent

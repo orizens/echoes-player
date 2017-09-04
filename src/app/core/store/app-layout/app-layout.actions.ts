@@ -36,4 +36,4 @@ export class AppLayoutActions {
       type: AppLayoutActions.SIDEBAR_TOGGLE
     };
   }
-};
+}

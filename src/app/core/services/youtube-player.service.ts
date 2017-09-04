@@ -28,9 +28,7 @@ export class YoutubePlayerService {
 
   playVideo(media: GoogleApiYouTubeVideoResource, seconds?: number) {
     const id = media.id;
-    const loadedMedia = this.player.getVideoData();
-    const loadedMediaId = loadedMedia.video_id;
-    const isLoaded = '' !== loadedMediaId && id === loadedMediaId;
+    const isLoaded = this.player.getVideoUrl().includes(id);
     if (!isLoaded) {
       this.zone.runOutsideAngular(() => this.player.loadVideoById(id, seconds || undefined));
     }

@@ -93,7 +93,7 @@ export class UserProfile {
 
   fetchAllPlaylistItems(playlistId: string) {
     let items = [];
-    let subscriptions: Subscription[] = [];
+    const subscriptions: Subscription[] = [];
     let obs$;
     const items$ = new Observable((observer) => {
       obs$ = observer;
@@ -112,7 +112,7 @@ export class UserProfile {
         } else {
           obs$.next(items);
           subscriptions.forEach(_s => _s.unsubscribe());
-          // obs$.complete();
+          obs$.complete();
         }
       });
       subscriptions.push(sub);
@@ -129,11 +129,16 @@ export class UserProfile {
   }
 
   toUserJson (profile): GoogleBasicProfile {
-    let _profile: GoogleBasicProfile = {};
+    const _profile: GoogleBasicProfile = {};
     if (profile) {
       _profile.imageUrl = profile.getImageUrl();
       _profile.name = profile.getName();
     }
     return _profile;
+  }
+
+  fetchMetadata (items: GoogleApiYouTubePlaylistItemResource[]) {
+    const videoIds = items.map(video => video.snippet.resourceId.videoId).join(',');
+    return this.youtubeVideosInfo.api.list(videoIds);
   }
 }

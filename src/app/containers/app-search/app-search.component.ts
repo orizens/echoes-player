@@ -1,14 +1,12 @@
-import { getUserViewPlaylist$ } from '../../core/store/user-profile/user-profile.selectors';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
 
 import { NowPlaylistActions } from '../../core/store/now-playlist';
-import { AppPlayerActions } from '../../core/store/app-player';
-import { IPresetParam, PlayerSearchActions, search, SearchTypes } from '../../core/store/player-search';
-import { AppLayoutActions } from '../../core/store/app-layout';
+import { IPresetParam, PlayerSearchActions } from '../../core/store/player-search';
 // selectors
-import { getPlayerSearch$ } from '../../core/store/reducers';
+import { getUserViewPlaylist$ } from '../../core/store/user-profile';
+import { getQuery$, getQueryParamPreset$, getPresets$ } from '../../core/store/player-search';
 
 @Component({
   selector: 'app-search',
@@ -23,47 +21,27 @@ import { getPlayerSearch$ } from '../../core/store/reducers';
     <app-navbar>
       <div class="navbar-header">
         <player-search
-          [query]="playerSearch$ | async"
+          [query]="query$ | async"
           (change)="resetPageToken()"
           (search)="search($event)"
         ></player-search>
       </div>
       <button-group class="nav-toolbar"
-        [buttons]="presets"
-        [selectedButton]="(playerSearch$ | async).queryParams.preset"
+        [buttons]="presets$ | async"
+        [selectedButton]="queryParamPreset$ | async"
         (buttonClick)="updatePreset($event)"
       ></button-group>
-      <ul class="nav nav-tabs search-selector" role="tablist">
-        <li *ngFor="let search of searchTypes"
-          routerLinkActive="active" 
-          [routerLinkActiveOptions]="{ exact: true }">
-          <a routerLink="{{ search.link }}">{{ search.label }}</a>
-        </li>
-        <li *ngIf="currentPlaylist$ | async"
-          class="active">
-          <a><i class="fa fa-chevron-right"></i> Playlist View</a>
-        </li>
-      </ul>
+      <search-navigator></search-navigator>
     </app-navbar>
-    <loading-indicator [isLoading]="(playerSearch$ | async).isSearching"></loading-indicator>
     <router-outlet></router-outlet>
-  </article>
-  `
+    </article>
+    `
 })
 export class AppSearchComponent implements OnInit {
-  playerSearch$ = this.store.let(getPlayerSearch$);
+  query$ = this.store.let(getQuery$);
   currentPlaylist$ = this.store.let(getUserViewPlaylist$);
-
-  presets: IPresetParam[] = [
-    { label: 'Any', value: '' },
-    { label: 'Albums', value: 'full album' },
-    { label: 'Live', value: 'live' }
-  ];
-
-  searchTypes = [
-    { label: 'Videos', link: '/search/videos', type: SearchTypes.VIDEO },
-    { label: 'Playlists', link: '/search/playlists', type: SearchTypes.PLAYLIST },
-  ];
+  queryParamPreset$ = this.store.let(getQueryParamPreset$);
+  presets$ = this.store.let(getPresets$);
 
   constructor(
     private store: Store<EchoesState>,

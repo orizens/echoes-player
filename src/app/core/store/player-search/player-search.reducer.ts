@@ -1,43 +1,22 @@
 import { Action } from '@ngrx/store';
 import { PlayerSearchActions } from './player-search.actions';
+import { IPlayerSearch, CSearchTypes, CPresetTypes } from './player-search.interfaces';
 
-export interface IQueryParam {
-    preset: string;
-    duration: number;
-}
-export interface IPlayerSearch {
-  query: string;
-  filter: string;
-  searchType: string;
-  queryParams: IQueryParam;
-  pageToken: {
-    next: string;
-    prev: string;
-  };
-  isSearching: boolean;
-  results: any[];
-}
-export const SearchTypes = {
-  VIDEO: 'video',
-  PLAYLIST: 'playlist'
-};
+export * from './player-search.interfaces';
 
-interface ISearchQueryParam {
-  [property: string]: any;
-}
-
-export interface IPresetParam {
-  label: string;
-  value: any;
-}
 const initialState: IPlayerSearch = {
   query: '',
   filter: '',
-  searchType: SearchTypes.VIDEO,
+  searchType: CSearchTypes.VIDEO,
   queryParams: {
     preset: '',
     duration: -1
   },
+  presets: [
+    { label: 'Any', value: '' },
+    { label: 'Albums', value: CPresetTypes.FULL_ALBUMS },
+    { label: 'Live', value: CPresetTypes.LIVE }
+  ],
   pageToken: {
     next: '',
     prev: ''
@@ -93,7 +72,7 @@ export function search(state: IPlayerSearch = initialState, action: Action): IPl
       // upgrade policy - for when the initialState has changed
       return Object.assign({}, initialState, state);
   }
-};
+}
 
 export const searchRegister = {
   reducer: { search },

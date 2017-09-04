@@ -91,8 +91,8 @@ $font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
 $line-height-base:          1.428571429; // 20/14
 $line-height-computed:      floor($font-size-base * $line-height-base); // ~31px
 
-$headings-font-family:      inherit;
-$headings-font-weight:      700;
+$headings-font-family:      $font-family-narrow;
+$headings-font-weight:      200;
 $headings-line-height:      1.1;
 $headings-color:            $gray-dark;
 $headings-small-color:      $gray-dark;
@@ -121,7 +121,7 @@ $padding-base-horizontal:   6px;
 $padding-large-vertical:    10px;
 $padding-large-horizontal:  16px;
 
-$padding-small-vertical:    1.1rem;
+$padding-small-vertical:    0.7rem;
 $padding-small-horizontal:  1.5rem;
 
 $padding-xs-vertical:       1px;
@@ -184,7 +184,6 @@ $btn-danger-border:              darken($btn-danger-bg, 5%);
 
 $btn-link-disabled-color:        $gray-light;
 
-
 //== Forms
 //
 //##
@@ -205,36 +204,7 @@ $input-bg:                  $inverse;
 $input-bg-disabled:         mix($gray, white, 10%);
 
 $input-height-small:        35px;
-$input-height-base:         41px;
-$input-height-large:        45px;
-$input-height-huge:         53px;
-
-$input-border-radius:       $border-radius-large;
-
-$legend-color:              inherit;
-
-
-//== Forms
-//
-//##
-
-$input-font-size-base:      $component-font-size-base;
-$input-font-size-small:     floor($component-font-size-base * 0.867); // ~13px
-$input-font-size-large:     ceil($component-font-size-base * 1.133); // ~17px
-$input-font-size-huge:      floor($component-font-size-base * 1.467); // ~22px
-
-$input-line-height-base:    1.467; // ~22px
-$input-line-height-small:   1.462; // ~19px
-$input-line-height-large:   1.235; // ~21px
-$input-line-height-huge:    1.318; // ~29px
-
-$input-icon-font-size:      ceil($component-font-size-base * 1.333);  // ~20px
-
-$input-bg:                  $inverse;
-$input-bg-disabled:         mix($gray, white, 10%);
-
-$input-height-small:        35px;
-$input-height-base:         41px;
+$input-height-base:         32px;
 $input-height-large:        45px;
 $input-height-huge:         53px;
 

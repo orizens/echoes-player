@@ -1,69 +1,57 @@
-// import { UserPlayerService } from '../user-player.service';
-import { ActivatedRoute } from '@angular/router';
 import { EchoesState } from '../../../core/store';
 import { UserProfileActions } from '../../../core/store/user-profile';
-import { Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 
 @Component({
-  selector: 'playlist-view',
+  selector: 'playlist-viewer',
   styleUrls: ['./playlist.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-  <playlist-cover [playlist]="playlist"
-    (play)="playPlaylist($event)"
-    (queue)="queuePlaylist($event)"></playlist-cover>
+  <playlist-cover
+    [playlist]="playlist"
+    (play)="onPlayPlaylist($event)"
+    (queue)="onQueuePlaylist($event)">
+  </playlist-cover>
   <section class="col-md-12">
     <youtube-list
       [list]="videos"
-      (play)="playVideo($event)"
-      (queue)="queueVideo($event)"
+      (play)="onPlayVideo($event)"
+      (queue)="onQueueVideo($event)"
     ></youtube-list>
   </section>
   `
 })
-export class PlaylistViewComponent implements OnInit, OnDestroy {
-  public videos: GoogleApiYouTubeVideoResource[] = [];
-  public playlist: GoogleApiYouTubePlaylistResource;
+export class PlaylistViewerComponent implements OnInit {
+  @Input() videos: GoogleApiYouTubeVideoResource[] = [];
+  @Input() playlist: GoogleApiYouTubePlaylistResource;
 
-  @HostBinding('class.clearfix') style = true;
+  @Output() queuePlaylist = new EventEmitter<GoogleApiYouTubePlaylistResource>();
+  @Output() playPlaylist = new EventEmitter<GoogleApiYouTubePlaylistResource>();
+  @Output() queueVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
+  @Output() playVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
 
-  constructor(
-    private store: Store<EchoesState>,
-    private route: ActivatedRoute,
-    // private userPlayerService: UserPlayerService,
-    private userProfileActions: UserProfileActions
-  ) {
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.route.data.take(1).subscribe((data: { videos; playlist }) => {
-      this.videos = data.videos;
-      this.playlist = data.playlist;
-      this.store.dispatch(this.userProfileActions.setViewPlaylist(data.playlist.id));
-    });
-    // this.videos$ = this.userProfile.fetchPlaylistItems(playlistId);
-    // this.playlist$ = this.userProfile.fetchPlaylist(playlistId)
-    //   .map(response => response.items[0]);
   }
 
-  ngOnDestroy() {
-    this.store.dispatch(this.userProfileActions.setViewPlaylist(''));
-  }
-
-  playPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
+  onPlayPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
+    this.playPlaylist.emit(playlist);
     // this.userPlayerService.playSelectedPlaylist(playlist);
   }
 
-  queueVideo(media: GoogleApiYouTubeVideoResource) {
+  onQueueVideo(media: GoogleApiYouTubeVideoResource) {
     // this.userPlayerService.queueVideo(media);
   }
 
-  playVideo(media: GoogleApiYouTubeVideoResource) {
+  onPlayVideo(media: GoogleApiYouTubeVideoResource) {
     // this.userPlayerService.playVideo(media);
   }
 
-  queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
+  onQueuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
+    this.queuePlaylist.emit(playlist);
     // this.userPlayerService.queuePlaylist(playlist);
   }
 }

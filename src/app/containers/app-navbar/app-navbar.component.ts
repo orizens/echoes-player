@@ -1,5 +1,5 @@
 import { getAppVersion$ } from '../../core/store/app-layout';
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
@@ -15,23 +15,20 @@ import { EchoesState } from '../../core/store';
   template: `
     <nav class="row navbar navbar-default navbar-fixed-top">
       <div class="navbar-container">
-        <h2 class="navbar-brand">
-          <button class="btn btn-navbar text-primary btn-link ux-maker pull-left sidebar-toggle"
-            (click)="toggleSidebar()">
-            <i class="fa fa-bars"></i>
-          </button>
-        </h2>
         <div class="navbar__content">
+          <h3 *ngIf="header" class="navbar__header navbar-text">
+            <i class="fa fa-{{ headerIcon }}"></i>{{ header }}
+          </h3>
           <ng-content></ng-content>
         </div>
         <section class="navbar-text navbar-actions">
-          <app-navbar-user 
-            [signedIn]="isSignIn()" 
+          <app-navbar-user
+            [signedIn]="isSignIn()"
             [userImageUrl]="(user$ | async).profile.imageUrl"
             (signIn)="signInUser()"
             ></app-navbar-user>
-          <app-navbar-menu 
-            [appVersion]="appVersion$ | async"            
+          <app-navbar-menu
+            [appVersion]="appVersion$ | async"
             [signedIn]="isSignIn()"
             (signOut)="signOutUser()"
             (versionUpdate)="updateVersion()"
@@ -40,17 +37,19 @@ import { EchoesState } from '../../core/store';
         </section>
       </div>
     </nav>
-  `
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNavbarComponent implements OnInit {
 
   user$ = this.store.let(getUser$);
   appVersion$ = this.store.let(getAppVersion$);
 
+  @Input() header: string;
+  @Input() headerIcon = '';
+
   @Output() signIn = new EventEmitter();
   @Output() signOut = new EventEmitter();
-  @Output() menu = new EventEmitter();
 
   constructor(
     private authorization: Authorization,
@@ -74,11 +73,6 @@ export class AppNavbarComponent implements OnInit {
 
   isSignIn () {
     return this.authorization.isSignIn();
-  }
-
-  toggleSidebar() {
-    this.menu.next();
-    return this.store.dispatch(this.appLayoutActions.toggleSidebar());
   }
 
   updateVersion() {

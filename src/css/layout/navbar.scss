@@ -5,7 +5,7 @@
 
 	.navbar {
 		background-image: none;
-		background-color: darken($navbar-default-bg, 2%);
+		background-color: rgba(darken($navbar-default-bg, 2%), .9);
 		transition: transform, margin-left .3s ease-out;
 
 		&.navbar-fixed-top {
@@ -19,12 +19,12 @@
 
 		.navbar-brand {
 			margin: 0;
-			text-transform: uppercase;
 			position: relative;
 		}
 		.sidebar-toggle {
-			padding: .5rem 1.5rem;
+			padding: .3rem 1.5rem;
 			font-size: 2rem;
+			line-height: 2;
 		}
 
 		.navbar-header {
@@ -84,9 +84,7 @@
 	}
 }
 @media (min-width: 1024px) {
-	.navbar .navbar-brand {
-		font-size: 1.4em;
-	}
+
 	
 }
 

@@ -5,6 +5,7 @@ import { CoreStoreModule } from './store';
 import { AppEffectsModules } from './effects';
 
 import { APP_SERVICES } from './services';
+import { APP_RESOLVERS } from './resolvers';
 
 // export function AppEffectModules(effects: any[], runEffectFun) {
 //   return AppEffects.map(function(effect){
@@ -24,7 +25,8 @@ import { APP_SERVICES } from './services';
     CoreStoreModule,
   ],
   providers: [
-    ...APP_SERVICES
+    ...APP_SERVICES,
+    ...APP_RESOLVERS
   ]
 })
 export class CoreModule {

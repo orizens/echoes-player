@@ -1,0 +1,11 @@
+<article>
+  <app-navbar [header]="playlistHeader"></app-navbar>
+  <div class="row">
+    <playlist-viewer class="clearfix"
+      [videos]="videos"
+      [playlist]="playlist"
+      (playPlaylist)="playPlaylist($event)"
+      (queuePlaylist)="queuePlaylist($event)"
+    ></playlist-viewer>
+  </div>
+</article>

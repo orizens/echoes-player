@@ -1,4 +1,4 @@
-import { PlaylistViewComponent, PlaylistResolver, PlaylistVideosResolver } from '../../shared/components/playlist-view';
+// import { PlaylistResolver, PlaylistVideosResolver } from '../../shared/components/playlist-view';
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,12 +11,6 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
     children: [
     { path: '', redirectTo: 'videos', pathMatch: 'full' },
     { path: 'videos', component: YoutubeVideosComponent },
-    { path: 'playlists', component: YoutubePlaylistsComponent },
-    { path: 'playlist/:id', component: PlaylistViewComponent,
-      resolve: {
-        videos: PlaylistVideosResolver,
-        playlist: PlaylistResolver
-      }
-    }
+    { path: 'playlists', component: YoutubePlaylistsComponent }
   ]}
 ]);
