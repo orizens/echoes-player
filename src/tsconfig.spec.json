@@ -1,27 +1,33 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": [
-      "es2016",
-      "dom"
-    ],
+    // "declaration": false,
+    // "moduleResolution": "node",
+    // "emitDecoratorMetadata": true,
+    // "experimentalDecorators": true,
+    // "lib": [
+    //   "es2016",
+    //   "dom"
+    // ],
     "outDir": "../out-tsc/spec",
-    "module": "es2015",
+    "module": "commonjs",
     "target": "es5",
     "baseUrl": "",
     "types": [
       "jasmine",
-      "node"
+      "node",
+      "gapi",
+      "gapi.youtube",
+      "gapi.auth2",
+      "youtube"
     ]
   },
   "files": [
     "test.ts"
   ],
   "include": [
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "**/*.d.ts"
   ]
 }
