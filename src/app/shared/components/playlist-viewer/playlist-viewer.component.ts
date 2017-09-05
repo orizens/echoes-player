@@ -1,12 +1,8 @@
-import { EchoesState } from '../../../core/store';
-import { UserProfileActions } from '../../../core/store/user-profile';
 import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngrx/store';
-
 
 @Component({
   selector: 'playlist-viewer',
-  styleUrls: ['./playlist.scss'],
+  styleUrls: ['./playlist-viewer.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
   <playlist-cover
@@ -17,8 +13,10 @@ import { Store } from '@ngrx/store';
   <section class="col-md-12">
     <youtube-list
       [list]="videos"
+      [queued]="queuedPlaylist"
       (play)="onPlayVideo($event)"
       (queue)="onQueueVideo($event)"
+      (unqueue)="onRemove($event)"
     ></youtube-list>
   </section>
   `
@@ -26,11 +24,13 @@ import { Store } from '@ngrx/store';
 export class PlaylistViewerComponent implements OnInit {
   @Input() videos: GoogleApiYouTubeVideoResource[] = [];
   @Input() playlist: GoogleApiYouTubePlaylistResource;
+  @Input() queuedPlaylist = [];
 
   @Output() queuePlaylist = new EventEmitter<GoogleApiYouTubePlaylistResource>();
   @Output() playPlaylist = new EventEmitter<GoogleApiYouTubePlaylistResource>();
   @Output() queueVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output() playVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
+  @Output() unqueueVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
 
   constructor() {}
 
@@ -39,19 +39,21 @@ export class PlaylistViewerComponent implements OnInit {
 
   onPlayPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
     this.playPlaylist.emit(playlist);
-    // this.userPlayerService.playSelectedPlaylist(playlist);
   }
 
   onQueueVideo(media: GoogleApiYouTubeVideoResource) {
-    // this.userPlayerService.queueVideo(media);
+    this.queueVideo.emit(media);
   }
 
   onPlayVideo(media: GoogleApiYouTubeVideoResource) {
-    // this.userPlayerService.playVideo(media);
+    this.playVideo.emit(media);
   }
 
   onQueuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.queuePlaylist.emit(playlist);
-    // this.userPlayerService.queuePlaylist(playlist);
+  }
+
+  onRemove(media: GoogleApiYouTubeVideoResource) {
+    this.unqueueVideo.emit(media);
   }
 }

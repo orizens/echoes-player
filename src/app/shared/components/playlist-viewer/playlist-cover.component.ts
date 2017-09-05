@@ -53,7 +53,7 @@ export class PlaylistCoverComponent implements OnInit {
   }
 
   get thumbUrl() {
-    const thumbnails = this.playlist.snippet.thumbnails;
+    const thumbnails = this.playlist && this.playlist.snippet.thumbnails;
     const sizes = ['default', 'medium'];
     return sizes.reduce((acc, size) => thumbnails.hasOwnProperty(size) && thumbnails[size].url , '');
   }

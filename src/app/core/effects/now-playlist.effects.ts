@@ -3,6 +3,7 @@ import { EchoesState } from '../store';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/zip';
 import 'rxjs/add/operator/withLatestFrom';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -76,15 +77,11 @@ export class NowPlaylistEffects {
     .map(toPayload)
     .map((playlistItems: GoogleApiYouTubeVideoResource[]) => this.nowPlaylistActions.queueVideos(playlistItems));
 
-  // @Effect()
-  // playPlaylist$ = this.actions$
-  //   .ofType(NowPlaylistActions.PLAY_PLAYLIST)
-  //   .map(toPayload)
-  //   // .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId));
-  //   .zip(this.loadPlaylist$)
-  //   .map(result => {
-  //     debugger;
-  //   });
+  @Effect()
+  playPlaylist$ = this.actions$
+    .ofType(NowPlaylistActions.PLAY_PLAYLIST)
+    .map(toPayload)
+    .map((id: string) => new LoadPlaylistAction(id));
     // .map(queue the playlist
     // .map(play the first track from this playlist)
 

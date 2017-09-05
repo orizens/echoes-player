@@ -23,6 +23,7 @@ export class NowPlaylistActions {
   static LOAD_PLAYLIST_START = '[NowPlaylist] LOAD_PLAYLIST_START';
   static LOAD_PLAYLIST_END = '[NowPlaylist] LOAD_PLAYLIST_END';
   static PLAY_PLAYLIST = '[NowPlaylist] PLAY_PLAYLIST';
+  static PLAY_PLAYLIST_START = '[NowPlaylist] PLAY_PLAYLIST_START';
 
   mediaEnded = ActionCreatorFactory.create(NowPlaylistActions.MEDIA_ENDED);
   selectNext = ActionCreatorFactory.create(NowPlaylistActions.SELECT_NEXT);
@@ -78,6 +79,10 @@ export class NowPlaylistActions {
 export class PlayPlaylistAction implements Action {
   readonly type = NowPlaylistActions.PLAY_PLAYLIST;
   constructor (public payload: string) { }
+}
+export class PlayPlaylistStartAction implements Action {
+  readonly type = NowPlaylistActions.PLAY_PLAYLIST_START;
+  constructor (public payload: GoogleApiYouTubeVideoResource) { }
 }
 
 export class LoadPlaylistAction implements Action {

@@ -1,58 +1,66 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EchoesState } from '../../core/store';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import { UserProfileActions } from '../../core/store/user-profile';
 import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '../../core/store/now-playlist';
+
+import { PlaylistProxy, PlaylistData} from './playlist-view.proxy';
 
 @Component({
   selector: 'playlist-view',
   styleUrls: [ './playlist-view.component.scss' ],
-  templateUrl: './playlist-view.html'
-  // providers: [PlaylistViewService]
+  template: `
+  <article>
+    <app-navbar [header]="header$ | async"></app-navbar>
+    <div class="row">
+      <playlist-viewer class="clearfix"
+        [videos]="videos$ | async"
+        [playlist]="playlist$ | async"
+        [queuedPlaylist]="nowPlaylist$ | async"
+        (playPlaylist)="playPlaylist($event)"
+        (queuePlaylist)="queuePlaylist($event)"
+        (playVideo)="playVideo($event)"
+        (queueVideo)="queueVideo($event)"
+        (unqueueVideo)="unqueueVideo($event)"
+      ></playlist-viewer>
+    </div>
+  </article>
+  `,
 })
 
-export class PlaylistViewComponent implements OnInit, OnDestroy {
-  public videos: GoogleApiYouTubeVideoResource[] = [];
-  public playlist: GoogleApiYouTubePlaylistResource;
+export class PlaylistViewComponent implements OnInit {
+  playlist$ = this.playlistProxy.fetchPlaylist(this.route);
+  videos$ = this.playlistProxy.fetchPlaylistVideos(this.route);
+  header$ = this.playlistProxy.fetchPlaylistHeader(this.route);
+  nowPlaylist$ = this.playlistProxy.nowPlaylist$;
 
   constructor(
-    private store: Store<EchoesState>,
+    private playlistProxy: PlaylistProxy,
     private route: ActivatedRoute,
-    private userProfileActions: UserProfileActions,
   ) { }
 
   ngOnInit() {
-    this.route.data.take(1).subscribe((data: { videos; playlist }) => {
-      this.videos = data.videos;
-      this.playlist = data.playlist;
-      // this.store.dispatch(this.userProfileActions.setViewPlaylist(data.playlist.id));
-    });
-  }
-
-  ngOnDestroy() {
-    this.store.dispatch(this.userProfileActions.setViewPlaylist(''));
   }
 
   playPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
-    // this.userPlayerService.playSelectedPlaylist(playlist);
-    this.store.dispatch(new PlayPlaylistAction(playlist.id));
+    this.playlistProxy.playPlaylist(playlist);
   }
 
   queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.store.dispatch(new LoadPlaylistAction(playlist.id));
+    this.playlistProxy.queuePlaylist(playlist);
   }
 
   queueVideo(media: GoogleApiYouTubeVideoResource) {
-    // this.userPlayerService.queueVideo(media);
+    this.playlistProxy.queueVideo(media);
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
-    // this.userPlayerService.playVideo(media);
+    this.playlistProxy.playVideo(media);
   }
 
-  get playlistHeader() {
-    const { snippet, contentDetails } = this.playlist;
-    return `${snippet.title} (${contentDetails.itemCount} videos)`;
+  unqueueVideo(media: GoogleApiYouTubeVideoResource) {
+    this.playlistProxy.unqueueVideo(media);
   }
 }

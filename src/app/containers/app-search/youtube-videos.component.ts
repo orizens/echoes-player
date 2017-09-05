@@ -6,6 +6,8 @@ import { EchoesState } from '../../core/store';
 // actions
 import { NowPlaylistActions } from '../../core/store/now-playlist';
 import { AppPlayerActions } from '../../core/store/app-player';
+import { AppPlayerApi } from '../../core/api/app-player.api';
+
 // selectors
 import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
 import { getPlaylistVideos$ } from '../../core/store/now-playlist';
@@ -32,8 +34,7 @@ export class YoutubeVideosComponent implements OnInit {
 
   constructor(
     private store: Store<EchoesState>,
-    private nowPlaylistActions: NowPlaylistActions,
-    private appPlayerActions: AppPlayerActions,
+    private appPlayerApi: AppPlayerApi,
     private playerSearchActions: PlayerSearchActions
   ) { }
 
@@ -43,15 +44,14 @@ export class YoutubeVideosComponent implements OnInit {
   }
 
   playSelectedVideo (media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(this.appPlayerActions.loadAndPlay(media));
-    this.store.dispatch(this.nowPlaylistActions.selectVideo(media));
+    this.appPlayerApi.playVideo(media);
   }
 
   queueSelectedVideo (media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(this.nowPlaylistActions.queueVideo(media));
+    this.appPlayerApi.queueVideo(media);
   }
 
   removeVideoFromPlaylist(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(this.nowPlaylistActions.removeVideo(media));
+    this.appPlayerApi.removeVideoFromPlaylist(media);
   }
 }

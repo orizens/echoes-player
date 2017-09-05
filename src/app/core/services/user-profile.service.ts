@@ -1,7 +1,10 @@
+import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/buffer';
 
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
@@ -94,27 +97,28 @@ export class UserProfile {
   fetchAllPlaylistItems(playlistId: string) {
     let items = [];
     const subscriptions: Subscription[] = [];
-    let obs$;
-    const items$ = new Observable((observer) => {
-      obs$ = observer;
-    });
+    const items$ = new Subject();
+    let nextPageToken = '';
     const fetchMetadata = (response) => {
       const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
+      nextPageToken = response.nextPageToken;
       return this.youtubeVideosInfo.api.list(videoIds);
+    };
+    const collectItems = (videos) => {
+      items = [...items, ...videos];
+      if (nextPageToken) {
+        fetchItems(playlistId, nextPageToken);
+      } else {
+        items$.next(items);
+        subscriptions.forEach(_s => _s.unsubscribe());
+        items$.complete();
+      }
     };
     const fetchItems = (id, token) => {
       this.playlistInfo.config.set('pageToken', token);
-      const sub = this.playlistInfo.list(id).subscribe((response) => {
-        const nextPageToken = response.nextPageToken;
-        items = items.concat(response.items);
-        if (nextPageToken) {
-          fetchItems(playlistId, nextPageToken);
-        } else {
-          obs$.next(items);
-          subscriptions.forEach(_s => _s.unsubscribe());
-          obs$.complete();
-        }
-      });
+      const sub = this.playlistInfo.list(id)
+        .switchMap((response) => fetchMetadata(response))
+        .subscribe((response) => collectItems(response));
       subscriptions.push(sub);
       return sub;
     };
