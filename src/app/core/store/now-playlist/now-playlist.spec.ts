@@ -10,9 +10,9 @@ describe('The Now Playlist Reducer', () => {
   const nowPlaylistActions = new NowPlaylistActions();
   const createState = (props = {}) => {
     const defaultState = {
-      selectedId: '', videos: [], filter: '', repeat: false
+      selectedId: '', videos: [], filter: '', repeat: false,
     };
-    return Object.assign({}, defaultState, props);
+    return { ...defaultState, ...props};
   };
 
   it('should return current state when no valid actions have been made', () => {
@@ -36,8 +36,8 @@ describe('The Now Playlist Reducer', () => {
   });
 
   it('should queue the selected video to the list', () => {
-    let videos = [...YoutubeMediaItemsMock];
-    let newVideo = videos.pop();
+    const videos = [...YoutubeMediaItemsMock];
+    const newVideo = videos.pop();
     const state = createState({
       selectedId: 0,
       videos: [...videos]

@@ -12,7 +12,7 @@ const initialState: NowPlaylistInterface = {
   videos: [],
   selectedId: '',
   filter: '',
-  repeat: false
+  repeat: false,
 };
 
 export function nowPlaylist(state: NowPlaylistInterface = initialState, action: Action): NowPlaylistInterface {
@@ -58,12 +58,19 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
         ...state,
         repeat: !state.repeat
       };
-    };
+    }
+
+    case NowPlaylistActions.LOAD_PLAYLIST_END: {
+      return {
+        ...state,
+        playPlaylist: true
+      };
+    }
 
     default:
       return state;
   }
-};
+}
 
 export const nowPlaylistRegister = {
   reducer: { nowPlaylist },
@@ -81,7 +88,7 @@ function addMedia(videos: GoogleApiYouTubeVideoResource[], media: any) {
 
 function addMedias(videos, medias) {
   const allVideoIds = videos.map(video => video.id);
-  let newVideos = [];
+  const newVideos = [];
   medias.forEach(media => {
     if (allVideoIds.indexOf(media.id) === -1) {
       newVideos.push(media);

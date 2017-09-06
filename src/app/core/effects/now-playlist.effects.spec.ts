@@ -122,33 +122,11 @@ describe('Now Playlist Effects', () => {
       playPlaylistAction = new LoadPlaylistAction('fake-playlist-id');
     });
 
-    // it('should start loading playlist when asked to play', () => {
-    //   const id = 'fake-playlist-id';
-    //   const action = new PlayPlaylistAction(id);
-    //   const expected = new LoadPlaylistAction(id);
-    //   runner.queue(action);
-
-    //   nowPlaylistEffects.playPlaylist$.subscribe(result => {
-    //     expect(result).toEqual(expected);
-    //   });
-    // });
-
     it('should fetch playlist items', inject(
       [UserProfile], (userProfileSpy) => {
       const actual = userProfileSpy.fetchAllPlaylistItems;
       const expected = playPlaylistAction.payload;
       runner.queue(playPlaylistAction);
-      nowPlaylistEffects.loadPlaylist$.subscribe(result => {
-        expect(actual).toHaveBeenCalledWith(expected);
-      });
-    }));
-
-    it('should fetch metadata for playlist items', inject(
-      [UserProfile], (userProfileSpy) => {
-      const actual = userProfileSpy.fetchMetadata;
-      const expected = [];
-      runner.queue(playPlaylistAction);
-
       nowPlaylistEffects.loadPlaylist$.subscribe(result => {
         expect(actual).toHaveBeenCalledWith(expected);
       });

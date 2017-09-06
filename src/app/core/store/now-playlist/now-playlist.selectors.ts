@@ -22,3 +22,7 @@ export function getSelectedMedia$(state$: Observable<EchoesState>) {
     return state.nowPlaylist.videos[selectedMediaIndex];
   });
 }
+
+export function getIsPlayPlaylist$(state$: Observable<EchoesState>): Observable<boolean> {
+  return state$.select(state => state.nowPlaylist.playPlaylist);
+}

@@ -141,8 +141,8 @@ export class UserProfile {
     return _profile;
   }
 
-  fetchMetadata (items: GoogleApiYouTubePlaylistItemResource[]) {
-    const videoIds = items.map(video => video.snippet.resourceId.videoId).join(',');
+  fetchMetadata (items: GoogleApiYouTubeVideoResource[]) {
+    const videoIds = items.map(video => video.id).join(',');
     return this.youtubeVideosInfo.api.list(videoIds);
   }
 }

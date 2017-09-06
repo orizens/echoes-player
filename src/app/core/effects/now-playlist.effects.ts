@@ -15,7 +15,8 @@ import {
   getSelectedMedia$,
   getSelectedMediaId$,
   getPlaylistVideos$,
-  isPlayerInRepeat$
+  isPlayerInRepeat$,
+  getIsPlayPlaylist$
 } from '../store/now-playlist/now-playlist.selectors';
 
 import { UserProfile } from '../services/user-profile.service';
@@ -66,7 +67,8 @@ export class NowPlaylistEffects {
   loadPlaylist$ = this.actions$
     .ofType(NowPlaylistActions.LOAD_PLAYLIST_START)
     .map(toPayload)
-    .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId))
+    .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
+    // .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId))
     // .switchMap((playlistId: string) => this.userProfile.fetchAllPlaylistItems(playlistId))
     // .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems))
     .map((playlistItems: GoogleApiYouTubeVideoResource[]) => new LoadPlaylistEndAction(playlistItems));
@@ -78,16 +80,21 @@ export class NowPlaylistEffects {
     .map((playlistItems: GoogleApiYouTubeVideoResource[]) => this.nowPlaylistActions.queueVideos(playlistItems));
 
   @Effect()
-  playPlaylist$ = this.actions$
-    .ofType(NowPlaylistActions.PLAY_PLAYLIST)
-    .map(toPayload)
-    .map((id: string) => new LoadPlaylistAction(id));
+  playPlaylistFirstTrack$ = this.actions$
+      .ofType(NowPlaylistActions.LOAD_PLAYLIST_END)
+      .map(toPayload)
+      .map((playlistItems: GoogleApiYouTubeVideoResource[]) => this.nowPlaylistActions.selectVideo(playlistItems[0]));
+  // @Effect()
+  // playPlaylist$ = this.actions$
+  //   .ofType(NowPlaylistActions.PLAY_PLAYLIST)
+  //   .map(toPayload)
+  //   .map((id: string) => new LoadPlaylistAction(id));
     // .map(queue the playlist
     // .map(play the first track from this playlist)
 
-  loadPlaylistItems$(playlistId: string) {
-    return of(playlistId)
-      .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
-      .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems));
-  }
+  // loadPlaylistItems$(playlistId: string) {
+  //   return of(playlistId)
+  //     .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
+  //     .switchMap((playlistItems: GoogleApiYouTubeVideoResource[]) => this.userProfile.fetchMetadata(playlistItems));
+  // }
 }
