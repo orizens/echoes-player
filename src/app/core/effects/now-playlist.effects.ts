@@ -16,7 +16,6 @@ import {
   getSelectedMediaId$,
   getPlaylistVideos$,
   isPlayerInRepeat$,
-  getIsPlayPlaylist$
 } from '../store/now-playlist/now-playlist.selectors';
 
 import { UserProfile } from '../services/user-profile.service';
