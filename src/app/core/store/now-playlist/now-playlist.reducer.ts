@@ -6,15 +6,13 @@ export interface NowPlaylistInterface {
   selectedId: string;
   filter: string;
   repeat: boolean;
-  playPlaylist: boolean;
 }
 
 const initialState: NowPlaylistInterface = {
   videos: [],
   selectedId: '',
   filter: '',
-  repeat: false,
-  playPlaylist: false
+  repeat: false
 };
 
 export function nowPlaylist(state: NowPlaylistInterface = initialState, action: Action): NowPlaylistInterface {
@@ -64,8 +62,7 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
 
     case NowPlaylistActions.LOAD_PLAYLIST_END: {
       return {
-        ...state,
-        playPlaylist: true
+        ...state
       };
     }
 
