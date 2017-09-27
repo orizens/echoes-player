@@ -22,11 +22,7 @@ export class AppPlayerApi {
       .map(toPayload)
       .take(1)
       .subscribe((media: GoogleApiYouTubeVideoResource) => this.playVideo(media));
-      // .do((media: GoogleApiYouTubeVideoResource) => this.playVideo(media));
-      debugger;
     this.queuePlaylist(playlist);
-    // this.store.dispatch(this.nowPlaylistActions.selectVideo(media));
-    // this.store.dispatch(new PlaylistStore.PlayPlaylistAction(playlist.id));
   }
 
   queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
