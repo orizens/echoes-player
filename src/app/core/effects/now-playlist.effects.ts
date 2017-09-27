@@ -83,11 +83,12 @@ export class NowPlaylistEffects {
       .ofType(NowPlaylistActions.LOAD_PLAYLIST_END)
       .map(toPayload)
       .map((playlistItems: GoogleApiYouTubeVideoResource[]) => this.nowPlaylistActions.selectVideo(playlistItems[0]));
-  // @Effect()
-  // playPlaylist$ = this.actions$
-  //   .ofType(NowPlaylistActions.PLAY_PLAYLIST)
-  //   .map(toPayload)
-  //   .map((id: string) => new LoadPlaylistAction(id));
+
+  @Effect()
+  playPlaylist$ = this.actions$
+    .ofType(NowPlaylistActions.PLAY_PLAYLIST)
+    .map(toPayload)
+    .map((id: string) => new LoadPlaylistAction(id));
     // .map(queue the playlist
     // .map(play the first track from this playlist)
 

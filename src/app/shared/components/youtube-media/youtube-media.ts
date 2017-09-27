@@ -8,7 +8,7 @@ interface MediaStatus {
 
 @Component({
   selector: 'youtube-media',
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
   styleUrls: [ './youtube-media.scss' ],
   templateUrl: './youtube-media.html',
   changeDetection: ChangeDetectionStrategy.OnPush

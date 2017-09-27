@@ -24,13 +24,7 @@ $wet-asphalt:               #34495e;
 $midnight-blue:             #2c3e50;
 
 $sun-flower:                #f1c40f;
-$orange:                    #f39c12;
-
-$carrot:                    #e67e22;
-$pumpkin:                   #d35400;
-
 $alizarin:                  #e74c3c;
-$pomegranate:               #c0392b;
 
 $clouds:                    #ecf0f1;
 $silver:                    #bdc3c7;
@@ -38,10 +32,15 @@ $silver:                    #bdc3c7;
 $concrete:                  #95a5a6;
 $asbestos:                  #7f8c8d;
 
+$blue-grey-900: #263238;
+$md-lite-blue-500: #03A9F4;
+$md-lite-blue-300: rgba(79, 195, 247, .9);
 // Grays
 // $gray:                      $concrete;
 // $gray-light:                $silver;
 $inverse:                   white;
+$inverse-transparent: rgba(255, 255, 255, 0.7);
+$white-dark-transparent: rgba(243,243,243, .9);
 
 $gray-darker:            lighten(#000, 13.5%); // #222
 $gray-dark:              lighten(#000, 20%);   // #333
@@ -49,15 +48,17 @@ $gray:                   lighten(#000, 33.5%); // #555
 $gray-light:             lighten(#000, 46.7%); // #777
 $gray-lighter:           lighten(#000, 93.5%); // #eee
 $dark:					 #000;
+$dark-transparent: rgba(10, 10, 10, .5);
+
 // Brand colors
-$brand-primary:             $turquoise;
-$brand-secondary:           $green-sea;
+$brand-primary:             $md-lite-blue-500;
+$brand-secondary:           $md-lite-blue-300;
 $brand-success:             $emerald;
 $brand-warning:             $sun-flower;
 $brand-danger:              $alizarin;
 // $brand-info:                $peter-river;
 $brand-info:                $emerald;
-
+$brand-sidebar:  $blue-grey-900;
 
 //== Scaffolding
 //
@@ -67,8 +68,8 @@ $body-bg:                   #ecf0f1;
 $text-color:                $gray-dark;
 
 //** Global textual link color.
-$link-color:                $brand-primary;
-$link-hover-color:          $turquoise;
+$link-color:                var(--link-primary-color);
+$link-hover-color:          var(--link-primary-hover-color);
 
 
 //== Typography

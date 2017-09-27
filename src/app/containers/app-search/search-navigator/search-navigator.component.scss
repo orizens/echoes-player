@@ -2,7 +2,8 @@
 
 @media (min-width: 320px) {
   :host {
-    $border-active-color: $brand-primary;
+    --border-active-color: var(--brand-primary);
+    --link-active-color: var(--navbar-link-color);
     
     .search-selector {
       clear: both;
@@ -12,13 +13,15 @@
         border: none;
         border-radius: none;
         background-color: transparent;
+        color: var(--navbar-text-color);
       }
 
       &.nav-tabs {
         border-bottom: none;
 
         > li.active > a {
-          border-bottom: 0.2rem solid $border-active-color;
+          border-bottom: 0.2rem solid var(--border-active-color);
+          color: var(--link-active-color);
           box-shadow: none;
         }
       }

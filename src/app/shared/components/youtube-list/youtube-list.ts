@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { YoutubeMediaComponent } from '../youtube-media/youtube-media';
-// import './youtube-list.scss';
 
 @Component({
   selector: 'youtube-list',

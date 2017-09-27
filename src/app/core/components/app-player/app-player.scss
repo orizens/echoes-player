@@ -119,6 +119,7 @@ $toolbar-position-on-hover: -7rem;
 	}
 
 	.container-fluid {
+		overflow: hidden;
 		padding: 0;
 		z-index: $zindex-navbar-fixed;
 		background-color: $gray-darker;

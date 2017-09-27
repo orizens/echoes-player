@@ -21,7 +21,7 @@
 		}
 
 		.fa {
-			color: $brand-primary;
+			color: var(--brand-primary);
 			margin-right: 10px;
 
 			.closed & {

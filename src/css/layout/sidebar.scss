@@ -1,7 +1,6 @@
 @import '../core/global.scss';
 
 // helpers
-$sidebar-color: #323538;
 $navbar-new-height: 5rem;
 
 @mixin closed-sidebar() {
@@ -16,6 +15,10 @@ $navbar-new-height: 5rem;
 // the code
 @media (min-width: 320px) {
 	.sidebar {
+		--sidebar-bg-color: var(--sidebar-bg);
+		--sidebar-brand-bg: var(--brand-primary);
+		--sidebar-text-color: var(--sidebar-text);
+
 		// flex setup
 		display: flex;
     flex-direction: column;
@@ -28,7 +31,7 @@ $navbar-new-height: 5rem;
 		z-index: $zindex-navbar-fixed;
 		// by default should be hidden
 		transform: translatex(-30rem);
-		background-color: $sidebar-color;
+		background-color: var(--sidebar-bg-color);
 		padding-bottom: 30%;
 		border: none;
 		border-radius: 0;
@@ -59,11 +62,7 @@ $navbar-new-height: 5rem;
 		.navbar {
 			margin-bottom: 0;
 			border-bottom: none;
-			// position: fixed;
-			// top: 0;
-			/*width: 29.5rem;*/
 			z-index: 1030;
-			background-color: rgb(50, 53, 56);
 			border-radius: 0;
 			border: none;
 		}
@@ -123,7 +122,7 @@ $navbar-new-height: 5rem;
 	}
 
 	.nav-header {
-		color: #efefef;
+		color: var(--sidebar-text-color);
 		text-transform: uppercase;
 	}
 	.nav .nav-header,
@@ -145,7 +144,7 @@ $navbar-new-height: 5rem;
 	}
 
 	.active .nav-list li a{
-		background: $brand-primary;
+		background: var(--sidebar-brand-bg);
 	}
 
 	+ .modal-backdrop {

@@ -12,9 +12,13 @@
   &.show-loader {
     transform: translatey(0rem);
   }
-
+  
   .alert {
+    background-color: var(--sidebar-bg);
     box-shadow: 0 0 20px -3px #000;
-    
+
+    &.alert-info {
+      color: var(--brand-primary);
+    }
   }
 }

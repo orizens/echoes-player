@@ -1,16 +1,16 @@
 @import '~css/echoes-variables.scss';
 
 :host {
-	$btn-color: whitesmoke;
+	--btn-color:var(--brand-inverse-text);
+	--btn-control-primary-color: var(--brand-primary);
 	$btn-control-font-size:  1.5rem;
 	$btn-control-padding:  1.5rem 1.7rem;
-	$btn-control-primary-color: $brand-primary;
 	$btn-primary-font-size: 3rem;
 
 	@mixin button-style () {
 		border: none;
 		background: transparent;
-		color: $btn-color;
+		color: var(--btn-color);
 		border-radius: 0;
 		outline: none;
 		font-size: $btn-control-font-size;
@@ -39,10 +39,11 @@
 		&.play,
 		&.pause {
 			border: 0;
-			color: $btn-control-primary-color;
+			color: var(--btn-control-primary-color);
 			padding: 0.9rem 1.4rem;
 			margin: 0;
 			font-size: $btn-primary-font-size;
+			top: 3px;
 		}
 	}
 
@@ -53,6 +54,11 @@
 	.player-controls {
 		padding: .5rem;
 	}
+	.play,
+	.pause {
+		mix-blend-mode: screen;
+	}
+
 	&.yt-playing .player-controls {
 		.play {
 			display: none;
@@ -65,7 +71,7 @@
 
 	&.yt-repeat-on .player-controls {
 		.repeat {
-			color: $btn-control-primary-color;
+			color: var(--btn-control-primary-color);
 		}
 	}
 }

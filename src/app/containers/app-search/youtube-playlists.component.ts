@@ -10,6 +10,7 @@ import { AppPlayerActions } from '../../core/store/app-player';
 // selectors
 import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
 import { getIsSearching$ } from '../../core/store/player-search';
+import { AppPlayerApi } from '../../core/api/app-player.api';
 
 
 @Component({
@@ -48,7 +49,7 @@ import { getIsSearching$ } from '../../core/store/player-search';
         link=""
         [media]="playlist"
         (play)="playPlaylist(playlist)"
-        (queue)="queueSelectedMedia(playlist)">
+        (queue)="queueSelectedPlaylist(playlist)">
       </youtube-playlist>
     </div>
   </section>
@@ -62,7 +63,8 @@ export class YoutubePlaylistsComponent implements OnInit {
     private store: Store<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
     private appPlayerActions: AppPlayerActions,
-    private playerSearchActions: PlayerSearchActions
+    private playerSearchActions: PlayerSearchActions,
+    private appPlayerApi: AppPlayerApi
   ) { }
 
   ngOnInit() {
@@ -70,11 +72,13 @@ export class YoutubePlaylistsComponent implements OnInit {
     this.store.dispatch(PlayerSearchActions.PLAYLISTS_SEARCH_START.creator());
   }
 
-  playPlaylist (media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new PlayPlaylistAction(media.id));
+  playPlaylist (media: GoogleApiYouTubePlaylistResource) {
+    // this.store.dispatch(new PlayPlaylistAction(media.id));
+    this.appPlayerApi.playPlaylist(media);
   }
 
-  queueSelectedMedia (media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new LoadPlaylistAction(media.id));
+  queueSelectedPlaylist (media: GoogleApiYouTubePlaylistResource) {
+    // this.store.dispatch(new LoadPlaylistAction(media.id));
+    this.appPlayerApi.queuePlaylist(media);
   }
 }

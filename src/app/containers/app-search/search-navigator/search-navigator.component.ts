@@ -7,7 +7,7 @@ import { CSearchTypes } from '../../../core/store/player-search';
   template: `
   <ul class="nav nav-tabs search-selector" role="tablist">
     <li *ngFor="let search of searchTypes"
-      routerLinkActive="active" 
+      routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }">
       <a routerLink="{{ search.link }}">{{ search.label }}</a>
     </li>

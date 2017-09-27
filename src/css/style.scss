@@ -15,6 +15,35 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 $fa-font-path: '../fonts' !default;
 @import '~font-awesome/scss/font-awesome';
 
+/* CSS VARS - COLORS */
+body {
+	--brand-primary: $brand-primary;
+	--brand-secondary: $brand-secondary;
+	--brand-success: $brand-success;
+	--brand-warning: $brand-warning;
+	--brand-danger: $brand-danger;
+	--brand-info: $brand-info;
+	
+	--sidebar-bg: $blue-grey-900;
+	--sidebar-text: $inverse;
+	
+	--brand-inverse-text: $inverse;
+	--brand-primary-lite-bg-color: $inverse;
+	--brand-primary-text-color: $text-color;
+	--brand-dark-bg-color: $dark;
+	--brand-dark-bg-color-transparent: $dark-transparent;
+	--brand-bg-lite-transparent: $inverse-transparent;
+
+	--link-primary-color: --brand-primary;
+	--link-primary-hover-color: --brand-primary;
+
+	--navbar-bg-color: $white-dark-transparent;
+	--navbar-text-color: $text-color;
+	--navbar-link-color: var(--link-primary-color);
+	
+	--app-bg-color: $body-bg;
+	background-color: var(--app-bg-color);
+}
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus,
@@ -36,146 +65,4 @@ footer p {
 }
 iframe {
 	border:none;
-}
-
-/* end of scrollbar */
-.row-fluid input[type="search"].search-query {
-	font-size: 29px;
-	height: 38px;
-	line-height: 38px;
-	margin-right: 20px;
-}
-/* search module */
-
-.navbar-fixed-top .navbar-inner {
-	text-shadow: none;
-	border-color: #111;
-	border: none;
-}
-/* navigation */
-.nav-list [class^="icon-"] {
-	margin-right: 8px;
-}
-
-/* results */
-.fade-out {
-	opacity: 0;
-}
-
-// .main-view.ng-leave {
-// 	transform: translatex(-100%);
-// }
-
-// .main-view.ng-enter {
-// 	transform: translatex(0);
-// }
-/* youtube styles */
-
-.show-description .btn.btn-mini.media-desc {
-	color: #efefef;
-	background: rgb(71, 68, 68);
-}
-
-/* facebook like */
-.facebook-like {
-	height: 26px;
-}
-.fullscreen .facebook-like {
-	display: none;
-}
-/* for the facebook page like*/
-.fb_iframe_widget {
-	max-height: 20px;
-}
-
-/* playlist info */
-.playlist-info li a {
-	color: white;
-	border: none;
-	display: block;
-	padding: 3px 20px;
-	clear: both;
-	font-weight: normal;
-	line-height: 20px;
-	white-space: nowrap;
-	text-decoration: none;
-}
-
-.active a {
-	@include active-link-style();
-}
-.social-badge {
-	padding: 10px 0;
-}
-/* Mobile Phones */
-@media (max-width: 767px) {
-	body {
-		padding: 0;
-		overflow-y: scroll;
-	}
-
-	.navbar-fixed-bottom {
-		position: fixed;
-	}
-
-	.navbar-fixed-top .navbar-inner,
-	.navbar-fixed-bottom .navbar-inner {
-		padding: 0;
-		border: none;
-	}
-
-	.youtube-toolbar.navbar.navbar-inner {
-		width: 100%;
-		padding: 0;
-	}
-
-	.youtube-item:hover {
-	    box-shadow: none;
-	}
-
-	/* player controls */
-	.volume-up, .volume-down {
-		display: none;
-	}
-	.icon-search {
-		top: 22px;
-		right: 21px;
-	}
-
-	.nav.donation {
-		display: none;
-	}
-}
-@media (max-width: 979px) and (min-width: 768px) {
-	.navbar-fixed-bottom {
-		position: fixed;
-	}
-	.navbar-fixed-top .navbar-inner,
-	.navbar-fixed-bottom .navbar-inner {
-		padding: 0;
-	}
-	.navbar-fixed-bottom .navbar-inner {
-		/*width: 840px;*/
-	}
-	.span2 {
-		width: 172px;
-	}
-}
-@media (max-width: 979px) {
-	.total-results {
-		display: none;
-	}
-}
-@media (min-width: 1000px) {
-	.youtube-item:hover .media-title .front {
-		background: rgba(255, 255, 255, 0.9);
-	}
-	.youtube-playlist-item:hover .front {
-		background: rgba(255, 255, 255, 0.9);
-	}
-}
-@media (min-width: 1200px) {
-	.row-fluid .span3 {
-		width: 24%;
-	}
 }
