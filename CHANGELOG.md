@@ -1,4 +1,4 @@
-## v 3.5 (2017/05/06) 
+## v 3.5 (2017/09/27) 
 * [NEW] - added search for playlists
 * [NEW] - queue and play whole playlist 
 * [NEW] - player control bar reflects the current media photo 
