@@ -2,25 +2,55 @@
 
 @media (min-width: 320px) {
   app-navbar {
+    $user-icon-size: 4rem;
+    $navbar-container-left-padding: 2.5rem;
+    $navbar-container-padding: 0.5rem 0;
+
+    display: block;
+  
     nav.navbar {
       margin-left: 0;
+      color: var(--navbar-text-color);
+    }
+
+    .navbar-brand {
+      line-height: 2;
+      float: none;
+      height: auto;
     }
 
     .user-icon {
-      width: 4rem;
-      height: 4rem;
+      width: $user-icon-size;
+      height: $user-icon-size;
       vertical-align: middle;
       border-radius: 50%;
       border: 1px solid #fff;
       box-shadow: 0 0 1px rgba(0,0,0,.5);
+    }
+    .navbar-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: $navbar-container-padding;
+
+      .navbar__content {
+        flex: 2 0 0;
+        padding-left: $navbar-container-left-padding;
+
+        .navbar__header {
+          .fa {
+            margin-right: 10px;
+          }
+        }
+      }
     }
 
     .navbar-collapse {
       display: inline-block;
     }
     .navbar-text {
-      margin: 0 2rem 0 0;
-      line-height: 5rem;
+      margin: 0;
+      line-height: 2;
     }
 
     .navbar-brand {
@@ -28,17 +58,19 @@
     }
 
     .navbar-actions {
-      display: block;
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      justify-content: flex-end;
+      padding-right: 1rem;
     }
   }
 }
 @media (min-width: 768px) {
   app-navbar {
-    nav.navbar {
+    nav.navbar.navbar-fixed-top {
       margin-left: $drawer-width;
-    }
-    .navbar-actions {
-      display: block;
+      // padding-right: 2rem;
     }
   }
 

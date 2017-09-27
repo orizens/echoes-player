@@ -1,29 +1,36 @@
 @import '~css/echoes-variables.scss';
 
-:host .library-nav {
-	.nav-header {
-		padding: 1rem 2px 1rem 15px;
+:host {
+	.list-group {
+		margin: 0;
 	}
-
-	> li a:hover {
-		background: rgba(10,10,10,.2);
-	}
-
-	.fa {
-		margin-right: 10px;
-	}
-
-	.active a {
+	.list-group-item {
 		$active-color: rgba(10,10,10, .5);
-		color: white;
-		box-shadow: inset 0px 0px 6px $active-color;
-		background: $active-color;
 
-		i {
-			color: $brand-primary;
+		color: $clouds;
+		border: none;
+		background: transparent;
+		
+		&:hover {
+			background: rgba(10,10,10,.2);
+			box-shadow: inset 0px 0px 6px $active-color;
+		}
+		
+		.closed & {
+			text-align: center;
+		}
+
+		.fa {
+			color: var(--brand-primary);
+			margin-right: 10px;
+
+			.closed & {
+				margin: 0;
+			}
 		}
 	}
 }
+
 @media (min-width: 768px) {
 	:host .closed {
 		width: $sidebar-closed-width;

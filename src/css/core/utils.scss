@@ -59,6 +59,28 @@ select {
 .btn-transparent {
     background-color: transparent !important;
 }
+.bg-primary {
+	background-color: var(--brand-primary);
+}
 .text-primary {
-    color: $brand-primary !important;
+	color: var(--brand-primary);
+}
+
+.label-danger {
+  background-color: var(--brand-danger);
+}
+.label-info {
+  background-color: var(--brand-info);
+}
+.label-success {
+  background-color: var(--brand-success);
+}
+
+// BUTTONS
+.btn-info {
+  background-color: var(--brand-info);
+}
+
+.btn-danger {
+  background-color: var(--brand-danger);  
 }

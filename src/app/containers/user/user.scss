@@ -1,9 +1,7 @@
 app-user {
-  $user-nav-line-height: 5rem;
-
   article {
-    padding-bottom: $user-nav-line-height;
-    padding-top: ($user-nav-line-height + 4rem);
+    padding-bottom: 5rem;
+    padding-top:7rem;
   }
   h2 {
     small {
@@ -15,13 +13,5 @@ app-user {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  .navbar-text {
-    margin: 0 2rem 0 0;
-    line-height: $user-nav-line-height;
-  }
-  
-  .navbar-brand {
-    line-height: $user-nav-line-height;
   }
 }

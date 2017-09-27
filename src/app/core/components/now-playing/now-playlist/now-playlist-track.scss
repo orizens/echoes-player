@@ -5,12 +5,12 @@
     $track-badge-index: 10;
     $track-button: 15;
     $track-border-color: #262829;
-    $track-badge-color: $dark;
-    $track-active-border-color: $brand-primary;
-    $track-bg-active-color: rgba(10,10,10, .5);
+    --track-badge-color: var(--brand-dark-bg-color);
+    --track-active-border-color: var(--brand-primary);
+    --track-bg-active-color: var(--brand-dark-bg-color-transparent);
     $remove-font-size: 1.5rem;
     $playlist-font-size: 1.3rem;
-    $text-color: #fff;
+    --text-color: var(--brand-inverse-text);
 
     .track-number {
       position: absolute;
@@ -71,7 +71,7 @@
 
     .badge-info {
       border-radius: 0;
-      background: $track-badge-color;
+      background: var(--track-badge-color);
       margin: 0 auto;
       display: block;
       font-size: 1rem;
@@ -83,20 +83,20 @@
 
     .track-tracks {
       margin: 1.5rem -2rem 0;
-      border-top: 1px solid $track-active-border-color;
+      border-top: 1px solid var(--track-active-border-color);
 
       .album-tracks-heading {
         margin: 0 2rem;
-        color: $track-active-border-color;
+        color: var(--track-active-border-color);
         font-size: 1.5rem;
       }
 
       .list-group-item {
         border-color: $track-border-color;
-        color: $text-color;
+        color: var(--text-color);
 
         &:hover {
-          color: $track-active-border-color;
+          color: var(--track-active-border-color);
         }
       }
     }

@@ -1,0 +1,62 @@
+:host {
+  $transparent-bg: rgba(255,255,255, .5);
+  $cover-padding-size: 9rem 0;
+  $cover-blur-size: 24rem;
+  $cover-blur-value: 5px;
+  $cover-blur-scale: 1.2;
+  $thumbnail-top: 56px;
+  display: block;
+
+  .playlist-cover {
+    position: relative;
+    padding: $cover-padding-size;
+    margin-bottom: 1rem;
+    overflow: hidden;
+
+    .cover-bg {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: blur($cover-blur-value);
+      transform: scale(1.2$cover-blur-scale);
+      height: $cover-blur-size;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .playlist-thumbnail {
+      position: absolute;
+      top: $thumbnail-top;
+
+      img {
+        border: 1px solid $transparent-bg;
+      }
+    }
+  
+    h4 {
+      margin: 0;
+      line-height: 5rem;
+
+      span {
+        font-weight: normal;
+        position: relative;
+        background-color: $transparent-bg;
+        padding: 1rem;
+      }
+    }
+
+    .actions {
+      transform: translateX(11rem) translateY(9rem);
+
+      .btn {
+        color: white;
+
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,58 @@
-@media (min-width: 1024px) {
-app-brand {
-  .sidebar-toggle {
-    display: none;
+@import '~css/core/global.scss';
+
+@media (min-width: 320px) {
+:host {
+  .brand-container {
+    $brand-icon-font-size: 23px;
+    $brand-icon-line-height: 2;
+    $brand-icon-margin: 0 -0.3rem;
+    $brand-padding: 0.5rem 1.5rem;
+
+    padding: $brand-padding;
+    margin: 0;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+
+    .brand-text {
+      flex: 1;
+    }
+    
+    .brand-icon {
+      font-size: $brand-icon-font-size;
+      margin: $brand-icon-margin;
+      color: $clouds;
+      line-height: $brand-icon-line-height;
+  
+      .closed & {
+        font-size: $font-size-h3;
+      }
+    }
+    
+    .text {
+      display: inline-block;
+      line-height: 2;
+    }
+
+    .sidebar-toggle {
+      .closed & {
+        display: none;
+      }
+    }
   }
 }
-
+}
+@media (min-width: 1024px) {
+  :host {
+    .brand-container {
+      .closed & {
+        text-align: center;
+      }
+      .text {
+        .closed & {
+          display: none;
+        }
+      }
+    }
+  }
 }

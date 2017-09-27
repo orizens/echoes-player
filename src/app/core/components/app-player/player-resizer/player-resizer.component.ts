@@ -3,13 +3,13 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
 
 @Component({
   selector: 'player-resizer',
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
   styleUrls: [ './player-resizer.scss' ],
   template: `
     <button title="minimize / maximize player"
       [class.full-screen]="!fullScreen"
-      (click)="togglePlayer()" 
-      class="btn btn-sm btn-primary navbar-btn show-player pull-right">
+      (click)="togglePlayer()"
+      class="btn btn-sm navbar-btn show-player pull-right">
       <i class="fa fa-chevron-down icon-minimize"></i>
       <i class="fa fa-expand icon-max"></i>
     </button>

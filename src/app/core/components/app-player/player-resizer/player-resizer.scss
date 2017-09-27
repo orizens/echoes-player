@@ -1,11 +1,15 @@
-@import '../../../../../css/core/global.scss';
+@import '~css/core/global.scss';
 
 @media (min-width: 320px) {
-  player-resizer {
+  :host {
+    .btn.show-player {
+      background-color: var(--brand-primary);
+      color: var(--brand-inverse-text);
+    }
     .full-screen.show-player {
       transform: scale(5);
       background-color: transparent;
-      color: $brand-primary;
+      color: var(--brand-primary);
       border: none;
       left: 14rem;
       position: absolute;
@@ -20,17 +24,17 @@
     .icon-minimize {
       display: none;
     }
-  }
 
-  .show-youtube-player player-resizer {
-    display: block;
-
-    .icon-max {
-      display: none;
-    }
-
-    .icon-minimize {
+    .show-youtube-player & {
       display: block;
+
+      .icon-max {
+        display: none;
+      }
+
+      .icon-minimize {
+        display: block;
+      }
     }
   }
 }

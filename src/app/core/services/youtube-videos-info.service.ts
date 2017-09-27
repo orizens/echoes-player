@@ -6,6 +6,7 @@ import { Authorization } from './authorization.service';
 @Injectable()
 export class YoutubeVideosInfo {
   public api: YoutubeApiService;
+  whichMedia = '';
 
   constructor(private http: Http, auth: Authorization) {
     this.api = new YoutubeApiService({

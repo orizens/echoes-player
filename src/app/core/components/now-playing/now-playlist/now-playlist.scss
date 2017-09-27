@@ -4,9 +4,8 @@
 	$track-badge-index: 10;
 	$track-button: 15;
 	$track-border-color: #262829;
-	$track-badge-color: $dark;
-	$track-active-border-color: $brand-primary;
-	$track-bg-active-color: rgba(10,10,10, .5);
+	--track-active-border-color: var(--brand-primary);
+	--track-bg-active-color: var(--brand-dark-bg-color-transparent);
 
 	.now-playlist {
 		position: relative;
@@ -18,9 +17,9 @@
 			// > .active > .now-playlist-track__trigger {
 			> .active > now-playlist-track a {
 				color: white;
-				box-shadow: inset 0px 0px 6px $track-bg-active-color;
-				border-right: 6px solid $track-active-border-color;
-				background: $track-bg-active-color;
+				box-shadow: inset 0px 0px 6px var(--track-bg-active-color);
+				border-right: 6px solid var(--track-active-border-color);
+				background: var(--track-bg-active-color);
 			}
 			> :not(.active) a:hover {
 				background: rgba(10,10,10,.2);
@@ -65,8 +64,6 @@
 	}
 	.closed now-playlist {
 		.now-playlist-track {
-			// .now-playlist-track__trigger, 
-			// .now-playlist-track__trigger.active {
 			a, 
 			a.active {
 				padding: 0;
@@ -76,12 +73,7 @@
 			.playlist-track__content {
 				height: 0;
 			}
-			// span,
-			// &.playlist-media .playlist-track {
-			// 	display: none;
-			// }
 			.track-number {
-				// display: block;
 				left: 0;
 			}
 			.video-thumb {

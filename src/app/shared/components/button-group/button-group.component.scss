@@ -1,6 +1,11 @@
-button-group {
+:host {
+  display: inline-block;
   .btn {
     border: 0;
+    &.btn-default.active {
+      background-color: var(--brand-primary);
+      color: var(--brand-inverse-text);
+    }
   }
 
   .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {

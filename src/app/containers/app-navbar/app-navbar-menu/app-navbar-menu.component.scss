@@ -2,9 +2,7 @@
 
 @media (min-width: 320px) {
   :host {
-    .list-group-item {
-      padding: 0rem 1.5rem;
-    }
+
     @keyframes pulse {
       0% { transform: scale(0); opacity: 1 }	
       50% { transform: scale(1); opacity: .5; }
@@ -26,11 +24,16 @@
       animation: pulse 2s infinite;
     }
 
-    .btn-toggle .update-indicator {
-      position: absolute;
-      // transform: translateY(-8px);
-      top: 13px; /* for pulse animation*/
+    .btn-toggle {
+      padding: 1rem 1.5rem;
+
+      .update-indicator {
+        position: absolute;
+        // transform: translateY(-8px);
+        top: 13px; /* for pulse animation*/
+      }
     }
+
     .menu-dropdown {
       position: absolute;
       right: 0;

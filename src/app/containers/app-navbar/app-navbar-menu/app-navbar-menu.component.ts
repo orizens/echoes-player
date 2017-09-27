@@ -39,7 +39,7 @@ enum Key {
         </a>
         <div class="list-group-item" target="_blank">
           v.<a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank">
-            {{ appVersion.semver }} 
+            {{ appVersion.semver }}
             </a>
           <button *ngIf="!appVersion.isNewAvailable"
             class="btn btn-info" (click)="handleVersionCheck()">

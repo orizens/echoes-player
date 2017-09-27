@@ -1,21 +1,20 @@
 import { EchoesState } from '../../store';
 import { Store } from '@ngrx/store';
 import { AppLayoutActions } from '../../store/app-layout';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
-// import './app-brand.scss';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-brand',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: [ './app-brand.scss' ],
   template: `
-  <div class="navbar-brand col-md-12 bg-primary"
+  <div class="brand-container bg-primary"
     (click)="toggleSidebar()">
-    <span class="text">Ech</span>
-    <i class="fa fa-headphones"></i>
-    <span class="text">es</span>
-    <button class="btn btn-navbar btn-link ux-maker sidebar-toggle pull-right hidden-lg">
+    <section class="brand-text">
+      <h3 class="text">Ech</h3>
+      <h3 class="brand-icon fa fa-headphones"></h3>
+      <h3 class="text">es</h3>
+    </section>
+    <button class="btn btn-transparent sidebar-toggle">
       <i class="fa fa-bars"></i>
     </button>
   </div>

@@ -1,14 +1,8 @@
-<div class="youtube-item youtube-playlist-item ux-maker card">
+<div class="youtube-playlist-item ux-maker card">
   <section class="media-title front">
-    <div class="indicators clearfix">
-      <span class="pull-left item-is-playing playing-false">
-        <i class="icon-play"></i>Now Playing
-      </span>
-    </div>
-
     <div class="media-thumb">
       <div class="thumbnail">
-        <img src="{{ media.snippet.thumbnails.high.url }}">
+        <img src="{{ media.snippet.thumbnails.high.url }}" class="thumb-image">
       </div>
 
       <button class="btn btn-default btn-lg play-media" (click)="playPlaylist(media)">
@@ -17,8 +11,10 @@
     </div>
 
     <section class="item-actions">
-      <a [routerLink]="[ '/user/playlist', media.id ]">
-        <h4 class="title">
+      <a class="playlist-link" 
+        [routerLink]="[ link + '/playlist', media.id ]"
+        [title]="media.snippet.title">
+        <h4 class="title ellipsis">
           {{ media.snippet.title }}
         </h4>
         <span class="item-action badge badge-info">

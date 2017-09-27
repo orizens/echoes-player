@@ -9,15 +9,15 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
     (click)="select.emit(video)">
     <section class="video-thumb playlist-track__thumb">
       <span class="track-number">{{ index + 1 }}</span>
-      <img draggable="false" 
-      [src]="videoThumb" 
+      <img draggable="false"
+      [src]="videoThumb"
       xtitle="Drag to sort">
       <span class="badge badge-info">
         {{ video.contentDetails.duration | toFriendlyDuration }}
       </span>
     </section>
     <aside class="playlist-track__content">
-      <button class="btn label label-primary fa fa-list-ul playlist-track"
+      <button class="btn label bg-primary fa fa-list-ul playlist-track"
         *ngIf="isPlaylistMedia(video)"
         (click)="handleToggleTracks($event, video)"
         title="Album Track - click to select cued tracks"

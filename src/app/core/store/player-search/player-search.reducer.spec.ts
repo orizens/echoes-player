@@ -3,18 +3,20 @@ import {
   async,
 } from '@angular/core/testing';
 
-import { search, PlayerSearch } from './player-search.reducer';
+import { search, IPlayerSearch } from './player-search.reducer';
 import { PlayerSearchActions } from './player-search.actions';
 import { YoutubeMediaItemsMock } from '../../../../../tests/mocks/youtube.media.items';
 
 describe('The Player Search reducer', () => {
-  const mockedState = (results = []): PlayerSearch => ({
+  const mockedState = (results = []): IPlayerSearch => ({
     query: '',
     filter: '',
+    searchType: '',
     queryParams: {
       preset: '',
       duration: -1
     },
+    presets: [],
     pageToken: {
       next: '',
       prev: ''

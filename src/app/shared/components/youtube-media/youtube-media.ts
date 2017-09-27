@@ -8,7 +8,7 @@ interface MediaStatus {
 
 @Component({
   selector: 'youtube-media',
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
   styleUrls: [ './youtube-media.scss' ],
   templateUrl: './youtube-media.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -47,5 +47,12 @@ export class YoutubeMediaComponent {
 
   removeVideoFromQueue(media: GoogleApiYouTubeVideoResource) {
     this.unqueue.emit(media);
+  }
+
+  get thumb () {
+    const hasMedia = Object.keys(this.media).length;
+    const hasThumbs = hasMedia ? this.media.snippet.thumbnails : false;
+    const thumbUrl = hasThumbs ? this.media.snippet.thumbnails.high.url : false;
+    return thumbUrl;
   }
 }

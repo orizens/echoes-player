@@ -1,0 +1,30 @@
+@import '~css/core/global.scss';
+
+@media (min-width: 320px) {
+  :host {
+    --border-active-color: var(--brand-primary);
+    --link-active-color: var(--navbar-link-color);
+    
+    .search-selector {
+      clear: both;
+
+      &.nav > li > a {
+        text-transform: uppercase;
+        border: none;
+        border-radius: none;
+        background-color: transparent;
+        color: var(--navbar-text-color);
+      }
+
+      &.nav-tabs {
+        border-bottom: none;
+
+        > li.active > a {
+          border-bottom: 0.2rem solid var(--border-active-color);
+          color: var(--link-active-color);
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

@@ -18,26 +18,26 @@ const initialState: NowPlaylistInterface = {
 export function nowPlaylist(state: NowPlaylistInterface = initialState, action: Action): NowPlaylistInterface {
   switch (action.type) {
     case NowPlaylistActions.SELECT:
-      return Object.assign({}, state, { selectedId: action.payload.id });
+      return { ...state, selectedId: action.payload.id };
 
     case NowPlaylistActions.QUEUE:
-      return Object.assign({}, state, { videos: addMedia(state.videos, action.payload) });
+      return { ...state, videos: addMedia(state.videos, action.payload) };
 
     case NowPlaylistActions.QUEUE_VIDEOS:
-      return Object.assign({}, state, { videos: addMedias(state.videos, action.payload) });
+      return { ...state, videos: addMedias(state.videos, action.payload) };
 
     case NowPlaylistActions.REMOVE:
-      return Object.assign({}, state, { videos: removeMedia(state.videos, action.payload) });
+      return { ...state, videos: removeMedia(state.videos, action.payload) };
 
     // updates index by media
     case NowPlaylistActions.UPDATE_INDEX:
-      return Object.assign({}, state, { selectedId: action.payload });
+      return { ...state, selectedId: action.payload };
 
     case NowPlaylistActions.FILTER_CHANGE:
-      return Object.assign({}, state, { filter: action.payload });
+      return { ...state, filter: action.payload };
 
     case NowPlaylistActions.REMOVE_ALL:
-      return Object.assign({}, state, { videos: [], filter: '', selectedId: '' });
+      return { ...state, videos: [], filter: '', selectedId: '' };
 
     case NowPlaylistActions.SELECT_NEXT: {
       return { ...state,
@@ -46,9 +46,9 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
     }
 
     case NowPlaylistActions.SELECT_PREVIOUS:
-      return Object.assign({}, state, {
+      return { ...state,
         selectedId: selectPreviousIndex(state.videos, state.selectedId, state.filter)
-      });
+      };
 
     case NowPlaylistActions.MEDIA_ENDED:
       return selectNextOrPreviousTrack(state, state.filter);
@@ -58,12 +58,18 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
         ...state,
         repeat: !state.repeat
       };
-    };
+    }
+
+    case NowPlaylistActions.LOAD_PLAYLIST_END: {
+      return {
+        ...state
+      };
+    }
 
     default:
       return state;
   }
-};
+}
 
 export const nowPlaylistRegister = {
   reducer: { nowPlaylist },
@@ -81,7 +87,7 @@ function addMedia(videos: GoogleApiYouTubeVideoResource[], media: any) {
 
 function addMedias(videos, medias) {
   const allVideoIds = videos.map(video => video.id);
-  let newVideos = [];
+  const newVideos = [];
   medias.forEach(media => {
     if (allVideoIds.indexOf(media.id) === -1) {
       newVideos.push(media);

@@ -1,6 +1,8 @@
 import { VersionCheckerService } from './core/services/version-checker.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { EchoesState, getSidebarCollapsed$ } from './core/store';
+import { getSearchType$ } from './core/store/player-search';
+
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/let';
 
@@ -12,6 +14,7 @@ import 'rxjs/add/operator/let';
 })
 export class AppComponent {
   sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
+  searchType$ = this.store.let(getSearchType$);
 
   constructor(
     private store: Store<EchoesState>,

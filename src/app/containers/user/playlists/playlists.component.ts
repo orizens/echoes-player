@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
       <youtube-playlist
         *ngFor="let playlist of playlists$ | async"
         [media]="playlist"
+        link="/user/"
         (play)="playSelectedPlaylist(playlist)"
         (queue)="queueSelectedPlaylist(playlist)">
       </youtube-playlist>

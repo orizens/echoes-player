@@ -24,13 +24,7 @@ $wet-asphalt:               #34495e;
 $midnight-blue:             #2c3e50;
 
 $sun-flower:                #f1c40f;
-$orange:                    #f39c12;
-
-$carrot:                    #e67e22;
-$pumpkin:                   #d35400;
-
 $alizarin:                  #e74c3c;
-$pomegranate:               #c0392b;
 
 $clouds:                    #ecf0f1;
 $silver:                    #bdc3c7;
@@ -38,10 +32,15 @@ $silver:                    #bdc3c7;
 $concrete:                  #95a5a6;
 $asbestos:                  #7f8c8d;
 
+$blue-grey-900: #263238;
+$md-lite-blue-500: #03A9F4;
+$md-lite-blue-300: rgba(79, 195, 247, .9);
 // Grays
 // $gray:                      $concrete;
 // $gray-light:                $silver;
 $inverse:                   white;
+$inverse-transparent: rgba(255, 255, 255, 0.7);
+$white-dark-transparent: rgba(243,243,243, .9);
 
 $gray-darker:            lighten(#000, 13.5%); // #222
 $gray-dark:              lighten(#000, 20%);   // #333
@@ -49,15 +48,17 @@ $gray:                   lighten(#000, 33.5%); // #555
 $gray-light:             lighten(#000, 46.7%); // #777
 $gray-lighter:           lighten(#000, 93.5%); // #eee
 $dark:					 #000;
+$dark-transparent: rgba(10, 10, 10, .5);
+
 // Brand colors
-$brand-primary:             $turquoise;
-$brand-secondary:           $green-sea;
+$brand-primary:             $md-lite-blue-500;
+$brand-secondary:           $md-lite-blue-300;
 $brand-success:             $emerald;
 $brand-warning:             $sun-flower;
 $brand-danger:              $alizarin;
 // $brand-info:                $peter-river;
 $brand-info:                $emerald;
-
+$brand-sidebar:  $blue-grey-900;
 
 //== Scaffolding
 //
@@ -67,15 +68,15 @@ $body-bg:                   #ecf0f1;
 $text-color:                $gray-dark;
 
 //** Global textual link color.
-$link-color:                $brand-primary;
-$link-hover-color:          $turquoise;
+$link-color:                var(--link-primary-color);
+$link-hover-color:          var(--link-primary-hover-color);
 
 
 //== Typography
 //
 //## Font, line-height for body text, headings, and more.
 
-$font-family-base:          'Open Sans', Helvetica, Arial, sans-serif;
+$font-family-base:          'Open Sans Condensed', 'Open Sans', Helvetica, Arial, sans-serif;
 $font-family-demo:          "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-monospace:     Monaco, Menlo, Consolas, "Courier New", monospace;
 $font-family-narrow:		'Open Sans Condensed', 'Open Sans', Helvetica;
@@ -91,8 +92,8 @@ $font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
 $line-height-base:          1.428571429; // 20/14
 $line-height-computed:      floor($font-size-base * $line-height-base); // ~31px
 
-$headings-font-family:      inherit;
-$headings-font-weight:      700;
+$headings-font-family:      $font-family-narrow;
+$headings-font-weight:      200;
 $headings-line-height:      1.1;
 $headings-color:            $gray-dark;
 $headings-small-color:      $gray-dark;
@@ -121,7 +122,7 @@ $padding-base-horizontal:   6px;
 $padding-large-vertical:    10px;
 $padding-large-horizontal:  16px;
 
-$padding-small-vertical:    1rem;
+$padding-small-vertical:    0.7rem;
 $padding-small-horizontal:  1.5rem;
 
 $padding-xs-vertical:       1px;
@@ -184,7 +185,6 @@ $btn-danger-border:              darken($btn-danger-bg, 5%);
 
 $btn-link-disabled-color:        $gray-light;
 
-
 //== Forms
 //
 //##
@@ -205,36 +205,7 @@ $input-bg:                  $inverse;
 $input-bg-disabled:         mix($gray, white, 10%);
 
 $input-height-small:        35px;
-$input-height-base:         41px;
-$input-height-large:        45px;
-$input-height-huge:         53px;
-
-$input-border-radius:       $border-radius-large;
-
-$legend-color:              inherit;
-
-
-//== Forms
-//
-//##
-
-$input-font-size-base:      $component-font-size-base;
-$input-font-size-small:     floor($component-font-size-base * 0.867); // ~13px
-$input-font-size-large:     ceil($component-font-size-base * 1.133); // ~17px
-$input-font-size-huge:      floor($component-font-size-base * 1.467); // ~22px
-
-$input-line-height-base:    1.467; // ~22px
-$input-line-height-small:   1.462; // ~19px
-$input-line-height-large:   1.235; // ~21px
-$input-line-height-huge:    1.318; // ~29px
-
-$input-icon-font-size:      ceil($component-font-size-base * 1.333);  // ~20px
-
-$input-bg:                  $inverse;
-$input-bg-disabled:         mix($gray, white, 10%);
-
-$input-height-small:        35px;
-$input-height-base:         41px;
+$input-height-base:         32px;
 $input-height-large:        45px;
 $input-height-huge:         53px;
 

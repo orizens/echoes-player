@@ -16,12 +16,11 @@ export interface ButtonGroupButton {
 }
 @Component({
   selector: 'button-group',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: [ './button-group.component.scss' ],
   template: `
     <div class="btn-group btn-group-sm navbar-btn">
       <button class="btn btn-default"
-        *ngFor="let button of buttons" 
+        *ngFor="let button of buttons"
         [class.active]="isSelectedButton(button.value)"
         (click)="buttonClick.next(button)">
         {{ button.label }}

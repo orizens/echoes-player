@@ -1,0 +1,37 @@
+@import '~css/core/global.scss';
+
+:host {
+	display: block;
+
+	.nav-toolbar {
+		margin: 0.9rem .5rem;
+		display: inline-block;
+	}
+}
+
+@media (min-width: 320px) {
+	:host {
+		position: relative;
+
+		.nav-toolbar {
+			.btn {
+				padding: 1rem 2.7rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	:host {
+		padding-left: 0;
+
+		.nav-toolbar {
+			.btn {
+				padding: 0.7rem 1.5rem;
+			}
+		}
+		.videos-list {
+			padding-left: 1.6rem;
+		}
+	}
+}

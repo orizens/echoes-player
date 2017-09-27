@@ -1,15 +1,24 @@
 import { MediaParserService, YoutubePlayerService } from '../services';
 import { EchoesState } from '../store';
 import { Store } from '@ngrx/store';
-import 'rxjs/add/operator/switchMapTo';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/zip';
+import 'rxjs/add/operator/withLatestFrom';
 import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
-import { NowPlaylistActions } from '../store/now-playlist';
-import { getSelectedMedia$,getSelectedMediaId$, getPlaylistVideos$, isPlayerInRepeat$ } from '../store/now-playlist/now-playlist.selectors';
+import { NowPlaylistActions, LoadPlaylistAction, LoadPlaylistEndAction } from '../store/now-playlist';
+import {
+  getSelectedMedia$,
+  getSelectedMediaId$,
+  getPlaylistVideos$,
+  isPlayerInRepeat$,
+} from '../store/now-playlist/now-playlist.selectors';
 
-import { NowPlaylistService } from '../services/now-playlist.service';
+import { UserProfile } from '../services/user-profile.service';
 
 @Injectable()
 export class NowPlaylistEffects {
@@ -17,9 +26,9 @@ export class NowPlaylistEffects {
     private actions$: Actions,
     public store: Store<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
-    private nowPlaylistService: NowPlaylistService,
     private mediaParser: MediaParserService,
-    private playerService: YoutubePlayerService
+    private playerService: YoutubePlayerService,
+    private userProfile: UserProfile
   ) {}
 
   @Effect()
@@ -38,9 +47,7 @@ export class NowPlaylistEffects {
     .map(toPayload)
     .withLatestFrom(this.store.let(getSelectedMedia$))
     .filter((states: [any, GoogleApiYouTubeVideoResource]) => states[1] && states[1].hasOwnProperty('id'))
-    .map((states: [any, GoogleApiYouTubeVideoResource]) => {
-      return this.nowPlaylistActions.selectVideo(states[1]);
-    }).share();
+    .map((states: [any, GoogleApiYouTubeVideoResource]) => this.nowPlaylistActions.selectVideo(states[1]));
 
   @Effect()
   selectBeforeSeekToTime$ = this.actions$
@@ -52,6 +59,42 @@ export class NowPlaylistEffects {
   seekToTime$ = this.actions$
     .ofType(NowPlaylistActions.SELECT_AND_SEEK_TO_TIME)
     .map(toPayload)
-    .do((trackEvent) => this.playerService.seekTo(this.mediaParser.toNumber(trackEvent.time)))
-    .catch((error) => of({ type: 'ERROR_IN_SEEK', payload: error }));
+    .do((trackEvent) => this.playerService.seekTo(this.mediaParser.toNumber(trackEvent.time)));
+    // .catch((error) => of({ type: 'ERROR_IN_SEEK', payload: error }));
+
+  @Effect()
+  loadPlaylist$ = this.actions$
+    .ofType(NowPlaylistActions.LOAD_PLAYLIST_START)
+    .map(toPayload)
+    .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
+    // .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId))
+    // .switchMap((playlistId: string) => this.userProfile.fetchAllPlaylistItems(playlistId))
+    // .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems))
+    .map((playlistItems: GoogleApiYouTubeVideoResource[]) => new LoadPlaylistEndAction(playlistItems));
+
+  @Effect()
+  addPlaylistItems$ = this.actions$
+    .ofType(NowPlaylistActions.LOAD_PLAYLIST_END)
+    .map(toPayload)
+    .map((playlistItems: GoogleApiYouTubeVideoResource[]) => this.nowPlaylistActions.queueVideos(playlistItems));
+
+  @Effect()
+  playPlaylistFirstTrack$ = this.actions$
+      .ofType(NowPlaylistActions.LOAD_PLAYLIST_END)
+      .map(toPayload)
+      .map((playlistItems: GoogleApiYouTubeVideoResource[]) => this.nowPlaylistActions.selectVideo(playlistItems[0]));
+
+  @Effect()
+  playPlaylist$ = this.actions$
+    .ofType(NowPlaylistActions.PLAY_PLAYLIST)
+    .map(toPayload)
+    .map((id: string) => new LoadPlaylistAction(id));
+    // .map(queue the playlist
+    // .map(play the first track from this playlist)
+
+  // loadPlaylistItems$(playlistId: string) {
+  //   return of(playlistId)
+  //     .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
+  //     .switchMap((playlistItems: GoogleApiYouTubeVideoResource[]) => this.userProfile.fetchMetadata(playlistItems));
+  // }
 }

@@ -1,0 +1,11 @@
+@import '~css/core/global.scss';
+
+@media (min-width: 320px) {
+  :host {
+    $gap-top: 10.5rem;
+
+    > article {
+      padding-top: $gap-top;
+    }
+  }
+}

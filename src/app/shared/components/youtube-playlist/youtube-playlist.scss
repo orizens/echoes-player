@@ -1,7 +1,13 @@
-@import '../../../../css/echoes-variables.scss';
+@import '~css/echoes-variables.scss';
 
 @media (min-width: 320px) {
-	youtube-playlist {
+	:host {
+		--playlist-primary: var(--brand-primary);
+		--playlist-bg-primary: var(--brand-bg-lite-transparent);
+		--playlist-dark-transparent: var(--brand-dark-bg-color-transparent);
+		--playlist-inverse-color: var(--brand-inverse-text);
+		--playlist-link-color: var(--link-primary-color);
+
 		width: 100%;
 
 		.youtube-playlist-item {
@@ -12,32 +18,120 @@
 			box-shadow: none;
 			border: none;
 
-			.thumbnail aside {
-				position: absolute;
-				right: 0;
-				top: 0;
-				box-shadow: 0px 4px 5px -3px #333;
+			.playlist-link .title {
+				color: var(--playlist-link-color);
+			}
+		}
+
+		.media-title {
+			text-shadow: none;
+			display: block;
+			position: relative;
+			font-family: 'Open Sans Condensed', sans-serif;
+			text-decoration: none;
+		}
+
+		.front {
+			padding: 0px;
+			background: var(--playlist-bg-primary);
+			box-shadow: 0 1px 30px -5px var(--playlist-dark-transparent);
+			position: relative;
+		}
+
+		.media-thumb {
+			display: block;
+			position: relative;
+			cursor: pointer;
+			font-weight: normal;
+
+			.thumb-image {
+				transition: transform .3s ease-out;
+				height: 100%;
+				transform: scale(1.7) translatey(0);
 			}
 
-			.icon-loading {
-				color: $brand-primary;
+			&:hover {
+				.thumb-image {
+					transform: scale(1.4) translate(0, 0);
+				}
+
+				.play-media {
+					opacity: 1;
+					transform: translate(-50%,-50%);
+				}
+			}
+
+			.play-media {
+				opacity: 0;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				background: var(--playlist-primary);
+				color: var(--playlist-inverse-color);
+				border: none;
+			}
+			
+			.thumbnail {
+				overflow: hidden;
+				border-radius: 0;
+				clear: both;
+				height: 149px;
+				border: none;
+				background-color: var(--playlist-inverse-color);
+				padding: 0;
+				box-shadow: none;
+				margin-bottom: 0;
+			}
+		}
+
+		.item-actions {
+			padding: 15px;
+			margin: 0;
+			box-shadow: none;
+			position: relative;
+			bottom: -1px;
+			width: 100%;
+
+			.title {
+				margin: 0;
+			}
+
+			.badge {
+				background-color: var(--playlist-primary);
+				border-radius: 0;
+				vertical-align: middle;
+			}
+
+			.playlist-link:hover{
+				text-decoration: none;
+			}
+
+			.item-action {
+				vertical-align: middle;
+				font-size: 1.2rem;
 			}
 		}
 	}
 }
 
 @media (min-width: 768px) {
-	youtube-playlist {
-		width: 240px;
+	:host {
+		width: 280px;
+		.item-actions .playlist-link {
+			display: block;
+		}
 	}
 }
 @media (min-width: 767px) {
-	.youtube-list-item {
-			max-width: 320px;
+	:host {
+		.youtube-list-item {
+				max-width: 320px;
+		}
 	}
 }
+
 @media (min-width: 1440px) {
-	youtube-playlist {
+	:host {
 		width: 280px;
 	}
 }

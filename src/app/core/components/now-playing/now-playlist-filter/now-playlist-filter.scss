@@ -1,10 +1,13 @@
 @import '~css/core/global.scss';
 
 .user-playlists-filter {
+	--filter-bg: var(--sidebar-bg);
+	--filter-darker-bg: darken($brand-sidebar, 3%);
+
 	position: relative;
   // float: none;
   // width: 29.5rem;
-  background-color: #323538;
+  background-color: var(--filter-bg);
   padding-top: .5rem;
   padding-bottom: .5rem;
 	&.nav-header {
@@ -25,11 +28,11 @@
 		position: absolute;
 		right: 0;
 		top: 0.6rem;
-		background: darken($bg-dark-color, 3%);
+		background: var(--filter-darker-bg);
 		padding-left: 5px;
 
 		input {
-			background: darken($bg-dark-color, 3%);
+			background: var(--filter-darker-bg);
 			border: none;
 			padding: 0 3px;
 			margin-bottom: 0;

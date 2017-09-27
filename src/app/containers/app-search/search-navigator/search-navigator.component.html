@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs search-selector" role="tablist">
+  <li *ngFor="let search of searchTypes"
+    routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="{{ search.link }}">{{ search.label }}</a>
+  </li>
+  <li *ngIf="currentPlaylist"
+    class="active">
+    <a><i class="fa fa-chevron-right"></i> Playlist View</a>
+  </li>
+</ul>

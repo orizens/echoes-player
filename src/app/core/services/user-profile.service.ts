@@ -1,5 +1,10 @@
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 import { Http } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/buffer';
 
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
@@ -74,15 +79,51 @@ export class UserProfile {
     return this.playlistApi.list(playlistId);
   }
 
-  fetchPlaylistItems(playlistId: string) {
+  fetchPlaylistItems(playlistId: string, pageToken = '') {
     // const token = this.playlists.config.get('access_token');
-    this.playlistInfo.config.delete('pageToken');
+    if ('' === pageToken) {
+      this.playlistInfo.config.delete('pageToken');
+    } else {
+      this.playlistInfo.config.set('pageToken', pageToken);
+    }
     return this.playlistInfo
       .list(playlistId)
       .switchMap(response => {
         const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
         return this.youtubeVideosInfo.api.list(videoIds);
       });
+  }
+
+  fetchAllPlaylistItems(playlistId: string) {
+    let items = [];
+    const subscriptions: Subscription[] = [];
+    const items$ = new Subject();
+    let nextPageToken = '';
+    const fetchMetadata = (response) => {
+      const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
+      nextPageToken = response.nextPageToken;
+      return this.youtubeVideosInfo.api.list(videoIds);
+    };
+    const collectItems = (videos) => {
+      items = [...items, ...videos];
+      if (nextPageToken) {
+        fetchItems(playlistId, nextPageToken);
+      } else {
+        items$.next(items);
+        subscriptions.forEach(_s => _s.unsubscribe());
+        items$.complete();
+      }
+    };
+    const fetchItems = (id, token) => {
+      this.playlistInfo.config.set('pageToken', token);
+      const sub = this.playlistInfo.list(id)
+        .switchMap((response) => fetchMetadata(response))
+        .subscribe((response) => collectItems(response));
+      subscriptions.push(sub);
+      return sub;
+    };
+    fetchItems(playlistId, '');
+    return items$.take(1);
   }
 
   isTokenValid(token) {
@@ -92,11 +133,16 @@ export class UserProfile {
   }
 
   toUserJson (profile): GoogleBasicProfile {
-    let _profile: GoogleBasicProfile = {};
+    const _profile: GoogleBasicProfile = {};
     if (profile) {
       _profile.imageUrl = profile.getImageUrl();
       _profile.name = profile.getName();
     }
     return _profile;
+  }
+
+  fetchMetadata (items: GoogleApiYouTubeVideoResource[]) {
+    const videoIds = items.map(video => video.id).join(',');
+    return this.youtubeVideosInfo.api.list(videoIds);
   }
 }

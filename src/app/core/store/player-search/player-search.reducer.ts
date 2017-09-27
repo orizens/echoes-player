@@ -1,36 +1,22 @@
 import { Action } from '@ngrx/store';
 import { PlayerSearchActions } from './player-search.actions';
+import { IPlayerSearch, CSearchTypes, CPresetTypes } from './player-search.interfaces';
 
-export interface PlayerSearch {
-  query: string;
-  filter: string;
-  queryParams: {
-    preset: string;
-    duration: number;
-  };
-  pageToken: {
-    next: string;
-    prev: string;
-  };
-  isSearching: boolean;
-  results: any[];
-}
+export * from './player-search.interfaces';
 
-interface SearchQueryParam {
-  [property: string]: any;
-}
-
-export interface PresetParam {
-  label: string;
-  value: any;
-}
-let initialState: PlayerSearch = {
+const initialState: IPlayerSearch = {
   query: '',
   filter: '',
+  searchType: CSearchTypes.VIDEO,
   queryParams: {
     preset: '',
     duration: -1
   },
+  presets: [
+    { label: 'Any', value: '' },
+    { label: 'Albums', value: CPresetTypes.FULL_ALBUMS },
+    { label: 'Live', value: CPresetTypes.LIVE }
+  ],
   pageToken: {
     next: '',
     prev: ''
@@ -38,7 +24,7 @@ let initialState: PlayerSearch = {
   isSearching: false,
   results: []
 };
-export function search(state: PlayerSearch = initialState, action: Action): PlayerSearch {
+export function search(state: IPlayerSearch = initialState, action: Action): IPlayerSearch {
 
   switch (action.type) {
     case PlayerSearchActions.SEARCH_NEW_QUERY:
@@ -72,17 +58,23 @@ export function search(state: PlayerSearch = initialState, action: Action): Play
     case PlayerSearchActions.RESET_RESULTS:
       return Object.assign({}, state, { results: [] });
 
+    case PlayerSearchActions.SEARCH_TYPE_UPDATE: {
+      return {
+        ...state,
+        searchType: action.payload
+      };
+    }
+    case PlayerSearchActions.PLAYLISTS_SEARCH_START.action: {
+      return { ...state, isSearching: true };
+    }
+
     default:
       // upgrade policy - for when the initialState has changed
       return Object.assign({}, initialState, state);
   }
-};
+}
 
 export const searchRegister = {
   reducer: { search },
   actions: PlayerSearchActions
 };
-
-export const getQuery = (state: PlayerSearch) => state.query;
-export const getQueryParams = (state: PlayerSearch) => state.queryParams;
-export const getQueryParamPreset = (state: PlayerSearch) => state.queryParams.preset;

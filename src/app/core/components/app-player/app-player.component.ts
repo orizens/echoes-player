@@ -25,11 +25,11 @@ import { NowPlaylistService, YoutubePlayerService } from '../../services';
   selector: 'app-player',
   styleUrls: [ './app-player.scss' ],
   template: `
-  <section 
+  <section
     [class.show-youtube-player]="isShowPlayer$ | async"
     [class.fullscreen]="(isPlayerFullscreen$ | async).on">
     <div class="yt-player ux-maker">
-      <player-resizer 
+      <player-resizer
         (toggle)="togglePlayer()"
         [fullScreen]="isShowPlayer$ | async"
       ></player-resizer>
@@ -39,12 +39,13 @@ import { NowPlaylistService, YoutubePlayerService } from '../../services';
       ></youtube-player>
     </div>
     <div class="container-fluid">
+      <image-blur [media]="media$ | async"></image-blur>
       <media-info class="col-md-5 col-xs-6"
         [player]="player$ | async"
         [minimized]="media$ | async"
         (thumbClick)="toggleFullScreen()"
       ></media-info>
-      <player-controls class="col-md-4 col-xs-6 controls-container nicer-ux" 
+      <player-controls class="col-md-4 col-xs-6 controls-container nicer-ux"
         [isRepeat]="isPlayerInRepeat$ | async"
         [playing]="isPlayerPlaying$ | async"
         [media]="media$ | async"

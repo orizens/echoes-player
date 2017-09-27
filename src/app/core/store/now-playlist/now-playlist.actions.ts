@@ -20,6 +20,10 @@ export class NowPlaylistActions {
   static MEDIA_ENDED = '[NowPlaylist] MEDIA_ENDED';
   static TOGGLE_REPEAT = '[NowPlaylist] TOGGLE_REPEAT';
   static SELECT_AND_SEEK_TO_TIME = '[NowPlaylist] SELECT_AND_SEEK_TO_TIME';
+  static LOAD_PLAYLIST_START = '[NowPlaylist] LOAD_PLAYLIST_START';
+  static LOAD_PLAYLIST_END = '[NowPlaylist] LOAD_PLAYLIST_END';
+  static PLAY_PLAYLIST = '[NowPlaylist] PLAY_PLAYLIST';
+  static PLAY_PLAYLIST_START = '[NowPlaylist] PLAY_PLAYLIST_START';
 
   mediaEnded = ActionCreatorFactory.create(NowPlaylistActions.MEDIA_ENDED);
   selectNext = ActionCreatorFactory.create(NowPlaylistActions.SELECT_NEXT);
@@ -57,7 +61,7 @@ export class NowPlaylistActions {
     };
   }
 
-  queueVideos(videos: any): Action {
+  queueVideos(videos: GoogleApiYouTubeVideoResource[]): Action {
     return {
       type: NowPlaylistActions.QUEUE_VIDEOS,
       payload: videos
@@ -70,4 +74,23 @@ export class NowPlaylistActions {
       payload: media
     };
   }
+}
+
+export class PlayPlaylistAction implements Action {
+  readonly type = NowPlaylistActions.PLAY_PLAYLIST;
+  constructor (public payload: string) { }
+}
+export class PlayPlaylistStartAction implements Action {
+  readonly type = NowPlaylistActions.PLAY_PLAYLIST_START;
+  constructor (public payload: GoogleApiYouTubeVideoResource) { }
+}
+
+export class LoadPlaylistAction implements Action {
+  readonly type = NowPlaylistActions.LOAD_PLAYLIST_START;
+  constructor (public payload: string) { }
+}
+
+export class LoadPlaylistEndAction implements Action {
+  readonly type = NowPlaylistActions.LOAD_PLAYLIST_END;
+  constructor (public payload: GoogleApiYouTubeVideoResource[]) {}
 }

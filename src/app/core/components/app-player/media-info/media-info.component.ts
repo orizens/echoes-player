@@ -15,10 +15,10 @@ import {
   template: `
   <article class="media-info ellipsis">
     <h3 class="yt-media-title ellipsis">
-      <aside class="pull-left"
+      <aside class="media-thumb-container pull-left"
         title="maximize / minimize"
         (click)="handleThumbClick()">
-        <img src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
+        <img class="media-thumb" src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
         <i class="fa fa-arrows-alt" [ngClass]="{ 'invisible': _minimized }"></i>
       </aside>
       <a class="title">{{ player?.media?.snippet?.title }}</a>
