@@ -1,5 +1,5 @@
-@import '../../../../css/core/global.scss';
-$toolbar-position-on-hover: -7rem;
+@import '~css/core/global.scss';
+$toolbar-position-on-hover: -9rem;
 
 @media (min-width: 320px) {
 	:host {
@@ -48,6 +48,8 @@ $toolbar-position-on-hover: -7rem;
 			
 			.container-fluid {
 				width: 90%;
+				left: 5%;
+				border-radius: 50px;
 			}
 
 			.yt-player {

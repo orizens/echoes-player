@@ -3,6 +3,8 @@
 * [NEW] - queue and play whole playlist 
 * [NEW] - player control bar reflects the current media photo 
 * [NEW] - color palette updated to material 
+* [UPDATE] - playlist view has been revamped
+* preparation for custom themes
 
 ## v 3.4.1 (2017/05/06) 
 * [UPDATE] - updated album tracks parsing algorithm - now includes more rules for parsing more formats of tracks embeded in media description  
