@@ -34,8 +34,8 @@ body {
 	--brand-dark-bg-color-transparent: $dark-transparent;
 	--brand-bg-lite-transparent: $inverse-transparent;
 
-	--link-primary-color: --brand-primary;
-	--link-primary-hover-color: --brand-primary;
+	--link-primary-color: var(--brand-primary);
+	--link-primary-hover-color: var(--brand-primary);
 
 	--navbar-bg-color: $white-dark-transparent;
 	--navbar-text-color: $text-color;
