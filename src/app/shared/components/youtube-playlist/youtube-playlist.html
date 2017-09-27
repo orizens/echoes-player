@@ -2,7 +2,7 @@
   <section class="media-title front">
     <div class="media-thumb">
       <div class="thumbnail">
-        <img src="{{ media.snippet.thumbnails.high.url }}" class="thumb-image">
+        <img [src]="thumb" class="thumb-image">
       </div>
 
       <button class="btn btn-default btn-lg play-media" (click)="playPlaylist(media)">

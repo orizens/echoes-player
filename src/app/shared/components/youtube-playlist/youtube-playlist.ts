@@ -22,4 +22,8 @@ export class YoutubePlaylistComponent {
   queuePlaylist(media: GoogleApiYouTubePlaylistResource) {
     this.queue.next(media);
   }
+
+  get thumb() {
+    return this.media.snippet.thumbnails['high'].url;
+  }
 }
