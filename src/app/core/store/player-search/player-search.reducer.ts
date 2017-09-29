@@ -27,15 +27,19 @@ const initialState: IPlayerSearch = {
 export function search(state: IPlayerSearch = initialState, action: Action): IPlayerSearch {
 
   switch (action.type) {
+    case PlayerSearchActions.UPDATE_QUERY: {
+      return { ...state, query: action.payload };
+    }
+
     case PlayerSearchActions.SEARCH_NEW_QUERY:
-      return Object.assign({}, state, {
+      return { ...state,
         query: action.payload,
         isSearching: true
-      });
+      };
 
     case PlayerSearchActions.UPDATE_QUERY_PARAM:
-      const queryParams = Object.assign({}, state.queryParams, action.payload);
-      return Object.assign({}, state, { queryParams });
+      const queryParams = { ...state.queryParams, ...action.payload };
+      return { ...state, queryParams };
 
     case PlayerSearchActions.SEARCH_RESULTS_RETURNED:
       const { nextPageToken, prevPageToken } = action.payload;
@@ -44,19 +48,19 @@ export function search(state: IPlayerSearch = initialState, action: Action): IPl
         next: nextPageToken || statePageToken.next,
         prev: prevPageToken || statePageToken.prev
       };
-      return Object.assign({}, state, { pageToken });
+      return { ...state, pageToken };
 
     case PlayerSearchActions.SEARCH_STARTED:
-      return Object.assign({}, state, { isSearching: true });
+      return { ...state, isSearching: true };
 
     case PlayerSearchActions.ADD_RESULTS:
-      return Object.assign({}, state, {
+      return { ...state,
         results: [...state.results, ...action.payload],
         isSearching: false
-      });
+      };
 
     case PlayerSearchActions.RESET_RESULTS:
-      return Object.assign({}, state, { results: [] });
+      return { ...state, results: [] };
 
     case PlayerSearchActions.SEARCH_TYPE_UPDATE: {
       return {
@@ -70,11 +74,6 @@ export function search(state: IPlayerSearch = initialState, action: Action): IPl
 
     default:
       // upgrade policy - for when the initialState has changed
-      return Object.assign({}, initialState, state);
+      return { ...initialState, ...state };
   }
 }
-
-export const searchRegister = {
-  reducer: { search },
-  actions: PlayerSearchActions
-};

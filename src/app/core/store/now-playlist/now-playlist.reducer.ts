@@ -71,11 +71,6 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
   }
 }
 
-export const nowPlaylistRegister = {
-  reducer: { nowPlaylist },
-  actions: NowPlaylistActions
-};
-
 function addMedia(videos: GoogleApiYouTubeVideoResource[], media: any) {
   const newMedia = [...videos].findIndex(video => video.id === media.id);
   const newMedias = [];

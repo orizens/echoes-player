@@ -68,12 +68,12 @@ export function player (state: AppPlayerState = initialPlayerState, action: Acti
     case Dispatcher.INIT: {
       const fullscreen = initialPlayerState.fullscreen;
       return Object.assign({}, initialPlayerState, state, { fullscreen });
-    };
+    }
 
     default:
       return Object.assign({}, initialPlayerState, state);
   }
-};
+}
 
 export function playVideo(
   state: AppPlayerState,

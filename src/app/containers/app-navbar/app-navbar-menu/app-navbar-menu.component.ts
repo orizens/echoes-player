@@ -18,7 +18,7 @@ enum Key {
     <button class="btn btn-navbar btn-link ux-maker btn-toggle"
       (click)="toggleMenu()">
       <i class="fa fa-ellipsis-v"></i>
-      <i *ngIf="appVersion.isNewAvailable" class="pulse update-indicator fa fa-dot-circle-o text-success"></i>
+      <i *ngIf="appVersion.isNewAvailable" class="pulse update-indicator fa fa-dot-circle-o text-primary"></i>
     </button>
     <div class="panel panel-default menu-dropdown"
       [class.slideInDown]="!hide"

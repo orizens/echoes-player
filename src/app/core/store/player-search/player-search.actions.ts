@@ -11,6 +11,7 @@ export class PlayerSearchActions {
   // update;
   static UPDATE_FILTER = '[PlayerSearch] UPDATE_FILTER';
   static UPDATE_QUERY_PARAM = '[PlayerSearch] UPDATE_QUERY_PARAM';
+  static UPDATE_QUERY = '[PlayerSearch] UPDATE_QUERY';
   static SEARCH_NEW_QUERY = '[PlayerSearch] SEARCH_NEW_QUERY';
   static SEARCH_MORE_FOR_QUERY = '[PlayerSearch] SEARCH_MORE_FOR_QUERY';
   static GET_SUGGESTIONS = '[PlayerSearch] GET_SUGGESTIONS';
@@ -52,4 +53,9 @@ export class PlayerSearchActions {
   resetResults = ActionCreatorFactory.create(PlayerSearchActions.RESET_RESULTS);
   errorInSearch = ActionCreatorFactory.create<any>(PlayerSearchActions.ERROR_RESULTS);
   updateSearchType = ActionCreatorFactory.create<string>(PlayerSearchActions.SEARCH_TYPE_UPDATE);
+}
+
+export class UpdateQueryAction {
+  public type = PlayerSearchActions.UPDATE_QUERY;
+  constructor(public payload: string) {}
 }

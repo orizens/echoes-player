@@ -48,12 +48,7 @@ export function appLayout (state: IAppSettings = initialState, action: Action): 
     default:
       return Object.assign({}, initialState, state);
   }
-};
-
-export const appLayoutRegister = {
-  reducer: { appLayout },
-  actions: AppLayoutActions
-};
+}
 
 export function getSidebarExpanded($state: Observable<IAppSettings>) {
   return $state.select(state => state.sidebarExpanded);
@@ -81,4 +76,4 @@ function getVersion(state: IAppSettings, packageJson: any): IAppVersion {
     version.isNewAvailable = false;
   }
   return version;
-};
+}

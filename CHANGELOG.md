@@ -1,3 +1,7 @@
+## v 3.5.1 (2017/09/27) 
+* [FIX] - issue with search #16 
+* update new version primary color
+
 ## v 3.5 (2017/09/27) 
 * [NEW] - added search for playlists
 * [NEW] - queue and play whole playlist 

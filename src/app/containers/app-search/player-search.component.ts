@@ -1,18 +1,18 @@
 import { Jsonp, Response, URLSearchParams, RequestOptionsArgs } from '@angular/http';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
   NgZone,
+  OnChanges,
   OnInit,
   Output,
+  SimpleChanges,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { Observable } from 'rxjs/Observable';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'player-search',
@@ -20,17 +20,18 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: [ './player-search.scss' ],
   template: `
     <form class="navbar-form form-search" id="media-explorer"
-      #form="ngForm"
-      (ngSubmit)="onSearch(mediaSearch.value)">
+      [formGroup]="searchForm"
+      (ngSubmit)="onSearch()">
       <div class="form-group clearfix">
-        <input placeholder="Explore Media" id="media-search"
+        <input placeholder="Find My Echoes..." id="media-search"
+          #mediaSearch
           ngxTypeahead
           [taUrl]="'http://suggestqueries.google.com/complete/search'"
           [taParams]="params"
           (taSelected)="handleSelectSuggestion($event)"
           type="search" class="form-control" autocomplete="off"
-          [value]="query" #mediaSearch name="mediaSearch"
-          (input)="onQueryChange(mediaSearch.value)"
+          name="mediaSearch"
+          formControlName="searchInput"
           >
         <button class="btn btn-transparent btn-submit" type="submit" title="search with echoes">
           <i class="fa fa-search"></i>
@@ -40,13 +41,16 @@ import { Observable } from 'rxjs/Observable';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayerSearchComponent {
+// (input)="onQueryChange()"
+export class PlayerSearchComponent implements OnChanges {
   @Input() query;
-  @Output() change = new EventEmitter();
+  @Output() queryChange = new EventEmitter<string>();
   @Output() search = new EventEmitter();
-  @Output() typing = new EventEmitter<string>();
+  // @Output() typing = new EventEmitter<string>();
 
   @ViewChild('mediaSearch') mediaSearch;
+
+  searchForm: FormGroup;
 
   params = {
     hl: 'en',
@@ -55,16 +59,36 @@ export class PlayerSearchComponent {
     client: 'youtube'
   };
 
-  constructor() { }
-
-  onQueryChange(query: string) {
-    this.change.emit(query);
+  constructor(private fb: FormBuilder) {
+    this.searchForm = fb.group({
+      searchInput: this.query
+    });
+    this.searchForm.valueChanges
+      .debounceTime(400)
+      .filter(value => !value.hasOwnProperty('isTrusted'))
+      .subscribe(formState => {
+        this.onQueryChange(formState.searchInput);
+      });
   }
 
-  onSearch(query: string) {
-    const _query = query || this.mediaSearch.element.nativeElement.value;
-    this.mediaSearch.element.nativeElement.blur();
-    this.search.emit(_query);
+  ngOnChanges(changes: SimpleChanges) {
+    const changedQuery = changes && changes.query;
+    if (changedQuery) {
+      this.patchSearchInput(changedQuery.currentValue);
+    }
+  }
+
+  patchSearchInput(searchInput: string) {
+    this.searchForm.patchValue({ searchInput }, { emitEvent: false });
+  }
+
+  onQueryChange(query: string) {
+    this.queryChange.emit(query);
+  }
+
+  onSearch() {
+    const searchFormState = this.searchForm.value;
+    this.search.emit(searchFormState.searchInput);
   }
 
   handleSelectSuggestion(suggestion: string) {
@@ -72,6 +96,6 @@ export class PlayerSearchComponent {
   }
 
   selectSuggestion(suggestion: string) {
-    this.onSearch(suggestion);
+    this.search.emit(suggestion);
   }
 }

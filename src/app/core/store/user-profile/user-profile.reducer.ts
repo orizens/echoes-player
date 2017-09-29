@@ -12,11 +12,12 @@ export interface IUserProfile {
   nextPageToken?: string;
   profile: GoogleBasicProfile;
   viewedPlaylist?: string;
-};
- export interface GoogleBasicProfile {
+}
+
+export interface GoogleBasicProfile {
   name?: string;
   imageUrl?: string;
- }
+}
 
 const initialUserState: IUserProfile = {
   access_token: '',
@@ -57,9 +58,5 @@ export function user(state = initialUserState, action: Action): IUserProfile {
     default:
     return state;
   }
-};
+}
 
-export const userRegister = {
-  reducer: { user },
-  actions: UserProfileActions
-};

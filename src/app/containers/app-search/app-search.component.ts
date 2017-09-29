@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
 
 import { NowPlaylistActions } from '../../core/store/now-playlist';
-import { IPresetParam, PlayerSearchActions } from '../../core/store/player-search';
+import { IPresetParam, PlayerSearchActions, UpdateQueryAction } from '../../core/store/player-search';
 // selectors
 import { getUserViewPlaylist$ } from '../../core/store/user-profile';
 import { getQuery$, getQueryParamPreset$, getPresets$ } from '../../core/store/player-search';
@@ -22,7 +22,7 @@ import { getQuery$, getQueryParamPreset$, getPresets$ } from '../../core/store/p
       <div class="navbar-header">
         <player-search
           [query]="query$ | async"
-          (change)="resetPageToken()"
+          (queryChange)="resetPageToken($event)"
           (search)="search($event)"
         ></player-search>
       </div>
@@ -54,8 +54,9 @@ export class AppSearchComponent implements OnInit {
     this.store.dispatch(this.playerSearchActions.searchNewQuery(query));
   }
 
-  resetPageToken() {
+  resetPageToken(query: string) {
     this.store.dispatch(this.playerSearchActions.resetPageToken());
+    this.store.dispatch(new UpdateQueryAction(query));
   }
 
   searchMore () {

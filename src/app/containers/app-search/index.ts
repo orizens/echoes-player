@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared';
 
@@ -13,6 +14,7 @@ import { routing } from './app-search.routing';
   imports: [
     SharedModule,
     AppNavbarModule,
+    ReactiveFormsModule,
     routing
   ],
   declarations: [
