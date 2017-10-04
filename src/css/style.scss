@@ -66,3 +66,8 @@ footer p {
 iframe {
 	border:none;
 }
+// ngx-tooltip Style <START> 
+tooltip-content .tooltip .tooltip-inner {
+	box-shadow: 0px 0px 2px var(--brand-primary);
+	color: var(--brand-primary);
+}

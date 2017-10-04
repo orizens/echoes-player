@@ -5,7 +5,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
   selector: 'now-playlist-track',
   styleUrls: [ './now-playlist-track.scss' ],
   template: `
-  <a class="now-playlist-track__trigger" title="{{ video.snippet.title }}"
+  <a class="now-playlist-track__trigger"
     (click)="select.emit(video)">
     <section class="video-thumb playlist-track__thumb">
       <span class="track-number">{{ index + 1 }}</span>
@@ -20,10 +20,10 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
       <button class="btn label bg-primary fa fa-list-ul playlist-track"
         *ngIf="isPlaylistMedia(video)"
         (click)="handleToggleTracks($event, video)"
-        title="Album Track - click to select cued tracks"
+        tooltip="Album Track - click to select cued tracks"
       ></button>
-      <span class="video-title">{{ video.snippet.title }}</span>
-      <span class="label label-danger ux-maker remove-track" title="Remove From Playlist"
+    <span class="video-title" [tooltip]="video.snippet.title">{{ video.snippet.title }}</span>
+      <span class="label label-danger ux-maker remove-track" tooltip="Remove From Playlist"
         (click)="remove.emit(video)"><i class="fa fa-trash"></i></span>
     </aside>
     <article *ngIf="displayTracks" class="track-tracks list-group">

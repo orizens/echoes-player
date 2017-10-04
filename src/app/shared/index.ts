@@ -10,6 +10,7 @@ import { YoutubePlayerModule } from 'ng2-youtube-player';
 // import { YoutubePlayerModule } from './components/yt-player';
 import { CORE_COMPONENTS } from './components';
 import { PIPES } from './pipes';
+import {TooltipModule} from 'ngx-tooltip';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { PIPES } from './pipes';
     RouterModule,
     YoutubePlayerModule,
     InfiniteScrollModule,
-    NgxTypeaheadModule
+    NgxTypeaheadModule,
+    TooltipModule
   ],
   declarations: [
     ...CORE_COMPONENTS,
@@ -31,7 +33,8 @@ import { PIPES } from './pipes';
     ...PIPES,
     InfiniteScrollModule,
     YoutubePlayerModule,
-    NgxTypeaheadModule
+    NgxTypeaheadModule,
+    TooltipModule
   ],
   providers: [
 
