@@ -7,26 +7,29 @@ import { NowPlaylistInterface } from '../../../store/now-playlist';
   styleUrls: [ './now-playlist-filter.scss' ],
   template: `
   <h3 class="nav-header user-playlists-filter">
-    <span class="playlist-header" (click)="onNowPlayingClick()">  
-      <i class="fa fa-play-circle-o"></i>
-      <span class="text btn-transparent playlist-count" title="Reveal now playing track">
+    <span class="playlist-header" (click)="onNowPlayingClick()">
+      <i class="fa fa-play-circle-o text-primary"></i>
+      <span class="text btn-transparent playlist-count"
+        tooltip="Reveal now playing track">
         Now Playing <span *ngIf="!isPlaylistEmpty()">({{ playlistLength }})</span>
       </span>
     </span>
-    <button class="btn btn-link btn-xs btn-clear" title="Clear All Tracks In Now Playlist"
+    <button class="btn btn-link btn-xs btn-clear"
+      tooltip="Clear All Tracks In Now Playlist"
       [disabled]="isPlaylistEmpty()"
       (click)="clearPlaylist()">
       <span class="fa fa-trash-o"></span>
     </button>
     <button class="btn btn-link btn-xs btn-save" title="Save All These Tracks To A New Playlist"
+      disabled
       ng-disabled="!nowPlaylistFilter.playlist.length"
       ng-click="nowPlaylistFilter.togglePlaylistSaver()">
       <span class="fa fa-cloud-upload"></span>
     </button>
     <div class="playlist-filter pull-right">
       <i class="fa fa-search" *ngIf="isFilterEmpty()"></i>
-      <i class="fa fa-remove text-danger" 
-        *ngIf="!isFilterEmpty()" 
+      <i class="fa fa-remove text-danger"
+        *ngIf="!isFilterEmpty()"
         (click)="resetSearchFilter()"
       ></i>
       <input type="search" name="playlist-search"
