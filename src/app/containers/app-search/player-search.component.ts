@@ -33,7 +33,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
           name="mediaSearch"
           formControlName="searchInput"
           >
-        <button class="btn btn-transparent btn-submit" type="submit" title="search with echoes">
+        <button class="btn btn-transparent btn-submit" type="submit" tooltip="search with echoes">
           <i class="fa fa-search"></i>
         </button>
       </div>
