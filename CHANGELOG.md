@@ -1,3 +1,6 @@
+## v 3.6 (2017/10/04)
+* [NEW] - added html based color theme based tooltip
+
 ## v 3.5.1 (2017/09/27) 
 * [FIX] - issue with search #16 
 * update new version primary color
