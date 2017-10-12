@@ -1,8 +1,8 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'image-blur',
-  styleUrls: [ './image-blur.scss' ],
+  styleUrls: ['./image-blur.scss'],
   template: `
   <div class="media-bg" [ngStyle]="style"></div>
   `,
@@ -10,9 +10,19 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 })
 export class ImageBlurComponent {
   @Input() media: GoogleApiYouTubeVideoResource;
-  get style () {
+  get style() {
+    const hasMedia = this.media && this.media.snippet;
     return {
-      backgroundImage: this.media && this.media.snippet ? `url(${this.media.snippet.thumbnails['high'].url})` : ''
+      backgroundImage: hasMedia
+        ? `url(${this.extractBestImage(hasMedia.thumbnails as any)})`
+        : ''
     };
+  }
+
+  extractBestImage(thumbnails: GoogleApiYouTubeThumbnailResource) {
+    const quality =
+      thumbnails && thumbnails.hasOwnProperty('high') ? 'high' : 'default';
+    const hasContent = thumbnails && quality && thumbnails[quality];
+    return hasContent ? thumbnails[quality].url : '';
   }
 }

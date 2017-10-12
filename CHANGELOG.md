@@ -1,3 +1,7 @@
+## v 3.6.1 (2017/10/12)
+* [FIX] - fixed error in displaying blur image when 'high' quality is missing
+* [FIX] - new instance of player results in an Error
+
 ## v 3.6 (2017/10/04)
 * [NEW] - added html based color theme based tooltip
 
