@@ -14,6 +14,8 @@
     "test:ci": "ng test --single-run",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "acc:server": "selenium-standalone start",
+    "acc:test": "codeceptjs run --steps",
     "clean": "npm cache clean && rimraf -- node_modules",
     "server:prod": "http-server ./dist"
   },
@@ -47,6 +49,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/youtube": "0.0.31",
     "bootstrap-sass": "3.3.7",
+    "codeceptjs-webdriverio": "1.1.0",
     "codelyzer": "~3.1.1",
     "font-awesome": "4.7.0",
     "jasmine-core": "~2.6.2",
