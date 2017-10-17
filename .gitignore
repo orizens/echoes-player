@@ -67,3 +67,5 @@ npm-debug.log
 .idea/
 *.swp
 *.tag*
+
+./output
