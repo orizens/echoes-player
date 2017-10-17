@@ -1,26 +1,36 @@
 /// <reference path="../steps.d.ts" />
 
-Feature('search');
+Feature('Search');
 
-Scenario('Search box is displayed with snippet', I => {
-  I.amOnPage('/#/search/videos');
-  I.seeAttributesOnElements('#media-search', {
-    placeholder: 'Find My Echoes...'
-  });
+Before((I, searchPage) => {
+  searchPage.navigateToVideos();
 });
 
-Scenario('Search For A Term, Submit And See Results', I => {
-  I.amOnPage('/#/search/videos');
-  I.fillField('#media-search', 'dream theater');
-  I.click('player-search .btn-submit');
+Scenario('Search box is displayed with snippet', (I, searchPage) => {
+  searchPage.seePlaceholder();
+});
+
+Scenario('Search For A Term, Submit And See Results', (I, searchPage) => {
+  searchPage.searchForMedia('dream theater');
   I.waitForElement('youtube-media', 5);
   I.seeNumberOfElements('youtube-media', 50);
 });
 
-Scenario('Scroll For More Results', I => {
-  I.amOnPage('/#/search/videos');
-  I.fillField('#media-search', 'dream theater');
-  I.click('player-search .btn-submit');
-  I.scrollPageToBottom();
-  I.waitForElement('.youtube-item', 5);
+Scenario('See automcomplete when typing a term', (I, searchPage) => {
+  searchPage.typeSearchTerm('dream theater');
+  I.waitNumberOfVisibleElements(searchPage.selectors.typeaheadItems, 10, 10);
+});
+
+Scenario('Scroll For More Results', (I, searchPage) => {
+  searchPage.searchForMedia('dream theater');
+  I.wait(5);
+  searchPage.searchForMore();
+  I.seeNumberOfElements('youtube-media', 100, 5);
+});
+
+Scenario('Selecting a preset to search with', (I, searchPage) => {
+  searchPage.serachWithPreset('dream theater', 'Albums');
+  I.see('Albums', { css: searchPage.selectors.activePreset });
+  I.waitForElement('youtube-media', 5);
+  I.seeNumberOfElements('youtube-media', 50);
 });

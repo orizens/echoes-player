@@ -1,17 +1,22 @@
 {
-  "tests": "./tests/*_test.js",
-  "timeout": 10000,
   "output": "./output",
   "helpers": {
     "WebDriverIO": {
       "url": "http://localhost:4200",
-      "browser": "chrome"
+      "browser": "chrome",
+      "debug": true
     }
   },
   "include": {
-    "I": "./steps_file.js"
+    "I": "./steps_file.js",
+    "searchPage": "./pages/search.js",
+    "sidebarPage": "./pages/sidebar.js"
   },
-  "bootstrap": false,
   "mocha": {},
+  "bootstrap": false,
+  "teardown": null,
+  "hooks": [],
+  "tests": "./tests/*_test.js",
+  "timeout": 10000,
   "name": "echoes-player"
 }
