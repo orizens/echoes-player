@@ -51,12 +51,11 @@ export class YoutubeDataApi {
   };
 
   constructor (private http: Http, private auth: Authorization) {
-    this.mergeParams(this._defaultUrlParams, this._config);
+    this._config = this.mergeParams(this._defaultUrlParams, this._config);
   }
 
   list (api: string, options) {
-    const config = this._config.clone();
-    this.mergeParams(options, config);
+    const config = this.mergeParams(options, this._config);
     const _options: RequestOptionsArgs = {
       search: config,
       headers: this.createHeaders(false)
@@ -69,8 +68,14 @@ export class YoutubeDataApi {
     return this._request(api);
   }
 
-  insert (api: string, options) {
-    return this.http.post(this.getApi(api), {});
+  insert (api: string, body: any, config: any) {
+    const _config = this.mergeParams(config, this._config);
+    const _options = {
+      search: _config,
+      headers: this.createHeaders(true)
+    };
+    return this.http.post(this.getApi(api), body, _options)
+      .map(response => response.json());
   }
 
   update (api) {
@@ -99,7 +104,11 @@ export class YoutubeDataApi {
   }
 
   private mergeParams (source, target: URLSearchParams) {
-    Object.keys(source)
-      .forEach(param => target.set(param, source[param]));
+    const targetConfig = target.clone();
+    return Object.keys(source)
+      .reduce((acc, param) => {
+        targetConfig.set(param, source[param]);
+        return targetConfig;
+      }, targetConfig);
   }
 }
