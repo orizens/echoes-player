@@ -1,12 +1,18 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import { NowPlaylistInterface } from '../../../store/now-playlist';
 
 @Component({
   selector: 'now-playlist-filter',
-  encapsulation: ViewEncapsulation.None,
-  styleUrls: [ './now-playlist-filter.scss' ],
+  styleUrls: ['./now-playlist-filter.scss'],
   template: `
-  <h3 class="nav-header user-playlists-filter">
+  <section class="nav-header user-playlists-filter">
     <span class="playlist-header" (click)="onNowPlayingClick()">
       <i class="fa fa-play-circle-o text-primary"></i>
       <span class="text btn-transparent playlist-count"
@@ -26,7 +32,7 @@ import { NowPlaylistInterface } from '../../../store/now-playlist';
       ng-click="nowPlaylistFilter.togglePlaylistSaver()">
       <span class="fa fa-cloud-upload"></span>
     </button>
-    <div class="playlist-filter pull-right">
+    <div class="playlist-filter">
       <i class="fa fa-search" *ngIf="isFilterEmpty()"></i>
       <i class="fa fa-remove text-danger"
         *ngIf="!isFilterEmpty()"
@@ -37,7 +43,7 @@ import { NowPlaylistInterface } from '../../../store/now-playlist';
         #searchFilter
         (input)="handleFilterChange(searchFilter.value)">
     </div>
-  </h3>
+  </section>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -51,19 +57,19 @@ export class NowPlaylistFilterComponent {
 
   constructor() {}
 
-  handleFilterChange (searchFilter: string) {
+  handleFilterChange(searchFilter: string) {
     this.filter.next(searchFilter);
   }
 
-  resetSearchFilter () {
+  resetSearchFilter() {
     this.reset.next('');
   }
 
-  isFilterEmpty () {
+  isFilterEmpty() {
     return this.playlist.filter === '';
   }
 
-  clearPlaylist () {
+  clearPlaylist() {
     this.clear.next('');
   }
 
@@ -74,7 +80,7 @@ export class NowPlaylistFilterComponent {
   onNowPlayingClick() {
     this.headerClick.next();
   }
-  get playlistLength () {
+  get playlistLength() {
     return this.playlist.videos.length;
   }
 }

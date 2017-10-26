@@ -1,47 +1,77 @@
 @import '~css/core/global.scss';
 
 @media (min-width: 320px) {
-:host {
-  .brand-container {
-    $brand-icon-font-size: 23px;
-    $brand-icon-line-height: 2;
-    $brand-icon-margin: 0 -0.3rem;
-    $brand-padding: 0.5rem 1.5rem;
+  :host {
+    .brand-container {
+      $brand-icon-font-size: 24px;
+      $brand-icon-line-height: 2;
+      $brand-icon-margin: 0 0.3rem;
+      $brand-padding: 0.5rem 1.5rem;
 
-    padding: $brand-padding;
-    margin: 0;
-    text-transform: uppercase;
-    position: relative;
-    display: flex;
+      padding: $brand-padding;
+      margin: 0;
+      text-transform: uppercase;
+      position: relative;
+      display: flex;
 
-    .brand-text {
-      flex: 1;
-    }
-    
-    .brand-icon {
-      font-size: $brand-icon-font-size;
-      margin: $brand-icon-margin;
-      color: $clouds;
-      line-height: $brand-icon-line-height;
-  
-      .closed & {
-        font-size: $font-size-h3;
+      .brand-text {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+
+        .brand-text-item {
+          transition: flex, opacity 0.3s ease-in;
+          line-height: $brand-icon-line-height;
+        }
       }
-    }
-    
-    .text {
-      display: inline-block;
-      line-height: 2;
-    }
 
-    .sidebar-toggle {
-      .closed & {
-        display: none;
+      .brand-icon {
+        font-size: $brand-icon-font-size;
+        margin: $brand-icon-margin;
+        color: $clouds;
+        flex: 0 0 0%;
+
+        .closed & {
+          font-size: $font-size-h3;
+          flex: 0;
+        }
+      }
+
+      .text {
+        flex: 0 1 0%;
+      }
+
+      .sidebar-toggle {
+        transition: transform;
+        transform: translateX(68px);
+        color: var(--brand-primary);
+
+        .closed & {
+          position: absolute;
+          transform: translateY(-4rem);
+        }
       }
     }
   }
 }
+@media (min-width: 768px) {
+  :host {
+    .brand-container {
+      .sidebar-toggle {
+        transform: translateX(0);
+        color: var(--brand-inverse-text);
+      }
+
+      .brand-icon {
+        .closed & {
+          font-size: $font-size-h3;
+          flex: 1 1 100%;
+        }
+      }
+    }
+  }
 }
+
 @media (min-width: 1024px) {
   :host {
     .brand-container {
@@ -50,7 +80,10 @@
       }
       .text {
         .closed & {
-          display: none;
+          flex: 0 1 00%;
+          width: 0;
+          overflow: hidden;
+          opacity: 0;
         }
       }
     }

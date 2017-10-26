@@ -1,66 +1,76 @@
 @import '~css/core/global.scss';
 
-.user-playlists-filter {
-	--filter-bg: var(--sidebar-bg);
-	--filter-darker-bg: darken($brand-sidebar, 3%);
+@media (min-width: 320px) {
+  :host {
+    .user-playlists-filter {
+      --filter-bg: var(--sidebar-bg);
+      --filter-darker-bg: darken($brand-sidebar, 3%);
 
-	position: relative;
-  // float: none;
-  // width: 29.5rem;
-  background-color: var(--filter-bg);
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-	&.nav-header {
-		box-shadow: -1rem -0.2rem 2rem #000 !important;
-	}
+      position: relative;
+      // float: none;
+      // width: 29.5rem;
+      background-color: var(--filter-bg);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      &.nav-header {
+        box-shadow: -1rem -0.2rem 2rem #000 !important;
+      }
 
-	.btn-clear {
-		color: $alizarin;
+      .btn-clear {
+        color: $alizarin;
 
-		&:disabled {
-			color: grey;
-		}
-	}
-	.playlist-header {
-		cursor: pointer;
-	}
-	.playlist-filter {
-		position: absolute;
-		right: 0;
-		top: 0.6rem;
-		background: var(--filter-darker-bg);
-		padding-left: 5px;
+        &:disabled {
+          color: grey;
+        }
+      }
+      .playlist-header {
+        cursor: pointer;
+      }
+      .playlist-filter {
+        position: absolute;
+        right: 0;
+        top: 0.6rem;
+        background: var(--filter-darker-bg);
+        padding-left: 5px;
 
-		input {
-			background: var(--filter-darker-bg);
-			border: none;
-			padding: 0 3px;
-			margin-bottom: 0;
-		}
-	}
+        input {
+          background: var(--filter-darker-bg);
+          border: none;
+          padding: 0 3px;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }
 @media (min-width: 768px) {
-	now-playlist-filter {
-		.text.btn-transparent {
-			cursor: pointer;
-		}
-	}
-	.closed now-playlist-filter {
-		.text,
-		.playlist-filter,
-		.btn-save,
-		.playlist-count,
-		.btn-clear {
-			display: none;
-		}
+  :host {
+    .text.btn-transparent {
+      cursor: pointer;
+    }
+    .user-playlists-filter {
+      .closed & {
+        .playlist-filter {
+          transform: translateX(-100rem);
+        }
+      }
+    }
+    .closed & {
+      .text,
+      .btn-save,
+      .playlist-count,
+      .btn-clear {
+        display: none;
+      }
 
-		.playlist-header {
-			font-size: 2rem;
-		}
+      .playlist-header {
+        font-size: 2rem;
+      }
 
-		.nav-header.user-playlists-filter {
-			padding: 0 1rem;
-			text-align: center;
-		}
-	}
+      .nav-header.user-playlists-filter {
+        padding: 0 1rem;
+        text-align: center;
+      }
+    }
+  }
 }

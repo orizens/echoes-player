@@ -1,1 +1,1 @@
-export { fadeOutAnimation } from './fade-out.anim';
+export { fadeInAnimation, flyInOut } from './fade-in.animation';
