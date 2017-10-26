@@ -17,32 +17,34 @@ $fa-font-path: '../fonts' !default;
 
 /* CSS VARS - COLORS */
 body {
-	--brand-primary: $brand-primary;
-	--brand-secondary: $brand-secondary;
-	--brand-success: $brand-success;
-	--brand-warning: $brand-warning;
-	--brand-danger: $brand-danger;
-	--brand-info: $brand-info;
-	
-	--sidebar-bg: $blue-grey-900;
-	--sidebar-text: $inverse;
-	
-	--brand-inverse-text: $inverse;
-	--brand-primary-lite-bg-color: $inverse;
-	--brand-primary-text-color: $text-color;
-	--brand-dark-bg-color: $dark;
-	--brand-dark-bg-color-transparent: $dark-transparent;
-	--brand-bg-lite-transparent: $inverse-transparent;
+  --brand-primary: $brand-primary;
+  --brand-secondary: $brand-secondary;
+  --brand-success: $brand-success;
+  --brand-warning: $brand-warning;
+  --brand-danger: $brand-danger;
+  --brand-info: $brand-info;
 
-	--link-primary-color: var(--brand-primary);
-	--link-primary-hover-color: var(--brand-primary);
+  --sidebar-bg: $blue-grey-900;
+  --sidebar-text: $inverse;
 
-	--navbar-bg-color: $white-dark-transparent;
-	--navbar-text-color: $text-color;
-	--navbar-link-color: var(--link-primary-color);
-	
-	--app-bg-color: $body-bg;
-	background-color: var(--app-bg-color);
+  --brand-inverse-text: $inverse;
+  --brand-primary-lite-bg-color: $inverse;
+  --brand-primary-text-color: $text-color;
+  --brand-dark-bg-color: $dark;
+  --brand-dark-bg-color-transparent: $dark-transparent;
+  --brand-bg-lite-transparent: $inverse-transparent;
+
+  --link-primary-color: var(--brand-primary);
+  --link-primary-hover-color: var(--brand-primary);
+
+  --navbar-bg-color: $white-dark-transparent;
+  --navbar-text-color: $text-color;
+  --navbar-link-color: var(--link-primary-color);
+
+  --player-controls-bar-bg: $gray-darker;
+
+  --app-bg-color: $body-bg;
+  background-color: var(--app-bg-color);
 }
 .btn:focus,
 .btn:active:focus,
@@ -50,24 +52,24 @@ body {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-	outline: none;
+  outline: none;
 }
 footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	padding: 10px 0 10px 10px;
-	box-shadow: 0 0px 10px black;
-	left: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  box-shadow: 0 0px 10px black;
+  left: 0;
 }
 footer p {
-	margin: 0;
+  margin: 0;
 }
 iframe {
-	border:none;
+  border: none;
 }
-// ngx-tooltip Style <START> 
+// ngx-tooltip Style <START>
 tooltip-content .tooltip .tooltip-inner {
-	box-shadow: 0px 0px 2px var(--brand-primary);
-	color: var(--brand-primary);
+  box-shadow: 0px 0px 2px var(--brand-primary);
+  color: var(--brand-primary);
 }

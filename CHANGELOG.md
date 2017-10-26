@@ -1,3 +1,13 @@
+## v 3.6.2 (2017/10/26)
+* [NEW] - added transitions when youtube media cards are displayed
+* [NEW] - added global key: **Escape** to exit fullscreen
+* [UPDATE] - responsive design to mobile
+* [UPDATE] - sidebar brand smoother transition
+* [UPDATE] - enhanced player controls when in full screen:
+  * now less transparent when hovered
+  * slightly transparent to hint the location on screen
+  * widht is shorter (to allow more control on yt player settings menu)
+
 ## v 3.6.1 (2017/10/12)
 * [FIX] - fixed error in displaying blur image when 'high' quality is missing
 * [FIX] - new instance of player results in an Error

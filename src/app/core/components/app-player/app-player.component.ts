@@ -1,8 +1,12 @@
 import { NowPlaylistEffects } from '../../effects/now-playlist.effects';
 import {
-  AppPlayerActions, AppPlayerState,
-  getPlayerFullscreen$, getShowPlayer$,
-  getPlayer$, getCurrentMedia$, getIsPlayerPlaying$
+  AppPlayerActions,
+  AppPlayerState,
+  getPlayerFullscreen$,
+  getShowPlayer$,
+  getPlayer$,
+  getCurrentMedia$,
+  getIsPlayerPlaying$
 } from '../../store/app-player';
 import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
 import { EchoesState } from '../../store';
@@ -12,6 +16,7 @@ import {
   Component,
   EventEmitter,
   HostBinding,
+  HostListener,
   Input,
   OnInit,
   Output
@@ -23,7 +28,7 @@ import { NowPlaylistService, YoutubePlayerService } from '../../services';
 
 @Component({
   selector: 'app-player',
-  styleUrls: [ './app-player.scss' ],
+  styleUrls: ['./app-player.scss'],
   template: `
   <section
     [class.show-youtube-player]="isShowPlayer$ | async"
@@ -76,20 +81,20 @@ export class AppPlayerComponent implements OnInit {
     private playerActions: AppPlayerActions,
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(this.playerActions.reset());
-    this.nowPlaylistEffects.loadNextTrack$
-      .subscribe((action) => this.playVideo(action.payload));
+    this.nowPlaylistEffects.loadNextTrack$.subscribe(action =>
+      this.playVideo(action.payload)
+    );
   }
 
-  setupPlayer (player) {
+  setupPlayer(player) {
     this.playerService.setupPlayer(player);
   }
 
-  updatePlayerState (event) {
+  updatePlayerState(event) {
     this.playerService.onPlayerStateChange(event);
     if (event.data === YT.PlayerState.ENDED) {
       // this.store.dispatch(this.playerActions.loadNextTrack());
@@ -97,33 +102,37 @@ export class AppPlayerComponent implements OnInit {
     }
   }
 
-  playVideo (media: GoogleApiYouTubeVideoResource) {
+  playVideo(media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(this.playerActions.playVideo(media));
   }
 
-  pauseVideo () {
+  pauseVideo() {
     this.playerService.pause();
   }
 
-  togglePlayer () {
+  togglePlayer() {
     this.playerService.togglePlayer();
   }
 
-  toggleFullScreen () {
+  toggleFullScreen() {
     this.store.dispatch(this.playerActions.fullScreen());
   }
 
-  playNextTrack () {
+  playNextTrack() {
     this.nowPlaylistService.selectNextIndex();
-    this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
+    this.store.dispatch(
+      this.playerActions.playVideo(this.nowPlaylistService.getCurrent())
+    );
   }
 
-  playPreviousTrack () {
+  playPreviousTrack() {
     this.nowPlaylistService.selectPreviousIndex();
-    this.store.dispatch(this.playerActions.playVideo(this.nowPlaylistService.getCurrent()));
+    this.store.dispatch(
+      this.playerActions.playVideo(this.nowPlaylistService.getCurrent())
+    );
   }
 
-  isLastIndex () {
+  isLastIndex() {
     return this.nowPlaylistService.isInLastTrack();
   }
 

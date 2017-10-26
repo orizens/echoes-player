@@ -5,13 +5,12 @@ import {
   Input,
   OnInit,
   Output,
-  ViewEncapsulation
+  HostListener
 } from '@angular/core';
-// import './media-info.scss';
 
 @Component({
   selector: 'media-info',
-  styleUrls: [ './media-info.scss' ],
+  styleUrls: ['./media-info.scss'],
   template: `
   <article class="media-info ellipsis">
     <h3 class="yt-media-title ellipsis">
@@ -32,15 +31,22 @@ export class MediaInfoComponent implements OnInit {
   @Input() minimized: GoogleApiYouTubeVideoResource;
   @Output() thumbClick = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
-  handleThumbClick () {
+  @HostListener('window:keyup.Escape', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (this.player.fullscreen.on) {
+      this.handleThumbClick();
+    }
+  }
+
+  handleThumbClick() {
     this.thumbClick.next();
   }
 
-  get _minimized () {
+  get _minimized() {
     return !this.minimized.hasOwnProperty('id');
   }
 }

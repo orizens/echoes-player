@@ -1,10 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-// import './player-resizer.scss';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'player-resizer',
-  // encapsulation: ViewEncapsulation.None,
-  styleUrls: [ './player-resizer.scss' ],
+  styleUrls: ['./player-resizer.scss'],
   template: `
     <button title="minimize / maximize player"
       [class.full-screen]="!fullScreen"
@@ -18,9 +16,9 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
 export class PlayerResizerComponent implements OnInit {
   @Input() fullScreen: boolean;
   @Output() toggle = new EventEmitter<void>();
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   togglePlayer() {
     this.toggle.next();
