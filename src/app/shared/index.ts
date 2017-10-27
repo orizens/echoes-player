@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { InfiniteScrollModule  } from 'ngx-infinite-scroll';
-import { NgxTypeaheadModule  } from 'ngx-typeahead';
-// import { InfiniteScrollModule } from './directives/infinite-scroll';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
-// import { YoutubePlayerModule } from './components/yt-player';
 import { CORE_COMPONENTS } from './components';
 import { PIPES } from './pipes';
-import {TooltipModule} from 'ngx-tooltip';
+import { TooltipModule } from 'ngx-tooltip';
 
 @NgModule({
   imports: [
@@ -22,10 +20,7 @@ import {TooltipModule} from 'ngx-tooltip';
     NgxTypeaheadModule,
     TooltipModule
   ],
-  declarations: [
-    ...CORE_COMPONENTS,
-    ...PIPES
-  ],
+  declarations: [...CORE_COMPONENTS, ...PIPES],
   exports: [
     CommonModule,
     FormsModule,
@@ -36,8 +31,6 @@ import {TooltipModule} from 'ngx-tooltip';
     NgxTypeaheadModule,
     TooltipModule
   ],
-  providers: [
-
-  ]
+  providers: []
 })
-export class SharedModule { }
+export class SharedModule {}

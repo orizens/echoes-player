@@ -1,24 +1,26 @@
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { AppPlayerState } from './app-player.reducer';
+import { IAppPlayer } from './app-player.reducer';
 import { EchoesState } from '../reducers';
 
-export function getPlayer$ (state$: Observable<EchoesState>): Observable<AppPlayerState> {
+export function getPlayer$(state$: Store<EchoesState>): Observable<IAppPlayer> {
   return state$.select(state => state.player);
 }
 
-export function getCurrentMedia$ (state$: Observable<EchoesState>): Observable<AppPlayerState> {
+export function getCurrentMedia$(state$: Store<EchoesState>): Observable<IAppPlayer> {
   return state$.select(state => state.player.media);
 }
 
-export function getIsPlayerPlaying$ (state$: Observable<EchoesState>): Observable<boolean> {
-  return state$.select(state => state.player.playerState)
+export function getIsPlayerPlaying$(state$: Store<EchoesState>): Observable<boolean> {
+  return state$
+    .select(state => state.player.playerState)
     .map((playerState: YT.PlayerState) => playerState === 1);
 }
 
-export function getShowPlayer$(state$: Observable<EchoesState>): Observable<boolean> {
+export function getShowPlayer$(state$: Store<EchoesState>): Observable<boolean> {
   return state$.select(state => state.player.showPlayer);
 }
 
-export function getPlayerFullscreen$(state$: Observable<EchoesState>) {
+export function getPlayerFullscreen$(state$: Store<EchoesState>) {
   return state$.select(state => state.player.fullscreen);
 }

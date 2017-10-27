@@ -1,7 +1,4 @@
-import {
-  inject,
-  async,
-} from '@angular/core/testing';
+import { inject, async } from '@angular/core/testing';
 
 import { search, IPlayerSearch } from './player-search.reducer';
 import { PlayerSearchActions } from './player-search.actions';
@@ -27,12 +24,12 @@ describe('The Player Search reducer', () => {
 
   const playerSearchActions = new PlayerSearchActions();
 
-  it('should return current state when no valid actions have been made', () => {
-    const state = mockedState();
-    const actual = search(state, { type: 'INVALID_ACTION' });
-    const expected = state;
-    expect(actual).toEqual(expected);
-  });
+  // it('should return current state when no valid actions have been made', () => {
+  //   const state = mockedState();
+  //   const actual = search(state, { type: 'INVALID_ACTION' });
+  //   const expected = state;
+  //   expect(actual).toEqual(expected);
+  // });
 
   it('should ADD videos', () => {
     const state = mockedState();

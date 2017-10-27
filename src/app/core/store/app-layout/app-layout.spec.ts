@@ -1,11 +1,11 @@
 import { inject, async } from '@angular/core/testing';
 
-import { AppLayoutActions, IAppSettings, IAppVersion, appLayout } from './index';
+import * as AppLayout from './index';
 
 describe('The App Settings Reducer', () => {
-  const appLayoutActions = new AppLayoutActions();
+  const appLayout = AppLayout.appLayout;
   const createState = (props = {}) => {
-    const defaultState = {
+    const defaultState: AppLayout.IAppSettings = {
       sidebarExpanded: false,
       requestInProcess: false,
       version: {
@@ -14,7 +14,7 @@ describe('The App Settings Reducer', () => {
         checkingForVersion: false
       }
     };
-    return Object.assign({}, defaultState, props);
+    return { ...defaultState, ...props };
   };
 
   it('should return current state when no valid actions have been made', () => {
@@ -26,7 +26,7 @@ describe('The App Settings Reducer', () => {
 
   it('should should check for version', () => {
     const state = createState();
-    const newState = appLayout(state, appLayoutActions.checkVersion());
+    const newState = appLayout(state, new AppLayout.CheckVersion());
     const actual = newState.version.checkingForVersion;
     expect(actual).toBeTruthy();
   });
@@ -42,14 +42,14 @@ describe('The App Settings Reducer', () => {
     });
 
     it('should update the version when version is an empty string', () => {
-      const newState = appLayout(state, appLayoutActions.recievedAppVersion(mockedAppPackageJson));
+      const newState = appLayout(state, new AppLayout.RecievedAppVersion(mockedAppPackageJson));
       const actual = newState.version.semver;
       const expected = mockedAppPackageJson.version;
       expect(actual).toBe(expected);
     });
 
     it('should NOT notify of new version when version is an empty string', () => {
-      const newState = appLayout(state, appLayoutActions.recievedAppVersion(mockedAppPackageJson));
+      const newState = appLayout(state, new AppLayout.RecievedAppVersion(mockedAppPackageJson));
       const actual = newState.version.isNewAvailable;
       expect(actual).toBeFalsy();
     });
@@ -67,14 +67,14 @@ describe('The App Settings Reducer', () => {
 
     it('should notify of new update when a newer version is available', () => {
       state.version.semver = '3.2.0';
-      const newState = appLayout(state, appLayoutActions.recievedAppVersion(mockedAppPackageJson));
+      const newState = appLayout(state, new AppLayout.RecievedAppVersion(mockedAppPackageJson));
       const actual = newState.version.isNewAvailable;
       expect(actual).toBeTruthy();
     });
 
     it('should NOT update semver when a newer version is available', () => {
       state.version.semver = '3.2.0';
-      const newState = appLayout(state, appLayoutActions.recievedAppVersion(mockedAppPackageJson));
+      const newState = appLayout(state, new AppLayout.RecievedAppVersion(mockedAppPackageJson));
       const actual = newState.version.semver;
       const expected = state.version.semver;
       expect(actual).toMatch(expected);
@@ -94,17 +94,16 @@ describe('The App Settings Reducer', () => {
     });
 
     it('should update semver when a newer version is already available', () => {
-      const newState = appLayout(state, appLayoutActions.recievedAppVersion(mockedAppPackageJson));
+      const newState = appLayout(state, new AppLayout.RecievedAppVersion(mockedAppPackageJson));
       const actual = newState.version.semver;
       const expected = mockedAppPackageJson.version;
       expect(actual).toMatch(expected);
     });
 
     it('should restore status of new version availability to false', () => {
-      const newState = appLayout(state, appLayoutActions.recievedAppVersion(mockedAppPackageJson));
+      const newState = appLayout(state, new AppLayout.RecievedAppVersion(mockedAppPackageJson));
       const actual = newState.version.isNewAvailable;
       expect(actual).toBeFalsy();
     });
   });
-
 });

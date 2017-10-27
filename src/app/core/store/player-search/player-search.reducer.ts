@@ -24,15 +24,19 @@ const initialState: IPlayerSearch = {
   isSearching: false,
   results: []
 };
-export function search(state: IPlayerSearch = initialState, action: Action): IPlayerSearch {
+interface UnsafeAction extends Action {
+  payload: any;
+}
 
+export function search(state: IPlayerSearch = initialState, action: UnsafeAction): IPlayerSearch {
   switch (action.type) {
     case PlayerSearchActions.UPDATE_QUERY: {
       return { ...state, query: action.payload };
     }
 
     case PlayerSearchActions.SEARCH_NEW_QUERY:
-      return { ...state,
+      return {
+        ...state,
         query: action.payload,
         isSearching: true
       };
@@ -54,7 +58,8 @@ export function search(state: IPlayerSearch = initialState, action: Action): IPl
       return { ...state, isSearching: true };
 
     case PlayerSearchActions.ADD_RESULTS:
-      return { ...state,
+      return {
+        ...state,
         results: [...state.results, ...action.payload],
         isSearching: false
       };

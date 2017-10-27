@@ -1,7 +1,6 @@
-import '@ngrx/core/add/operator/select';
 import { Observable } from 'rxjs/Observable';
-import { Action } from '@ngrx/store';
-import { AppLayoutActions } from './app-layout.actions';
+import { Action, Store } from '@ngrx/store';
+import { ActionTypes } from './app-layout.actions';
 
 export interface IAppVersion {
   semver: string;
@@ -13,7 +12,7 @@ export interface IAppSettings {
   requestInProcess: boolean;
   version: IAppVersion;
 }
-const initialState: any = {
+const initialState: IAppSettings = {
   sidebarExpanded: true,
   requestInProcess: false,
   version: {
@@ -22,35 +21,40 @@ const initialState: any = {
     checkingForVersion: false
   }
 };
-export function appLayout (state: IAppSettings = initialState, action: Action): IAppSettings {
+// TODO - create Actions types as in migration guide for @ngrx
+interface UnsafeAction extends Action {
+  payload?: any;
+}
+export function appLayout(state: IAppSettings = initialState, action: UnsafeAction): IAppSettings {
   switch (action.type) {
-    case AppLayoutActions.SIDEBAR_EXPAND:
-      return Object.assign({}, state, { sidebarExpanded: true });
+    case ActionTypes.SIDEBAR_EXPAND:
+      return { ...state, sidebarExpanded: true };
 
-    case AppLayoutActions.SIDEBAR_COLLAPSE:
-      return Object.assign({}, state, { sidebarExpanded: false });
+    case ActionTypes.SIDEBAR_COLLAPSE:
+      return { ...state, sidebarExpanded: false };
 
-    case AppLayoutActions.SIDEBAR_TOGGLE:
-      return Object.assign({}, state, { sidebarExpanded: !state.sidebarExpanded });
+    case ActionTypes.SIDEBAR_TOGGLE:
+      return { ...state, sidebarExpanded: !state.sidebarExpanded };
 
-    case AppLayoutActions.APP_VERSION_RECIEVED: {
+    case ActionTypes.APP_VERSION_RECIEVED: {
       const version = getVersion(state, action.payload);
-      return Object.assign({}, state, { version });
+      return { ...state, version };
     }
 
-    case AppLayoutActions.APP_CHECK_VERSION: {
-      const version = Object.assign({}, state.version, {
+    case ActionTypes.APP_CHECK_VERSION: {
+      const version = {
+        ...state.version,
         checkingForVersion: true
-      });
-      return Object.assign({}, state, { version });
+      };
+      return { ...state, version };
     }
 
     default:
-      return Object.assign({}, initialState, state);
+      return { ...initialState, ...state };
   }
 }
 
-export function getSidebarExpanded($state: Observable<IAppSettings>) {
+export function getSidebarExpanded($state: Store<IAppSettings>) {
   return $state.select(state => state.sidebarExpanded);
 }
 

@@ -6,10 +6,10 @@ import { UserProfileEffects } from './user-profile.effects';
 import { PlayerSearchEffects } from './player-search.effects';
 import { AppSettingsEffects } from './app-settings.effects';
 
-export const AppEffectsModules = [
-  EffectsModule.run(AppPlayerEffects),
-  EffectsModule.run(NowPlaylistEffects),
-  EffectsModule.run(UserProfileEffects),
-  EffectsModule.run(PlayerSearchEffects),
-  EffectsModule.run(AppSettingsEffects)
-];
+export const AppEffectsModules = EffectsModule.forRoot([
+  AppPlayerEffects,
+  NowPlaylistEffects,
+  UserProfileEffects,
+  PlayerSearchEffects,
+  AppSettingsEffects
+]);

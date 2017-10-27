@@ -1,10 +1,6 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
-import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
-
-@Injectable()
-export class AppLayoutActions {
+export class ActionTypes {
   static SIDEBAR_EXPAND = '[APP LAYOUT] SIDEBAR_EXPAND';
   static SIDEBAR_COLLAPSE = '[APP LAYOUT] SIDEBAR_COLLAPSE';
   static SIDEBAR_TOGGLE = '[APP LAYOUT] SIDEBAR_TOGGLE';
@@ -12,28 +8,30 @@ export class AppLayoutActions {
   static APP_VERSION_RECIEVED = '[APP] APP_VERSION_RECIEVED';
   static APP_UPDATE_VERSION = '[APP] APP_UPDATE_VERSION';
   static APP_CHECK_VERSION = '[APP] APP_CHECK_VERSION';
+}
+export class RecievedAppVersion implements Action {
+  public type = ActionTypes.APP_VERSION_RECIEVED;
+  constructor(public payload: any) {}
+}
+export class UpdateAppVersion implements Action {
+  public type = ActionTypes.APP_UPDATE_VERSION;
+  public payload = '';
+}
+export class CheckVersion implements Action {
+  public type = ActionTypes.APP_CHECK_VERSION;
+  public payload = '';
+}
+export class ExpandSidebar implements Action {
+  public type = ActionTypes.SIDEBAR_EXPAND;
+  public payload = true;
+}
 
-  recievedAppVersion = ActionCreatorFactory.create<any>(AppLayoutActions.APP_VERSION_RECIEVED);
-  updateAppVersion = ActionCreatorFactory.create(AppLayoutActions.APP_UPDATE_VERSION);
-  checkVersion = ActionCreatorFactory.create(AppLayoutActions.APP_CHECK_VERSION);
+export class CollapseSidebar implements Action {
+  public type = ActionTypes.SIDEBAR_COLLAPSE;
+  public payload = false;
+}
 
-  expandSidebar(): Action {
-    return {
-      type: AppLayoutActions.SIDEBAR_EXPAND,
-      payload: true
-    };
-  }
-
-  collapseSidebar(): Action {
-    return {
-      type: AppLayoutActions.SIDEBAR_COLLAPSE,
-      payload: false
-    };
-  }
-
-  toggleSidebar(): Action {
-    return {
-      type: AppLayoutActions.SIDEBAR_TOGGLE
-    };
-  }
+export class ToggleSidebar implements Action {
+  public type = ActionTypes.SIDEBAR_TOGGLE;
+  public payload = '';
 }

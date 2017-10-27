@@ -1,13 +1,12 @@
-import '@ngrx/core/add/operator/select';
 import { Observable } from 'rxjs/Observable';
-import { Action, Dispatcher } from '@ngrx/store';
-import { AppPlayerActions } from './app-player.actions';
+import { Action } from '@ngrx/store';
+import { ActionTypes, Actions } from './app-player.actions';
 
-type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | GoogleApiYouTubeSearchResource;
+type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | GoogleApiYouTubeSearchResource | any;
 
 export * from './app-player.actions';
 
-export interface AppPlayerState {
+export interface IAppPlayer {
   mediaId: { videoId: string };
   index: number;
   media?: GoogleApiYoutubeVideo | any;
@@ -18,8 +17,9 @@ export interface AppPlayerState {
     height: number;
     width: number;
   };
+  isFullscreen: boolean;
 }
-const initialPlayerState: AppPlayerState = {
+const initialPlayerState: IAppPlayer = {
   mediaId: { videoId: 'NONE' },
   index: 0,
   media: {
@@ -31,24 +31,24 @@ const initialPlayerState: AppPlayerState = {
     on: false,
     height: 270,
     width: 367
-  }
+  },
+  isFullscreen: false
 };
-export function player (state: AppPlayerState = initialPlayerState, action: Action): AppPlayerState {
-
+export function player(state: IAppPlayer = initialPlayerState, action: Actions): IAppPlayer {
   switch (action.type) {
-    case AppPlayerActions.PLAY:
+    case ActionTypes.PLAY:
       return playVideo(state, action.payload);
 
-    case AppPlayerActions.QUEUE:
+    case ActionTypes.QUEUE:
       return state;
 
-    case AppPlayerActions.TOGGLE_PLAYER:
+    case ActionTypes.TOGGLE_PLAYER:
       return toggleVisibility(state);
 
-    case AppPlayerActions.STATE_CHANGE:
+    case ActionTypes.STATE_CHANGE:
       return changePlayerState(state, action.payload);
 
-    case AppPlayerActions.FULLSCREEN: {
+    case ActionTypes.FULLSCREEN: {
       const on = !state.fullscreen.on;
       let { height, width } = initialPlayerState.fullscreen;
       if (on) {
@@ -56,38 +56,34 @@ export function player (state: AppPlayerState = initialPlayerState, action: Acti
         width = window.innerWidth;
       }
       const fullscreen = { on, height, width };
-      return Object.assign({}, state, { fullscreen });
+      return { ...state, fullscreen };
     }
 
-    case AppPlayerActions.RESET:
-      return Object.assign({}, state, {
+    case ActionTypes.RESET:
+      return {
+        ...state,
         isFullscreen: false,
         playerState: 0
-      });
+      };
 
-    case Dispatcher.INIT: {
+    case ActionTypes.RESET_FULLSCREEN: {
       const fullscreen = initialPlayerState.fullscreen;
-      return Object.assign({}, initialPlayerState, state, { fullscreen });
+      return { ...initialPlayerState, ...state, fullscreen };
     }
 
     default:
-      return Object.assign({}, initialPlayerState, state);
+      return { ...initialPlayerState, ...state };
   }
 }
 
-export function playVideo(
-  state: AppPlayerState,
-  media: GoogleApiYoutubeVideo) {
-  return Object.assign({}, state, {
-    mediaId: media.id,
-    media
-  });
+export function playVideo(state: IAppPlayer, media: GoogleApiYoutubeVideo) {
+  return { ...state, mediaId: media.id, media };
 }
 
-export function toggleVisibility(state: AppPlayerState) {
-  return Object.assign({}, state, { showPlayer: !state.showPlayer });
+export function toggleVisibility(state: IAppPlayer) {
+  return { ...state, showPlayer: !state.showPlayer };
 }
 
-export function changePlayerState(state: AppPlayerState, playerState: YT.PlayerState) {
-  return Object.assign({}, state, { playerState: playerState });
+export function changePlayerState(state: IAppPlayer, playerState: YT.PlayerState | any) {
+  return { ...state, playerState: playerState };
 }

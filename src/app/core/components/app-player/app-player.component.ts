@@ -1,13 +1,5 @@
 import { NowPlaylistEffects } from '../../effects/now-playlist.effects';
-import {
-  AppPlayerActions,
-  AppPlayerState,
-  getPlayerFullscreen$,
-  getShowPlayer$,
-  getPlayer$,
-  getCurrentMedia$,
-  getIsPlayerPlaying$
-} from '../../store/app-player';
+import * as AppPlayer from '../../store/app-player';
 import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
 import { EchoesState } from '../../store';
 import { Store } from '@ngrx/store';
@@ -66,28 +58,25 @@ import { NowPlaylistService, YoutubePlayerService } from '../../services';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppPlayerComponent implements OnInit {
-  player$ = this.store.let(getPlayer$);
-  media$ = this.store.let(getCurrentMedia$);
-  isPlayerPlaying$ = this.store.let(getIsPlayerPlaying$);
+  player$ = this.store.let(AppPlayer.getPlayer$);
+  media$ = this.store.let(AppPlayer.getCurrentMedia$);
+  isPlayerPlaying$ = this.store.let(AppPlayer.getIsPlayerPlaying$);
   isPlayerInRepeat$ = this.store.let(isPlayerInRepeat$);
-  isPlayerFullscreen$ = this.store.let(getPlayerFullscreen$);
-  isShowPlayer$ = this.store.let(getShowPlayer$);
+  isPlayerFullscreen$ = this.store.let(AppPlayer.getPlayerFullscreen$);
+  isShowPlayer$ = this.store.let(AppPlayer.getShowPlayer$);
 
   @HostBinding('class.youtube-player') style = true;
 
   constructor(
     private playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
-    private playerActions: AppPlayerActions,
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(this.playerActions.reset());
-    this.nowPlaylistEffects.loadNextTrack$.subscribe(action =>
-      this.playVideo(action.payload)
-    );
+    this.store.dispatch(new AppPlayer.Reset());
+    this.nowPlaylistEffects.loadNextTrack$.subscribe(action => this.playVideo(action.payload));
   }
 
   setupPlayer(player) {
@@ -103,7 +92,7 @@ export class AppPlayerComponent implements OnInit {
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(this.playerActions.playVideo(media));
+    this.store.dispatch(new AppPlayer.PlayVideo(media));
   }
 
   pauseVideo() {
@@ -115,21 +104,17 @@ export class AppPlayerComponent implements OnInit {
   }
 
   toggleFullScreen() {
-    this.store.dispatch(this.playerActions.fullScreen());
+    this.store.dispatch(new AppPlayer.FullScreen());
   }
 
   playNextTrack() {
     this.nowPlaylistService.selectNextIndex();
-    this.store.dispatch(
-      this.playerActions.playVideo(this.nowPlaylistService.getCurrent())
-    );
+    this.store.dispatch(new AppPlayer.PlayVideo(this.nowPlaylistService.getCurrent()));
   }
 
   playPreviousTrack() {
     this.nowPlaylistService.selectPreviousIndex();
-    this.store.dispatch(
-      this.playerActions.playVideo(this.nowPlaylistService.getCurrent())
-    );
+    this.store.dispatch(new AppPlayer.PlayVideo(this.nowPlaylistService.getCurrent()));
   }
 
   isLastIndex() {
