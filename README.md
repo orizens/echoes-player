@@ -30,27 +30,27 @@ My services include:
 
 # Tech Stack
 
-## Included ngrx solutions:  
-- [ngrx/store](http://github.com/ngrx/store) - State Management a la "[Redux](https://github.com/reactjs/redux)" based on RxJs  
-- [ngrx/effects](http://github.com/ngrx/effects) - Side Effects layer for ngrx/store  
-- ~~[ngrx/notify](http://github.com/ngrx/notify)~~ (disabled until upgrade) - reactive web notifications 
+## Included @ngrx solutions:  
+- [ngrx/store](https://github.com/ngrx/platform/blob/master/docs/store/README.md) - State Management a la "[Redux](https://github.com/reactjs/redux)" based on RxJs  
+- [ngrx/effects](https://github.com/ngrx/platform/blob/master/docs/effects/README.md) - Side Effects layer for ngrx/store  
+- [ngrx/router-store](https://github.com/ngrx/platform/blob/master/docs/router-store/README.md) - Bindings to connect the Angular Router to @ngrx/store  
 - [ngrx-store-localstorage](https://github.com/btroncone/ngrx-store-localstorage) - local sotrage support for ngrx/store  
-- [ngrx/store-devtools](https://github.com/ngrx/store-devtools) - a connector to [redux devtool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US) for chrome  
+- [ngrx/store-devtools](https://github.com/ngrx/platform/blob/master/docs/store-devtools/README.md) - a connector to [redux devtool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US) for chrome  
 
 ## Included Technologies & Libraries
 - [Angular +4.x](http://angular.io) 
 - [Angular CLI](https://cli.angular.io/)
+- [@ngrx Platform v4](https://github.com/ngrx/platform) 
 - Bootstrap v3.x (SASS)
 - Typescript 2.x
 - ES6 / ES2015 (using Loader Spec)
-- Webpack 2.x
 
 # EchoesPlayer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -58,18 +58,18 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ### Build for Production
 Run `npm run build:prod` to build the project minified for production with AOT.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
+Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).  
+Run `npm run test:ci` to execute the unit tests only **Once** 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help

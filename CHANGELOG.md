@@ -1,3 +1,9 @@
+## v 3.7.0 (2017/10/30)
+* [NEW] - added "Back" (arrow-left) button to Playlist View - returns to the last view 
+* [NEW] - added transparent backdrop to side menu on mobile - touch on it closes the menu 
+* [UPGRADE] - now using NgRx 4 
+* [ADDED] - integration with router-store
+
 ## v 3.6.2 (2017/10/26)
 * [NEW] - added transitions when youtube media cards are displayed
 * [NEW] - added global key: **Escape** to exit fullscreen
