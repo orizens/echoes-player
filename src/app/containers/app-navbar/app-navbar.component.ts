@@ -24,8 +24,12 @@ import { EchoesState } from '../../core/store';
     <nav class="row navbar navbar-default navbar-fixed-top">
       <div class="navbar-container">
         <div class="navbar__content">
-          <h3 *ngIf="header" class="navbar__header navbar-text">
-            <i class="fa fa-{{ headerIcon }}"></i>{{ header }}
+        <h3 *ngIf="header" class="navbar__header navbar-text">
+            <button *ngIf="mainIcon" class="navbar-btn__main btn-transparent"
+              (click)="handleMainIconClick()">
+              <i class="fa fa-{{ mainIcon }}"></i>
+            </button>
+            <i class="fa fa-{{ headerIcon }}" *ngIf="headerIcon"></i> {{ header }}
           </h3>
           <ng-content></ng-content>
         </div>
@@ -54,17 +58,19 @@ export class AppNavbarComponent implements OnInit {
 
   @Input() header: string;
   @Input() headerIcon = '';
+  @Input() mainIcon = '';
 
   @Output() signIn = new EventEmitter();
   @Output() signOut = new EventEmitter();
+  @Output() headerMainIconClick = new EventEmitter();
 
   constructor(
     private authorization: Authorization,
     private userProfile: UserProfile,
     private store: Store<EchoesState>
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   signInUser() {
     this.authorization.signIn();
@@ -86,5 +92,9 @@ export class AppNavbarComponent implements OnInit {
 
   checkVersion() {
     this.store.dispatch(new AppLayout.CheckVersion());
+  }
+
+  handleMainIconClick() {
+    this.headerMainIconClick.emit();
   }
 }

@@ -1,5 +1,7 @@
+import { RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { ActionReducerMap, Store } from '@ngrx/store';
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 
 // reducers
 import { IAppPlayer, player, ActionTypes } from './app-player';
@@ -16,6 +18,7 @@ export interface EchoesState {
   user: IUserProfile;
   search: IPlayerSearch;
   appLayout: IAppSettings;
+  routerReducer: RouterReducerState;
 }
 
 export let EchoesReducers: ActionReducerMap<EchoesState> = {
@@ -23,7 +26,8 @@ export let EchoesReducers: ActionReducerMap<EchoesState> = {
   nowPlaylist,
   user,
   search,
-  appLayout
+  appLayout,
+  routerReducer
 };
 
 export let EchoesActions = [ActionTypes, NowPlaylistActions, UserProfileActions, PlayerSearchActions];

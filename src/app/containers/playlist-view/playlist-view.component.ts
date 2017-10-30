@@ -13,7 +13,10 @@ import { PlaylistProxy } from './playlist-view.proxy';
   styleUrls: ['./playlist-view.component.scss'],
   template: `
   <article>
-    <app-navbar [header]="header$ | async"></app-navbar>
+    <app-navbar [header]="header$ | async"
+      [mainIcon]="'chevron-left'"
+      (headerMainIconClick)="handleBack()">
+    </app-navbar>
     <div class="row">
       <playlist-viewer class="clearfix"
         [videos]="videos$ | async"
@@ -35,9 +38,9 @@ export class PlaylistViewComponent implements OnInit {
   header$ = this.playlistProxy.fetchPlaylistHeader(this.route);
   nowPlaylist$ = this.playlistProxy.nowPlaylist$;
 
-  constructor(private playlistProxy: PlaylistProxy, private route: ActivatedRoute) {}
+  constructor(private playlistProxy: PlaylistProxy, private route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.playlistProxy.playPlaylist(playlist);
@@ -57,5 +60,10 @@ export class PlaylistViewComponent implements OnInit {
 
   unqueueVideo(media: GoogleApiYouTubeVideoResource) {
     this.playlistProxy.unqueueVideo(media);
+  }
+
+  handleBack() {
+    console.log('back clicked!');
+    this.playlistProxy.goBack();
   }
 }
