@@ -1,4 +1,4 @@
-@import '../core/global.scss';
+@import '~css/core/global.scss';
 
 // helpers
 $navbar-new-height: 5rem;
@@ -14,7 +14,16 @@ $navbar-new-height: 5rem;
 }
 // the code
 @media (min-width: 320px) {
-	.sidebar {
+:host {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0rem;
+  z-index: 1030;
+  
+  .sidebar {
 		--sidebar-bg-color: var(--sidebar-bg);
 		--sidebar-brand-bg: var(--brand-primary);
 		--sidebar-text-color: var(--sidebar-text);
@@ -32,7 +41,7 @@ $navbar-new-height: 5rem;
 		// by default should be hidden
 		transform: translatex(-30rem);
 		background-color: var(--sidebar-bg-color);
-		padding-bottom: 30%;
+		padding-bottom: 21%;
 		border: none;
 		border-radius: 0;
 
@@ -50,9 +59,9 @@ $navbar-new-height: 5rem;
 		&.closed {
 			// transform: translatex(0px);
 			transform: none;
-			 .sidebar-backdrop {
+			.sidebar-backdrop {
 				position: fixed;
-				left: 0;
+				left: $drawer-width;
 				right: 0;
 				top: 0;
 				bottom: 0;
@@ -61,7 +70,7 @@ $navbar-new-height: 5rem;
 			}
 		}
 
-		+ .sidebar-backdrop {
+		.sidebar-backdrop {
 			display: none;
 		}
 
@@ -72,19 +81,16 @@ $navbar-new-height: 5rem;
 			border-radius: 0;
 			border: none;
 		}
-
-		.sidebar-pane {
-			// hidden for hiding top shadow while exposing bottom shadow
-			overflow-y: hidden;
-
-			.nav-header {
-				line-height: 26px;
-			}
-		}
+  
+    .sidebar-backdrop {
+      z-index: 1029;
+    }
 	}
 }
+}
 @media (min-width: 768px) {
-	.sidebar {
+:host {  
+  .sidebar {
 		transition: transform, width .3s ease-out;
 		transform: none;
 
@@ -109,53 +115,8 @@ $navbar-new-height: 5rem;
 				text-align: center;
 			}
 		}
-	}
+  }
 }
-
-.sidebar-left-fixed {
-	position: fixed;
-	bottom: 0;
-	top: 0;
-	left: 0;
-	margin: 0;
-	// padding: 5rem 0 35rem;
-	padding: 0rem;
-}
-.sidebar {
-
-	h3 {
-		margin: 0;
-	}
-
-	.nav-header {
-		color: var(--sidebar-text-color);
-		text-transform: uppercase;
-	}
-	.nav .nav-header,
-	.nav li + .nav-header,
-	.nav-header {
-		margin-top: 0;
-		padding-left: 15px;
-		padding-right: 2px;
-		font-size: 10px;
-		font-weight: normal;
-		text-shadow: none;
-		box-shadow: none;
-		z-index: 10;
-	}
-
-	a {
-		color: rgb(201, 199, 199);
-		text-shadow: none;
-	}
-
-	.active .nav-list li a{
-		background: var(--sidebar-brand-bg);
-	}
-
-	 .sidebar-backdrop {
-		z-index: 1029;
-	}
 }
 
 @media (min-width: 1024px) {

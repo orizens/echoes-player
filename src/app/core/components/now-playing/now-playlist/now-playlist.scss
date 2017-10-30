@@ -14,13 +14,6 @@
 		.nav-list {
 			overflow-x: hidden;
 
-			// > .active > .now-playlist-track__trigger {
-			> .active > now-playlist-track a {
-				color: white;
-				box-shadow: inset 0px 0px 6px var(--track-bg-active-color);
-				border-right: 6px solid var(--track-active-border-color);
-				background: var(--track-bg-active-color);
-			}
 			> :not(.active) a:hover {
 				background: rgba(10,10,10,.2);
 			}

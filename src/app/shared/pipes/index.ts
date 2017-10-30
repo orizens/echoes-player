@@ -4,4 +4,4 @@ import { ToFriendlyDurationPipe } from './toFriendlyDuration.pipe';
 export const PIPES = [
   SearchPipe,
   ToFriendlyDurationPipe
-]
+];

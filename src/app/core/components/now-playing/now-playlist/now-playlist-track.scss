@@ -11,6 +11,21 @@
     $remove-font-size: 1.5rem;
     $playlist-font-size: 1.3rem;
     --text-color: var(--brand-inverse-text);
+    --track-active-border-color: var(--brand-primary);
+    --track-bg-active-color: var(--brand-dark-bg-color-transparent);
+
+    .now-playlist-track__trigger {
+      color: rgb(201, 199, 199);
+      text-shadow: none;
+
+      .active & {
+        // background: var(--track-bg-active-color);
+        color: var(--text-color);
+				box-shadow: inset 0px 0px 6px var(--track-bg-active-color);
+				border-right: 6px solid var(--track-active-border-color);
+				background: var(--track-bg-active-color);
+      }
+    }
 
     .track-number {
       position: absolute;

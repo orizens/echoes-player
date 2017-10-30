@@ -7,13 +7,23 @@
       --filter-darker-bg: darken($brand-sidebar, 3%);
 
       position: relative;
-      // float: none;
-      // width: 29.5rem;
       background-color: var(--filter-bg);
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      font-size: 10px;
+
+      .playlist-count,
+      .playlist-filter {
+        color: var(--sidebar-text-color);
+      }
+
       &.nav-header {
         box-shadow: -1rem -0.2rem 2rem #000 !important;
+        line-height: 26px;
+        color: var(--sidebar-text-color);
+        text-transform: uppercase;
+        font-size: 10px;
       }
 
       .btn-clear {

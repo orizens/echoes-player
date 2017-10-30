@@ -55,7 +55,7 @@ export class NowPlaylistFilterComponent {
   @Output() reset = new EventEmitter();
   @Output() headerClick = new EventEmitter();
 
-  constructor() {}
+  constructor() { }
 
   handleFilterChange(searchFilter: string) {
     this.filter.next(searchFilter);

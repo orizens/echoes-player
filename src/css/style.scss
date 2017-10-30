@@ -8,7 +8,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import './core/global.scss';
 @import './core/utils.scss';
 
-@import './layout/sidebar.scss';
 @import './layout/navbar.scss';
 @import './layout/container.scss';
 
@@ -26,6 +25,7 @@ body {
 
   --sidebar-bg: $blue-grey-900;
   --sidebar-text: $inverse;
+  --sidebar-text-lighter: $white-darker;
 
   --brand-inverse-text: $inverse;
   --brand-primary-lite-bg-color: $inverse;

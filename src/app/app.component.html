@@ -1,16 +1,6 @@
 <app-player class="navbar navbar-default navbar-fixed-bottom"></app-player>
 
-<div id="sidebar" class="sidebar sidebar-left-fixed ux-maker"
-  [class.closed]="sidebarCollapsed$ | async">
-  <nav class="navbar navbar-transparent">
-    <app-brand></app-brand>
-    <app-navigator
-      [closed]="sidebarCollapsed$ | async"
-      [searchType]="searchType$ | async">
-    </app-navigator>
-  </nav>
-  <now-playing></now-playing>
-</div>
+<app-sidebar [class.closed]="sidebarCollapsed$ | async"></app-sidebar>
 
 <div class="container-fluid container-main">
   <router-outlet></router-outlet>
