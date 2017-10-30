@@ -8,28 +8,11 @@ import { APP_SERVICES } from './services';
 import { APP_RESOLVERS } from './resolvers';
 import { APP_APIS } from './api';
 
-// export function AppEffectModules(effects: any[], runEffectFun) {
-//   return AppEffects.map(function(effect){
-//     return runEffectFun(effect);
-//   });
-// }
-
 @NgModule({
-  imports: [
-    CoreStoreModule,
-    // ...AppEffectModules(AppEffects, EffectsModule.run),
-    ...AppEffectsModules,
-  ],
-  declarations: [
-  ],
-  exports: [
-    CoreStoreModule,
-  ],
-  providers: [
-    ...APP_SERVICES,
-    ...APP_RESOLVERS,
-    ...APP_APIS,
-  ]
+  imports: [CoreStoreModule, AppEffectsModules],
+  declarations: [],
+  exports: [CoreStoreModule],
+  providers: [...APP_SERVICES, ...APP_RESOLVERS, ...APP_APIS]
 })
 export class CoreModule {
   // constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

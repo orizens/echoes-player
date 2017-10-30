@@ -12,6 +12,8 @@
     flex: 1 1 0;
     display: flex;
     flex-direction: column;
+    // hidden for hiding top shadow while exposing bottom shadow
+    overflow-y: hidden;
   }
 
   now-playlist-filter {

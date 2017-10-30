@@ -4,7 +4,7 @@ import 'rxjs/add/operator/switchMap';
 import { of } from 'rxjs/observable/of';
 
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { UserProfileActions, GoogleBasicProfile } from '../store/user-profile';
 
 import { UserProfile } from '../services/user-profile.service';
@@ -12,37 +12,36 @@ import { Authorization } from '../services/authorization.service';
 
 @Injectable()
 export class UserProfileEffects {
-
   constructor(
     private actions$: Actions,
     private userProfileActions: UserProfileActions,
     private userProfile: UserProfile,
     private auth: Authorization
-  ) { }
+  ) {}
 
   @Effect()
   updateToken$ = this.actions$
     .ofType(UserProfileActions.UPDATE_TOKEN)
-    .map(action => action.payload)
-    .map((token: string) => this.auth.accessToken = token)
-    .switchMap(token => this.userProfile.getPlaylists(true)
-      .catch((error: Error) => {
-        console.log('error in fetching user\'s playlists', error);
+    .map(toPayload)
+    .map((token: string) => (this.auth.accessToken = token))
+    .switchMap(token =>
+      this.userProfile.getPlaylists(true).catch((error: Error) => {
+        console.log(`error in fetching user's playlists ${error}`);
         return of(error);
-      }))
+      })
+    )
     .map(response => this.userProfileActions.updateData(response));
-
 
   @Effect()
   addUserPlaylists$ = this.actions$
     .ofType(UserProfileActions.UPDATE)
-    .map(action => action.payload)
+    .map(toPayload)
     .map((data: any) => this.userProfileActions.addPlaylists(data.items));
 
   @Effect()
   updateNextPageToken$ = this.actions$
     .ofType(UserProfileActions.UPDATE)
-    .map(action => action.payload)
+    .map(toPayload)
     .map(data => {
       const nextPageToken = data.nextPageToken;
       return nextPageToken
@@ -53,7 +52,7 @@ export class UserProfileEffects {
   @Effect()
   getMorePlaylists$ = this.actions$
     .ofType(UserProfileActions.UPDATE_NEXT_PAGE_TOKEN)
-    .map(action => action.payload)
+    .map(toPayload)
     .switchMap((pageToken: string) => {
       this.userProfile.updatePageToken(pageToken);
       return this.userProfile.getPlaylists(false);
@@ -63,7 +62,7 @@ export class UserProfileEffects {
   @Effect()
   userProfileRecieved$ = this.actions$
     .ofType(UserProfileActions.USER_PROFILE_RECIEVED)
-    .map(action => action.payload)
-    .map(profile  => this.userProfile.toUserJson(profile))
+    .map(toPayload)
+    .map(profile => this.userProfile.toUserJson(profile))
     .map((profile: GoogleBasicProfile) => this.userProfileActions.updateUserProfile(profile));
 }

@@ -1,6 +1,4 @@
-import { EchoesState } from '../../store';
-import { Store } from '@ngrx/store';
-import { AppLayoutActions } from '../../store/app-layout';
+import { AppApi } from '../../api/app.api';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -21,13 +19,10 @@ import { Component, OnInit } from '@angular/core';
   `
 })
 export class AppBrandComponent implements OnInit {
-  constructor(
-    private appLayoutActions: AppLayoutActions,
-    private store: Store<EchoesState>
-  ) {}
-  ngOnInit() {}
+  constructor(private appApi: AppApi) { }
+  ngOnInit() { }
 
   toggleSidebar() {
-    return this.store.dispatch(this.appLayoutActions.toggleSidebar());
+    return this.appApi.toggleSidebar();
   }
 }

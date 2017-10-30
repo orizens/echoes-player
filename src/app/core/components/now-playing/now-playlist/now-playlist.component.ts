@@ -9,14 +9,8 @@ import {
   AfterViewChecked,
   NgZone
 } from '@angular/core';
-import { NowPlaylistInterface } from '../../../store/now-playlist';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
+import * as NowPlaylist from '../../../store/now-playlist';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { flyOut } from '../../../../shared/animations/fade-in.animation';
 
 @Component({
@@ -46,7 +40,7 @@ import { flyOut } from '../../../../shared/animations/fade-in.animation';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
-  @Input() playlist: NowPlaylistInterface;
+  @Input() playlist: NowPlaylist.INowPlaylist;
   @Output() select = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output()
   selectTrack = new EventEmitter<{
@@ -106,10 +100,6 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
   }
 
   private hasChanges(changes) {
-    return (
-      changes &&
-      changes.hasOwnProperty('currentValue') &&
-      changes.hasOwnProperty('previousValue')
-    );
+    return changes && changes.hasOwnProperty('currentValue') && changes.hasOwnProperty('previousValue');
   }
 }

@@ -5,7 +5,7 @@ import { EchoesState } from '../../core/store';
 
 // actions
 import { NowPlaylistActions } from '../../core/store/now-playlist';
-import { AppPlayerActions } from '../../core/store/app-player';
+import { ActionTypes } from '../../core/store/app-player';
 import { AppPlayerApi } from '../../core/api/app-player.api';
 
 // selectors
@@ -15,7 +15,7 @@ import { getIsSearching$ } from '../../core/store/player-search';
 
 @Component({
   selector: 'youtube-videos',
-  styleUrls: [ './youtube-videos.scss' ],
+  styleUrls: ['./youtube-videos.scss'],
   template: `
     <loader [message]="'Loading Awesome Media Results'" [loading]="loading$ | async"></loader>
     <youtube-list
@@ -36,18 +36,18 @@ export class YoutubeVideosComponent implements OnInit {
     private store: Store<EchoesState>,
     private appPlayerApi: AppPlayerApi,
     private playerSearchActions: PlayerSearchActions
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(this.playerSearchActions.updateSearchType(CSearchTypes.VIDEO));
     this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
   }
 
-  playSelectedVideo (media: GoogleApiYouTubeVideoResource) {
+  playSelectedVideo(media: GoogleApiYouTubeVideoResource) {
     this.appPlayerApi.playVideo(media);
   }
 
-  queueSelectedVideo (media: GoogleApiYouTubeVideoResource) {
+  queueSelectedVideo(media: GoogleApiYouTubeVideoResource) {
     this.appPlayerApi.queueVideo(media);
   }
 

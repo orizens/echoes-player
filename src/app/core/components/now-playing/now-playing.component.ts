@@ -4,13 +4,13 @@ import { Store } from '@ngrx/store';
 
 import { EchoesState } from '../../store';
 import { NowPlaylistService } from '../../services/now-playlist.service';
-import { NowPlaylistInterface } from '../../store/now-playlist';
-import { AppPlayerActions } from '../../store/app-player';
+import { INowPlaylist } from '../../store/now-playlist';
+import * as AppPlayer from '../../store/app-player/app-player.actions';
 import { NowPlaylistComponent } from './now-playlist';
 
 @Component({
   selector: 'now-playing',
-  styleUrls: [ './now-playing.scss' ],
+  styleUrls: ['./now-playing.scss'],
   template: `
   <div class="sidebar-pane">
     <now-playlist-filter
@@ -28,43 +28,39 @@ import { NowPlaylistComponent } from './now-playlist';
     ></now-playlist>
   </div>
   `,
-      // (sort)="sortVideo($event)"
+  // (sort)="sortVideo($event)"
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NowPlayingComponent implements OnInit {
-  public nowPlaylist$: Observable<NowPlaylistInterface>;
+  public nowPlaylist$: Observable<INowPlaylist>;
   @ViewChild(NowPlaylistComponent) nowPlaylistComponent: NowPlaylistComponent;
 
-  constructor(
-    public store: Store<EchoesState>,
-    public nowPlaylistService: NowPlaylistService,
-    public appPlayerActions: AppPlayerActions
-  ) {}
+  constructor(public store: Store<EchoesState>, public nowPlaylistService: NowPlaylistService) {}
 
   ngOnInit() {
     this.nowPlaylist$ = this.nowPlaylistService.playlist$;
   }
 
-  selectVideo (media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(this.appPlayerActions.playVideo(media));
+  selectVideo(media: GoogleApiYouTubeVideoResource) {
+    this.store.dispatch(new AppPlayer.PlayVideo(media));
     this.nowPlaylistService.updateIndexByMedia(media.id);
   }
 
-  sortVideo () { }
+  sortVideo() {}
 
-  updateFilter (searchFilter: string) {
+  updateFilter(searchFilter: string) {
     this.nowPlaylistService.updateFilter(searchFilter);
   }
 
-  resetFilter () {
+  resetFilter() {
     this.nowPlaylistService.updateFilter('');
   }
 
-  clearPlaylist () {
+  clearPlaylist() {
     this.nowPlaylistService.clearPlaylist();
   }
 
-  removeVideo (media) {
+  removeVideo(media) {
     this.nowPlaylistService.removeVideo(media);
   }
 
@@ -72,8 +68,8 @@ export class NowPlayingComponent implements OnInit {
     this.nowPlaylistComponent.scrollToActiveTrack();
   }
 
-  selectTrackInVideo(trackEvent: { time: string, media: GoogleApiYouTubeVideoResource}) {
-    this.store.dispatch(this.appPlayerActions.playVideo(trackEvent.media));
+  selectTrackInVideo(trackEvent: { time: string; media: GoogleApiYouTubeVideoResource }) {
+    this.store.dispatch(new AppPlayer.PlayVideo(trackEvent.media));
     this.nowPlaylistService.seekToTrack(trackEvent);
   }
 }

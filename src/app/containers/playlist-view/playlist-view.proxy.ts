@@ -7,6 +7,9 @@ import { getPlaylistVideos$ } from '../../core/store/now-playlist';
 import { ActivatedRoute, Data } from '@angular/router';
 import { UserProfileActions } from '../../core/store/user-profile';
 import { AppPlayerApi } from '../../core/api/app-player.api';
+import { AppApi } from '../../core/api/app.api';
+
+import * as RouterActions from '../../core/store/router-store';
 
 export interface PlaylistData {
   videos: GoogleApiYouTubeVideoResource[];
@@ -21,31 +24,33 @@ export class PlaylistProxy {
     public store: Store<EchoesState>,
     private userProfileActions: UserProfileActions,
     private appPlayerApi: AppPlayerApi,
+    private appApi: AppApi
   ) { }
+
+  goBack() {
+    this.appApi.navigateBack();
+  }
 
   toRouteData(route: ActivatedRoute) {
     return route.data;
   }
 
   fetchPlaylist(route: ActivatedRoute) {
-    return this.toRouteData(route)
-      .map((data: PlaylistData) => data.playlist);
+    return this.toRouteData(route).map((data: PlaylistData) => data.playlist);
   }
 
   fetchPlaylistVideos(route: ActivatedRoute) {
-    return this.toRouteData(route)
-      .map((data: PlaylistData) => data.videos);
+    return this.toRouteData(route).map((data: PlaylistData) => data.videos);
   }
 
   fetchPlaylistHeader(route: ActivatedRoute) {
-    return this.fetchPlaylist(route)
-      .map((playlist: GoogleApiYouTubePlaylistResource) => {
-          const { snippet, contentDetails } = playlist;
-          return `${snippet.title} (${contentDetails.itemCount} videos)`;
-      });
+    return this.fetchPlaylist(route).map((playlist: GoogleApiYouTubePlaylistResource) => {
+      const { snippet, contentDetails } = playlist;
+      return `${snippet.title} (${contentDetails.itemCount} videos)`;
+    });
   }
 
-  playPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
+  playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.appPlayerApi.playPlaylist(playlist);
   }
 

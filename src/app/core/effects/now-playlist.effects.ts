@@ -10,12 +10,12 @@ import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
-import { NowPlaylistActions, LoadPlaylistAction, LoadPlaylistEndAction } from '../store/now-playlist';
+import * as NowPlaylist from '../store/now-playlist';
 import {
   getSelectedMedia$,
   getSelectedMediaId$,
   getPlaylistVideos$,
-  isPlayerInRepeat$,
+  isPlayerInRepeat$
 } from '../store/now-playlist/now-playlist.selectors';
 
 import { UserProfile } from '../services/user-profile.service';
@@ -25,7 +25,7 @@ export class NowPlaylistEffects {
   constructor(
     private actions$: Actions,
     public store: Store<EchoesState>,
-    private nowPlaylistActions: NowPlaylistActions,
+    private nowPlaylistActions: NowPlaylist.NowPlaylistActions,
     private mediaParser: MediaParserService,
     private playerService: YoutubePlayerService,
     private userProfile: UserProfile
@@ -33,9 +33,9 @@ export class NowPlaylistEffects {
 
   @Effect()
   queueVideo$ = this.actions$
-    .ofType(NowPlaylistActions.SELECT)
+    .ofType(NowPlaylist.NowPlaylistActions.SELECT)
     .map(toPayload)
-    .map((media: GoogleApiYouTubeVideoResource) => this.nowPlaylistActions.queueVideo(media));
+    .map((media: GoogleApiYouTubeVideoResource) => new NowPlaylist.QueueVideo(media));
 
   /* if it's the last track
    * AND repeat is on
@@ -43,54 +43,56 @@ export class NowPlaylistEffects {
   **/
   @Effect()
   loadNextTrack$ = this.actions$
-    .ofType(NowPlaylistActions.MEDIA_ENDED)
+    .ofType(NowPlaylist.NowPlaylistActions.MEDIA_ENDED)
     .map(toPayload)
     .withLatestFrom(this.store.let(getSelectedMedia$))
     .filter((states: [any, GoogleApiYouTubeVideoResource]) => states[1] && states[1].hasOwnProperty('id'))
-    .map((states: [any, GoogleApiYouTubeVideoResource]) => this.nowPlaylistActions.selectVideo(states[1]));
+    .map((states: [any, GoogleApiYouTubeVideoResource]) => new NowPlaylist.SelectVideo(states[1]));
 
   @Effect()
   selectBeforeSeekToTime$ = this.actions$
-    .ofType(NowPlaylistActions.SELECT_AND_SEEK_TO_TIME)
+    .ofType(NowPlaylist.NowPlaylistActions.SELECT_AND_SEEK_TO_TIME)
     .map(toPayload)
-    .map((trackEvent) => this.nowPlaylistActions.updateIndexByMedia(trackEvent.media.id));
+    .map(trackEvent => new NowPlaylist.UpdateIndexByMedia(trackEvent.media.id));
 
   @Effect({ dispatch: false })
   seekToTime$ = this.actions$
-    .ofType(NowPlaylistActions.SELECT_AND_SEEK_TO_TIME)
+    .ofType(NowPlaylist.NowPlaylistActions.SELECT_AND_SEEK_TO_TIME)
     .map(toPayload)
-    .do((trackEvent) => this.playerService.seekTo(this.mediaParser.toNumber(trackEvent.time)));
-    // .catch((error) => of({ type: 'ERROR_IN_SEEK', payload: error }));
+    .do(trackEvent => this.playerService.seekTo(this.mediaParser.toNumber(trackEvent.time)));
+  // .catch((error) => of({ type: 'ERROR_IN_SEEK', payload: error }));
 
   @Effect()
   loadPlaylist$ = this.actions$
-    .ofType(NowPlaylistActions.LOAD_PLAYLIST_START)
+    .ofType(NowPlaylist.NowPlaylistActions.LOAD_PLAYLIST_START)
     .map(toPayload)
     .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
     // .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId))
     // .switchMap((playlistId: string) => this.userProfile.fetchAllPlaylistItems(playlistId))
     // .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems))
-    .map((playlistItems: GoogleApiYouTubeVideoResource[]) => new LoadPlaylistEndAction(playlistItems));
+    .map(
+      (playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.LoadPlaylistEndAction(playlistItems)
+    );
 
   @Effect()
   addPlaylistItems$ = this.actions$
-    .ofType(NowPlaylistActions.LOAD_PLAYLIST_END)
+    .ofType(NowPlaylist.NowPlaylistActions.LOAD_PLAYLIST_END)
     .map(toPayload)
-    .map((playlistItems: GoogleApiYouTubeVideoResource[]) => this.nowPlaylistActions.queueVideos(playlistItems));
+    .map((playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.QueueVideos(playlistItems));
 
   @Effect()
   playPlaylistFirstTrack$ = this.actions$
-      .ofType(NowPlaylistActions.LOAD_PLAYLIST_END)
-      .map(toPayload)
-      .map((playlistItems: GoogleApiYouTubeVideoResource[]) => this.nowPlaylistActions.selectVideo(playlistItems[0]));
+    .ofType(NowPlaylist.NowPlaylistActions.LOAD_PLAYLIST_END)
+    .map(toPayload)
+    .map((playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.SelectVideo(playlistItems[0]));
 
   @Effect()
   playPlaylist$ = this.actions$
-    .ofType(NowPlaylistActions.PLAY_PLAYLIST)
+    .ofType(NowPlaylist.NowPlaylistActions.PLAY_PLAYLIST)
     .map(toPayload)
-    .map((id: string) => new LoadPlaylistAction(id));
-    // .map(queue the playlist
-    // .map(play the first track from this playlist)
+    .map((id: string) => new NowPlaylist.LoadPlaylistAction(id));
+  // .map(queue the playlist
+  // .map(play the first track from this playlist)
 
   // loadPlaylistItems$(playlistId: string) {
   //   return of(playlistId)

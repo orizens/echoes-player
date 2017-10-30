@@ -1,23 +1,13 @@
-import {
-  PlayerSearchActions,
-  CSearchTypes
-} from '../../core/store/player-search';
+import { PlayerSearchActions, CSearchTypes } from '../../core/store/player-search';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
 
 // actions
-import {
-  NowPlaylistActions,
-  LoadPlaylistAction,
-  PlayPlaylistAction
-} from '../../core/store/now-playlist';
-import { AppPlayerActions } from '../../core/store/app-player';
+import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '../../core/store/now-playlist';
+import { ActionTypes } from '../../core/store/app-player';
 // selectors
-import {
-  getPlayerSearchResults$,
-  getNowPlaylist$
-} from '../../core/store/reducers';
+import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
 import { getIsSearching$ } from '../../core/store/player-search';
 import { AppPlayerApi } from '../../core/api/app-player.api';
 
@@ -59,15 +49,13 @@ export class YoutubePlaylistsComponent implements OnInit {
   constructor(
     private store: Store<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
-    private appPlayerActions: AppPlayerActions,
+    private appPlayerActions: ActionTypes,
     private playerSearchActions: PlayerSearchActions,
     private appPlayerApi: AppPlayerApi
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(
-      this.playerSearchActions.updateSearchType(CSearchTypes.PLAYLIST)
-    );
+    this.store.dispatch(this.playerSearchActions.updateSearchType(CSearchTypes.PLAYLIST));
     this.store.dispatch(PlayerSearchActions.PLAYLISTS_SEARCH_START.creator());
   }
 

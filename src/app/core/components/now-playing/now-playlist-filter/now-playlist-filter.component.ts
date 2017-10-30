@@ -6,7 +6,7 @@ import {
   Output,
   ViewEncapsulation
 } from '@angular/core';
-import { NowPlaylistInterface } from '../../../store/now-playlist';
+import * as NowPlaylist from '../../../store/now-playlist';
 
 @Component({
   selector: 'now-playlist-filter',
@@ -48,14 +48,14 @@ import { NowPlaylistInterface } from '../../../store/now-playlist';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NowPlaylistFilterComponent {
-  @Input() playlist: NowPlaylistInterface;
+  @Input() playlist: NowPlaylist.INowPlaylist;
   // @Output() save = new EventEmitter();
   @Output() clear = new EventEmitter();
   @Output() filter = new EventEmitter();
   @Output() reset = new EventEmitter();
   @Output() headerClick = new EventEmitter();
 
-  constructor() {}
+  constructor() { }
 
   handleFilterChange(searchFilter: string) {
     this.filter.next(searchFilter);

@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'loader',
@@ -20,6 +14,8 @@ export class LoadingIndicatorComponent {
   @Input() message = '';
   @Input() loading = false;
 
-  @HostBinding('class.show-loader') get show() { return this.loading; }
-
+  @HostBinding('class.show-loader')
+  get show() {
+    return this.loading;
+  }
 }

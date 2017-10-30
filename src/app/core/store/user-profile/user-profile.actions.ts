@@ -16,10 +16,7 @@ export class UserProfileActions {
 
   setViewPlaylist = ActionCreatorFactory.create<string>(UserProfileActions.VIEWED_PLAYLIST);
 
-  updateData = (data: any) => ({
-    type: UserProfileActions.UPDATE,
-    payload: data
-  })
+  updateData = (data: any) => ({ type: UserProfileActions.UPDATE, payload: data });
 
   addPlaylists(playlists: Array<any>) {
     return {
@@ -28,8 +25,7 @@ export class UserProfileActions {
     };
   }
 
-  updateToken = (payload: string) =>
-    ({ type: UserProfileActions.UPDATE_TOKEN, payload });
+  updateToken = (payload: string) => ({ type: UserProfileActions.UPDATE_TOKEN, payload });
 
   signOut() {
     return {
@@ -50,14 +46,14 @@ export class UserProfileActions {
     };
   }
 
-  userProfileRecieved (profile: any) {
+  userProfileRecieved(profile: any) {
     return {
       type: UserProfileActions.USER_PROFILE_RECIEVED,
       payload: profile
     };
   }
 
-  updateUserProfile (profile: GoogleBasicProfile) {
+  updateUserProfile(profile: GoogleBasicProfile) {
     return {
       type: UserProfileActions.UPDATE_USER_PROFILE,
       payload: profile

@@ -1,21 +1,23 @@
 import { Action } from '@ngrx/store';
 import { NowPlaylistActions } from './now-playlist.actions';
 
-export interface NowPlaylistInterface {
+export interface INowPlaylist {
   videos: GoogleApiYouTubeVideoResource[];
   selectedId: string;
   filter: string;
   repeat: boolean;
 }
 
-const initialState: NowPlaylistInterface = {
+const initialState: INowPlaylist = {
   videos: [],
   selectedId: '',
   filter: '',
   repeat: false
 };
-
-export function nowPlaylist(state: NowPlaylistInterface = initialState, action: Action): NowPlaylistInterface {
+interface UnsafeAction extends Action {
+  payload?: any;
+}
+export function nowPlaylist(state: INowPlaylist = initialState, action: UnsafeAction): INowPlaylist {
   switch (action.type) {
     case NowPlaylistActions.SELECT:
       return { ...state, selectedId: action.payload.id };
@@ -40,13 +42,15 @@ export function nowPlaylist(state: NowPlaylistInterface = initialState, action: 
       return { ...state, videos: [], filter: '', selectedId: '' };
 
     case NowPlaylistActions.SELECT_NEXT: {
-      return { ...state,
+      return {
+        ...state,
         selectedId: selectNextIndex(state.videos, state.selectedId, state.filter, state.repeat)
       };
     }
 
     case NowPlaylistActions.SELECT_PREVIOUS:
-      return { ...state,
+      return {
+        ...state,
         selectedId: selectPreviousIndex(state.videos, state.selectedId, state.filter)
       };
 
@@ -92,10 +96,19 @@ function addMedias(videos, medias) {
 }
 
 function filterVideos(videos: GoogleApiYouTubeVideoResource[], filter: string) {
-  return videos.filter(video => JSON.stringify(video).toLowerCase().includes(filter.toLowerCase()));
+  return videos.filter(video =>
+    JSON.stringify(video)
+      .toLowerCase()
+      .includes(filter.toLowerCase())
+  );
 }
 
-function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string, filter: string, isRepeat: boolean): string {
+function selectNextIndex(
+  videos: GoogleApiYouTubeVideoResource[],
+  selectedId: string,
+  filter: string,
+  isRepeat: boolean
+): string {
   const filteredVideos = filterVideos(videos, filter);
   const currentIndex: number = filteredVideos.findIndex(video => video.id === selectedId);
   let nextIndex = currentIndex + 1;
@@ -109,7 +122,11 @@ function selectNextIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: st
   return filteredVideos[nextIndex].id || '';
 }
 
-function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], selectedId: string, filter: string): string {
+function selectPreviousIndex(
+  videos: GoogleApiYouTubeVideoResource[],
+  selectedId: string,
+  filter: string
+): string {
   const filteredVideos = filterVideos(videos, filter);
   const currentIndex: number = filteredVideos.findIndex(video => video.id === selectedId);
   let previousIndex = currentIndex - 1;
@@ -120,7 +137,7 @@ function selectPreviousIndex(videos: GoogleApiYouTubeVideoResource[], selectedId
   return filteredVideos[previousIndex].id || '';
 }
 
-function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string): NowPlaylistInterface {
+function selectNextOrPreviousTrack(state: INowPlaylist, filter: string): INowPlaylist {
   const videosPlaylist = state.videos;
   const currentId = state.selectedId;
   const indexOfCurrentVideo = videosPlaylist.findIndex(video => currentId === video.id);
@@ -131,7 +148,11 @@ function selectNextOrPreviousTrack(state: NowPlaylistInterface, filter: string):
   return Object.assign({}, state, { selectedId: nextId });
 }
 
-function getNextIdForPlaylist(videos: GoogleApiYouTubeVideoResource[], repeat: boolean, currentId: string = '') {
+function getNextIdForPlaylist(
+  videos: GoogleApiYouTubeVideoResource[],
+  repeat: boolean,
+  currentId: string = ''
+) {
   let id = '';
   if (videos.length && repeat) {
     id = videos[0].id;
@@ -139,6 +160,9 @@ function getNextIdForPlaylist(videos: GoogleApiYouTubeVideoResource[], repeat: b
   return id;
 }
 
-function removeMedia(videos: GoogleApiYouTubeVideoResource[], media: GoogleApiYouTubeVideoResource): GoogleApiYouTubeVideoResource[] {
+function removeMedia(
+  videos: GoogleApiYouTubeVideoResource[],
+  media: GoogleApiYouTubeVideoResource
+): GoogleApiYouTubeVideoResource[] {
   return videos.filter((_media: GoogleApiYouTubeVideoResource) => _media.id !== media.id);
 }

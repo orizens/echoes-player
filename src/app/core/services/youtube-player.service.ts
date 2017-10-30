@@ -2,27 +2,27 @@ import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
-import { AppPlayerActions } from '../store/app-player';
+import * as AppPlayer from '../store/app-player';
 
 @Injectable()
 export class YoutubePlayerService {
   public player: YT.Player;
 
-  constructor (
+  constructor(
     private store: Store<EchoesState>,
     private zone: NgZone,
-    private playerActions: AppPlayerActions
-    ) { }
+    private playerActions: AppPlayer.ActionTypes
+  ) {}
 
-  setupPlayer (player) {
+  setupPlayer(player) {
     this.player = player;
   }
 
-  play () {
+  play() {
     this.zone.runOutsideAngular(() => this.player.playVideo());
   }
 
-  pause () {
+  pause() {
     this.zone.runOutsideAngular(() => this.player.pauseVideo());
   }
 
@@ -40,10 +40,10 @@ export class YoutubePlayerService {
   }
 
   togglePlayer() {
-    this.store.dispatch(this.playerActions.togglePlayer(true));
+    this.store.dispatch(new AppPlayer.TogglePlayer(true));
   }
 
-  onPlayerStateChange (event) {
+  onPlayerStateChange(event) {
     const state = event.data;
     // let autoNext = false;
     // play the next song if its not the end of the playlist
@@ -58,10 +58,10 @@ export class YoutubePlayerService {
     if (state === YT.PlayerState.PLAYING) {
       // service.playerState = YT.PlayerState.PLAYING;
     }
-    this.store.dispatch(this.playerActions.updateState(state));
+    this.store.dispatch(new AppPlayer.UpdateState(state));
   }
 
-  setSize (height, width) {
+  setSize(height, width) {
     this.zone.runOutsideAngular(() => {
       this.player.setSize(width, height);
     });
