@@ -10,3 +10,7 @@ export function getAppLayout$(state$: Store<EchoesState>): Observable<IAppSettin
 export function getAppVersion$(state$: Store<EchoesState>): Observable<any> {
   return state$.select(state => state.appLayout.version);
 }
+
+export function getSidebarCollapsed$(state$: Store<EchoesState>): Observable<boolean> {
+  return state$.select(state => state.appLayout.sidebarExpanded);
+}
