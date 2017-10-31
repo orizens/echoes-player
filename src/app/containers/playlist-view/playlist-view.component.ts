@@ -63,7 +63,6 @@ export class PlaylistViewComponent implements OnInit {
   }
 
   handleBack() {
-    console.log('back clicked!');
     this.playlistProxy.goBack();
   }
 }

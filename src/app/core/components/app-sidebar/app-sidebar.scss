@@ -18,11 +18,18 @@ $navbar-new-height: 5rem;
   position: fixed;
   bottom: 0;
   top: 0;
-  left: 0;
+  left: -30rem;
   margin: 0;
   padding: 0rem;
-  z-index: 1030;
-  
+	z-index: 1030;
+	transition: left .3s;
+	transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+	
+	
+	&.closed {
+		left: 0;
+	}
+
   .sidebar {
 		--sidebar-bg-color: var(--sidebar-bg);
 		--sidebar-brand-bg: var(--brand-primary);
@@ -45,7 +52,7 @@ $navbar-new-height: 5rem;
 		border: none;
 		border-radius: 0;
 
-		transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+		// transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
 
 		.navbar-brand {
 			float: none;
@@ -89,7 +96,9 @@ $navbar-new-height: 5rem;
 }
 }
 @media (min-width: 768px) {
-:host {  
+:host { 
+	left: 0;
+
   .sidebar {
 		transition: transform, width .3s ease-out;
 		transform: none;
