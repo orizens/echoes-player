@@ -7,6 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
+    "postinstall": "npm rebuild node-sass",
     "copy:heroku": "shx cp -r ./config/heroku/*.* ./dist",
     "copy:domain": "shx cp CNAME ./dist",
     "copy:package": "shx cp ./package.json ./dist/assets/",
