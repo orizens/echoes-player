@@ -3,7 +3,7 @@ import './youtube-playlist.scss';
 
 @Component({
   selector: 'youtube-playlist',
-  styleUrls: [ './youtube-playlist.scss' ],
+  styleUrls: ['./youtube-playlist.scss'],
   templateUrl: './youtube-playlist.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -24,6 +24,6 @@ export class YoutubePlaylistComponent {
   }
 
   get thumb() {
-    return this.media.snippet.thumbnails['high'].url;
+    return this.media.snippet.thumbnails.high.url;
   }
 }
