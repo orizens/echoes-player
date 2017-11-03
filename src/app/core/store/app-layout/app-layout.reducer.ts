@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
-import { Action, Store } from '@ngrx/store';
-import { ActionTypes } from './app-layout.actions';
+import { Store } from '@ngrx/store';
+import { ActionTypes, Action } from './app-layout.actions';
+import { Themes, DEFAULT_THEME } from '../../../app.themes';
 
 export interface IAppVersion {
   semver: string;
@@ -11,6 +12,8 @@ export interface IAppSettings {
   sidebarExpanded: boolean;
   requestInProcess: boolean;
   version: IAppVersion;
+  theme: string;
+  themes: string[];
 }
 const initialState: IAppSettings = {
   sidebarExpanded: true,
@@ -19,13 +22,12 @@ const initialState: IAppSettings = {
     semver: '',
     isNewAvailable: false,
     checkingForVersion: false
-  }
+  },
+  theme: DEFAULT_THEME,
+  themes: Themes.sort()
 };
-// TODO - create Actions types as in migration guide for @ngrx
-interface UnsafeAction extends Action {
-  payload?: any;
-}
-export function appLayout(state: IAppSettings = initialState, action: UnsafeAction): IAppSettings {
+
+export function appLayout(state: IAppSettings = initialState, action: Action): IAppSettings {
   switch (action.type) {
     case ActionTypes.SIDEBAR_EXPAND:
       return { ...state, sidebarExpanded: true };
@@ -47,6 +49,10 @@ export function appLayout(state: IAppSettings = initialState, action: UnsafeActi
         checkingForVersion: true
       };
       return { ...state, version };
+    }
+
+    case ActionTypes.APP_THEME_CHANGE: {
+      return { ...state, theme: action.payload };
     }
 
     default:

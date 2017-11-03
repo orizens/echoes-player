@@ -28,29 +28,33 @@ enum Key {
         <div *ngIf="appVersion.isNewAvailable" class="list-group-item">
           <button class="btn btn-success" title="click to update Echoes"
             (click)="handleVersionUpdate()">
-            New Version Is Available - UPDATE AVAILABLE
+            New Version Is Available - UPDATE NOW
           </button>
         </div>
         <a class="list-group-item" href="http://github.com/orizens/echoes-player" target="_blank">
-          <i class="fa fa-github"></i> Source Code @Github
+        <i class="fa fa-github"></i> Source Code @Github
         </a>
         <a class="list-group-item" *ngIf="!hide" href="https://travis-ci.org/orizens/echoes-player" target="_blank">
-          <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
+        <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
         </a>
         <div class="list-group-item" target="_blank">
-          v.<a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank">
-            {{ appVersion.semver }}
-            </a>
-          <button *ngIf="!appVersion.isNewAvailable"
-            class="btn btn-info" (click)="handleVersionCheck()">
-            Check For Updates
-          </button>
-          <div *ngIf="appVersion.checkingForVersion" class="text-info">
-            checking for version...
-          </div>
+        v.<a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank">
+        {{ appVersion.semver }}
+        </a>
+        <button *ngIf="!appVersion.isNewAvailable"
+        class="btn btn-info" (click)="handleVersionCheck()">
+        Check For Updates
+        </button>
+        <div *ngIf="appVersion.checkingForVersion" class="text-info">
+        checking for version...
+        </div>
+        </div>
+        <div class="list-group-item">
+          Theme: <button-group [buttons]="theme.themes" [selectedButton]="theme.selected"
+            (buttonClick)="updateTheme($event)"></button-group>
         </div>
         <a class="list-group-item" href="http://orizens.com" target="_blank">
-          Made with <i class="fa fa-heart text-danger"></i> By Orizens
+        Made with <i class="fa fa-heart text-danger"></i> By Orizens
         </a>
         <button class="list-group-item"
           *ngIf="signedIn"
@@ -71,9 +75,11 @@ export class AppNavbarMenuComponent implements OnInit {
     isNewAvailable: false,
     checkingForVersion: false
   };
+  @Input() theme = { themes: [], selected: '' };
   @Output() signOut = new EventEmitter();
   @Output() versionUpdate = new EventEmitter();
   @Output() versionCheck = new EventEmitter();
+  @Output() themeChange = new EventEmitter();
 
   @HostListener('keyup', ['$event'])
   handleKeyPress(event: KeyboardEvent) {
@@ -84,7 +90,7 @@ export class AppNavbarMenuComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   handleSignOut() {
     this.signOut.emit();
@@ -104,5 +110,9 @@ export class AppNavbarMenuComponent implements OnInit {
 
   handleVersionCheck() {
     this.versionCheck.emit();
+  }
+
+  updateTheme(theme) {
+    this.themeChange.emit(theme);
   }
 }

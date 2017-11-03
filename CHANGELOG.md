@@ -1,3 +1,9 @@
+## v 3.8.0 (2017/11/03)
+* [NEW] - Themes are now availabe - the default is 'Arctic' Theme. Themes are applied via the top right app menu. 
+* [NEW] - added dark 'Halloween' theme
+* [FIXED] - refresh didn't navigate to the same url route
+* [UPGRADE] - using ngx-youtube-player now  
+
 ## v 3.7.0 (2017/10/30)
 * [NEW] - added "Back" (arrow-left) button to Playlist View - returns to the last view 
 * [NEW] - added transparent backdrop to side menu on mobile - touch on it closes the menu 

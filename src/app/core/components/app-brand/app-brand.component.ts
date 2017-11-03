@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
       <h3 class="text brand-text-item">es</h3>
     </section>
     <button class="btn btn-transparent sidebar-toggle">
-      <i class="fa fa-bars"></i>
+      <i class="fa fa-bars fa-2x"></i>
     </button>
   </div>
   `

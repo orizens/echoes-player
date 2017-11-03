@@ -41,17 +41,8 @@
 @media (min-width: 768px) {
 	.now-playlist {
 		.now-playlist-track {
-			a .remove-track {
-				transform: translatex(5rem);
-			}
 			a .playlist-track__content {
 				overflow: hidden;
-			}
-			// .now-playlist-track__trigger:hover {
-			a:hover {
-				.remove-track {
-					transform: translatex(-1rem);
-				}
 			}
 		}
 	}
@@ -63,7 +54,8 @@
 				min-height: 6rem;
 				margin: 0.7rem 0;
 			}
-			.playlist-track__content {
+			.playlist-track__content,
+			.video-title {
 				height: 0;
 			}
 			.track-number {

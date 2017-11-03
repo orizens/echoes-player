@@ -4,7 +4,7 @@
   :host {
     .user-playlists-filter {
       --filter-bg: var(--sidebar-bg);
-      --filter-darker-bg: darken($brand-sidebar, 3%);
+      --filter-darker-bg: var(--sidebar-bg-secondary);
 
       position: relative;
       background-color: var(--filter-bg);
