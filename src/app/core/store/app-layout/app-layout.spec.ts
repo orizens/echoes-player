@@ -12,7 +12,9 @@ describe('The App Settings Reducer', () => {
         semver: '',
         isNewAvailable: false,
         checkingForVersion: false
-      }
+      },
+      theme: 'arctic',
+      themes: []
     };
     return { ...defaultState, ...props };
   };
