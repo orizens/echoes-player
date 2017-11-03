@@ -23,14 +23,14 @@ describe('NowPlaylistTrackComponent', () => {
       'extractTracks', 'verifyTracksCue', 'extractTime', 'parseTracks'
     ]);
     TestBed.configureTestingModule({
-      imports: [ TooltipModule ],
-      declarations: [ NowPlaylistTrackComponent, ...PIPES ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [TooltipModule],
+      declarations: [NowPlaylistTrackComponent, ...PIPES],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: MediaParserService, useValue: mediaParserSpy },
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   it('should create a component', () => {
@@ -38,8 +38,8 @@ describe('NowPlaylistTrackComponent', () => {
     expect(component).toBeDefined();
   });
 
-  it('should select the track', () => {
-    const trigger = fixture.debugElement.query(By.css('.now-playlist-track__trigger'));
+  it('should select the track when title is clicked', () => {
+    const trigger = fixture.debugElement.query(By.css('.video-title'));
     spyOn(component.select, 'emit');
     const actual = component.select.emit;
     trigger.triggerEventHandler('click', {});

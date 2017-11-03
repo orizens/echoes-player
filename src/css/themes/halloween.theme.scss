@@ -1,0 +1,37 @@
+body.halloween {
+  --brand-primary: #FF5722;
+  --brand-secondary: rgba(79, 195, 247, 0.9);
+  --brand-success: #2ecc71;
+  --brand-warning: #f1c40f;
+  --brand-danger: #F44336;
+  --brand-info: #2ecc71;
+  
+  --sidebar-bg: rgba(10, 21, 27, 0.95);
+  --sidebar-bg-secondary: #0e191f;
+  --sidebar-text: white;
+  --sidebar-text-lighter: #c9c7c7;
+
+  --brand-inverse-text: white;
+  --brand-primary-lite-bg-color: white;
+  --brand-primary-text-color: #fbfbfb;
+  --brand-dark-bg-color: #000;
+  --brand-dark-bg-color-transparent: rgba(10, 10, 10, 0.5);
+  --brand-bg-lite-transparent: rgb(19, 40, 51);
+  
+  --link-primary-color: var(--brand-primary);
+  --link-primary-hover-color: var(--brand-primary);
+  
+  --navbar-bg-color: rgba(10, 21, 27, 0.95);
+  --navbar-text-color: #fbfbfb;
+  --navbar-link-color: var(--link-primary-color);
+
+  --list-group-item-text: var(--sidebar-text);
+  --list-group-item-text-hover: var(--sidebar-text);
+  --list-group-item-bg: var(--sidebar-bg-secondary);
+  --list-group-item-bg-hover: var(--brand-bg-lite-transparent);
+  --list-group-item-border: var(--brand-bg-lite-transparent);
+
+  --player-controls-bar-bg: var(--navbar-bg-color);
+
+  --app-bg-color: #0b161b;
+}

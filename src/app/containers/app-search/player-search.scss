@@ -56,9 +56,13 @@
 			z-index: 10;
 			box-shadow: 0rem 0.3rem 3rem -0.5rem rgba(0,0,0,.5);
 
-			.list-group-item.active {
-				background-color: var(--brand-primary);
-				border-color: var(--brand-primary);
+			.list-group-item {
+				border-radius: 0;
+
+				&.active {
+					background-color: var(--brand-primary);
+					border-color: var(--brand-primary);
+				}
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-import { getAppVersion$ } from '../../core/store/app-layout';
+import { getAppVersion$, getAppThemes } from '../../core/store/app-layout';
 import {
   Component,
   EventEmitter,
@@ -41,6 +41,8 @@ import { EchoesState } from '../../core/store';
             ></app-navbar-user>
           <app-navbar-menu
             [appVersion]="appVersion$ | async"
+            [theme]="themes$ | async"
+            (themeChange)="changeTheme($event)"
             [signedIn]="isSignIn()"
             (signOut)="signOutUser()"
             (versionUpdate)="updateVersion()"
@@ -55,6 +57,7 @@ import { EchoesState } from '../../core/store';
 export class AppNavbarComponent implements OnInit {
   user$ = this.store.let(getUser$);
   appVersion$ = this.store.let(getAppVersion$);
+  themes$ = this.store.select(getAppThemes);
 
   @Input() header: string;
   @Input() headerIcon = '';
@@ -96,5 +99,9 @@ export class AppNavbarComponent implements OnInit {
 
   handleMainIconClick() {
     this.headerMainIconClick.emit();
+  }
+
+  changeTheme(theme) {
+    this.store.dispatch(new AppLayout.ThemeChange(theme.value));
   }
 }

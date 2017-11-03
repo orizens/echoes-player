@@ -17,6 +17,13 @@
     .now-playlist-track__trigger {
       color: rgb(201, 199, 199);
       text-shadow: none;
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--sidebar-bg-secondary);
+      
+      .track-contents {
+        display: flex;
+        flex-direction: row;
+      }
 
       .active & {
         // background: var(--track-bg-active-color);
@@ -51,17 +58,19 @@
 
     .video-title {
       font-size: small;
+      overflow: hidden;
+      max-height: 6rem;
+      min-height: 6.5rem;
     }
 
     .video-thumb {
       height: 4.8rem;
       width: 6.4rem;
-      float: left;
       margin-right: 8px;
       // cursor: ns-resize;
-      img {
+      .video-thumb__image {
         height: 100%;
-        width: 95%;
+        // width: 95%;
       }
     }
 
@@ -69,20 +78,25 @@
       position: absolute;
       top: 1rem;
       right: 0rem;
-      transform: translatex(-1rem);
       // display: block;
       z-index: $track-button;
       font-size: $remove-font-size;
+      transform: translatex(5rem);      
     }
 
-    // .now-playlist-track__trigger {
-    a {
-      display: block;
-      min-height: 8.5rem;
-      text-decoration: none;
-      padding: 1rem 2rem 1rem 1.5rem;
-      border-bottom: 1px solid $track-border-color;
+    &:hover {
+      .remove-track {
+        transform: translatex(-1rem);
+      }
     }
+    // .now-playlist-track__trigger {
+    // a {
+    //   display: block;
+    //   min-height: 8.5rem;
+    //   text-decoration: none;
+    //   padding: 1rem 2rem 1rem 1.5rem;
+    //   border-bottom: 1px solid $track-border-color;
+    // }
 
     .badge-info {
       border-radius: 0;
@@ -93,11 +107,10 @@
       margin-top: 0;
       z-index: $track-badge-index;
       position: relative;
-      margin-right: 3px;
     }
 
     .track-tracks {
-      margin: 1.5rem -2rem 0;
+      margin: 1.5rem -1.5rem 0;
       border-top: 1px solid var(--track-active-border-color);
 
       .album-tracks-heading {
@@ -107,7 +120,7 @@
       }
 
       .list-group-item {
-        border-color: $track-border-color;
+        border: none;
         color: var(--text-color);
 
         &:hover {

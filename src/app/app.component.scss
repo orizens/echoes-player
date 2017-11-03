@@ -1,0 +1,32 @@
+@import '~css/echoes-variables';
+
+:host {
+  // DEFAULT THEME - 'arctic'
+  
+  background-color: var(--app-bg-color);
+  display: block;
+  height: 100%;
+  
+  .container-main {
+    height: 100vh;
+    display: block;
+    transition: margin .3s ease-out;
+    margin-left: 0;
+  }
+}
+@media (min-width: 320px) {
+  :host .container-fluid.container-main {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+@media (min-width: 768px) {
+  :host .closed + .container-main {
+    margin-left: $sidebar-closed-width;
+  }
+}
+@media (min-width: 1024px) {
+  :host .container-main {
+    margin-left: $drawer-width;
+  }
+}

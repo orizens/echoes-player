@@ -12,5 +12,16 @@ export function getAppVersion$(state$: Store<EchoesState>): Observable<any> {
 }
 
 export function getSidebarCollapsed$(state$: Store<EchoesState>): Observable<boolean> {
-  return state$.select(state => state.appLayout.sidebarExpanded);
+  return state$.select(state => !state.appLayout.sidebarExpanded);
+}
+
+export function getAppTheme(state: EchoesState) {
+  return state.appLayout.theme;
+}
+
+export function getAppThemes(state: EchoesState) {
+  return {
+    selected: getAppTheme(state),
+    themes: state.appLayout.themes.map(theme => ({ label: theme, value: theme }))
+  };
 }

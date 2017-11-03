@@ -1,0 +1,37 @@
+body.arctic {
+  --brand-primary: $brand-primary;
+  --brand-secondary: $brand-secondary;
+  --brand-success: $brand-success;
+  --brand-warning: $brand-warning;
+  --brand-danger: $brand-danger;
+  --brand-info: $brand-info;
+
+  --sidebar-bg: $blue-grey-900;
+  --sidebar-bg-secondary: $blue-grey-darker;
+  --sidebar-text: $inverse;
+  --sidebar-text-lighter: $white-darker;
+
+  --brand-inverse-text: $inverse;
+  --brand-primary-lite-bg-color: $inverse;
+  --brand-primary-text-color: $text-color;
+  --brand-dark-bg-color: $dark;
+  --brand-dark-bg-color-transparent: $dark-transparent;
+  --brand-bg-lite-transparent: $inverse-transparent;
+
+  --link-primary-color: var(--brand-primary);
+  --link-primary-hover-color: var(--brand-primary);
+
+  --navbar-bg-color: $white-dark-transparent;
+  --navbar-text-color: $text-color;
+  --navbar-link-color: var(--link-primary-color);
+  
+  --list-group-item-text: #555;
+  --list-group-item-text-hover: #555;
+  --list-group-item-bg: $inverse;
+  --list-group-item-bg-hover: #f5f5f5;
+  --list-group-item-border: #ddd;
+
+  --player-controls-bar-bg: $gray-darker;
+
+  --app-bg-color: $body-bg;
+}

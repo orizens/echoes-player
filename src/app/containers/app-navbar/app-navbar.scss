@@ -2,21 +2,30 @@
 
 @media (min-width: 320px) {
   app-navbar {
+    $zindex: 1020;
     $user-icon-size: 4rem;
     $navbar-container-padding: 0.5rem 5rem;
+    $navbar-new-height: 1rem;
+    
 
     display: block;
 
     nav.navbar {
       margin-left: 0;
+      background-image: none;
+      background-color: var(--navbar-bg-color);
+      border-color: var(--navbar-bg-color);
       color: var(--navbar-text-color);
+      box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+      transition: transform, margin-left .3s ease-out;      
+      z-index: $zindex;      
     }
 
-    .navbar-brand {
-      line-height: 2;
-      float: none;
-      height: auto;
-    }
+    // .navbar-brand {
+    //   line-height: 2;
+    //   float: none;
+    //   height: auto;
+    // }
 
     .user-icon {
       width: $user-icon-size;
@@ -39,7 +48,11 @@
         flex-flow: wrap;
         justify-content: center;
 
-        .navbar__header {
+        .navbar-header {
+          width: auto;
+          margin-right: 7px;
+          line-height: $navbar-new-height;
+          
           .fa {
             margin-right: 10px;
           }
