@@ -81,13 +81,7 @@
       // display: block;
       z-index: $track-button;
       font-size: $remove-font-size;
-      transform: translatex(5rem);      
-    }
-
-    &:hover {
-      .remove-track {
-        transform: translatex(-1rem);
-      }
+      transform: translatex(-1rem);      
     }
     // .now-playlist-track__trigger {
     // a {
@@ -133,6 +127,15 @@
 
 @media (min-width: 768px) {
   :host {
+    .remove-track {
+      transform: translatex(5rem);
+    }
+    &:hover {
+      .remove-track {
+        transform: translatex(-1rem);
+      }
+    }
+
     .track-tracks {
 
       .btn {
