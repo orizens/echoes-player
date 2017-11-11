@@ -12,5 +12,5 @@ export function getAppVersion$(state$: Store<EchoesState>): Observable<any> {
 }
 
 export function getSidebarCollapsed$(state$: Store<EchoesState>): Observable<boolean> {
-  return state$.select(state => state.appLayout.sidebarExpanded);
+  return state$.select(state => !state.appLayout.sidebarExpanded);
 }

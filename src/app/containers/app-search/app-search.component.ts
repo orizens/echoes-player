@@ -10,7 +10,7 @@ import { getQuery$, getQueryParamPreset$, getPresets$ } from '../../core/store/p
 
 @Component({
   selector: 'app-search',
-  styleUrls: [ './app-search.scss' ],
+  styleUrls: ['./app-search.scss'],
   template: `
   <article
     infiniteScroll
@@ -48,9 +48,9 @@ export class AppSearchComponent implements OnInit {
     private playerSearchActions: PlayerSearchActions
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  search (query: string) {
+  search(query: string) {
     this.store.dispatch(this.playerSearchActions.searchNewQuery(query));
   }
 
@@ -59,7 +59,7 @@ export class AppSearchComponent implements OnInit {
     this.store.dispatch(new UpdateQueryAction(query));
   }
 
-  searchMore () {
+  searchMore() {
     this.store.dispatch(this.playerSearchActions.searchMoreForQuery());
   }
 

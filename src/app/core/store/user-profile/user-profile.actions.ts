@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 import { Injectable } from '@angular/core';
 import { GoogleBasicProfile } from './user-profile.reducer';
@@ -7,7 +8,10 @@ export class UserProfileActions {
   static UPDATE = '[UserProfile] UPDATE';
   static ADD_PLAYLISTS = '[UserProfile] ADD_PLAYLISTS';
   static UPDATE_TOKEN = '[UserProfile] UPDATE_TOKEN';
-  static LOG_OUT = '[UserProfile] LOG_OUT';
+  static SIGNOUT = '[UserProfile] SIGNOUT';
+  static SIGNOUT_COMPLETED = '[UserProfile] SIGNOUT_COMPLETED';
+  static SIGNIN = '[UserProfile] SIGNIN';
+  static SIGNIN_SUCCESS = '[UserProfile] SIGNIN_SUCCESS';
   static UPDATE_NEXT_PAGE_TOKEN = '[UserProfile] UPDATE_NEXT_PAGE_TOKEN';
   static USER_PROFILE_COMPLETED = '[UserProfile] USER_PROFILE_COMPLETED';
   static UPDATE_USER_PROFILE = '[UserProfile] UPDATE_USER_PROFILE';
@@ -25,14 +29,6 @@ export class UserProfileActions {
     };
   }
 
-  updateToken = (payload: string) => ({ type: UserProfileActions.UPDATE_TOKEN, payload });
-
-  signOut() {
-    return {
-      type: UserProfileActions.LOG_OUT
-    };
-  }
-
   updatePageToken(token: string) {
     return {
       type: UserProfileActions.UPDATE_NEXT_PAGE_TOKEN,
@@ -46,13 +42,6 @@ export class UserProfileActions {
     };
   }
 
-  userProfileRecieved(profile: any) {
-    return {
-      type: UserProfileActions.USER_PROFILE_RECIEVED,
-      payload: profile
-    };
-  }
-
   updateUserProfile(profile: GoogleBasicProfile) {
     return {
       type: UserProfileActions.UPDATE_USER_PROFILE,
@@ -60,3 +49,40 @@ export class UserProfileActions {
     };
   }
 }
+
+export class UpdateToken implements Action {
+  public type = UserProfileActions.UPDATE_TOKEN;
+  constructor(public payload: string) { }
+}
+
+export class ProfileRecieved implements Action {
+  public type = UserProfileActions.USER_PROFILE_RECIEVED;
+  constructor(public payload: gapi.auth2.BasicProfile) { }
+}
+
+export class Signout implements Action {
+  public type = UserProfileActions.SIGNOUT;
+  public payload = '';
+}
+
+export class Signin implements Action {
+  public type = UserProfileActions.SIGNIN;
+  public payload = '';
+}
+
+export class SigninSuccess implements Action {
+  public type = UserProfileActions.SIGNIN_SUCCESS;
+  constructor(public payload: any) { }
+}
+
+export class SignoutCompleted implements Action {
+  public type = UserProfileActions.SIGNOUT_COMPLETED;
+  public payload = '';
+}
+
+export type Actions =
+  UpdateToken
+  | ProfileRecieved
+  | Signout
+  | Signin
+  | SigninSuccess;

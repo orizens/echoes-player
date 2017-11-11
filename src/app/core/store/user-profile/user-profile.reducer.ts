@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { EchoesState } from '../';
 import { Action } from '@ngrx/store';
 import { UserProfileActions } from './user-profile.actions';
+import * as firebase from 'firebase/app';
 
 export * from './user-profile.actions';
 
@@ -10,13 +11,8 @@ export interface IUserProfile {
   playlists: GoogleApiYouTubePlaylistResource[];
   data?: {};
   nextPageToken?: string;
-  profile: GoogleBasicProfile;
+  profile: firebase.UserInfo;
   viewedPlaylist?: string;
-}
-
-export interface GoogleBasicProfile {
-  name?: string;
-  imageUrl?: string;
 }
 
 const initialUserState: IUserProfile = {
@@ -24,7 +20,14 @@ const initialUserState: IUserProfile = {
   playlists: [],
   data: {},
   nextPageToken: '',
-  profile: {},
+  profile: {
+    displayName: '',
+    email: '',
+    phoneNumber: '',
+    photoURL: '',
+    providerId: '',
+    uid: ''
+  },
   viewedPlaylist: ''
 };
 interface UnsafeAction extends Action {
@@ -38,7 +41,7 @@ export function user(state = initialUserState, action: UnsafeAction): IUserProfi
     case UserProfileActions.UPDATE_TOKEN:
       return { ...state, access_token: action.payload, playlists: [] };
 
-    case UserProfileActions.LOG_OUT:
+    case UserProfileActions.SIGNOUT:
       return { ...initialUserState };
 
     case UserProfileActions.UPDATE:
@@ -47,7 +50,7 @@ export function user(state = initialUserState, action: UnsafeAction): IUserProfi
     case UserProfileActions.UPDATE_NEXT_PAGE_TOKEN:
       return { ...state, nextPageToken: action.payload };
 
-    case UserProfileActions.UPDATE_USER_PROFILE:
+    case UserProfileActions.USER_PROFILE_RECIEVED:
       return { ...state, profile: action.payload };
 
     case UserProfileActions.VIEWED_PLAYLIST:

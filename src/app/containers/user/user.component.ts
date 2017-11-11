@@ -1,9 +1,10 @@
+import { UserProxy } from './user.proxy';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { UserProfile, Authorization } from '../../core/services';
+import { UserProfile } from '../../core/services';
 import { EchoesState } from '../../core/store';
-import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../../core/store/user-profile/user-profile.selectors';
+import { AppApi } from '../../core/api/app.api';
 
 
 @Component({
@@ -28,23 +29,16 @@ import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../
   `
 })
 export class UserComponent implements OnInit {
-  playlists$ = this.store.let(getUserPlaylists$);
-  currentPlaylist$ = this.store.let(getUserViewPlaylist$);
-  isSignedIn$ = this.store.let(getIsUserSignedIn$);
+  isSignedIn$ = this.userProxy.isSignedIn$;
 
   constructor(
-    private userProfile: UserProfile,
-    private authorization: Authorization,
-    public store: Store<EchoesState>
-  ) {}
+    private userProxy: UserProxy,
+    private appApi: AppApi
+  ) { }
 
-  ngOnInit () {}
+  ngOnInit() { }
 
-  signInUser () {
-    this.authorization.signIn();
-  }
-
-  getPlaylists () {
-    return this.userProfile.getPlaylists(true);
+  signInUser() {
+    this.appApi.signIn();
   }
 }

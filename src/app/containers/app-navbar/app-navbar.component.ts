@@ -1,4 +1,3 @@
-import { getAppVersion$ } from '../../core/store/app-layout';
 import {
   Component,
   EventEmitter,
@@ -8,13 +7,10 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
 
-import { getUser$, getUserPlaylists$ } from '../../core/store/user-profile/user-profile.selectors';
-import { UserProfile, Authorization } from '../../core/services';
-import * as AppLayout from '../../core/store/app-layout';
-import { EchoesState } from '../../core/store';
+import { AppApi } from '../../core/api/app.api';
+import { AuthorizationFire } from '../../core/services/firebase';
+import { AppNavbarProxy } from './app-navbar.proxy';
 
 @Component({
   selector: 'app-navbar',
@@ -35,13 +31,13 @@ import { EchoesState } from '../../core/store';
         </div>
         <section class="navbar-text navbar-actions">
           <app-navbar-user
-            [signedIn]="isSignIn()"
-            [userImageUrl]="(user$ | async).profile.imageUrl"
+            [signedIn]="isSignedIn$ | async"
+            [userImageUrl]="userPhoto$ | async"
             (signIn)="signInUser()"
             ></app-navbar-user>
           <app-navbar-menu
             [appVersion]="appVersion$ | async"
-            [signedIn]="isSignIn()"
+            [signedIn]="isSignedIn$ | async"
             (signOut)="signOutUser()"
             (versionUpdate)="updateVersion()"
             (versionCheck)="checkVersion()"
@@ -53,8 +49,10 @@ import { EchoesState } from '../../core/store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNavbarComponent implements OnInit {
-  user$ = this.store.let(getUser$);
-  appVersion$ = this.store.let(getAppVersion$);
+  user$ = this.appnavbarProxy.user$;
+  userPhoto$ = this.appnavbarProxy.userPhoto$;
+  appVersion$ = this.appnavbarProxy.appVersion$;
+  isSignedIn$ = this.appnavbarProxy.isSignedIn;
 
   @Input() header: string;
   @Input() headerIcon = '';
@@ -65,33 +63,28 @@ export class AppNavbarComponent implements OnInit {
   @Output() headerMainIconClick = new EventEmitter();
 
   constructor(
-    private authorization: Authorization,
-    private userProfile: UserProfile,
-    private store: Store<EchoesState>
+    private appApi: AppApi,
+    private appnavbarProxy: AppNavbarProxy
   ) { }
 
   ngOnInit() { }
 
   signInUser() {
-    this.authorization.signIn();
+    this.appApi.signIn();
     this.signIn.next();
   }
 
   signOutUser() {
-    this.authorization.signOut();
+    this.appApi.signOut();
     this.signOut.next();
   }
 
-  isSignIn() {
-    return this.authorization.isSignIn();
-  }
-
   updateVersion() {
-    this.store.dispatch(new AppLayout.UpdateAppVersion());
+    this.appApi.updateVersion();
   }
 
   checkVersion() {
-    this.store.dispatch(new AppLayout.CheckVersion());
+    this.appApi.checkVersion();
   }
 
   handleMainIconClick() {

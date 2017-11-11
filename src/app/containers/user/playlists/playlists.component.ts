@@ -1,3 +1,4 @@
+import { UserProxy } from '../user.proxy';
 import { UserPlayerService } from '../user-player.service';
 import { EchoesState } from '../../../core/store';
 import { Component, OnInit } from '@angular/core';
@@ -16,24 +17,27 @@ import { Store } from '@ngrx/store';
         (queue)="queueSelectedPlaylist(playlist)">
       </youtube-playlist>
     </div>
+    <section *ngIf="playlists$ | async" class="well">
+      <h1>You have no playlists yet</h1>
+    </section>
   </section>
   `
 })
 export class PlaylistsComponent implements OnInit {
-  playlists$ = this.store.select(state => state.user.playlists);
+  playlists$ = this.userProxy.userPlaylists$;
 
   constructor(
-    private store: Store<EchoesState>,
+    private userProxy: UserProxy,
     private userPlayerService: UserPlayerService
   ) { }
 
   ngOnInit() { }
 
-  playSelectedPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
+  playSelectedPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.userPlayerService.playSelectedPlaylist(playlist);
   }
 
-  queueSelectedPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
+  queueSelectedPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.userPlayerService.queuePlaylist(playlist);
   }
 }

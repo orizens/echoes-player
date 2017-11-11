@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppNavbarComponent } from './app-navbar.component';
 import { AppNavbarMenuComponent } from './app-navbar-menu';
 import { AppNavbarUserComponent } from './app-navbar-user';
+import { AppNavbarProxy } from './app-navbar.proxy';
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import { AppNavbarUserComponent } from './app-navbar-user';
     AppNavbarUserComponent
   ],
   exports: [
-    AppNavbarComponent
-  ]
+    AppNavbarComponent,
+    AppNavbarUserComponent
+  ],
+  providers: [AppNavbarProxy]
 })
 export class AppNavbarModule { }

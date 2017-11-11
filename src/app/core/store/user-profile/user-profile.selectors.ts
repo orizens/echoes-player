@@ -7,6 +7,13 @@ export function getUser$(state$: Store<EchoesState>): Observable<IUserProfile> {
   return state$.select(state => state.user);
 }
 
+export function getUserPhoto$(state$: Store<EchoesState>): Observable<string> {
+  return state$.select(state => state.user.profile.photoURL);
+}
+
+export function getAccessToken$(state$: Store<EchoesState>) {
+  // return state$.select(state => state.user.profile.);
+}
 export function getUserPlaylists$(
   state$: Store<EchoesState>
 ): Observable<GoogleApiYouTubePlaylistResource[]> {
@@ -18,6 +25,6 @@ export function getUserViewPlaylist$(state$: Store<EchoesState>) {
 }
 export function getIsUserSignedIn$(state$: Store<EchoesState>) {
   return state$.select(state => {
-    return state.user.access_token !== '';
+    return Object.keys(state.user.profile).length > 0;
   });
 }

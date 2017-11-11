@@ -4,6 +4,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
 
 import { CoreModule } from './core';
 import { SharedModule } from './shared';
@@ -26,6 +30,9 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot(ROUTES, { useHash: true }),
     BrowserAnimationsModule,
 
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     CoreModule,
     SharedModule,
     ...APP_CORE_MODULES,

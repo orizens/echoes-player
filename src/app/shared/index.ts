@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxTypeaheadModule } from 'ngx-typeahead';
-import { YoutubePlayerModule } from 'ng2-youtube-player';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { CORE_COMPONENTS } from './components';
 import { PIPES } from './pipes';
 import { TooltipModule } from 'ngx-tooltip';
@@ -33,4 +33,4 @@ import { TooltipModule } from 'ngx-tooltip';
   ],
   providers: []
 })
-export class SharedModule {}
+export class SharedModule { }

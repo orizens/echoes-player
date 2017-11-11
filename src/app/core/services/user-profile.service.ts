@@ -1,7 +1,8 @@
+import { AuthorizationFire } from './firebase';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { Http } from '@angular/http';
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/buffer';
@@ -9,8 +10,6 @@ import 'rxjs/add/operator/buffer';
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { Authorization } from './authorization.service';
-
-import { GoogleBasicProfile } from '../store/user-profile';
 
 @Injectable()
 export class UserProfile {
@@ -21,9 +20,9 @@ export class UserProfile {
 
   constructor(
     private http: Http,
-    private zone: NgZone,
     private youtubeVideosInfo: YoutubeVideosInfo,
-    private authorization: Authorization
+    private authorization: Authorization,
+    private auth: AuthorizationFire
   ) {
     this.playlistInfo = new YoutubeApiService({
       url: 'https://www.googleapis.com/youtube/v3/playlistItems',
@@ -55,6 +54,7 @@ export class UserProfile {
   }
 
   getPlaylists(isNewPage: boolean) {
+    debugger;
     const hasAccessToken = this.playlists.hasToken();
     if (!hasAccessToken) {
       return;
@@ -132,16 +132,7 @@ export class UserProfile {
     return accessToken === token;
   }
 
-  toUserJson (profile): GoogleBasicProfile {
-    const _profile: GoogleBasicProfile = {};
-    if (profile) {
-      _profile.imageUrl = profile.getImageUrl();
-      _profile.name = profile.getName();
-    }
-    return _profile;
-  }
-
-  fetchMetadata (items: GoogleApiYouTubeVideoResource[]) {
+  fetchMetadata(items: GoogleApiYouTubeVideoResource[]) {
     const videoIds = items.map(video => video.id).join(',');
     return this.youtubeVideosInfo.api.list(videoIds);
   }
