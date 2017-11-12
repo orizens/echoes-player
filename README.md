@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/orizens/echoes-player.svg?branch=master)](https://travis-ci.org/orizens/echoes-player) [![Code Climate](https://codeclimate.com/github/orizens/echoes-player/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-player)
+# I hate complex stuff. Once again, no more NgRx
 
 # Echoes Player - Angular Version (2nd Generation)
 Echoes is a great youtube player developed by [Oren Farhi](http://orizens.com).
