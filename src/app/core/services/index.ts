@@ -8,6 +8,7 @@ import { Authorization } from './authorization.service';
 import { YoutubeDataApi } from './youtube-data-api';
 import { VersionCheckerService } from './version-checker.service';
 import { MediaParserService } from './media-parser.service';
+import { PlayerSearchService } from './player-search.service';
 
 export * from './user-profile.service';
 export * from './youtube.search';
@@ -28,6 +29,7 @@ export const APP_SERVICES = [
   { provide: GapiLoader, useClass: GapiLoader },
   { provide: Authorization, useClass: Authorization },
   { provide: YoutubeDataApi, useClass: YoutubeDataApi },
+  { provide: PlayerSearchService, useClass: PlayerSearchService },
   VersionCheckerService,
   MediaParserService
 ];

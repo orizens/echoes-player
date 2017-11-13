@@ -7,6 +7,7 @@ import { IPresetParam, PlayerSearchActions, UpdateQueryAction } from '../../core
 // selectors
 import { getUserViewPlaylist$ } from '../../core/store/user-profile';
 import { getQuery$, getQueryParamPreset$, getPresets$ } from '../../core/store/player-search';
+import { PlayerSearchService } from '../../core/services/player-search.service';
 
 @Component({
   selector: 'app-search',
@@ -38,32 +39,43 @@ import { getQuery$, getQueryParamPreset$, getPresets$ } from '../../core/store/p
     `
 })
 export class AppSearchComponent implements OnInit {
-  query$ = this.store.let(getQuery$);
+  // query$ = this.store.let(getQuery$);
+  query$ = this.playerSearchService.playerSearch$.map(search => search.query);
+
   currentPlaylist$ = this.store.let(getUserViewPlaylist$);
   queryParamPreset$ = this.store.let(getQueryParamPreset$);
   presets$ = this.store.let(getPresets$);
 
   constructor(
     private store: Store<EchoesState>,
+    private playerSearchService: PlayerSearchService,
     private playerSearchActions: PlayerSearchActions
   ) { }
 
   ngOnInit() {}
 
   search (query: string) {
-    this.store.dispatch(this.playerSearchActions.searchNewQuery(query));
+    // this.store.dispatch(this.playerSearchActions.searchNewQuery(query));
+    this.playerSearchService.searchNewQuery(query);
   }
 
   resetPageToken(query: string) {
-    this.store.dispatch(this.playerSearchActions.resetPageToken());
-    this.store.dispatch(new UpdateQueryAction(query));
+    // this.store.dispatch(this.playerSearchActions.resetPageToken());
+    this.playerSearchService.resetPageToken();
+
+    // this.store.dispatch(new UpdateQueryAction(query));
+    this.playerSearchService.updateQueryAction(query);
+
   }
 
   searchMore () {
-    this.store.dispatch(this.playerSearchActions.searchMoreForQuery());
+    // this.store.dispatch(this.playerSearchActions.searchMoreForQuery());
+    this.playerSearchService.searchMoreForQuery();
   }
 
   updatePreset(preset: IPresetParam) {
-    this.store.dispatch(this.playerSearchActions.updateQueryParam({ preset: preset.value }));
+    // this.store.dispatch(this.playerSearchActions.updateQueryParam({ preset: preset.value }));
+    this.playerSearchService.updateQueryParam({ preset: preset.value });
+
   }
 }

@@ -12,6 +12,7 @@ import { AppPlayerApi } from '../../core/api/app-player.api';
 import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
 import { getPlaylistVideos$ } from '../../core/store/now-playlist';
 import { getIsSearching$ } from '../../core/store/player-search';
+import { PlayerSearchService } from "../../core/services/player-search.service";
 
 @Component({
   selector: 'youtube-videos',
@@ -28,19 +29,30 @@ import { getIsSearching$ } from '../../core/store/player-search';
   `
 })
 export class YoutubeVideosComponent implements OnInit {
-  videos$ = this.store.let(getPlayerSearchResults$);
+
+  // videos$ = this.store.let(getPlayerSearchResults$);
+  // loading$ = this.store.let(getIsSearching$);
+
+  videos$ = this.playerSearchService.playerSearch$.map(search => search.results);
+  loading$ = this.playerSearchService.playerSearch$.map(search => search.isSearching);
+
   playlistVideos$ = this.store.let(getPlaylistVideos$);
-  loading$ = this.store.let(getIsSearching$);
 
   constructor(
     private store: Store<EchoesState>,
     private appPlayerApi: AppPlayerApi,
-    private playerSearchActions: PlayerSearchActions
+    private playerSearchActions: PlayerSearchActions,
+    private playerSearchService: PlayerSearchService
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(this.playerSearchActions.updateSearchType(CSearchTypes.VIDEO));
-    this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
+    // this.store.dispatch(this.playerSearchActions.updateSearchType(CSearchTypes.VIDEO));
+    this.playerSearchService.updateSearchType(CSearchTypes.VIDEO);
+
+
+    // this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
+    this.playerSearchService.searchCurrentQuery();
+
   }
 
   playSelectedVideo(media: GoogleApiYouTubeVideoResource) {
