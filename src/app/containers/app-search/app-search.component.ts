@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../../core/store';
 
-import { NowPlaylistActions } from '../../core/store/now-playlist';
-import { IPresetParam, PlayerSearchActions, UpdateQueryAction } from '../../core/store/player-search';
-// selectors
+import { IPresetParam} from '../../core/store/player-search';
 import { getUserViewPlaylist$ } from '../../core/store/user-profile';
-import { getQuery$, getQueryParamPreset$, getPresets$ } from '../../core/store/player-search';
+import { getQueryParamPreset$, getPresets$ } from '../../core/store/player-search';
 import { PlayerSearchService } from '../../core/services/player-search.service';
 
 @Component({
@@ -48,8 +46,7 @@ export class AppSearchComponent implements OnInit {
 
   constructor(
     private store: Store<EchoesState>,
-    private playerSearchService: PlayerSearchService,
-    private playerSearchActions: PlayerSearchActions
+    private playerSearchService: PlayerSearchService
   ) { }
 
   ngOnInit() {}
