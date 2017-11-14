@@ -17,6 +17,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
 import { NowPlaylistService, YoutubePlayerService } from '../../services';
+import { AppPlayerService } from '../../services/app-player.service';
 
 @Component({
   selector: 'app-player',
@@ -70,12 +71,14 @@ export class AppPlayerComponent implements OnInit {
   constructor(
     private playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
+    private appPlayerService: AppPlayerService,
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(new AppPlayer.Reset());
+    // this.store.dispatch(new AppPlayer.Reset());
+    this.appPlayerService.reset();
     this.nowPlaylistEffects.loadNextTrack$.subscribe(action => this.playVideo(action.payload));
   }
 
@@ -104,7 +107,8 @@ export class AppPlayerComponent implements OnInit {
   }
 
   toggleFullScreen() {
-    this.store.dispatch(new AppPlayer.FullScreen());
+    // this.store.dispatch(new AppPlayer.FullScreen());
+    this.appPlayerService.fullScreen();
   }
 
   playNextTrack() {

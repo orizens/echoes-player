@@ -7,6 +7,7 @@ import { NowPlaylistService } from '../../services/now-playlist.service';
 import { INowPlaylist } from '../../store/now-playlist';
 import * as AppPlayer from '../../store/app-player/app-player.actions';
 import { NowPlaylistComponent } from './now-playlist';
+import { AppPlayerService } from '../../services/app-player.service';
 
 @Component({
   selector: 'now-playing',
@@ -35,7 +36,9 @@ export class NowPlayingComponent implements OnInit {
   public nowPlaylist$: Observable<INowPlaylist>;
   @ViewChild(NowPlaylistComponent) nowPlaylistComponent: NowPlaylistComponent;
 
-  constructor(public store: Store<EchoesState>, public nowPlaylistService: NowPlaylistService) {}
+  constructor(public store: Store<EchoesState>, public nowPlaylistService: NowPlaylistService,
+              private appPlayerService: AppPlayerService) {
+  }
 
   ngOnInit() {
     this.nowPlaylist$ = this.nowPlaylistService.playlist$;
@@ -43,6 +46,7 @@ export class NowPlayingComponent implements OnInit {
 
   selectVideo(media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(new AppPlayer.PlayVideo(media));
+    this.appPlayerService.play(media);
     this.nowPlaylistService.updateIndexByMedia(media.id);
   }
 
@@ -69,7 +73,8 @@ export class NowPlayingComponent implements OnInit {
   }
 
   selectTrackInVideo(trackEvent: { time: string; media: GoogleApiYouTubeVideoResource }) {
-    this.store.dispatch(new AppPlayer.PlayVideo(trackEvent.media));
+    // this.store.dispatch(new AppPlayer.PlayVideo(trackEvent.media));
+    this.appPlayerService.play(trackEvent.media);
     this.nowPlaylistService.seekToTrack(trackEvent);
   }
 }

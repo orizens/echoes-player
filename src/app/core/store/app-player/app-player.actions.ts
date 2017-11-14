@@ -23,16 +23,16 @@ export class TogglePlayer implements Action {
   public type = ActionTypes.TOGGLE_PLAYER;
   constructor(public payload: boolean = true) {}
 }
+//
+// export class LoadNextTrack implements Action {
+//   public type = ActionTypes.LOAD_NEXT_TRACK;
+//   public payload = '';
+// }
 
-export class LoadNextTrack implements Action {
-  public type = ActionTypes.LOAD_NEXT_TRACK;
-  public payload = '';
-}
-
-export class LoadAndPlay implements Action {
-  public type = ActionTypes.LOAD_AND_PLAY;
-  constructor(public payload: GoogleApiYouTubeVideoResource) {}
-}
+// export class LoadAndPlay implements Action {
+//   public type = ActionTypes.LOAD_AND_PLAY;
+//   constructor(public payload: GoogleApiYouTubeVideoResource) {}
+// }
 
 export class PlayStarted implements Action {
   public type = ActionTypes.PLAY_STARTED;
@@ -62,8 +62,8 @@ export class Reset implements Action {
 export type Actions =
   | PlayVideo
   | TogglePlayer
-  | LoadNextTrack
-  | LoadAndPlay
+  // | LoadNextTrack
+  // | LoadAndPlay
   | PlayStarted
   | UpdateState
   | FullScreen

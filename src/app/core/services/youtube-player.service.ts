@@ -3,6 +3,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
 import * as AppPlayer from '../store/app-player';
+import { AppPlayerService } from './app-player.service';
 
 @Injectable()
 export class YoutubePlayerService {
@@ -11,7 +12,8 @@ export class YoutubePlayerService {
   constructor(
     private store: Store<EchoesState>,
     private zone: NgZone,
-    private playerActions: AppPlayer.ActionTypes
+    private playerActions: AppPlayer.ActionTypes,
+    private appPlayerService: AppPlayerService
   ) {}
 
   setupPlayer(player) {
@@ -40,7 +42,8 @@ export class YoutubePlayerService {
   }
 
   togglePlayer() {
-    this.store.dispatch(new AppPlayer.TogglePlayer(true));
+    // this.store.dispatch(new AppPlayer.TogglePlayer(true));
+    this.appPlayerService.togglePlayer();
   }
 
   onPlayerStateChange(event) {
@@ -58,7 +61,9 @@ export class YoutubePlayerService {
     if (state === YT.PlayerState.PLAYING) {
       // service.playerState = YT.PlayerState.PLAYING;
     }
-    this.store.dispatch(new AppPlayer.UpdateState(state));
+
+    // this.store.dispatch(new AppPlayer.UpdateState(state));
+    this.appPlayerService.updateState(state);
   }
 
   setSize(height, width) {

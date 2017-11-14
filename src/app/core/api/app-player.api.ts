@@ -7,6 +7,7 @@ import * as AppPlayer from '../store/app-player';
 import { NowPlaylistEffects } from '../effects/now-playlist.effects';
 import { NowPlaylistService } from '../services/now-playlist.service';
 import { UserProfile } from '../services/user-profile.service';
+import { AppPlayerService } from '../services/app-player.service';
 
 @Injectable()
 export class AppPlayerApi {
@@ -14,6 +15,7 @@ export class AppPlayerApi {
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects,
     private nowPlaylistService: NowPlaylistService,
+    private appPlayerService: AppPlayerService,
     private userProfile: UserProfile
   ) {}
 
@@ -49,7 +51,9 @@ export class AppPlayerApi {
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new AppPlayer.LoadAndPlay(media));
+    // this.store.dispatch(new AppPlayer.LoadAndPlay(media));
+    this.appPlayerService.loadAndPlay(media);
+
     // this.store.dispatch(new NowPlaylist.SelectVideo(media));
     this.nowPlaylistService.selectVideo(media);
   }
