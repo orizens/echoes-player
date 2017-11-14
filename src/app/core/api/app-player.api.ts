@@ -1,18 +1,20 @@
 import { Store } from '@ngrx/store';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { toPayload } from '@ngrx/effects';
 
 import { Injectable } from '@angular/core';
 import { EchoesState } from '../store';
 import * as AppPlayer from '../store/app-player';
-import * as NowPlaylist from '../store/now-playlist';
 import { NowPlaylistEffects } from '../effects/now-playlist.effects';
+import { NowPlaylistService } from '../services/now-playlist.service';
+import { UserProfile } from '../services/user-profile.service';
 
 @Injectable()
 export class AppPlayerApi {
   constructor(
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects,
-    private nowPlaylistActions: NowPlaylist.NowPlaylistActions
+    private nowPlaylistService: NowPlaylistService,
+    private userProfile: UserProfile
   ) {}
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
@@ -24,19 +26,41 @@ export class AppPlayerApi {
   }
 
   queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.store.dispatch(new NowPlaylist.LoadPlaylistAction(playlist.id));
+    // todo: move to now play list service?
+
+    // this.store.dispatch(new NowPlaylist.LoadPlaylistAction(playlist.id));
+
+    // @Effect()
+    //   loadPlaylist$ = this.actions$
+    //     .ofType(NowPlaylist.NowPlaylistActions.LOAD_PLAYLIST_START)
+    //     .map(toPayload)
+    //     .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
+    //     // .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId))
+    //     // .switchMap((playlistId: string) => this.userProfile.fetchAllPlaylistItems(playlistId))
+    //     // .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems))
+    //     .map(
+    //       (playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.LoadPlaylistEndAction(playlistItems)
+    //     );
+
+    this.userProfile.fetchAllPlaylistItems(playlist.id).subscribe((playlistItems: GoogleApiYouTubeVideoResource[]) => {
+      this.nowPlaylistService.queueVideos(playlistItems);
+      this.nowPlaylistService.selectVideo(playlistItems[0]);
+    });
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(new AppPlayer.LoadAndPlay(media));
-    this.store.dispatch(new NowPlaylist.SelectVideo(media));
+    // this.store.dispatch(new NowPlaylist.SelectVideo(media));
+    this.nowPlaylistService.selectVideo(media);
   }
 
   queueVideo(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new NowPlaylist.QueueVideo(media));
+    // this.store.dispatch(new NowPlaylist.QueueVideo(media));
+    this.nowPlaylistService.queueVideo2(media);
   }
 
   removeVideoFromPlaylist(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new NowPlaylist.RemoveVideo(media));
+    // this.store.dispatch(new NowPlaylist.RemoveVideo(media));
+    this.nowPlaylistService.removeVideo(media);
   }
 }
