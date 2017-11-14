@@ -49,15 +49,15 @@ export class UserProfileEffects {
         : this.userProfileActions.userProfileCompleted();
     });
 
-  @Effect()
-  getMorePlaylists$ = this.actions$
-    .ofType(UserProfileActions.UPDATE_NEXT_PAGE_TOKEN)
-    .map(toPayload)
-    .switchMap((pageToken: string) => {
-      this.userProfile.updatePageToken(pageToken);
-      return this.userProfile.getPlaylists(false);
-    })
-    .map(response => this.userProfileActions.updateData(response));
+  // @Effect()
+  // getMorePlaylists$ = this.actions$
+  //   .ofType(UserProfileActions.UPDATE_NEXT_PAGE_TOKEN)
+  //   .map(toPayload)
+  //   .switchMap((pageToken: string) => {
+  //     this.userProfile.updatePageToken(pageToken);
+  //     return this.userProfile.getPlaylists(false);
+  //   })
+  //   .map(response => this.userProfileActions.updateData(response));
 
   @Effect()
   userProfileRecieved$ = this.actions$

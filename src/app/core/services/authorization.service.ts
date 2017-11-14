@@ -16,6 +16,7 @@ import { UserProfileActions } from '../store/user-profile';
 import { EchoesState } from '../store/';
 import { CLIENT_ID } from './constants';
 import { GapiLoader } from './gapi-loader.service';
+import { UserProfile } from './user-profile.service';
 
 @Injectable()
 export class Authorization {
@@ -36,6 +37,7 @@ export class Authorization {
     private store: Store<EchoesState>,
     private gapiLoader: GapiLoader,
     private userProfileActions: UserProfileActions,
+    private userProfileService: UserProfile,
     public http: Http
   ) {
     this.loadAuth();
@@ -97,8 +99,13 @@ export class Authorization {
     const MILLISECOND = 1000;
     const expireTime = 60 * 5;
     const expireTimeInMs = expireTime * MILLISECOND;
-    this.store.dispatch(this.userProfileActions.updateToken(token));
-    this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
+
+    // this.store.dispatch(this.userProfileActions.updateToken(token));
+    this.userProfileService.updateToken(token);
+
+    // this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
+    this.userProfileService.userProfileRecieved(profile);
+
     this.disposeAutoSignIn();
     this.autoSignInTimer = this.startTimerToNextAuth(expireTimeInMs);
   }
@@ -131,7 +138,8 @@ export class Authorization {
     this.disposeAutoSignIn();
     return Observable.fromPromise(this._googleAuth.signOut())
       .subscribe(response => {
-        this.store.dispatch(this.userProfileActions.signOut());
+        // this.store.dispatch(this.userProfileActions.signOut());
+        this.userProfileService.signOut();
       });
   }
 

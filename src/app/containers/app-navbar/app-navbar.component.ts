@@ -11,8 +11,8 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { getUser$, getUserPlaylists$ } from '../../core/store/user-profile/user-profile.selectors';
-import { UserProfile, Authorization } from '../../core/services';
+import { getUser$} from '../../core/store/user-profile/user-profile.selectors';
+import { Authorization } from '../../core/services';
 import * as AppLayout from '../../core/store/app-layout';
 import { EchoesState } from '../../core/store';
 
@@ -69,7 +69,6 @@ export class AppNavbarComponent implements OnInit {
 
   constructor(
     private authorization: Authorization,
-    private userProfile: UserProfile,
     private store: Store<EchoesState>
   ) { }
 
