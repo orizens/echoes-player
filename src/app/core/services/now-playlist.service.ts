@@ -4,17 +4,31 @@ import { Observable } from 'rxjs/Observable';
 import { EchoesState } from '../store';
 import * as NowPlaylist from '../store/now-playlist';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { INowPlaylist } from '../store/now-playlist/now-playlist.reducer';
+
+const INIT_STATE: INowPlaylist = {
+  videos: [],
+  selectedId: '',
+  filter: '',
+  repeat: false
+};
 
 @Injectable()
 export class NowPlaylistService {
-  public playlist$: Observable<NowPlaylist.INowPlaylist>;
+  public playlist$: Observable<INowPlaylist>;
 
-  constructor(
-    public store: Store<EchoesState>,
-    private youtubeVideosInfo: YoutubeVideosInfo,
-    private nowPlaylistActions: NowPlaylist.NowPlaylistActions
-  ) {
-    this.playlist$ = this.store.let(NowPlaylist.getNowPlaylist$);
+  private playlistSubject: BehaviorSubject<INowPlaylist>;
+
+
+  constructor(public store: Store<EchoesState>,
+              private youtubeVideosInfo: YoutubeVideosInfo,
+              private nowPlaylistActions: NowPlaylist.NowPlaylistActions) {
+
+    // this.playlist$ = this.store.let(NowPlaylist.getNowPlaylist$);
+
+    this.playlistSubject = new BehaviorSubject(INIT_STATE);
+    this.playlist$ = this.playlistSubject.asObservable();
   }
 
   queueVideo(mediaId: string) {

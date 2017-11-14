@@ -257,6 +257,7 @@ export class PlayerSearchService {
     if (!search.isSearching) {
       this.playerSearchSubject.next({ ...search, isSearching: true });
 
+      // todo: refactor
       if (search.searchType === CSearchTypes.VIDEO) {
         this.youtubeSearch.searchMore(search.pageToken.next)
           .searchFor(
