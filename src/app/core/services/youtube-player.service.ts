@@ -1,20 +1,14 @@
-import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '../store';
-import * as AppPlayer from '../store/app-player';
-import { AppPlayerService } from './app-player.service';
 
 @Injectable()
 export class YoutubePlayerService {
   public player: YT.Player;
 
-  constructor(
-    private store: Store<EchoesState>,
-    private zone: NgZone,
-    private playerActions: AppPlayer.ActionTypes,
-    private appPlayerService: AppPlayerService
-  ) {}
+  constructor(private store: Store<EchoesState>,
+              private zone: NgZone) {
+  }
 
   setupPlayer(player) {
     this.player = player;
@@ -41,11 +35,6 @@ export class YoutubePlayerService {
     this.zone.runOutsideAngular(() => this.player.seekTo(seconds, true));
   }
 
-  togglePlayer() {
-    // this.store.dispatch(new AppPlayer.TogglePlayer(true));
-    this.appPlayerService.togglePlayer();
-  }
-
   onPlayerStateChange(event) {
     const state = event.data;
     // let autoNext = false;
@@ -63,7 +52,6 @@ export class YoutubePlayerService {
     }
 
     // this.store.dispatch(new AppPlayer.UpdateState(state));
-    this.appPlayerService.updateState(state);
   }
 
   setSize(height, width) {

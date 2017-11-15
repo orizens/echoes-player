@@ -34,7 +34,6 @@ export class Authorization {
 
   constructor(
     private zone: NgZone,
-    private store: Store<EchoesState>,
     private gapiLoader: GapiLoader,
     private userProfileActions: UserProfileActions,
     private userProfileService: UserProfile,
@@ -136,11 +135,7 @@ export class Authorization {
 
   signOut () {
     this.disposeAutoSignIn();
-    return Observable.fromPromise(this._googleAuth.signOut())
-      .subscribe(response => {
-        // this.store.dispatch(this.userProfileActions.signOut());
-        this.userProfileService.signOut();
-      });
+    return Observable.fromPromise(this._googleAuth.signOut());
   }
 
   private disposeAutoSignIn() {

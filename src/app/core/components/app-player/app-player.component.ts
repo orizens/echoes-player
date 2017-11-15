@@ -88,6 +88,12 @@ export class AppPlayerComponent implements OnInit {
 
   updatePlayerState(event) {
     this.playerService.onPlayerStateChange(event);
+
+    // removd circular dependency
+    this.appPlayerService.updateState(event.data);
+
+
+
     if (event.data === YT.PlayerState.ENDED) {
       // this.store.dispatch(this.playerActions.loadNextTrack());
       this.nowPlaylistService.trackEnded();
@@ -103,7 +109,8 @@ export class AppPlayerComponent implements OnInit {
   }
 
   togglePlayer() {
-    this.playerService.togglePlayer();
+    // this.playerService.togglePlayer();
+    this.appPlayerService.togglePlayer();
   }
 
   toggleFullScreen() {

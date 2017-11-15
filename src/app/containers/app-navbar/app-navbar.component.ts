@@ -1,20 +1,20 @@
-import { getAppVersion$, getAppThemes } from '../../core/store/app-layout';
+import * as AppLayout from '../../core/store/app-layout';
+import { getAppThemes, getAppVersion$ } from '../../core/store/app-layout';
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  OnInit,
   Input,
+  OnInit,
   Output,
-  ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { getUser$} from '../../core/store/user-profile/user-profile.selectors';
+import { getUser$ } from '../../core/store/user-profile/user-profile.selectors';
 import { Authorization } from '../../core/services';
-import * as AppLayout from '../../core/store/app-layout';
 import { EchoesState } from '../../core/store';
+import { UserProfile } from '../../core/services/user-profile.service';
 
 @Component({
   selector: 'app-navbar',
@@ -69,6 +69,7 @@ export class AppNavbarComponent implements OnInit {
 
   constructor(
     private authorization: Authorization,
+    private userProfileService: UserProfile,
     private store: Store<EchoesState>
   ) { }
 
@@ -80,7 +81,10 @@ export class AppNavbarComponent implements OnInit {
   }
 
   signOutUser() {
-    this.authorization.signOut();
+    this.authorization.signOut().subscribe(response => {
+      // this.store.dispatch(this.userProfileActions.signOut());
+      this.userProfileService.signOut();
+    });
     this.signOut.next();
   }
 
