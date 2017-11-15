@@ -59,10 +59,10 @@ export class UserProfileEffects {
   //   })
   //   .map(response => this.userProfileActions.updateData(response));
 
-  @Effect()
-  userProfileRecieved$ = this.actions$
-    .ofType(UserProfileActions.USER_PROFILE_RECIEVED)
-    .map(toPayload)
-    .map(profile => this.userProfile.toUserJson(profile))
-    .map((profile: GoogleBasicProfile) => this.userProfileActions.updateUserProfile(profile));
+  // @Effect()
+  // userProfileRecieved$ = this.actions$
+  //   .ofType(UserProfileActions.USER_PROFILE_RECIEVED)
+  //   .map(toPayload)
+  //   .map(profile => this.userProfile.toUserJson(profile))
+  //   .map((profile: GoogleBasicProfile) => this.userProfileActions.updateUserProfile(profile));
 }

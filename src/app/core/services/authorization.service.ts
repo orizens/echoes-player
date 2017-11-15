@@ -12,6 +12,7 @@ import 'rxjs/add/operator/timeInterval';
 import 'rxjs/add/operator/retry';
 import { CLIENT_ID } from './constants';
 import { GapiLoader } from './gapi-loader.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class Authorization {
@@ -19,6 +20,9 @@ export class Authorization {
   private _scope = 'profile email https://www.googleapis.com/auth/youtube';
   private _accessToken: string;
   private autoSignInTimer: Subscription;
+
+  public authData$: Observable<gapi.auth2.GoogleUser>;
+  private authDataSubject: BehaviorSubject<gapi.auth2.GoogleUser>;
 
   set accessToken(value) {
     this._accessToken = value;
@@ -30,6 +34,9 @@ export class Authorization {
   constructor(private zone: NgZone,
               private gapiLoader: GapiLoader,
               public http: Http) {
+    this.authDataSubject = new BehaviorSubject(null);
+    this.authData$ = this.authDataSubject.asObservable();
+
     this.loadAuth();
   }
 
@@ -85,17 +92,13 @@ export class Authorization {
   handleSuccessLogin(googleUser: gapi.auth2.GoogleUser) {
     const authResponse = googleUser.getAuthResponse();
     const token = authResponse.access_token;
-    const profile = googleUser.getBasicProfile();
     const MILLISECOND = 1000;
     const expireTime = 60 * 5;
     const expireTimeInMs = expireTime * MILLISECOND;
 
-    // this.store.dispatch(this.userProfileActions.updateToken(token));
     this.accessToken = token;
-    // this.userProfileService.updateToken(token);
 
-    // this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
-    // this.userProfileService.userProfileRecieved(profile);
+    this.authDataSubject.next(googleUser);
 
     this.disposeAutoSignIn();
     this.autoSignInTimer = this.startTimerToNextAuth(expireTimeInMs);
@@ -127,7 +130,9 @@ export class Authorization {
 
   signOut () {
     this.disposeAutoSignIn();
-    return Observable.fromPromise(this._googleAuth.signOut());
+    Observable.fromPromise(this._googleAuth.signOut()).subscribe(_ => {
+      this.authDataSubject.next(null);
+    });
   }
 
   private disposeAutoSignIn() {

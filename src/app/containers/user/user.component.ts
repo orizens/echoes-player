@@ -29,13 +29,15 @@ import { YoutubeApiService } from '../../core/services/youtube-api.service';
   `
 })
 export class UserComponent implements OnInit {
-  playlists$ = this.store.let(getUserPlaylists$);
-  currentPlaylist$ = this.store.let(getUserViewPlaylist$);
-  isSignedIn$ = this.store.let(getIsUserSignedIn$);
+  // playlists$ = this.store.let(getUserPlaylists$);
+  // currentPlaylist$ = this.store.let(getUserViewPlaylist$);
+  // isSignedIn$ = this.store.let(getIsUserSignedIn$);
+  isSignedIn$ = this.userProfile.userProfile$.map(user => user.access_token !== '');
 
   constructor(
     private authorization: Authorization,
     public youtubeApiService: YoutubeApiService,
+    public userProfile: UserProfile,
 
     public store: Store<EchoesState>
   ) {}

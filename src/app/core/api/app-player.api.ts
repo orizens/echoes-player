@@ -8,6 +8,7 @@ import { NowPlaylistEffects } from '../effects/now-playlist.effects';
 import { NowPlaylistService } from '../services/now-playlist.service';
 import { UserProfile } from '../services/user-profile.service';
 import { AppPlayerService } from '../services/app-player.service';
+import { YoutubeApiService } from '../services/youtube-api.service';
 
 @Injectable()
 export class AppPlayerApi {
@@ -16,7 +17,7 @@ export class AppPlayerApi {
     private nowPlaylistEffects: NowPlaylistEffects,
     private nowPlaylistService: NowPlaylistService,
     private appPlayerService: AppPlayerService,
-    private userProfile: UserProfile
+    private youtubeApiService: YoutubeApiService
   ) {}
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
@@ -44,7 +45,7 @@ export class AppPlayerApi {
     //       (playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.LoadPlaylistEndAction(playlistItems)
     //     );
 
-    this.userProfile.fetchAllPlaylistItems(playlist.id).subscribe((playlistItems: GoogleApiYouTubeVideoResource[]) => {
+    this.youtubeApiService.fetchAllPlaylistItems(playlist.id).subscribe((playlistItems: GoogleApiYouTubeVideoResource[]) => {
       this.nowPlaylistService.queueVideos(playlistItems);
       this.nowPlaylistService.selectVideo(playlistItems[0]);
     });

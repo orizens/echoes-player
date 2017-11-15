@@ -55,7 +55,9 @@ import { UserProfile } from '../../core/services/user-profile.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNavbarComponent implements OnInit {
-  user$ = this.store.let(getUser$);
+  // user$ = this.store.let(getUser$);
+  user$ = this.userProfileService.userProfile$;
+
   appVersion$ = this.store.let(getAppVersion$);
   themes$ = this.store.select(getAppThemes);
 
@@ -81,10 +83,11 @@ export class AppNavbarComponent implements OnInit {
   }
 
   signOutUser() {
-    this.authorization.signOut().subscribe(response => {
-      // this.store.dispatch(this.userProfileActions.signOut());
-      this.userProfileService.signOut();
-    });
+    this.authorization.signOut();
+    // this.authorization.signOut().subscribe(response => {
+    //   // this.store.dispatch(this.userProfileActions.signOut());
+    //   this.userProfileService.signOut();
+    // });
     this.signOut.next();
   }
 

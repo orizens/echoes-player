@@ -1,6 +1,5 @@
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { Http } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
 
 import 'rxjs/add/operator/switchMap';
@@ -30,12 +29,10 @@ export class UserProfile {
   public userProfile$: Observable<IUserProfile>;
   private userProfileSubject: BehaviorSubject<IUserProfile>;
 
-  constructor(
-    private zone: NgZone,
-    private youtubeVideosInfo: YoutubeVideosInfo,
-    public youtubeApiService: YoutubeApiService,
-    private authorization: Authorization
-  ) {
+  constructor(private zone: NgZone,
+              private youtubeVideosInfo: YoutubeVideosInfo,
+              public youtubeApiService: YoutubeApiService,
+              private authorization: Authorization) {
 
     this.userProfileSubject = new BehaviorSubject(INIT_STATE);
     this.userProfile$ = this.userProfileSubject.asObservable();
@@ -43,11 +40,20 @@ export class UserProfile {
     // TODO - extract to a Model / Reducer?
     // Reducer - because nextPageToken is changed
     // Model - new _config should be recreated easily with a new nextPageToken
-
+    authorization.authData$.subscribe(googleUser => {
+      if (googleUser === null) {
+        this.userProfileSubject.next({
+          ...INIT_STATE,
+        });
+      } else {
+        this.updateToken(googleUser.getAuthResponse().access_token);
+        this.userProfileRecieved(googleUser.getBasicProfile());
+      }
+    });
   }
 
   getPlaylists(isNewPage: boolean) {
-    // const hasAccessToken = this.playlists.hasToken();
+    const hasAccessToken = this.youtubeApiService.hasToken();
     // if (!hasAccessToken) {
     //   return;
     // }
@@ -59,67 +65,7 @@ export class UserProfile {
     return this.youtubeApiService.getPlaylists();
   }
 
-  fetchPlaylist(playlistId: string) {
-    return this.youtubeApiService.getPlaylist(playlistId);
-  }
-
-  fetchPlaylistItems(playlistId: string, pageToken = '') {
-    // const token = this.playlists.config.get('access_token');
-    // if ('' === pageToken) {
-    //   this.playlistInfo.config.delete('pageToken');
-    // } else {
-    //   this.playlistInfo.config.set('pageToken', pageToken);
-    // }
-    return this.youtubeApiService.getPlaylistItems(playlistId)
-      .switchMap(response => {
-        const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
-        return this.youtubeVideosInfo.api.getVideos(videoIds);
-      });
-  }
-
-  fetchAllPlaylistItems(playlistId: string) {
-    let items = [];
-    const subscriptions: Subscription[] = [];
-    const items$ = new Subject();
-    let nextPageToken = '';
-    const fetchMetadata = (response) => {
-      const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
-      nextPageToken = response.nextPageToken;
-      return this.youtubeVideosInfo.api.getVideos(videoIds);
-    };
-    const collectItems = (videos) => {
-      items = [...items, ...videos];
-      if (nextPageToken) {
-        fetchItems(playlistId, nextPageToken);
-      } else {
-        items$.next(items);
-        subscriptions.forEach(_s => _s.unsubscribe());
-        items$.complete();
-      }
-    };
-    const fetchItems = (id, token) => {
-      // this.playlistInfo.config.set('pageToken', token);
-      const sub = this.youtubeApiService.getPlaylistItems(id)
-        .switchMap((response) => fetchMetadata(response))
-        .subscribe((response) => collectItems(response));
-      subscriptions.push(sub);
-      return sub;
-    };
-
-    fetchItems(playlistId, '');
-    return items$.take(1);
-  }
-
-  toUserJson (profile): GoogleBasicProfile {
-    const _profile: GoogleBasicProfile = {};
-    if (profile) {
-      _profile.imageUrl = profile.getImageUrl();
-      _profile.name = profile.getName();
-    }
-    return _profile;
-  }
-
-  fetchMetadata (items: GoogleApiYouTubeVideoResource[]) {
+  fetchMetadata(items: GoogleApiYouTubeVideoResource[]) {
     const videoIds = items.map(video => video.id).join(',');
     return this.youtubeVideosInfo.api.getVideos(videoIds);
   }
@@ -141,20 +87,26 @@ export class UserProfile {
     //     )
     //     .map(response => this.userProfileActions.updateData(response));
 
-    // this.userProfileSubject.next({
-    //   ...this.userProfileSubject.getValue(),
-    //   access_token: token,
-    //   playlists: []
-    // });
+    this.userProfileSubject.next({
+      ...this.userProfileSubject.getValue(),
+      access_token: token,
+      playlists: []
+    });
 
-    // ???
-    // this.authorization.accessToken = token;
-
-    this.getPlaylists(true).catch((error: Error) => {
+    this.youtubeApiService.getPlaylists2(true).catch((error: Error) => {
       console.log(`error in fetching user's playlists ${error}`);
       return of(error);
     }).subscribe(response => this.updateData(response));
   }
+
+  // signOut() {
+  //   // case UserProfileActions.LOG_OUT:
+  //   //   return { ...initialUserState };
+  //
+  //   this.userProfileSubject.next({
+  //     ...INIT_STATE,
+  //   });
+  // }
 
   private updateData(response: any) {
     // case UserProfileActions.UPDATE:
@@ -221,7 +173,7 @@ export class UserProfile {
       nextPageToken
     });
 
-    this.getPlaylists(false).subscribe(response => {
+    this.youtubeApiService.getPlaylists2(false).subscribe(response => {
       // this.userProfileActions.updateData(response));
       // ??? again and again and again?
       this.updateData(response);
@@ -229,7 +181,7 @@ export class UserProfile {
   }
 
   private userProfileCompleted() {
-      // ??? what is this for? too many action placeholders
+    // ??? what is this for? too many action placeholders
   }
 
   userProfileRecieved(profile: gapi.auth2.BasicProfile) {
@@ -240,7 +192,7 @@ export class UserProfile {
     //     .map(profile => this.userProfile.toUserJson(profile))
     //     .map((profile: GoogleBasicProfile) => this.userProfileActions.updateUserProfile(profile));
 
-    // this.updateUserProfile(this.toUserJson(profile));
+    this.updateUserProfile(this.toUserJson(profile));
   }
 
 
@@ -254,13 +206,14 @@ export class UserProfile {
     });
   }
 
-  signOut() {
-    // case UserProfileActions.LOG_OUT:
-    //   return { ...initialUserState };
-
-    this.userProfileSubject.next({
-      ...INIT_STATE,
-    });
+  private toUserJson(profile): GoogleBasicProfile {
+    const _profile: GoogleBasicProfile = {};
+    if (profile) {
+      _profile.imageUrl = profile.getImageUrl();
+      _profile.name = profile.getName();
+    }
+    return _profile;
   }
+
 
 }

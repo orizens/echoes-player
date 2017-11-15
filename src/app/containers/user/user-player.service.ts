@@ -1,21 +1,17 @@
-import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import { NowPlaylistService, UserProfile } from '../../core/services';
-import { EchoesState } from '../../core/store';
-import * as AppPlayer from '../../core/store/app-player';
+import { NowPlaylistService } from '../../core/services';
 import { AppPlayerService } from '../../core/services/app-player.service';
+import { YoutubeApiService } from '../../core/services/youtube-api.service';
 
 @Injectable()
 export class UserPlayerService {
-  constructor(
-    private nowPlaylistService: NowPlaylistService,
-    private appPlayerService: AppPlayerService,
-    private userProfile: UserProfile,
-    private store: Store<EchoesState>
-  ) {}
+  constructor(private nowPlaylistService: NowPlaylistService,
+              private appPlayerService: AppPlayerService,
+              private youtubeApiService: YoutubeApiService) {
+  }
 
   playSelectedPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.userProfile
+    this.youtubeApiService
       .fetchPlaylistItems(playlist.id, '')
       .subscribe((items: GoogleApiYouTubeVideoResource[]) => {
         // this.store.dispatch(new NowPlaylist.QueueVideos(items));
@@ -30,7 +26,7 @@ export class UserPlayerService {
   }
 
   queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.userProfile
+    this.youtubeApiService
       .fetchPlaylistItems(playlist.id, '')
       .subscribe((items: GoogleApiYouTubeVideoResource[]) => {
         // this.store.dispatch(new NowPlaylist.QueueVideos(items));

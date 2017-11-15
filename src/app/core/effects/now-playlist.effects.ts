@@ -62,17 +62,17 @@ export class NowPlaylistEffects {
     .do(trackEvent => this.playerService.seekTo(this.mediaParser.toNumber(trackEvent.time)));
   // .catch((error) => of({ type: 'ERROR_IN_SEEK', payload: error }));
 
-  @Effect()
-  loadPlaylist$ = this.actions$
-    .ofType(NowPlaylist.NowPlaylistActions.LOAD_PLAYLIST_START)
-    .map(toPayload)
-    .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
-    // .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId))
-    // .switchMap((playlistId: string) => this.userProfile.fetchAllPlaylistItems(playlistId))
-    // .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems))
-    .map(
-      (playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.LoadPlaylistEndAction(playlistItems)
-    );
+  // @Effect()
+  // loadPlaylist$ = this.actions$
+  //   .ofType(NowPlaylist.NowPlaylistActions.LOAD_PLAYLIST_START)
+  //   .map(toPayload)
+  //   .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
+  //   // .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId))
+  //   // .switchMap((playlistId: string) => this.userProfile.fetchAllPlaylistItems(playlistId))
+  //   // .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems))
+  //   .map(
+  //     (playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.LoadPlaylistEndAction(playlistItems)
+  //   );
 
   @Effect()
   addPlaylistItems$ = this.actions$

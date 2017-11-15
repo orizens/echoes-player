@@ -2,6 +2,7 @@ import { UserPlayerService } from '../user-player.service';
 import { EchoesState } from '../../../core/store';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { UserProfile } from '../../../core/services/user-profile.service';
 
 @Component({
   selector: 'playlists',
@@ -20,11 +21,11 @@ import { Store } from '@ngrx/store';
   `
 })
 export class PlaylistsComponent implements OnInit {
-  playlists$ = this.store.select(state => state.user.playlists);
+  playlists$ = this.userProfile.userProfile$.map(user => user.playlists);
 
-  constructor(
-    private store: Store<EchoesState>,
-    private userPlayerService: UserPlayerService
+  constructor(private store: Store<EchoesState>,
+              private userPlayerService: UserPlayerService,
+              private userProfile: UserProfile
   ) { }
 
   ngOnInit() { }

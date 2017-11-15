@@ -5,6 +5,8 @@ import { Authorization } from './authorization.service';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/fromPromise';
+import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
 
 interface YoutubeApiServiceOptions {
   url?: string;
@@ -55,6 +57,53 @@ export class YoutubeApiService {
     return this.authService && this.authService.accessToken.length > 0;
   }
 
+  fetchPlaylistItems(playlistId: string, pageToken = '') {
+    // const token = this.playlists.config.get('access_token');
+    // if ('' === pageToken) {
+    //   this.playlistInfo.config.delete('pageToken');
+    // } else {
+    //   this.playlistInfo.config.set('pageToken', pageToken);
+    // }
+    return this.getPlaylistItems(playlistId)
+      .switchMap(response => {
+        const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
+        return this.getVideos(videoIds);
+      });
+  }
+
+  fetchAllPlaylistItems(playlistId: string) {
+    let items = [];
+    const subscriptions: Subscription[] = [];
+    const items$ = new Subject();
+    let nextPageToken = '';
+    const fetchMetadata = (response) => {
+      const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
+      nextPageToken = response.nextPageToken;
+      return this.getVideos(videoIds);
+    };
+    const collectItems = (videos) => {
+      items = [...items, ...videos];
+      if (nextPageToken) {
+        fetchItems(playlistId, nextPageToken);
+      } else {
+        items$.next(items);
+        subscriptions.forEach(_s => _s.unsubscribe());
+        items$.complete();
+      }
+    };
+    const fetchItems = (id, token) => {
+      // this.playlistInfo.config.set('pageToken', token);
+      const sub = this.getPlaylistItems(id)
+        .switchMap((response) => fetchMetadata(response))
+        .subscribe((response) => collectItems(response));
+      subscriptions.push(sub);
+      return sub;
+    };
+
+    fetchItems(playlistId, '');
+    return items$.take(1);
+  }
+
   getPlaylists2(isNewPage: boolean) {
     // const hasAccessToken = this.playlists.hasToken();
     // if (!hasAccessToken) {
@@ -78,15 +127,6 @@ export class YoutubeApiService {
 
     return config;
   }
-
-  newConfig(config) {
-    Object.keys(config).forEach(option => {
-      config.set(option, config[option]);
-    });
-
-    return config;
-  }
-
   getPlaylists() {
     const apiOptions = this.playlistsOptions;
 

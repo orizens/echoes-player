@@ -15,7 +15,7 @@ describe('PlaylistView Component', () => {
       'queuePlaylist',
       'playVideo',
       'queueVideo',
-      'fetchPlaylist',
+      // 'fetchPlaylist',
       'fetchPlaylistVideos',
       'fetchPlaylistHeader'
     ]);
