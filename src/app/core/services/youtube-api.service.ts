@@ -27,7 +27,6 @@ export class YoutubeApiService {
 
   private playlistsOptions: YoutubeApiServiceOptions = {
     url: 'https://www.googleapis.com/youtube/v3/playlists',
-    http: this.http,
     config: {
       mine: 'true',
       part: 'snippet,id,contentDetails'
@@ -36,7 +35,6 @@ export class YoutubeApiService {
 
   private playlistOptions: YoutubeApiServiceOptions = {
     url: 'https://www.googleapis.com/youtube/v3/playlists',
-    http: this.http,
     idKey: 'id',
     config: {
       part: 'snippet,id,contentDetails'
@@ -55,6 +53,19 @@ export class YoutubeApiService {
 
   hasToken(): boolean {
     return this.authService && this.authService.accessToken.length > 0;
+  }
+
+  getPlaylists2(isNewPage: boolean) {
+    // const hasAccessToken = this.playlists.hasToken();
+    // if (!hasAccessToken) {
+    //   return;
+    // }
+    // if (isNewPage) {
+    //   this.playlists.resetPageToken();
+    // }
+    // TODO - extract to a reducer or/and an @Effect - SEARCH_START, SEARCH_COMPLETED
+
+    return this.getPlaylists();
   }
 
   defaaultConfig() {
@@ -79,13 +90,13 @@ export class YoutubeApiService {
   getPlaylists() {
     const apiOptions = this.playlistsOptions;
 
-    let config = this.defaaultConfig();
+    const config = this.defaaultConfig();
     let url;
 
     if (apiOptions) {
       url = apiOptions.url;
       if (apiOptions.config) {
-        config = this.newConfig(apiOptions.config);
+         this.mergeParams(apiOptions.config, config);
       }
     }
 
@@ -106,8 +117,13 @@ export class YoutubeApiService {
     return this.list(playlistId, this.playlistInfoOptions);
   }
 
+  private mergeParams (source, target: URLSearchParams) {
+    Object.keys(source)
+      .forEach(param => target.set(param, source[param]));
+  }
+
   private list(id, apiOptions) {
-    let config = this.defaaultConfig();
+    const config = this.defaaultConfig();
     let idKey;
     let url;
 
@@ -115,7 +131,7 @@ export class YoutubeApiService {
       url = apiOptions.url;
       idKey = apiOptions.idKey || '';
       if (apiOptions.config) {
-        config = this.newConfig(apiOptions.config);
+        this.mergeParams(apiOptions.config, config);
       }
     }
 
@@ -155,7 +171,7 @@ export class YoutubeApiService {
       }
     };
 
-    let config = this.defaaultConfig();
+    const config = this.defaaultConfig();
     let idKey;
     let url;
 
@@ -163,7 +179,7 @@ export class YoutubeApiService {
       url = apiOptions.url;
       idKey = apiOptions.idKey || '';
       if (apiOptions.config) {
-        config = this.newConfig(apiOptions.config);
+        this.mergeParams(apiOptions.config, config);
       }
     }
 

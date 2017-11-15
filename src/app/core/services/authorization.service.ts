@@ -10,13 +10,8 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/timeInterval';
 import 'rxjs/add/operator/retry';
-
-import { Store } from '@ngrx/store';
-import { UserProfileActions } from '../store/user-profile';
-import { EchoesState } from '../store/';
 import { CLIENT_ID } from './constants';
 import { GapiLoader } from './gapi-loader.service';
-import { UserProfile } from './user-profile.service';
 
 @Injectable()
 export class Authorization {
@@ -32,13 +27,9 @@ export class Authorization {
     return this._accessToken;
   }
 
-  constructor(
-    private zone: NgZone,
-    private gapiLoader: GapiLoader,
-    private userProfileActions: UserProfileActions,
-    private userProfileService: UserProfile,
-    public http: Http
-  ) {
+  constructor(private zone: NgZone,
+              private gapiLoader: GapiLoader,
+              public http: Http) {
     this.loadAuth();
   }
 
@@ -100,10 +91,11 @@ export class Authorization {
     const expireTimeInMs = expireTime * MILLISECOND;
 
     // this.store.dispatch(this.userProfileActions.updateToken(token));
-    this.userProfileService.updateToken(token);
+    this.accessToken = token;
+    // this.userProfileService.updateToken(token);
 
     // this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
-    this.userProfileService.userProfileRecieved(profile);
+    // this.userProfileService.userProfileRecieved(profile);
 
     this.disposeAutoSignIn();
     this.autoSignInTimer = this.startTimerToNextAuth(expireTimeInMs);

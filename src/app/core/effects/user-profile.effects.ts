@@ -18,19 +18,19 @@ export class UserProfileEffects {
     private userProfile: UserProfile,
     private auth: Authorization
   ) {}
-
-  @Effect()
-  updateToken$ = this.actions$
-    .ofType(UserProfileActions.UPDATE_TOKEN)
-    .map(toPayload)
-    .map((token: string) => (this.auth.accessToken = token))
-    .switchMap(token =>
-      this.userProfile.getPlaylists(true).catch((error: Error) => {
-        console.log(`error in fetching user's playlists ${error}`);
-        return of(error);
-      })
-    )
-    .map(response => this.userProfileActions.updateData(response));
+  //
+  // @Effect()
+  // updateToken$ = this.actions$
+  //   .ofType(UserProfileActions.UPDATE_TOKEN)
+  //   .map(toPayload)
+  //   .map((token: string) => (this.auth.accessToken = token))
+  //   .switchMap(token =>
+  //     this.userProfile.getPlaylists(true).catch((error: Error) => {
+  //       console.log(`error in fetching user's playlists ${error}`);
+  //       return of(error);
+  //     })
+  //   )
+  //   .map(response => this.userProfileActions.updateData(response));
 
   @Effect()
   addUserPlaylists$ = this.actions$

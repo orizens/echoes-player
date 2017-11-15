@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { UserProfile, Authorization } from '../../core/services';
 import { EchoesState } from '../../core/store';
 import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../../core/store/user-profile/user-profile.selectors';
+import { YoutubeApiService } from '../../core/services/youtube-api.service';
 
 
 @Component({
@@ -33,8 +34,9 @@ export class UserComponent implements OnInit {
   isSignedIn$ = this.store.let(getIsUserSignedIn$);
 
   constructor(
-    private userProfile: UserProfile,
     private authorization: Authorization,
+    public youtubeApiService: YoutubeApiService,
+
     public store: Store<EchoesState>
   ) {}
 
@@ -45,6 +47,6 @@ export class UserComponent implements OnInit {
   }
 
   getPlaylists () {
-    return this.userProfile.getPlaylists(true);
+    return this.youtubeApiService.getPlaylists2(true);
   }
 }

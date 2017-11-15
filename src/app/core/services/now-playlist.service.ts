@@ -123,7 +123,7 @@ export class NowPlaylistService {
 
   // ???
   queueVideo(mediaId: string) {
-    return this.youtubeVideosInfo.api.list(mediaId).map(items => items[0]);
+    return this.youtubeVideosInfo.api.getVideos(mediaId).map(items => items[0]);
   }
 
   queueVideo2(media) {
@@ -308,4 +308,5 @@ export class NowPlaylistService {
     this.updateIndexByMedia(trackEvent.media.id);
 
     this.playerService.seekTo(this.mediaParser.toNumber(trackEvent.time));
+  }
 }

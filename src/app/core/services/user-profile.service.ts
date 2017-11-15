@@ -141,13 +141,14 @@ export class UserProfile {
     //     )
     //     .map(response => this.userProfileActions.updateData(response));
 
-    this.userProfileSubject.next({
-      ...this.userProfileSubject.getValue(),
-      access_token: token,
-      playlists: []
-    });
+    // this.userProfileSubject.next({
+    //   ...this.userProfileSubject.getValue(),
+    //   access_token: token,
+    //   playlists: []
+    // });
 
-    this.authorization.accessToken = token;
+    // ???
+    // this.authorization.accessToken = token;
 
     this.getPlaylists(true).catch((error: Error) => {
       console.log(`error in fetching user's playlists ${error}`);
@@ -220,7 +221,6 @@ export class UserProfile {
       nextPageToken
     });
 
-    this.updatePageToken(nextPageToken);
     this.getPlaylists(false).subscribe(response => {
       // this.userProfileActions.updateData(response));
       // ??? again and again and again?
@@ -240,7 +240,7 @@ export class UserProfile {
     //     .map(profile => this.userProfile.toUserJson(profile))
     //     .map((profile: GoogleBasicProfile) => this.userProfileActions.updateUserProfile(profile));
 
-    this.updateUserProfile(this.toUserJson(profile));
+    // this.updateUserProfile(this.toUserJson(profile));
   }
 
 
@@ -263,7 +263,4 @@ export class UserProfile {
     });
   }
 
-  private updatePageToken(pageToken: string) {
-    this.playlists.config.set('pageToken', pageToken);
-  }
 }
