@@ -48,7 +48,7 @@ export class UserComponent implements OnInit {
     this.authorization.signIn();
   }
 
-  getPlaylists () {
-    return this.youtubeApiService.getPlaylists2(true);
-  }
+  // getPlaylists () {
+  //   return this.youtubeApiService.getPlaylists2(true);
+  // }
 }

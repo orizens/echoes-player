@@ -43,10 +43,7 @@ export class YoutubeApiService {
     }
   };
 
-
-  authorize = false;
   isSearching = false;
-  nextPageToken: string;
 
   // constructor(options: YoutubeApiServiceOptions, private authService?: Authorization) {
   constructor(private http: Http,
@@ -57,14 +54,8 @@ export class YoutubeApiService {
     return this.authService && this.authService.accessToken.length > 0;
   }
 
-  fetchPlaylistItems(playlistId: string, pageToken = '') {
-    // const token = this.playlists.config.get('access_token');
-    // if ('' === pageToken) {
-    //   this.playlistInfo.config.delete('pageToken');
-    // } else {
-    //   this.playlistInfo.config.set('pageToken', pageToken);
-    // }
-    return this.getPlaylistItems(playlistId)
+  fetchPlaylistItems(playlistId: string, pageToken?) {
+    return this.getPlaylistItems(playlistId, pageToken)
       .switchMap(response => {
         const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
         return this.getVideos(videoIds);
@@ -91,30 +82,16 @@ export class YoutubeApiService {
         items$.complete();
       }
     };
-    const fetchItems = (id, token) => {
-      // this.playlistInfo.config.set('pageToken', token);
-      const sub = this.getPlaylistItems(id)
+    const fetchItems = (id, token?) => {
+      const sub = this.getPlaylistItems(id, token)
         .switchMap((response) => fetchMetadata(response))
         .subscribe((response) => collectItems(response));
       subscriptions.push(sub);
       return sub;
     };
 
-    fetchItems(playlistId, '');
+    fetchItems(playlistId);
     return items$.take(1);
-  }
-
-  getPlaylists2(isNewPage: boolean) {
-    // const hasAccessToken = this.playlists.hasToken();
-    // if (!hasAccessToken) {
-    //   return;
-    // }
-    // if (isNewPage) {
-    //   this.playlists.resetPageToken();
-    // }
-    // TODO - extract to a reducer or/and an @Effect - SEARCH_START, SEARCH_COMPLETED
-
-    return this.getPlaylists();
   }
 
   defaaultConfig() {
@@ -127,10 +104,16 @@ export class YoutubeApiService {
 
     return config;
   }
-  getPlaylists() {
+
+  getPlaylists(pageToken?: string) {
     const apiOptions = this.playlistsOptions;
 
     const config = this.defaaultConfig();
+
+    if (pageToken) {
+      config.set('pageToken', pageToken);
+    }
+
     let url;
 
     if (apiOptions) {
@@ -152,9 +135,69 @@ export class YoutubeApiService {
     return this.list(id, this.playlistOptions);
   }
 
+  private getPlaylistItems(playlistId: string, pageToken?: string) {
+    const apiOptions = this.playlistInfoOptions;
+    const config = this.defaaultConfig();
+    let idKey;
+    let url;
 
-  getPlaylistItems(playlistId: string) {
-    return this.list(playlistId, this.playlistInfoOptions);
+    if (apiOptions) {
+      url = apiOptions.url;
+      idKey = apiOptions.idKey || '';
+      if (apiOptions.config) {
+        this.mergeParams(apiOptions.config, config);
+      }
+    }
+
+    if (idKey) {
+      config.set(idKey, playlistId);
+    }
+
+    if (pageToken) {
+      config.set('pageToken', pageToken);
+    } else {
+      config.delete('pageToken');
+    }
+
+    const options: RequestOptionsArgs = {
+      search: config,
+      headers: this.createHeaders()
+    };
+
+    return this.http.get(url, options)
+      .map(response => response.json())
+      .map(response => {
+        this.isSearching = false;
+        return response;
+      });
+  }
+
+  getVideos(id) {
+    const apiOptions = {
+      url: 'https://www.googleapis.com/youtube/v3/videos',
+      idKey: 'id',
+      config: {
+        part: 'snippet,contentDetails,statistics'
+      }
+    };
+
+    const config = this.defaaultConfig();
+    let idKey;
+    let url;
+
+    if (apiOptions) {
+      url = apiOptions.url;
+      idKey = apiOptions.idKey || '';
+      if (apiOptions.config) {
+        this.mergeParams(apiOptions.config, config);
+      }
+    }
+
+    const videoId = id.videoId || id;
+    config.set(idKey, videoId);
+
+    return this.http.get(url, { search: config })
+      .map(res => res.json().items);
   }
 
   private mergeParams (source, target: URLSearchParams) {
@@ -187,47 +230,18 @@ export class YoutubeApiService {
     return this.http.get(url, options)
       .map(response => response.json())
       .map(response => {
-        this.nextPageToken = response.nextPageToken;
         this.isSearching = false;
         return response;
       });
   }
 
-  createHeaders() {
+  private createHeaders() {
     const accessToken = this.authService && this.authService.accessToken;
     const headersOptions = {};
     if (accessToken) {
       headersOptions['authorization'] = `Bearer ${accessToken}`;
     }
     return new Headers(headersOptions);
-  }
-
-  getVideos(id) {
-    const apiOptions = {
-      url: 'https://www.googleapis.com/youtube/v3/videos',
-      idKey: 'id',
-      config: {
-        part: 'snippet,contentDetails,statistics'
-      }
-    };
-
-    const config = this.defaaultConfig();
-    let idKey;
-    let url;
-
-    if (apiOptions) {
-      url = apiOptions.url;
-      idKey = apiOptions.idKey || '';
-      if (apiOptions.config) {
-        this.mergeParams(apiOptions.config, config);
-      }
-    }
-
-    const videoId = id.videoId || id;
-    config.set(idKey, videoId);
-
-    return this.http.get(url, { search: config })
-      .map(res => res.json().items);
   }
 
 }

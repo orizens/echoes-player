@@ -19,6 +19,7 @@ const INIT_STATE: IUserProfile = {
   access_token: '',
   playlists: [],
   data: {},
+  // todo: no need to store nextPageToken
   nextPageToken: '',
   profile: {},
   viewedPlaylist: ''
@@ -30,16 +31,12 @@ export class UserProfile {
   private userProfileSubject: BehaviorSubject<IUserProfile>;
 
   constructor(private zone: NgZone,
-              private youtubeVideosInfo: YoutubeVideosInfo,
               public youtubeApiService: YoutubeApiService,
               private authorization: Authorization) {
 
     this.userProfileSubject = new BehaviorSubject(INIT_STATE);
     this.userProfile$ = this.userProfileSubject.asObservable();
 
-    // TODO - extract to a Model / Reducer?
-    // Reducer - because nextPageToken is changed
-    // Model - new _config should be recreated easily with a new nextPageToken
     authorization.authData$.subscribe(googleUser => {
       if (googleUser === null) {
         this.userProfileSubject.next({
@@ -50,24 +47,6 @@ export class UserProfile {
         this.userProfileRecieved(googleUser.getBasicProfile());
       }
     });
-  }
-
-  getPlaylists(isNewPage: boolean) {
-    const hasAccessToken = this.youtubeApiService.hasToken();
-    // if (!hasAccessToken) {
-    //   return;
-    // }
-    // if (isNewPage) {
-    //   this.playlists.resetPageToken();
-    // }
-    // TODO - extract to a reducer or/and an @Effect - SEARCH_START, SEARCH_COMPLETED
-
-    return this.youtubeApiService.getPlaylists();
-  }
-
-  fetchMetadata(items: GoogleApiYouTubeVideoResource[]) {
-    const videoIds = items.map(video => video.id).join(',');
-    return this.youtubeVideosInfo.api.getVideos(videoIds);
   }
 
   updateToken(token: string) {
@@ -90,23 +69,15 @@ export class UserProfile {
     this.userProfileSubject.next({
       ...this.userProfileSubject.getValue(),
       access_token: token,
-      playlists: []
+      playlists: [],
+      nextPageToken: ''
     });
 
-    this.youtubeApiService.getPlaylists2(true).catch((error: Error) => {
+    this.youtubeApiService.getPlaylists().catch((error: Error) => {
       console.log(`error in fetching user's playlists ${error}`);
       return of(error);
     }).subscribe(response => this.updateData(response));
   }
-
-  // signOut() {
-  //   // case UserProfileActions.LOG_OUT:
-  //   //   return { ...initialUserState };
-  //
-  //   this.userProfileSubject.next({
-  //     ...INIT_STATE,
-  //   });
-  // }
 
   private updateData(response: any) {
     // case UserProfileActions.UPDATE:
@@ -138,7 +109,7 @@ export class UserProfile {
 
     const nextPageToken = response.nextPageToken;
     return nextPageToken
-      ? this.updatePageToken2(response.nextPageToken)
+      ? this.updatePageToken(response.nextPageToken)
       : this.userProfileCompleted();
   }
 
@@ -153,7 +124,7 @@ export class UserProfile {
     });
   }
 
-  private updatePageToken2(nextPageToken: any) {
+  private updatePageToken(nextPageToken: any) {
     // case UserProfileActions.UPDATE_NEXT_PAGE_TOKEN:
     //   return { ...state, nextPageToken: action.payload };
 
@@ -173,9 +144,7 @@ export class UserProfile {
       nextPageToken
     });
 
-    this.youtubeApiService.getPlaylists2(false).subscribe(response => {
-      // this.userProfileActions.updateData(response));
-      // ??? again and again and again?
+    this.youtubeApiService.getPlaylists(nextPageToken).subscribe(response => {
       this.updateData(response);
     });
   }
