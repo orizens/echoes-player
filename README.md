@@ -40,8 +40,16 @@ Run `npm run test:ci` to execute the unit tests only **Once**
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
+# Todo
+
+- [ ] Fix app-player UI not in sync
+- [ ] Test apis using next_page tokens
+- [ ] Migrate `appLayout` store
+- [ ] Migrate tests
+
+
 # Bundle analyze explorer
 [look at issue](https://github.com/angular/angular-cli/issues/4172) 
 1. make sure ```npm i source-map-explorer -g```
-1. ```ng build --prod --aot --sm``` (the sourcemap is for later steps)  
-1. ```cd dist && source-map-explorer A-FILE-WITH-HASH.js```
+2. ```ng build --prod --aot --sm``` (the sourcemap is for later steps)  
+3. ```cd dist && source-map-explorer A-FILE-WITH-HASH.js```
