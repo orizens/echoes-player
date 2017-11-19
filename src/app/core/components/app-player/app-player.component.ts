@@ -1,19 +1,8 @@
 import { NowPlaylistEffects } from '../../effects/now-playlist.effects';
-import * as AppPlayer from '../../store/app-player';
 import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
 import { EchoesState } from '../../store';
 import { Store } from '@ngrx/store';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  HostBinding,
-  HostListener,
-  Input,
-  OnInit,
-  Output
-} from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import 'rxjs/add/operator/take';
 
 import { NowPlaylistService, YoutubePlayerService } from '../../services';
@@ -59,12 +48,19 @@ import { AppPlayerService } from '../../services/app-player.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppPlayerComponent implements OnInit {
-  player$ = this.store.let(AppPlayer.getPlayer$);
-  media$ = this.store.let(AppPlayer.getCurrentMedia$);
-  isPlayerPlaying$ = this.store.let(AppPlayer.getIsPlayerPlaying$);
+  // player$ = this.store.let(AppPlayer.getPlayer$);
+  // media$ = this.store.let(AppPlayer.getCurrentMedia$);
+  // isPlayerPlaying$ = this.store.let(AppPlayer.getIsPlayerPlaying$);
+  // isPlayerFullscreen$ = this.store.let(AppPlayer.getPlayerFullscreen$);
+  // isShowPlayer$ = this.store.let(AppPlayer.getShowPlayer$);
+
+  media$ = this.appPlayerService.appPlayer.map(p => p.media);
+  player$ = this.appPlayerService.appPlayer;
+  isPlayerPlaying$ = this.appPlayerService.appPlayer.map(p => p.playerState)
+    .map((playerState: YT.PlayerState) => playerState === 1);
   isPlayerInRepeat$ = this.store.let(isPlayerInRepeat$);
-  isPlayerFullscreen$ = this.store.let(AppPlayer.getPlayerFullscreen$);
-  isShowPlayer$ = this.store.let(AppPlayer.getShowPlayer$);
+  isPlayerFullscreen$ = this.appPlayerService.appPlayer.map(p => p.isFullscreen);
+  isShowPlayer$ = this.appPlayerService.appPlayer.map(p => p.showPlayer);
 
   @HostBinding('class.youtube-player') style = true;
 
@@ -101,7 +97,8 @@ export class AppPlayerComponent implements OnInit {
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new AppPlayer.PlayVideo(media));
+    // this.store.dispatch(new AppPlayer.PlayVideo(media));
+    this.appPlayerService.play(media);
   }
 
   pauseVideo() {
@@ -120,12 +117,14 @@ export class AppPlayerComponent implements OnInit {
 
   playNextTrack() {
     this.nowPlaylistService.selectNextIndex();
-    this.store.dispatch(new AppPlayer.PlayVideo(this.nowPlaylistService.getCurrent()));
+    this.appPlayerService.play(this.nowPlaylistService.getCurrent());
+    // this.store.dispatch(new AppPlayer.PlayVideo(this.nowPlaylistService.getCurrent()));
   }
 
   playPreviousTrack() {
     this.nowPlaylistService.selectPreviousIndex();
-    this.store.dispatch(new AppPlayer.PlayVideo(this.nowPlaylistService.getCurrent()));
+    this.appPlayerService.play(this.nowPlaylistService.getCurrent());
+    // this.store.dispatch(new AppPlayer.PlayVideo(this.nowPlaylistService.getCurrent()));
   }
 
   isLastIndex() {
