@@ -1,5 +1,6 @@
 import { AppApi } from '../../api/app.api';
 import { Component, OnInit } from '@angular/core';
+import { AppLayoutService } from '../../services/app-layout.service';
 
 @Component({
   selector: 'app-brand',
@@ -19,10 +20,10 @@ import { Component, OnInit } from '@angular/core';
   `
 })
 export class AppBrandComponent implements OnInit {
-  constructor(private appApi: AppApi) { }
+  constructor(private appLayoutService: AppLayoutService) { }
   ngOnInit() { }
 
   toggleSidebar() {
-    return this.appApi.toggleSidebar();
+    return this.appLayoutService.toggleSidebar();
   }
 }

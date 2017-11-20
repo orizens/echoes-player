@@ -53,13 +53,15 @@ export class AppPlayerComponent implements OnInit {
   // isPlayerPlaying$ = this.store.let(AppPlayer.getIsPlayerPlaying$);
   // isPlayerFullscreen$ = this.store.let(AppPlayer.getPlayerFullscreen$);
   // isShowPlayer$ = this.store.let(AppPlayer.getShowPlayer$);
+  // isPlayerInRepeat$ = this.store.let(isPlayerInRepeat$);
 
   media$ = this.appPlayerService.appPlayer.map(p => p.media);
   player$ = this.appPlayerService.appPlayer;
   isPlayerPlaying$ = this.appPlayerService.appPlayer.map(p => p.playerState)
     .map((playerState: YT.PlayerState) => playerState === 1);
-  isPlayerInRepeat$ = this.store.let(isPlayerInRepeat$);
-  isPlayerFullscreen$ = this.appPlayerService.appPlayer.map(p => p.isFullscreen);
+
+  isPlayerInRepeat$ = this.nowPlaylistService.playlist$.map(playlist => playlist.repeat);
+  isPlayerFullscreen$ = this.appPlayerService.appPlayer.map(p => p.fullscreen);
   isShowPlayer$ = this.appPlayerService.appPlayer.map(p => p.showPlayer);
 
   @HostBinding('class.youtube-player') style = true;

@@ -10,6 +10,7 @@ import * as AppLayout from '../store/app-layout';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/observable/of';
+import { AppLayoutService } from './app-layout.service';
 
 @Injectable()
 export class VersionCheckerService {
@@ -21,7 +22,8 @@ export class VersionCheckerService {
   private pathToFile = 'assets/package.json';
   public url = `${this.protocol}://${this.prefix}/${this.repo}/${this.repoBranch}/${this.pathToFile}`;
 
-  constructor(private http: Http, private zone: NgZone, private store: Store<EchoesState>) {}
+  constructor(private http: Http, private zone: NgZone, private store: Store<EchoesState>,
+              private appLayoutService: AppLayoutService) {}
 
   check() {
     return this.http.get(this.url);
@@ -39,7 +41,8 @@ export class VersionCheckerService {
         .retry()
         .filter(response => response && response.status === 200)
         .subscribe(response => {
-          this.store.dispatch(new AppLayout.RecievedAppVersion(response.json()));
+          // this.store.dispatch(new AppLayout.RecievedAppVersion(response.json()));
+          this.appLayoutService.recievedAppVersion(response.json());
         });
     });
     return checkTimer;
@@ -61,5 +64,7 @@ export class VersionCheckerService {
 
   notifyNewVersion(response) {
     this.store.dispatch(new AppLayout.RecievedAppVersion(response.json()));
+    // this.store.dispatch(new AppLayout.RecievedAppVersion(response.json()));
+    this.appLayoutService.recievedAppVersion(response.json());
   }
 }

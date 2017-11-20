@@ -44,7 +44,8 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 - [x] Fix app-player UI not in sync
 - [ ] Test apis using next_page tokens
-- [ ] Migrate `appLayout` store
+- [x] Migrate `appLayout` store
+- [ ] Mirate router service
 - [ ] Migrate tests
 
 

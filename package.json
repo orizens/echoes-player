@@ -48,7 +48,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/youtube": "0.0.31",
     "bootstrap-sass": "3.3.7",
-    "codelyzer": "~3.1.1",
+    "codelyzer": "~4.0.1",
     "font-awesome": "4.7.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppApi } from '../../api/app.api';
 import { EchoesState } from '../../store';
 
 import { getSidebarCollapsed$ } from '../../store/app-layout';
 import { getSearchType$ } from '../../store/player-search';
-import * as AppLayout from '../../store/app-layout';
+import { AppLayoutService } from '../../services/app-layout.service';
 
 @Injectable()
 export class AppSidebarProxy {
@@ -15,9 +14,10 @@ export class AppSidebarProxy {
 
   constructor(
     private store: Store<EchoesState>,
-    private appApi: AppApi) { }
+    private appLayoutService: AppLayoutService) { }
 
   toggleSidebar() {
-    this.appApi.toggleSidebar();
+    // this.appApi.toggleSidebar();
+    return this.appLayoutService.toggleSidebar();
   }
 }

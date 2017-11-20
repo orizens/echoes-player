@@ -11,6 +11,7 @@ import { MediaParserService } from './media-parser.service';
 import { PlayerSearchService } from './player-search.service';
 import { YoutubeApiService } from './youtube-api.service';
 import { AppPlayerService } from './app-player.service';
+import { AppLayoutService } from './app-layout.service';
 
 export * from './user-profile.service';
 export * from './youtube.search';
@@ -32,6 +33,7 @@ export const APP_SERVICES = [
   { provide: Authorization, useClass: Authorization },
   { provide: YoutubeDataApi, useClass: YoutubeDataApi },
   { provide: YoutubeApiService, useClass: YoutubeApiService },
+  { provide: AppLayoutService, useClass: AppLayoutService },
   { provide: PlayerSearchService, useClass: PlayerSearchService },
   { provide: AppPlayerService, useClass: AppPlayerService },
   VersionCheckerService,

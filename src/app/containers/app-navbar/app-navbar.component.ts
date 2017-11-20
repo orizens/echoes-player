@@ -1,5 +1,4 @@
 import * as AppLayout from '../../core/store/app-layout';
-import { getAppThemes, getAppVersion$ } from '../../core/store/app-layout';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,10 +10,11 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { getUser$ } from '../../core/store/user-profile/user-profile.selectors';
 import { Authorization } from '../../core/services';
 import { EchoesState } from '../../core/store';
 import { UserProfile } from '../../core/services/user-profile.service';
+import { AppLayoutService } from '../../core/services/app-layout.service';
+import { VersionCheckerService } from '../../core/services/version-checker.service';
 
 @Component({
   selector: 'app-navbar',
@@ -58,8 +58,16 @@ export class AppNavbarComponent implements OnInit {
   // user$ = this.store.let(getUser$);
   user$ = this.userProfileService.userProfile$;
 
-  appVersion$ = this.store.let(getAppVersion$);
-  themes$ = this.store.select(getAppThemes);
+  // appVersion$ = this.store.let(getAppVersion$);
+  appVersion$ = this.appLayoutService.appLayout$.map(a => a.version);
+
+  // themes$ = this.store.select(getAppThemes);
+  themes$ = this.appLayoutService.appLayout$.map(appLayout => {
+    return {
+      selected: appLayout.theme,
+      themes: appLayout.themes.map(theme => ({ label: theme, value: theme }))
+    };
+  });
 
   @Input() header: string;
   @Input() headerIcon = '';
@@ -72,6 +80,8 @@ export class AppNavbarComponent implements OnInit {
   constructor(
     private authorization: Authorization,
     private userProfileService: UserProfile,
+    private versionCheckerService: VersionCheckerService,
+    private appLayoutService: AppLayoutService,
     private store: Store<EchoesState>
   ) { }
 
@@ -96,11 +106,14 @@ export class AppNavbarComponent implements OnInit {
   }
 
   updateVersion() {
-    this.store.dispatch(new AppLayout.UpdateAppVersion());
+    // this.store.dispatch(new AppLayout.UpdateAppVersion());
+    this.versionCheckerService.updateVersion();
   }
 
   checkVersion() {
-    this.store.dispatch(new AppLayout.CheckVersion());
+    // this.store.dispatch(new AppLayout.CheckVersion());
+    this.appLayoutService.checkVersion();
+    this.versionCheckerService.updateVersion();
   }
 
   handleMainIconClick() {
@@ -108,6 +121,7 @@ export class AppNavbarComponent implements OnInit {
   }
 
   changeTheme(theme) {
-    this.store.dispatch(new AppLayout.ThemeChange(theme.value));
+    // this.store.dispatch(new AppLayout.ThemeChange(theme.value));
+    this.appLayoutService.changeTheme(theme.value);
   }
 }
