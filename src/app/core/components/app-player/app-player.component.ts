@@ -77,7 +77,7 @@ export class AppPlayerComponent implements OnInit {
   ngOnInit() {
     // this.store.dispatch(new AppPlayer.Reset());
     this.appPlayerService.reset();
-    this.nowPlaylistEffects.loadNextTrack$.subscribe(action => this.playVideo(action.payload));
+    // this.nowPlaylistEffects.loadNextTrack$.subscribe(action => this.playVideo(action.payload));
   }
 
   setupPlayer(player) {
@@ -87,14 +87,22 @@ export class AppPlayerComponent implements OnInit {
   updatePlayerState(event) {
     this.playerService.onPlayerStateChange(event);
 
-    // removd circular dependency
+    // moved from youtube player service
     this.appPlayerService.updateState(event.data);
-
-
 
     if (event.data === YT.PlayerState.ENDED) {
       // this.store.dispatch(this.playerActions.loadNextTrack());
       this.nowPlaylistService.trackEnded();
+      this.nowPlaylistService.playlist$.map(nowPlaylist => {
+        const selectedId = nowPlaylist.selectedId;
+        const mediaIds = nowPlaylist.videos.map(video => video.id);
+        const selectedMediaIndex = mediaIds.indexOf(selectedId);
+        return nowPlaylist.videos[selectedMediaIndex];
+      }).filter((video: GoogleApiYouTubeVideoResource) => video && video.hasOwnProperty('id'))
+        .subscribe(video => {
+        this.playVideo(video);
+      });
+
     }
   }
 

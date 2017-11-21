@@ -13,7 +13,8 @@ import { AppLayoutService } from './core/services/app-layout.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
+  // sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
+  sidebarCollapsed$ = this.appLayoutService.appLayout$.map(layout => layout.sidebarExpanded);
   // theme$ = this.store.select(getAppTheme);
   theme$ = this.appLayoutService.appLayout$.map(layout => layout.theme);
 

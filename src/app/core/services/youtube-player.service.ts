@@ -36,21 +36,7 @@ export class YoutubePlayerService {
   }
 
   onPlayerStateChange(event) {
-    const state = event.data;
-    // let autoNext = false;
-    // play the next song if its not the end of the playlist
-    // should add a "repeat" feature
-    if (state === YT.PlayerState.ENDED) {
-      // this.listeners.ended.forEach(callback => callback(state));
-    }
-
-    if (state === YT.PlayerState.PAUSED) {
-      // service.playerState = YT.PlayerState.PAUSED;
-    }
-    if (state === YT.PlayerState.PLAYING) {
-      // service.playerState = YT.PlayerState.PLAYING;
-    }
-
+    // const state = event.data;
     // this.store.dispatch(new AppPlayer.UpdateState(state));
   }
 

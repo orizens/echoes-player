@@ -45,8 +45,10 @@ Before running the tests make sure you are serving the app via `ng serve`.
 - [x] Fix app-player UI not in sync
 - [ ] Test apis using next_page tokens
 - [x] Migrate `appLayout` store
+- [ ] Fix sidebar collapse & expand animation
 - [ ] Mirate router service
 - [ ] Migrate tests
+- [ ] Re-organize module structure 
 
 
 # Bundle analyze explorer
