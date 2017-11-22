@@ -5,16 +5,17 @@ import { EchoesState } from '../../store';
 import { getSidebarCollapsed$ } from '../../store/app-layout';
 import { getSearchType$ } from '../../store/player-search';
 import { AppLayoutService } from '../../services/app-layout.service';
+import { PlayerSearchService } from '../../services/player-search.service';
 
 @Injectable()
 export class AppSidebarProxy {
 
-  sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
-  searchType$ = this.store.let(getSearchType$);
+  sidebarCollapsed$ = this.appLayoutService.appLayout$.map(layout => layout.sidebarExpanded);
+  searchType$ = this.playerSearchService.playerSearch$.map(search => search.searchType);
 
   constructor(
-    private store: Store<EchoesState>,
-    private appLayoutService: AppLayoutService) { }
+    private appLayoutService: AppLayoutService,
+    private playerSearchService: PlayerSearchService) { }
 
   toggleSidebar() {
     // this.appApi.toggleSidebar();
