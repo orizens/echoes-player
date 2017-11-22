@@ -13,6 +13,7 @@ import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reduc
 import { getPlaylistVideos$ } from '../../core/store/now-playlist';
 import { getIsSearching$ } from '../../core/store/player-search';
 import { PlayerSearchService } from "../../core/services/player-search.service";
+import { NowPlaylistService } from '../../core/services/now-playlist.service';
 
 @Component({
   selector: 'youtube-videos',
@@ -36,12 +37,11 @@ export class YoutubeVideosComponent implements OnInit {
   videos$ = this.playerSearchService.playerSearch$.map(search => search.results);
   loading$ = this.playerSearchService.playerSearch$.map(search => search.isSearching);
 
-  playlistVideos$ = this.store.let(getPlaylistVideos$);
+  playlistVideos$ = this.nowPlaylistService.playlist$.map(p => p.videos);
 
   constructor(
-    private store: Store<EchoesState>,
     private appPlayerApi: AppPlayerApi,
-    private playerSearchActions: PlayerSearchActions,
+    private nowPlaylistService: NowPlaylistService,
     private playerSearchService: PlayerSearchService
   ) {}
 
@@ -52,7 +52,6 @@ export class YoutubeVideosComponent implements OnInit {
 
     // this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
     this.playerSearchService.searchCurrentQuery();
-
   }
 
   playSelectedVideo(media: GoogleApiYouTubeVideoResource) {

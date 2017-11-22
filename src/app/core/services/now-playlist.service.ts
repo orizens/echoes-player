@@ -162,6 +162,7 @@ export class NowPlaylistService {
     });
   }
 
+  // queue and select
   selectVideo(media) {
     // this.store.dispatch(new NowPlaylist.SelectVideo(media));
     const playlist = this.playlistSubject.getValue();

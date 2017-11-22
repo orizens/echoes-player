@@ -17,7 +17,8 @@ export class UserPlayerService {
         // this.store.dispatch(new NowPlaylist.QueueVideos(items));
         this.nowPlaylistService.queueVideos(items);
 
-        this.nowPlaylistService.updateIndexByMedia(items[0].id);
+        // this.nowPlaylistService.updateIndexByMedia(items[0].id);
+        this.nowPlaylistService.selectVideo(items[0]);
 
         // this.store.dispatch(new AppPlayer.LoadAndPlay(items[0]));
         this.appPlayerService.loadAndPlay(items[0]);
@@ -45,7 +46,6 @@ export class UserPlayerService {
     // this.store.dispatch(new AppPlayer.LoadAndPlay(media));
     this.appPlayerService.loadAndPlay(media);
 
-    // todo: select triggers queue, why call it again?
     // this.store.dispatch(new NowPlaylist.QueueVideo(media));
     this.nowPlaylistService.queueVideo2(media);
 

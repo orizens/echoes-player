@@ -10,6 +10,7 @@ import { AppPlayerApi } from '../../core/api/app-player.api';
 import { AppApi } from '../../core/api/app.api';
 
 import * as RouterActions from '../../core/store/router-store';
+import { NowPlaylistService } from '../../core/services/now-playlist.service';
 
 export interface PlaylistData {
   videos: GoogleApiYouTubeVideoResource[];
@@ -18,11 +19,11 @@ export interface PlaylistData {
 
 @Injectable()
 export class PlaylistProxy {
-  nowPlaylist$ = this.store.let(getPlaylistVideos$);
+  nowPlaylist$ = this.nowPlaylistService.playlist$.map(p => p.videos);
 
   constructor(
     public store: Store<EchoesState>,
-    private userProfileActions: UserProfileActions,
+    private nowPlaylistService: NowPlaylistService,
     private appPlayerApi: AppPlayerApi,
     private appApi: AppApi
   ) { }
