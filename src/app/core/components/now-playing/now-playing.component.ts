@@ -45,7 +45,7 @@ export class NowPlayingComponent implements OnInit {
   }
 
   selectVideo(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new AppPlayer.PlayVideo(media));
+    // this.store.dispatch(new AppPlayer.PlayVideo(media));
     this.appPlayerService.play(media);
     this.nowPlaylistService.updateIndexByMedia(media.id);
   }

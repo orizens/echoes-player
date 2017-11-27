@@ -43,6 +43,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 # Todo
 
 - [x] Fix app-player UI not in sync
+- [ ] Add local storage back
 - [ ] Test apis using next_page tokens
 - [x] Migrate `appLayout` store
 - [x] Fix sidebar collapse & expand animation
