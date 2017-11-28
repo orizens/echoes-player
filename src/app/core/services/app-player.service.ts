@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IAppPlayer } from '../store/app-player/app-player.reducer';
 import { YoutubePlayerService } from './youtube-player.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
+import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 const INIT_STATE: IAppPlayer = {
   mediaId: { videoId: 'NONE' },
@@ -29,9 +30,21 @@ export class AppPlayerService {
   private appPlayerSubject: BehaviorSubject<IAppPlayer>;
 
   constructor(private youtubePlayerService: YoutubePlayerService,
-              private youtubeVideosInfo: YoutubeVideosInfo) {
+              private youtubeVideosInfo: YoutubeVideosInfo,
+              private localStorage: AsyncLocalStorage) {
     this.appPlayerSubject = new BehaviorSubject(INIT_STATE);
     this.appPlayer = this.appPlayerSubject.asObservable();
+
+    this.localStorage.getItem('app-player')
+      .filter(data => data !== null).subscribe((data) => {
+      this.appPlayerSubject.next(data);
+    });
+
+    this.appPlayerSubject.filter(l => l !== INIT_STATE)
+      .distinctUntilChanged()
+      .switchMap(player => {
+        return this.localStorage.setItem('app-player', player);
+      }).subscribe();
 
     this.resetFullScreen();
   }

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { DEFAULT_THEME, Themes } from '../../app.themes';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 const INIT_STATE: IAppSettings = {
   sidebarExpanded: true,
@@ -22,10 +23,20 @@ export class AppLayoutService {
   appLayout$: Observable<IAppSettings>;
   private appLayoutSubject: BehaviorSubject<IAppSettings>;
 
-  constructor() {
+  constructor(private localStorage: AsyncLocalStorage) {
     this.appLayoutSubject = new BehaviorSubject(INIT_STATE);
     this.appLayout$ = this.appLayoutSubject.asObservable();
 
+    this.localStorage.getItem('app-layout')
+      .filter(data => data !== null).subscribe((data) => {
+      this.appLayoutSubject.next(data);
+    });
+
+    this.appLayoutSubject.filter(l => l !== INIT_STATE)
+      .distinctUntilChanged()
+      .switchMap(layout => {
+        return this.localStorage.setItem('app-layout', layout);
+      }).subscribe();
   }
 
   static getVersion(state: IAppSettings, packageJson: any): IAppVersion {

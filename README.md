@@ -6,15 +6,6 @@ It's fun & easy to listen or watch videos from youtube with Echoes.
 What if youtube was designed to be used as music player?
 This repository is an implementation of Echoes Player with Angular (2nd genration)- It's still a work in progress aimed at learning Angular (2nd generation).
 
-Echoes Player is also available as a [Chrome Application](https://chrome.google.com/webstore/detail/echoes-player/aaenpaopfebcmdaegggjbkhaedlbbkde)
-
-It can be regarded as the Media Player experience for youtube listening pleasure.
-
-<p align="center">
-  <a href="http://echoesplayer.com" target="_blank">
-    <img src="https://user-images.githubusercontent.com/878660/30917366-7ffe7ba2-a3a4-11e7-89ab-e85f4b761bcb.png" alt="Webpack, Angular, ngrx, bootstrap" width="75%"/>
-  </a>
-</p>
 
 # EchoesPlayer
 
@@ -43,7 +34,8 @@ Before running the tests make sure you are serving the app via `ng serve`.
 # Todo
 
 - [x] Fix app-player UI not in sync
-- [ ] Add local storage back
+- [x] Add local storage back
+- [ ] Move search state to url
 - [ ] Test apis using next_page tokens
 - [x] Migrate `appLayout` store
 - [x] Fix sidebar collapse & expand animation
@@ -51,9 +43,3 @@ Before running the tests make sure you are serving the app via `ng serve`.
 - [ ] Migrate tests
 - [ ] Re-organize module structure 
 
-
-# Bundle analyze explorer
-[look at issue](https://github.com/angular/angular-cli/issues/4172) 
-1. make sure ```npm i source-map-explorer -g```
-2. ```ng build --prod --aot --sm``` (the sourcemap is for later steps)  
-3. ```cd dist && source-map-explorer A-FILE-WITH-HASH.js```

@@ -13,6 +13,7 @@ import { APP_CONTAINER_MODULES } from './containers';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    AsyncLocalStorageModule,
     FormsModule,
     HttpModule,
     JsonpModule,

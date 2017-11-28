@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { INowPlaylist } from '../store/now-playlist/now-playlist.reducer';
 import { MediaParserService } from './media-parser.service';
 import { YoutubePlayerService } from './youtube-player.service';
+import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 const INIT_STATE: INowPlaylist = {
   videos: [],
@@ -27,12 +28,21 @@ export class NowPlaylistService {
               private youtubeVideosInfo: YoutubeVideosInfo,
               private mediaParser: MediaParserService,
               private playerService: YoutubePlayerService,
-              private nowPlaylistActions: NowPlaylist.NowPlaylistActions) {
-
-    // this.playlist$ = this.store.let(NowPlaylist.getNowPlaylist$);
+              private localStorage: AsyncLocalStorage) {
 
     this.playlistSubject = new BehaviorSubject(INIT_STATE);
     this.playlist$ = this.playlistSubject.asObservable();
+
+    this.localStorage.getItem('now-playlist')
+      .filter(data => data !== null).subscribe((data) => {
+      this.playlistSubject.next(data);
+    });
+
+    this.playlistSubject.filter(p => p !== INIT_STATE)
+      .distinctUntilChanged()
+      .switchMap(playlist => {
+      return this.localStorage.setItem('now-playlist', playlist);
+    }).subscribe();
   }
 
   static addMedia(videos: GoogleApiYouTubeVideoResource[], media: any) {

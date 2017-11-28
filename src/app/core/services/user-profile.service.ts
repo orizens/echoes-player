@@ -7,13 +7,13 @@ import 'rxjs/add/operator/buffer';
 import { of } from 'rxjs/observable/of';
 
 import { YoutubeApiService } from './youtube-api.service';
-import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { Authorization } from './authorization.service';
 
 import { GoogleBasicProfile } from '../store/user-profile';
 import { IUserProfile } from '../store/user-profile/user-profile.reducer';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 const INIT_STATE: IUserProfile = {
   access_token: '',
@@ -32,10 +32,22 @@ export class UserProfile {
 
   constructor(private zone: NgZone,
               public youtubeApiService: YoutubeApiService,
-              private authorization: Authorization) {
+              private authorization: Authorization,
+              private localStorage: AsyncLocalStorage) {
 
     this.userProfileSubject = new BehaviorSubject(INIT_STATE);
     this.userProfile$ = this.userProfileSubject.asObservable();
+
+    this.localStorage.getItem('user-profile')
+      .filter(data => data !== null).subscribe((data) => {
+      this.userProfileSubject.next(data);
+    });
+
+    this.userProfileSubject.filter(l => l !== INIT_STATE)
+      .distinctUntilChanged()
+      .switchMap(user => {
+        return this.localStorage.setItem('user-profile', user);
+      }).subscribe();
 
     authorization.authData$.subscribe(googleUser => {
       if (googleUser === null) {
