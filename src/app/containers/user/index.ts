@@ -7,7 +7,6 @@ import { PlaylistsComponent } from './playlists';
 // import { PlaylistViewComponent, PlaylistResolver, PlaylistVideosResolver } from '../../shared/components/playlist-view';
 
 import { AuthGuard } from './user.guard';
-import { UserPlayerService } from './user-player.service';
 import { routing } from './user.routing';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { routing } from './user.routing';
   ],
   providers: [
     AuthGuard,
-    UserPlayerService,
     // PlaylistResolver,
     // PlaylistVideosResolver
   ]

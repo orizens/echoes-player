@@ -1,8 +1,8 @@
-import { UserPlayerService } from '../user-player.service';
 import { EchoesState } from '../../../core/store';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserProfile } from '../../../core/services/user-profile.service';
+import { AppPlayerApi } from '../../../core/api/app-player.api';
 
 @Component({
   selector: 'playlists',
@@ -24,17 +24,17 @@ export class PlaylistsComponent implements OnInit {
   playlists$ = this.userProfile.userProfile$.map(user => user.playlists);
 
   constructor(private store: Store<EchoesState>,
-              private userPlayerService: UserPlayerService,
+              private appPlayerApi: AppPlayerApi,
               private userProfile: UserProfile
   ) { }
 
   ngOnInit() { }
 
   playSelectedPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
-    this.userPlayerService.playSelectedPlaylist(playlist);
+    this.appPlayerApi.playUserPlaylist(playlist);
   }
 
   queueSelectedPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
-    this.userPlayerService.queuePlaylist(playlist);
+    this.appPlayerApi.queueUserPlaylist(playlist);
   }
 }

@@ -21,33 +21,46 @@ export class AppPlayerApi {
   ) {}
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.nowPlaylistEffects.playPlaylistFirstTrack$
-      .map(toPayload)
-      .take(1)
-      .subscribe((media: GoogleApiYouTubeVideoResource) => this.playVideo(media));
-    this.queuePlaylist(playlist);
+    this.youtubeApiService
+      .fetchAllPlaylistItems(playlist.id)
+      .subscribe((items: GoogleApiYouTubeVideoResource[]) => {
+        // this.store.dispatch(new NowPlaylist.QueueVideos(items));
+        this.nowPlaylistService.queueVideos(items);
+
+        // this.nowPlaylistService.updateIndexByMedia(items[0].id);
+        this.nowPlaylistService.selectVideo(items[0]);
+
+        // this.store.dispatch(new AppPlayer.LoadAndPlay(items[0]));
+        this.appPlayerService.loadAndPlay(items[0]);
+
+      });
+  }
+
+  playUserPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
+    this.youtubeApiService
+      .fetchPlaylistItems(playlist.id)
+      .subscribe((items: GoogleApiYouTubeVideoResource[]) => {
+        // this.store.dispatch(new NowPlaylist.QueueVideos(items));
+        this.nowPlaylistService.queueVideos(items);
+
+        // this.nowPlaylistService.updateIndexByMedia(items[0].id);
+        this.nowPlaylistService.selectVideo(items[0]);
+
+        // this.store.dispatch(new AppPlayer.LoadAndPlay(items[0]));
+        this.appPlayerService.loadAndPlay(items[0]);
+
+      });
   }
 
   queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    // todo: move to now play list service?
-
-    // this.store.dispatch(new NowPlaylist.LoadPlaylistAction(playlist.id));
-
-    // @Effect()
-    //   loadPlaylist$ = this.actions$
-    //     .ofType(NowPlaylist.NowPlaylistActions.LOAD_PLAYLIST_START)
-    //     .map(toPayload)
-    //     .switchMap((id: string) => this.userProfile.fetchAllPlaylistItems(id))
-    //     // .mergeMap((playlistId: string) => this.loadPlaylistItems$(playlistId))
-    //     // .switchMap((playlistId: string) => this.userProfile.fetchAllPlaylistItems(playlistId))
-    //     // .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems))
-    //     .map(
-    //       (playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.LoadPlaylistEndAction(playlistItems)
-    //     );
-
     this.youtubeApiService.fetchAllPlaylistItems(playlist.id).subscribe((playlistItems: GoogleApiYouTubeVideoResource[]) => {
       this.nowPlaylistService.queueVideos(playlistItems);
-      this.nowPlaylistService.selectVideo(playlistItems[0]);
+    });
+  }
+
+  queueUserPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
+    this.youtubeApiService.fetchPlaylistItems(playlist.id).subscribe((playlistItems: GoogleApiYouTubeVideoResource[]) => {
+      this.nowPlaylistService.queueVideos(playlistItems);
     });
   }
 
