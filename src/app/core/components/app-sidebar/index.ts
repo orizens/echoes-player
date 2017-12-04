@@ -6,8 +6,6 @@ import { AppBrandModule } from '../app-brand';
 import { AppNavigatorModule } from '../app-navigator';
 import { NowPlayingModule } from '../now-playing';
 
-import { AppSidebarProxy } from './app-sidebar.proxy';
-
 @NgModule({
   imports: [
     SharedModule,
@@ -17,6 +15,5 @@ import { AppSidebarProxy } from './app-sidebar.proxy';
   ],
   exports: [AppSidebarComponent],
   declarations: [AppSidebarComponent],
-  providers: [AppSidebarProxy],
 })
 export class AppSidebarModule { }

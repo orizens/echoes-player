@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AppSidebarProxy } from './app-sidebar.proxy';
+import { AppLayoutService } from '../../services/app-layout.service';
+import { PlayerSearchService } from '../../services/player-search.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,12 +20,14 @@ import { AppSidebarProxy } from './app-sidebar.proxy';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppSidebarComponent {
-  sidebarCollapsed$ = this.appSidebarProxy.sidebarCollapsed$;
-  searchType$ = this.appSidebarProxy.searchType$;
+  sidebarCollapsed$ = this.appLayoutService.appLayout$.map(layout => layout.sidebarExpanded);
 
-  constructor(private appSidebarProxy: AppSidebarProxy) { }
+  searchType$ = this.playerSearchService.playerSearch$.map(search => search.searchType);
+
+  constructor(private appLayoutService: AppLayoutService,
+              private playerSearchService: PlayerSearchService) { }
 
   toggleSidebar() {
-    this.appSidebarProxy.toggleSidebar();
+    this.appLayoutService.toggleSidebar();
   }
 }

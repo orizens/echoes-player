@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { PlaylistProxy } from './playlist-view.proxy';
+import { NowPlaylistService } from '../../core/services/now-playlist.service';
+import { AppApi } from '../../core/api/app.api';
+import { AppPlayerApi } from '../../core/api/app-player.api';
+
+export interface PlaylistData {
+  videos: GoogleApiYouTubeVideoResource[];
+  playlist: GoogleApiYouTubePlaylistResource;
+}
 
 @Component({
   selector: 'playlist-view',
@@ -28,36 +35,44 @@ import { PlaylistProxy } from './playlist-view.proxy';
   `
 })
 export class PlaylistViewComponent implements OnInit {
-  playlist$ = this.playlistProxy.fetchPlaylist(this.route);
-  videos$ = this.playlistProxy.fetchPlaylistVideos(this.route);
-  header$ = this.playlistProxy.fetchPlaylistHeader(this.route);
-  nowPlaylist$ = this.playlistProxy.nowPlaylist$;
+  playlist$ = this.route.data.map((data: PlaylistData) => data.playlist);
+  videos$ = this.route.data.map((data: PlaylistData) => data.videos);
+  header$ = this.route.data.map((data: PlaylistData) => {
+    const playlist = data.playlist;
+    const { snippet, contentDetails } = playlist;
+    return `${snippet.title} (${contentDetails.itemCount} videos)`;
+  });
 
-  constructor(private playlistProxy: PlaylistProxy, private route: ActivatedRoute) { }
+  nowPlaylist$ = this.nowPlaylistService.playlist$.map(p => p.videos);
+
+  constructor(private route: ActivatedRoute,
+              private nowPlaylistService: NowPlaylistService,
+              private appPlayerApi: AppPlayerApi,
+              private appApi: AppApi) { }
 
   ngOnInit() { }
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.playlistProxy.playPlaylist(playlist);
+    this.appPlayerApi.playPlaylist(playlist);
   }
 
   queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.playlistProxy.queuePlaylist(playlist);
+    this.appPlayerApi.queuePlaylist(playlist);
   }
 
   queueVideo(media: GoogleApiYouTubeVideoResource) {
-    this.playlistProxy.queueVideo(media);
+    this.appPlayerApi.queueVideo(media);
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
-    this.playlistProxy.playVideo(media);
+    this.appPlayerApi.playVideo(media);
   }
 
   unqueueVideo(media: GoogleApiYouTubeVideoResource) {
-    this.playlistProxy.unqueueVideo(media);
+    this.appPlayerApi.removeVideoFromPlaylist(media);
   }
 
   handleBack() {
-    this.playlistProxy.goBack();
+    this.appApi.navigateBack();
   }
 }

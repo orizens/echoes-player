@@ -35,11 +35,9 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 - [x] Fix app-player UI not in sync
 - [x] Add local storage back
-- [ ] Move search state to url
 - [ ] Test apis using next_page tokens
 - [x] Migrate `appLayout` store
 - [x] Fix sidebar collapse & expand animation
-- [ ] Mirate router service
 - [ ] Migrate tests
 - [ ] Re-organize module structure 
 
