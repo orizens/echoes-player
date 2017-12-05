@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve -sm -vc -ec",
     "build": "ng build --aot --sm",
-    "build:prod": "ng build --prod",
+    "build:prod": "ng build --prod --aot --sm",
     "copy:heroku": "shx cp -r ./config/heroku/*.* ./dist",
     "copy:domain": "shx cp CNAME ./dist",
     "copy:package": "shx cp ./package.json ./dist/assets/",
