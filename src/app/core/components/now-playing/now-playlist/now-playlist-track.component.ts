@@ -1,5 +1,6 @@
 import { MediaParserService } from '../../../services/media-parser.service';
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { extractThumbUrl } from '../../../../shared/utils/media.utils';
 
 @Component({
   selector: 'now-playlist-track',
@@ -21,11 +22,17 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
       <section class="video-title" (click)="markSelected(video)" [tooltip]="video.snippet.title">{{ video.snippet.title }}</section>
       </div>
     <aside class="playlist-track__content">
-      <button class="btn label bg-primary fa fa-list-ul playlist-track"
-        *ngIf="isPlaylistMedia(video)"
-        (click)="handleToggleTracks($event, video)"
-        tooltip="Album Track - click to select cued tracks"
-      ></button>
+      <section class="track-actions">
+        <button class="btn label bg-primary fa fa-list-ul playlist-track"
+          *ngIf="isPlaylistMedia(video)"
+          (click)="handleToggleTracks($event, video)"
+          tooltip="Album Track - click to select cued tracks"
+        ></button>
+        <button class="btn label bg-secondary fa fa-info-circle playlist-track"
+          (click)="toggleInfo()"
+          tooltip="More information for this media"
+        ></button>
+      </section>
       <span class="label label-danger ux-maker remove-track" tooltip="Remove From Playlist"
         (click)="remove.emit(video)"><i class="fa fa-trash"></i></span>
     </aside>
@@ -37,11 +44,14 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
         {{ track }}
       </button>
     </article>
+    <article *ngIf="displayInfo" class="track-info">
+      {{ video.snippet.description }}
+    </article>
   </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaylistTrackComponent implements OnInit {
+export class NowPlaylistTrackComponent implements OnInit, AfterContentInit {
   @Input() video: GoogleApiYouTubeVideoResource;
   @Input() index: number;
 
@@ -50,20 +60,30 @@ export class NowPlaylistTrackComponent implements OnInit {
   @Output() selectTrack = new EventEmitter<{ time: string, media: GoogleApiYouTubeVideoResource }>();
 
   displayTracks = false;
+  displayInfo = false;
   tracks: string[] = [];
+  videoThumb = '';
 
   constructor(public mediaParser: MediaParserService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.videoThumb = extractThumbUrl(this.video);
+  }
 
-  isPlaylistMedia(media: GoogleApiYouTubeVideoResource) {
-    console.log('is playlist media');
+  ngAfterContentInit() {
+    this.extractTracks(this.video);
+  }
+
+  extractTracks(media: GoogleApiYouTubeVideoResource) {
     const tracks = this.mediaParser.extractTracks(media);
     const isArray = Array.isArray(tracks);
     if (isArray) {
       this.parseAndSaveTracks(tracks);
     }
-    return isArray && this.tracks.length;
+  }
+
+  isPlaylistMedia(media: GoogleApiYouTubeVideoResource) {
+    return this.tracks.length;
   }
 
   parseAndSaveTracks(tracks: string[]) {
@@ -92,8 +112,8 @@ export class NowPlaylistTrackComponent implements OnInit {
     this.select.emit(video);
   }
 
-  get videoThumb() {
-    // the type of video is missing the thumbnails object
-    return this.video.snippet.thumbnails['default']['url'];
+  toggleInfo() {
+    this.displayInfo = !this.displayInfo;
+    return this.displayInfo;
   }
 }
