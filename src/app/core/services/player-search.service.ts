@@ -198,7 +198,7 @@ export class PlayerSearchService {
         .subscribe(this.createAddVideosHandler());
       // .catch((err) => Observable.of(this.playerSearchActions.errorInSearch(err)))
     } else {
-      this.youtubeSearch.searchMore(newPlayerSearch.pageToken.next)
+      this.youtubeSearch.resetPageToken()
         .searchFor(
           newPlayerSearch.searchType,
           newPlayerSearch.query,
