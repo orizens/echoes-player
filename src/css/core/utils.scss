@@ -62,8 +62,14 @@ select {
 .bg-primary {
 	background-color: var(--brand-primary);
 }
+.bg-secondary {
+    background-color: var(--brand-secondary);
+}
 .text-primary {
-	color: var(--brand-primary);
+    color: var(--brand-primary);
+}
+.text-secondary {
+    color: var(--brand-secondary);
 }
 
 .label-danger {

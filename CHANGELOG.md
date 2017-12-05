@@ -1,3 +1,10 @@
+## v 3.9.0 (2017/12/05)
+* [NEW] - added "info" section for each now playlist track to show more information. 
+* [UPGRADE] - updated secondary color (now in use) 
+* [FIXED] - playlist 'high' thumb sometimes doesn't exist and results in an error - fix #29 
+* [UPDATED] - media thumbs defaults to render maxres and gracefully degrades to render standard quality if higher size are not present 
+* [REFACTOR] - performance enhancements in rendering media thumbs, extracing cued tracks for playlist tracks 
+
 ## v 3.8.0 (2017/11/03)
 * [NEW] - Themes are now availabe - the default is 'Arctic' Theme. Themes are applied via the top right app menu. 
 * [NEW] - added dark 'Halloween' theme

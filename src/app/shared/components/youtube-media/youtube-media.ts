@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
-// import './youtube-media.scss';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { extractThumbUrl } from '../../utils/media.utils';
 
 interface MediaStatus {
   queued: boolean;
@@ -8,13 +8,12 @@ interface MediaStatus {
 
 @Component({
   selector: 'youtube-media',
-  // encapsulation: ViewEncapsulation.None,
-  styleUrls: [ './youtube-media.scss' ],
+  styleUrls: ['./youtube-media.scss'],
   templateUrl: './youtube-media.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class YoutubeMediaComponent {
-  @Input() media: any;
+export class YoutubeMediaComponent implements OnChanges {
+  @Input() media: GoogleApiYouTubeVideoResource;
   @Input() status: MediaStatus = {
     queued: false,
     isPlaying: false
@@ -26,10 +25,17 @@ export class YoutubeMediaComponent {
 
   showDesc = false;
   isPlaying = false;
+  thumb = '';
 
-  constructor () {}
+  constructor() { }
 
-  playVideo (media: GoogleApiYouTubeVideoResource) {
+  ngOnChanges({ media }: SimpleChanges) {
+    if (media && !media.firstChange || media && media.firstChange) {
+      this.thumb = extractThumbUrl(this.media);
+    }
+  }
+
+  playVideo(media: GoogleApiYouTubeVideoResource) {
     this.play.emit(media);
   }
 
@@ -37,22 +43,15 @@ export class YoutubeMediaComponent {
     this.queue.emit(media);
   }
 
-  addVideo (media: GoogleApiYouTubeVideoResource) {
+  addVideo(media: GoogleApiYouTubeVideoResource) {
     this.add.emit(media);
   }
 
-  toggle (showDesc: Boolean) {
+  toggle(showDesc: Boolean) {
     this.showDesc = !showDesc;
   }
 
   removeVideoFromQueue(media: GoogleApiYouTubeVideoResource) {
     this.unqueue.emit(media);
-  }
-
-  get thumb () {
-    const hasMedia = Object.keys(this.media).length;
-    const hasThumbs = hasMedia ? this.media.snippet.thumbnails : false;
-    const thumbUrl = hasThumbs ? this.media.snippet.thumbnails.high.url : false;
-    return thumbUrl;
   }
 }

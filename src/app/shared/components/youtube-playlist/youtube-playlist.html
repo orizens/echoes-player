@@ -1,6 +1,6 @@
 <div class="youtube-playlist-item ux-maker card">
   <section class="media-title front">
-    <div class="media-thumb">
+    <div class="media-thumb" [tooltip]="media.snippet.title">
       <div class="thumbnail">
         <img [src]="thumb" class="thumb-image">
       </div>
@@ -11,15 +11,13 @@
     </div>
 
     <section class="item-actions">
-      <a class="playlist-link" 
-        [routerLink]="[ link + '/playlist', media.id ]"
-        [title]="media.snippet.title">
+      <a class="playlist-link" [routerLink]="[ link + '/playlist', media.id ]" [tooltip]="media.snippet.title">
         <h4 class="title ellipsis">
           {{ media.snippet.title }}
         </h4>
         <span class="item-action badge badge-info">
-            <i class="icon-list"></i>
-            {{ media.contentDetails.itemCount }} videos
+          <i class="icon-list"></i>
+          {{ media.contentDetails.itemCount }} videos
         </span>
       </a>
     </section>
