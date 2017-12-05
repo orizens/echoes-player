@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 import { Injectable } from '@angular/core';
-import { GoogleBasicProfile } from './user-profile.reducer';
+import { UserInfo } from 'firebase';
 
 @Injectable()
 export class UserProfileActions {
@@ -42,7 +42,7 @@ export class UserProfileActions {
     };
   }
 
-  updateUserProfile(profile: GoogleBasicProfile) {
+  updateUserProfile(profile: UserInfo) {
     return {
       type: UserProfileActions.UPDATE_USER_PROFILE,
       payload: profile
