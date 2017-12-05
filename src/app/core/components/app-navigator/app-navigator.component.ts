@@ -1,14 +1,11 @@
 import { Router } from '@angular/router';
-import { EchoesState } from '../../store';
-import { Store } from '@ngrx/store';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
   OnInit,
 } from '@angular/core';
-import { getSearchType$, CSearchTypes } from '../../../core/store/player-search';
+import { CSearchTypes } from '../../models/player-search';
 
 @Component({
   selector: 'app-navigator',
@@ -30,14 +27,12 @@ export class AppNavigatorComponent implements OnInit {
   @Input() closed = false;
   @Input() searchType = CSearchTypes.VIDEO;
 
-  public searchType$ = this.store.let(getSearchType$);
   public routes = [
     { link: 'search', icon: 'fa fa-music', label: 'Explore' }
     // { link: '/user', icon: 'fa fa-heart', label: 'My Profile' }
   ];
 
   constructor(
-    private store: Store<EchoesState>,
     private router: Router
   ) { }
 

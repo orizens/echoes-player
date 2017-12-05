@@ -4,9 +4,8 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewEncapsulation
 } from '@angular/core';
-import * as NowPlaylist from '../../../store/now-playlist';
+import * as NowPlaylist from '../../../models/now-playlist';
 
 @Component({
   selector: 'now-playlist-filter',

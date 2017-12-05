@@ -1,4 +1,3 @@
-import * as AppLayout from '../../core/store/app-layout';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,13 +7,11 @@ import {
   Output,
   ViewEncapsulation
 } from '@angular/core';
-import { Store } from '@ngrx/store';
 
 import { Authorization } from '../../core/services';
-import { EchoesState } from '../../core/store';
-import { UserProfile } from '../../core/services/user-profile.service';
+import { UserProfile } from '../../core/services';
 import { AppLayoutService } from '../../core/services/app-layout.service';
-import { VersionCheckerService } from '../../core/services/version-checker.service';
+import { VersionCheckerService } from '../../core/services';
 
 @Component({
   selector: 'app-navbar',
@@ -82,7 +79,6 @@ export class AppNavbarComponent implements OnInit {
     private userProfileService: UserProfile,
     private versionCheckerService: VersionCheckerService,
     private appLayoutService: AppLayoutService,
-    private store: Store<EchoesState>
   ) { }
 
   ngOnInit() { }

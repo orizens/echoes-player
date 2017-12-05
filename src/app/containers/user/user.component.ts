@@ -1,11 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Store } from '@ngrx/store';
-
 import { UserProfile, Authorization } from '../../core/services';
-import { EchoesState } from '../../core/store';
-import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../../core/store/user-profile/user-profile.selectors';
-import { YoutubeApiService } from '../../core/services/youtube-api.service';
-
 
 @Component({
   selector: 'app-user',
@@ -36,10 +30,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     private authorization: Authorization,
-    public youtubeApiService: YoutubeApiService,
     public userProfile: UserProfile,
-
-    public store: Store<EchoesState>
   ) {}
 
   ngOnInit () {}

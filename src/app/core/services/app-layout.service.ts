@@ -1,4 +1,4 @@
-import { IAppSettings, IAppVersion } from '../store/app-layout/app-layout.reducer';
+import { IAppSettings, IAppVersion } from '../models/app-layout';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { DEFAULT_THEME, Themes } from '../../app.themes';

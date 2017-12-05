@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { IAppPlayer } from '../store/app-player/app-player.reducer';
+import { IAppPlayer } from '../models/app-player';
 import { YoutubePlayerService } from './youtube-player.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { AsyncLocalStorage } from 'angular-async-local-storage';

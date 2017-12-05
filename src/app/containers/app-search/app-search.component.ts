@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { EchoesState } from '../../core/store';
 
-import { IPresetParam} from '../../core/store/player-search';
-import { getUserViewPlaylist$ } from '../../core/store/user-profile';
-import { getQueryParamPreset$, getPresets$ } from '../../core/store/player-search';
+import { IPresetParam} from '../../core/models/player-search';
 import { PlayerSearchService } from '../../core/services/player-search.service';
+import { UserProfile } from '../../core/services';
 
 @Component({
   selector: 'app-search',
@@ -40,8 +37,8 @@ export class AppSearchComponent implements OnInit {
   // query$ = this.store.let(getQuery$);
   query$ = this.playerSearchService.playerSearch$.map(search => search.query);
 
-  // todo: ???
-  currentPlaylist$ = this.store.let(getUserViewPlaylist$);
+  // currentPlaylist$ = this.store.let(getUserViewPlaylist$);
+  currentPlaylist$ = this.userProfile.userProfile$.map(user => user.viewedPlaylist);
 
   // queryParamPreset$ = this.store.let(getQueryParamPreset$);
   queryParamPreset$ = this.playerSearchService.playerSearch$.map(search => search.queryParams.preset);
@@ -50,8 +47,9 @@ export class AppSearchComponent implements OnInit {
   presets$ = this.playerSearchService.playerSearch$.map(search => search.presets);
 
   constructor(
-    private store: Store<EchoesState>,
-    private playerSearchService: PlayerSearchService
+    private playerSearchService: PlayerSearchService,
+    private userProfile: UserProfile,
+
   ) { }
 
   ngOnInit() {}

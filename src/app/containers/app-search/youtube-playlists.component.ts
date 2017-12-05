@@ -1,4 +1,4 @@
-import { CSearchTypes } from '../../core/store/player-search';
+import { CSearchTypes } from '../../core/models/player-search';
 import { Component, OnInit } from '@angular/core';
 
 import { AppPlayerApi } from '../../core/api/app-player.api';

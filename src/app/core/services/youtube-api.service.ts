@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { YOUTUBE_API_KEY } from './constants';
 import { Authorization } from './authorization.service';
 
+import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/fromPromise';
 import { Subscription } from 'rxjs/Subscription';
@@ -136,6 +137,7 @@ export class YoutubeApiService {
     };
 
     fetchItems();
+
     return items$.take(1);
   }
 

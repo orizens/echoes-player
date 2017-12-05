@@ -1,16 +1,14 @@
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 import { Injectable, NgZone } from '@angular/core';
 
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/buffer';
+import 'rxjs/add/operator/catch';
 import { of } from 'rxjs/observable/of';
 
 import { YoutubeApiService } from './youtube-api.service';
 import { Authorization } from './authorization.service';
 
-import { GoogleBasicProfile } from '../store/user-profile';
-import { IUserProfile } from '../store/user-profile/user-profile.reducer';
+import { GoogleBasicProfile, IUserProfile } from '../models/user-profile';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AsyncLocalStorage } from 'angular-async-local-storage';

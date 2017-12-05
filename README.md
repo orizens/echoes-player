@@ -37,6 +37,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 - [x] Add local storage back
 - [x] Test apis using next_page tokens
 - [x] Fix sidebar collapse & expand animation
+- [ ] Fix logout
 - [ ] Refactor youtube api services
 - [ ] Migrate tests
 - [ ] Re-organize module structure 

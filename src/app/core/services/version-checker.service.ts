@@ -1,11 +1,7 @@
 import { Subscription } from 'rxjs/Rx';
-import { Store } from '@ngrx/store';
-import { EchoesState } from '../store';
 import { Http } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
-import * as AppLayout from '../store/app-layout';
 
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/observable/timer';
@@ -22,7 +18,7 @@ export class VersionCheckerService {
   private pathToFile = 'assets/package.json';
   public url = `${this.protocol}://${this.prefix}/${this.repo}/${this.repoBranch}/${this.pathToFile}`;
 
-  constructor(private http: Http, private zone: NgZone, private store: Store<EchoesState>,
+  constructor(private http: Http, private zone: NgZone,
               private appLayoutService: AppLayoutService) {}
 
   check() {
@@ -63,7 +59,6 @@ export class VersionCheckerService {
   }
 
   notifyNewVersion(response) {
-    this.store.dispatch(new AppLayout.RecievedAppVersion(response.json()));
     // this.store.dispatch(new AppLayout.RecievedAppVersion(response.json()));
     this.appLayoutService.recievedAppVersion(response.json());
   }

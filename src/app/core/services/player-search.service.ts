@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { CPresetTypes, CSearchTypes, IPlayerSearch } from '../store/player-search/player-search.interfaces';
+import { CPresetTypes, CSearchTypes, IPlayerSearch } from '../models/player-search';
 import { YoutubeSearch } from './youtube.search';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { Subscriber } from 'rxjs/Subscriber';

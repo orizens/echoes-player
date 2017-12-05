@@ -1,7 +1,5 @@
-import { EchoesState } from '../../../core/store';
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { UserProfile } from '../../../core/services/user-profile.service';
+import { UserProfile } from '../../../core/services';
 import { AppPlayerApi } from '../../../core/api/app-player.api';
 
 @Component({
@@ -23,8 +21,7 @@ import { AppPlayerApi } from '../../../core/api/app-player.api';
 export class PlaylistsComponent implements OnInit {
   playlists$ = this.userProfile.userProfile$.map(user => user.playlists);
 
-  constructor(private store: Store<EchoesState>,
-              private appPlayerApi: AppPlayerApi,
+  constructor(private appPlayerApi: AppPlayerApi,
               private userProfile: UserProfile
   ) { }
 

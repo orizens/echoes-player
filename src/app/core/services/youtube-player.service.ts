@@ -1,13 +1,10 @@
 import { Injectable, NgZone } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { EchoesState } from '../store';
 
 @Injectable()
 export class YoutubePlayerService {
   public player: YT.Player;
 
-  constructor(private store: Store<EchoesState>,
-              private zone: NgZone) {
+  constructor(private zone: NgZone) {
   }
 
   setupPlayer(player) {

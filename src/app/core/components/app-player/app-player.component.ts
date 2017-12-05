@@ -1,9 +1,4 @@
-import { NowPlaylistEffects } from '../../effects/now-playlist.effects';
-import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
-import { EchoesState } from '../../store';
-import { Store } from '@ngrx/store';
 import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
-import 'rxjs/add/operator/take';
 
 import { NowPlaylistService, YoutubePlayerService } from '../../services';
 import { AppPlayerService } from '../../services/app-player.service';
@@ -70,8 +65,6 @@ export class AppPlayerComponent implements OnInit {
     private playerService: YoutubePlayerService,
     public nowPlaylistService: NowPlaylistService,
     private appPlayerService: AppPlayerService,
-    private store: Store<EchoesState>,
-    private nowPlaylistEffects: NowPlaylistEffects
   ) {}
 
   ngOnInit() {

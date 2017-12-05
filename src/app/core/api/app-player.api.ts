@@ -1,21 +1,11 @@
-import { Store } from '@ngrx/store';
-import { toPayload } from '@ngrx/effects';
-
 import { Injectable } from '@angular/core';
-import { EchoesState } from '../store';
-import * as AppPlayer from '../store/app-player';
-import { NowPlaylistEffects } from '../effects/now-playlist.effects';
-import { NowPlaylistService } from '../services/now-playlist.service';
-import { UserProfile } from '../services/user-profile.service';
+import { NowPlaylistService } from '../services';
 import { AppPlayerService } from '../services/app-player.service';
 import { YoutubeApiService } from '../services/youtube-api.service';
 
 @Injectable()
 export class AppPlayerApi {
-  constructor(
-    private store: Store<EchoesState>,
-    private nowPlaylistEffects: NowPlaylistEffects,
-    private nowPlaylistService: NowPlaylistService,
+  constructor(private nowPlaylistService: NowPlaylistService,
     private appPlayerService: AppPlayerService,
     private youtubeApiService: YoutubeApiService
   ) {}

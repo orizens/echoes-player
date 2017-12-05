@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { EchoesState } from '../store';
-import * as NowPlaylist from '../store/now-playlist';
+import * as NowPlaylist from '../models/now-playlist';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { INowPlaylist } from '../store/now-playlist/now-playlist.reducer';
+import { INowPlaylist } from '../models/now-playlist';
 import { MediaParserService } from './media-parser.service';
 import { YoutubePlayerService } from './youtube-player.service';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
@@ -24,8 +22,7 @@ export class NowPlaylistService {
   private playlistSubject: BehaviorSubject<INowPlaylist>;
 
 
-  constructor(public store: Store<EchoesState>,
-              private youtubeVideosInfo: YoutubeVideosInfo,
+  constructor(private youtubeVideosInfo: YoutubeVideosInfo,
               private mediaParser: MediaParserService,
               private playerService: YoutubePlayerService,
               private localStorage: AsyncLocalStorage) {

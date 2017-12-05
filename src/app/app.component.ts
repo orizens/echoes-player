@@ -1,9 +1,6 @@
-import { VersionCheckerService } from './core/services/version-checker.service';
+import { VersionCheckerService } from './core/services';
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { EchoesState } from './core/store';
-import { getSidebarCollapsed$ } from './core/store/app-layout';
 
-import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/let';
 import { AppLayoutService } from './core/services/app-layout.service';
 
@@ -14,6 +11,7 @@ import { AppLayoutService } from './core/services/app-layout.service';
 })
 export class AppComponent implements OnInit {
   // sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
+  // noinspection JSUnusedGlobalSymbols
   sidebarCollapsed$ = this.appLayoutService.appLayout$.map(layout => layout.sidebarExpanded);
   // theme$ = this.store.select(getAppTheme);
   theme$ = this.appLayoutService.appLayout$.map(layout => layout.theme);
@@ -21,7 +19,7 @@ export class AppComponent implements OnInit {
   @HostBinding('class')
   style = 'arctic';
 
-  constructor(private store: Store<EchoesState>, private versionCheckerService: VersionCheckerService,
+  constructor(private versionCheckerService: VersionCheckerService,
               private appLayoutService: AppLayoutService) {
     versionCheckerService.start();
   }
