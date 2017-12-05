@@ -52,7 +52,8 @@ export class YoutubeMediaComponent {
   get thumb () {
     const hasMedia = Object.keys(this.media).length;
     const hasThumbs = hasMedia ? this.media.snippet.thumbnails : false;
-    const thumbUrl = hasThumbs ? this.media.snippet.thumbnails.high.url : false;
+    const hasHigh = hasThumbs ? this.media.snippet.thumbnails.high : false;
+    const thumbUrl = hasHigh ? this.media.snippet.thumbnails.high.url : false;
     return thumbUrl;
   }
 }

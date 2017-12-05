@@ -40,9 +40,14 @@ export class AppSearchComponent implements OnInit {
   // query$ = this.store.let(getQuery$);
   query$ = this.playerSearchService.playerSearch$.map(search => search.query);
 
+  // todo: ???
   currentPlaylist$ = this.store.let(getUserViewPlaylist$);
-  queryParamPreset$ = this.store.let(getQueryParamPreset$);
-  presets$ = this.store.let(getPresets$);
+
+  // queryParamPreset$ = this.store.let(getQueryParamPreset$);
+  queryParamPreset$ = this.playerSearchService.playerSearch$.map(search => search.queryParams.preset);
+
+  // presets$ = this.store.let(getPresets$);
+  presets$ = this.playerSearchService.playerSearch$.map(search => search.presets);
 
   constructor(
     private store: Store<EchoesState>,

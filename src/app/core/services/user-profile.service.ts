@@ -18,9 +18,6 @@ import { AsyncLocalStorage } from 'angular-async-local-storage';
 const INIT_STATE: IUserProfile = {
   access_token: '',
   playlists: [],
-  data: {},
-  // todo: no need to store nextPageToken
-  nextPageToken: '',
   profile: {},
   viewedPlaylist: ''
 };
@@ -81,11 +78,10 @@ export class UserProfile {
     this.userProfileSubject.next({
       ...this.userProfileSubject.getValue(),
       access_token: token,
-      playlists: [],
-      nextPageToken: ''
+      playlists: []
     });
 
-    this.youtubeApiService.getPlaylists().catch((error: Error) => {
+    this.youtubeApiService.fetchAllPlaylists().catch((error: Error) => {
       console.log(`error in fetching user's playlists ${error}`);
       return of(error);
     }).subscribe(response => this.updateData(response));
@@ -112,17 +108,13 @@ export class UserProfile {
     //         : this.userProfileActions.userProfileCompleted();
     //     });
 
-    this.userProfileSubject.next({
-      ...this.userProfileSubject.getValue(),
-      data: response
-    });
+    this.addPlayList(response);
 
-    this.addPlayList(response.items);
-
-    const nextPageToken = response.nextPageToken;
-    return nextPageToken
-      ? this.updatePageToken(response.nextPageToken)
-      : this.userProfileCompleted();
+    this.userProfileCompleted();
+    // const nextPageToken = response.nextPageToken;
+    // return nextPageToken
+    //   ? this.updatePageToken(response.nextPageToken)
+    //   : this.userProfileCompleted();
   }
 
   private addPlayList(items: any) {
@@ -135,32 +127,6 @@ export class UserProfile {
       playlists: [...userProfile.playlists, ...items]
     });
   }
-
-  private updatePageToken(nextPageToken: any) {
-    // case UserProfileActions.UPDATE_NEXT_PAGE_TOKEN:
-    //   return { ...state, nextPageToken: action.payload };
-
-    // @Effect()
-    //   getMorePlaylists$ = this.actions$
-    //     .ofType(UserProfileActions.UPDATE_NEXT_PAGE_TOKEN)
-    //     .map(toPayload)
-    //     .switchMap((pageToken: string) => {
-    //       this.userProfile.updatePageToken(pageToken);
-    //       return this.userProfile.getPlaylists(false);
-    //     })
-    //     .map(response => this.userProfileActions.updateData(response));
-    //
-
-    this.userProfileSubject.next({
-      ...this.userProfileSubject.getValue(),
-      nextPageToken
-    });
-
-    this.youtubeApiService.getPlaylists(nextPageToken).subscribe(response => {
-      this.updateData(response);
-    });
-  }
-
   private userProfileCompleted() {
     // ??? what is this for? too many action placeholders
   }

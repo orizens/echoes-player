@@ -105,6 +105,40 @@ export class YoutubeApiService {
     return config;
   }
 
+  fetchAllPlaylists() {
+    let items = [];
+    const subscriptions: Subscription[] = [];
+    const items$ = new Subject();
+    let nextPageToken = '';
+
+    const fetchMetadata = (response) => {
+      nextPageToken = response.nextPageToken;
+      return response.items;
+    };
+
+    const collectItems = (videos) => {
+      items = [...items, ...videos];
+      if (nextPageToken) {
+        fetchItems(nextPageToken);
+      } else {
+        items$.next(items);
+        subscriptions.forEach(_s => _s.unsubscribe());
+        items$.complete();
+      }
+    };
+
+    const fetchItems = (token?: string) => {
+      const sub = this.getPlaylists(token)
+        .map((response) => fetchMetadata(response))
+        .subscribe((response) => collectItems(response));
+      subscriptions.push(sub);
+      return sub;
+    };
+
+    fetchItems();
+    return items$.take(1);
+  }
+
   getPlaylists(pageToken?: string) {
     const apiOptions = this.playlistsOptions;
 
@@ -112,6 +146,8 @@ export class YoutubeApiService {
 
     if (pageToken) {
       config.set('pageToken', pageToken);
+    } else {
+      config.delete('pageToken');
     }
 
     let url;
@@ -127,8 +163,12 @@ export class YoutubeApiService {
       search: config,
       headers: this.createHeaders()
     };
+
     return this.http.get(url, options)
-      .map(response => response.json());
+      .map(response => {
+        this.isSearching = false;
+        return response.json();
+      });
   }
 
   getPlaylist(id) {

@@ -24,6 +24,7 @@ export class YoutubePlaylistComponent {
   }
 
   get thumb() {
-    return this.media.snippet.thumbnails.high.url;
+    const high = this.media.snippet.thumbnails.high;
+    return high ? high.url : '';
   }
 }
