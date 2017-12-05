@@ -35,9 +35,9 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 - [x] Fix app-player UI not in sync
 - [x] Add local storage back
-- [ ] Test apis using next_page tokens
-- [x] Migrate `appLayout` store
+- [x] Test apis using next_page tokens
 - [x] Fix sidebar collapse & expand animation
+- [ ] Refactor youtube api services
 - [ ] Migrate tests
 - [ ] Re-organize module structure 
 
