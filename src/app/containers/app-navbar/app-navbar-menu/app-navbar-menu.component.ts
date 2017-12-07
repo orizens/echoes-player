@@ -93,6 +93,7 @@ export class AppNavbarMenuComponent implements OnInit {
   ngOnInit() { }
 
   handleSignOut() {
+    this.hideMenu();
     this.signOut.emit();
   }
 

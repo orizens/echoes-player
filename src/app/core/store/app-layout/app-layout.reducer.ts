@@ -56,7 +56,7 @@ export function appLayout(state: IAppSettings = initialState, action: Action): I
     }
 
     default:
-      return { ...initialState, ...state };
+      return { ...initialState, ...state, themes: Themes.sort() };
   }
 }
 

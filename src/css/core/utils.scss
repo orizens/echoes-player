@@ -58,6 +58,8 @@ select {
 }
 .btn-transparent {
     background-color: transparent !important;
+    border-color: transparent;
+    box-shadow: none;
 }
 .bg-primary {
 	background-color: var(--brand-primary);
@@ -83,10 +85,21 @@ select {
 }
 
 // BUTTONS
+.btn-primary {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
 .btn-info {
   background-color: var(--brand-info);
+  border-color: var(--brand-info);
 }
 
 .btn-danger {
-  background-color: var(--brand-danger);  
+  background-color: var(--brand-danger);
+  border-color: var(--brand-danger);
+}
+
+// FLEX
+.is-strechable {
+  flex-grow: 1;
 }

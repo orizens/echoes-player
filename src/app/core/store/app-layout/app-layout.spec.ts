@@ -1,4 +1,5 @@
 import { inject, async } from '@angular/core/testing';
+import { Themes, DEFAULT_THEME } from '../../../app.themes';
 
 import * as AppLayout from './index';
 
@@ -13,8 +14,8 @@ describe('The App Settings Reducer', () => {
         isNewAvailable: false,
         checkingForVersion: false
       },
-      theme: 'arctic',
-      themes: []
+      theme: DEFAULT_THEME,
+      themes: Themes.sort()
     };
     return { ...defaultState, ...props };
   };

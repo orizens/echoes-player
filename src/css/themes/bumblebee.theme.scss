@@ -1,13 +1,13 @@
-body.halloween {
-  --brand-primary: #FF5722;
-  --brand-secondary: #d77418;
-  --brand-success: #2196F3;
-  --brand-warning: #f1c40f;
-  --brand-danger: #F44336;
-  --brand-info: #4CAF50;
+body.bumblebee {
+  --brand-primary: #faca0b;
+  --brand-secondary: #9a5a42;
+  --brand-success: #2ecc71;
+  --brand-warning: #f18f0f;
+  --brand-danger: #f13939;
+  --brand-info: #00BCD4;
   
-  --sidebar-bg: rgba(10, 21, 27, 0.95);
-  --sidebar-bg-secondary: #0e191f;
+  --sidebar-bg: rgba(18, 22, 24, 0.95);
+  --sidebar-bg-secondary: #080d0f;
   --sidebar-text: white;
   --sidebar-text-lighter: #c9c7c7;
 
@@ -21,7 +21,7 @@ body.halloween {
   --link-primary-color: var(--brand-primary);
   --link-primary-hover-color: var(--brand-primary);
   
-  --navbar-bg-color: rgba(10, 21, 27, 0.95);
+  --navbar-bg-color: rgba(18, 22, 24, 0.95);
   --navbar-text-color: #fbfbfb;
   --navbar-link-color: var(--link-primary-color);
 
@@ -33,5 +33,5 @@ body.halloween {
 
   --player-controls-bar-bg: var(--navbar-bg-color);
 
-  --app-bg-color: #0b161b;
+  --app-bg-color: #0d0f0f;
 }

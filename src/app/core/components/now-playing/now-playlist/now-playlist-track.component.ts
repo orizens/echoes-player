@@ -23,12 +23,12 @@ import { extractThumbUrl } from '../../../../shared/utils/media.utils';
       </div>
     <aside class="playlist-track__content">
       <section class="track-actions">
-        <button class="btn label bg-primary fa fa-list-ul playlist-track"
+        <button class="btn label btn-primary fa fa-list-ul playlist-track"
           *ngIf="isPlaylistMedia(video)"
           (click)="handleToggleTracks($event, video)"
           tooltip="Album Track - click to select cued tracks"
         ></button>
-        <button class="btn label bg-secondary fa fa-info-circle playlist-track"
+        <button class="btn label btn-info fa fa-info-circle playlist-track"
           (click)="toggleInfo()"
           tooltip="More information for this media"
         ></button>

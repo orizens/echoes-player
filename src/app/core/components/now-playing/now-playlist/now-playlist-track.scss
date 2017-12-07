@@ -144,6 +144,16 @@
       }
     }
 
+    .track-actions {
+      .closed & {
+        transform: translateX(20px);
+      }
+    }
+    .track-info {
+      .closed & {
+        display: none;
+      }
+    }
     .track-tracks {
 
       .btn {

@@ -1,3 +1,12 @@
+## v 3.9.1 (2017/12/07)
+* [NEW] - added new dark "bumblebee" theme 
+* [NEW] - each media card description (after flip) includes now a link to its YouTube page 
+* [FIX] - after log out, menu is closed - fix #30 
+* [UPGRADE] - updated favicon 
+* [UPGRADE] - updated few colors for themes
+* [UPGRADE] - main loading screen colors for Echoes
+* [UPGRADE] - app manifest colors for mobile devices 
+
 ## v 3.9.0 (2017/12/05)
 * [NEW] - added "info" section for each now playlist track to show more information. 
 * [UPGRADE] - updated secondary color (now in use) 

@@ -17,7 +17,8 @@
 					visibility: none;
 				}
 				.close-desc {
-					display: block;
+					display: flex;
+					justify-content: flex-end;
 				}
 			}
 			.item-actions {
@@ -50,8 +51,13 @@
 				text-decoration: none;
 			}
 
-			.media-actions .btn {
-				padding: 0;
+			.media-actions {
+				display: flex;
+				flex-direction: row;
+
+				.btn:first-child {
+					padding-left: 0;
+				}
 			}
 
 			.front {
@@ -186,16 +192,7 @@
 				padding: 15px;
 				margin: 0;
 				box-shadow: none;
-				position: relative;
 				bottom: -1px;
-				width: 100%;
-
-				.media-desc {
-					position: absolute;
-					bottom: 9px;
-					font-size: 2rem;
-					right: 5px;
-				}
 
 				.badge {
 					background-color: $brand-primary;
@@ -205,6 +202,7 @@
 
 				&.close-desc {
 					position: absolute;
+					width: 100%;
 				}
 
 				a:hover{
@@ -264,9 +262,6 @@
 @media (min-width: 768px) {
 	:host {
 		.youtube-item {
-			&:hover .media-title .front {
-				background: rgba(255, 255, 255, 0.9);
-			}
 			.play-media {
 				@include transform(translate(-50%, -50%));
 			}

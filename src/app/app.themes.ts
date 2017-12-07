@@ -1,6 +1,7 @@
 export const Themes = [
   'arctic',
-  'halloween'
+  'halloween',
+  'bumblebee'
 ];
 
 export const DEFAULT_THEME = Themes[0];

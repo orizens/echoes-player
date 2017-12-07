@@ -3,19 +3,19 @@
    ========================================================================== */
 /* Application */
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import './echoes-variables.scss';
+@import './echoes-variables';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
-@import './core/global.scss';
-@import './core/utils.scss';
-
-// @import './layout/navbar.scss';
+@import './core/global';
+@import './core/utils';
 
 $fa-font-path: '../fonts' !default;
 @import '~font-awesome/scss/font-awesome';
 
 // Themes
-@import './themes/halloween.theme.scss';
-@import './themes/arctic.theme.scss';
+@import 
+  './themes/halloween.theme',
+  './themes/arctic.theme',
+  './themes/bumblebee.theme';
 
 /* CSS VARS - COLORS */
 .btn:focus,
