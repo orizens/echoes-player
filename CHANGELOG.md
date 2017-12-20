@@ -1,3 +1,11 @@
+## v 3.9.2 (2017/12/20)
+* [NEW] - gtag integration
+* [NEW] - youtube api and client keys, analytics key is attached in build time (rather than hard coded in ts, html files) 
+* [UPGRADE] - unified icon "directive"
+* [UPGRADE] - reduced bootstrap unused styles while improving loading performance 
+* [CHOR] - removed unused files 
+* [UPDATE] - media controls displays flat background color when in fullscreen now (and not the blury background)
+
 ## v 3.9.1 (2017/12/07)
 * [NEW] - added new dark "bumblebee" theme 
 * [NEW] - each media card description (after flip) includes now a link to its YouTube page 

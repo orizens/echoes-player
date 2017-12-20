@@ -29,13 +29,20 @@ export class NowPlaylistEffects {
     private mediaParser: MediaParserService,
     private playerService: YoutubePlayerService,
     private userProfile: UserProfile
-  ) {}
+  ) { }
 
   @Effect()
   queueVideo$ = this.actions$
     .ofType(NowPlaylist.NowPlaylistActions.SELECT)
     .map(toPayload)
     .map((media: GoogleApiYouTubeVideoResource) => new NowPlaylist.QueueVideo(media));
+
+  @Effect()
+  playerStateChange$ = this.actions$
+    .ofType(NowPlaylist.NowPlaylistActions.PLAYER_STATE_CHANGE)
+    .map(toPayload)
+    .filter((event: YT.OnStateChangeEvent) => event.data === YT.PlayerState.ENDED)
+    .map(() => new NowPlaylist.MediaEnded());
 
   /* if it's the last track
    * AND repeat is on
@@ -71,7 +78,7 @@ export class NowPlaylistEffects {
     // .switchMap((playlistId: string) => this.userProfile.fetchAllPlaylistItems(playlistId))
     // .switchMap((playlistItems: GoogleApiYouTubePlaylistItemResource[]) => this.userProfile.fetchMetadata(playlistItems))
     .map(
-      (playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.LoadPlaylistEndAction(playlistItems)
+    (playlistItems: GoogleApiYouTubeVideoResource[]) => new NowPlaylist.LoadPlaylistEndAction(playlistItems)
     );
 
   @Effect()

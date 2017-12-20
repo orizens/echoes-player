@@ -1,6 +1,6 @@
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TooltipModule } from 'ngx-tooltip';
 import { PIPES } from '../../../../shared/pipes';
 import { NowPlaylistTrackComponent } from './now-playlist-track.component';
@@ -25,7 +25,7 @@ describe('NowPlaylistTrackComponent', () => {
     TestBed.configureTestingModule({
       imports: [TooltipModule],
       declarations: [NowPlaylistTrackComponent, ...PIPES],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA],
       providers: [
         { provide: MediaParserService, useValue: mediaParserSpy },
       ]

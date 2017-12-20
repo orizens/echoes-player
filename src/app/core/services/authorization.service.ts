@@ -14,7 +14,7 @@ import 'rxjs/add/operator/retry';
 import { Store } from '@ngrx/store';
 import { UserProfileActions } from '../store/user-profile';
 import { EchoesState } from '../store/';
-import { CLIENT_ID } from './constants';
+import { environment } from '../../../environments/environment';
 import { GapiLoader } from './gapi-loader.service';
 
 @Injectable()
@@ -61,22 +61,22 @@ export class Authorization {
       console.log('signedIn?', this._googleAuth.isSignedIn.get());
     }
     const authOptions = {
-      client_id: `${CLIENT_ID}.apps.googleusercontent.com`,
+      client_id: environment.youtube.CLIENT_ID,
       scope: this._scope
     };
     return Observable.fromPromise(window['gapi'].auth2.init(authOptions));
   }
 
-  private hasAccessToken (googleAuth: gapi.auth2.GoogleAuth): boolean {
+  private hasAccessToken(googleAuth: gapi.auth2.GoogleAuth): boolean {
     return googleAuth && googleAuth.currentUser.get().getAuthResponse().hasOwnProperty('access_token');
   }
 
-  private saveGoogleAuth (googleAuth: gapi.auth2.GoogleAuth): gapi.auth2.GoogleAuth {
+  private saveGoogleAuth(googleAuth: gapi.auth2.GoogleAuth): gapi.auth2.GoogleAuth {
     this._googleAuth = googleAuth;
     return googleAuth;
   }
 
-  private listenToGoogleAuthSignIn (googleAuth: gapi.auth2.GoogleAuth) {
+  private listenToGoogleAuthSignIn(googleAuth: gapi.auth2.GoogleAuth) {
     window['gapi']['auth2'].getAuthInstance().isSignedIn.listen(authState => {
       console.log('authState changed', authState);
     });
@@ -107,16 +107,16 @@ export class Authorization {
     return Observable.timer(timeInMs)
       .timeInterval()
       .switchMap(() => this.authorize())
-        .do((googleAuth: gapi.auth2.GoogleAuth) => this.saveGoogleAuth(googleAuth))
-        .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get())
-        .retry(3)
-        .catch((error) => {
-          window.location.reload();
-          return error;
-        })
-        .subscribe((googleUser: gapi.auth2.GoogleUser) => {
-          this.zone.run(() => this.handleSuccessLogin(googleUser));
-        });
+      .do((googleAuth: gapi.auth2.GoogleAuth) => this.saveGoogleAuth(googleAuth))
+      .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get())
+      .retry(3)
+      .catch((error) => {
+        window.location.reload();
+        return error;
+      })
+      .subscribe((googleUser: gapi.auth2.GoogleUser) => {
+        this.zone.run(() => this.handleSuccessLogin(googleUser));
+      });
   }
 
   handleFailedLogin(response) {
@@ -127,7 +127,7 @@ export class Authorization {
     return this._googleAuth && this._googleAuth.isSignedIn.get();
   }
 
-  signOut () {
+  signOut() {
     this.disposeAutoSignIn();
     return Observable.fromPromise(this._googleAuth.signOut())
       .subscribe(response => {

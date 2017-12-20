@@ -36,5 +36,7 @@
   ],
   "start_url": "../index.html?utm_source=web_app_manifest",
   "display": "fullscreen",
-  "background_color": "#03A9F4"
+  "background_color": "#03A9F4",
+  "theme_color": "#03A9F4",
+  "orientation": "portrait-primary"
 }

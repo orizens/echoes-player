@@ -45,7 +45,7 @@ export function player(state: IAppPlayer = initialPlayerState, action: Actions):
     case ActionTypes.TOGGLE_PLAYER:
       return toggleVisibility(state);
 
-    case ActionTypes.STATE_CHANGE:
+    case ActionTypes.UPDATE_STATE:
       return changePlayerState(state, action.payload);
 
     case ActionTypes.FULLSCREEN: {

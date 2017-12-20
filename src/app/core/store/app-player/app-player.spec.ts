@@ -47,7 +47,7 @@ describe('The App Player reducer', () => {
       ...mockedState,
       playerState: 0
     };
-    const actual = player(state, { type: ActionTypes.STATE_CHANGE, payload: 1 });
+    const actual = player(state, { type: ActionTypes.UPDATE_STATE, payload: 1 });
     const expected = state;
     expect(actual.playerState).toBe(1);
   });

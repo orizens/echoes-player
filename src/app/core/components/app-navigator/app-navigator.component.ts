@@ -12,14 +12,14 @@ import { getSearchType$, CSearchTypes } from '../../../core/store/player-search'
 
 @Component({
   selector: 'app-navigator',
-  styleUrls: [ './app-navigator.scss' ],
+  styleUrls: ['./app-navigator.scss'],
   template: `
   <div class="list-group"
     [class.closed]="closed">
     <button class="list-group-item ux-maker"
       *ngFor="let route of routes;"
       (click)="go(route.link)">
-      <i class="{{ route.icon }}"></i>
+      <icon [name]="route.icon"></icon>
       <span class="text">{{ route.label }}</span>
     </button>
   </div>
@@ -32,8 +32,8 @@ export class AppNavigatorComponent implements OnInit {
 
   public searchType$ = this.store.let(getSearchType$);
   public routes = [
-    { link: 'search', icon: 'fa fa-music', label: 'Explore' }
-    // { link: '/user', icon: 'fa fa-heart', label: 'My Profile' }
+    { link: 'search', icon: 'music', label: 'Explore' }
+    // { link: '/user', icon: 'heart', label: 'My Profile' }
   ];
 
   constructor(

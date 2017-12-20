@@ -18,7 +18,7 @@ import {
         title="maximize / minimize"
         (click)="handleThumbClick()">
         <img class="media-thumb" src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
-        <i class="fa fa-arrows-alt" [ngClass]="{ 'invisible': _minimized }"></i>
+        <icon name="arrows-alt" [class.invisible]="_minimized"></icon>
       </aside>
       <a class="title">{{ player?.media?.snippet?.title }}</a>
     </h3>
@@ -31,9 +31,9 @@ export class MediaInfoComponent implements OnInit {
   @Input() minimized: GoogleApiYouTubeVideoResource;
   @Output() thumbClick = new EventEmitter();
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   @HostListener('window:keyup.Escape', ['$event'])
   keyEvent(event: KeyboardEvent) {

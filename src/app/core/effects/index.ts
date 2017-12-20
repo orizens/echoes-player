@@ -1,6 +1,7 @@
 import { EffectsModule } from '@ngrx/effects';
 
 import { AppPlayerEffects } from './app-player.effects';
+import { AnalyticsEffects } from './analytics.effects';
 import { NowPlaylistEffects } from './now-playlist.effects';
 import { UserProfileEffects } from './user-profile.effects';
 import { PlayerSearchEffects } from './player-search.effects';
@@ -13,5 +14,6 @@ export const AppEffectsModules = EffectsModule.forRoot([
   UserProfileEffects,
   PlayerSearchEffects,
   AppSettingsEffects,
-  RouterEffects
+  RouterEffects,
+  AnalyticsEffects
 ]);

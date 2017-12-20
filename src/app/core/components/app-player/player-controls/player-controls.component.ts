@@ -17,7 +17,7 @@ import {
       class="btn btn-default btn-lg navbar-btn"
       [ngClass]="[control.feature]"
       (click)="handleControl(control)">
-      <i [ngClass]="['fa', control.icon]"></i>
+      <icon [name]="control.icon"></icon>
     </button>
   </div>
   `
@@ -39,31 +39,31 @@ export class PlayerControlsComponent {
   controls = [
     {
       title: 'previous',
-      icon: 'fa-step-backward',
+      icon: 'step-backward',
       handler: this.handlePrevious,
       feature: 'previous'
     },
     {
       title: 'pause',
-      icon: 'fa-pause',
+      icon: 'pause',
       handler: this.handlePause,
       feature: 'pause'
     },
     {
       title: 'play',
-      icon: 'fa-play',
+      icon: 'play',
       handler: this.handlePlay,
       feature: 'play'
     },
     {
       title: 'play next track',
-      icon: 'fa-step-forward',
+      icon: 'step-forward',
       handler: this.handleNext,
       feature: 'next'
     },
     {
       title: 'repeate playlist',
-      icon: 'fa-refresh',
+      icon: 'refresh',
       handler: this.handleRepeat,
       feature: 'repeat'
     }

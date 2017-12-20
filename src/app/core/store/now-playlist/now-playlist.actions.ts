@@ -23,6 +23,7 @@ export class NowPlaylistActions {
   static LOAD_PLAYLIST_END = '[NowPlaylist] LOAD_PLAYLIST_END';
   static PLAY_PLAYLIST = '[NowPlaylist] PLAY_PLAYLIST';
   static PLAY_PLAYLIST_START = '[NowPlaylist] PLAY_PLAYLIST_START';
+  static PLAYER_STATE_CHANGE = '[NowPlaylist] PLAYER_STATE_CHANGE';
 
   toggleRepeat = ActionCreatorFactory.create(NowPlaylistActions.TOGGLE_REPEAT);
   seekTo = ActionCreatorFactory.create<{ time: string; media: GoogleApiYouTubeVideoResource }>(
@@ -31,75 +32,83 @@ export class NowPlaylistActions {
 }
 export class QueueLoadVideo implements Action {
   public type = NowPlaylistActions.QUEUE_LOAD_VIDEO;
-  constructor(public payload: GoogleApiYouTubeVideoResource) {}
+  constructor(public payload: GoogleApiYouTubeVideoResource) { }
 }
 
 export class UpdateIndexByMedia implements Action {
   public type = NowPlaylistActions.UPDATE_INDEX;
-  constructor(public payload: string) {}
+  constructor(public payload: string) { }
 }
 
 export class QueueFailed implements Action {
   public type = NowPlaylistActions.QUEUE_FAILED;
-  constructor(public payload: GoogleApiYouTubeVideoResource) {}
+  constructor(public payload: GoogleApiYouTubeVideoResource) { }
 }
 export class QueueVideo implements Action {
   public type = NowPlaylistActions.QUEUE;
-  constructor(public payload: GoogleApiYouTubeVideoResource) {}
+  constructor(public payload: GoogleApiYouTubeVideoResource) { }
 }
 export class QueueVideos implements Action {
   public type = NowPlaylistActions.QUEUE_VIDEOS;
-  constructor(public payload: GoogleApiYouTubeVideoResource[]) {}
+  constructor(public payload: GoogleApiYouTubeVideoResource[]) { }
 }
 export class RemoveVideo implements Action {
   public type = NowPlaylistActions.REMOVE;
-  constructor(public payload: GoogleApiYouTubeVideoResource) {}
+  constructor(public payload: GoogleApiYouTubeVideoResource) { }
 }
 
 export class FilterChange implements Action {
   public type = NowPlaylistActions.FILTER_CHANGE;
-  constructor(public payload: string) {}
+  constructor(public payload: string) { }
 }
 export class SelectVideo implements Action {
   public type = NowPlaylistActions.SELECT;
-  constructor(public payload: GoogleApiYouTubeVideoResource) {}
+  constructor(public payload: GoogleApiYouTubeVideoResource) { }
 }
 
 export class PlayPlaylistAction implements Action {
   readonly type = NowPlaylistActions.PLAY_PLAYLIST;
-  constructor(public payload: string) {}
+  constructor(public payload: string) { }
 }
 export class PlayPlaylistStartAction implements Action {
   readonly type = NowPlaylistActions.PLAY_PLAYLIST_START;
-  constructor(public payload: GoogleApiYouTubeVideoResource) {}
+  constructor(public payload: GoogleApiYouTubeVideoResource) { }
 }
 
 export class LoadPlaylistAction implements Action {
   readonly type = NowPlaylistActions.LOAD_PLAYLIST_START;
-  constructor(public payload: string) {}
+  constructor(public payload: string) { }
 }
 
 export class LoadPlaylistEndAction implements Action {
   readonly type = NowPlaylistActions.LOAD_PLAYLIST_END;
-  constructor(public payload: GoogleApiYouTubeVideoResource[]) {}
+  constructor(public payload: GoogleApiYouTubeVideoResource[]) { }
 }
 
 export class MediaEnded implements Action {
   public type = NowPlaylistActions.MEDIA_ENDED;
-  constructor(public payload?: any) {}
+  constructor(public payload?: any) { }
 }
 
 export class SelectNext implements Action {
   public type = NowPlaylistActions.SELECT_NEXT;
-  constructor(public payload?: any) {}
+  constructor(public payload?: any) { }
 }
 export class SelectPrevious implements Action {
   public type = NowPlaylistActions.SELECT_PREVIOUS;
-  constructor(public payload?: any) {}
+  constructor(public payload?: any) { }
 }
 export class RemoveAll implements Action {
   public type = NowPlaylistActions.REMOVE_ALL;
-  constructor(public payload?: any) {}
+  constructor(public payload?: any) { }
+}
+export class ToggleRepeat implements Action {
+  public type = NowPlaylistActions.TOGGLE_REPEAT;
+  constructor(public payload = '') { }
+}
+export class PlayerStateChange implements Action {
+  public type = NowPlaylistActions.PLAYER_STATE_CHANGE;
+  constructor(public payload: YT.OnStateChangeEvent) { }
 }
 
 export type Actions =

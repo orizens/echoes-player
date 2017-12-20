@@ -1,6 +1,85 @@
 @import '~css/core/global.scss';
 $toolbar-position-on-hover: -9rem;
 
+@mixin control-button-active() {
+  border-bottom: 4px solid $turquoise;
+}
+
+:host {
+  $player-fullscreen-hover-opacity: 0.8;
+
+  z-index: 1031 !important;
+
+  .show-youtube-player {
+    .yt-player {
+      transform: translate3d(-10%, -90%, 0) scale(0.8, 0.8);
+    }
+    .social-shares {
+      display: block;
+    }
+  }
+
+  .fullscreen .btn.fullscreen {
+    @include control-button-active();
+    i {
+      @include transform(scale(0.8) rotate(45deg));
+    }
+  }
+
+  .fullscreen.show-youtube-player {
+    .container {
+      z-index: $zindex-modal-background;
+      position: fixed;
+      transform: translateY($toolbar-position-on-hover);
+      opacity: 0;
+
+      &:hover {
+        opacity: $player-fullscreen-hover-opacity;
+      }
+    }
+    .yt-player {
+      top: 40px;
+
+      &:hover + .container {
+        transform: translateY($toolbar-position-on-hover);
+        opacity: 0.3;
+      }
+    }
+  }
+
+  .container {
+    overflow: hidden;
+    padding: 0;
+    z-index: $zindex-navbar-fixed;
+    background-color: var(--player-controls-bar-bg);
+    position: relative;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: row;
+
+    media-info {
+      width: 41%;
+      z-index: 10;
+    }
+  }
+
+  .yt-player {
+    z-index: $zindex-modal-background;
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-shadow: 1px -1px 2px 0px rgba(0, 0, 0, 1);
+    background: var(--brand-dark-bg-color-transparent); //rgba(0, 0, 0, 0.8);
+    transition-duration: 0.5s;
+    transform: translate3d(-37%, -39%, 0) scale(0.21);
+  }
+
+  .show-youtube-player .btn.show-player {
+    transform: translatey(0rem);
+    @include control-button-active();
+  }
+}
+
 @media (min-width: 320px) {
   :host {
     border: 0 !important;
@@ -45,7 +124,7 @@ $toolbar-position-on-hover: -9rem;
 @media (min-width: 768px) {
   :host {
     .fullscreen.show-youtube-player {
-      .container-fluid {
+      .container {
         width: 70%;
         left: 15%;
         border-radius: 50px;
@@ -55,7 +134,7 @@ $toolbar-position-on-hover: -9rem;
         top: 40px;
         transform: translate3d(0, -100%, 0) scale(1, 1);
 
-        &:hover + .container-fluid {
+        &:hover + .container {
           @include transform(translatey($toolbar-position-on-hover));
         }
       }
@@ -65,87 +144,5 @@ $toolbar-position-on-hover: -9rem;
         width: 405px;
       }
     }
-  }
-}
-
-@media (max-width: 767px) {
-  :host {
-    .controls-container {
-      padding: 0;
-    }
-  }
-}
-@mixin control-button-active() {
-  border-bottom: 4px solid $turquoise;
-}
-
-:host {
-  $player-fullscreen-hover-opacity: 0.8;
-
-  z-index: 1031 !important;
-
-  .show-youtube-player {
-    .yt-player {
-      transform: translate3d(-10%, -90%, 0) scale(0.8, 0.8);
-    }
-    .social-shares {
-      display: block;
-    }
-  }
-
-  .fullscreen .btn.fullscreen {
-    @include control-button-active();
-    i {
-      @include transform(scale(0.8) rotate(45deg));
-    }
-  }
-
-  .fullscreen.show-youtube-player {
-    .container-fluid {
-      z-index: $zindex-modal-background;
-      position: fixed;
-      transform: translateY($toolbar-position-on-hover);
-      opacity: 0;
-
-      &:hover {
-        opacity: $player-fullscreen-hover-opacity;
-      }
-    }
-    .yt-player {
-      top: 40px;
-
-      &:hover + .container-fluid {
-        transform: translateY($toolbar-position-on-hover);
-        opacity: 0.3;
-      }
-    }
-  }
-
-  .container-fluid {
-    overflow: hidden;
-    padding: 0;
-    z-index: $zindex-navbar-fixed;
-    background-color: var(--player-controls-bar-bg);
-    position: relative;
-    transition: all 0.3s;
-  }
-
-  .yt-player {
-    z-index: $zindex-modal-background;
-    position: absolute;
-    left: 0;
-    top: 0;
-    box-shadow: 1px -1px 2px 0px rgba(0, 0, 0, 1);
-    background: var(--brand-dark-bg-color-transparent); //rgba(0, 0, 0, 0.8);
-    transition-duration: 0.5s;
-    transform: translate3d(-37%, -39%, 0) scale(0.21);
-  }
-
-  .show-youtube-player .btn.show-player {
-    transform: translatey(0rem);
-    @include control-button-active();
-  }
-  .social-shares {
-    display: none;
   }
 }

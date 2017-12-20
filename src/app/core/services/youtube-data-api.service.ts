@@ -1,6 +1,6 @@
 import { Http, URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { YOUTUBE_API_KEY } from './constants';
+import { environment } from '../../../environments/environment';
 import { Authorization } from './authorization.service';
 
 /**
@@ -34,22 +34,22 @@ import { Authorization } from './authorization.service';
 export class YoutubeDataApi {
   public _config: URLSearchParams = new URLSearchParams();
 
-  private _apiPrefixUrl: string = 'https://www.googleapis.com/youtube';
-  private _apiVersion: string = 'v3';
-  private get _apiUrl () {
+  private _apiPrefixUrl = 'https://www.googleapis.com/youtube';
+  private _apiVersion = 'v3';
+  private get _apiUrl() {
     return `${this._apiPrefixUrl}/${this._apiVersion}`;
   }
   private _defaultUrlParams = {
     part: 'snippet,id',
     maxResults: '50',
-    key: YOUTUBE_API_KEY
+    key: environment.youtube.API_KEY
   };
 
-  constructor (private http: Http, private auth: Authorization) {
+  constructor(private http: Http, private auth: Authorization) {
     this.mergeParams(this._defaultUrlParams, this._config);
   }
 
-  list (api: string, options) {
+  list(api: string, options) {
     const config = this._config.clone();
     this.mergeParams(options, config);
     const _options: RequestOptionsArgs = {
@@ -60,15 +60,15 @@ export class YoutubeDataApi {
       .map(response => response.json());
   }
 
-  delete (api: string, options) {
+  delete(api: string, options) {
     return this._request(api);
   }
 
-  insert (api: string, options) {
+  insert(api: string, options) {
     return this.http.post(this.getApi(api), {});
   }
 
-  update (api) {
+  update(api) {
     return this._request(api);
   }
 
@@ -93,7 +93,7 @@ export class YoutubeDataApi {
     return `${this._apiUrl}/${api}`;
   }
 
-  private mergeParams (source, target: URLSearchParams) {
+  private mergeParams(source, target: URLSearchParams) {
     Object.keys(source)
       .forEach(param => target.set(param, source[param]));
   }

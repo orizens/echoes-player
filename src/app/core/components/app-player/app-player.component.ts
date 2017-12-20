@@ -16,7 +16,8 @@ import {
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
-import { NowPlaylistService, YoutubePlayerService } from '../../services';
+import { NowPlaylistService } from '../../services';
+import { AppPlayerApi } from '../../api/app-player.api';
 
 @Component({
   selector: 'app-player',
@@ -35,14 +36,14 @@ import { NowPlaylistService, YoutubePlayerService } from '../../services';
         (change)="updatePlayerState($event)"
       ></youtube-player>
     </div>
-    <div class="container-fluid">
-      <image-blur [media]="media$ | async"></image-blur>
-      <media-info class="col-md-5 col-xs-6"
+    <div class="container">
+      <image-blur [media]="media$ | async" *ngIf="!(isPlayerFullscreen$ | async).on"></image-blur>
+      <media-info
         [player]="player$ | async"
         [minimized]="media$ | async"
         (thumbClick)="toggleFullScreen()"
       ></media-info>
-      <player-controls class="col-md-4 col-xs-6 controls-container nicer-ux"
+      <player-controls class="controls-container nicer-ux"
         [isRepeat]="isPlayerInRepeat$ | async"
         [playing]="isPlayerPlaying$ | async"
         [media]="media$ | async"
@@ -68,60 +69,52 @@ export class AppPlayerComponent implements OnInit {
   @HostBinding('class.youtube-player') style = true;
 
   constructor(
-    private playerService: YoutubePlayerService,
-    public nowPlaylistService: NowPlaylistService,
+    private nowPlaylistService: NowPlaylistService,
     private store: Store<EchoesState>,
-    private nowPlaylistEffects: NowPlaylistEffects
-  ) {}
+    private nowPlaylistEffects: NowPlaylistEffects,
+    private appPlayerApi: AppPlayerApi
+  ) { }
 
   ngOnInit() {
-    this.store.dispatch(new AppPlayer.Reset());
+    this.appPlayerApi.resetPlayer();
     this.nowPlaylistEffects.loadNextTrack$.subscribe(action => this.playVideo(action.payload));
   }
 
   setupPlayer(player) {
-    this.playerService.setupPlayer(player);
+    this.appPlayerApi.setupPlayer(player);
   }
 
   updatePlayerState(event) {
-    this.playerService.onPlayerStateChange(event);
-    if (event.data === YT.PlayerState.ENDED) {
-      // this.store.dispatch(this.playerActions.loadNextTrack());
-      this.nowPlaylistService.trackEnded();
-    }
+    this.appPlayerApi.changePlayerState(event);
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new AppPlayer.PlayVideo(media));
+    this.appPlayerApi.playVideo(media);
   }
 
   pauseVideo() {
-    this.playerService.pause();
+    this.appPlayerApi.pauseVideo();
   }
 
   togglePlayer() {
-    this.playerService.togglePlayer();
+    this.appPlayerApi.togglePlayer();
   }
 
   toggleFullScreen() {
-    this.store.dispatch(new AppPlayer.FullScreen());
+    this.appPlayerApi.toggleFullScreen();
   }
 
   playNextTrack() {
     this.nowPlaylistService.selectNextIndex();
-    this.store.dispatch(new AppPlayer.PlayVideo(this.nowPlaylistService.getCurrent()));
+    this.playVideo(this.nowPlaylistService.getCurrent());
   }
 
   playPreviousTrack() {
     this.nowPlaylistService.selectPreviousIndex();
-    this.store.dispatch(new AppPlayer.PlayVideo(this.nowPlaylistService.getCurrent()));
-  }
-
-  isLastIndex() {
-    return this.nowPlaylistService.isInLastTrack();
+    this.playVideo(this.nowPlaylistService.getCurrent());
   }
 
   toggleRepeat() {
-    this.nowPlaylistService.toggleRepeat();
+    this.appPlayerApi.toggleRepeat();
   }
 }

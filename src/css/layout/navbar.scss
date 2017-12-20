@@ -32,24 +32,6 @@
 			margin-right: 7px;
 			line-height: $navbar-new-height;
 		}
-
-		.navbar-collapse {
-			clear: both;
-		}
-		.container-fluid {
-			padding: 0;
-		}
-	}
-	.navbar .navbar-collapse {
-		border: none;
-	}
-	.nav-header-fluid {
-		position: relative;
-	}
-
-	.navbar-nav > li > .dropdown-toggle {
-		padding: 10px 15px;
-		color: $navbar-default-link-color;
 	}
 
 	&.navbar-transparent {
@@ -62,16 +44,11 @@
 	.navbar {
 
 		.container {
-      // @extend container-fluid;
       padding-right: 15px;
       padding-left: 15px;
       margin-right: auto;
       margin-left: auto;
 			padding: 0;
-		}
-
-		.navbar-collapse {
-			clear: none;
 		}
 	}
 	.navbar-fixed-top {

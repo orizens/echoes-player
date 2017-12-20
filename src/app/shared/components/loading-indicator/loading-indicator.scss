@@ -2,10 +2,10 @@
 
 :host {
   display: block;
-  padding: 0 2rem;
+  margin: 2rem;
   position: fixed;
   z-index: $zindex-navbar;
-  min-width: 57rem;
+  min-width: 40%;
   transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   transform: translatey(-20rem);
 
@@ -16,6 +16,7 @@
   .alert {
     background-color: var(--sidebar-bg);
     box-shadow: 0 0 20px -3px #000;
+    padding: 2rem;
 
     &.alert-info {
       color: var(--brand-primary);

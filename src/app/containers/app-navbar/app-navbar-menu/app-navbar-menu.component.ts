@@ -17,10 +17,10 @@ enum Key {
   template: `
     <button class="btn btn-navbar btn-link ux-maker btn-toggle"
       (click)="toggleMenu()">
-      <i class="fa fa-ellipsis-v"></i>
-      <i *ngIf="appVersion.isNewAvailable" class="pulse update-indicator fa fa-dot-circle-o text-primary"></i>
+      <icon name="ellipsis-v"></icon>
+      <icon *ngIf="appVersion.isNewAvailable" name="dot-circle-o" class="pulse update-indicator text-primary"></icon>
     </button>
-    <div class="panel panel-default menu-dropdown"
+    <div class="panel menu-dropdown"
       [class.slideInDown]="!hide"
       >
       <div class="menu-backdrop" *ngIf="!hide" (click)="hideMenu()"></div>
@@ -32,7 +32,7 @@ enum Key {
           </button>
         </div>
         <a class="list-group-item" href="http://github.com/orizens/echoes-player" target="_blank">
-        <i class="fa fa-github"></i> Source Code @Github
+        <icon name="github"></icon> Source Code @Github
         </a>
         <a class="list-group-item" *ngIf="!hide" href="https://travis-ci.org/orizens/echoes-player" target="_blank">
         <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
@@ -54,12 +54,12 @@ enum Key {
             (buttonClick)="updateTheme($event)"></button-group>
         </div>
         <a class="list-group-item" href="http://orizens.com" target="_blank">
-        Made with <i class="fa fa-heart text-danger"></i> By Orizens
+        Made with <icon name="heart" class="text-danger"></icon> By Orizens
         </a>
         <button class="list-group-item"
           *ngIf="signedIn"
           (click)="handleSignOut()">
-          <i class="fa fa-sign-out"></i> Sign Out
+          <icon name="sign-out"></icon> Sign Out
         </button>
       </div>
     </div>
@@ -93,7 +93,6 @@ export class AppNavbarMenuComponent implements OnInit {
   ngOnInit() { }
 
   handleSignOut() {
-    this.hideMenu();
     this.signOut.emit();
   }
 

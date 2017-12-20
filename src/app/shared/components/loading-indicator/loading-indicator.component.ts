@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '
   styleUrls: ['./loading-indicator.scss'],
   template: `
   <div class="alert alert-info">
-    <i class="fa fa-circle-o-notch fa-spin"></i> {{ message }}
+    <icon name="circle-o-notch spin"></icon> {{ message }}
   </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush

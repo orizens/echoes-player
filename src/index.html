@@ -8,6 +8,7 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#03A9F4" />
   <style type="text/css">
     html body {
       background-color: #03A9F4;
@@ -86,6 +87,15 @@
   </style>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans' rel='stylesheet' type='text/css'>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={GA_PROJECTID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.GA_PROJECT_ID = '{GA_PROJECTID}';
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', window.GA_PROJECT_ID);
+    // gtag('set', {'user_id': 'USER_ID'});
+  </script>
 </head>
 
 <body>
@@ -98,14 +108,5 @@
   </section>
 </body>
 <script src="https://apis.google.com/js/platform.js?onload=apiLoaded" async defer></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-35188202-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'UA-35188202-2');
-  // gtag('set', {'user_id': 'USER_ID'});
-</script>
 
 </html>
