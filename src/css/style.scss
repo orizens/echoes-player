@@ -2,9 +2,10 @@
    Author: Oren Farhi, http://orizens.com
    ========================================================================== */
 /* Application */
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+// $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import './echoes-variables';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import './bootstrap-custom';
 @import './core/global';
 @import './core/utils';
 
@@ -26,17 +27,7 @@ $fa-font-path: '../fonts' !default;
 .btn.active.focus {
   outline: none;
 }
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 10px 0 10px 10px;
-  box-shadow: 0 0px 10px black;
-  left: 0;
-}
-footer p {
-  margin: 0;
-}
+
 iframe {
   border: none;
 }
@@ -58,7 +49,4 @@ a.list-group-item {
     background-color: var(--list-group-item-bg-hover);
     color: var(--list-group-item-text-hover);
   }
-}
-.panel {
-  border-color: var(--brand-bg-lite-transparent);
 }

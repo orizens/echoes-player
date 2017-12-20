@@ -1,6 +1,6 @@
 import { Http, URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { YOUTUBE_API_KEY } from './constants';
+import { environment } from '../../../environments/environment';
 import { Authorization } from './authorization.service';
 
 import 'rxjs/add/operator/toPromise';
@@ -53,14 +53,14 @@ export class YoutubeApiService {
 
   resetConfig() {
     this.config.set('part', 'snippet,contentDetails');
-    this.config.set('key', YOUTUBE_API_KEY);
+    this.config.set('key', environment.youtube.API_KEY);
     this.config.set('maxResults', '50');
     this.config.set('pageToken', '');
   }
 
   getList() {
     this.isSearching = true;
-    let options: RequestOptionsArgs = {
+    const options: RequestOptionsArgs = {
       search: this.config,
       headers: this.createHeaders()
     };
@@ -74,7 +74,7 @@ export class YoutubeApiService {
     }
 
     this.isSearching = true;
-    let options: RequestOptionsArgs = {
+    const options: RequestOptionsArgs = {
       search: this.config,
       headers: this.createHeaders()
     };

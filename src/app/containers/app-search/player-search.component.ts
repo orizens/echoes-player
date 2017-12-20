@@ -17,7 +17,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'player-search',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: [ './player-search.scss' ],
+  styleUrls: ['./player-search.scss'],
   template: `
     <form class="navbar-form form-search" id="media-explorer"
       [formGroup]="searchForm"
@@ -26,7 +26,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
         <input placeholder="Find My Echoes..." id="media-search"
           #mediaSearch
           ngxTypeahead
-          [taUrl]="'http://suggestqueries.google.com/complete/search'"
+          [taUrl]="'//suggestqueries.google.com/complete/search'"
           [taParams]="params"
           (taSelected)="handleSelectSuggestion($event)"
           type="search" class="form-control" autocomplete="off"
@@ -34,7 +34,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
           formControlName="searchInput"
           >
         <button class="btn btn-transparent btn-submit" type="submit" tooltip="search with echoes">
-          <i class="fa fa-search"></i>
+          <icon name="search"></icon>
         </button>
       </div>
     </form>

@@ -55,7 +55,7 @@
 				display: flex;
 				flex-direction: row;
 
-				.btn:first-child {
+				.first-action {
 					padding-left: 0;
 				}
 			}
@@ -146,6 +146,11 @@
 					height: 100%;
 					transform: scale(1.7) translatey(0);
 					transition: transform .3s ease-out;
+					display: block;
+					max-width: 100%;
+					margin-left: auto;
+					margin-right: auto;
+					border: 0;
 				}
 			}
 
@@ -189,7 +194,7 @@
 			}
 
 			.item-actions {
-				padding: 15px;
+				padding: 1rem;
 				margin: 0;
 				box-shadow: none;
 				bottom: -1px;

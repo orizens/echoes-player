@@ -26,6 +26,7 @@ after_script:
 after_success:
   # - chmod +x ./config/deploy.sh
   # - ./config/deploy.sh
+  - npm run build:env
   - npm run build:prod
   - npm run copy:domain
   - npm run copy:heroku

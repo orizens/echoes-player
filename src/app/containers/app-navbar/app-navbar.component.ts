@@ -1,4 +1,3 @@
-import { getAppVersion$, getAppThemes } from '../../core/store/app-layout';
 import {
   Component,
   EventEmitter,
@@ -8,13 +7,10 @@ import {
   ChangeDetectionStrategy,
   ViewEncapsulation
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
 
-import { getUser$, getUserPlaylists$ } from '../../core/store/user-profile/user-profile.selectors';
-import { UserProfile, Authorization } from '../../core/services';
-import * as AppLayout from '../../core/store/app-layout';
+import { Authorization } from '../../core/services';
 import { EchoesState } from '../../core/store';
+import { AppApi } from '../../core/api/app.api';
 
 @Component({
   selector: 'app-navbar',
@@ -27,9 +23,9 @@ import { EchoesState } from '../../core/store';
         <h3 *ngIf="header" class="navbar__header navbar-text">
             <button *ngIf="mainIcon" class="navbar-btn__main btn-transparent"
               (click)="handleMainIconClick()">
-              <i class="fa fa-{{ mainIcon }}"></i>
+              <icon [name]="mainIcon"></icon>
             </button>
-            <i class="fa fa-{{ headerIcon }}" *ngIf="headerIcon"></i> {{ header }}
+            <icon [name]="headerIcon" *ngIf="headerIcon"></icon> {{ header }}
           </h3>
           <ng-content></ng-content>
         </div>
@@ -55,9 +51,9 @@ import { EchoesState } from '../../core/store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNavbarComponent implements OnInit {
-  user$ = this.store.let(getUser$);
-  appVersion$ = this.store.let(getAppVersion$);
-  themes$ = this.store.select(getAppThemes);
+  user$ = this.appApi.user$;
+  appVersion$ = this.appApi.appVersion$;
+  themes$ = this.appApi.themes$;
 
   @Input() header: string;
   @Input() headerIcon = '';
@@ -69,8 +65,7 @@ export class AppNavbarComponent implements OnInit {
 
   constructor(
     private authorization: Authorization,
-    private userProfile: UserProfile,
-    private store: Store<EchoesState>
+    private appApi: AppApi
   ) { }
 
   ngOnInit() { }
@@ -90,11 +85,11 @@ export class AppNavbarComponent implements OnInit {
   }
 
   updateVersion() {
-    this.store.dispatch(new AppLayout.UpdateAppVersion());
+    this.appApi.updateVersion();
   }
 
   checkVersion() {
-    this.store.dispatch(new AppLayout.CheckVersion());
+    this.appApi.checkVersion();
   }
 
   handleMainIconClick() {
@@ -102,6 +97,6 @@ export class AppNavbarComponent implements OnInit {
   }
 
   changeTheme(theme) {
-    this.store.dispatch(new AppLayout.ThemeChange(theme.value));
+    this.appApi.changeTheme(theme.value);
   }
 }

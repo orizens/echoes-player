@@ -7,6 +7,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { CORE_COMPONENTS } from './components';
+import { CORE_DIRECTIVES } from './directives';
 import { PIPES } from './pipes';
 import { TooltipModule } from 'ngx-tooltip';
 
@@ -20,11 +21,16 @@ import { TooltipModule } from 'ngx-tooltip';
     NgxTypeaheadModule,
     TooltipModule
   ],
-  declarations: [...CORE_COMPONENTS, ...PIPES],
+  declarations: [
+    ...CORE_COMPONENTS,
+    ...CORE_DIRECTIVES,
+    ...PIPES
+  ],
   exports: [
     CommonModule,
     FormsModule,
     ...CORE_COMPONENTS,
+    ...CORE_DIRECTIVES,
     ...PIPES,
     InfiniteScrollModule,
     YoutubePlayerModule,

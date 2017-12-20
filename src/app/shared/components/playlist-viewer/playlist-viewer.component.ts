@@ -10,7 +10,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy
     (play)="onPlayPlaylist($event)"
     (queue)="onQueuePlaylist($event)">
   </playlist-cover>
-  <section class="col-md-12">
+  <section>
     <youtube-list
       [list]="videos"
       [queued]="queuedPlaylist"
@@ -32,12 +32,12 @@ export class PlaylistViewerComponent implements OnInit {
   @Output() playVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output() unqueueVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
   }
 
-  onPlayPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
+  onPlayPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.playPlaylist.emit(playlist);
   }
 

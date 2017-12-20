@@ -20,7 +20,7 @@ import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../
       To view your playlists in youtube, you need to sign in.
       <button class="btn btn-lg btn-primary"
         (click)="signInUser()">
-        <i class="fa fa-google"></i> Sign In
+        <icon name="google"></icon> Sign In
       </button>
     </p>
     <router-outlet></router-outlet>
@@ -36,15 +36,15 @@ export class UserComponent implements OnInit {
     private userProfile: UserProfile,
     private authorization: Authorization,
     public store: Store<EchoesState>
-  ) {}
+  ) { }
 
-  ngOnInit () {}
+  ngOnInit() { }
 
-  signInUser () {
+  signInUser() {
     this.authorization.signIn();
   }
 
-  getPlaylists () {
+  getPlaylists() {
     return this.userProfile.getPlaylists(true);
   }
 }

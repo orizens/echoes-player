@@ -33,7 +33,7 @@ My services include:
 ## Included @ngrx solutions:  
 - [ngrx/store](https://github.com/ngrx/platform/blob/master/docs/store/README.md) - State Management a la "[Redux](https://github.com/reactjs/redux)" based on RxJs  
 - [ngrx/effects](https://github.com/ngrx/platform/blob/master/docs/effects/README.md) - Side Effects layer for ngrx/store  
-- [ngrx/router-store](https://github.com/ngrx/platform/blob/master/docs/router-store/README.md) - Bindings to connect the Angular Router to @ngrx/store  
+- [ngrx/router-store] ~NOT IN USE AT THE MOMENT~(https://github.com/ngrx/platform/blob/master/docs/router-store/README.md) - Bindings to connect the Angular Router to @ngrx/store  
 - [ngrx-store-localstorage](https://github.com/btroncone/ngrx-store-localstorage) - local sotrage support for ngrx/store  
 - [ngrx/store-devtools](https://github.com/ngrx/platform/blob/master/docs/store-devtools/README.md) - a connector to [redux devtool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US) for chrome  
 
@@ -41,7 +41,7 @@ My services include:
 - [Angular +4.x](http://angular.io) 
 - [Angular CLI](https://cli.angular.io/)
 - [@ngrx Platform v4](https://github.com/ngrx/platform) 
-- Bootstrap v3.x (SASS)
+- Bootstrap v3.x (SASS, selected modules)
 - Typescript 2.x
 - ES6 / ES2015 (using Loader Spec)
 
@@ -61,7 +61,18 @@ Run `ng generate component component-name` to generate a new component. You can 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ### Build for Production
-Run `npm run build:prod` to build the project minified for production with AOT.
+Run `npm run build:prod` to build the project minified for production with AOT.  
+
+## Configure api keys
+Echoes use environment variables to integrate Google Analytics, youtube data api key and youtube client id for authorization. 
+These defiend as template variables, and are replaced after a successfull build with build-env.js.  
+### Youtube Keys 
+Generate your own keys via [google's console](https://console.cloud.google.com/apis/credentials) 
+Required Keys are:  
+```API Key```  
+```OAuth client ID```
+### Analytics Key (Optional)
+The key is the project ID usually can be retreived from the analytics Admin interface. it exist as part of the "script" to paste in your html file. 
 
 ## Running unit tests
 

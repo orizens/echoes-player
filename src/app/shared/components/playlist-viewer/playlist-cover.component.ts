@@ -20,11 +20,11 @@ import {
     <div class="actions">
       <button class="btn btn-lg ux-maker play-media bg-primary"
         (click)="play.emit(playlist)" title="play playlist">
-        <i class="fa fa-play"></i>
+        <icon name="play"></icon>
       </button>
       <button class="btn btn-lg ux-maker play-media bg-primary"
         (click)="queue.emit(playlist)" title="queue playlist">
-        <i class="fa fa-share"></i>
+        <icon naem="share"></icon>
       </button>
     </div>
   </div>
@@ -55,6 +55,6 @@ export class PlaylistCoverComponent implements OnInit {
   get thumbUrl() {
     const thumbnails = this.playlist && this.playlist.snippet.thumbnails;
     const sizes = ['default', 'medium'];
-    return sizes.reduce((acc, size) => thumbnails.hasOwnProperty(size) && thumbnails[size].url , '');
+    return sizes.reduce((acc, size) => thumbnails.hasOwnProperty(size) && thumbnails[size].url, '');
   }
 }

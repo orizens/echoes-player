@@ -1,7 +1,7 @@
 {
-  "name": "echoes-ng2",
+  "name": "echoes-player",
   "version": "3.0.0",
-  "description": "Echoes Ng2",
+  "description": "Echoes Player (Angular)",
   "main": "index.js",
   "scripts": {
     "start": "lite-server --config=./bs-config.js"

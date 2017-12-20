@@ -13,7 +13,7 @@ export class AppPlayerApi {
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects,
     private nowPlaylistActions: NowPlaylist.NowPlaylistActions
-  ) {}
+  ) { }
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.nowPlaylistEffects.playPlaylistFirstTrack$
@@ -38,5 +38,34 @@ export class AppPlayerApi {
 
   removeVideoFromPlaylist(media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(new NowPlaylist.RemoveVideo(media));
+  }
+
+  pauseVideo() {
+    this.store.dispatch(new AppPlayer.PauseVideo());
+  }
+
+  togglePlayer() {
+    this.store.dispatch(new AppPlayer.TogglePlayer(true));
+  }
+
+  toggleFullScreen() {
+    this.store.dispatch(new AppPlayer.FullScreen());
+  }
+
+  toggleRepeat() {
+    this.store.dispatch(new NowPlaylist.ToggleRepeat());
+  }
+
+  resetPlayer() {
+    this.store.dispatch(new AppPlayer.Reset());
+  }
+
+  setupPlayer(player) {
+    this.store.dispatch(new AppPlayer.SetupPlayer(player));
+  }
+
+  changePlayerState(event: YT.OnStateChangeEvent) {
+    this.store.dispatch(new AppPlayer.PlayerStateChange(event));
+    this.store.dispatch(new NowPlaylist.PlayerStateChange(event));
   }
 }

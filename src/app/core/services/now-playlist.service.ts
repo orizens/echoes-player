@@ -74,10 +74,6 @@ export class NowPlaylistService {
     return isCurrentLast;
   }
 
-  toggleRepeat() {
-    this.store.dispatch(this.nowPlaylistActions.toggleRepeat());
-  }
-
   seekToTrack(trackEvent) {
     this.store.dispatch(this.nowPlaylistActions.seekTo(trackEvent));
   }

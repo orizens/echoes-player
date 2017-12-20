@@ -11,7 +11,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
     <ng-template #userNotSignedIn>
       <span class="btn btn-link navbar-link navbar-btn"
         (click)="handleSignIn()">
-        <i class="fa fa-sign-in"></i>
+        <icon name="sign-in"></icon>
         Sign In
       </span>
     </ng-template>

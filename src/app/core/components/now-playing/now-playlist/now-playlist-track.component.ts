@@ -23,18 +23,22 @@ import { extractThumbUrl } from '../../../../shared/utils/media.utils';
       </div>
     <aside class="playlist-track__content">
       <section class="track-actions">
-        <button class="btn label btn-primary fa fa-list-ul playlist-track"
+        <button class="btn label btn-primary playlist-track"
           *ngIf="isPlaylistMedia(video)"
           (click)="handleToggleTracks($event, video)"
-          tooltip="Album Track - click to select cued tracks"
-        ></button>
-        <button class="btn label btn-info fa fa-info-circle playlist-track"
+          tooltip="Album Track - click to select cued tracks">
+          <icon name="list-ul"></icon>
+        </button>
+        <button class="btn label btn-info playlist-track"
           (click)="toggleInfo()"
-          tooltip="More information for this media"
-        ></button>
+          tooltip="More information for this media">
+          <icon name="info-circle"></icon>
+        </button>
       </section>
       <span class="label label-danger ux-maker remove-track" tooltip="Remove From Playlist"
-        (click)="remove.emit(video)"><i class="fa fa-trash"></i></span>
+        (click)="remove.emit(video)">
+        <icon name="trash"></icon>
+      </span>
     </aside>
     <article *ngIf="displayTracks" class="track-tracks list-group">
       <aside class="album-tracks-heading">Tracks</aside>

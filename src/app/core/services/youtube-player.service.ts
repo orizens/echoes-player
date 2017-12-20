@@ -12,7 +12,7 @@ export class YoutubePlayerService {
     private store: Store<EchoesState>,
     private zone: NgZone,
     private playerActions: AppPlayer.ActionTypes
-  ) {}
+  ) { }
 
   setupPlayer(player) {
     this.player = player;
@@ -39,10 +39,7 @@ export class YoutubePlayerService {
     this.zone.runOutsideAngular(() => this.player.seekTo(seconds, true));
   }
 
-  togglePlayer() {
-    this.store.dispatch(new AppPlayer.TogglePlayer(true));
-  }
-
+  // Not in use
   onPlayerStateChange(event) {
     const state = event.data;
     // let autoNext = false;
@@ -58,7 +55,6 @@ export class YoutubePlayerService {
     if (state === YT.PlayerState.PLAYING) {
       // service.playerState = YT.PlayerState.PLAYING;
     }
-    this.store.dispatch(new AppPlayer.UpdateState(state));
   }
 
   setSize(height, width) {
