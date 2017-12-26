@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { CSearchTypes } from '../../../core/store/player-search';
+import { CSearchTypes } from '@core/store/player-search';
 
 @Component({
   selector: 'search-navigator',
-  styleUrls: [ './search-navigator.component.scss' ],
+  styleUrls: ['./search-navigator.component.scss'],
   template: `
   <ul class="nav nav-tabs search-selector" role="tablist">
     <li *ngFor="let search of searchTypes"

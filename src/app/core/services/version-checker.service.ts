@@ -1,15 +1,22 @@
-import { Subscription } from 'rxjs/Rx';
-import { Store } from '@ngrx/store';
-import { EchoesState } from '../store';
-import { Http } from '@angular/http';
+import { Subscription } from 'rxjs/Subscription';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import * as AppLayout from '../store/app-layout';
+import { AppApi } from '@api/app.api';
 
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/observable/of';
+
+interface INpmPackageJson {
+  version: number;
+  [param: string]: any;
+}
+
+function verifyPackage(packageJson: INpmPackageJson) {
+  return packageJson.hasOwnProperty('version');
+}
 
 @Injectable()
 export class VersionCheckerService {
@@ -21,7 +28,8 @@ export class VersionCheckerService {
   private pathToFile = 'assets/package.json';
   public url = `${this.protocol}://${this.prefix}/${this.repo}/${this.repoBranch}/${this.pathToFile}`;
 
-  constructor(private http: Http, private zone: NgZone, private store: Store<EchoesState>) {}
+  constructor(private http: HttpClient,
+    private zone: NgZone, private appApi: AppApi) { }
 
   check() {
     return this.http.get(this.url);
@@ -37,10 +45,8 @@ export class VersionCheckerService {
         //   return Observable.of(err);
         // })
         .retry()
-        .filter(response => response && response.status === 200)
-        .subscribe(response => {
-          this.store.dispatch(new AppLayout.RecievedAppVersion(response.json()));
-        });
+        .filter(verifyPackage)
+        .subscribe(response => this.appApi.recievedNewVersion(response));
     });
     return checkTimer;
   }
@@ -54,12 +60,8 @@ export class VersionCheckerService {
   checkForVersion() {
     return this.check()
       .retry()
-      .filter(response => response && response.status === 200)
+      .filter(verifyPackage)
       .take(1)
-      .subscribe(this.notifyNewVersion.bind(this));
-  }
-
-  notifyNewVersion(response) {
-    this.store.dispatch(new AppLayout.RecievedAppVersion(response.json()));
+      .subscribe(response => this.appApi.notifyNewVersion(response));
   }
 }

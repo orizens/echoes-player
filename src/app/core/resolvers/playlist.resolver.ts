@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
-import { UserProfile } from '../services';
+import { UserProfile } from '@core/services';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Injectable } from '@angular/core';
 
@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class PlaylistResolver implements Resolve<any> {
   constructor(
     private userProfile: UserProfile,
-  ) {}
+  ) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<GoogleApiYouTubePlaylistResource> {
     const playlistId = route.params['id'];

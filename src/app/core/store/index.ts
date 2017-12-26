@@ -4,7 +4,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 // import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 import { EchoesState, EchoesReducers, EchoesActions } from './reducers';
 import { NavigationSerializer } from './router-store';
 

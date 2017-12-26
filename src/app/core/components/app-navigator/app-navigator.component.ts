@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { EchoesState } from '../../store';
+import { EchoesState } from '@store/reducers';
 import { Store } from '@ngrx/store';
 import {
   ChangeDetectionStrategy,
@@ -8,7 +8,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { getSearchType$, CSearchTypes } from '../../../core/store/player-search';
+import * as PlayerSearch from '@core/store/player-search';
 
 @Component({
   selector: 'app-navigator',
@@ -28,9 +28,9 @@ import { getSearchType$, CSearchTypes } from '../../../core/store/player-search'
 })
 export class AppNavigatorComponent implements OnInit {
   @Input() closed = false;
-  @Input() searchType = CSearchTypes.VIDEO;
+  @Input() searchType = PlayerSearch.CSearchTypes.VIDEO;
 
-  public searchType$ = this.store.let(getSearchType$);
+  public searchType$ = this.store.select(PlayerSearch.getSearchType);
   public routes = [
     { link: 'search', icon: 'music', label: 'Explore' }
     // { link: '/user', icon: 'heart', label: 'My Profile' }

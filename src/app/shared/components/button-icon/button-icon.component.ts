@@ -8,7 +8,6 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
       <icon [name]="icon"></icon> <ng-content></ng-content>
     </button>
   `,
-  preserveWhitespaces: false
   // encapsulation: ViewEncapsulation.None
 })
 

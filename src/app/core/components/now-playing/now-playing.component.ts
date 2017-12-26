@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { EchoesState } from '../../store';
-import { NowPlaylistService } from '../../services/now-playlist.service';
-import { INowPlaylist } from '../../store/now-playlist';
-import * as AppPlayer from '../../store/app-player/app-player.actions';
+import { EchoesState } from '@store/reducers';
+import { NowPlaylistService } from '@core/services/now-playlist.service';
+import { INowPlaylist } from '@store/now-playlist';
+import * as AppPlayer from '@store/app-player/app-player.actions';
 import { NowPlaylistComponent } from './now-playlist';
 
 @Component({
@@ -35,7 +35,7 @@ export class NowPlayingComponent implements OnInit {
   public nowPlaylist$: Observable<INowPlaylist>;
   @ViewChild(NowPlaylistComponent) nowPlaylistComponent: NowPlaylistComponent;
 
-  constructor(public store: Store<EchoesState>, public nowPlaylistService: NowPlaylistService) {}
+  constructor(public store: Store<EchoesState>, public nowPlaylistService: NowPlaylistService) { }
 
   ngOnInit() {
     this.nowPlaylist$ = this.nowPlaylistService.playlist$;
@@ -46,7 +46,7 @@ export class NowPlayingComponent implements OnInit {
     this.nowPlaylistService.updateIndexByMedia(media.id);
   }
 
-  sortVideo() {}
+  sortVideo() { }
 
   updateFilter(searchFilter: string) {
     this.nowPlaylistService.updateFilter(searchFilter);

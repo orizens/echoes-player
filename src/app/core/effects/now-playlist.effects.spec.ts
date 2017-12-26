@@ -2,12 +2,12 @@
 // import { inject, TestBed } from '@angular/core/testing';
 
 // import { Observable } from 'rxjs/Observable';
-// import { MediaParserService, YoutubePlayerService } from '../services';
+// import { MediaParserService, YoutubePlayerService } from '@core/services';
 // import { Store } from '@ngrx/store';
 
-// import { NowPlaylistActions, LoadPlaylistAction, LoadPlaylistEndAction, PlayPlaylistAction } from '../store/now-playlist';
+// import { NowPlaylistActions, LoadPlaylistAction, LoadPlaylistEndAction, PlayPlaylistAction } from '@store/now-playlist';
 
-// import { UserProfile } from '../services/user-profile.service';
+// import { UserProfile } from '@core/services/user-profile.service';
 // import { NowPlaylistEffects } from './now-playlist.effects';
 
 // describe('Now Playlist Effects', () => {

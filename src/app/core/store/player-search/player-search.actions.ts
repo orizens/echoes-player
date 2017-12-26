@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class PlayerSearchActions {
@@ -49,7 +50,7 @@ export class PlayerSearchActions {
   resetPageToken = ActionCreatorFactory.create<any>(PlayerSearchActions.RESET_PAGE_TOKEN);
   searchResultsReturned = ActionCreatorFactory.create<any>(PlayerSearchActions.SEARCH_RESULTS_RETURNED);
   searchStarted = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_STARTED);
-  addResults = ActionCreatorFactory.create(PlayerSearchActions.ADD_RESULTS);
+  // addResults = ActionCreatorFactory.create(PlayerSearchActions.ADD_RESULTS);
   resetResults = ActionCreatorFactory.create(PlayerSearchActions.RESET_RESULTS);
   errorInSearch = ActionCreatorFactory.create<any>(PlayerSearchActions.ERROR_RESULTS);
   updateSearchType = ActionCreatorFactory.create<string>(PlayerSearchActions.SEARCH_TYPE_UPDATE);
@@ -57,5 +58,10 @@ export class PlayerSearchActions {
 
 export class UpdateQueryAction {
   public type = PlayerSearchActions.UPDATE_QUERY;
-  constructor(public payload: string) {}
+  constructor(public payload: string) { }
+}
+
+export class AddResults implements Action {
+  readonly type = PlayerSearchActions.ADD_RESULTS;
+  constructor(public payload: GoogleApiYouTubeVideoResource[]) { }
 }

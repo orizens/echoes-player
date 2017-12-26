@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../shared';
+import { SharedModule } from '@shared/index';
 
 import { AppSidebarComponent } from './app-sidebar.component';
 import { AppBrandModule } from '../app-brand';

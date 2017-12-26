@@ -6,7 +6,7 @@ import {
   Output,
   ViewEncapsulation
 } from '@angular/core';
-import * as NowPlaylist from '../../../store/now-playlist';
+import * as NowPlaylist from '@store/now-playlist';
 
 @Component({
   selector: 'now-playlist-filter',

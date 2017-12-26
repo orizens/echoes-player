@@ -27,7 +27,7 @@ export class YoutubeSearch {
 
   constructor(
     private youtubeDataApi: YoutubeDataApi
-    ) { }
+  ) { }
 
   /**
    * search for video
@@ -77,7 +77,7 @@ export class YoutubeSearch {
   searchForPlaylist(query: string, params?: any) {
     this._apiOptions.type = SearchParams.Types[SearchTypes.PLAYLIST];
     return this.search(query, params)
-      .switchMap((response) => {
+      .switchMap((response: any) => {
         const options = {
           part: 'snippet,id,contentDetails',
           id: response.items.map(pl => pl.id.playlistId).join(',')
@@ -91,7 +91,7 @@ export class YoutubeSearch {
     return this;
   }
 
-  resetPageToken () {
+  resetPageToken() {
     this._apiOptions.pageToken = '';
     return this;
   }

@@ -1,17 +1,20 @@
+import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/switchMapTo';
 import 'rxjs/add/operator/switchMap';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
-import { UserProfileActions } from '../store/user-profile';
-import { PlayerSearchActions } from '../store/player-search';
-import { ActionTypes } from '../store/app-player';
-import { AnalyticsService } from '../services/analytics.service';
+import { UserProfileActions } from '@store/user-profile';
+import * as PlayerSearch from '@store/player-search';
+import { ActionTypes } from '@store/app-player';
+import { AnalyticsService } from '@core/services/analytics.service';
+import { EchoesState } from '@store/reducers';
 
 @Injectable()
 export class AnalyticsEffects {
   constructor(
     private actions$: Actions,
+    private store: Store<EchoesState>,
     private userProfileActions: UserProfileActions,
     private analytics: AnalyticsService
   ) { }
@@ -24,9 +27,10 @@ export class AnalyticsEffects {
 
   @Effect({ dispatch: false })
   trackSearch$ = this.actions$
-    .ofType(PlayerSearchActions.SEARCH_NEW_QUERY, PlayerSearchActions.SEARCH_MORE_FOR_QUERY)
+    .ofType(PlayerSearch.PlayerSearchActions.SEARCH_NEW_QUERY, PlayerSearch.PlayerSearchActions.SEARCH_MORE_FOR_QUERY)
     .map(toPayload)
-    .do(() => this.analytics.trackSearch());
+    .withLatestFrom(this.store.select(PlayerSearch.getSearchType))
+    .do((states: any[]) => this.analytics.trackSearch(states[1].presets));
 
   @Effect({ dispatch: false })
   trackPlay$ = this.actions$

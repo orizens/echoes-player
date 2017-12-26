@@ -4,21 +4,21 @@
       <div class="thumbnail">
         <img [src]="thumb" class="thumb-image">
       </div>
-
       <button class="btn btn-default btn-lg play-media" (click)="playPlaylist(media)">
-        <icon class="play"></icon>
+        <icon name="play"></icon>
       </button>
     </div>
 
     <section class="item-actions">
-      <a class="playlist-link" [routerLink]="[ link + '/playlist', media.id ]" [tooltip]="media.snippet.title">
+      <a class="playlist-link" [routerLink]="[ link + '/playlist', media.id ]" [tooltip]="media.snippet.title" (click)="onNavigateToPlaylist()">
         <h4 class="title ellipsis">
           {{ media.snippet.title }}
         </h4>
         <span class="item-action badge badge-info">
-          <i class="icon-list"></i>
+          <icon name="th-large"></icon>
           {{ media.contentDetails.itemCount }} videos
         </span>
+        <icon name="circle-o-notch 3x spin" *ngIf="loading" class="loader"></icon>
       </a>
     </section>
   </section>

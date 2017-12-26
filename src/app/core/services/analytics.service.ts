@@ -33,8 +33,8 @@ export class AnalyticsService {
     });
   }
 
-  trackSearch() {
-    gtag('event', Events.Search.NAME);
+  trackSearch(searchType) {
+    gtag('event', Events.Search.NAME, { [Events.Search.LABEL]: searchType });
   }
 
   trackSignin() {

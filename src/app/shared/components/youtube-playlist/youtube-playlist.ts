@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
-import { extractThumbUrl } from '../../utils/media.utils';
+import {
+  ChangeDetectorRef, ChangeDetectionStrategy, Component,
+  EventEmitter, Input, Output,
+  OnChanges, SimpleChanges
+} from '@angular/core';
+import { extractThumbUrl } from '@utils/media.utils';
 
 @Component({
   selector: 'youtube-playlist',
@@ -15,6 +19,7 @@ export class YoutubePlaylistComponent implements OnChanges {
 
   isPlaying = false;
   thumb = '';
+  loading = false;
 
   ngOnChanges({ media }: SimpleChanges) {
     if (media && !media.firstChange || media && media.firstChange) {
@@ -28,5 +33,9 @@ export class YoutubePlaylistComponent implements OnChanges {
 
   queuePlaylist(media: GoogleApiYouTubePlaylistResource) {
     this.queue.next(media);
+  }
+
+  onNavigateToPlaylist() {
+    this.loading = true;
   }
 }

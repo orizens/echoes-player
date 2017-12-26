@@ -1,7 +1,6 @@
-import { getPlayerFullscreen$ } from '../store/app-player/app-player.selectors';
-import { NowPlaylistService } from '../services';
+import { NowPlaylistService } from '@core/services';
 import { Store } from '@ngrx/store';
-import { EchoesState } from '../store';
+import { EchoesState } from '@store/reducers';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
 
@@ -9,9 +8,9 @@ import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { defer } from 'rxjs/observable/defer';
 
-import * as AppPlayer from '../store/app-player';
-import { YoutubePlayerService } from '../services/youtube-player.service';
-import { YoutubeVideosInfo } from '../services/youtube-videos-info.service';
+import * as AppPlayer from '@store/app-player';
+import { YoutubePlayerService } from '@core/services/youtube-player.service';
+import { YoutubeVideosInfo } from '@core/services/youtube-videos-info.service';
 
 @Injectable()
 export class AppPlayerEffects {
@@ -50,7 +49,7 @@ export class AppPlayerEffects {
   @Effect({ dispatch: false })
   toggleFullscreen$ = this.actions$
     .ofType(AppPlayer.ActionTypes.FULLSCREEN)
-    .withLatestFrom(this.store.let(getPlayerFullscreen$))
+    .withLatestFrom(this.store.select(AppPlayer.getPlayerFullscreen))
     .do((states: [any, { on; height; width }]) =>
       this.youtubePlayerService.setSize(states[1].height, states[1].width)
     );

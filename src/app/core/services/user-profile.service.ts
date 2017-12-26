@@ -1,6 +1,6 @@
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 
 import 'rxjs/add/operator/switchMap';
@@ -10,7 +10,7 @@ import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { Authorization } from './authorization.service';
 
-import { GoogleBasicProfile } from '../store/user-profile';
+import { GoogleBasicProfile } from '@store/user-profile';
 
 @Injectable()
 export class UserProfile {
@@ -20,7 +20,7 @@ export class UserProfile {
   public playlistApi: YoutubeApiService;
 
   constructor(
-    private http: Http,
+    private http: HttpClient,
     private zone: NgZone,
     private youtubeVideosInfo: YoutubeVideosInfo,
     private authorization: Authorization
@@ -68,11 +68,11 @@ export class UserProfile {
   }
 
   updatePageToken(pageToken: string) {
-    this.playlists.config.set('pageToken', pageToken);
+    this.playlists.setPageToken(pageToken);
   }
 
   resetPageToken() {
-    this.playlists.config.set('pageToken', '');
+    this.playlists.resetPageToken();
   }
 
   fetchPlaylist(playlistId: string) {
@@ -82,13 +82,13 @@ export class UserProfile {
   fetchPlaylistItems(playlistId: string, pageToken = '') {
     // const token = this.playlists.config.get('access_token');
     if ('' === pageToken) {
-      this.playlistInfo.config.delete('pageToken');
+      this.playlistInfo.deletePageToken();
     } else {
-      this.playlistInfo.config.set('pageToken', pageToken);
+      this.playlistInfo.setPageToken(pageToken);
     }
     return this.playlistInfo
       .list(playlistId)
-      .switchMap(response => {
+      .switchMap((response: any) => {
         const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
         return this.youtubeVideosInfo.api.list(videoIds);
       });
@@ -105,7 +105,7 @@ export class UserProfile {
       return this.youtubeVideosInfo.api.list(videoIds);
     };
     const collectItems = (videos) => {
-      items = [...items, ...videos];
+      items = [...items, ...videos.items];
       if (nextPageToken) {
         fetchItems(playlistId, nextPageToken);
       } else {
@@ -115,7 +115,7 @@ export class UserProfile {
       }
     };
     const fetchItems = (id, token) => {
-      this.playlistInfo.config.set('pageToken', token);
+      this.playlistInfo.setPageToken(token);
       const sub = this.playlistInfo.list(id)
         .switchMap((response) => fetchMetadata(response))
         .subscribe((response) => collectItems(response));
@@ -126,13 +126,7 @@ export class UserProfile {
     return items$.take(1);
   }
 
-  isTokenValid(token) {
-    const accessToken = this.playlists.config.get('access_token');
-    // TODO - should check if the current accessToken is still valid - google api
-    return accessToken === token;
-  }
-
-  toUserJson (profile): GoogleBasicProfile {
+  toUserJson(profile): GoogleBasicProfile {
     const _profile: GoogleBasicProfile = {};
     if (profile) {
       _profile.imageUrl = profile.getImageUrl();
@@ -141,7 +135,7 @@ export class UserProfile {
     return _profile;
   }
 
-  fetchMetadata (items: GoogleApiYouTubeVideoResource[]) {
+  fetchMetadata(items: GoogleApiYouTubeVideoResource[]) {
     const videoIds = items.map(video => video.id).join(',');
     return this.youtubeVideosInfo.api.list(videoIds);
   }

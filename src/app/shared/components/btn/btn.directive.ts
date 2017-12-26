@@ -1,5 +1,5 @@
 import { Component, Directive, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges } from '@angular/core';
-
+import { isNewChange } from '@shared/utils/data.utils';
 @Directive({
   selector: '[btn]'
 })
@@ -17,7 +17,7 @@ export class ButtonDirective implements OnInit, OnChanges {
   }
 
   ngOnChanges({ btn }: SimpleChanges) {
-    if (btn.currentValue !== btn.previousValue) {
+    if (btn && isNewChange(btn)) {
       this.applyStyles();
     }
   }

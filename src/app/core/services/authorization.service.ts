@@ -1,7 +1,5 @@
 import { Subscription } from 'rxjs/Subscription';
 import { Injectable, NgZone } from '@angular/core';
-import { Http } from '@angular/http';
-// import { window } from '@angular/platform-browser/src/facade/browser';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/do';
@@ -10,11 +8,9 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/timeInterval';
 import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/catch';
 
-import { Store } from '@ngrx/store';
-import { UserProfileActions } from '../store/user-profile';
-import { EchoesState } from '../store/';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 import { GapiLoader } from './gapi-loader.service';
 
 @Injectable()
@@ -33,27 +29,19 @@ export class Authorization {
 
   constructor(
     private zone: NgZone,
-    private store: Store<EchoesState>,
     private gapiLoader: GapiLoader,
-    private userProfileActions: UserProfileActions,
-    public http: Http
-  ) {
-    this.loadAuth();
-  }
+  ) { }
 
   loadAuth() {
     // attempt to SILENT authorize
-    this.gapiLoader
+    return this.gapiLoader
       .load('auth2')
       .switchMap(() => this.authorize())
       .do((googleAuth: gapi.auth2.GoogleAuth) => this.saveGoogleAuth(googleAuth))
       .do((googleAuth: gapi.auth2.GoogleAuth) => this.listenToGoogleAuthSignIn(googleAuth))
       .filter((googleAuth: gapi.auth2.GoogleAuth) => this.isSignIn())
       .filter((googleAuth: gapi.auth2.GoogleAuth) => this.hasAccessToken(googleAuth))
-      .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get())
-      .subscribe((googleUser: gapi.auth2.GoogleUser) => {
-        this.zone.run(() => this.handleSuccessLogin(googleUser));
-      });
+      .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get());
   }
 
   authorize() {
@@ -85,20 +73,20 @@ export class Authorization {
   signIn() {
     const signOptions: gapi.auth2.SigninOptions = { scope: this._scope };
     if (this._googleAuth) {
-      Observable.fromPromise(this._googleAuth.signIn(signOptions))
-        .subscribe((response: any) => this.handleSuccessLogin(response), error => this.handleFailedLogin(error));
+      return Observable.fromPromise(this._googleAuth.signIn(signOptions));
     }
+    return new Observable((obs) => obs.complete());
   }
 
-  handleSuccessLogin(googleUser: gapi.auth2.GoogleUser) {
+  extractToken(googleUser: gapi.auth2.GoogleUser) {
     const authResponse = googleUser.getAuthResponse();
-    const token = authResponse.access_token;
-    const profile = googleUser.getBasicProfile();
+    return authResponse.access_token;
+  }
+
+  setAuthTimer(googleUser: gapi.auth2.GoogleUser) {
     const MILLISECOND = 1000;
     const expireTime = 60 * 5;
     const expireTimeInMs = expireTime * MILLISECOND;
-    this.store.dispatch(this.userProfileActions.updateToken(token));
-    this.store.dispatch(this.userProfileActions.userProfileRecieved(profile));
     this.disposeAutoSignIn();
     this.autoSignInTimer = this.startTimerToNextAuth(expireTimeInMs);
   }
@@ -115,12 +103,16 @@ export class Authorization {
         return error;
       })
       .subscribe((googleUser: gapi.auth2.GoogleUser) => {
-        this.zone.run(() => this.handleSuccessLogin(googleUser));
+        this.zone.run(() => this.setAuthTimer(googleUser));
       });
   }
 
   handleFailedLogin(response) {
-    console.log('FAILED TO LOGIN:', response);
+    console.error('FAILED TO LOGIN:', response);
+    return new Observable(obs => {
+      obs.error();
+      obs.complete();
+    });
   }
 
   isSignIn() {
@@ -128,14 +120,10 @@ export class Authorization {
   }
 
   signOut() {
-    this.disposeAutoSignIn();
-    return Observable.fromPromise(this._googleAuth.signOut())
-      .subscribe(response => {
-        this.store.dispatch(this.userProfileActions.signOut());
-      });
+    return Observable.fromPromise(this._googleAuth.signOut());
   }
 
-  private disposeAutoSignIn() {
+  disposeAutoSignIn() {
     if (this.autoSignInTimer) {
       this.autoSignInTimer.unsubscribe();
     }

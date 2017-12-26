@@ -1,17 +1,15 @@
-import { PlayerSearchActions, CSearchTypes } from '../../core/store/player-search';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { EchoesState } from '../../core/store';
+import { EchoesState } from '@core/store';
 
 // actions
-import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '../../core/store/now-playlist';
-import { ActionTypes } from '../../core/store/app-player';
+import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '@core/store/now-playlist';
+import { ActionTypes } from '@core/store/app-player';
 // selectors
-import { getPlayerSearchResults$, getNowPlaylist$ } from '../../core/store/reducers';
-import { getIsSearching$ } from '../../core/store/player-search';
-import { AppPlayerApi } from '../../core/api/app-player.api';
+import * as PlayerSearch from '@core/store/player-search';
+import { AppPlayerApi } from '@core/api/app-player.api';
 
-import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
+import { fadeInAnimation } from '@shared/animations/fade-in.animation';
 
 @Component({
   selector: 'youtube-playlists',
@@ -43,20 +41,20 @@ import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
   `
 })
 export class YoutubePlaylistsComponent implements OnInit {
-  results$ = this.store.let(getPlayerSearchResults$);
-  isSearching$ = this.store.let(getIsSearching$);
+  results$ = this.store.select(PlayerSearch.getPlayerSearchResults);
+  isSearching$ = this.store.select(PlayerSearch.getIsSearching);
 
   constructor(
     private store: Store<EchoesState>,
     private nowPlaylistActions: NowPlaylistActions,
     private appPlayerActions: ActionTypes,
-    private playerSearchActions: PlayerSearchActions,
+    private playerSearchActions: PlayerSearch.PlayerSearchActions,
     private appPlayerApi: AppPlayerApi
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.store.dispatch(this.playerSearchActions.updateSearchType(CSearchTypes.PLAYLIST));
-    this.store.dispatch(PlayerSearchActions.PLAYLISTS_SEARCH_START.creator());
+    this.store.dispatch(this.playerSearchActions.updateSearchType(PlayerSearch.CSearchTypes.PLAYLIST));
+    this.store.dispatch(PlayerSearch.PlayerSearchActions.PLAYLISTS_SEARCH_START.creator());
   }
 
   playPlaylist(media: GoogleApiYouTubePlaylistResource) {

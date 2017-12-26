@@ -24,7 +24,7 @@ import {
       </button>
       <button class="btn btn-lg ux-maker play-media bg-primary"
         (click)="queue.emit(playlist)" title="queue playlist">
-        <icon naem="share"></icon>
+        <icon name="share"></icon>
       </button>
     </div>
   </div>

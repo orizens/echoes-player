@@ -1,14 +1,16 @@
-import { Http } from '@angular/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { YoutubeApiService } from './youtube-api.service';
 import { Authorization } from './authorization.service';
 
+interface IYoutubeVideosInfo {
+  items: GoogleApiYouTubeVideoResource[];
+}
 @Injectable()
 export class YoutubeVideosInfo {
   public api: YoutubeApiService;
-  whichMedia = '';
 
-  constructor(private http: Http, auth: Authorization) {
+  constructor(private http: HttpClient, auth: Authorization) {
     this.api = new YoutubeApiService({
       url: 'https://www.googleapis.com/youtube/v3/videos',
       http: this.http,
@@ -17,24 +19,17 @@ export class YoutubeVideosInfo {
         part: 'snippet,contentDetails,statistics'
       }
     }, auth);
-    this.api.list = function(id) {
-      const videoId = id.videoId || id;
-      this.config.set(this.idKey, videoId);
-      this.isSearching = true;
-      return this.http.get(this.url, { search: this.config })
-        .map(res => res.json().items);
-    };
   }
 
-  fetchVideoData (mediaId: string) {
+  fetchVideoData(mediaId: string) {
     return this.api
       .list(mediaId)
-      .map(items => items[0]);
+      .map(response => response.items[0]);
   }
 
-  fetchVideosData (mediaIds: string) {
+  fetchVideosData(mediaIds: string) {
     return this.api
       .list(mediaIds)
-      .map(items => items);
+      .map(response => response.items);
   }
 }

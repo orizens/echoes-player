@@ -2,10 +2,10 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TooltipModule } from 'ngx-tooltip';
-import { PIPES } from '../../../../shared/pipes';
+import { PIPES } from '@shared/pipes';
 import { NowPlaylistTrackComponent } from './now-playlist-track.component';
-import { VideoMock, VideoMockWithSpecialChars } from '../../../../../../tests/mocks/now-playlist-track.mocks';
-import { MediaParserService } from '../../../services';
+import { VideoMock, VideoMockWithSpecialChars } from '@mocks/now-playlist-track.mocks';
+import { MediaParserService } from '@core/services';
 
 describe('NowPlaylistTrackComponent', () => {
   let component: NowPlaylistTrackComponent;

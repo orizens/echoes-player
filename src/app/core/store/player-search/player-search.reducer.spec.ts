@@ -1,8 +1,8 @@
 import { inject, async } from '@angular/core/testing';
 
 import { search, IPlayerSearch } from './player-search.reducer';
-import { PlayerSearchActions } from './player-search.actions';
-import { YoutubeMediaItemsMock } from '../../../../../tests/mocks/youtube.media.items';
+import * as SearchActions from './player-search.actions';
+import { YoutubeMediaItemsMock } from '@mocks/youtube.media.items';
 
 describe('The Player Search reducer', () => {
   const mockedState = (results = []): IPlayerSearch => ({
@@ -22,7 +22,7 @@ describe('The Player Search reducer', () => {
     isSearching: false
   });
 
-  const playerSearchActions = new PlayerSearchActions();
+  const playerSearchActions = new SearchActions.PlayerSearchActions();
 
   // it('should return current state when no valid actions have been made', () => {
   //   const state = mockedState();
@@ -33,7 +33,8 @@ describe('The Player Search reducer', () => {
 
   it('should ADD videos', () => {
     const state = mockedState();
-    const actual = search(state, playerSearchActions.addResults(YoutubeMediaItemsMock));
+    const youtubeMediaItems = YoutubeMediaItemsMock as any[];
+    const actual = search(state, new SearchActions.AddResults(youtubeMediaItems));
     const expected = [...state.results, ...YoutubeMediaItemsMock];
     expect(actual.results.length).toBe(expected.length);
   });

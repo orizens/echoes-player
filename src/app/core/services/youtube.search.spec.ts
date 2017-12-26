@@ -3,8 +3,8 @@
  * More info: https://angular.io/docs/ts/latest/guide/testing.html
  */
 import { TestBed, inject, } from '@angular/core/testing';
-import { HttpModule } from '@angular/http';
-import { PlayerSearchActions } from '../store/player-search';
+import { HttpClientModule } from '@angular/common/http';
+import { PlayerSearchActions } from '@store/player-search';
 import { YoutubeDataApi } from './youtube-data-api';
 import { YoutubeSearch } from './youtube.search';
 
@@ -14,11 +14,11 @@ describe('Youtube Search Service', () => {
 
   beforeEach(() => {
     youtubeDataApiSpy = jasmine.createSpyObj('youtubeDataApiSpy',
-      [ 'list', 'delete', 'insert', 'update' ]
+      ['list', 'delete', 'insert', 'update']
     );
 
     TestBed.configureTestingModule({
-      imports: [ HttpModule ],
+      imports: [HttpClientModule],
       providers: [
         YoutubeSearch,
         PlayerSearchActions,

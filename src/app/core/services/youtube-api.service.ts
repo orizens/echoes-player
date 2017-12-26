@@ -1,31 +1,34 @@
-import { Http, URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 import { Authorization } from './authorization.service';
-
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/observable/fromPromise';
 
 interface YoutubeApiServiceOptions {
   url?: string;
-  http?: Http;
+  http?: HttpClient;
   idKey?: string;
   authService?: Authorization;
   config?: any;
   authorize?: boolean;
 }
 
+const defaultParams = {
+  'part': 'snippet,contentDetails',
+  'key': environment.youtube.API_KEY,
+  'maxResults': '50',
+  'pageToken': ''
+};
+
 // @Injectable()
 export class YoutubeApiService {
   url: string;
-  http: Http;
+  http: HttpClient;
   idKey: string;
   authorize = false;
   isSearching = false;
-  config: URLSearchParams = new URLSearchParams();
+  params: HttpParams;
   nextPageToken: string;
 
-  // constructor(options: YoutubeApiServiceOptions, private authService?: Authorization) {
   constructor(options: any, private authService?: Authorization) {
     this.resetConfig();
     if (authService) {
@@ -41,10 +44,10 @@ export class YoutubeApiService {
     }
   }
 
-  setConfig(config) {
-    Object.keys(config).forEach(option => {
-      this.config.set(option, config[option]);
-    });
+  setConfig(options) {
+    this.params = Object.keys(options).reduce((params, option) => {
+      return params.set(option, options[option]);
+    }, this.params);
   }
 
   hasToken(): boolean {
@@ -52,35 +55,31 @@ export class YoutubeApiService {
   }
 
   resetConfig() {
-    this.config.set('part', 'snippet,contentDetails');
-    this.config.set('key', environment.youtube.API_KEY);
-    this.config.set('maxResults', '50');
-    this.config.set('pageToken', '');
+    this.params = new HttpParams({ fromObject: defaultParams });
   }
 
   getList() {
     this.isSearching = true;
-    const options: RequestOptionsArgs = {
-      search: this.config,
-      headers: this.createHeaders()
+    const options = {
+      params: this.params,
+      headers: this.createHeaders(),
     };
-    return this.http.get(this.url, options)
-      .map(response => response.json());
+    return this.http.get(this.url, options);
   }
 
   list(id) {
     if (this.idKey) {
-      this.config.set(this.idKey, id);
+      this.setConfig({ [this.idKey]: id });
+      // this.params[this.idKey] = id;
     }
 
     this.isSearching = true;
-    const options: RequestOptionsArgs = {
-      search: this.config,
+    const options = {
+      params: this.params,
       headers: this.createHeaders()
     };
     return this.http.get(this.url, options)
-      .map(response => response.json())
-      .map(response => {
+      .map((response: any) => {
         this.nextPageToken = response.nextPageToken;
         this.isSearching = false;
         return response;
@@ -89,20 +88,31 @@ export class YoutubeApiService {
 
   fetchNextPage() {
     if (!this.isSearching) {
-      this.config.set('pageToken', this.nextPageToken);
+      // this.params['pageToken'] = this.nextPageToken;
+      this.setPageToken(this.nextPageToken);
     }
   }
 
   resetPageToken() {
-    this.config.set('pageToken', '');
+    // this.params['pageToken'] = '';
+    this.setPageToken('');
+  }
+
+  setPageToken(pageToken) {
+    this.setConfig({ pageToken });
+  }
+
+  deletePageToken() {
+    this.params = this.params.delete('pageToken');
+    console.log('remove pageToken', this.params.toString());
   }
 
   createHeaders() {
     const accessToken = this.authService && this.authService.accessToken;
-    const headersOptions = {};
+    const headers = {};
     if (accessToken && this.authorize) {
-      headersOptions['authorization'] = `Bearer ${accessToken}`;
+      headers['Authorization'] = `Bearer ${accessToken}`;
     }
-    return new Headers(headersOptions);
+    return headers;
   }
 }

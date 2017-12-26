@@ -1,15 +1,16 @@
 import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/let';
 
-import { EchoesState } from '../../core/store';
-import { getPlaylistVideos$ } from '../../core/store/now-playlist';
+import { EchoesState } from '@core/store';
+import * as NowPlaylist from '@core/store/now-playlist';
 
 import { ActivatedRoute, Data } from '@angular/router';
-import { UserProfileActions } from '../../core/store/user-profile';
-import { AppPlayerApi } from '../../core/api/app-player.api';
-import { AppApi } from '../../core/api/app.api';
+import { UserProfileActions } from '@core/store/user-profile';
+import { AppPlayerApi } from '@api/app-player.api';
+import { AppApi } from '@api/app.api';
 
-import * as RouterActions from '../../core/store/router-store';
+import * as RouterActions from '@core/store/router-store';
 
 export interface PlaylistData {
   videos: GoogleApiYouTubeVideoResource[];
@@ -18,7 +19,7 @@ export interface PlaylistData {
 
 @Injectable()
 export class PlaylistProxy {
-  nowPlaylist$ = this.store.let(getPlaylistVideos$);
+  nowPlaylist$ = this.store.select(NowPlaylist.getPlaylistVideos);
 
   constructor(
     public store: Store<EchoesState>,

@@ -4,7 +4,7 @@
 Echoes is a great youtube player developed by [Oren Farhi](http://orizens.com).
 It's fun & easy to listen or watch videos from youtube with Echoes.
 What if youtube was designed to be used as music player?
-This repository is an implementation of Echoes Player with Angular (2nd genration)- It's still a work in progress aimed at learning Angular (2nd generation).
+This repository is an implementation of Echoes Player with Angular (2nd genration)- It's still a work in progress aimed at learning and experimenting Angular (2nd generation).
 
 Echoes Player is also available as a [Chrome Application](https://chrome.google.com/webstore/detail/echoes-player/aaenpaopfebcmdaegggjbkhaedlbbkde)
 

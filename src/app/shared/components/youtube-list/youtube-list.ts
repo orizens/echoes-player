@@ -7,7 +7,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import { fadeInAnimation } from '../../animations/fade-in.animation';
+import { fadeInAnimation } from '@animations/fade-in.animation';
 
 function createIdMap(list: GoogleApiYouTubeVideoResource[]) {
   return list.reduce((acc, cur) => {
@@ -46,7 +46,7 @@ export class YoutubeListComponent implements OnChanges {
 
   queuedMediaIdMap = {};
 
-  constructor() {}
+  constructor() { }
 
   ngOnChanges({ queued }: SimpleChanges) {
     if (queued && queued.currentValue) {

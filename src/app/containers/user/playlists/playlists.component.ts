@@ -1,5 +1,5 @@
 import { UserPlayerService } from '../user-player.service';
-import { EchoesState } from '../../../core/store';
+import { EchoesState } from '@core/store';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
@@ -29,11 +29,11 @@ export class PlaylistsComponent implements OnInit {
 
   ngOnInit() { }
 
-  playSelectedPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
+  playSelectedPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.userPlayerService.playSelectedPlaylist(playlist);
   }
 
-  queueSelectedPlaylist (playlist: GoogleApiYouTubePlaylistResource) {
+  queueSelectedPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.userPlayerService.queuePlaylist(playlist);
   }
 }

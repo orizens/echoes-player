@@ -7,11 +7,13 @@ import {
   Output,
   ViewEncapsulation,
   AfterViewChecked,
-  NgZone
+  NgZone,
+  SimpleChanges
 } from '@angular/core';
-import * as NowPlaylist from '../../../store/now-playlist';
+import * as NowPlaylist from '@store/now-playlist';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { flyOut } from '../../../../shared/animations/fade-in.animation';
+import { flyOut } from '@shared/animations/fade-in.animation';
+import { isNewChange } from '@shared/utils/data.utils';
 
 @Component({
   selector: 'now-playlist',
@@ -53,7 +55,7 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
   public activeTrackElement: HTMLUListElement;
   public hasActiveChanged = false;
 
-  constructor(public zone: NgZone) {}
+  constructor(public zone: NgZone) { }
 
   ngAfterViewChecked() {
     if (this.hasActiveChanged && this.activeTrackElement) {
@@ -61,12 +63,10 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
     }
   }
 
-  ngOnChanges(changes) {
-    const activeId = changes.activeId;
-    const hasChanges = this.hasChanges(activeId);
-    const currentValue = hasChanges && changes.activeId.currentValue;
-    const prevValue = hasChanges && changes.activeId.previousValue;
-    this.hasActiveChanged = currentValue !== prevValue;
+  ngOnChanges({ activeId }: SimpleChanges) {
+    if (activeId) {
+      this.hasActiveChanged = isNewChange(activeId);
+    }
   }
 
   scrollToActiveTrack() {
@@ -97,9 +97,5 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
 
   selectTrackInVideo(trackEvent: { time; media }) {
     this.selectTrack.emit(trackEvent);
-  }
-
-  private hasChanges(changes) {
-    return changes && changes.hasOwnProperty('currentValue') && changes.hasOwnProperty('previousValue');
   }
 }

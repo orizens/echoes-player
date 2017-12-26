@@ -2,18 +2,42 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "sourceMap": true,
-    // "declaration": false,
-    // "moduleResolution": "node",
-    // "emitDecoratorMetadata": true,
-    // "experimentalDecorators": true,
-    // "lib": [
-    //   "es2016",
-    //   "dom"
-    // ],
     "outDir": "../out-tsc/spec",
     "module": "commonjs",
     "target": "es5",
     "baseUrl": "",
+    "paths": {
+      "~/*": [
+        "/*"
+      ],
+      "@utils/*": [
+        "app/shared/utils/*"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@animations/*": [
+        "app/shared/animations/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@api/*": [
+        "app/core/api/*"
+      ],
+      "@resolvers/*": [
+        "app/core/resolvers/*"
+      ],
+      "@store/*": [
+        "app/core/store/*"
+      ],
+      "@mocks/*": [
+        "../tests/mocks/*"
+      ],
+      "@env/*": [
+        "environments/*"
+      ]
+    },
     "types": [
       "jasmine",
       "node",

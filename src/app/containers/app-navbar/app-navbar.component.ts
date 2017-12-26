@@ -8,9 +8,9 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
-import { Authorization } from '../../core/services';
-import { EchoesState } from '../../core/store';
-import { AppApi } from '../../core/api/app.api';
+import { Authorization } from '@core/services';
+import { EchoesState } from '@core/store';
+import { AppApi } from '@api/app.api';
 
 @Component({
   selector: 'app-navbar',
@@ -71,12 +71,12 @@ export class AppNavbarComponent implements OnInit {
   ngOnInit() { }
 
   signInUser() {
-    this.authorization.signIn();
+    this.appApi.signinUser();
     this.signIn.next();
   }
 
   signOutUser() {
-    this.authorization.signOut();
+    this.appApi.signoutUser();
     this.signOut.next();
   }
 

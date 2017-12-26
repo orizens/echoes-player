@@ -54,7 +54,7 @@
 				margin-right: auto;
 				border: 0;
 			}
-
+	
 			&:hover {
 				.thumb-image {
 					transform: scale(1.4) translate(0, 0);
@@ -114,6 +114,13 @@
 			.item-action {
 				vertical-align: middle;
 				font-size: 1.2rem;
+			}
+
+			.loader {
+				position: absolute;
+				right: 10px;
+				top: 8px;
+				color: var(--brand-primary);
 			}
 		}
 	}

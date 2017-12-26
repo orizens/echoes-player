@@ -1,28 +1,15 @@
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { INowPlaylist } from './now-playlist.reducer';
-import { EchoesState } from '../reducers';
+import { EchoesState } from '@store/reducers';
+import { createSelector } from '@ngrx/store/src/selector';
 
-export function getNowPlaylist$(state$: Store<EchoesState>): Observable<INowPlaylist> {
-  return state$.select(state => state.nowPlaylist);
-}
-export function isPlayerInRepeat$(state$: Store<EchoesState>): Observable<boolean> {
-  return state$.select(state => state.nowPlaylist.repeat);
-}
-
-export function getPlaylistVideos$(state$: Store<EchoesState>): Observable<GoogleApiYouTubeVideoResource[]> {
-  return state$.select(state => state.nowPlaylist.videos);
-}
-
-export function getSelectedMediaId$(state$: Store<EchoesState>): Observable<string> {
-  return state$.select(state => state.nowPlaylist.selectedId);
-}
-
-export function getSelectedMedia$(state$: Store<EchoesState>) {
-  return state$.select(state => {
-    const selectedId = state.nowPlaylist.selectedId;
-    const mediaIds = state.nowPlaylist.videos.map(video => video.id);
-    const selectedMediaIndex = mediaIds.indexOf(selectedId);
-    return state.nowPlaylist.videos[selectedMediaIndex];
-  });
-}
+export const getNowPlaylist = (state: EchoesState) => state.nowPlaylist;
+export const isPlayerInRepeat = createSelector(getNowPlaylist, (nowPlaylist: INowPlaylist) => nowPlaylist.repeat);
+export const getPlaylistVideos = createSelector(getNowPlaylist, (nowPlaylist: INowPlaylist) => nowPlaylist.videos);
+export const getSelectedMediaId = createSelector(getNowPlaylist, (nowPlaylist: INowPlaylist) => nowPlaylist.selectedId);
+export const getSelectedMedia = createSelector(getNowPlaylist, getSelectedMediaId, (nowPlaylist: INowPlaylist, selectedId: string) => {
+  const mediaIds = nowPlaylist.videos.map(video => video.id);
+  const selectedMediaIndex = mediaIds.indexOf(selectedId);
+  return nowPlaylist.videos[selectedMediaIndex];
+});

@@ -38,7 +38,7 @@ export function user(state = initialUserState, action: UnsafeAction): IUserProfi
     case UserProfileActions.UPDATE_TOKEN:
       return { ...state, access_token: action.payload, playlists: [] };
 
-    case UserProfileActions.LOG_OUT:
+    case UserProfileActions.USER_SIGNOUT_SUCCESS:
       return { ...initialUserState };
 
     case UserProfileActions.UPDATE:

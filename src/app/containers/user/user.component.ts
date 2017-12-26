@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { EchoesState } from '@core/store';
 
-import { UserProfile, Authorization } from '../../core/services';
-import { EchoesState } from '../../core/store';
-import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../../core/store/user-profile/user-profile.selectors';
+import * as UserProfile from '@core/store/user-profile/user-profile.selectors';
+import { AppApi } from '@api/app.api';
 
 
 @Component({
@@ -28,23 +28,18 @@ import { getUserPlaylists$, getUserViewPlaylist$, getIsUserSignedIn$ } from '../
   `
 })
 export class UserComponent implements OnInit {
-  playlists$ = this.store.let(getUserPlaylists$);
-  currentPlaylist$ = this.store.let(getUserViewPlaylist$);
-  isSignedIn$ = this.store.let(getIsUserSignedIn$);
+  playlists$ = this.store.select(UserProfile.getUserPlaylists);
+  currentPlaylist$ = this.store.select(UserProfile.getUserViewPlaylist);
+  isSignedIn$ = this.store.select(UserProfile.getIsUserSignedIn);
 
   constructor(
-    private userProfile: UserProfile,
-    private authorization: Authorization,
+    private appApi: AppApi,
     public store: Store<EchoesState>
   ) { }
 
   ngOnInit() { }
 
   signInUser() {
-    this.authorization.signIn();
-  }
-
-  getPlaylists() {
-    return this.userProfile.getPlaylists(true);
+    this.appApi.signinUser();
   }
 }

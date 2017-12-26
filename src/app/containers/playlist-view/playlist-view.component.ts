@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EchoesState } from '../../core/store';
+import { EchoesState } from '@core/store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { UserProfileActions } from '../../core/store/user-profile';
-import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '../../core/store/now-playlist';
+import { UserProfileActions } from '@core/store/user-profile';
+import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '@core/store/now-playlist';
 
 import { PlaylistProxy } from './playlist-view.proxy';
 

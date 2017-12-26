@@ -2,10 +2,12 @@ import { Store } from '@ngrx/store';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
 
 import { Injectable } from '@angular/core';
-import { EchoesState } from '../store';
-import * as AppPlayer from '../store/app-player';
-import * as NowPlaylist from '../store/now-playlist';
-import { NowPlaylistEffects } from '../effects/now-playlist.effects';
+import { EchoesState } from '@store/reducers';
+import * as AppPlayer from '@store/app-player';
+import * as NowPlaylist from '@store/now-playlist';
+import { NowPlaylistEffects } from '@core/effects/now-playlist.effects';
+
+import 'rxjs/add/operator/take';
 
 @Injectable()
 export class AppPlayerApi {

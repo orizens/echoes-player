@@ -1,18 +1,41 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": [
-      "es2016",
-      "dom"
-    ],
     "outDir": "../out-tsc/app",
-    "target": "es5",
     "module": "es2015",
     "baseUrl": "",
+    "paths": {
+      "~/*": [
+        "/*"
+      ],
+      "@utils/*": [
+        "app/shared/utils/*"
+      ],
+      "@shared/*": [
+        "app/shared/*"
+      ],
+      "@animations/*": [
+        "app/shared/animations/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@api/*": [
+        "app/core/api/*"
+      ],
+      "@resolvers/*": [
+        "app/core/resolvers/*"
+      ],
+      "@store/*": [
+        "app/core/store/*"
+      ],
+      "@mocks/*": [
+        "../tests/mocks/*"
+      ],
+      "@env/*": [
+        "environments/*"
+      ]
+    },
     "types": [
       "gapi",
       "gapi.youtube",
@@ -25,5 +48,8 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false
+  }
 }

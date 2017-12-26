@@ -1,7 +1,7 @@
 import { inject, async } from '@angular/core/testing';
 
 import * as NowPlaylist from './index';
-import { YoutubeMediaItemsMock } from '../../../../../tests/mocks/youtube.media.items';
+import { YoutubeMediaItemsMock } from '@mocks/youtube.media.items';
 
 describe('The Now Playlist Reducer', () => {
   const nowPlaylistActions = new NowPlaylist.NowPlaylistActions();

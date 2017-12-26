@@ -1,4022 +1,3872 @@
 /* tslint:disable */
 export let YoutubeMediaItemsMock = [
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/Dqr1PwpX1-xgyrrW-8PQgYngmBA\"",
-   "id": "B0fPY9PPB2E",
-   "snippet": {
-    "publishedAt": "2015-08-10T21:09:03.000Z",
-    "channelId": "UCRy7sK8sySx1Fin7SEZP7dA",
-    "title": "Dream Theater - Live at Wacken 2015 Full Concert",
-    "description": "False Awakening Suite 0:00\nAfterlife 2:29\nMetropolis Pt 1 8:01\nBurning my Soul 18:34\nThe Spirit Carries On 24:59\nAs I Am 31:50\nPanic Attack 39:30\nConstant Motion 47:35\nBridges in the Sky 54:34\nBehind the Veil 1:04:12",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/B0fPY9PPB2E/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/B0fPY9PPB2E/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/B0fPY9PPB2E/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/B0fPY9PPB2E/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/B0fPY9PPB2E/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/ASoednwJuwHOYozfBbbArYjIVWk"',
+    id: 'HLilutkl1so',
+    snippet: {
+      publishedAt: '2015-08-11T22:31:59.000Z',
+      channelId: 'UCWJCR2r0umxTFjKjqLQ23FA',
+      title: 'Pulse 8  FULL ALBUM',
+      description: 'Περιγραφή',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/HLilutkl1so/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/HLilutkl1so/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/HLilutkl1so/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/HLilutkl1so/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'ΓΙΩΡΓΟΣ ΘΩΜΑΣ',
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pulse 8  FULL ALBUM',
+        description: 'Περιγραφή'
+      }
     },
-    "channelTitle": "Rasťo Kliment",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "Wacken Open Air (Music Festival)",
-     "2015 Wacken Open Air",
-     "Progressive Metal (Musical Genre)"
-    ],
-    "categoryId": "22",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Live at Wacken 2015 Full Concert",
-     "description": "False Awakening Suite 0:00\nAfterlife 2:29\nMetropolis Pt 1 8:01\nBurning my Soul 18:34\nThe Spirit Carries On 24:59\nAs I Am 31:50\nPanic Attack 39:30\nConstant Motion 47:35\nBridges in the Sky 54:34\nBehind the Veil 1:04:12"
+    contentDetails: {
+      duration: 'PT2H26M45S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '1214',
+      likeCount: '17',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '1'
     }
-   },
-   "contentDetails": {
-    "duration": "PT1H11M37S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1051390",
-    "likeCount": "4132",
-    "dislikeCount": "382",
-    "favoriteCount": "0",
-    "commentCount": "1296"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/gH7txV8yWITOQWlcO3-ZgEtwxD4\"",
-   "id": "OaUbq3fghWQ",
-   "snippet": {
-    "publishedAt": "2014-11-29T22:25:25.000Z",
-    "channelId": "UCJmZBQS4EoLu0Ls_0-LYQsA",
-    "title": "Dream Theater - Illumination Theory ( Live From The Boston Opera House ) - with lyrics",
-    "description": "Dream Theater - Illumination Theory ( Live From The Boston Opera House ) - with lyrics",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/OaUbq3fghWQ/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/OaUbq3fghWQ/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/OaUbq3fghWQ/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/OaUbq3fghWQ/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/OaUbq3fghWQ/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/vijORgNU0LMC_PGoGn3J5S6XXjo"',
+    id: 'NZHrw76dL_8',
+    snippet: {
+      publishedAt: '2016-11-14T16:00:02.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: '\'KISNOU\' Artist Showcase by Pulse8 - 1 Hour of Chill Music',
+      description: '\'KISNOU\' Artist Showcase by Pulse8 - 1 Hour of Chill Music\nKISNOU - Same Destiny EP: https://soundcloud.com/kisnoumusic/sets/same-destiny-ep6\nPulse8 on Spotify: https://goo.gl/MhiH2M\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Stream + Download KISNOU\'s \'Same Destiny\' EP ▼\nPurchase: https://kisnou.bandcamp.com/album/same-destiny-ep\nStream/Free DL: https://soundcloud.com/kisnoumusic/sets/same-destiny-ep6\n\n▼ Tracklist ▼\n00:00 KISNOU - Same Destiny\n03:13 KISNOU - Falling Deeper ft. Blure\n07:32 KISNOU - Secrets of Mine ft. Derek Joel\n12:22 KISNOU - Invictus\n15:51 KISNOU & Michael FK - Travellers Of The Dusk\n19:34 KISNOU - Across The Sky ft. Progley\n22:54 KISNOU - We’ll Meet Again\n27:32 KISNOU - Through The Skies\n31:37 KISNOU & Kaj - Where Our Story Ends\n35:08 KISNOU - I’ll Be Here\n39:40 Dimatis & KISNOU - Beyond Earth\n43:48 KISNOU - My Love\n49:22 KISNOU - Within My Dreams ft. Bella Goldwin\n53:28 KISNOU - Our Endless Dreams\n57:32 KISNOU - Tale Of A Nameless Wanderer\n\n▼ Artwork by AuroraLion ▼\nhttp://auroralion.deviantart.com/art/Not-Alone-590357618\n\n▼ Submit your music to Pulse8 ▼\nhttp://pulse8music.toneden.io\n\nA Beautiful Chillstep Mix by Pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/NZHrw76dL_8/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/NZHrw76dL_8/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/NZHrw76dL_8/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/NZHrw76dL_8/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/NZHrw76dL_8/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chillstep 2016',
+        'chillstep mix 2016',
+        'pulse8 chillstep',
+        'best of chillstep',
+        'best of chillstep mix',
+        'best of chillstep mix 2016',
+        'kisnou',
+        'chill',
+        'chillout',
+        'chill music',
+        'chill mix',
+        'chillout music',
+        'chillout mix',
+        'pulse8 chill mix',
+        'pulse8 chillout mix',
+        'pulse8 chillout music mix',
+        'pulse8 chill music mix',
+        'kisnou chillstep',
+        'kisnou music',
+        'kisnou pulse8',
+        'kisnou pulse8 mix',
+        'relaxing music',
+        'study music',
+        'pulse8',
+        'pulse8music'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: '\'KISNOU\' Artist Showcase by Pulse8 - 1 Hour of Chill Music',
+        description: '\'KISNOU\' Artist Showcase by Pulse8 - 1 Hour of Chill Music\nKISNOU - Same Destiny EP: https://soundcloud.com/kisnoumusic/sets/same-destiny-ep6\nPulse8 on Spotify: https://goo.gl/MhiH2M\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Stream + Download KISNOU\'s \'Same Destiny\' EP ▼\nPurchase: https://kisnou.bandcamp.com/album/same-destiny-ep\nStream/Free DL: https://soundcloud.com/kisnoumusic/sets/same-destiny-ep6\n\n▼ Tracklist ▼\n00:00 KISNOU - Same Destiny\n03:13 KISNOU - Falling Deeper ft. Blure\n07:32 KISNOU - Secrets of Mine ft. Derek Joel\n12:22 KISNOU - Invictus\n15:51 KISNOU & Michael FK - Travellers Of The Dusk\n19:34 KISNOU - Across The Sky ft. Progley\n22:54 KISNOU - We’ll Meet Again\n27:32 KISNOU - Through The Skies\n31:37 KISNOU & Kaj - Where Our Story Ends\n35:08 KISNOU - I’ll Be Here\n39:40 Dimatis & KISNOU - Beyond Earth\n43:48 KISNOU - My Love\n49:22 KISNOU - Within My Dreams ft. Bella Goldwin\n53:28 KISNOU - Our Endless Dreams\n57:32 KISNOU - Tale Of A Nameless Wanderer\n\n▼ Artwork by AuroraLion ▼\nhttp://auroralion.deviantart.com/art/Not-Alone-590357618\n\n▼ Submit your music to Pulse8 ▼\nhttp://pulse8music.toneden.io\n\nA Beautiful Chillstep Mix by Pulse8..'
+      }
     },
-    "channelTitle": "D T F O R E V E R",
-    "tags": [
-     "legenda",
-     "legendado",
-     "letra",
-     "lyrics",
-     "tradução",
-     "images and words",
-     "awake",
-     "scenes from memory",
-     "six degrees of inner turbulence",
-     "black clouds and silver linnings",
-     "systematic chaos",
-     "score",
-     "budokan",
-     "romavarium",
-     "octavarium",
-     "james labrie",
-     "john petrucci",
-     "jordan rudess",
-     "mike mangini",
-     "mike portnoy",
-     "john myung",
-     "Illumination Teory",
-     "Dream Theater (Musical Group)",
-     "Theatre",
-     "opera",
-     "house",
-     "boston",
-     "Boston Opera House (Venue)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Illumination Theory ( Live From The Boston Opera House ) - with lyrics",
-     "description": "Dream Theater - Illumination Theory ( Live From The Boston Opera House ) - with lyrics"
+    contentDetails: {
+      duration: 'PT1H',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '49301',
+      likeCount: '823',
+      dislikeCount: '18',
+      favoriteCount: '0',
+      commentCount: '70'
     }
-   },
-   "contentDetails": {
-    "duration": "PT19M45S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "2149258",
-    "likeCount": "11239",
-    "dislikeCount": "320",
-    "favoriteCount": "0",
-    "commentCount": "1557"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/rH3Hsxiqt2ON7iprtrMQh66kG9M\"",
-   "id": "M81CHCBcwqs",
-   "snippet": {
-    "publishedAt": "2013-08-19T04:15:40.000Z",
-    "channelId": "UCSbOi5_pMgBc7iGm5xZyT5w",
-    "title": "Dream Theater Live In Chile 2005 Full Concert",
-    "description": "Concierto Dream Theater\nOctavarium World Tour - Pista Atletica Estadio Nacional - Santiago Chile 03/12/2005\n\nIntro (In The Name Of God)\nThe Root Of All Evil 00:00\nPanic Attack 08:45\nA Fortune In Lies 16:02\nUnder A Glass Moon 21:14\nCaught In A Web 29:10\nPeruvian Skies 35:14\nStrange Deja Vu 45:48\nThrough My Words 50:58\nFatal Tragedy 52:02\nSolitary Shell 58:50\nAbout To Crash (Reprise) 01:04:16\nLosing Time/Grand Finale 01:08:34\n--15 min Intermission--\nAs I Am 01:13:28\nEndless Sacrifice 01:20:52\nI Walk Beside You 01:33:28\nSacrificed Sons 01:37:50\nOctavarium 01:48:30\n-Encore-\nJohn Petrucci Guitar Solo/The Spirit Carries On 02:16:12\nPull Me Under/Metropolis Pt.1 02:25:16",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/M81CHCBcwqs/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/M81CHCBcwqs/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/M81CHCBcwqs/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/M81CHCBcwqs/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/xgdW8A5LU3868RztSRvjhUWAlew"',
+    id: 'gmv54pfxk0Q',
+    snippet: {
+      publishedAt: '2016-11-26T00:49:27.000Z',
+      channelId: 'UCWzZ5TIGoZ6o-KtbGCyhnhg',
+      title: 'College Music · 24/7 Live Radio · Study Music · Chill Music · Calming Music',
+      description: 'Welcome to our 24/7 Radio station. A never ending stream of your favourite tracks whenever, wherever. All day, everyday.\nAny donation, however big or small will thoroughly help us keep the stream running. \n\n✅ Follow our Spotify playlists here: \nhttp://bedroom.collegemusic.co.uk\nhttp://spotify.collegemusic.co.uk\n\n💕 Donate here via Streamtip: https://goo.gl/tvMCdA\n💕 Donate here via Paypal: https://goo.gl/ySwmf7\n\n ↪ Artist and song name displayed in the top left corner of the video.\n↪ Sharing, liking and commenting on the stream really helps others discover so please help us out by doing so.\n\nIf you enjoy the live radio, feel free to subscribe to show your appreciation: http://goo.gl/xDvcNk\n\nKeep enjoying the music,\n\nCM x 🙏\n\nCollege Music · 24/7 Live Radio · Study Music · Chill Music · Calming Music \n● Spotify ▸http://spotify.collegemusic.co.uk\n● Facebook ▸http://facebook.collegemusic.co.uk\n● Twitter ▸http://twitter.collegemusic.co.uk\n● Soundcloud ▸http://soundcloud.collegemusic.co.uk\n● Snapchat ▸http://snapchat.collegemusic.co.uk\nCollege Music - Discover the undiscovered\n\n» Don\'t Forget To Subscribe: http://goo.gl/xDvcNk\n\n▬ Bot Commands ▬\n​!talk "Whatever you wanna say" » Nightbot will talk back to you!\n!love » Show some love for the Radio!\n!donate » Help us keep the stream going!\n!weather enterlocation » Tells you the weather at the location specified \n!shareit » Generates a Twitter link to share\n!social » Shows College Music social media links\n!subscribe » Gives you a link to subscribe to our channel\n!contact » Send us a private message\n!rules » Help familiarize yourself with our chat rules\n!hug » Feeling lonely?\n!hug entername » Send a hug to a certain someone \n!funny » Our bot\'s funniest quote of the day',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/gmv54pfxk0Q/default_live.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/gmv54pfxk0Q/mqdefault_live.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/gmv54pfxk0Q/hqdefault_live.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/gmv54pfxk0Q/sddefault_live.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/gmv54pfxk0Q/maxresdefault_live.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'College Music',
+      tags: [
+        'college music',
+        'christmas college music',
+        'college music christmas',
+        '24/7 christmas',
+        '24/7 live radio',
+        'live radio',
+        'live radio music',
+        'chilled music',
+        'music radio',
+        'music livestream',
+        'chill out',
+        'chill music',
+        'live music stream',
+        'nu disco music',
+        'chill house music',
+        'study focus music',
+        'focus music',
+        'instrumental music for studying concentration',
+        'background music',
+        'concentrate study music',
+        'good study songs',
+        'music for studying',
+        'study playlist',
+        'study music',
+        'relax music'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'live',
+      localized: {
+        title: 'College Music · 24/7 Live Radio · Study Music · Chill Music · Calming Music',
+        description: 'Welcome to our 24/7 Radio station. A never ending stream of your favourite tracks whenever, wherever. All day, everyday.\nAny donation, however big or small will thoroughly help us keep the stream running. \n\n✅ Follow our Spotify playlists here: \nhttp://bedroom.collegemusic.co.uk\nhttp://spotify.collegemusic.co.uk\n\n💕 Donate here via Streamtip: https://goo.gl/tvMCdA\n💕 Donate here via Paypal: https://goo.gl/ySwmf7\n\n ↪ Artist and song name displayed in the top left corner of the video.\n↪ Sharing, liking and commenting on the stream really helps others discover so please help us out by doing so.\n\nIf you enjoy the live radio, feel free to subscribe to show your appreciation: http://goo.gl/xDvcNk\n\nKeep enjoying the music,\n\nCM x 🙏\n\nCollege Music · 24/7 Live Radio · Study Music · Chill Music · Calming Music \n● Spotify ▸http://spotify.collegemusic.co.uk\n● Facebook ▸http://facebook.collegemusic.co.uk\n● Twitter ▸http://twitter.collegemusic.co.uk\n● Soundcloud ▸http://soundcloud.collegemusic.co.uk\n● Snapchat ▸http://snapchat.collegemusic.co.uk\nCollege Music - Discover the undiscovered\n\n» Don\'t Forget To Subscribe: http://goo.gl/xDvcNk\n\n▬ Bot Commands ▬\n​!talk "Whatever you wanna say" » Nightbot will talk back to you!\n!love » Show some love for the Radio!\n!donate » Help us keep the stream going!\n!weather enterlocation » Tells you the weather at the location specified \n!shareit » Generates a Twitter link to share\n!social » Shows College Music social media links\n!subscribe » Gives you a link to subscribe to our channel\n!contact » Send us a private message\n!rules » Help familiarize yourself with our chat rules\n!hug » Feeling lonely?\n!hug entername » Send a hug to a certain someone \n!funny » Our bot\'s funniest quote of the day'
+      },
+      defaultAudioLanguage: 'en-GB'
     },
-    "channelTitle": "Enigma Machine",
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater Live In Chile 2005 Full Concert",
-     "description": "Concierto Dream Theater\nOctavarium World Tour - Pista Atletica Estadio Nacional - Santiago Chile 03/12/2005\n\nIntro (In The Name Of God)\nThe Root Of All Evil 00:00\nPanic Attack 08:45\nA Fortune In Lies 16:02\nUnder A Glass Moon 21:14\nCaught In A Web 29:10\nPeruvian Skies 35:14\nStrange Deja Vu 45:48\nThrough My Words 50:58\nFatal Tragedy 52:02\nSolitary Shell 58:50\nAbout To Crash (Reprise) 01:04:16\nLosing Time/Grand Finale 01:08:34\n--15 min Intermission--\nAs I Am 01:13:28\nEndless Sacrifice 01:20:52\nI Walk Beside You 01:33:28\nSacrificed Sons 01:37:50\nOctavarium 01:48:30\n-Encore-\nJohn Petrucci Guitar Solo/The Spirit Carries On 02:16:12\nPull Me Under/Metropolis Pt.1 02:25:16"
+    contentDetails: {
+      duration: 'PT0S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '3582911',
+      likeCount: '47312',
+      dislikeCount: '1574',
+      favoriteCount: '0',
+      commentCount: '27'
     }
-   },
-   "contentDetails": {
-    "duration": "PT2H40M52S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "505406",
-    "likeCount": "1913",
-    "dislikeCount": "48",
-    "favoriteCount": "0",
-    "commentCount": "398"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/ohjZUS35YWxAdTnayIpcJY94FTU\"",
-   "id": "C98sOdWjtsw",
-   "snippet": {
-    "publishedAt": "2013-10-25T08:53:58.000Z",
-    "channelId": "UCp0uxdUViQ2LTAqRePby68g",
-    "title": "Dream Theater - Pull Me Under (Live At Luna Park)",
-    "description": "For more info -\nhttp://www.eagle-rock.com/artist/dream-theater/#.U-st-jhwYdU\n\nDVD: http://smarturl.it/DreamTheaterLunaDVD\nBlu-Ray: http://smarturl.it/DreamTheaterLunaBluR\nItunes: http://smarturl.it/DreamTheatrLuniTunes\nDeluxe: http://smarturl.it/DreamTheaterLunaDLX\nDVD/CD: http://smarturl.it/DreamTheatrLunaDVDCD\nBlu-Ray/CD: http://smarturl.it/DreamTheatrLunaBluCD\n\nDream Theater began their mammoth \"A Dramatic Tour Of Events\" world trek in July 2011 with the final leg in South America taking place in August 2012. It was here at the Luna Park arena in Buenos Aires, Argentina that they decided to film the two nights that go to make up this release. It was Dream Theater's first tour with new drummer Mike Mangini and all the tracks from their first album together \"A Dramatic Turn Of Events\" are included in either the main show or the bonus performances. Dream Theater are rock's supreme virtuosos with many awards to their name and here in concert they bring all the power and drama of their music to life with breathtaking performances of classic tracks from across their career. Out November 4th 2013\n\nFilmed in high definition.\nFeatures many of their classic tracks including: \"Metropolis Pt. 1\", \"The Silent Man\", \"Pull Me Under\", \"The Root Of All Evil\", \"The Test That Stumped Them All\", \"The Spirit Carries On\" and the recent \"On The Backs Of Angels\".\n\nJames LaBrie (vocals); John Petrucci (guitar); Jordan Rudess (keyboards); John Myung (bass); Mike Mangini (drums)\nLike and Share our videos to encourage us to post more.\n\nSubscribe to our channel for more live concert footage: http://www.youtube.com/subscription_center?add_user=eaglerocktv\n\nSign up to our mailing list: http://eepurl.com/zSiz1\n\nFollow us on twitter, Facebook and google plus:\nhttps://www.facebook.com/EagleRockEnt\nhttps://twitter.com/EagleRocknews\nhttps://www.google.com/+eaglerock",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/C98sOdWjtsw/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/C98sOdWjtsw/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/C98sOdWjtsw/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/C98sOdWjtsw/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/C98sOdWjtsw/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/jLbY4DfP8qeLTmnUdMSyaGCZNBA"',
+    id: 'zM0LymahkiA',
+    snippet: {
+      publishedAt: '2017-12-01T13:00:05.000Z',
+      channelId: 'UCa0wQO9he9P5YbbIOC6X7qw',
+      title: 'Square Pulse: 8-Bits of Christmas (Full Album)',
+      description: '8 Christmas songs done in old-school 8-bit glory. \n\nDOWNLOAD: https://squarepulse.bandcamp.com/album/8-bits-of-christmas\nNEED MUSIC FOR YOUR GAME?\nGet a free quote here: https://goo.gl/forms/01EJN5NcmyRSEq5G2\nSPOTIFY: https://open.spotify.com/album/2IGZD1d6j7rvsYfFit00Du\nAPPLE MUSIC: https://itunes.apple.com/us/album/8-bits-of-christmas/1315108321?uo=4\nGOOGLE PLAY: https://play.google.com/store/music/album/Square_Pulse_8_Bits_of_Christmas?id=B7p4jzscyhi65t6lrdasjku2bly&hl=en\nIHEART RADIO: https://www.iheart.com/artist/square-pulse-31826845/albums/8-bits-of-christmas-52102271/',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/zM0LymahkiA/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/zM0LymahkiA/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/zM0LymahkiA/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/zM0LymahkiA/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/zM0LymahkiA/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Thinkroot Records',
+      tags: [
+        'license music',
+        'Thinkroot Records',
+        'Kara Square',
+        'TRR',
+        'music library',
+        'stock music',
+        'Square Pulse',
+        '8-Bit',
+        'chiptune',
+        'computer music',
+        'electronic',
+        'game music',
+        'game',
+        'VGM',
+        'game dev',
+        'composer',
+        'musician'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      defaultLanguage: 'en',
+      localized: {
+        title: 'Square Pulse: 8-Bits of Christmas (Full Album)',
+        description: '8 Christmas songs done in old-school 8-bit glory. \n\nDOWNLOAD: https://squarepulse.bandcamp.com/album/8-bits-of-christmas\nNEED MUSIC FOR YOUR GAME?\nGet a free quote here: https://goo.gl/forms/01EJN5NcmyRSEq5G2\nSPOTIFY: https://open.spotify.com/album/2IGZD1d6j7rvsYfFit00Du\nAPPLE MUSIC: https://itunes.apple.com/us/album/8-bits-of-christmas/1315108321?uo=4\nGOOGLE PLAY: https://play.google.com/store/music/album/Square_Pulse_8_Bits_of_Christmas?id=B7p4jzscyhi65t6lrdasjku2bly&hl=en\nIHEART RADIO: https://www.iheart.com/artist/square-pulse-31826845/albums/8-bits-of-christmas-52102271/'
+      },
+      defaultAudioLanguage: 'en'
     },
-    "channelTitle": "Eagle Rock",
-    "tags": [
-     "eagle rock",
-     "Live",
-     "Performance",
-     "concert",
-     "dvd",
-     "blu ray",
-     "eagle vision",
-     "music",
-     "show",
-     "Event",
-     "Live Concert",
-     "Rock Music",
-     "Eagle",
-     "stage",
-     "Dream Theater (Musical Group)",
-     "Pull Me Under (Composition)",
-     "Live At Luna Park",
-     "Heavy Metal (Musical Genre)",
-     "Theatre",
-     "A Dramatic Turn Of Events (Musical Album)",
-     "Buenos Aires (City/Town/Village)",
-     "Argentina (Country)",
-     "Mike Mangini (Musical Artist)",
-     "James LaBrie (Musical Artist)",
-     "John Petrucci (Record Producer)",
-     "Jordan Rudess (Brand)",
-     "John Myung (Musical Artist)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Pull Me Under (Live At Luna Park)",
-     "description": "For more info -\nhttp://www.eagle-rock.com/artist/dream-theater/#.U-st-jhwYdU\n\nDVD: http://smarturl.it/DreamTheaterLunaDVD\nBlu-Ray: http://smarturl.it/DreamTheaterLunaBluR\nItunes: http://smarturl.it/DreamTheatrLuniTunes\nDeluxe: http://smarturl.it/DreamTheaterLunaDLX\nDVD/CD: http://smarturl.it/DreamTheatrLunaDVDCD\nBlu-Ray/CD: http://smarturl.it/DreamTheatrLunaBluCD\n\nDream Theater began their mammoth \"A Dramatic Tour Of Events\" world trek in July 2011 with the final leg in South America taking place in August 2012. It was here at the Luna Park arena in Buenos Aires, Argentina that they decided to film the two nights that go to make up this release. It was Dream Theater's first tour with new drummer Mike Mangini and all the tracks from their first album together \"A Dramatic Turn Of Events\" are included in either the main show or the bonus performances. Dream Theater are rock's supreme virtuosos with many awards to their name and here in concert they bring all the power and drama of their music to life with breathtaking performances of classic tracks from across their career. Out November 4th 2013\n\nFilmed in high definition.\nFeatures many of their classic tracks including: \"Metropolis Pt. 1\", \"The Silent Man\", \"Pull Me Under\", \"The Root Of All Evil\", \"The Test That Stumped Them All\", \"The Spirit Carries On\" and the recent \"On The Backs Of Angels\".\n\nJames LaBrie (vocals); John Petrucci (guitar); Jordan Rudess (keyboards); John Myung (bass); Mike Mangini (drums)\nLike and Share our videos to encourage us to post more.\n\nSubscribe to our channel for more live concert footage: http://www.youtube.com/subscription_center?add_user=eaglerocktv\n\nSign up to our mailing list: http://eepurl.com/zSiz1\n\nFollow us on twitter, Facebook and google plus:\nhttps://www.facebook.com/EagleRockEnt\nhttps://twitter.com/EagleRocknews\nhttps://www.google.com/+eaglerock"
+    contentDetails: {
+      duration: 'PT5M16S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '24',
+      likeCount: '1',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '0'
     }
-   },
-   "contentDetails": {
-    "duration": "PT8M44S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": true,
-    "regionRestriction": {
-     "blocked": [
-      "US",
-      "MX",
-      "AU",
-      "NZ"
-     ]
-    },
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "2883966",
-    "likeCount": "11246",
-    "dislikeCount": "462",
-    "favoriteCount": "0",
-    "commentCount": "1312"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/SzVWUrOW6ZGAJb7vjQfBEa-bee0\"",
-   "id": "pEkWYrmk7OA",
-   "snippet": {
-    "publishedAt": "2014-01-06T13:56:15.000Z",
-    "channelId": "UCBHhdnYxvu94yefpeZABY9g",
-    "title": "Dream Theater Metropolis Pt. 1 (Live At Luna Park DVD)",
-    "description": "DVD: http://smarturl.it/DreamTheaterLunaDVD\nBlu-Ray: http://smarturl.it/DreamTheaterLunaBluR\nItunes: http://smarturl.it/DreamTheatrLuniTunes\nDeluxe: http://smarturl.it/DreamTheaterLunaDLX\nDVD/CD: http://smarturl.it/DreamTheatrLunaDVDCD\nBlu-Ray/CD: http://smarturl.it/DreamTheatrLunaBluCD\n\nDream Theater began their mammoth \"A Dramatic Tour Of Events\" world trek in July 2011 with the final leg in South America taking place in August 2012. It was here at the Luna Park arena in Buenos Aires, Argentina that they decided to film the two nights that go to make up this release. It was Dream Theater's first tour with new drummer Mike Mangini and all the tracks from their first album together \"A Dramatic Turn Of Events\" are included in either the main show or the bonus performances. Dream Theater are rock's supreme virtuosos with many awards to their name and here in concert they bring all the power and drama of their music to life with breathtaking performances of classic tracks from across their career.\n\nFilmed in high definition.\nFeatures many of their classic tracks including: \"Metropolis Pt. 1\", \"The Silent Man\", \"Pull Me Under\", \"The Root Of All Evil\", \"The Test That Stumped Them All\", \"The Spirit Carries On\" and the recent \"On The Backs Of Angels\".\n\nJames LaBrie (vocals); John Petrucci (guitar); Jordan Rudess (keyboards); John Myung (bass); Mike Mangini (drums)",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/pEkWYrmk7OA/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/pEkWYrmk7OA/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/pEkWYrmk7OA/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/pEkWYrmk7OA/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/pEkWYrmk7OA/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/WcGT4-JGHA7CtX4db8QLhDNAwrA"',
+    id: '4sCHrHA9U7M',
+    snippet: {
+      publishedAt: '2017-08-20T18:00:00.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Chillstep Mix - \'Melancholy\' [1 Hour of Chillstep Music]',
+      description: 'Chillstep Mix - \'Melancholy\' [1 Hour of Chillstep Music]\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 SoundNet - Losing Hope Was Freedom\n05:49 Alicks - Beneath The Surface\n09:50 Inkarv - I’m Falling\n16:16 Alaskan Tapes ft. Nori - Escape\n20:11 Aerocity - Daylight (NAAJS Remix)\n23:34 Asiah - Intruder\n28:17 Logan Wishart - Halcyon\n31:30 Resonata ft. Nori - Mourning Light (Subsets Remix)\n35:48 Xandra - Petrichor\n39:13 WANDAI - Ten Second Barrier\n42:48 Iketa - Bird\n45:39 Owsey & Resotone - Broke My Promise & Stared To The Sea\n49:42 Kindred - Glimmer\n53:50 Túrion - Unshaken\n\n▸ Artwork by cubehero\nhttps://cubehero.deviantart.com/art/Celestial-Calm-591709254\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/4sCHrHA9U7M/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/4sCHrHA9U7M/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/4sCHrHA9U7M/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/4sCHrHA9U7M/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/4sCHrHA9U7M/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chill music',
+        'chillstep',
+        'pulse8',
+        'chill',
+        'music',
+        'chillstep mix',
+        'chill mix',
+        'study music',
+        'chillout',
+        'chillout mix',
+        'chillout music',
+        'oriental chillstep',
+        'pulse 8',
+        'music mix',
+        'chill remix',
+        'ambient',
+        'ambient music',
+        'relaxing music',
+        'melancholy',
+        'chillstep 2017',
+        'chill music 2017',
+        'chillstep remix',
+        'chillstep remix 2017'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Chillstep Mix - \'Melancholy\' [1 Hour of Chillstep Music]',
+        description: 'Chillstep Mix - \'Melancholy\' [1 Hour of Chillstep Music]\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 SoundNet - Losing Hope Was Freedom\n05:49 Alicks - Beneath The Surface\n09:50 Inkarv - I’m Falling\n16:16 Alaskan Tapes ft. Nori - Escape\n20:11 Aerocity - Daylight (NAAJS Remix)\n23:34 Asiah - Intruder\n28:17 Logan Wishart - Halcyon\n31:30 Resonata ft. Nori - Mourning Light (Subsets Remix)\n35:48 Xandra - Petrichor\n39:13 WANDAI - Ten Second Barrier\n42:48 Iketa - Bird\n45:39 Owsey & Resotone - Broke My Promise & Stared To The Sea\n49:42 Kindred - Glimmer\n53:50 Túrion - Unshaken\n\n▸ Artwork by cubehero\nhttps://cubehero.deviantart.com/art/Celestial-Calm-591709254\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      }
     },
-    "channelTitle": "Dream Theater",
-    "tags": [
-     "James LaBrie",
-     "John Petrucci",
-     "Jordan Rudess",
-     "John Myung",
-     "Mike Mangini",
-     "Live At Luna Park",
-     "Pull Me Under (Composition)",
-     "Eagle Rock Entertainment (Business Operation)",
-     "#LiveAtLunaPark",
-     "DreamTheater.net",
-     "eaglerockent.com",
-     "live concert",
-     "Dream Theater (Musical Group)",
-     "the enemy inside",
-     "Roadrunner Records (Record Label)",
-     "Heavy Metal (Musical Genre)",
-     "Progressive Metal (Musical Genre)",
-     "Progressive Rock (Musical Genre)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater Metropolis Pt. 1 (Live At Luna Park DVD)",
-     "description": "DVD: http://smarturl.it/DreamTheaterLunaDVD\nBlu-Ray: http://smarturl.it/DreamTheaterLunaBluR\nItunes: http://smarturl.it/DreamTheatrLuniTunes\nDeluxe: http://smarturl.it/DreamTheaterLunaDLX\nDVD/CD: http://smarturl.it/DreamTheatrLunaDVDCD\nBlu-Ray/CD: http://smarturl.it/DreamTheatrLunaBluCD\n\nDream Theater began their mammoth \"A Dramatic Tour Of Events\" world trek in July 2011 with the final leg in South America taking place in August 2012. It was here at the Luna Park arena in Buenos Aires, Argentina that they decided to film the two nights that go to make up this release. It was Dream Theater's first tour with new drummer Mike Mangini and all the tracks from their first album together \"A Dramatic Turn Of Events\" are included in either the main show or the bonus performances. Dream Theater are rock's supreme virtuosos with many awards to their name and here in concert they bring all the power and drama of their music to life with breathtaking performances of classic tracks from across their career.\n\nFilmed in high definition.\nFeatures many of their classic tracks including: \"Metropolis Pt. 1\", \"The Silent Man\", \"Pull Me Under\", \"The Root Of All Evil\", \"The Test That Stumped Them All\", \"The Spirit Carries On\" and the recent \"On The Backs Of Angels\".\n\nJames LaBrie (vocals); John Petrucci (guitar); Jordan Rudess (keyboards); John Myung (bass); Mike Mangini (drums)"
+    contentDetails: {
+      duration: 'PT1H',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '69207',
+      likeCount: '1311',
+      dislikeCount: '33',
+      favoriteCount: '0',
+      commentCount: '54'
     }
-   },
-   "contentDetails": {
-    "duration": "PT12M34S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": true,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "329911",
-    "likeCount": "2622",
-    "dislikeCount": "63",
-    "favoriteCount": "0",
-    "commentCount": "391"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/WVqSYifCXwU3cK4KXnPxbZZMacA\"",
-   "id": "bfnKiI7i_os",
-   "snippet": {
-    "publishedAt": "2015-12-31T07:23:36.000Z",
-    "channelId": "UCFAJTHg4_bD3_IpdDpp9rxA",
-    "title": "Dream Theater - Live At Budokan 720p Full Concert",
-    "description": "",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/bfnKiI7i_os/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/bfnKiI7i_os/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/bfnKiI7i_os/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/bfnKiI7i_os/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/bfnKiI7i_os/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/9FTqM1gUL5tYoGRMXTjkT6Fa3bU"',
+    id: 'Q-br2y6umZw',
+    snippet: {
+      publishedAt: '2017-01-18T17:10:36.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'The Aurora Principle - Things Unseen ALBUM [Presented by Pulse8]',
+      description: 'The Aurora Principle - Things Unseen ALBUM [Presented by Pulse8]\nDownload/Stream \'Things Unseen\':\nhttps://auroraprinciple.bandcamp.com/album/things-unseen\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Purchase/Stream \'Things Unseen\'\nBandcamp: https://auroraprinciple.bandcamp.com/album/things-unseen\n\n▼ Tracklist\n00:00 The Aurora Principle - Intro (I Was Never Good Enough For You)\n00:33 The Aurora Principle - That Which Was Lost\n03:44 The Aurora Principle - Before The Storm\n08:14 The Aurora Principle - Reverie of the Watchers\n12:41 The Aurora Principle - As I Gaze Into the Starless Sky\n20:25 The Aurora Principle - Anri’s Lament\n24:32 The Aurora Principle - From Across the Plains\n27:55 The Aurora Principle - Our Memory\n31:17 The Aurora Principle - The First Flame\n33:32 The Aurora Principle - Exulansis\n36:55 The Aurora Principle - And In That Moment, There Was Hope\n40:48 The Aurora Principle - January (Interlude)\n42:27 The Aurora Principle - Soliloquy\n44:01 The Aurora Principle - Maybe, Tomorrow\n\n▼ Submit your music to Pulse8 \nhttp://pulse8music.toneden.io\n\nA Beautiful Chillstep Mix by Pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/Q-br2y6umZw/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/Q-br2y6umZw/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/Q-br2y6umZw/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/Q-br2y6umZw/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/Q-br2y6umZw/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chillstep 2016',
+        'chillstep mix 2016',
+        'pulse8 chillstep',
+        'best of chillstep',
+        'best of chillstep mix',
+        'best of chillstep mix 2016',
+        'the aurora principle',
+        'the aurora principle chillstep',
+        'the aurora principle pulse8',
+        'things unseen',
+        'the aurora principle things unseen',
+        'chillstep 2017',
+        'chillstep mix 2017',
+        'ambient',
+        'ambient music',
+        'ambient mix',
+        'ambient music 2017',
+        'chill mix',
+        'chill music',
+        'chillout mix chillout music',
+        'chill music mix 2017',
+        'pulse8 2017'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'The Aurora Principle - Things Unseen ALBUM [Presented by Pulse8]',
+        description: 'The Aurora Principle - Things Unseen ALBUM [Presented by Pulse8]\nDownload/Stream \'Things Unseen\':\nhttps://auroraprinciple.bandcamp.com/album/things-unseen\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Purchase/Stream \'Things Unseen\'\nBandcamp: https://auroraprinciple.bandcamp.com/album/things-unseen\n\n▼ Tracklist\n00:00 The Aurora Principle - Intro (I Was Never Good Enough For You)\n00:33 The Aurora Principle - That Which Was Lost\n03:44 The Aurora Principle - Before The Storm\n08:14 The Aurora Principle - Reverie of the Watchers\n12:41 The Aurora Principle - As I Gaze Into the Starless Sky\n20:25 The Aurora Principle - Anri’s Lament\n24:32 The Aurora Principle - From Across the Plains\n27:55 The Aurora Principle - Our Memory\n31:17 The Aurora Principle - The First Flame\n33:32 The Aurora Principle - Exulansis\n36:55 The Aurora Principle - And In That Moment, There Was Hope\n40:48 The Aurora Principle - January (Interlude)\n42:27 The Aurora Principle - Soliloquy\n44:01 The Aurora Principle - Maybe, Tomorrow\n\n▼ Submit your music to Pulse8 \nhttp://pulse8music.toneden.io\n\nA Beautiful Chillstep Mix by Pulse8..'
+      }
     },
-    "channelTitle": "Louise Matthew",
-    "tags": [
-     "Dream Theater",
-     "Live At Budokan",
-     "Dream",
-     "Theater",
-     "Live",
-     "At",
-     "Budokan",
-     "Full Concert"
-    ],
-    "categoryId": "22",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Live At Budokan 720p Full Concert",
-     "description": ""
+    contentDetails: {
+      duration: 'PT47M44S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '7379',
+      likeCount: '258',
+      dislikeCount: '8',
+      favoriteCount: '0',
+      commentCount: '37'
     }
-   },
-   "contentDetails": {
-    "duration": "PT2H48M3S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": true,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "94890",
-    "likeCount": "400",
-    "dislikeCount": "87",
-    "favoriteCount": "0",
-    "commentCount": "84"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/o4Yv2d1M5Az9dMC1nhcz5E5x5iY\"",
-   "id": "8Ik9qECIWgc",
-   "snippet": {
-    "publishedAt": "2015-01-06T12:46:53.000Z",
-    "channelId": "UCDHu87pKVWi_W2y_rdC_LMQ",
-    "title": "Dream Theater - The Dance Of Eternity [Breaking The Fourth Wall]",
-    "description": "Breaking the Fourth Wall - Live From The Boston Opera House\nDream Theater - The Dance Of Eternity",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/8Ik9qECIWgc/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/8Ik9qECIWgc/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/8Ik9qECIWgc/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/8Ik9qECIWgc/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/8Ik9qECIWgc/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/V9vOrhAP3pji-NKTlGqiZSIAPZ0"',
+    id: '6UWX2WDDDrI',
+    snippet: {
+      publishedAt: '2015-02-28T16:00:00.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Aerocity - Escapism EP (Full EP)',
+      description: 'Aerocity - Escapism EP (Full EP)\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ Support Aerocity\nhttp://soundcloud.com/aerocity\nhttp://facebook.com/aerocitymusic\nhttp://aerocity.bandcamp.com/\nhttps://twitter.com/AerocityMusic\n\n♥ Download Escapism EP\nBandcamp: https://aerocity.bandcamp.com/album/escapism-ep\niTunes: https://itunes.apple.com/us/album/escapism-ep/id971719465\nAmazon: http://amazon.com/Escapism-EP-Aerocity/dp/B00U0YEYLM/\n\n♥ Stream the EP\nhttps://soundcloud.com/aerocity/sets/aerocity-escapism-ep\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.com/submit',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/6UWX2WDDDrI/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/6UWX2WDDDrI/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/6UWX2WDDDrI/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/6UWX2WDDDrI/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/6UWX2WDDDrI/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'pulse8',
+        'pulse8music',
+        'aerocity',
+        'aerocitymusic',
+        'aerocity music',
+        'escapism',
+        'escapism ep',
+        'aerocity escapism',
+        'aerocity escapism ep',
+        'aerocitymusic escapism ep',
+        'aerocity chill',
+        'piano',
+        'aerocity piano',
+        'Aerocity - Escapism EP (Full EP)',
+        'aerocity love lost',
+        'aerocity fever dream',
+        'aerocity daylight',
+        'aerocity interlude #2',
+        'aerocity room 208',
+        'love lost',
+        'fever dream',
+        'daylight',
+        'interlude #2',
+        'room 208'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Aerocity - Escapism EP (Full EP)',
+        description: 'Aerocity - Escapism EP (Full EP)\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ Support Aerocity\nhttp://soundcloud.com/aerocity\nhttp://facebook.com/aerocitymusic\nhttp://aerocity.bandcamp.com/\nhttps://twitter.com/AerocityMusic\n\n♥ Download Escapism EP\nBandcamp: https://aerocity.bandcamp.com/album/escapism-ep\niTunes: https://itunes.apple.com/us/album/escapism-ep/id971719465\nAmazon: http://amazon.com/Escapism-EP-Aerocity/dp/B00U0YEYLM/\n\n♥ Stream the EP\nhttps://soundcloud.com/aerocity/sets/aerocity-escapism-ep\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.com/submit'
+      }
     },
-    "channelTitle": "japanin poika",
-    "tags": [
-     "Dream Theater",
-     "Dance of Eternity",
-     "Breaking the Fourth Wall",
-     "Live From The Boston Opera House",
-     "The Dance Of Eternity",
-     "Progressive",
-     "japanin_poika",
-     "live"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - The Dance Of Eternity [Breaking The Fourth Wall]",
-     "description": "Breaking the Fourth Wall - Live From The Boston Opera House\nDream Theater - The Dance Of Eternity"
+    contentDetails: {
+      duration: 'PT18M11S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '11532',
+      likeCount: '219',
+      dislikeCount: '6',
+      favoriteCount: '0',
+      commentCount: '19'
     }
-   },
-   "contentDetails": {
-    "duration": "PT6M35S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "2197915",
-    "likeCount": "12491",
-    "dislikeCount": "400",
-    "favoriteCount": "0",
-    "commentCount": "1427"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/ruclOs8eDeJhApPh0p6CAwMXq5o\"",
-   "id": "eBpq7MctZcc",
-   "snippet": {
-    "publishedAt": "2015-01-01T15:49:37.000Z",
-    "channelId": "UCDHu87pKVWi_W2y_rdC_LMQ",
-    "title": "Dream Theater - Stream Of Consciousness [Live at Budokan]",
-    "description": "Live at Budokan\nDream Theater - Stream Of Consciousness",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/eBpq7MctZcc/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/eBpq7MctZcc/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/eBpq7MctZcc/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/bfl-D8UIt4VOUO_sD74YmM1VLVY"',
+    id: 'nml4rObrX8k',
+    snippet: {
+      publishedAt: '2017-09-05T17:00:05.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Best of Chillstep Mix | September 2017',
+      description: 'Best of Chillstep Mix | September 2017\nAn hour of beautiful chillstep music..\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Insomnia - Breath\n03:19 Lookz - Alone\n07:57 Sibewest - Exodus\n13:01 John Hubbard - You\n16:28 Flüidd & Xandra - Without You\n19:28 smokefishe - down\n23:36 Ori - Counting Stars\n27:05 Michael FK & Solace - Things We Wouldn’t Say\n34:42 Downcall - Echoes\n37:43 Solace - Storms (In My Head)\n43:02 S’Hill - Supernova\n46:49 Day 7 - I’m Yours\n50:44 Rift - Fornever\n56:21 Ryke ft. The Penguin District - Nocturnal\n\n▸ Artwork by Skraww\nhttps://skraww.deviantart.com/art/Cold-Night-Warm-Fire-696781656\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/nml4rObrX8k/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/nml4rObrX8k/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/nml4rObrX8k/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/nml4rObrX8k/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/nml4rObrX8k/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chill music',
+        'chillstep',
+        'pulse8',
+        'chill',
+        'music',
+        'chillstep mix',
+        'chill mix',
+        'study music',
+        'chillout',
+        'chillout mix',
+        'chillout music',
+        'oriental chillstep',
+        'pulse 8',
+        'music mix',
+        'chill remix',
+        'ambient',
+        'ambient music',
+        'relaxing music',
+        'chillstep 2017',
+        'chillstep mix 2017',
+        'best of chillstep',
+        'best of chillstep mix',
+        'best of chillstep mix 2017',
+        'chill music mix',
+        'chill music 2017',
+        'chill mix 2017'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Best of Chillstep Mix | September 2017',
+        description: 'Best of Chillstep Mix | September 2017\nAn hour of beautiful chillstep music..\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Insomnia - Breath\n03:19 Lookz - Alone\n07:57 Sibewest - Exodus\n13:01 John Hubbard - You\n16:28 Flüidd & Xandra - Without You\n19:28 smokefishe - down\n23:36 Ori - Counting Stars\n27:05 Michael FK & Solace - Things We Wouldn’t Say\n34:42 Downcall - Echoes\n37:43 Solace - Storms (In My Head)\n43:02 S’Hill - Supernova\n46:49 Day 7 - I’m Yours\n50:44 Rift - Fornever\n56:21 Ryke ft. The Penguin District - Nocturnal\n\n▸ Artwork by Skraww\nhttps://skraww.deviantart.com/art/Cold-Night-Warm-Fire-696781656\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      }
     },
-    "channelTitle": "japanin poika",
-    "tags": [
-     "Theater",
-     "Live",
-     "Stream",
-     "of",
-     "Consciousness",
-     "Budokan",
-     "Train",
-     "Thought",
-     "Awesome",
-     "Dream",
-     "japanin_poika"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Stream Of Consciousness [Live at Budokan]",
-     "description": "Live at Budokan\nDream Theater - Stream Of Consciousness"
+    contentDetails: {
+      duration: 'PT1H',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '47666',
+      likeCount: '798',
+      dislikeCount: '19',
+      favoriteCount: '0',
+      commentCount: '39'
     }
-   },
-   "contentDetails": {
-    "duration": "PT11M14S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "261860",
-    "likeCount": "1719",
-    "dislikeCount": "20",
-    "favoriteCount": "0",
-    "commentCount": "193"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/CAb_f8t57EZ0ngt4FL4Jl0-5JGM\"",
-   "id": "iyYC9mYXS6Y",
-   "snippet": {
-    "publishedAt": "2016-03-18T14:10:35.000Z",
-    "channelId": "UCQXyCMrfT2SzjiI_Y-AgEgQ",
-    "title": "Dream Theater Live in Los Angeles",
-    "description": "",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/iyYC9mYXS6Y/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/iyYC9mYXS6Y/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/iyYC9mYXS6Y/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/bAoKPMqalEhNN-Dk0rIfJy5w6pw"',
+    id: '_X_ORhGaw6s',
+    snippet: {
+      publishedAt: '2017-04-26T16:30:01.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'EUPHORIA - A Beautiful Chillout Music Mix',
+      description: 'EUPHORIA - A Beautiful Chillout Music Mix\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Kindred - Phoenix\n05:41 Owsey & Resotone - A Smile From The West\n12:08 Aerocity - Daylight (NAAJS Remix)\n15:31 Alaskan Tapes feat. Monika Cefis - Vacant\n21:39 KOSIKK & LONER - Breath of Spring\n25:06 XILAS - Love\n28:16 Owsey & Resotone - Lucky Girl, On Board A Ship\n32:19 Kindred - Embrace\n36:48 Ptr - Huangshan\n41:33 Kindred - Glimmer\n45:37 Ocean of Emptiness - Meanwhile\n49:02 Groundfold - The Tale Of The Broken Bird\n52:56 Imagine Dragons - Radioactive (Noctilucent Remix)\n\n▸ Artwork by iDaisan\nhttp://idaisan.deviantart.com/art/alien-enviro-concept-669352357\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/_X_ORhGaw6s/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/_X_ORhGaw6s/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/_X_ORhGaw6s/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/_X_ORhGaw6s/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/_X_ORhGaw6s/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chill',
+        'chillout',
+        'chill music',
+        'chillstep mix',
+        'chill mix',
+        'chillout mix',
+        'best of chillstep',
+        'pulse8 mix',
+        'pulse8',
+        'pulse 8',
+        'chillstep 2017',
+        'chillstep mix 2017',
+        'chillstep playlist',
+        'chill step',
+        'chill out music',
+        'chillout music',
+        'chillout sessions',
+        'euphoria',
+        'euphoric',
+        'ambient',
+        'euphoric music',
+        'beautiful chillout music',
+        'chill music mix',
+        'chillout music mix',
+        'best of chillstep 2017',
+        'chillout music 2017',
+        'chill music 2017',
+        'chillout mix 2017',
+        'chill mix 2017'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'EUPHORIA - A Beautiful Chillout Music Mix',
+        description: 'EUPHORIA - A Beautiful Chillout Music Mix\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Kindred - Phoenix\n05:41 Owsey & Resotone - A Smile From The West\n12:08 Aerocity - Daylight (NAAJS Remix)\n15:31 Alaskan Tapes feat. Monika Cefis - Vacant\n21:39 KOSIKK & LONER - Breath of Spring\n25:06 XILAS - Love\n28:16 Owsey & Resotone - Lucky Girl, On Board A Ship\n32:19 Kindred - Embrace\n36:48 Ptr - Huangshan\n41:33 Kindred - Glimmer\n45:37 Ocean of Emptiness - Meanwhile\n49:02 Groundfold - The Tale Of The Broken Bird\n52:56 Imagine Dragons - Radioactive (Noctilucent Remix)\n\n▸ Artwork by iDaisan\nhttp://idaisan.deviantart.com/art/alien-enviro-concept-669352357\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      }
     },
-    "channelTitle": "Rio Redstone",
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater Live in Los Angeles",
-     "description": ""
+    contentDetails: {
+      duration: 'PT57M30S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
     },
-    "defaultAudioLanguage": "ja"
-   },
-   "contentDetails": {
-    "duration": "PT2H11M25S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "22167",
-    "likeCount": "140",
-    "dislikeCount": "3",
-    "favoriteCount": "0",
-    "commentCount": "23"
-   }
+    statistics: {
+      viewCount: '57130',
+      likeCount: '953',
+      dislikeCount: '18',
+      favoriteCount: '0',
+      commentCount: '60'
+    }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/UHS-bRktJBtWn47tGIDFrQcworo\"",
-   "id": "mBCNLzhHYYo",
-   "snippet": {
-    "publishedAt": "2009-11-26T17:10:09.000Z",
-    "channelId": "UCxzbiuzgBDVAdNDqekNp0tw",
-    "title": "Dream Theater - The Spirit Carries On Score",
-    "description": "Dream Theater Performing The Spirit Carries On\r\n\r\njohn petrucci james labrie myung jordan rudess mike portnoy cry for freedom pull me under Fortune In Lies Status Seeker The Ytse Jam Killing Hand Light Fuse And Get Away Afterlife Ones Who Help To Set Sun Only Matter Of Time Another Day Take Surrounded Metropolis Part Miracle Sleeper Under Glass Moon Wait For Sleep Learning Live 6:00 Caught Web Innocence Faded Erotomania Voices The Silent Man The Mirror Lie Lifting Shadows Off A Dream Scarred Space-Dye Vest A Change Of Seasons Funeral For A Friend / Love Lies Bleeding Perfect Strangers The Rover / Achilles Last Stand / The Song Remains The Same The Big Medley New Millennium You Not Me Peruvian Skies Hollow Years Burning My Soul Hell's Kitchen Lines In The Sand Take Away My Pain Just Let Me Breathe Anna Lee Trial Of Tears Scene One: Regression Scene Two: I. Overture II. Strange Deja Vu Scene Three: I. Through My Words II. Fatal Tragedy Scene Four: Beyond This Life Scene Five: Through Her Eyes Scene Six: Home Scene Seven: I. The Dance Of Eternity II. One Last Time Scene Eight: The Spirit Carries On Scene Nine: Finally Free The Glass Prison Blind Faith Misunderstood The Great Debate Disappear Six Degrees Of Inner Turbulence As I Am This Dying Soul Endless Sacrifice Honor Thy Father Vacant Stream Of Consciousness In The Name Of God The Root Of All Evil The Answer Lies Within These Walls I Walk Beside You Panic Attack Never Enough Sacrificed Sons Octavarium In The Presence Of Enemies, Pt. 1 Forsaken Constant Motion The Dark Eternal Night Repentance Prophets Of War The Ministry Of Lost Souls In The Presence Of Enemies, Pt. 2",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/mBCNLzhHYYo/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/mBCNLzhHYYo/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/mBCNLzhHYYo/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/XBFaEYKkPAaRfaksqU3lIoNaoNI"',
+    id: '2Vph-e9Q59U',
+    snippet: {
+      publishedAt: '2017-01-28T16:30:32.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Best of Chillstep 2017 - Part 1 by Pulse8 [1 Hour of Chillstep]',
+      description: 'Best of Chillstep 2017 - Part 1 by Pulse8 [1 Hour of Chillstep]\nFree DL: http://hypeddit.com/track/yt/ncb4yf\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\nFree DL: http://hypeddit.com/track/yt/ncb4yf\nStream: https://soundcloud.com/pulse8/best-of-chillstep-2017-part-1\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Ptr. - Taiga\n03:20 Andy Leech - Thinking of You\n08:25 Resonata - City of Roses\n12:40 Dimatis - Emotional Tourism\n16:25 Whithe - November\n21:09 Yal!x & Michael FK - The World Can Wait\n26:39 Merevale - Into Ever\n29:07 Resonata - Azumi\n32:28 Aurora B.Polaris - Sci-Fi Transmissions\n35:40 OverHertz - Zen\n40:28 Salvus - Let The Adventures Begin\n43:49 The Aurora Principle - 3 AM (Powlos Remix)\n47:40 Toteem1 - Rain And Fire\n53:07 smokefishe - xo\n57:28 Layaway - Disorder\n59:54 Liquid Memoirs x TOAC - Neukölln\n\n▸ Artwork by TacoSauceNinja\nhttp://tacosauceninja.deviantart.com/art/Sunlight-3-642137557\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/2Vph-e9Q59U/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/2Vph-e9Q59U/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/2Vph-e9Q59U/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/2Vph-e9Q59U/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/2Vph-e9Q59U/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'pulse8 chillstep',
+        'best of chillstep',
+        'best of chillstep mix',
+        'chillstep 2017',
+        'chillstep mix 2017',
+        'best of chillstep 2017',
+        'best of chillstep mix 2017',
+        'pulse8 best of chillstep mix 2017',
+        'pulse8 chillstep mix',
+        'pulse8 chillstep mix 2017',
+        'chillstep 2017 mix',
+        'chillstep music',
+        'chillstep playlist',
+        'chill',
+        'chill mix',
+        'chillout mix',
+        'chill music mix',
+        'chillout music mix',
+        'chill music mix 2017',
+        '1 hour of chillstep',
+        'best of chillstep 2017 pulse8 mix',
+        'pulse8 mix'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Best of Chillstep 2017 - Part 1 by Pulse8 [1 Hour of Chillstep]',
+        description: 'Best of Chillstep 2017 - Part 1 by Pulse8 [1 Hour of Chillstep]\nFree DL: http://hypeddit.com/track/yt/ncb4yf\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\nFree DL: http://hypeddit.com/track/yt/ncb4yf\nStream: https://soundcloud.com/pulse8/best-of-chillstep-2017-part-1\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Ptr. - Taiga\n03:20 Andy Leech - Thinking of You\n08:25 Resonata - City of Roses\n12:40 Dimatis - Emotional Tourism\n16:25 Whithe - November\n21:09 Yal!x & Michael FK - The World Can Wait\n26:39 Merevale - Into Ever\n29:07 Resonata - Azumi\n32:28 Aurora B.Polaris - Sci-Fi Transmissions\n35:40 OverHertz - Zen\n40:28 Salvus - Let The Adventures Begin\n43:49 The Aurora Principle - 3 AM (Powlos Remix)\n47:40 Toteem1 - Rain And Fire\n53:07 smokefishe - xo\n57:28 Layaway - Disorder\n59:54 Liquid Memoirs x TOAC - Neukölln\n\n▸ Artwork by TacoSauceNinja\nhttp://tacosauceninja.deviantart.com/art/Sunlight-3-642137557\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      },
+      defaultAudioLanguage: 'en-US'
     },
-    "channelTitle": "Santeri Rusila",
-    "tags": [
-     "Dream",
-     "Theater",
-     "Score"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - The Spirit Carries On Score",
-     "description": "Dream Theater Performing The Spirit Carries On\r\n\r\njohn petrucci james labrie myung jordan rudess mike portnoy cry for freedom pull me under Fortune In Lies Status Seeker The Ytse Jam Killing Hand Light Fuse And Get Away Afterlife Ones Who Help To Set Sun Only Matter Of Time Another Day Take Surrounded Metropolis Part Miracle Sleeper Under Glass Moon Wait For Sleep Learning Live 6:00 Caught Web Innocence Faded Erotomania Voices The Silent Man The Mirror Lie Lifting Shadows Off A Dream Scarred Space-Dye Vest A Change Of Seasons Funeral For A Friend / Love Lies Bleeding Perfect Strangers The Rover / Achilles Last Stand / The Song Remains The Same The Big Medley New Millennium You Not Me Peruvian Skies Hollow Years Burning My Soul Hell's Kitchen Lines In The Sand Take Away My Pain Just Let Me Breathe Anna Lee Trial Of Tears Scene One: Regression Scene Two: I. Overture II. Strange Deja Vu Scene Three: I. Through My Words II. Fatal Tragedy Scene Four: Beyond This Life Scene Five: Through Her Eyes Scene Six: Home Scene Seven: I. The Dance Of Eternity II. One Last Time Scene Eight: The Spirit Carries On Scene Nine: Finally Free The Glass Prison Blind Faith Misunderstood The Great Debate Disappear Six Degrees Of Inner Turbulence As I Am This Dying Soul Endless Sacrifice Honor Thy Father Vacant Stream Of Consciousness In The Name Of God The Root Of All Evil The Answer Lies Within These Walls I Walk Beside You Panic Attack Never Enough Sacrificed Sons Octavarium In The Presence Of Enemies, Pt. 1 Forsaken Constant Motion The Dark Eternal Night Repentance Prophets Of War The Ministry Of Lost Souls In The Presence Of Enemies, Pt. 2"
+    contentDetails: {
+      duration: 'PT1H5M',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '57871',
+      likeCount: '797',
+      dislikeCount: '21',
+      favoriteCount: '0',
+      commentCount: '46'
     }
-   },
-   "contentDetails": {
-    "duration": "PT9M47S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "2694330",
-    "likeCount": "11506",
-    "dislikeCount": "224",
-    "favoriteCount": "0",
-    "commentCount": "1360"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/3dbq8I0iHmoq2PTK1ai5YcS0V10\"",
-   "id": "-0M21LUg_9E",
-   "snippet": {
-    "publishedAt": "2014-10-25T20:25:42.000Z",
-    "channelId": "UCJmZBQS4EoLu0Ls_0-LYQsA",
-    "title": "Dream Theater - Breaking all illusions ( Live From The Boston Opera House)  - with lyrics",
-    "description": "Dream Theater - Breaking all illusions ( Live From The Boston Opera House )  - with lyrics",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/-0M21LUg_9E/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/-0M21LUg_9E/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/-0M21LUg_9E/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/-0M21LUg_9E/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/-0M21LUg_9E/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/_7UT1qUBJFZKvMi5F9e7boXVbbk"',
+    id: '4SLNA7Sl9IE',
+    snippet: {
+      publishedAt: '2015-04-25T01:09:56.000Z',
+      channelId: 'UCZQalZi5hs3MfTW5HOvKPYw',
+      title: '\'Pensees\' ~ Chillout/Ambient/Garage/Chillstep Mix by MiXeR',
+      description: '◢◤ Look Here ◥◣\n\n● My website http://MiXeR2k.pl\n\n● Subscribe for more! http://MiXeR2k.pl/Sub\n\n● Facebook FanPage http://MiXeR2k.pl/FanPage\n\n● Facebook Group http://MiXeR2k.pl/Group\n\n● Instagram http://MiXeR2k.pl/Insta\n\n● Twitter http://MiXeR2k.pl/Twitter\n\n● SoundCloud http://MiXeR2k.pl/SoundCloud\n\n● Steam Group http://MiXeR2k.pl/Steam\n\n● G2A http://MiXeR2k.pl/G2A (If you want game for a good price)  \n\n● Free CS:GO Skins http://MiXeR2k.pl/Free\n\n● Donate http://MiXeR2k.pl/Money\n\n● Donate (Steam Offer) http://MiXeR2k.pl/SteamOffer\n\n◢◤╭╮╰╯◥◣\n\n0:00 Pensees - Gravitation\n4:08 Pensees - Callovs\n9:50 Pensees - She\n14:20 Pensees x Quok - Hollowly\n18:28 Pensees - Milove\n24:00 Pensees - Chronicle\n31:00 Pensees - Cycle\n36:12 Pensees - Dawn\n41:36 Pensees - Disappearance\n46:38 Pensees - Existence\n52:15 Pensees - Origin\n55:00 Slow Skies - On the shore (Pensees remix)\n59:14 Tropics - Blame (Pensees Remix)\n\n◢◤╭╮╰╯◥◣\n\nPensees\nhttps://soundcloud.com/pensees\n\n◢◤╭╮╰╯◥◣\n\n"chillout mix 2014" chillout, chillout mix, best chillout mix //Chillout//\n\n"ambient mix 2014" ambient, ambient mix, best ambient mix //Ambient//\n\n"chillstep mix 2014" chillstep, chillstep mix, best chillstep mix //Chillstep//\n\n"drum & bass mix 2014" drum & bass, drum & bass mix, best drum & bass mix //Drum & Bass//\n\n"dnb mix 2014" dnb, dnb mix, best dnb mix //DNB//\n\n"drumstep mix 2014" drumstep, drumstep mix, best drumstep mix //DrumStep//\n\n"dubstep mix 2014" dubstep, dubstep mix, best dubstep mix //DubStep//\n\n"male vocal mix 2014" male vocal , male vocal  mix, best male vocal  mix //Male vocal//\n\n"female vocal mix 2014" female vocal , female vocal  mix, best female vocal  mix //Female vocal//',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/4SLNA7Sl9IE/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/4SLNA7Sl9IE/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/4SLNA7Sl9IE/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/4SLNA7Sl9IE/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/4SLNA7Sl9IE/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'MiXeR',
+      tags: [
+        'mixer',
+        'mix',
+        'chillout',
+        'chillstep',
+        'liquid',
+        'drum',
+        'and',
+        'bass',
+        'dnb',
+        'drumstep',
+        'ambient',
+        'sad',
+        'emotional',
+        'best',
+        'Pensées (Book)',
+        'Drum And Bass (Musical Genre)',
+        'Ambient Music (Broadcast Genre)',
+        'Powerhouse (Musical Artist)',
+        'Remix',
+        'pensees',
+        'gravitation',
+        'callovs',
+        'she',
+        'hollowly',
+        'milove',
+        'chronicle',
+        'cycle',
+        'dawn',
+        'disappearance',
+        'existence',
+        'origin',
+        'on the shore',
+        'blame',
+        'slow skies',
+        'tropics',
+        'Electronic',
+        'Drum Bass',
+        'Chill-out Music (Musical Genre)',
+        'Dubstep (Musical Genre)',
+        'UK Garage (Musical Genre)'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: '\'Pensees\' ~ Chillout/Ambient/Garage/Chillstep Mix by MiXeR',
+        description: '◢◤ Look Here ◥◣\n\n● My website http://MiXeR2k.pl\n\n● Subscribe for more! http://MiXeR2k.pl/Sub\n\n● Facebook FanPage http://MiXeR2k.pl/FanPage\n\n● Facebook Group http://MiXeR2k.pl/Group\n\n● Instagram http://MiXeR2k.pl/Insta\n\n● Twitter http://MiXeR2k.pl/Twitter\n\n● SoundCloud http://MiXeR2k.pl/SoundCloud\n\n● Steam Group http://MiXeR2k.pl/Steam\n\n● G2A http://MiXeR2k.pl/G2A (If you want game for a good price)  \n\n● Free CS:GO Skins http://MiXeR2k.pl/Free\n\n● Donate http://MiXeR2k.pl/Money\n\n● Donate (Steam Offer) http://MiXeR2k.pl/SteamOffer\n\n◢◤╭╮╰╯◥◣\n\n0:00 Pensees - Gravitation\n4:08 Pensees - Callovs\n9:50 Pensees - She\n14:20 Pensees x Quok - Hollowly\n18:28 Pensees - Milove\n24:00 Pensees - Chronicle\n31:00 Pensees - Cycle\n36:12 Pensees - Dawn\n41:36 Pensees - Disappearance\n46:38 Pensees - Existence\n52:15 Pensees - Origin\n55:00 Slow Skies - On the shore (Pensees remix)\n59:14 Tropics - Blame (Pensees Remix)\n\n◢◤╭╮╰╯◥◣\n\nPensees\nhttps://soundcloud.com/pensees\n\n◢◤╭╮╰╯◥◣\n\n"chillout mix 2014" chillout, chillout mix, best chillout mix //Chillout//\n\n"ambient mix 2014" ambient, ambient mix, best ambient mix //Ambient//\n\n"chillstep mix 2014" chillstep, chillstep mix, best chillstep mix //Chillstep//\n\n"drum & bass mix 2014" drum & bass, drum & bass mix, best drum & bass mix //Drum & Bass//\n\n"dnb mix 2014" dnb, dnb mix, best dnb mix //DNB//\n\n"drumstep mix 2014" drumstep, drumstep mix, best drumstep mix //DrumStep//\n\n"dubstep mix 2014" dubstep, dubstep mix, best dubstep mix //DubStep//\n\n"male vocal mix 2014" male vocal , male vocal  mix, best male vocal  mix //Male vocal//\n\n"female vocal mix 2014" female vocal , female vocal  mix, best female vocal  mix //Female vocal//'
+      }
     },
-    "channelTitle": "D T F O R E V E R",
-    "tags": [
-     "Breaking All Illusions (Musical Recording)",
-     "Dream Theater (Musical Group)",
-     "legenda",
-     "legendado",
-     "letra",
-     "lyrics",
-     "tradução",
-     "images and words",
-     "awake",
-     "scenes from memory",
-     "six degrees of inner turbulence",
-     "black clouds and silver linnings",
-     "systematic chaos",
-     "score",
-     "budokan",
-     "romavarium",
-     "octavarium",
-     "james labrie",
-     "john petrucci",
-     "jordan rudess",
-     "mike mangini",
-     "mike portnoy",
-     "john myung",
-     "Theatre",
-     "Fourth Wall",
-     "Live From The Boston Opera House"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Breaking all illusions ( Live From The Boston Opera House)  - with lyrics",
-     "description": "Dream Theater - Breaking all illusions ( Live From The Boston Opera House )  - with lyrics"
+    contentDetails: {
+      duration: 'PT1H3M30S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '58332',
+      likeCount: '861',
+      dislikeCount: '10',
+      favoriteCount: '0',
+      commentCount: '61'
     }
-   },
-   "contentDetails": {
-    "duration": "PT12M32S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "636995",
-    "likeCount": "2913",
-    "dislikeCount": "41",
-    "favoriteCount": "0",
-    "commentCount": "395"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/qxbylV1UzuYzf2mKg2HLF7ub-pw\"",
-   "id": "gkcAqknKBO4",
-   "snippet": {
-    "publishedAt": "2009-10-29T21:20:25.000Z",
-    "channelId": "UCRRxSTgPUY0q_YToaczc2BQ",
-    "title": "Dream Theater - Forsaken (LIVE)",
-    "description": "Dream Theater's new self-titled album is out now on Roadrunner Records! Order now from http://smarturl.it/dtstore!\n\niTunes: http://smarturl.it/dtitunes\nSubscribe: http://bit.ly/171a3Ya\nSite: http://www.dreamtheater.net/\nFacebook: https://www.facebook.com/dreamtheater\nTwitter: https://twitter.com/dreamtheaternet\nInstagram: http://instagram.com/dtimages\n\nLYRICS\n\nFor a while I thought I fell asleep\nLying motionless inside a dream\nThen rising suddenly I felt a chilling breath upon me\nShe softly whispered in my ear\n\nForsaken, I have come for you tonight\nAwaken, look in my eyes\nAnd take my hand\nGive yourself up to me\n\nI waited painfully for night to fall again\nTrying to silence the fear within me\n\nOut of an ivory mist I felt a stinging kiss\nAnd saw a crimson stain on her lips\n\nI have to know your name\nWhere have I seen\nYour face before?\nMy dear one don't you be afraid.\n\nForsaken, I have come for you tonight\nAwaken, look in my eyes\nAnd take my hand\nGive yourself up to me\n\nTake me far away\nClose your eyes\nAnd hold your breath\nTo the ends of the earth\n\nForsaken, I have come for you tonight\nAwaken, look in my eyes and take my hand\n\nForsaken, fly away with me tonight\nAwaken, renew my life\nNow you are mine\nGive yourself up to me",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/gkcAqknKBO4/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/gkcAqknKBO4/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/gkcAqknKBO4/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/lGC4J5l53pSQGZTuuxHJVo9sYGE"',
+    id: 'Rva3W3IeJEY',
+    snippet: {
+      publishedAt: '2015-08-12T12:05:47.000Z',
+      channelId: 'UCWJCR2r0umxTFjKjqLQ23FA',
+      title: 'Pulse 9 - FULL ALBUM',
+      description: '2000 - Pulse Vol 9 - Deeper Space (VA)\nTracklist: CD 1\n1. Genetic - Gala 0:00\n2. The Rootsman Meets The Gab! - Friday The 13th 7:54\n3. SBK - Treibsand 15:20\n4. Spirallianz - Shaolin Shuffle 23:25\n5. Massimo Vivona - Over 29:50\n6. Feuerhake - 3 Tage, 4 Nächte 38:33\n7. Disco Slickers - It\'s A Feel 47:51\n8. Masun - Masun 54:56\n9. Synchro - Next Stop : Oblivion (Y2K Remix) 1:02:35\n\nTracklist: CD 2\n1. Menis - Hamburger 1:09:17\n2. Element - Jesus 1:15:42\n3. Koxbox - Geomancer 1:25:30\n4. M.O.S. - My Baby 1:33:57\n5. Johann Bley - Dream 1:40:28\n6. Hallucinogen - Mi-Loony-Um! 1:49:17\n7. Morphem - Hypnotone (Cydonia\'s Remake) 2:00:08\n8. Noma - Soon 2:06:21\n9. Tarsis - Melt (Imagination - Instrumental Version) 2:16:31\n@Discogs: http://www.discogs.com/Various-Pulse-...',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/Rva3W3IeJEY/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/Rva3W3IeJEY/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/Rva3W3IeJEY/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/Rva3W3IeJEY/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'ΓΙΩΡΓΟΣ ΘΩΜΑΣ',
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pulse 9 - FULL ALBUM',
+        description: '2000 - Pulse Vol 9 - Deeper Space (VA)\nTracklist: CD 1\n1. Genetic - Gala 0:00\n2. The Rootsman Meets The Gab! - Friday The 13th 7:54\n3. SBK - Treibsand 15:20\n4. Spirallianz - Shaolin Shuffle 23:25\n5. Massimo Vivona - Over 29:50\n6. Feuerhake - 3 Tage, 4 Nächte 38:33\n7. Disco Slickers - It\'s A Feel 47:51\n8. Masun - Masun 54:56\n9. Synchro - Next Stop : Oblivion (Y2K Remix) 1:02:35\n\nTracklist: CD 2\n1. Menis - Hamburger 1:09:17\n2. Element - Jesus 1:15:42\n3. Koxbox - Geomancer 1:25:30\n4. M.O.S. - My Baby 1:33:57\n5. Johann Bley - Dream 1:40:28\n6. Hallucinogen - Mi-Loony-Um! 1:49:17\n7. Morphem - Hypnotone (Cydonia\'s Remake) 2:00:08\n8. Noma - Soon 2:06:21\n9. Tarsis - Melt (Imagination - Instrumental Version) 2:16:31\n@Discogs: http://www.discogs.com/Various-Pulse-...'
+      }
     },
-    "channelTitle": "Roadrunner Records",
-    "tags": [
-     "Dream Theater",
-     "Forsaken [Live 2008]",
-     "Rock",
-     "Hard Rock",
-     "Rock Music (Musical Genre)",
-     "Metal",
-     "Heavy",
-     "Music (Industry)",
-     "Concert (TV Genre)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Forsaken (LIVE)",
-     "description": "Dream Theater's new self-titled album is out now on Roadrunner Records! Order now from http://smarturl.it/dtstore!\n\niTunes: http://smarturl.it/dtitunes\nSubscribe: http://bit.ly/171a3Ya\nSite: http://www.dreamtheater.net/\nFacebook: https://www.facebook.com/dreamtheater\nTwitter: https://twitter.com/dreamtheaternet\nInstagram: http://instagram.com/dtimages\n\nLYRICS\n\nFor a while I thought I fell asleep\nLying motionless inside a dream\nThen rising suddenly I felt a chilling breath upon me\nShe softly whispered in my ear\n\nForsaken, I have come for you tonight\nAwaken, look in my eyes\nAnd take my hand\nGive yourself up to me\n\nI waited painfully for night to fall again\nTrying to silence the fear within me\n\nOut of an ivory mist I felt a stinging kiss\nAnd saw a crimson stain on her lips\n\nI have to know your name\nWhere have I seen\nYour face before?\nMy dear one don't you be afraid.\n\nForsaken, I have come for you tonight\nAwaken, look in my eyes\nAnd take my hand\nGive yourself up to me\n\nTake me far away\nClose your eyes\nAnd hold your breath\nTo the ends of the earth\n\nForsaken, I have come for you tonight\nAwaken, look in my eyes and take my hand\n\nForsaken, fly away with me tonight\nAwaken, renew my life\nNow you are mine\nGive yourself up to me"
+    contentDetails: {
+      duration: 'PT2H24M21S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '2261',
+      likeCount: '31',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '3'
     }
-   },
-   "contentDetails": {
-    "duration": "PT5M41S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": true,
-    "regionRestriction": {
-     "blocked": [
-      "SZ",
-      "DZ",
-      "LA",
-      "LB",
-      "SR",
-      "LI",
-      "SV",
-      "ST",
-      "SJ",
-      "DJ",
-      "SH",
-      "SN",
-      "SO",
-      "SL",
-      "SM",
-      "SB",
-      "SC",
-      "LY",
-      "SA",
-      "SD",
-      "KI",
-      "KN",
-      "LK",
-      "PK",
-      "VU",
-      "TL",
-      "PN",
-      "KW",
-      "KZ",
-      "KY",
-      "VG",
-      "VA",
-      "KG",
-      "VC",
-      "KE",
-      "KH",
-      "VN",
-      "VI",
-      "KM",
-      "CK",
-      "CI",
-      "CM",
-      "CC",
-      "CF",
-      "CG",
-      "CD",
-      "CX",
-      "LS",
-      "CR",
-      "DO",
-      "CV",
-      "DM",
-      "QA",
-      "JE",
-      "LC",
-      "JM",
-      "JO",
-      "IM",
-      "BI",
-      "BH",
-      "BJ",
-      "BM",
-      "BL",
-      "BN",
-      "BB",
-      "BD",
-      "BF",
-      "BY",
-      "ET",
-      "BZ",
-      "DE",
-      "BS",
-      "BT",
-      "BW",
-      "BV",
-      "TK",
-      "TJ",
-      "TO",
-      "TN",
-      "TM",
-      "IO",
-      "TC",
-      "PS",
-      "TG",
-      "TF",
-      "TD",
-      "TZ",
-      "IQ",
-      "TV",
-      "TT",
-      "AE",
-      "AF",
-      "AG",
-      "AI",
-      "YT",
-      "AM",
-      "AO",
-      "AQ",
-      "AS",
-      "AW",
-      "AX",
-      "MP",
-      "AZ",
-      "YE",
-      "HT",
-      "WS",
-      "LR",
-      "ML",
-      "WF",
-      "HN",
-      "HM",
-      "MZ",
-      "NF",
-      "ZM",
-      "RW",
-      "ZW",
-      "RE",
-      "GF",
-      "GG",
-      "GD",
-      "GE",
-      "GA",
-      "GN",
-      "GL",
-      "GM",
-      "GH",
-      "GI",
-      "GW",
-      "GT",
-      "GU",
-      "GS",
-      "GP",
-      "GQ",
-      "GY",
-      "MV",
-      "UM",
-      "NI",
-      "NE",
-      "UG",
-      "NA",
-      "NC",
-      "OM",
-      "UZ",
-      "NU",
-      "NP",
-      "NR",
-      "FM",
-      "FO",
-      "FK",
-      "FJ",
-      "MD",
-      "MF",
-      "MG",
-      "MA",
-      "PW",
-      "MM",
-      "MN",
-      "MO",
-      "MH",
-      "PR",
-      "ER",
-      "MU",
-      "PM",
-      "MW",
-      "EH",
-      "MQ",
-      "MR",
-      "MS",
-      "PF",
-      "PA",
-      "EC"
-     ]
-    },
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1195725",
-    "likeCount": "5271",
-    "dislikeCount": "67",
-    "favoriteCount": "0"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/lFxhVG1L4ro5NrYm1J_78zEbn1I\"",
-   "id": "WUoUim7WGwo",
-   "snippet": {
-    "publishedAt": "2011-11-26T12:08:28.000Z",
-    "channelId": "UCojH5zJaP17yH9JGjswC2ug",
-    "title": "Dark Side Of The Moon-Dream Theater -LIVE",
-    "description": "spettacolare",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/WUoUim7WGwo/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/WUoUim7WGwo/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/WUoUim7WGwo/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/lDBIr7GXgq9zEQVBMqbS205nUj0"',
+    id: 'TOUz_KasWT8',
+    snippet: {
+      publishedAt: '2015-03-05T15:30:00.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Aerocity - Love Lost',
+      description: 'Aerocity - Love Lost\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ Support Aerocity\nhttp://soundcloud.com/aerocity\n\n♥ Download Love Lost\nhttp://aerocity.bandcamp.com/album/escapism-ep\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Image Link \nhttp://alpha.wallhaven.cc/wallpaper/3583\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.com/submit',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/TOUz_KasWT8/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/TOUz_KasWT8/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/TOUz_KasWT8/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/TOUz_KasWT8/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/TOUz_KasWT8/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'pulse8',
+        'pulse8music',
+        'aerocity',
+        'love lost',
+        'love',
+        'lost',
+        'aerocity love lost',
+        'love lost aerocity',
+        'aerocity escapism',
+        'escapism',
+        'escapism ep',
+        'aerocity escapism ep',
+        'aerocity escapism love lost',
+        'aerocity 2015',
+        'chillstep',
+        'chillstep mix',
+        'chillstep mix 2015',
+        'best of chillstep',
+        'pulse8 chillstep',
+        'pulse 8'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Aerocity - Love Lost',
+        description: 'Aerocity - Love Lost\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ Support Aerocity\nhttp://soundcloud.com/aerocity\n\n♥ Download Love Lost\nhttp://aerocity.bandcamp.com/album/escapism-ep\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Image Link \nhttp://alpha.wallhaven.cc/wallpaper/3583\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.com/submit'
+      }
     },
-    "channelTitle": "FABIO Medesimo",
-    "tags": [
-     "Dream",
-     "Theater",
-     "Dark",
-     "Side",
-     "Of",
-     "The",
-     "Moon",
-     "Concert (TV Genre)",
-     "Theatre (Award Discipline)",
-     "Live (Musical Group)",
-     "Rock Music",
-     "Dream Theater (Musical Group)",
-     "Other",
-     "Live Music",
-     "Heavy Metal"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dark Side Of The Moon-Dream Theater -LIVE",
-     "description": "spettacolare"
+    contentDetails: {
+      duration: 'PT4M42S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '8396',
+      likeCount: '132',
+      dislikeCount: '6',
+      favoriteCount: '0',
+      commentCount: '6'
     }
-   },
-   "contentDetails": {
-    "duration": "PT45M22S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1509367",
-    "likeCount": "12387",
-    "dislikeCount": "295",
-    "favoriteCount": "0",
-    "commentCount": "2214"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/akPPicQNTAHpOk_n4OCTJHwzrWo\"",
-   "id": "-8ncb21mbJE",
-   "snippet": {
-    "publishedAt": "2014-09-15T15:10:39.000Z",
-    "channelId": "UCBHhdnYxvu94yefpeZABY9g",
-    "title": "Dream Theater - Official Video Strange Deja Vu (Live From The Boston Opera House)",
-    "description": "Preorder your copy of BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) at http://smarturl.it/dreamtheater\n\nGRAMMY-NOMINATED PROGRESSIVE METAL TITANS TO RELEASE LIVE BLU-RAY / DVD,\nBREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE)\n\nONE-OF-A-KIND PERFORMANCE CAPTURED IN HD FEATURING \nSPECIAL GUEST PERFROMANCES FROM THE BERKLEE COLLEGE OF MUSIC ORCHESTRA AND CHOIR\n\n “THE LOOKING GLASS” (LIVE) AVAILABLE FOR STREAMING\n\nBREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) ARRIVES SEPTEMBER 30TH, \nPRE-ORDERS AVAILABLE NOW\n\n\nAUGUST 21, 2014 - DREAM THEATER--Grammy-nominated progressive metal titans--have announced the release of BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE), a live Blu-Ray / DVD set of the band’s one-of-a-kind performance from the Boston Opera House on March 25, 2014.  Produced by the band’s own John Petrucci, filmed and directed by Pierre and François Lamoureux, and mixed and mastered by Richard Chycki, BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) is over 2 hours in length, capturing the special evening, which featured guest performances from The Berklee College of Music Orchestra and Choir.  BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) arrives September 30TH.\n\nThe collection will be available in multiple configurations including Blu-Ray, a 2 DVD set, and a webstore deluxe exclusive  Blu-Ray/3 CD set with poster, all currently available for pre-order via the Roadrunner Records webstore.  Furthermore, Dream Theater have premiered a video of “The Looking Glass” (LIVE) taken from BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) which can be streamed on the band’s official YouTube Channel.  All pre-orders for the webstore exclusive will receive an instant download “The Looking Glass” (LIVE).\n\nDream Theater’s John Petrucci commented on the special event saying, “In many ways, this was a huge homecoming for the band given the history of Dream Theater’s origins and ties with Berklee. With John and I both being alumni and Mike having been a professor at the college for 10 years, we saw the opportunity to perform together with the students of Berklee as a tremendous thrill and honor. We are extremely grateful for everyone's hard work in making this special event a reality and to all who participated.”  He continued, “All of the Berklee College instrumentalists and vocalists did an outstanding job that night and it was awesome to have one of its students, Eren Başbuğ orchestrate and conduct them live at the Opera House after having been a part of our latest studio release in the same capacity. Dream Theater has always had a great connection to the city of Boston and we knew that against the backdrop of the beautiful Opera House, this would end up being a historic stop on our 'Along For The Ride' world tour and an evening most definitely worth capturing on video.  Beautifully filmed and directed by Pierre Lamoureux and brilliantly mixed and mastered by Richard Chycki, this is in my opinion, a major highlight in our nearly 30 year career as a band. We are eagerly anticipating its release this fall and really hope that everyone enjoys it!”\n\nThis past year DREAM THEATER earned a second Grammy nomination for “Best Metal Performance” for the single “The Enemy Inside” from their current self-titled worldwide smash album (released September 24, 2013 on Roadrunner Records). “DREAM THEATER” made a spectacular debut this past fall, topping Billboard’s “Hard Rock Albums” chart while simultaneously entering at #7 on the overall Billboard 200.  The extraordinary chart position marked the group’s third consecutive top 10 debut, and also saw \"DREAM THEATER\" making top 5 chart debuts in Japan, Germany, Italy, Canada, Argentina, Switzerland, Holland, and Finland, as well as top 10 debuts in Denmark, Austria, and Norway, with career high debuts in the United Kingdom and Australia. The band recently announced new tour dates which will see them bring their spectacular live show to South America, Asia and Australia later this fall.\n\nFor up-to-the-minute news, tour dates and ticket information, please visit http://www.dreamtheater.net/tour.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/-8ncb21mbJE/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/-8ncb21mbJE/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/-8ncb21mbJE/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/-8ncb21mbJE/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/-8ncb21mbJE/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/EpzSX8YA9L-9U7SJW5T6AUu1g4c"',
+    id: 'NvQaygfsKWA',
+    snippet: {
+      publishedAt: '2017-04-25T16:18:44.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Serene - Chill Music Mix',
+      description: 'Serene - Chill Music Mix\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 The Aurora Principle - Our Memory\n03:20 Liquid Memoirs & Khromi - Particles\n09:30 Chimera - Set Free\n14:16 Anfield - Still So Distant\n20:44 Isaac S. Middendorf - The Beacon\n26:22 Wiljan - Overcast\n30:20 KOSIKK - Slow Motion\n34:16 Whithe - November\n39:19 Merevale - Into Ever\n41:45 Waller - Abyss\n45:08 The Aurora Principle - Before The Storm\n49:36 Solace - I Don’t Believe You\n55:44 The Aurora Principle - And In That Moment, There Was Hope\n\n▸ Artwork by Aenami\nhttps://www.artstation.com/artist/aenamiart\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/NvQaygfsKWA/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/NvQaygfsKWA/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/NvQaygfsKWA/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/NvQaygfsKWA/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/NvQaygfsKWA/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chill',
+        'chillout',
+        'chill music',
+        'chillstep mix',
+        'chill mix',
+        'chillout mix',
+        'best of chillstep',
+        'pulse8 mix',
+        'pulse8',
+        'pulse 8',
+        'chillstep 2017',
+        'chillstep mix 2017',
+        'chillstep playlist',
+        'chill step',
+        'chill out music',
+        'chillout music',
+        'chillout sessions'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Serene - Chill Music Mix',
+        description: 'Serene - Chill Music Mix\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 The Aurora Principle - Our Memory\n03:20 Liquid Memoirs & Khromi - Particles\n09:30 Chimera - Set Free\n14:16 Anfield - Still So Distant\n20:44 Isaac S. Middendorf - The Beacon\n26:22 Wiljan - Overcast\n30:20 KOSIKK - Slow Motion\n34:16 Whithe - November\n39:19 Merevale - Into Ever\n41:45 Waller - Abyss\n45:08 The Aurora Principle - Before The Storm\n49:36 Solace - I Don’t Believe You\n55:44 The Aurora Principle - And In That Moment, There Was Hope\n\n▸ Artwork by Aenami\nhttps://www.artstation.com/artist/aenamiart\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      }
     },
-    "channelTitle": "Dream Theater",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "Strange Deja Vu (Musical Recording)",
-     "Boston Opera House",
-     "James LaBrie (Musical Artist)",
-     "John Petrucci (Songwriter)",
-     "John Myung (Musical Artist)",
-     "Jordan Rudess (Musical Artist)",
-     "Mike Mangini (Drummer)",
-     "2014 Releases",
-     "Dream Theater - Breaking The Fourth Wall (Live From The Boston Opera House)",
-     "Progressive Rock (Musical Genre)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Official Video Strange Deja Vu (Live From The Boston Opera House)",
-     "description": "Preorder your copy of BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) at http://smarturl.it/dreamtheater\n\nGRAMMY-NOMINATED PROGRESSIVE METAL TITANS TO RELEASE LIVE BLU-RAY / DVD,\nBREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE)\n\nONE-OF-A-KIND PERFORMANCE CAPTURED IN HD FEATURING \nSPECIAL GUEST PERFROMANCES FROM THE BERKLEE COLLEGE OF MUSIC ORCHESTRA AND CHOIR\n\n “THE LOOKING GLASS” (LIVE) AVAILABLE FOR STREAMING\n\nBREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) ARRIVES SEPTEMBER 30TH, \nPRE-ORDERS AVAILABLE NOW\n\n\nAUGUST 21, 2014 - DREAM THEATER--Grammy-nominated progressive metal titans--have announced the release of BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE), a live Blu-Ray / DVD set of the band’s one-of-a-kind performance from the Boston Opera House on March 25, 2014.  Produced by the band’s own John Petrucci, filmed and directed by Pierre and François Lamoureux, and mixed and mastered by Richard Chycki, BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) is over 2 hours in length, capturing the special evening, which featured guest performances from The Berklee College of Music Orchestra and Choir.  BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) arrives September 30TH.\n\nThe collection will be available in multiple configurations including Blu-Ray, a 2 DVD set, and a webstore deluxe exclusive  Blu-Ray/3 CD set with poster, all currently available for pre-order via the Roadrunner Records webstore.  Furthermore, Dream Theater have premiered a video of “The Looking Glass” (LIVE) taken from BREAKING THE FOURTH WALL (LIVE FROM THE BOSTON OPERA HOUSE) which can be streamed on the band’s official YouTube Channel.  All pre-orders for the webstore exclusive will receive an instant download “The Looking Glass” (LIVE).\n\nDream Theater’s John Petrucci commented on the special event saying, “In many ways, this was a huge homecoming for the band given the history of Dream Theater’s origins and ties with Berklee. With John and I both being alumni and Mike having been a professor at the college for 10 years, we saw the opportunity to perform together with the students of Berklee as a tremendous thrill and honor. We are extremely grateful for everyone's hard work in making this special event a reality and to all who participated.”  He continued, “All of the Berklee College instrumentalists and vocalists did an outstanding job that night and it was awesome to have one of its students, Eren Başbuğ orchestrate and conduct them live at the Opera House after having been a part of our latest studio release in the same capacity. Dream Theater has always had a great connection to the city of Boston and we knew that against the backdrop of the beautiful Opera House, this would end up being a historic stop on our 'Along For The Ride' world tour and an evening most definitely worth capturing on video.  Beautifully filmed and directed by Pierre Lamoureux and brilliantly mixed and mastered by Richard Chycki, this is in my opinion, a major highlight in our nearly 30 year career as a band. We are eagerly anticipating its release this fall and really hope that everyone enjoys it!”\n\nThis past year DREAM THEATER earned a second Grammy nomination for “Best Metal Performance” for the single “The Enemy Inside” from their current self-titled worldwide smash album (released September 24, 2013 on Roadrunner Records). “DREAM THEATER” made a spectacular debut this past fall, topping Billboard’s “Hard Rock Albums” chart while simultaneously entering at #7 on the overall Billboard 200.  The extraordinary chart position marked the group’s third consecutive top 10 debut, and also saw \"DREAM THEATER\" making top 5 chart debuts in Japan, Germany, Italy, Canada, Argentina, Switzerland, Holland, and Finland, as well as top 10 debuts in Denmark, Austria, and Norway, with career high debuts in the United Kingdom and Australia. The band recently announced new tour dates which will see them bring their spectacular live show to South America, Asia and Australia later this fall.\n\nFor up-to-the-minute news, tour dates and ticket information, please visit http://www.dreamtheater.net/tour."
+    contentDetails: {
+      duration: 'PT59M50S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '34399',
+      likeCount: '581',
+      dislikeCount: '18',
+      favoriteCount: '0',
+      commentCount: '29'
     }
-   },
-   "contentDetails": {
-    "duration": "PT5M15S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": true,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1346279",
-    "likeCount": "7351",
-    "dislikeCount": "192",
-    "favoriteCount": "0",
-    "commentCount": "1058"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/NdPqdOabRMvUkmUjqTsZt5jecM8\"",
-   "id": "-BppM0BP8Ps",
-   "snippet": {
-    "publishedAt": "2015-08-15T21:35:31.000Z",
-    "channelId": "UCWuDgH_ybCNniW9tJzbEQdQ",
-    "title": "Dream Theater - The spirit carries on (Live Wacken 2015)",
-    "description": "The most emotional moment at Wacken 2015",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/-BppM0BP8Ps/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/-BppM0BP8Ps/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/-BppM0BP8Ps/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/9tUgQ9zkI9W-G85V-FumvR_nn1U"',
+    id: 'EjLw4qeFfHI',
+    snippet: {
+      publishedAt: '2017-01-23T17:00:01.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: '\'Discover\' Chill Mix by Pulse8 [1 Hour of Chillout Music]',
+      description: '\'Discover\' Chill Mix by Pulse8 [1 Hour of Chillout Music]\nFree DL: http://hypeddit.com/track/yt/mo2l0l\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\nhttp://hypeddit.com/track/yt/mo2l0l\nhttp://soundcloud.com/pulse8/discover\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Andy Leech - Thinking of You\n05:16 Dimatis - Emotional Tourism\n08:57 Kai - Her Melancholy\n13:40 Túrion - Falling, Lucidly\n17:05 Michael FK - Nebula\n24:43 Aether x Pensees - Nocturne\n29:54 Yal!x & Michael FK - The World Can Wait\n35:28 Resonata - City of Roses\n39:38 Cash - An Endless Fantasy\n45:36 Andrew Euphoria - I Need You\n49:58 City Of Dawn - To Write Love on Her Arms\n\n▸ Artwork by ShahabAlizadeh\nhttp://shahabalizadeh.deviantart.com/art/Recon-657166208\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/EjLw4qeFfHI/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/EjLw4qeFfHI/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/EjLw4qeFfHI/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/EjLw4qeFfHI/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/EjLw4qeFfHI/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chillstep 2016',
+        'chillstep mix 2016',
+        'pulse8 chillstep',
+        'best of chillstep',
+        'best of chillstep mix',
+        'best of chillstep mix 2016',
+        'chill',
+        'chillout',
+        'chill mix',
+        'chillout mix',
+        'chill music',
+        'chillout music',
+        'chill music mix 2017',
+        'chill mix 2017',
+        'chillout mix 2017',
+        'chillout music mix 2017 pulse8',
+        'pulse8 chillstep 2017',
+        'chillstep 2017',
+        'best of chillstep 2017 mix pulse8',
+        'pulse8 mix 2017',
+        'zen mix',
+        'chill music livestream',
+        'pulse8'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: '\'Discover\' Chill Mix by Pulse8 [1 Hour of Chillout Music]',
+        description: '\'Discover\' Chill Mix by Pulse8 [1 Hour of Chillout Music]\nFree DL: http://hypeddit.com/track/yt/mo2l0l\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\nhttp://hypeddit.com/track/yt/mo2l0l\nhttp://soundcloud.com/pulse8/discover\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Andy Leech - Thinking of You\n05:16 Dimatis - Emotional Tourism\n08:57 Kai - Her Melancholy\n13:40 Túrion - Falling, Lucidly\n17:05 Michael FK - Nebula\n24:43 Aether x Pensees - Nocturne\n29:54 Yal!x & Michael FK - The World Can Wait\n35:28 Resonata - City of Roses\n39:38 Cash - An Endless Fantasy\n45:36 Andrew Euphoria - I Need You\n49:58 City Of Dawn - To Write Love on Her Arms\n\n▸ Artwork by ShahabAlizadeh\nhttp://shahabalizadeh.deviantart.com/art/Recon-657166208\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      },
+      defaultAudioLanguage: 'en-US'
     },
-    "channelTitle": "Sascha Köcher",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "Act II: Scene Eight: The Spirit Carries On (Musical Recording)",
-     "2015 Wacken Open Air",
-     "Wacken Open Air (Music Festival)",
-     "Live"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - The spirit carries on (Live Wacken 2015)",
-     "description": "The most emotional moment at Wacken 2015"
+    contentDetails: {
+      duration: 'PT58M16S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '36294',
+      likeCount: '675',
+      dislikeCount: '10',
+      favoriteCount: '0',
+      commentCount: '43'
     }
-   },
-   "contentDetails": {
-    "duration": "PT7M45S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "61416",
-    "likeCount": "245",
-    "dislikeCount": "9",
-    "favoriteCount": "0",
-    "commentCount": "39"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/yh7Y1NYgjBEgF3AcAK9eJi5Wm-0\"",
-   "id": "AJBKry9KEMA",
-   "snippet": {
-    "publishedAt": "2015-08-18T09:22:10.000Z",
-    "channelId": "UC4KhpXMJBA_hqHdAJxrcatw",
-    "title": "DREAM THEATER - 06.Panic Attack Live @ Wacken 2015 HD AC3",
-    "description": "I'm not the owner of this tv broadcast (ZDF Kultur HD Fernsehen Deutchland and 3sat HD). All rights in tv channel, labels and Dream Theater band. Find us: https://www.facebook.com/pages/Rockonmedia",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/AJBKry9KEMA/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/AJBKry9KEMA/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/AJBKry9KEMA/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/LEaKMoiAhNnKZBhN25QICfQmIvI"',
+    id: 'Dd04DzfGhCw',
+    snippet: {
+      publishedAt: '2017-03-22T12:24:47.000Z',
+      channelId: 'UCpu3LvsyO5xymoOFyIIEHIg',
+      title: 'Killigrew | 4 Chillstep Albums (2013 - 2016)',
+      description: 'You can now directly support me and my music on Patreon:\nhttps://www.patreon.com/killigrewmusic\nYou can get all my music here:\nhttps://killigrew.bandcamp.com\n\n"Music is fundamental to the human creature."\n\nI\'ve just written songs for my fifth chillstep album "Arcana" but I wanted to take a moment and remember where we came from and in an easy way share my journey through the world of chillstep. From almost classic and nostalgic chillstep songs all the way to my most recent releases.\n\nI also have a piano and a metal aswell as my very first electronic album which I did not include in this video. You can listen to everything at my bandcamp though.\n\nAlbums:\n00:00:00 - Sweet Solitude\n00:48:11 - Animus\n01:27:35 - The Lost Chapter\n02:11:50 - Animus II\n\n❤ Download:\nhttps://killigrew.bandcamp.com/',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/Dd04DzfGhCw/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/Dd04DzfGhCw/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/Dd04DzfGhCw/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/Dd04DzfGhCw/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/Dd04DzfGhCw/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Killigrew',
+      tags: [
+        'chillstep',
+        'melodic dubstep',
+        'killigrew',
+        'blackmill',
+        'electus',
+        'animus',
+        'sweet solitude',
+        '2017',
+        'liquid',
+        'liquid dubstep',
+        'chillstep mix',
+        'music like blackmill',
+        'alan watts',
+        'roadtrip',
+        'roadtrip music',
+        'relaxation',
+        'relaxation music',
+        'adventure',
+        'dubstep',
+        'killigrew albums',
+        'mixhound',
+        'arctic empire',
+        'chillstep channel'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Killigrew | 4 Chillstep Albums (2013 - 2016)',
+        description: 'You can now directly support me and my music on Patreon:\nhttps://www.patreon.com/killigrewmusic\nYou can get all my music here:\nhttps://killigrew.bandcamp.com\n\n"Music is fundamental to the human creature."\n\nI\'ve just written songs for my fifth chillstep album "Arcana" but I wanted to take a moment and remember where we came from and in an easy way share my journey through the world of chillstep. From almost classic and nostalgic chillstep songs all the way to my most recent releases.\n\nI also have a piano and a metal aswell as my very first electronic album which I did not include in this video. You can listen to everything at my bandcamp though.\n\nAlbums:\n00:00:00 - Sweet Solitude\n00:48:11 - Animus\n01:27:35 - The Lost Chapter\n02:11:50 - Animus II\n\n❤ Download:\nhttps://killigrew.bandcamp.com/'
+      }
     },
-    "channelTitle": "rockonmediaofficial",
-    "tags": [
-     "Dream Theater",
-     "Panic Attack",
-     "Live",
-     "Wacken",
-     "2015",
-     "HD",
-     "AC3",
-     "Metal",
-     "Concert",
-     "Rock",
-     "On",
-     "Media"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "DREAM THEATER - 06.Panic Attack Live @ Wacken 2015 HD AC3",
-     "description": "I'm not the owner of this tv broadcast (ZDF Kultur HD Fernsehen Deutchland and 3sat HD). All rights in tv channel, labels and Dream Theater band. Find us: https://www.facebook.com/pages/Rockonmedia"
+    contentDetails: {
+      duration: 'PT2H56M14S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '5574',
+      likeCount: '195',
+      dislikeCount: '8',
+      favoriteCount: '0',
+      commentCount: '102'
     }
-   },
-   "contentDetails": {
-    "duration": "PT7M38S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "191901",
-    "likeCount": "884",
-    "dislikeCount": "40",
-    "favoriteCount": "0",
-    "commentCount": "216"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/hy03GIjzz9t_tagTY9KBf_TP51I\"",
-   "id": "dFXq1ixoE8k",
-   "snippet": {
-    "publishedAt": "2009-10-27T02:45:27.000Z",
-    "channelId": "UCe4LM_eKc9ywRmVuBm5pjQg",
-    "title": "Dream Theater - Endless Sacrifice (Live At Budokan) (Video)",
-    "description": "© 2006 WMG\nEndless Sacrifice (Live At Budokan) (Video)",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/dFXq1ixoE8k/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/dFXq1ixoE8k/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/dFXq1ixoE8k/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/aZSeNUxfoMu_auIP3BCuyUOaeLk"',
+    id: '67jixJ2DXhA',
+    snippet: {
+      publishedAt: '2017-11-13T16:50:48.000Z',
+      channelId: 'UCTPjZ7UC8NgcZI8UKzb3rLw',
+      title: '\'Duality\' - Chill Mix',
+      description: 'A chill mix featuring the best in deep, chilled atmospheric electronic music with genres such as chillout, downtempo and future garage. This mix was made in collaboration with another promoter and mixer Opera Infinita who took care of the latter half of the mix, so be sure to check out his channel and show your support to him along with the great artists behind the tracks! Hope you enjoy :)\n\nFree download:\nhttp://soundcloud.com/fluidified/duality\n\nOpera Infinita:\nhttp://youtube.com/OperaInfinita\nhttp://soundcloud.com/operainfinita\nhttp://facebook.com/op.infini\nhttp://twitter.com/operainfinita\nhttp://bandcamp.com/operainfinita\n\nTracklist:\n\n0:00 AK & Sublab - Saudade\nBuy: http://aksublab.bandcamp.com/track/saudade\n\n- http://soundcloud.com/aljoshakonstanty\n- http://facebook.com/aljoshakonstanty\n\n- http://soundcloud.com/sublabmusic\n- http://facebook.com/sublabmusic\n\n3:55 Fyze - Alone\nDL: http://soundcloud.com/fyzemusique/fyze-alone\n\n- http://soundcloud.com/fyzemusique\n- http://twitter.com/FyzeMusique\n\n7:40 Spaceouters - Friends\nBuy: http://spaceouters.bandcamp.com/album/veter\n\n- http://soundcloud.com/spaceouters\n- http://facebook.com/spaceouters\n\n11:47 KZubi - SPIRAL\nDL: http://soundcloud.com/kzubi/spiral\n\n- http://soundcloud.com/kzubi\n\n14:49 Eikona - No Sweat\nDL: http://toneden.io/eikona_music/post/no-sweat\n\n- http://soundcloud.com/eikona\n- http://facebook.com/EikonaAmbient\n\n19:11 Vesky - With You\nBuy: http://vesky.bandcamp.com/track/with-you\n\n- http://soundcloud.com/vskymusic\n- http://facebook.com/Vskymusic\n\n22:32 Spaceouters - Summerpark\nBuy: http://spaceouters.bandcamp.com/album/veter\n\n- http://soundcloud.com/spaceouters\n- http://facebook.com/spaceouters\n\n27:19 Blut Own - Reminiscence\nBuy: http://blutown.bandcamp.com/track/reminiscence\n\n- http://soundcloud.com/blut_own\n- http://facebook.com/blutownsound\n\n30:27 Menual - Endlessway\nBuy: http://menuals.bandcamp.com/track/endlessway\n\n- http://soundcloud.com/menualsmusic\n- http://facebook.com/menualmusic\n\n34:49 Moon - In The Sky\nDL: http://promodj.com/sadmoonlight/tracks/6444813/Moon_In_the_sky\n\n- http://soundcloud.com/sadmoonlight\n- http://promodj.com/sadmoonlight\n\n37:42 Bucky - Not Afraid\nBuy: http://buckymusic.bandcamp.com/album/bucky-you-gotta-go-there-to-come-back\n\n- http://soundcloud.com/bucky-music\n- http://facebook.com/Bucky-600118106746925\n\n--- From here onwards mixed by Opera Infinita ---\n\n43:09 Sublab & Azaleh - Aquila\nBuy: http://fanlink.to/aquila\n\n- http://soundcloud.com/sublabmusic\n- http://facebook.com/sublabmusic\n\n- http://soundcloud.com/azaleh\n- http://facebook.com/Azaleh-443970115764772\n\n46:26 Fyze - Love\nDL: http://soundcloud.com/fyzemusique/fyze-love\n\n- http://soundcloud.com/fyzemusique\n- http://twitter.com/FyzeMusique\n\n48:26 Spaceouters - Lost\nBuy: http://spaceouters.bandcamp.com/album/veter\n\n- http://soundcloud.com/spaceouters\n- http://facebook.com/spaceouters\n\n51:39 KZubi - Klein\nDL: http://soundcloud.com/kzubi/klein\n\n- http://soundcloud.com/kzubi\n\n53:55 Eikona - Think Of Me\nDL: http://soundcloud.com/eikona/think-of-me\n\n- http://soundcloud.com/eikona\n- http://facebook.com/EikonaAmbient\n\n58:22 Vesky - Pictures From My Past\nBuy: http://vesky.bandcamp.com/album/limerence-ep\n\n- http://soundcloud.com/vskymusic\n- http://facebook.com/Vskymusic\n\n1:00:38 Spaceouters - Hometown\nDL: http://soundcloud.com/spaceouters/hometown\n\n- http://soundcloud.com/spaceouters\n- http://facebook.com/spaceouters\n\n1:03:03 Blut Own - Lighthouse\nBuy: http://blutown.bandcamp.com/album/flavor\n\n- http://soundcloud.com/blut_own\n- http://facebook.com/blutownsound\n\n1:05:28 Menual - Morrow\nBuy: http://menuals.bandcamp.com/track/morrow\n\n- http://soundcloud.com/menualsmusic\n- http://facebook.com/menualmusic\n\n1:09:37 Moon - The Only Way Out\nBuy: http://moon.bandcamp.com/track/the-only-way-out\n\n- http://soundcloud.com/sadmoonlight\n- http://promodj.com/sadmoonlight\n\n1:12:12 Bucky - Change\nBuy: http://buckymusic.bandcamp.com/album/bucky-you-gotta-go-there-to-come-back\n\n- http://soundcloud.com/bucky-music\n- http://facebook.com/Bucky-600118106746925\n\nPicture by Wil Stewart:\nhttp://unsplash.com/photos/QYFTkPFqzv4\nhttp://unsplash.com/@wilstewart3\n\nFluidified:\nhttp://soundcloud.com/fluidified\nhttp://facebook.com/fluidified\nhttp://twitter.com/fluidified\n\n*This video was uploaded for promotional purposes. If you enjoy the music, please support the artists and download the best quality versions of the tracks from the links above! If you own any content in this video and would like me to take it down, please contact me (contact[at]fluidified.com) and I will remove it immediately.',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/67jixJ2DXhA/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/67jixJ2DXhA/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/67jixJ2DXhA/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/67jixJ2DXhA/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/67jixJ2DXhA/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Fluidified',
+      tags: [
+        'Duality',
+        'chill mix',
+        'chill',
+        'mix',
+        'duality chill mix',
+        'chill mix duality',
+        'ak',
+        'sublab',
+        'fyze',
+        'spaceouters',
+        'kzubi',
+        'vesky',
+        'blut own',
+        'menual',
+        'moon',
+        'bucky',
+        'azaleh',
+        'eikona',
+        'chillout',
+        'downtempo',
+        'future garage',
+        'future',
+        'garage',
+        'chillout mix',
+        'electronic',
+        'melodic',
+        'atmospheric',
+        'relaxing',
+        'chilled',
+        'chilled mix',
+        'deep',
+        'vibes',
+        'atmosphere',
+        'Fluidified',
+        'opera infinita',
+        'opera',
+        'infinita',
+        'collab'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: '\'Duality\' - Chill Mix',
+        description: 'A chill mix featuring the best in deep, chilled atmospheric electronic music with genres such as chillout, downtempo and future garage. This mix was made in collaboration with another promoter and mixer Opera Infinita who took care of the latter half of the mix, so be sure to check out his channel and show your support to him along with the great artists behind the tracks! Hope you enjoy :)\n\nFree download:\nhttp://soundcloud.com/fluidified/duality\n\nOpera Infinita:\nhttp://youtube.com/OperaInfinita\nhttp://soundcloud.com/operainfinita\nhttp://facebook.com/op.infini\nhttp://twitter.com/operainfinita\nhttp://bandcamp.com/operainfinita\n\nTracklist:\n\n0:00 AK & Sublab - Saudade\nBuy: http://aksublab.bandcamp.com/track/saudade\n\n- http://soundcloud.com/aljoshakonstanty\n- http://facebook.com/aljoshakonstanty\n\n- http://soundcloud.com/sublabmusic\n- http://facebook.com/sublabmusic\n\n3:55 Fyze - Alone\nDL: http://soundcloud.com/fyzemusique/fyze-alone\n\n- http://soundcloud.com/fyzemusique\n- http://twitter.com/FyzeMusique\n\n7:40 Spaceouters - Friends\nBuy: http://spaceouters.bandcamp.com/album/veter\n\n- http://soundcloud.com/spaceouters\n- http://facebook.com/spaceouters\n\n11:47 KZubi - SPIRAL\nDL: http://soundcloud.com/kzubi/spiral\n\n- http://soundcloud.com/kzubi\n\n14:49 Eikona - No Sweat\nDL: http://toneden.io/eikona_music/post/no-sweat\n\n- http://soundcloud.com/eikona\n- http://facebook.com/EikonaAmbient\n\n19:11 Vesky - With You\nBuy: http://vesky.bandcamp.com/track/with-you\n\n- http://soundcloud.com/vskymusic\n- http://facebook.com/Vskymusic\n\n22:32 Spaceouters - Summerpark\nBuy: http://spaceouters.bandcamp.com/album/veter\n\n- http://soundcloud.com/spaceouters\n- http://facebook.com/spaceouters\n\n27:19 Blut Own - Reminiscence\nBuy: http://blutown.bandcamp.com/track/reminiscence\n\n- http://soundcloud.com/blut_own\n- http://facebook.com/blutownsound\n\n30:27 Menual - Endlessway\nBuy: http://menuals.bandcamp.com/track/endlessway\n\n- http://soundcloud.com/menualsmusic\n- http://facebook.com/menualmusic\n\n34:49 Moon - In The Sky\nDL: http://promodj.com/sadmoonlight/tracks/6444813/Moon_In_the_sky\n\n- http://soundcloud.com/sadmoonlight\n- http://promodj.com/sadmoonlight\n\n37:42 Bucky - Not Afraid\nBuy: http://buckymusic.bandcamp.com/album/bucky-you-gotta-go-there-to-come-back\n\n- http://soundcloud.com/bucky-music\n- http://facebook.com/Bucky-600118106746925\n\n--- From here onwards mixed by Opera Infinita ---\n\n43:09 Sublab & Azaleh - Aquila\nBuy: http://fanlink.to/aquila\n\n- http://soundcloud.com/sublabmusic\n- http://facebook.com/sublabmusic\n\n- http://soundcloud.com/azaleh\n- http://facebook.com/Azaleh-443970115764772\n\n46:26 Fyze - Love\nDL: http://soundcloud.com/fyzemusique/fyze-love\n\n- http://soundcloud.com/fyzemusique\n- http://twitter.com/FyzeMusique\n\n48:26 Spaceouters - Lost\nBuy: http://spaceouters.bandcamp.com/album/veter\n\n- http://soundcloud.com/spaceouters\n- http://facebook.com/spaceouters\n\n51:39 KZubi - Klein\nDL: http://soundcloud.com/kzubi/klein\n\n- http://soundcloud.com/kzubi\n\n53:55 Eikona - Think Of Me\nDL: http://soundcloud.com/eikona/think-of-me\n\n- http://soundcloud.com/eikona\n- http://facebook.com/EikonaAmbient\n\n58:22 Vesky - Pictures From My Past\nBuy: http://vesky.bandcamp.com/album/limerence-ep\n\n- http://soundcloud.com/vskymusic\n- http://facebook.com/Vskymusic\n\n1:00:38 Spaceouters - Hometown\nDL: http://soundcloud.com/spaceouters/hometown\n\n- http://soundcloud.com/spaceouters\n- http://facebook.com/spaceouters\n\n1:03:03 Blut Own - Lighthouse\nBuy: http://blutown.bandcamp.com/album/flavor\n\n- http://soundcloud.com/blut_own\n- http://facebook.com/blutownsound\n\n1:05:28 Menual - Morrow\nBuy: http://menuals.bandcamp.com/track/morrow\n\n- http://soundcloud.com/menualsmusic\n- http://facebook.com/menualmusic\n\n1:09:37 Moon - The Only Way Out\nBuy: http://moon.bandcamp.com/track/the-only-way-out\n\n- http://soundcloud.com/sadmoonlight\n- http://promodj.com/sadmoonlight\n\n1:12:12 Bucky - Change\nBuy: http://buckymusic.bandcamp.com/album/bucky-you-gotta-go-there-to-come-back\n\n- http://soundcloud.com/bucky-music\n- http://facebook.com/Bucky-600118106746925\n\nPicture by Wil Stewart:\nhttp://unsplash.com/photos/QYFTkPFqzv4\nhttp://unsplash.com/@wilstewart3\n\nFluidified:\nhttp://soundcloud.com/fluidified\nhttp://facebook.com/fluidified\nhttp://twitter.com/fluidified\n\n*This video was uploaded for promotional purposes. If you enjoy the music, please support the artists and download the best quality versions of the tracks from the links above! If you own any content in this video and would like me to take it down, please contact me (contact[at]fluidified.com) and I will remove it immediately.'
+      }
     },
-    "channelTitle": "Atlantic Records",
-    "tags": [
-     "Dream Theater",
-     "Endless Sacrifice",
-     "Rock",
-     "Hard Rock",
-     "Warner Music",
-     "Atlantic Records"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Endless Sacrifice (Live At Budokan) (Video)",
-     "description": "© 2006 WMG\nEndless Sacrifice (Live At Budokan) (Video)"
+    contentDetails: {
+      duration: 'PT1H14M49S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '99869',
+      likeCount: '1615',
+      dislikeCount: '43',
+      favoriteCount: '0',
+      commentCount: '81'
     }
-   },
-   "contentDetails": {
-    "duration": "PT11M16S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": true,
-    "regionRestriction": {
-     "blocked": [
-      "SZ",
-      "LB",
-      "LA",
-      "DZ",
-      "SR",
-      "LI",
-      "SV",
-      "ST",
-      "LS",
-      "LR",
-      "SH",
-      "SN",
-      "SO",
-      "SL",
-      "SM",
-      "SB",
-      "SC",
-      "LY",
-      "SA",
-      "SD",
-      "KI",
-      "KN",
-      "LK",
-      "NF",
-      "PK",
-      "VU",
-      "TL",
-      "PN",
-      "KW",
-      "KZ",
-      "KY",
-      "VG",
-      "VA",
-      "KG",
-      "VC",
-      "KE",
-      "KH",
-      "VN",
-      "VI",
-      "KM",
-      "CK",
-      "CI",
-      "DJ",
-      "CC",
-      "CM",
-      "CF",
-      "CG",
-      "CD",
-      "CX",
-      "CR",
-      "DO",
-      "CV",
-      "DM",
-      "QA",
-      "JE",
-      "LC",
-      "JM",
-      "JO",
-      "TN",
-      "BI",
-      "BH",
-      "BJ",
-      "BM",
-      "BL",
-      "BN",
-      "BB",
-      "BD",
-      "BF",
-      "BY",
-      "ET",
-      "BZ",
-      "DE",
-      "BS",
-      "BT",
-      "BW",
-      "BV",
-      "TK",
-      "TJ",
-      "TO",
-      "IM",
-      "TM",
-      "IO",
-      "TC",
-      "PS",
-      "TG",
-      "TF",
-      "TD",
-      "TZ",
-      "IQ",
-      "TV",
-      "TT",
-      "AE",
-      "AF",
-      "AG",
-      "AI",
-      "YT",
-      "AM",
-      "AO",
-      "AQ",
-      "AS",
-      "AW",
-      "AX",
-      "MP",
-      "AZ",
-      "YE",
-      "HT",
-      "WS",
-      "WF",
-      "HN",
-      "HM",
-      "PW",
-      "PA",
-      "OM",
-      "ZM",
-      "RW",
-      "ZW",
-      "RE",
-      "GF",
-      "GG",
-      "GD",
-      "GE",
-      "GA",
-      "GN",
-      "GL",
-      "GM",
-      "GH",
-      "GI",
-      "SJ",
-      "GW",
-      "GT",
-      "GU",
-      "GS",
-      "GP",
-      "GQ",
-      "GY",
-      "MV",
-      "UM",
-      "NI",
-      "NE",
-      "UG",
-      "NA",
-      "NC",
-      "UZ",
-      "NU",
-      "NP",
-      "NR",
-      "FM",
-      "FO",
-      "FK",
-      "FJ",
-      "MD",
-      "MF",
-      "MG",
-      "MA",
-      "ML",
-      "MM",
-      "MN",
-      "MO",
-      "MH",
-      "PR",
-      "ER",
-      "MU",
-      "PM",
-      "MW",
-      "EH",
-      "MQ",
-      "MR",
-      "MS",
-      "PF",
-      "MZ",
-      "EC"
-     ]
-    },
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1122224",
-    "likeCount": "5611",
-    "dislikeCount": "43",
-    "favoriteCount": "0",
-    "commentCount": "803"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/zg9iR52jvni-0miiRbIYRO6fYYA\"",
-   "id": "PUpYBAsS5Q0",
-   "snippet": {
-    "publishedAt": "2013-03-23T12:57:15.000Z",
-    "channelId": "UCunFG8jETaSplliSDRhDgLQ",
-    "title": "Dream Theater - Octavarium Live - Score 20th Anniversary World Tour",
-    "description": "Octavarium by Dream Theater.\nTaken from the Score 20th Anniversary DVD.\n\nOctavarium has a very rare quality in which it is not an epic story as a whole, but 5 individual epics, each united with the same theme in which all of them end exactly where they begin.\n\nI. Someone Like Him\n0:00 - 11:45\nLyrics by John Petrucci\n\nII. Medicate (Awakening)\n11:46 - 16:40\nLyrics by James LaBrie\n\nIII. Full Circle\n16:41 - 21:05\nLyrics by Mike Portnoy\n\nIV. Intervals\n21:06 - 22:47\nLyrics by Mike Portnoy\n\nV. Razor's Edge\n22:48 - 26:11\nLyrics by John Petrucci",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/PUpYBAsS5Q0/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/PUpYBAsS5Q0/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/PUpYBAsS5Q0/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/PUpYBAsS5Q0/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/RIZMXzO9Fdx9IMIHbrWolnCKEqQ"',
+    id: 'V7c_TlY-WYk',
+    snippet: {
+      publishedAt: '2017-01-31T15:00:02.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'SHINE - Chillout Mix',
+      description: 'SHINE - Chillout Mix\nFree DL: http://hypeddit.com/track/yt/xekhov\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\nhttp://soundcloud.com/pulse8/shine\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00  Owsey & Resotone - A Smile From The West\n06:31 Blure & Skyvoice - Take Me Away\n09:58 Asiah & Resonata - Sojourner\n14:18 Lunar Pole - Beach Therapy\n18:09 Owsey & Nori - Back To You\n24:38 Aerocity - Daylight\n28:48 FutureFox ft. Mona Moua - Fly Away\n32:07 Kindred - Clarity\n36:24 Owsey - Dancing By The Dreamless Wave (Asiah Remix)\n40:56 Yal!X - Forgiven\n44:53 Kindred - Little Things\n49:06 Salvus - Let The Adventures Begin\n52:32 Liquid Memoirs - December\n56:13 Aerocity - Fever Dream\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/V7c_TlY-WYk/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/V7c_TlY-WYk/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/V7c_TlY-WYk/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/V7c_TlY-WYk/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/V7c_TlY-WYk/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chill',
+        'chill mix',
+        'chillout',
+        'chillout mix',
+        'chillstep mix 2017',
+        'chillstep mix pulse8 2017 best of',
+        'chillout music mix 2017',
+        'chill music mix playlist 2017',
+        'pulse8 chillstep',
+        'pulse8 chillstep mix',
+        'summer mix',
+        'summer music mix',
+        'summer music mix 2017',
+        'summer music playlist',
+        'pulse8',
+        'pulse8 mix',
+        'chillout mix 2017'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'SHINE - Chillout Mix',
+        description: 'SHINE - Chillout Mix\nFree DL: http://hypeddit.com/track/yt/xekhov\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\nhttp://soundcloud.com/pulse8/shine\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00  Owsey & Resotone - A Smile From The West\n06:31 Blure & Skyvoice - Take Me Away\n09:58 Asiah & Resonata - Sojourner\n14:18 Lunar Pole - Beach Therapy\n18:09 Owsey & Nori - Back To You\n24:38 Aerocity - Daylight\n28:48 FutureFox ft. Mona Moua - Fly Away\n32:07 Kindred - Clarity\n36:24 Owsey - Dancing By The Dreamless Wave (Asiah Remix)\n40:56 Yal!X - Forgiven\n44:53 Kindred - Little Things\n49:06 Salvus - Let The Adventures Begin\n52:32 Liquid Memoirs - December\n56:13 Aerocity - Fever Dream\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      },
+      defaultAudioLanguage: 'en-US'
     },
-    "channelTitle": "Deep Brown Eyes",
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Octavarium Live - Score 20th Anniversary World Tour",
-     "description": "Octavarium by Dream Theater.\nTaken from the Score 20th Anniversary DVD.\n\nOctavarium has a very rare quality in which it is not an epic story as a whole, but 5 individual epics, each united with the same theme in which all of them end exactly where they begin.\n\nI. Someone Like Him\n0:00 - 11:45\nLyrics by John Petrucci\n\nII. Medicate (Awakening)\n11:46 - 16:40\nLyrics by James LaBrie\n\nIII. Full Circle\n16:41 - 21:05\nLyrics by Mike Portnoy\n\nIV. Intervals\n21:06 - 22:47\nLyrics by Mike Portnoy\n\nV. Razor's Edge\n22:48 - 26:11\nLyrics by John Petrucci"
+    contentDetails: {
+      duration: 'PT59M29S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '28549',
+      likeCount: '492',
+      dislikeCount: '9',
+      favoriteCount: '0',
+      commentCount: '41'
     }
-   },
-   "contentDetails": {
-    "duration": "PT26M41S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "857133",
-    "likeCount": "6077",
-    "dislikeCount": "75",
-    "favoriteCount": "0",
-    "commentCount": "1139"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/HO3ZOB24RM6lm9f5-y8kzAVuf3w\"",
-   "id": "qg4ac4SgfGg",
-   "snippet": {
-    "publishedAt": "2016-03-31T08:53:52.000Z",
-    "channelId": "UCGUQAox5XXwcSdBc59CudvA",
-    "title": "Dream Theater live at Wembley 2014 (full show)",
-    "description": "0:00 False Awakening Suite intro\n2:10 The Enemy Inside\n8:21 The Shattered Fortress\n21:19 On the Backs of Angels\n30:18 The Looking Glass\n35:08 Trial of Tears\n50:12 Enigma Machine w/Mike Mangini drum solo (55:13)\n58:20 Along for the Ride\n1:02:57 Breaking All Illusions\n1:14:56 The Mirror\n1:21:35 Lie\n1:29:17 Lifting Shadows Off a Dream\n1:35:25 Scarred\n1:46:51 Space-Dye Vest\n1:54:33 Illumination Theory\n2:13:19 Overture 1928\n2:16:52 Strange Déjà Vu\n2:22:11 The Dance of Eternity\n2:28:28 Finally Free",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/qg4ac4SgfGg/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/qg4ac4SgfGg/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/qg4ac4SgfGg/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/5iZRqIRnWY4vDae_ttipIgS8gcI"',
+    id: 'yvJF5RXLe5E',
+    snippet: {
+      publishedAt: '2015-05-04T12:34:18.000Z',
+      channelId: 'UCQDNDPIu0he5fiSgnKKD5xQ',
+      title: 'JME - Integrity Full Album HD',
+      description: '*DISCLAIMER*\n\nThis album is not produced by me nor I have no part in it besides sharing it on Youtube, JME also known as ManBetterKnow is the author and producer of the album so go and check out his youtube channel and purchase his album of iTunes:\n\nhttps://itunes.apple.com/gb/album/integrity/id975188017\nhttps://www.youtube.com/user/ManBetterKnow\n\nTrack List:\n\nPulse 8 - 00:00\n96 F**kries 02:19\nTaking Over 05:13\nWork 08:07\nGame 11:46\nSame Thing 15:33\nAmen 18:12\nAgain 20:18\nBreak you down 23:33\nThe Money 26:36\nNo You Ain\'t 29:07\nCalm 32:50\nMan Don\'t Care 36:16\nDont @ Me 39:51\nTest Me 43:06\nIntegrity 47:17',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/yvJF5RXLe5E/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/yvJF5RXLe5E/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/yvJF5RXLe5E/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/yvJF5RXLe5E/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/yvJF5RXLe5E/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Reztox',
+      tags: [
+        'Integrity',
+        'JME',
+        'Music (TV Genre)',
+        'ManBetterKnow',
+        'Rap',
+        'British',
+        'Full',
+        'Song',
+        'Lyrics',
+        'Album',
+        'New',
+        'United Kingdom (Country)'
+      ],
+      categoryId: '24',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'JME - Integrity Full Album HD',
+        description: '*DISCLAIMER*\n\nThis album is not produced by me nor I have no part in it besides sharing it on Youtube, JME also known as ManBetterKnow is the author and producer of the album so go and check out his youtube channel and purchase his album of iTunes:\n\nhttps://itunes.apple.com/gb/album/integrity/id975188017\nhttps://www.youtube.com/user/ManBetterKnow\n\nTrack List:\n\nPulse 8 - 00:00\n96 F**kries 02:19\nTaking Over 05:13\nWork 08:07\nGame 11:46\nSame Thing 15:33\nAmen 18:12\nAgain 20:18\nBreak you down 23:33\nThe Money 26:36\nNo You Ain\'t 29:07\nCalm 32:50\nMan Don\'t Care 36:16\nDont @ Me 39:51\nTest Me 43:06\nIntegrity 47:17'
+      }
     },
-    "channelTitle": "MrDreamTheater2",
-    "tags": [
-     "Dream Theater",
-     "Wembley",
-     "2014",
-     "Bootleg",
-     "Full",
-     "Show",
-     "Concert",
-     "Live",
-     "Rare",
-     "Mike Mangini",
-     "James LaBrie",
-     "John Petrucci",
-     "Majesty",
-     "Guitar",
-     "John Myung",
-     "Jordan Rudess",
-     "England",
-     "London",
-     "Breaking All Illusions",
-     "Illumination Theory",
-     "Solo",
-     "Along For The Ride"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater live at Wembley 2014 (full show)",
-     "description": "0:00 False Awakening Suite intro\n2:10 The Enemy Inside\n8:21 The Shattered Fortress\n21:19 On the Backs of Angels\n30:18 The Looking Glass\n35:08 Trial of Tears\n50:12 Enigma Machine w/Mike Mangini drum solo (55:13)\n58:20 Along for the Ride\n1:02:57 Breaking All Illusions\n1:14:56 The Mirror\n1:21:35 Lie\n1:29:17 Lifting Shadows Off a Dream\n1:35:25 Scarred\n1:46:51 Space-Dye Vest\n1:54:33 Illumination Theory\n2:13:19 Overture 1928\n2:16:52 Strange Déjà Vu\n2:22:11 The Dance of Eternity\n2:28:28 Finally Free"
+    contentDetails: {
+      duration: 'PT51M21S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '2752',
+      likeCount: '108',
+      dislikeCount: '1',
+      favoriteCount: '0',
+      commentCount: '13'
     }
-   },
-   "contentDetails": {
-    "duration": "PT2H37M56S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "11722",
-    "likeCount": "86",
-    "dislikeCount": "0",
-    "favoriteCount": "0",
-    "commentCount": "19"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/TDg551zgl4yJypdedYhaPMcEZfY\"",
-   "id": "V6k1VdgNeKE",
-   "snippet": {
-    "publishedAt": "2009-04-29T20:18:08.000Z",
-    "channelId": "UC7tsncZBtoOhQu_iiUgiUXw",
-    "title": "Dream Theater - Hollow Years Live At Budokan",
-    "description": "HOLY MASTER PIECE, FROM A REALLY GREAT BAND THAT I RESPECT\n\nDream Theater - Hollow Years Live at Budokan\n\nCopyright: 1997 EastWest\n\n\"Hollow Years\" is the fourth song and the first single from the Dream Theater album Falling into Infinity. The lyrics were written entirely by John Petrucci. An accompanying music video was also released which cost around $100,000. The version on Live At Budokan features an intro solo as well as a new middle solo, considered by many to be among Petrucci's best.\n\nLyrics:\n\nHe's just the kind of man\nYou hear about\nWho leaves his family for\nAn easy out\nThey never saw the signs\nHe never said a word\nHe couldn't take another day\n\nCarry me to the shoreline\nBury me in the sand\nWalk me across the water\nAnd maybe you'll understand\n\nOnce the stone\nYou're crawling under\nIs lifted off your shoulders\nOnce the cloud that's raining\nOver your head disappears\nThe noise that you'll hear\nIs the crashing down of hollow years\n\nShe's not the kind of girl\nYou hear about\nShe'll never want another\nShe'll never be without\nShe'll give you all the signs\nShe'll tell you everything\nThen turn around and walk away\n\nCarry me to the shoreline\nBury me in the sand\n(Into the waves)\nWalk me across the water\nAnd maybe you'll understand\n\nOnce the stone\nYou're crawling under\n(Once the stone)\nIs lifted off your shoulders\nOnce the cloud that's raining\nOver your head disappears\nThe noise that you'll hear\nIs the crashing down of hollow years\n\nCarry me to the shoreline\nBury me in the sand\n(Into the waves)\nWalk me across the water\nAnd maybe you'll understand\n\nOnce the stone\nYou're crawling under\nIs lifted off your shoulders\nOnce the cloud that's raining\nOver your head disappears\nThe noise that you'll hear\nIs the crashing down of hollow years\n\nOnce the stone\nYou're crawling under\nOnce the stone\nYou're crawling under\n(The sound you'll hear,)\nOnce the stone\n(the crashing)\nYou're crawling under\n(down of hollow years)\nOnce the stone\nYou're crawling under\nOnce the stone\nYou're crawling under\nOnce the stone\nYou're crawling under\n(The sound you'll hear, the crashing down of hollow years)\n\nFEBRUARY 2011 UPDATE:\n\nIF WE CAN REACH 1 MILL VIEWS BEFORE 2012 WE WILL AVOID WORLD'S END",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/V6k1VdgNeKE/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/V6k1VdgNeKE/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/V6k1VdgNeKE/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/yrk-9zU1Kl0X_mL0RjQ2DtmHkGY"',
+    id: 'C9BrdQQVfu0',
+    snippet: {
+      publishedAt: '2017-02-03T15:00:02.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Best of Chillstep 2017 - Part 2 by Pulse8 [1 Hour of Chillstep]',
+      description: 'Best of Chillstep 2017 - Part 2 by Pulse8 [1 Hour of Chillstep]\nFree DL:\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\n\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Khromi - Until Dawn (Liquid Memoirs Remix)\n06:00 Liquid Memoirs & Khromi - Particles\n12:13 Zymek - Ascend\n14:51 Kisnou - Tale of a Life Seeker\n18:31 Dimatis - Emotional Tourism\n22:20 Michael FK - Nebula\n29:58 Spenser Sembrat - Northern Lights\n32:44 Isaac S Middendorf - The Beacon\n38:32 Andy Leech - Thinking of You\n43:41 Anfield - Still So Distant\n49:49 Cash - An Endless Fantasy\n55:50 Eternall - Healing\n\n▸ Artwork by atlas091\nhttp://atlas091.deviantart.com/art/Hive-659354117\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/C9BrdQQVfu0/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/C9BrdQQVfu0/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/C9BrdQQVfu0/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/C9BrdQQVfu0/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/C9BrdQQVfu0/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chillstep 2017',
+        'chillstep playlist',
+        'chillstep remix',
+        'chillstep female vocals',
+        'best of chillstep',
+        'chillstep mix 2017',
+        'chillstep mix 2016',
+        'best of chillstep 2017',
+        'best of chillstep mix',
+        'best of chillstep mix 2017',
+        '1 hour of chillstep',
+        'chillstep dubstep',
+        'study music mix',
+        'chill',
+        'chillout',
+        'chill mix',
+        'chillout mix',
+        'chill music mix 2017',
+        'chillout music mix 2017',
+        'pulse8'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Best of Chillstep 2017 - Part 2 by Pulse8 [1 Hour of Chillstep]',
+        description: 'Best of Chillstep 2017 - Part 2 by Pulse8 [1 Hour of Chillstep]\nFree DL:\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\n\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Khromi - Until Dawn (Liquid Memoirs Remix)\n06:00 Liquid Memoirs & Khromi - Particles\n12:13 Zymek - Ascend\n14:51 Kisnou - Tale of a Life Seeker\n18:31 Dimatis - Emotional Tourism\n22:20 Michael FK - Nebula\n29:58 Spenser Sembrat - Northern Lights\n32:44 Isaac S Middendorf - The Beacon\n38:32 Andy Leech - Thinking of You\n43:41 Anfield - Still So Distant\n49:49 Cash - An Endless Fantasy\n55:50 Eternall - Healing\n\n▸ Artwork by atlas091\nhttp://atlas091.deviantart.com/art/Hive-659354117\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      }
     },
-    "channelTitle": "vancarter23",
-    "tags": [
-     "dream theater",
-     "hollow years",
-     "live at budokan",
-     "pettrucci",
-     "portnoy",
-     "progressive",
-     "progresive"
-    ],
-    "categoryId": "22",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Hollow Years Live At Budokan",
-     "description": "HOLY MASTER PIECE, FROM A REALLY GREAT BAND THAT I RESPECT\n\nDream Theater - Hollow Years Live at Budokan\n\nCopyright: 1997 EastWest\n\n\"Hollow Years\" is the fourth song and the first single from the Dream Theater album Falling into Infinity. The lyrics were written entirely by John Petrucci. An accompanying music video was also released which cost around $100,000. The version on Live At Budokan features an intro solo as well as a new middle solo, considered by many to be among Petrucci's best.\n\nLyrics:\n\nHe's just the kind of man\nYou hear about\nWho leaves his family for\nAn easy out\nThey never saw the signs\nHe never said a word\nHe couldn't take another day\n\nCarry me to the shoreline\nBury me in the sand\nWalk me across the water\nAnd maybe you'll understand\n\nOnce the stone\nYou're crawling under\nIs lifted off your shoulders\nOnce the cloud that's raining\nOver your head disappears\nThe noise that you'll hear\nIs the crashing down of hollow years\n\nShe's not the kind of girl\nYou hear about\nShe'll never want another\nShe'll never be without\nShe'll give you all the signs\nShe'll tell you everything\nThen turn around and walk away\n\nCarry me to the shoreline\nBury me in the sand\n(Into the waves)\nWalk me across the water\nAnd maybe you'll understand\n\nOnce the stone\nYou're crawling under\n(Once the stone)\nIs lifted off your shoulders\nOnce the cloud that's raining\nOver your head disappears\nThe noise that you'll hear\nIs the crashing down of hollow years\n\nCarry me to the shoreline\nBury me in the sand\n(Into the waves)\nWalk me across the water\nAnd maybe you'll understand\n\nOnce the stone\nYou're crawling under\nIs lifted off your shoulders\nOnce the cloud that's raining\nOver your head disappears\nThe noise that you'll hear\nIs the crashing down of hollow years\n\nOnce the stone\nYou're crawling under\nOnce the stone\nYou're crawling under\n(The sound you'll hear,)\nOnce the stone\n(the crashing)\nYou're crawling under\n(down of hollow years)\nOnce the stone\nYou're crawling under\nOnce the stone\nYou're crawling under\nOnce the stone\nYou're crawling under\n(The sound you'll hear, the crashing down of hollow years)\n\nFEBRUARY 2011 UPDATE:\n\nIF WE CAN REACH 1 MILL VIEWS BEFORE 2012 WE WILL AVOID WORLD'S END"
+    contentDetails: {
+      duration: 'PT1H47S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '44210',
+      likeCount: '555',
+      dislikeCount: '14',
+      favoriteCount: '0',
+      commentCount: '59'
     }
-   },
-   "contentDetails": {
-    "duration": "PT9M20S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "2303480",
-    "likeCount": "13260",
-    "dislikeCount": "129",
-    "favoriteCount": "0",
-    "commentCount": "1925"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/zk5ub3Av9GPqQ5QLXQHkXWWjHKs\"",
-   "id": "7eZpWFVp3eU",
-   "snippet": {
-    "publishedAt": "2015-01-03T21:39:36.000Z",
-    "channelId": "UCFNiCrW5AOSYaCfeGuAp67Q",
-    "title": "Dream Theater Live  Chile 2005",
-    "description": "concert Dream Theater\nOctavarium World Tour - Pista Atletica Estadio Nacional - Santiago Chile 03/12/2005\n\nThe Root Of All Evil 00:00\nPanic Attack 08:45\nA Fortune In Lies 16:02\nUnder A Glass Moon 21:14\nCaught In A Web 29:10\nPeruvian Skies 35:14\nStrange Deja Vu 45:48\nThrough My Words 50:58\nFatal Tragedy 52:02\nSolitary Shell 58:50\nAbout To Crash (Reprise) 01:04:16\nLosing Time/Grand Finale 01:08:34\n--15 min Intermission--\nAs I Am 01:13:28\nEndless Sacrifice 01:20:52\nI Walk Beside You 01:33:28\nSacrificed Sons 01:37:50\nOctavarium 01:48:30\n-Encore-\nJohn Petrucci Guitar Solo/The Spirit Carries On 02:16:12\nPull Me Under/Metropolis Pt.1 02:25:16",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/7eZpWFVp3eU/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/7eZpWFVp3eU/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/7eZpWFVp3eU/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/7eZpWFVp3eU/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/LnsF2bgUNK8ev-pJCcMDXIDzueg"',
+    id: 'TBuuiK_dojc',
+    snippet: {
+      publishedAt: '2017-06-10T17:00:01.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Rainy Day Music 012 - A Beautiful Chillstep Compilation',
+      description: 'Rainy Day Music 012 - A Beautiful Chillstep Compilation\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Vexaic - Stellar\n03:24 Sappheiros - Restless\n08:10 KISNOU - Tale Of A Life Seeker\n11:43 Justin Jet Zorbas - Never Let You Go\n15:11 G. Strizzolo - Moon (Colin McAllister Remix)\n20:21 Liquid Memoirs & Khromi - Particles\n26:34 Vexaic - Afar, We Stand\n29:47 OverHertz - Zen\n34:36 Sappheiros - In This Moment\n41:06 Salvus - Let The Adventures Begin\n44:29 Ryru - Peaceful\n48:29 Cash - Serenity\n55:04 smokefishe - xo\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/TBuuiK_dojc/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/TBuuiK_dojc/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/TBuuiK_dojc/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/TBuuiK_dojc/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/TBuuiK_dojc/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chill music',
+        'chillstep',
+        'pulse8',
+        'chill',
+        'music',
+        'chillstep mix',
+        'chill mix',
+        'study music',
+        'chillout',
+        'chillout mix',
+        'chillout music',
+        'oriental chillstep',
+        'pulse 8',
+        'music mix',
+        'chill remix',
+        'ambient',
+        'ambient music',
+        'relaxing music',
+        'rainy day music',
+        'rainy day music pulse8'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Rainy Day Music 012 - A Beautiful Chillstep Compilation',
+        description: 'Rainy Day Music 012 - A Beautiful Chillstep Compilation\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 Vexaic - Stellar\n03:24 Sappheiros - Restless\n08:10 KISNOU - Tale Of A Life Seeker\n11:43 Justin Jet Zorbas - Never Let You Go\n15:11 G. Strizzolo - Moon (Colin McAllister Remix)\n20:21 Liquid Memoirs & Khromi - Particles\n26:34 Vexaic - Afar, We Stand\n29:47 OverHertz - Zen\n34:36 Sappheiros - In This Moment\n41:06 Salvus - Let The Adventures Begin\n44:29 Ryru - Peaceful\n48:29 Cash - Serenity\n55:04 smokefishe - xo\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      }
     },
-    "channelTitle": "E- Elysium",
-    "tags": [
-     "Full Concert",
-     "Dream Theater Live Chile 2005",
-     "Dream Theater",
-     "Octavarium",
-     "Music (TV Genre)",
-     "Live (Composer)",
-     "Musical"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater Live  Chile 2005",
-     "description": "concert Dream Theater\nOctavarium World Tour - Pista Atletica Estadio Nacional - Santiago Chile 03/12/2005\n\nThe Root Of All Evil 00:00\nPanic Attack 08:45\nA Fortune In Lies 16:02\nUnder A Glass Moon 21:14\nCaught In A Web 29:10\nPeruvian Skies 35:14\nStrange Deja Vu 45:48\nThrough My Words 50:58\nFatal Tragedy 52:02\nSolitary Shell 58:50\nAbout To Crash (Reprise) 01:04:16\nLosing Time/Grand Finale 01:08:34\n--15 min Intermission--\nAs I Am 01:13:28\nEndless Sacrifice 01:20:52\nI Walk Beside You 01:33:28\nSacrificed Sons 01:37:50\nOctavarium 01:48:30\n-Encore-\nJohn Petrucci Guitar Solo/The Spirit Carries On 02:16:12\nPull Me Under/Metropolis Pt.1 02:25:16"
+    contentDetails: {
+      duration: 'PT59M37S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '20235',
+      likeCount: '432',
+      dislikeCount: '7',
+      favoriteCount: '0',
+      commentCount: '27'
     }
-   },
-   "contentDetails": {
-    "duration": "PT2H40M52S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "21776",
-    "likeCount": "147",
-    "dislikeCount": "2",
-    "favoriteCount": "0",
-    "commentCount": "15"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/L4DvkA98GrRQP3kE6xGbGxbQHRQ\"",
-   "id": "7QlWpv958Uk",
-   "snippet": {
-    "publishedAt": "2011-01-29T04:04:47.000Z",
-    "channelId": "UCZc_Kg1rwLDy_duGqfAwv3A",
-    "title": "Dream Theater - A change Of Seasons (Live 2000) [HQ]",
-    "description": "Taken From \"Special Bonus\" from Metropolis 2000: Scenes from New York.\n\nLYRICS:\n\nI. The Crimson Sunrise\n(Instrumental)\n\nII. Innocence\nI remember a time\nMy frail, virgin mind\nwatched the crimson sunrise\nImagined what it might find\nLife was filled with wonder\nI felt the warm wind blow\nI must explore the boundaries\nTranscend the depth of winter's snow\nInnocence caressing me\nI never felt so young before\nThere was so much life in me\nStill I longed to search for more\nBut those days are gone now\nChanged like a leaf on a tree\nBlown away forever\ninto the cool autumn breeze\nThe snow has now fallen\nand my sun's not so bright\nI struggle to hold on\nwith the last of my might\nIn my den of inequity\nviciousness and subtlety\nstruggle to ease the pain\nstruggle to find the sane\nIgnorance surrounding me\nI've never been so filled with fear\nAll my life's been drained from me\nThe end is drawing near....\n\nIII. Carpe Diem\n'Carpe diem, seize the day'\nI'll always remember\nThe chill of November\nThe news of the fall\nThe sounds in the hall\nThe clock on the wall ticking away\n'Seize the Day'\nI heard him say\nLife will not always be this way\nLook around\nHear the sounds\nCherish your life while you're still around\n\n\"Gather ye rosebuds while ye may,\nOld Time is still a-flying;\nAnd this same flower that smiles today,\nTomorrow will be dying.\"\n\nWe can learn from the past\nBut those days are gone\nWe can hope for the future\nBut there may not be one\nThe words stuck in my mind\nalive from what I've learned\nI have to seize the day\nTo home I returned\nPreparing for her flight\nI held with all my might\nFearing my deepest fright\nShe walked into the night\nShe turned for one last look\nShe looked me in the eye\nI said, 'I Love You...Good-bye'\n\n\"It's the most awful thing you'll\never hear.\"\n\"If you're lying to me...\"\n\"Oh, you dearly love her.\"\n\"...just have to leave... all our lives.\"\n\"Seize the day!\"\n\"Something happened.\n\"Gather ye rosebuds while ye may.\"\n\"She was killed.\"\n\nIV. The Darkest of Winters\n(Instrumental)\n\nV. Another World\nSo far or so it seems\nAll is lost with nothing fulfilled\nOff the pages and a T.V. screen\nAnother world where nothing's true\nTripping through the life fantastic\nLose a step and never get up\nLeft alone with a cold blank stare\nI feel like giving up\nI was blinded by a paradise\nUtopia high in the sky\nA dream that only drowned me\nDeep in sorrow, wondering why\nOh come let us adore him\nAbuse and then ignore him\nNo matter what, don't let him be\nLet's feed upon his misery\nThen string him up for all the world to see\nI'm sick of all you hypocrites\nholding me at bay\nAnd I don't need your sympathy\nto get me through the day\nSeasons change and so can I\nHold on boy, No time to cry\nUntie these strings, I'm climbing down\nI won't let them push me away\nOh come let us adore him\nAbuse and then ignore him\nNo matter what, don't let him be\nLet's feed upon his misery\nNow it's time for them to deal with me\n\nVI. The Inevitable Summer\n(Instrumental)\n\nVII. The Crimson Sunset\nI'm much wiser now\nA lifetime of memories\nrun through my head\nThey taught me how\nfor better or worse, alive or dead\nI realize there's no turning back\nLife goes on the offbeaten track\nI sit down with my son\nSet to see the Crimson Sunset\n(Gather ye rosebuds while ye may)\nMany years have come and gone\nI've lived my life, but now must move on\n(Gather ye rosebuds while ye may)\nHe is my only one\nNow that my time has come\nNow that my life is done\nWe look into the sun\n'Seize the day and don't you cry,\nNow it's time to say good-bye\nEven though I'll be gone,\nI will live on, live on.'",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/7QlWpv958Uk/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/7QlWpv958Uk/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/7QlWpv958Uk/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/Q4JnuMXzwsNXppPLO1MkF77h3rc"',
+    id: 'ZLZSoHetoR0',
+    snippet: {
+      publishedAt: '2015-03-13T22:31:35.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Alaskan Tapes - Then Suddenly, Everything Changed',
+      description: 'Alaskan Tapes - Then Suddenly, Everything Changed\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ Support Alaskan Tapes\nhttps://soundcloud.com/alaskantapes\n\n♥ Download Then Suddenly, Everything Changed\nhttps://soundcloud.com/alaskantapes/then-suddenly-everything-changed\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Image Link \nhttp://alpha.wallhaven.cc/wallpaper/170193\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.com/submit',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/ZLZSoHetoR0/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/ZLZSoHetoR0/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/ZLZSoHetoR0/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/ZLZSoHetoR0/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/ZLZSoHetoR0/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'pulse8',
+        'pulse8music',
+        'alaskan tapes',
+        'then suddenly',
+        'everything changed',
+        'then suddenly everything changed',
+        'alaskan',
+        'tapes',
+        'then',
+        'suddenly',
+        'everything',
+        'changed',
+        'chillstep',
+        'chillstep music',
+        'chillstep 2015',
+        'alaskan tapes chillstep',
+        'ambient',
+        'euphoric',
+        'soundcloud.com/alaskantapes'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Alaskan Tapes - Then Suddenly, Everything Changed',
+        description: 'Alaskan Tapes - Then Suddenly, Everything Changed\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ Support Alaskan Tapes\nhttps://soundcloud.com/alaskantapes\n\n♥ Download Then Suddenly, Everything Changed\nhttps://soundcloud.com/alaskantapes/then-suddenly-everything-changed\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Image Link \nhttp://alpha.wallhaven.cc/wallpaper/170193\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.com/submit'
+      }
     },
-    "channelTitle": "DT2BLZ",
-    "tags": [
-     "a change of seasons full",
-     "prog concert live live band",
-     "metropolis 2000",
-     "Metropolis 2000: Scenes From New York (Musical Album)",
-     "live concert",
-     "dream theater",
-     "ACOS",
-     "petrucci",
-     "portnoy",
-     "myung",
-     "labrie",
-     "rudess",
-     "concert",
-     "live from new york",
-     "A Change Of Seasons (Musical Album)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - A change Of Seasons (Live 2000) [HQ]",
-     "description": "Taken From \"Special Bonus\" from Metropolis 2000: Scenes from New York.\n\nLYRICS:\n\nI. The Crimson Sunrise\n(Instrumental)\n\nII. Innocence\nI remember a time\nMy frail, virgin mind\nwatched the crimson sunrise\nImagined what it might find\nLife was filled with wonder\nI felt the warm wind blow\nI must explore the boundaries\nTranscend the depth of winter's snow\nInnocence caressing me\nI never felt so young before\nThere was so much life in me\nStill I longed to search for more\nBut those days are gone now\nChanged like a leaf on a tree\nBlown away forever\ninto the cool autumn breeze\nThe snow has now fallen\nand my sun's not so bright\nI struggle to hold on\nwith the last of my might\nIn my den of inequity\nviciousness and subtlety\nstruggle to ease the pain\nstruggle to find the sane\nIgnorance surrounding me\nI've never been so filled with fear\nAll my life's been drained from me\nThe end is drawing near....\n\nIII. Carpe Diem\n'Carpe diem, seize the day'\nI'll always remember\nThe chill of November\nThe news of the fall\nThe sounds in the hall\nThe clock on the wall ticking away\n'Seize the Day'\nI heard him say\nLife will not always be this way\nLook around\nHear the sounds\nCherish your life while you're still around\n\n\"Gather ye rosebuds while ye may,\nOld Time is still a-flying;\nAnd this same flower that smiles today,\nTomorrow will be dying.\"\n\nWe can learn from the past\nBut those days are gone\nWe can hope for the future\nBut there may not be one\nThe words stuck in my mind\nalive from what I've learned\nI have to seize the day\nTo home I returned\nPreparing for her flight\nI held with all my might\nFearing my deepest fright\nShe walked into the night\nShe turned for one last look\nShe looked me in the eye\nI said, 'I Love You...Good-bye'\n\n\"It's the most awful thing you'll\never hear.\"\n\"If you're lying to me...\"\n\"Oh, you dearly love her.\"\n\"...just have to leave... all our lives.\"\n\"Seize the day!\"\n\"Something happened.\n\"Gather ye rosebuds while ye may.\"\n\"She was killed.\"\n\nIV. The Darkest of Winters\n(Instrumental)\n\nV. Another World\nSo far or so it seems\nAll is lost with nothing fulfilled\nOff the pages and a T.V. screen\nAnother world where nothing's true\nTripping through the life fantastic\nLose a step and never get up\nLeft alone with a cold blank stare\nI feel like giving up\nI was blinded by a paradise\nUtopia high in the sky\nA dream that only drowned me\nDeep in sorrow, wondering why\nOh come let us adore him\nAbuse and then ignore him\nNo matter what, don't let him be\nLet's feed upon his misery\nThen string him up for all the world to see\nI'm sick of all you hypocrites\nholding me at bay\nAnd I don't need your sympathy\nto get me through the day\nSeasons change and so can I\nHold on boy, No time to cry\nUntie these strings, I'm climbing down\nI won't let them push me away\nOh come let us adore him\nAbuse and then ignore him\nNo matter what, don't let him be\nLet's feed upon his misery\nNow it's time for them to deal with me\n\nVI. The Inevitable Summer\n(Instrumental)\n\nVII. The Crimson Sunset\nI'm much wiser now\nA lifetime of memories\nrun through my head\nThey taught me how\nfor better or worse, alive or dead\nI realize there's no turning back\nLife goes on the offbeaten track\nI sit down with my son\nSet to see the Crimson Sunset\n(Gather ye rosebuds while ye may)\nMany years have come and gone\nI've lived my life, but now must move on\n(Gather ye rosebuds while ye may)\nHe is my only one\nNow that my time has come\nNow that my life is done\nWe look into the sun\n'Seize the day and don't you cry,\nNow it's time to say good-bye\nEven though I'll be gone,\nI will live on, live on.'"
+    contentDetails: {
+      duration: 'PT3M37S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '44948',
+      likeCount: '673',
+      dislikeCount: '6',
+      favoriteCount: '0',
+      commentCount: '12'
     }
-   },
-   "contentDetails": {
-    "duration": "PT25M50S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": true,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1634881",
-    "likeCount": "9158",
-    "dislikeCount": "112",
-    "favoriteCount": "0",
-    "commentCount": "1529"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/meCwaW6amqLRcuOOXjKGAxPI2Ms\"",
-   "id": "ucgNbxV2k2A",
-   "snippet": {
-    "publishedAt": "2016-07-04T20:51:02.000Z",
-    "channelId": "UCAWgnTJeTGq753vOxHqXEXA",
-    "title": "Dream Theater live in Chile 2016 - A new beginning (John Petrucci Solo)",
-    "description": "",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/ucgNbxV2k2A/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/ucgNbxV2k2A/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/ucgNbxV2k2A/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/ucgNbxV2k2A/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/ucgNbxV2k2A/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/QpKuJ3P_49-FSVtL5m5T9IeCFPM"',
+    id: 'VjGW7jrLcSg',
+    snippet: {
+      publishedAt: '2016-04-10T16:00:01.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Chill House Mix - Best of Chill House April 2016 [1 Hour Mix]',
+      description: 'Chill House Mix - Best of Chill House April 2016 [1 Hour Mix]\nFree download: \nLike on Facebook: http://facebook.com/pulse8music\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\n\n♥ Audio Stream via Soundcloud\n\n\n♥ Tracklist\n00:00 K. Flay - Make Me Fade (Gianni Kosta Remix)\n03:20 Del - Tropical Love (Original Mix)\n06:19 Yako x Michelle Schulz - Atlas Hands\n09:24 Diviners - Flowers (ft. Dom Robinson)\n12:38 Alex Schulz - Permanent Summer (ft. Ashe)\n15:52 fugue - destinations\n18:33 Last Lynx - Curtains (Dinnerdate Remix)\n23:18 Oasis - Wonderwall (Monkey Joker Edit)\n28:58 Yngcult feat. Madison Gold - The Electric (Sistek Remix)\n32:44 Cape Cub - Swim (Gatlyn Remix)\n36:26 Alex Schulz - Liquid Blue\n41:00 Alfred Hall - Wild at Heart (Pegato Remix)\n44:02 Oscar & The Wolf - Strange Entity (Sander W & Fanfar Ft Sakso Remix)\n47:58 Avicii - Hey Brother (TEEMID & Tessa Rose Jackson Cover)\n52:44 Eden Fox - Major Feeling\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=puls...\n\n✔ Submit your music to Pulse8\nhttps://toneden.io/pulse8music\n\nPulse8: The Joy of Chill',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/VjGW7jrLcSg/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/VjGW7jrLcSg/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/VjGW7jrLcSg/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/VjGW7jrLcSg/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/VjGW7jrLcSg/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chill house mix',
+        'best of chill house',
+        'chill house mix 2016',
+        'chill deep house',
+        'deep house mix 2016',
+        'best of tropical house mix',
+        'chillhouse mix',
+        'pulse8 mix',
+        'best of chillstep 2016',
+        'chill house tropical mix',
+        'summer house',
+        'chillout house',
+        'summer house mix',
+        'summer 2016 house mix',
+        'house mix 2016',
+        'best of chill house april 2016',
+        'best of chill house mix april 2016',
+        'Chill House Mix - Best of Chill House April 2016 [1 Hour Mix]',
+        'pulse8music'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Chill House Mix - Best of Chill House April 2016 [1 Hour Mix]',
+        description: 'Chill House Mix - Best of Chill House April 2016 [1 Hour Mix]\nFree download: \nLike on Facebook: http://facebook.com/pulse8music\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\n\n♥ Audio Stream via Soundcloud\n\n\n♥ Tracklist\n00:00 K. Flay - Make Me Fade (Gianni Kosta Remix)\n03:20 Del - Tropical Love (Original Mix)\n06:19 Yako x Michelle Schulz - Atlas Hands\n09:24 Diviners - Flowers (ft. Dom Robinson)\n12:38 Alex Schulz - Permanent Summer (ft. Ashe)\n15:52 fugue - destinations\n18:33 Last Lynx - Curtains (Dinnerdate Remix)\n23:18 Oasis - Wonderwall (Monkey Joker Edit)\n28:58 Yngcult feat. Madison Gold - The Electric (Sistek Remix)\n32:44 Cape Cub - Swim (Gatlyn Remix)\n36:26 Alex Schulz - Liquid Blue\n41:00 Alfred Hall - Wild at Heart (Pegato Remix)\n44:02 Oscar & The Wolf - Strange Entity (Sander W & Fanfar Ft Sakso Remix)\n47:58 Avicii - Hey Brother (TEEMID & Tessa Rose Jackson Cover)\n52:44 Eden Fox - Major Feeling\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=puls...\n\n✔ Submit your music to Pulse8\nhttps://toneden.io/pulse8music\n\nPulse8: The Joy of Chill'
+      }
     },
-    "channelTitle": "Chopininoff X",
-    "tags": [
-     "dream theater",
-     "dream",
-     "theater",
-     "chile",
-     "2016",
-     "tour",
-     "the astonishing",
-     "the astonishing tour",
-     "dream theater tour",
-     "dream theater chile",
-     "dream chile 2016",
-     "dream theater live 2016",
-     "john",
-     "petrucci",
-     "john petrucci",
-     "john petrucci solo",
-     "john petrucci live",
-     "a new beginning",
-     "the astonoshing 2016",
-     "felipe misch",
-     "teatro caupolican",
-     "teatro caupolican 2016",
-     "astonighing gira",
-     "jordan rudess",
-     "jon myung",
-     "mike mangini",
-     "james labrie"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater live in Chile 2016 - A new beginning (John Petrucci Solo)",
-     "description": ""
+    contentDetails: {
+      duration: 'PT56M14S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '449913',
+      likeCount: '2794',
+      dislikeCount: '160',
+      favoriteCount: '0',
+      commentCount: '101'
     }
-   },
-   "contentDetails": {
-    "duration": "PT3M48S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "56674",
-    "likeCount": "438",
-    "dislikeCount": "9",
-    "favoriteCount": "0",
-    "commentCount": "86"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/15TvZ-4skb9LW6ARD2O3dEvwJDs\"",
-   "id": "ZmTJD3sjVIU",
-   "snippet": {
-    "publishedAt": "2015-10-20T20:43:47.000Z",
-    "channelId": "UCU9BUc5qzCrWEhvGXswXMPA",
-    "title": "Mike Mangini drum solo (Dream Theater live@luna park)",
-    "description": "Абсолютно безбашенный Мангини!",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/ZmTJD3sjVIU/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/ZmTJD3sjVIU/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/ZmTJD3sjVIU/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/2lpll7qBXbYB2MIBU3jGQaA3r4A"',
+    id: 'ei94I77RuzE',
+    snippet: {
+      publishedAt: '2015-06-27T20:51:08.000Z',
+      channelId: 'UCWJCR2r0umxTFjKjqLQ23FA',
+      title: 'Pulse 1 - FULL ALBUM',
+      description: '1996 - Pulse Vol 1 - This Is Psychedelic Trance (VA)\nTracklist: CD 1\n1. Stanley Shanti & The Chillum Wallahs - Placid 0:00\n2. Green Nuns Of The Revolution - Cor 7:03\n3. Paradise Connection - Portamento 14:10\n4. Brain Accent - Orange Acid 22:08\n5. Transwave - Axonal 31:15\n6. Art Of Trance - Octopus (MWNN Remix) 38:53\n7. Rainbow Spirit - Prana 46:08\n8. Doof - Born Again 54:27\n9. Disco Volante - Moonraker (MWNN Remix) 1:01:54\n10. Sourmash - The Blessing 1:09:15\n\nTracklist: CD 2\n1. Total Eclipse - Transparent Mind 1:18:11\n2. Indoor - The Key 1:25:19\n3. Phreax - Bodynamique 1:33:48\n4. Amanite FX - Secret Of Mana 1:40:46\n5. Soluna - Dancing Spirit 1:48:00\n6. Quatermass - Kali 1:54:27\n7. Blue Planet Cooperation - Antidote 2:02:03\n8. Electric Universe - Electronic Pulsation 2:10:01\n9. Judson J. Eiloart - Orion 2:19:22\n10. Hallucinogen - Astral Pancakes 2:26:40\n@Discogs: http://www.discogs.com/Various-Pulse-...',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/ei94I77RuzE/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/ei94I77RuzE/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/ei94I77RuzE/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/ei94I77RuzE/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'ΓΙΩΡΓΟΣ ΘΩΜΑΣ',
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pulse 1 - FULL ALBUM',
+        description: '1996 - Pulse Vol 1 - This Is Psychedelic Trance (VA)\nTracklist: CD 1\n1. Stanley Shanti & The Chillum Wallahs - Placid 0:00\n2. Green Nuns Of The Revolution - Cor 7:03\n3. Paradise Connection - Portamento 14:10\n4. Brain Accent - Orange Acid 22:08\n5. Transwave - Axonal 31:15\n6. Art Of Trance - Octopus (MWNN Remix) 38:53\n7. Rainbow Spirit - Prana 46:08\n8. Doof - Born Again 54:27\n9. Disco Volante - Moonraker (MWNN Remix) 1:01:54\n10. Sourmash - The Blessing 1:09:15\n\nTracklist: CD 2\n1. Total Eclipse - Transparent Mind 1:18:11\n2. Indoor - The Key 1:25:19\n3. Phreax - Bodynamique 1:33:48\n4. Amanite FX - Secret Of Mana 1:40:46\n5. Soluna - Dancing Spirit 1:48:00\n6. Quatermass - Kali 1:54:27\n7. Blue Planet Cooperation - Antidote 2:02:03\n8. Electric Universe - Electronic Pulsation 2:10:01\n9. Judson J. Eiloart - Orion 2:19:22\n10. Hallucinogen - Astral Pancakes 2:26:40\n@Discogs: http://www.discogs.com/Various-Pulse-...'
+      }
     },
-    "channelTitle": "Александр Романов",
-    "tags": [
-     "Drums (Musical Instrument)",
-     "Mike Mangini (Drummer)",
-     "Drum Solo",
-     "Dream Theater",
-     "Live At Luna Park (Musical Album)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Mike Mangini drum solo (Dream Theater live@luna park)",
-     "description": "Абсолютно безбашенный Мангини!"
+    contentDetails: {
+      duration: 'PT2H34M44S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '4818',
+      likeCount: '68',
+      dislikeCount: '1',
+      favoriteCount: '0',
+      commentCount: '7'
     }
-   },
-   "contentDetails": {
-    "duration": "PT6M35S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "regionRestriction": {
-     "blocked": [
-      "NZ",
-      "MX",
-      "AU",
-      "US"
-     ]
-    },
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "210731",
-    "likeCount": "1430",
-    "dislikeCount": "69",
-    "favoriteCount": "0",
-    "commentCount": "214"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/jN1mgsTNM1k30nO9xkd3qa5jPfM\"",
-   "id": "I3XFbiF32D4",
-   "snippet": {
-    "publishedAt": "2013-10-14T02:56:47.000Z",
-    "channelId": "UCPr6mzohNd_5C0pevXHzZlQ",
-    "title": "dream theater   instrumedley modern drummer festival 2003",
-    "description": "",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/I3XFbiF32D4/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/I3XFbiF32D4/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/I3XFbiF32D4/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/rfPAy_qioxiogfp5njJQRm3Vqrg"',
+    id: 'KsC8VBQ3RDw',
+    snippet: {
+      publishedAt: '2017-06-02T11:45:11.000Z',
+      channelId: 'UCWMee3gK5cst25qisWUdAVg',
+      title: 'Andy Voigt (DJ Pulse8) - Trance Energy X-Mix 2001',
+      description: '01. Binary Finary - 2000 (DJ Jam X & Dumonde\'s Millennium Mix) \n02. DJ JamX - !Sexomatic! (DJ JamX & De Leon\'s DuMonde Remix)\n03. Dumonde - Tomorrow (DJ JamX & De Leon Remix)\n04. Nick Sentience - Freedom \n05. Parker & Clind - Generator (Power Club Mix)\n06. Scooter - F**k The Millennium \n07. Cortina feat. BK & Madam Friction - Erection [Take It To The Top]\n08. Captain Tinrib - Vinyl Warning | Weirdo - Vinyl Warning ???\n09. Delerium - Silence (Airscape Remix) \n10. DJ Quicksilver - Ameno (Club Mix)\n11. Tiesto - Sparkles (Airscape Remix) \n12. CRW - I Feel Love (DJ JamX & De Leon Remix) \n13. Scooter - The Pusher II (Rare Mix)\n14. Rank 1 - Airwave (Rank 1 vs Dutchforce Mix)',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/KsC8VBQ3RDw/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/KsC8VBQ3RDw/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/KsC8VBQ3RDw/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/KsC8VBQ3RDw/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/KsC8VBQ3RDw/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'zerozeppelin',
+      tags: [
+        'andy voigt',
+        'voigt',
+        'dj tiesto',
+        'tiesto',
+        'trance',
+        'trance energy',
+        'xmix',
+        'x-mix',
+        '2001',
+        'trancemusic',
+        'johan gielen',
+        'tomorrowland',
+        'dumonde',
+        'rank 1',
+        'energy'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Andy Voigt (DJ Pulse8) - Trance Energy X-Mix 2001',
+        description: '01. Binary Finary - 2000 (DJ Jam X & Dumonde\'s Millennium Mix) \n02. DJ JamX - !Sexomatic! (DJ JamX & De Leon\'s DuMonde Remix)\n03. Dumonde - Tomorrow (DJ JamX & De Leon Remix)\n04. Nick Sentience - Freedom \n05. Parker & Clind - Generator (Power Club Mix)\n06. Scooter - F**k The Millennium \n07. Cortina feat. BK & Madam Friction - Erection [Take It To The Top]\n08. Captain Tinrib - Vinyl Warning | Weirdo - Vinyl Warning ???\n09. Delerium - Silence (Airscape Remix) \n10. DJ Quicksilver - Ameno (Club Mix)\n11. Tiesto - Sparkles (Airscape Remix) \n12. CRW - I Feel Love (DJ JamX & De Leon Remix) \n13. Scooter - The Pusher II (Rare Mix)\n14. Rank 1 - Airwave (Rank 1 vs Dutchforce Mix)'
+      }
     },
-    "channelTitle": "Angga Vedanta",
-    "categoryId": "22",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "dream theater   instrumedley modern drummer festival 2003",
-     "description": ""
+    contentDetails: {
+      duration: 'PT1H4M16S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '99',
+      likeCount: '2',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '2'
     }
-   },
-   "contentDetails": {
-    "duration": "PT13M28S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1782750",
-    "likeCount": "7720",
-    "dislikeCount": "198",
-    "favoriteCount": "0",
-    "commentCount": "586"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/O0G0ID_Zo4AC1j0Aq7mpDya-m6A\"",
-   "id": "PB06auioy0Y",
-   "snippet": {
-    "publishedAt": "2014-10-31T22:00:48.000Z",
-    "channelId": "UCJmZBQS4EoLu0Ls_0-LYQsA",
-    "title": "Dream Theater - Finally free  ( Live From The Boston Opera House ) - with lyrics",
-    "description": "Dream Theater -  Finally free ( Live From The Boston Opera House ) - with lyrics",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/PB06auioy0Y/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/PB06auioy0Y/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/PB06auioy0Y/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/PB06auioy0Y/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/PB06auioy0Y/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/YbC2LUmqNHOglABIO6bRK27J2sE"',
+    id: '80q4re_x9jU',
+    snippet: {
+      publishedAt: '2017-01-13T17:00:01.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: '\'FAREWELL\' Chillstep Mix by Pulse8',
+      description: '\'FAREWELL\' Chillstep Mix by Pulse8\nFree DL:\nPulse8 on Spotify: https://goo.gl/MhiH2M\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Free DL ▼\n\n\n▼ Tracklist ▼\n00:00 TheLastFox - Faded\n05:18 Resonance - Abandoned\n08:14 Solace - Saudade\n15:15 Logan Wishart - Those Who Remain\n17:35 Creepa & Subsets - Alone\n21:04 Resonata - Olēka\n22:51 Diversity of Silence - Far Away\n27:53 Resonata - City of Roses\n32:09 Nyanara - The Colors Changed\n36:17 Nyte - The Girl\n40:02 Aerocity - Love Lost (Asiah Remix)\n45:20 Logan Wishart - Lunar\n47:53 Ayush - Snjór\n51:39 Jay Rodgers - Come To Realise (Alaskan Tapes Remix)\n\n▼ Submit your music to Pulse8 ▼\nhttp://pulse8music.toneden.io\n\nA Beautiful Chillstep Mix by Pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/80q4re_x9jU/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/80q4re_x9jU/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/80q4re_x9jU/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/80q4re_x9jU/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/80q4re_x9jU/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chillstep 2016',
+        'chillstep mix 2016',
+        'pulse8 chillstep',
+        'best of chillstep',
+        'best of chillstep mix',
+        'best of chillstep mix 2016',
+        'chillstep 2017',
+        'chillstep mix 2017',
+        'chillstep music 2017',
+        'chillstep playlist',
+        'chillstep playlist 2017',
+        'pulse8 chillstep 2017',
+        'chillstep pulse8 mix 2017',
+        'chill mix',
+        'chillout mix',
+        'chill',
+        'chillout',
+        'chill music mix 2017 pulse8',
+        'chillout mix pulse8 2017'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: '\'FAREWELL\' Chillstep Mix by Pulse8',
+        description: '\'FAREWELL\' Chillstep Mix by Pulse8\nFree DL:\nPulse8 on Spotify: https://goo.gl/MhiH2M\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Free DL ▼\n\n\n▼ Tracklist ▼\n00:00 TheLastFox - Faded\n05:18 Resonance - Abandoned\n08:14 Solace - Saudade\n15:15 Logan Wishart - Those Who Remain\n17:35 Creepa & Subsets - Alone\n21:04 Resonata - Olēka\n22:51 Diversity of Silence - Far Away\n27:53 Resonata - City of Roses\n32:09 Nyanara - The Colors Changed\n36:17 Nyte - The Girl\n40:02 Aerocity - Love Lost (Asiah Remix)\n45:20 Logan Wishart - Lunar\n47:53 Ayush - Snjór\n51:39 Jay Rodgers - Come To Realise (Alaskan Tapes Remix)\n\n▼ Submit your music to Pulse8 ▼\nhttp://pulse8music.toneden.io\n\nA Beautiful Chillstep Mix by Pulse8..'
+      }
     },
-    "channelTitle": "D T F O R E V E R",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "Act II: Scene Nine: Finally Free (Musical Recording)",
-     "Breaking the Fourth Wall",
-     "Theatre",
-     "dream",
-     "theater",
-     "July",
-     "Grade",
-     "legenda",
-     "legendado",
-     "letra",
-     "lyrics",
-     "tradução",
-     "images and words",
-     "awake",
-     "scenes from memory",
-     "six degrees of inner turbulence",
-     "black clouds and silver linnings",
-     "systematic chaos",
-     "score",
-     "budokan",
-     "romavarium",
-     "octavarium",
-     "james labrie",
-     "john petrucci",
-     "jordan rudess",
-     "mike mangini",
-     "mike portnoy",
-     "john myung",
-     "Live From The Boston Opera House",
-     "4th",
-     "Finally free"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Finally free  ( Live From The Boston Opera House ) - with lyrics",
-     "description": "Dream Theater -  Finally free ( Live From The Boston Opera House ) - with lyrics"
+    contentDetails: {
+      duration: 'PT57M17S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '26113',
+      likeCount: '462',
+      dislikeCount: '10',
+      favoriteCount: '0',
+      commentCount: '35'
     }
-   },
-   "contentDetails": {
-    "duration": "PT11M49S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "453063",
-    "likeCount": "1942",
-    "dislikeCount": "57",
-    "favoriteCount": "0",
-    "commentCount": "396"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/1s52gHrYre9Dh_m4WwXtY3hWrdg\"",
-   "id": "2wKx_SBjHDY",
-   "snippet": {
-    "publishedAt": "2014-12-22T09:33:28.000Z",
-    "channelId": "UCDHu87pKVWi_W2y_rdC_LMQ",
-    "title": "Dream Theater - This Dying Soul with Lyrics [Live at Budokan]",
-    "description": "Live at Budokan\nDream Theater - This Dying Soul\nLyrics on screen",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/2wKx_SBjHDY/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/2wKx_SBjHDY/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/2wKx_SBjHDY/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/2wKx_SBjHDY/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/2wKx_SBjHDY/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/hSqM1ccgIa6_-wOu9PPYWCozyyM"',
+    id: '3ondhn6VDak',
+    snippet: {
+      publishedAt: '2015-08-11T12:09:55.000Z',
+      channelId: 'UCWJCR2r0umxTFjKjqLQ23FA',
+      title: 'Pulse 6 - FULL ALBUM',
+      description: '1998 - Pulse Vol 6 - The Next Generation (VA)\nTracklist: CD 1\n1. Blue Planet Corporation - Crystal 0:00\n2. Saafi Brothers - Internal Code Error (X-Dream Remix) 8:45\n3. Deviant Electronics - Vesuvius 15:59\n4. Der Stern Von Afrika - Nomo Butu 23:58\n5. Epic-Tone - Squirty Spiral 31:31\n6. The Light - Expand The Room (Illumination Mix) 41:06\n7. Bypass Unit - Phaser Galaxy 50:18\n8. Subcouds - Space Angel 57:03\n9. Astral Projection - No One Ever Dreams 1:04:44\n\nTracklist: CD 2\n1. Slinky Wizard - People Like Us (Polenski Mix) 1:12:54\n2. Prana - Alien Pets (Free Tibet Mix) 1:21:07\n3. Koxbox - Stratosfierce 2001 1:27:59\n4. The Green Nuns Of The Revolution - Klunk! 1:35:35\n5. Four Carry Nuts - Donuts 1:44:40\n6. Oforia - Cream 1:53:55\n7. Front Line Assembly - Colombian Necktie (GOArge Mix By Tim Schuldt) 2:01:28\n8. Phreaky - The Second Moon 2:09:02\n9. Anne Clark - Wallies (Night Of The Hunter Remix By Juno Reactor) 2:16:01\n@Discogs: http://www.discogs.com/Various-Pulse-...',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/3ondhn6VDak/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/3ondhn6VDak/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/3ondhn6VDak/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/3ondhn6VDak/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'ΓΙΩΡΓΟΣ ΘΩΜΑΣ',
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pulse 6 - FULL ALBUM',
+        description: '1998 - Pulse Vol 6 - The Next Generation (VA)\nTracklist: CD 1\n1. Blue Planet Corporation - Crystal 0:00\n2. Saafi Brothers - Internal Code Error (X-Dream Remix) 8:45\n3. Deviant Electronics - Vesuvius 15:59\n4. Der Stern Von Afrika - Nomo Butu 23:58\n5. Epic-Tone - Squirty Spiral 31:31\n6. The Light - Expand The Room (Illumination Mix) 41:06\n7. Bypass Unit - Phaser Galaxy 50:18\n8. Subcouds - Space Angel 57:03\n9. Astral Projection - No One Ever Dreams 1:04:44\n\nTracklist: CD 2\n1. Slinky Wizard - People Like Us (Polenski Mix) 1:12:54\n2. Prana - Alien Pets (Free Tibet Mix) 1:21:07\n3. Koxbox - Stratosfierce 2001 1:27:59\n4. The Green Nuns Of The Revolution - Klunk! 1:35:35\n5. Four Carry Nuts - Donuts 1:44:40\n6. Oforia - Cream 1:53:55\n7. Front Line Assembly - Colombian Necktie (GOArge Mix By Tim Schuldt) 2:01:28\n8. Phreaky - The Second Moon 2:09:02\n9. Anne Clark - Wallies (Night Of The Hunter Remix By Juno Reactor) 2:16:01\n@Discogs: http://www.discogs.com/Various-Pulse-...'
+      }
     },
-    "channelTitle": "japanin poika",
-    "tags": [
-     "Dream Theater",
-     "This Dying Soul",
-     "Progressive",
-     "japanin_poika",
-     "Live at Budokan",
-     "Lyrics"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - This Dying Soul with Lyrics [Live at Budokan]",
-     "description": "Live at Budokan\nDream Theater - This Dying Soul\nLyrics on screen"
+    contentDetails: {
+      duration: 'PT2H21M49S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '2687',
+      likeCount: '26',
+      dislikeCount: '2',
+      favoriteCount: '0',
+      commentCount: '3'
     }
-   },
-   "contentDetails": {
-    "duration": "PT11M46S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "90417",
-    "likeCount": "525",
-    "dislikeCount": "6",
-    "favoriteCount": "0",
-    "commentCount": "48"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/z0INP1jjyga3uzqKLL1sUD6GYgQ\"",
-   "id": "g1FatpMIcKQ",
-   "snippet": {
-    "publishedAt": "2016-08-02T06:55:26.000Z",
-    "channelId": "UCXBom7aVUut-1M28Xu9wlwA",
-    "title": "Dream Theater - Outcry [Live At Luna Park] HD",
-    "description": "",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/g1FatpMIcKQ/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/g1FatpMIcKQ/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/g1FatpMIcKQ/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/g1FatpMIcKQ/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/g1FatpMIcKQ/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/joF7UiGT5wh4eZgNna3RPMMBEO8"',
+    id: 'qR9orH_JlFA',
+    snippet: {
+      publishedAt: '2015-02-07T10:00:12.000Z',
+      channelId: 'UCmHhYona8_Ntvi80-2XT-0w',
+      title: 'Mystry - Pulse 8 [Instrumental]',
+      description: 'Go cop the EP now - \nhttps://itunes.apple.com/si/album/pulse-8-ep/id1012911110\n\nNo Copyright Infringement Intended.\nRemoval upon request.\nSUPPORT THE ARTIST - BUY THEIR MUSIC',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/qR9orH_JlFA/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/qR9orH_JlFA/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/qR9orH_JlFA/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/qR9orH_JlFA/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/qR9orH_JlFA/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Grimey Grime Beats',
+      tags: [
+        'grime',
+        'grime instrumental',
+        'rudekid grime instrumental',
+        'teddy grime instrumental',
+        'preditah grime instrumental'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Mystry - Pulse 8 [Instrumental]',
+        description: 'Go cop the EP now - \nhttps://itunes.apple.com/si/album/pulse-8-ep/id1012911110\n\nNo Copyright Infringement Intended.\nRemoval upon request.\nSUPPORT THE ARTIST - BUY THEIR MUSIC'
+      }
     },
-    "channelTitle": "TheMiracle",
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Outcry [Live At Luna Park] HD",
-     "description": ""
+    contentDetails: {
+      duration: 'PT4M9S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '41981',
+      likeCount: '672',
+      dislikeCount: '5',
+      favoriteCount: '0',
+      commentCount: '52'
     }
-   },
-   "contentDetails": {
-    "duration": "PT11M26S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1504",
-    "likeCount": "15",
-    "dislikeCount": "0",
-    "favoriteCount": "0",
-    "commentCount": "1"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/fVQK7g7SogAk2xwi_WKl96EtaYE\"",
-   "id": "d6Y799Z7z-o",
-   "snippet": {
-    "publishedAt": "2012-12-21T01:53:55.000Z",
-    "channelId": "UCw6McGTtny6boquKpWp_kBg",
-    "title": "Dream Theater - Live Scenes from New York (FULL CONCERT)",
-    "description": "More than 3 hours of DT! Includes ALL the content seen in the DVD (including bonus features) and even MORE.\n\nFeaturing:\nGuitar - John Petrucci\nBass - John Myung\nDrums - Mike Portnoy\nKeyboards - Jordan Rudess\nVocals - James LaBrie\n\nComplete setlist:\n\nMetropolis Pt. 2: Scenes from a memory\n   00:00 Regression\n   02:46 Overture 1928\n   06:17 Strange Déjà vu\n   11:20 Through My Words\n   12:29 Fatal Tragedy\n   19:24 Beyond This Life\n   30:45 John Petrucci & Theresa Thomason Solo Spot\n   33:59 Through Her Eyes\n   40:13 Home\n   53:37 The Dance of Eternity\n   1:00:01 One Last Time\n   1:04:13 The Spirit Carries On\n   1:11:54 Finally Free\n\n1:22:53 Metropolis Pt.1: The Miracle and the Sleeper\n1:33:29 The Mirror / Lie\n1:41:45 Just Let Me Breathe\n1:45:49 Acid Rain (from Liquid Tension Experiment)\n1:48:23 Caught in a New Millenium\n1:54:45 Another Day\n1:59:58 Jordan Rudess Keyboard Solo\n\nA Mind Beside Itself\n   2:06:43 Erotomania\n   2:14:02 Voices\n   2:23:47 The Silent Man\n\n2:28:55 Learning to Live\n2:42:56 A Change of Seasons",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/d6Y799Z7z-o/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/d6Y799Z7z-o/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/d6Y799Z7z-o/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/d6Y799Z7z-o/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/sfUglAe07793fqiQolc5YNKGdQ4"',
+    id: '59aPIyTq1jA',
+    snippet: {
+      publishedAt: '2017-01-30T15:01:04.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: '\'ZEN V\' Oriental Chillstep Mix [1 Hour of Chill Music] チルバイブ',
+      description: '\'ZEN V\' Oriental Chillstep Mix [1 Hour of Chill Music] チルバイブ\nFree DL: http://hypeddit.com/track/yt/v49uzz\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\nSoundcloud: https://soundcloud.com/pulse8/zen-v\nFree DL: http://hypeddit.com/track/yt/v49uzz\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 OverHertz - Zen\n04:50 Zen Ongaku - To The Moon\n08:34 Mindkeys & Wonderland - Lost In Japan\n12:03 OverHertz ft. Aiva - Take Me Away\n16:51 Zen Ongaku ft. Veela - Believe\n21:47 Kai - Her Melancholy\n26:37 Unfamiliar Identity - Ikigai\n30:44 Michael FK & G. Strizzolo - Math (Michael FK Version)\n37:22 Zen Ongaku - Songbird\n41:23 Leading Leo - Yearning\n46:04 Kisnou - Tale of a Life Seeker\n49:39 Ptr. - Taiga\n52:58 Xandra - Petrichor\n\n▸ Artwork by TacoSauceNinja\nhttp://tacosauceninja.deviantart.com/art/Last-Leaves-579773551\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/59aPIyTq1jA/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/59aPIyTq1jA/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/59aPIyTq1jA/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/59aPIyTq1jA/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/59aPIyTq1jA/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chillstep 2017',
+        'chillstep mix 2017',
+        'pulse8 chillstep 2017',
+        'best of chillstep',
+        'zen',
+        'zen chillstep',
+        'zen oriental chillstep mix pulse8',
+        'oriental music',
+        'asian music',
+        'asian relaxing music',
+        'oriental chillout music',
+        'chill',
+        'chillout',
+        'chill mix',
+        'chillout mix',
+        'chill music mix 2017',
+        'chillout music mix 2017',
+        'ZEN V Oriental Chillstep Mix 1 Hour of Chill Music チルバイブ',
+        'chill livestream',
+        'livestream',
+        'ZEN MIX',
+        'ZEN PULSE8',
+        'ZEN MIX PULSE8',
+        'ZEN CHILLSTEP'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: '\'ZEN V\' Oriental Chillstep Mix [1 Hour of Chill Music] チルバイブ',
+        description: '\'ZEN V\' Oriental Chillstep Mix [1 Hour of Chill Music] チルバイブ\nFree DL: http://hypeddit.com/track/yt/v49uzz\nPulse8 on Spotify! https://goo.gl/MhiH2M\n\n▸ Pulse8\nhttp://soundcloud.com/pulse8\nhttp://facebook.com/pulse8music\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▸ Stream & Download\nSoundcloud: https://soundcloud.com/pulse8/zen-v\nFree DL: http://hypeddit.com/track/yt/v49uzz\n\n▸ Support Pulse8\nhttp://support.pulse8music.com\n\n▸ Tracklist\n00:00 OverHertz - Zen\n04:50 Zen Ongaku - To The Moon\n08:34 Mindkeys & Wonderland - Lost In Japan\n12:03 OverHertz ft. Aiva - Take Me Away\n16:51 Zen Ongaku ft. Veela - Believe\n21:47 Kai - Her Melancholy\n26:37 Unfamiliar Identity - Ikigai\n30:44 Michael FK & G. Strizzolo - Math (Michael FK Version)\n37:22 Zen Ongaku - Songbird\n41:23 Leading Leo - Yearning\n46:04 Kisnou - Tale of a Life Seeker\n49:39 Ptr. - Taiga\n52:58 Xandra - Petrichor\n\n▸ Artwork by TacoSauceNinja\nhttp://tacosauceninja.deviantart.com/art/Last-Leaves-579773551\n\n▸ Submit Your Track\nhttp://pulse8music.toneden.io\n\nanother beautiful chill mix by pulse8..'
+      },
+      defaultAudioLanguage: 'en-US'
     },
-    "channelTitle": "evenflow1816",
-    "tags": [
-     "Dream Theater",
-     "Live Scenes from New York",
-     "Petrucci",
-     "Rudess",
-     "Portnoy",
-     "Metropolis",
-     "scenes from a memory",
-     "new York",
-     "Live",
-     "concert",
-     "progressive",
-     "metal",
-     "a change of seasons",
-     "learning to live",
-     "Musical"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Live Scenes from New York (FULL CONCERT)",
-     "description": "More than 3 hours of DT! Includes ALL the content seen in the DVD (including bonus features) and even MORE.\n\nFeaturing:\nGuitar - John Petrucci\nBass - John Myung\nDrums - Mike Portnoy\nKeyboards - Jordan Rudess\nVocals - James LaBrie\n\nComplete setlist:\n\nMetropolis Pt. 2: Scenes from a memory\n   00:00 Regression\n   02:46 Overture 1928\n   06:17 Strange Déjà vu\n   11:20 Through My Words\n   12:29 Fatal Tragedy\n   19:24 Beyond This Life\n   30:45 John Petrucci & Theresa Thomason Solo Spot\n   33:59 Through Her Eyes\n   40:13 Home\n   53:37 The Dance of Eternity\n   1:00:01 One Last Time\n   1:04:13 The Spirit Carries On\n   1:11:54 Finally Free\n\n1:22:53 Metropolis Pt.1: The Miracle and the Sleeper\n1:33:29 The Mirror / Lie\n1:41:45 Just Let Me Breathe\n1:45:49 Acid Rain (from Liquid Tension Experiment)\n1:48:23 Caught in a New Millenium\n1:54:45 Another Day\n1:59:58 Jordan Rudess Keyboard Solo\n\nA Mind Beside Itself\n   2:06:43 Erotomania\n   2:14:02 Voices\n   2:23:47 The Silent Man\n\n2:28:55 Learning to Live\n2:42:56 A Change of Seasons"
+    contentDetails: {
+      duration: 'PT56M27S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '228739',
+      likeCount: '3522',
+      dislikeCount: '87',
+      favoriteCount: '0',
+      commentCount: '169'
     }
-   },
-   "contentDetails": {
-    "duration": "PT3H7M33S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "370102",
-    "likeCount": "1141",
-    "dislikeCount": "95",
-    "favoriteCount": "0",
-    "commentCount": "167"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/ZlAhStYe_sDmo4dmwOb2YjT9JM4\"",
-   "id": "HpxN5WHgmmU",
-   "snippet": {
-    "publishedAt": "2014-10-26T19:07:47.000Z",
-    "channelId": "UCjktP-4B4jZoNjbhf4B4uFg",
-    "title": "DREAM THEATER SELAMAT MALAM - ON THE BACK OF ANGELS live in Jakarta, Indonesia 2014",
-    "description": "DREAM THEATER ALONG FOR THE RIDE TOUR - Jakarta Indonesia October 26, 2014 at LAPANGAN D SENAYAN",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/HpxN5WHgmmU/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/HpxN5WHgmmU/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/HpxN5WHgmmU/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/9RRLIgo1XXVR4LIurMkAgZzPZ08"',
+    id: 'b0UlkOs6rWM',
+    snippet: {
+      publishedAt: '2017-07-12T10:57:22.000Z',
+      channelId: 'UCOUfSzsaLwKutiBrEEqxlSA',
+      title: 'Equinox - Liquid Drum & Bass Mix - Pulse8 x Equinox (Telomic Guest Mix)',
+      description: 'Equinox - Liquid Drum & Bass Mix - Pulse8 x Equinox (Telomic Guest Mix)\n[Liquid Drum & Bass]\n--------------------------------------------------------------------------\n▸ Equinox:\nFacebook ► https://www.facebook.com/EquinoxMusica/\nYoutube ► https://www.youtube.com/channel/UCOUfSzsaLwKutiBrEEqxlSA\nSoundcloud [Free Download] ► https://soundcloud.com/equinox-music\nInstagram ► https://www.instagram.com/equinox.collective/\n--------------------------------------------------------------------------\n▸ Pulse8:\nFacebook ► http://facebook.com/pulse8music\nYoutube ► http://youtube.com/pulse8music\nSoundcloud ► http://soundcloud.com/pulse8\nSpotify ► https://goo.gl/MhiH2M\n--------------------------------------------------------------------------\n▸ Guest Mix by Telomic\nhttps://soundcloud.com/telomicuk\nhttps://facebook.com/telomicuk\n--------------------------------------------------------------------------\n▸ Tracklist \nTelomic - Onism [Unreleased]\nTelomic - Speculate\nTelomic - From Me to You [Unreleased]\nPole & Bryson - Talk To Me\nSpectrasoul feat DBridge - Glimpse (Ivy Lab Remix)\nJune Miller feat Hannah Lux - We Are Not Human (Akomplis Bootleg)\nChampion - Crystallise\nGLXY - Introspective\nIvy Lab - Live On Your Smile\nLSB - Capture My Heart feat Dain Stuart\nPhaction & GLXY - These Words\nDexcell feat Charley Pinfold - Silence (The Vanguard Project Remix)\nIvy Lab - Focus\nChase & Status - Time (Telomic Bootleg) [Unreleased]\nLow-r - Harmonize It\nDexcell - Running feat Champion & Charlotte Haining\nGLXY - Overwatch\nPhaction - Someone\nSPY - Love Hurts\nHugh Hardie - Colourful Language\nChildren of Zeus feat DRS - Still Standing (Lenzman Remix)\nDaughter - Youth (Hybrid Minds Bootleg)\nTelomic - April [Unreleased]\nKode Blue & Telomic - ID [Unreleased]\nEd:It - Pathways\nTokyo Prose - Ventura\nMediks feat Astronaut - Blown Away (Koschy Remix)\nDeadmau5 - Raise Your Weapon (Telomic Bootleg)\nTelomic - Misdirection [Unreleased]\nTelomic - Compelled\n\n▸ Submit Your Track\nEquinox.Music@Outlook.com',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/b0UlkOs6rWM/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/b0UlkOs6rWM/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/b0UlkOs6rWM/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/b0UlkOs6rWM/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/b0UlkOs6rWM/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Equinox Musique',
+      tags: [
+        'liquid funk',
+        'liquid drum & bass',
+        'liquid drum and bass',
+        'dnb',
+        'liquid dnb',
+        'liquid d&b',
+        'Liquicity',
+        'yearmix',
+        '2017',
+        'liquid drum & bass mix',
+        'liquid drum and bass mix',
+        'liquid mix',
+        'liquid',
+        'drum & bass mix',
+        'vocal drum and bass',
+        'vocal drum & bass mix',
+        'vocal',
+        'summer drum & bass',
+        'summer 2017 drum & bass',
+        'summer drum and bass mix',
+        'summer drum & bass mix',
+        'telomic',
+        'telomic guest mix',
+        'pulse8',
+        'Liquid Drum & Bass Mix - Pulse8 x Equinox',
+        'party drum and bass mix',
+        'summer liquid drum and bass'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Equinox - Liquid Drum & Bass Mix - Pulse8 x Equinox (Telomic Guest Mix)',
+        description: 'Equinox - Liquid Drum & Bass Mix - Pulse8 x Equinox (Telomic Guest Mix)\n[Liquid Drum & Bass]\n--------------------------------------------------------------------------\n▸ Equinox:\nFacebook ► https://www.facebook.com/EquinoxMusica/\nYoutube ► https://www.youtube.com/channel/UCOUfSzsaLwKutiBrEEqxlSA\nSoundcloud [Free Download] ► https://soundcloud.com/equinox-music\nInstagram ► https://www.instagram.com/equinox.collective/\n--------------------------------------------------------------------------\n▸ Pulse8:\nFacebook ► http://facebook.com/pulse8music\nYoutube ► http://youtube.com/pulse8music\nSoundcloud ► http://soundcloud.com/pulse8\nSpotify ► https://goo.gl/MhiH2M\n--------------------------------------------------------------------------\n▸ Guest Mix by Telomic\nhttps://soundcloud.com/telomicuk\nhttps://facebook.com/telomicuk\n--------------------------------------------------------------------------\n▸ Tracklist \nTelomic - Onism [Unreleased]\nTelomic - Speculate\nTelomic - From Me to You [Unreleased]\nPole & Bryson - Talk To Me\nSpectrasoul feat DBridge - Glimpse (Ivy Lab Remix)\nJune Miller feat Hannah Lux - We Are Not Human (Akomplis Bootleg)\nChampion - Crystallise\nGLXY - Introspective\nIvy Lab - Live On Your Smile\nLSB - Capture My Heart feat Dain Stuart\nPhaction & GLXY - These Words\nDexcell feat Charley Pinfold - Silence (The Vanguard Project Remix)\nIvy Lab - Focus\nChase & Status - Time (Telomic Bootleg) [Unreleased]\nLow-r - Harmonize It\nDexcell - Running feat Champion & Charlotte Haining\nGLXY - Overwatch\nPhaction - Someone\nSPY - Love Hurts\nHugh Hardie - Colourful Language\nChildren of Zeus feat DRS - Still Standing (Lenzman Remix)\nDaughter - Youth (Hybrid Minds Bootleg)\nTelomic - April [Unreleased]\nKode Blue & Telomic - ID [Unreleased]\nEd:It - Pathways\nTokyo Prose - Ventura\nMediks feat Astronaut - Blown Away (Koschy Remix)\nDeadmau5 - Raise Your Weapon (Telomic Bootleg)\nTelomic - Misdirection [Unreleased]\nTelomic - Compelled\n\n▸ Submit Your Track\nEquinox.Music@Outlook.com'
+      }
     },
-    "channelTitle": "Fetboy Slim",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "On The Backs Of Angels (Musical Recording)",
-     "ALONG FOR THE RIDE TOUR",
-     "DREAM THEATER JAKARTA 2014",
-     "LAPANGAN D SENAYAN",
-     "INDONESIA",
-     "Progressive Metal (Musical Genre)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "DREAM THEATER SELAMAT MALAM - ON THE BACK OF ANGELS live in Jakarta, Indonesia 2014",
-     "description": "DREAM THEATER ALONG FOR THE RIDE TOUR - Jakarta Indonesia October 26, 2014 at LAPANGAN D SENAYAN"
+    contentDetails: {
+      duration: 'PT54M28S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '224',
+      likeCount: '4',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '0'
     }
-   },
-   "contentDetails": {
-    "duration": "PT9M33S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": true,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "56635",
-    "likeCount": "151",
-    "dislikeCount": "3",
-    "favoriteCount": "0",
-    "commentCount": "38"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/1T7p7-b4Bgp65pe86CJOdkUemyE\"",
-   "id": "aqCkihctr0w",
-   "snippet": {
-    "publishedAt": "2010-08-13T05:23:30.000Z",
-    "channelId": "UCPpNDmp3AFluifeR_nu7fNA",
-    "title": "Dream Theater Instrumedley Live at Budokan Complete HD",
-    "description": "Dream Theater playing Instrumedley live at Budokan, this song its a great medley.\r\nA mi parecer la canción más compleja de esta excelente banda de metal progresivo gracias a @felipeviegas por subirlo completo el video es suyo",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/aqCkihctr0w/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/aqCkihctr0w/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/aqCkihctr0w/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/M1ROnLJ82Z6slmdbJ1ySqLk9Sno"',
+    id: 'F61Fm83Zhmo',
+    snippet: {
+      publishedAt: '2015-04-04T14:37:37.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'The Flashbulb - Cloud Shadows',
+      description: 'The Flashbulb - Cloud Shadows\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ Support The Flashbulb\n\n\n♥ Download Cloud Shadows\n\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Image Link \nhttp://alpha.wallhaven.cc/wallpaper/29809\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.com/submit',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/F61Fm83Zhmo/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/F61Fm83Zhmo/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/F61Fm83Zhmo/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/F61Fm83Zhmo/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/F61Fm83Zhmo/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'pulse8',
+        'pulse8music',
+        'The Flashbulb - Cloud Shadows',
+        'flashbulb',
+        'the flashbulb',
+        'cloud shadows',
+        'cloud',
+        'shadows',
+        'flashbulb cloud shadows',
+        'relaxing guitar',
+        'guitar',
+        'chillout guitar',
+        'chill',
+        'chillout',
+        'relax',
+        'relaxing'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'The Flashbulb - Cloud Shadows',
+        description: 'The Flashbulb - Cloud Shadows\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ Support The Flashbulb\n\n\n♥ Download Cloud Shadows\n\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Image Link \nhttp://alpha.wallhaven.cc/wallpaper/29809\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.com/submit'
+      }
     },
-    "channelTitle": "Eduardo Saldaña",
-    "tags": [
-     "Dream",
-     "Theater",
-     "DT",
-     "Live",
-     "at",
-     "Budokan",
-     "John",
-     "Petrucci",
-     "Mike",
-     "Portnoy",
-     "Jordan",
-     "Rudess",
-     "Myung",
-     "James",
-     "Labrie",
-     "Liquid",
-     "Tension",
-     "Metal",
-     "Progressive",
-     "Instrumental",
-     "Rock",
-     "instrumental",
-     "metal rock",
-     "concert",
-     "live concert",
-     "heavy metal",
-     "guitarist",
-     "concert live",
-     "drums",
-     "live band",
-     "live music",
-     "guitar",
-     "rock",
-     "awesome music",
-     "progressive rock",
-     "bass"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater Instrumedley Live at Budokan Complete HD",
-     "description": "Dream Theater playing Instrumedley live at Budokan, this song its a great medley.\r\nA mi parecer la canción más compleja de esta excelente banda de metal progresivo gracias a @felipeviegas por subirlo completo el video es suyo"
+    contentDetails: {
+      duration: 'PT2M17S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '36266',
+      likeCount: '467',
+      dislikeCount: '6',
+      favoriteCount: '0',
+      commentCount: '32'
     }
-   },
-   "contentDetails": {
-    "duration": "PT12M31S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "193766",
-    "likeCount": "1392",
-    "dislikeCount": "13",
-    "favoriteCount": "0",
-    "commentCount": "150"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/w4x4K53-xYSzyQQJG98LidYXRHM\"",
-   "id": "YtHcM29klfQ",
-   "snippet": {
-    "publishedAt": "2011-02-18T06:50:39.000Z",
-    "channelId": "UCZK11JMDwzWUM2aQH2l441A",
-    "title": "Dream Theater - The Ministry of Lost Souls [Live]",
-    "description": "Dream Theater - The Ministry of Lost Souls \r\nFrom Chaos in Motion 2007--2008 DVD\r\n\r\nMay 6, 2008 at Orpheum Theater in Vancouver\r\n\r\nComunidad de Dream Theater en Argentina: http://dreamtheaterarg.com.ar/\r\n\r\nLyrics\r\n\r\nThe water's edge\r\nIs where she waits\r\nLost souls still wandering\r\nMeant to die\r\nBut she's stuck not crossing over\r\n\r\nThe other side\r\nIs where he waits\r\nHis spirit reaching out\r\nMeant to save\r\nBut she's too scared to take his hand\r\n\r\nLiving in a world without you\r\n(Drowning in the past)\r\nIs living in no world at all\r\nSo now I call on you...\r\n\r\nRemember me? I gave you life\r\nYou would not take it\r\nYour suffering was all in vain\r\nIt's almost over now\r\nDon't turn your back on paradise\r\n\r\nFeeling scared, she's prepared\r\nTo give up everything\r\nShe can't stand to feel\r\nLike half of her is fading\r\n\r\nHe will choose the only way\r\nTo rid her of her pain\r\nTake her soul now\r\nThe decision has been made\r\n\r\nLiving in a world without love\r\n(A burden to my soul)\r\nIs living in a worthless world\r\nSo I will call on you...\r\n\r\nRemember me? I gave you life\r\nYou would not take it\r\nYour suffering was all in vain\r\nIt's almost over\r\n\r\nRemember me? You were so young\r\nHow could I tell you?\r\nRemember me? I am the one\r\nWho saved your life that night\r\n\r\nI was the one who would not abandon you\r\nEven in death I was the one who would not leave you\r\nI used my freedom to protect you\r\nAnd all the while direct you\r\nDo you remember me this time?\r\nEven in death I gave you life\r\nI gave you life!\r\n\r\nI wanted to\r\nDeserve a place\r\nA place beside you\r\nThis time when I reached out my hand\r\nIt reached all the way to heaven\r\n\r\nRemember me? I gave you life\r\nYou would not take it\r\nYour suffering was all in vain\r\nIt's almost over now\r\nGoodbye\r\nIt's almost over now\r\nGoodbye\r\n\r\nIt's time\r\nI release you from this life\r\nDon't turn your back on paradise",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/YtHcM29klfQ/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/YtHcM29klfQ/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/YtHcM29klfQ/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/4c7wNPbToiAmTH6NZ5m9OeYF1YQ"',
+    id: 'UDJ3fBr-N9Y',
+    snippet: {
+      publishedAt: '2017-01-20T16:00:03.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Rainy Day Music 008: A Beautiful Chillout Mix',
+      description: 'Rainy Day Music 008: A Beautiful Chillout Mix\n\nPulse8 on Spotify: https://goo.gl/MhiH2M\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Tracklist ▼\n00:00 Blackbird - Precious Little Things\n04:46 smokefishe - xo\n09:05 Raine & Roger Wilco & Subsets - Archive\n13:47 The Aurora Principle - Maybe, Tomorrow\n17:21 Liquid Memoirs x TOAC - Neukölln\n22:10 Logan Wishart - Vow\n25:41 The Aurora Principle - Our Memory\n28:51 Logan Wishart - Shoreline\n33:00 Sappheiros - Passion (Cash Rework)\n39:38 The Aurora Principle - Anri’s Lament\n43:46 SHIKIMO - ambient 04 (Redux)\n48:21 S’Hill - The Sun Is Still Sleeping\n52:32 Neutrin05 & Justin Jet Zorbas - Where We Once Stood\n\n▼ Submit your music to Pulse8 ▼\nhttp://pulse8music.toneden.io\n\n\nA Beautiful Chillstep Mix by Pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/UDJ3fBr-N9Y/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/UDJ3fBr-N9Y/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/UDJ3fBr-N9Y/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/UDJ3fBr-N9Y/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/UDJ3fBr-N9Y/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'pulse8 chillstep',
+        'best of chillstep',
+        'best of chillstep mix',
+        'rainy day music',
+        'a beautiful chillout mix',
+        'chill',
+        'chillout',
+        'chill mix',
+        'chillout mix',
+        'chill music',
+        'chillout music',
+        'chill music mix',
+        'chillout music mix',
+        'pulse8 chill music mix 2017',
+        'pulse8 chillout music mix 2017',
+        'chill chillout mix',
+        'chill mix 2016',
+        'chillout mix 2016',
+        'pulse8 chillstep mix',
+        'pulse8',
+        'chillstep 2017',
+        'chillstep mix 2017',
+        'best of chillstep mix 2017',
+        'pulse8 chillstep playlist 2017'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Rainy Day Music 008: A Beautiful Chillout Mix',
+        description: 'Rainy Day Music 008: A Beautiful Chillout Mix\n\nPulse8 on Spotify: https://goo.gl/MhiH2M\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Tracklist ▼\n00:00 Blackbird - Precious Little Things\n04:46 smokefishe - xo\n09:05 Raine & Roger Wilco & Subsets - Archive\n13:47 The Aurora Principle - Maybe, Tomorrow\n17:21 Liquid Memoirs x TOAC - Neukölln\n22:10 Logan Wishart - Vow\n25:41 The Aurora Principle - Our Memory\n28:51 Logan Wishart - Shoreline\n33:00 Sappheiros - Passion (Cash Rework)\n39:38 The Aurora Principle - Anri’s Lament\n43:46 SHIKIMO - ambient 04 (Redux)\n48:21 S’Hill - The Sun Is Still Sleeping\n52:32 Neutrin05 & Justin Jet Zorbas - Where We Once Stood\n\n▼ Submit your music to Pulse8 ▼\nhttp://pulse8music.toneden.io\n\n\nA Beautiful Chillstep Mix by Pulse8..'
+      }
     },
-    "channelTitle": "FullUser",
-    "tags": [
-     "DreamTheater",
-     "Systematic",
-     "Chaos",
-     "progressive",
-     "metal",
-     "rock",
-     "progresivo",
-     "Octavarium",
-     "john",
-     "petrucci",
-     "james",
-     "labrie",
-     "mike",
-     "portnoy",
-     "myung",
-     "Constant",
-     "Motion",
-     "ballad",
-     "solo",
-     "budokan",
-     "DT",
-     "symphony x",
-     "opeth",
-     "letra",
-     "lyrics",
-     "guitar",
-     "keyboard",
-     "kevin",
-     "moore"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - The Ministry of Lost Souls [Live]",
-     "description": "Dream Theater - The Ministry of Lost Souls \r\nFrom Chaos in Motion 2007--2008 DVD\r\n\r\nMay 6, 2008 at Orpheum Theater in Vancouver\r\n\r\nComunidad de Dream Theater en Argentina: http://dreamtheaterarg.com.ar/\r\n\r\nLyrics\r\n\r\nThe water's edge\r\nIs where she waits\r\nLost souls still wandering\r\nMeant to die\r\nBut she's stuck not crossing over\r\n\r\nThe other side\r\nIs where he waits\r\nHis spirit reaching out\r\nMeant to save\r\nBut she's too scared to take his hand\r\n\r\nLiving in a world without you\r\n(Drowning in the past)\r\nIs living in no world at all\r\nSo now I call on you...\r\n\r\nRemember me? I gave you life\r\nYou would not take it\r\nYour suffering was all in vain\r\nIt's almost over now\r\nDon't turn your back on paradise\r\n\r\nFeeling scared, she's prepared\r\nTo give up everything\r\nShe can't stand to feel\r\nLike half of her is fading\r\n\r\nHe will choose the only way\r\nTo rid her of her pain\r\nTake her soul now\r\nThe decision has been made\r\n\r\nLiving in a world without love\r\n(A burden to my soul)\r\nIs living in a worthless world\r\nSo I will call on you...\r\n\r\nRemember me? I gave you life\r\nYou would not take it\r\nYour suffering was all in vain\r\nIt's almost over\r\n\r\nRemember me? You were so young\r\nHow could I tell you?\r\nRemember me? I am the one\r\nWho saved your life that night\r\n\r\nI was the one who would not abandon you\r\nEven in death I was the one who would not leave you\r\nI used my freedom to protect you\r\nAnd all the while direct you\r\nDo you remember me this time?\r\nEven in death I gave you life\r\nI gave you life!\r\n\r\nI wanted to\r\nDeserve a place\r\nA place beside you\r\nThis time when I reached out my hand\r\nIt reached all the way to heaven\r\n\r\nRemember me? I gave you life\r\nYou would not take it\r\nYour suffering was all in vain\r\nIt's almost over now\r\nGoodbye\r\nIt's almost over now\r\nGoodbye\r\n\r\nIt's time\r\nI release you from this life\r\nDon't turn your back on paradise"
+    contentDetails: {
+      duration: 'PT55M29S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '53036',
+      likeCount: '806',
+      dislikeCount: '24',
+      favoriteCount: '0',
+      commentCount: '72'
     }
-   },
-   "contentDetails": {
-    "duration": "PT15M9S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "604469",
-    "likeCount": "4324",
-    "dislikeCount": "47",
-    "favoriteCount": "0",
-    "commentCount": "850"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/AKocT4GjMyYn4mGR-ft56JKzQ0E\"",
-   "id": "zo91zTKtsdI",
-   "snippet": {
-    "publishedAt": "2012-09-07T02:42:16.000Z",
-    "channelId": "UCXEWE-FtSbWqnF8BRIKcV7Q",
-    "title": "Wait for Sleep/Surrounded - Dream Theater (Live In Tokyo 1993)(HQ)",
-    "description": " ",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/zo91zTKtsdI/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/zo91zTKtsdI/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/zo91zTKtsdI/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/zo91zTKtsdI/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/zo91zTKtsdI/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/srL1vP2h2n66z6-F_42R5BrkK9c"',
+    id: 'unDx0IufPgQ',
+    snippet: {
+      publishedAt: '2016-09-26T15:00:04.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: '\'ZEN II\' Oriental Chillstep Mix [1 Hour of Chill Music] チルバイブ',
+      description: '\'ZEN II\' Oriental Chillstep Mix [1 Hour of Chill Music] チルバイブ\n\nPulse8 on Spotify: https://goo.gl/MhiH2M\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Tracklist ▼\n00:00 OverHertz - Kimi Dake\n04:47 MYKOOL - Ikiru\n10:42 Andy Leech - Solitude\n14:25 Noclu - Pulse Thief\n19:12 Kaiori Breathe - I Have Ruined Everything I Cared About\n22:21 Creepa & Subsets - Alone\n26:02 Vexaic - Final Call\n30:39 Raze - Reminisce\n36:20 Yal!x - Mourning Dove\n40:34 Avicta - Forgotten Wilderness\n44:39 S’Hill - L’aube\n49:47 Vexaic - We Are One\n52:50 Nilow - Chinese Dreams (Cally D Remix)\n\n▼ Artwork by Jessica Woulfe ▼\nhttp://jessicawoulfe.deviantart.com/art/Sevnth-Wonder-Higher-Love-531859275\n\n▼ Submit your music to Pulse8 ▼\nhttp://pulse8music.toneden.io\n\nA Beautiful Chillstep Mix by Pulse8..',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/unDx0IufPgQ/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/unDx0IufPgQ/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/unDx0IufPgQ/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/unDx0IufPgQ/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/unDx0IufPgQ/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'chillstep',
+        'chillstep mix',
+        'chillstep 2016',
+        'chillstep mix 2016',
+        'pulse8 chillstep',
+        'best of chillstep',
+        'best of chillstep mix',
+        'best of chillstep mix 2016',
+        'chillout music',
+        'chillout mix',
+        'oriental chillstep mix',
+        'oriental music',
+        'oriental chill music',
+        'asian music',
+        'zen oriental chillstep mix',
+        'oriental chillout music',
+        'chillout mix 2016',
+        'chill mix',
+        'chill music',
+        'chill',
+        'pulse8 chill mix',
+        'asian music relaxing',
+        'chill out music',
+        'chill out music 2016',
+        'chill out mix',
+        'pulse8 chill music'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: '\'ZEN II\' Oriental Chillstep Mix [1 Hour of Chill Music] チルバイブ',
+        description: '\'ZEN II\' Oriental Chillstep Mix [1 Hour of Chill Music] チルバイブ\n\nPulse8 on Spotify: https://goo.gl/MhiH2M\n\n▼ SUPPORT PULSE8 ▼\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://youtube.com/pulse8music\nSpotify: https://goo.gl/MhiH2M\n\n▼ Tracklist ▼\n00:00 OverHertz - Kimi Dake\n04:47 MYKOOL - Ikiru\n10:42 Andy Leech - Solitude\n14:25 Noclu - Pulse Thief\n19:12 Kaiori Breathe - I Have Ruined Everything I Cared About\n22:21 Creepa & Subsets - Alone\n26:02 Vexaic - Final Call\n30:39 Raze - Reminisce\n36:20 Yal!x - Mourning Dove\n40:34 Avicta - Forgotten Wilderness\n44:39 S’Hill - L’aube\n49:47 Vexaic - We Are One\n52:50 Nilow - Chinese Dreams (Cally D Remix)\n\n▼ Artwork by Jessica Woulfe ▼\nhttp://jessicawoulfe.deviantart.com/art/Sevnth-Wonder-Higher-Love-531859275\n\n▼ Submit your music to Pulse8 ▼\nhttp://pulse8music.toneden.io\n\nA Beautiful Chillstep Mix by Pulse8..'
+      }
     },
-    "channelTitle": "James Fernando",
-    "tags": [
-     "dream",
-     "theater",
-     "images",
-     "and",
-     "words",
-     "1993",
-     "tokyo",
-     "live",
-     "album",
-     "dvd",
-     "wait",
-     "for",
-     "sleep",
-     "surrounded",
-     "james",
-     "labrie",
-     "kevin",
-     "moore",
-     "john",
-     "myung",
-     "petrucci",
-     "mike",
-     "portnoy",
-     "japan"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Wait for Sleep/Surrounded - Dream Theater (Live In Tokyo 1993)(HQ)",
-     "description": ""
+    contentDetails: {
+      duration: 'PT56M19S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '1076445',
+      likeCount: '26674',
+      dislikeCount: '304',
+      favoriteCount: '0',
+      commentCount: '486'
     }
-   },
-   "contentDetails": {
-    "duration": "PT8M49S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "85171",
-    "likeCount": "683",
-    "dislikeCount": "5",
-    "favoriteCount": "0",
-    "commentCount": "104"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/7zBvtkPUhtKZWrafI1ylgv6lh_o\"",
-   "id": "Iu5z7Z59uSE",
-   "snippet": {
-    "publishedAt": "2011-12-09T17:25:41.000Z",
-    "channelId": "UC-9_Yb1kZiWWPF9dgwomo8g",
-    "title": "Dream Theater - Home (Live at Bucharest)",
-    "description": "Live at Bucharest, 2002. Full Part.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/Iu5z7Z59uSE/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/Iu5z7Z59uSE/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/Iu5z7Z59uSE/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/MWJuGyWJWBVCEpGB_3EIR3OHAJ4"',
+    id: 'ElPqn8DdUOE',
+    snippet: {
+      publishedAt: '2013-09-14T17:34:48.000Z',
+      channelId: 'UCLYpZD5FPmjtL_PjN_FPFCA',
+      title: 'The Best of Blackmill',
+      description: '14 Beautiful songs by Blackmill, paired with gorgeous pictures of Earth\'s nature with a small twist of fantasy.\nThe second edition of "The Best of Blackmill". Enjoy! https://www.youtube.com/watch?v=UvuM9pFjLJ4\nEnjoy! (Times to songs are below, SHOW MORE!)\n______________________________________________\n\n#1 Blackmill - Miracle 0:00 - 5:52\n#2 Blackmill - Let It Be (Feat. Veela) 5:53 - 11:42\n#3 Blackmill - Spirit of Life 11:43 - 17:48\n#4 Blackmill - Lucid Truth 17:49 - 22:20\n#5 Blackmill - A Reach for Glory 22:21 - 26:28\n#6 Blackmill - The Drift 26:29 - 29:45\n#7 Blackmill - Evil Beauty 29:46 - 33:28\n#8 Blackmill - Friend 33:29 - 38:47\n#9 Blackmill - One 38:48 - 43:27\n#10 Blackmill - Sacred River 43:28 - 49:30\n#11 Blackmill - Home 49:31 - 57:09\n#12 Blackmill - Journey\'s End (Feat. Lollievox) 57:10 - 1:01:56\n#13 Blackmill - Rain 1:01:57 - 1:07:52\n#14 Blackmill - Fortune Soul 1:07:53 - 1:11:15\n______________________________________________\n\nBlackmill\'s Youtube channel: \nhttps://www.youtube.com/user/BlackmillMusic/\n\nBlackmill\'s SoundCloud:\nhttps://soundcloud.com/Blackmill/\n\nBlackmill\'s Facebook fanpage:\nhttps://www.facebook.com/pages/Blackmill/167224433307649\n\nBlackmill\'s iTunes:\nhttps://itunes.apple.com/us/artist/blackmill/id423339214\n______________________________________________\n\nThese songs are not made by me, I just mixed them.\nIf you want to buy any of these songs, visit Blackmill\'s Youtube channel or iTunes.\n\nEnjoy!\nSubscribe!\n______________________________________________\n\nPictures provided by: http://wall.alphacoders.com/\n______________________________________________',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/ElPqn8DdUOE/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/ElPqn8DdUOE/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/ElPqn8DdUOE/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/ElPqn8DdUOE/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/ElPqn8DdUOE/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'HardRockFinland',
+      tags: [
+        'Blackmill',
+        'Dubstep',
+        'Chillstep',
+        'Song',
+        'Music',
+        'Mix',
+        'Best',
+        'Songs',
+        'Friend',
+        'Home',
+        'Miracle',
+        'Spirit of Life',
+        'A Reach For Glory',
+        'Let it Be',
+        'The Drift',
+        'Lucid Truth',
+        'Fortune Soul',
+        'Evil Beauty',
+        'Rain',
+        'Sacred River',
+        'Journey\'s End',
+        'One'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'The Best of Blackmill',
+        description: '14 Beautiful songs by Blackmill, paired with gorgeous pictures of Earth\'s nature with a small twist of fantasy.\nThe second edition of "The Best of Blackmill". Enjoy! https://www.youtube.com/watch?v=UvuM9pFjLJ4\nEnjoy! (Times to songs are below, SHOW MORE!)\n______________________________________________\n\n#1 Blackmill - Miracle 0:00 - 5:52\n#2 Blackmill - Let It Be (Feat. Veela) 5:53 - 11:42\n#3 Blackmill - Spirit of Life 11:43 - 17:48\n#4 Blackmill - Lucid Truth 17:49 - 22:20\n#5 Blackmill - A Reach for Glory 22:21 - 26:28\n#6 Blackmill - The Drift 26:29 - 29:45\n#7 Blackmill - Evil Beauty 29:46 - 33:28\n#8 Blackmill - Friend 33:29 - 38:47\n#9 Blackmill - One 38:48 - 43:27\n#10 Blackmill - Sacred River 43:28 - 49:30\n#11 Blackmill - Home 49:31 - 57:09\n#12 Blackmill - Journey\'s End (Feat. Lollievox) 57:10 - 1:01:56\n#13 Blackmill - Rain 1:01:57 - 1:07:52\n#14 Blackmill - Fortune Soul 1:07:53 - 1:11:15\n______________________________________________\n\nBlackmill\'s Youtube channel: \nhttps://www.youtube.com/user/BlackmillMusic/\n\nBlackmill\'s SoundCloud:\nhttps://soundcloud.com/Blackmill/\n\nBlackmill\'s Facebook fanpage:\nhttps://www.facebook.com/pages/Blackmill/167224433307649\n\nBlackmill\'s iTunes:\nhttps://itunes.apple.com/us/artist/blackmill/id423339214\n______________________________________________\n\nThese songs are not made by me, I just mixed them.\nIf you want to buy any of these songs, visit Blackmill\'s Youtube channel or iTunes.\n\nEnjoy!\nSubscribe!\n______________________________________________\n\nPictures provided by: http://wall.alphacoders.com/\n______________________________________________'
+      }
     },
-    "channelTitle": "Aly Yalu",
-    "tags": [
-     "Dream",
-     "Theater",
-     "Home",
-     "Live (band)",
-     "Musical",
-     "Concert",
-     "Musical Ensemble",
-     "Rock Music",
-     "Live Music",
-     "Live Concert",
-     "john",
-     "petrucci",
-     "mike",
-     "portnoy",
-     "james",
-     "labrie",
-     "myung",
-     "jordan",
-     "rudess"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Home (Live at Bucharest)",
-     "description": "Live at Bucharest, 2002. Full Part."
+    contentDetails: {
+      duration: 'PT1H11M16S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '1440995',
+      likeCount: '8565',
+      dislikeCount: '344',
+      favoriteCount: '0',
+      commentCount: '638'
     }
-   },
-   "contentDetails": {
-    "duration": "PT13M56S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "188994",
-    "likeCount": "787",
-    "dislikeCount": "11",
-    "favoriteCount": "0",
-    "commentCount": "95"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/Y1jF9_UKqWSDzocyJvqDQDfdKOo\"",
-   "id": "OGfH4XH4Fmk",
-   "snippet": {
-    "publishedAt": "2015-01-05T09:00:24.000Z",
-    "channelId": "UCoGTTDNVOuqZxlCjB2F54HQ",
-    "title": "Dream Theater @ Sonisphere 2014 (On the Backs of Angels / The Enemy Inside) HD 1080p",
-    "description": "Dream Theater performing \"On the Backs of Angels\" and \"The Enemy Inside\" live at Sonisphere 2014 in Knebworth Park, Knebworth, England on July 6th, 2014.  HD footage courtesy of Palladia.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/OGfH4XH4Fmk/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/OGfH4XH4Fmk/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/OGfH4XH4Fmk/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/8l3A2Z1gz8xeORjvqF-lpP8cZ2Q"',
+    id: 'mhwq_baUbeI',
+    snippet: {
+      publishedAt: '2015-04-19T12:00:01.000Z',
+      channelId: 'UCnOTVWVaIh3NoJsbwq4Tucg',
+      title: 'Ambient #01 - 1 Hour of the Best Ambient & Chill Music',
+      description: 'Ambient #01 - 1 Hour of the Best Ambient & Chill Music\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ DOWNLOAD Ambient #01\nhttp://soundcloud.com/ambient-01-mix\n\n♥ Tracklist\n00:00 Essáy - State of Mind\n04:18 Aerocity - Interlude #2\n06:48 Glass Face - Holland\n12:18 Dead Melodies - Sycamore Rains\n18:24 Creepa & Subsets - Alone\n22:06 Cypix - Wander\n26:06 Aerocity - Daylight\n30:12 Aerocity - Time, As This Heart, Is Still\n33:18 Cathy Eliot - Waterfalls\n36:00 Seawaves - Valentine\n39:54 Michael FK ft. Diversity of Silence - Two Shades\n44:42 Dead Melodies - Slowwave Perception\n49:06 Aerocity - Daylight (NAAJS Remix)\n52:30 Groundfold - The Tale of the Broken Bird\n56:24 Jay Rodger - Come to Realise (Alaskan Tapes Remix)\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.toneden.io',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/mhwq_baUbeI/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/mhwq_baUbeI/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/mhwq_baUbeI/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/mhwq_baUbeI/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/mhwq_baUbeI/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse8',
+      tags: [
+        'ambient',
+        'ambient music',
+        'chill',
+        'chill music',
+        'ambient mix',
+        'chill mix',
+        'ambient chill',
+        'ambient chill melodic vocals female',
+        'ambient chillout playlist',
+        'Ambient #01 - 1 Hour of the Best Ambient & Chill Music',
+        'pulse8',
+        'ambient chill mix',
+        'ambient chill music',
+        'relax study music',
+        'chillout',
+        'chillout mix',
+        'chillstep',
+        'ambient chillstep melodic mix',
+        'pulse8 mix',
+        'hour of ambient music',
+        'ambient trance',
+        'ambient sounds',
+        'Chill-out Music (Musical Genre)',
+        'pulse8 ambient'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Ambient #01 - 1 Hour of the Best Ambient & Chill Music',
+        description: 'Ambient #01 - 1 Hour of the Best Ambient & Chill Music\nSupport Pulse8 & subscribe! http://full.sc/1A9deh2\nSHOW MORE for the download link + more..\n\n♥ Pulse8 Merch Store\nhttp://full.sc/1AXoQV1\n\n♥ Follow Pulse8 for beautiful music..\nhttp://facebook.com/pulse8music\nhttp://soundcloud.com/pulse8\nhttp://plus.google.com/+pulse8music\nhttp://instagram.com/pulse8music\n\n♥ DOWNLOAD Ambient #01\nhttp://soundcloud.com/ambient-01-mix\n\n♥ Tracklist\n00:00 Essáy - State of Mind\n04:18 Aerocity - Interlude #2\n06:48 Glass Face - Holland\n12:18 Dead Melodies - Sycamore Rains\n18:24 Creepa & Subsets - Alone\n22:06 Cypix - Wander\n26:06 Aerocity - Daylight\n30:12 Aerocity - Time, As This Heart, Is Still\n33:18 Cathy Eliot - Waterfalls\n36:00 Seawaves - Valentine\n39:54 Michael FK ft. Diversity of Silence - Two Shades\n44:42 Dead Melodies - Slowwave Perception\n49:06 Aerocity - Daylight (NAAJS Remix)\n52:30 Groundfold - The Tale of the Broken Bird\n56:24 Jay Rodger - Come to Realise (Alaskan Tapes Remix)\n\n✔ Become a YouTube Partner today!\nhttp://apply.fullscreen.net/?ref=pulse8music\n\n✔ Submit your music to Pulse8\nhttp://pulse8music.toneden.io'
+      }
     },
-    "channelTitle": "NothingIncarnate",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "On The Backs Of Angels (Musical Recording)",
-     "The Enemy Inside (Musical Recording)",
-     "John Petrucci (Songwriter)",
-     "James LaBrie (Musical Artist)",
-     "Jordan Rudess (Musical Artist)",
-     "John Myung (Musical Artist)",
-     "Mike Mangini (Drummer)",
-     "Sonisphere Festival (Award-Winning Work)",
-     "Knebworth (City/Town/Village)",
-     "Palladia (TV Network)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater @ Sonisphere 2014 (On the Backs of Angels / The Enemy Inside) HD 1080p",
-     "description": "Dream Theater performing \"On the Backs of Angels\" and \"The Enemy Inside\" live at Sonisphere 2014 in Knebworth Park, Knebworth, England on July 6th, 2014.  HD footage courtesy of Palladia."
+    contentDetails: {
+      duration: 'PT1H2M3S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '90590',
+      likeCount: '1030',
+      dislikeCount: '22',
+      favoriteCount: '0',
+      commentCount: '59'
     }
-   },
-   "contentDetails": {
-    "duration": "PT13M11S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "237127",
-    "likeCount": "1013",
-    "dislikeCount": "34",
-    "favoriteCount": "0",
-    "commentCount": "197"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/hqmvOyFtO3xuTeOuCog-PVtf8us\"",
-   "id": "ED8_xaxeiWk",
-   "snippet": {
-    "publishedAt": "2015-04-02T00:47:00.000Z",
-    "channelId": "UCLhSkjYmfO_LemiZyZ18avw",
-    "title": "Dream Theater   The Count of Tuscany live high voltage UK 2011",
-    "description": "Un audio con buena calidad, aunque el vídeo no sea tan bueno",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/ED8_xaxeiWk/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/ED8_xaxeiWk/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/ED8_xaxeiWk/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/ED8_xaxeiWk/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/ED8_xaxeiWk/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/ISEtX0aMM8igvy10b6I3YFgrSGw"',
+    id: 'pjKjnefux78',
+    snippet: {
+      publishedAt: '2016-05-15T20:42:01.000Z',
+      channelId: 'UCMpTD2USGDWFJgJjSx15aWQ',
+      title: 'Pulse 1 {Full Compilation}',
+      description: 'Compil Goa--Trance 96\nhttps://www.discogs.com/fr/Various-Pulse-This-Is-Psychedelic-Trance/release/141983\nTrack-List:\n1-1–Stanley Shanti & The Chillum Wallahs - Placid (7:02)\n1-2–Green Nuns Of The Revolution - Cor (7:06)\n1-3–Paradise Connection - Portamento (7:58)\n1-4–Brain Accent - Orange Acid (9:07)\n1-5–Transwave - Axonal (7:38)\n1-6–Art Of Trance - Octopus (Man With No Name Remix) (7:14)\n1-7–Rainbow Spirit - Prana (8:19)\n1-8–Doof - Born Again (7:27)\n1-9–Disco Volante - Moonraker (Man With No Name Remix) (7:20)\n1-10 –Sourmash - The Blessing (8:55)\n\n2-1–Total Eclipse - Transparent Mind (7:07)\n2-2–Indoor - The Key (8:29)\n2-3–Phreax - Bodynamique (6:57)\n2-4–Amanite FX - Secret Of Manan( 7:14)\n2-5–Soluna - Dancing Spirit (6:27)\n2-6–Quatermass - Kali (7:37)\n2-7–Blue Planet Cooperation - Antidote (7:57)\n2-8–Electric Universe - Electronic Pulsation (9:21)\n2-9–Judson J. Eiloart - Orion (Cranial Remix Dimension 5) (7:17)\n2-10 –Hallucinogen - Astral Pancakes (8:04)',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/pjKjnefux78/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/pjKjnefux78/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/pjKjnefux78/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/pjKjnefux78/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'OM-Shanti 2',
+      tags: [
+        'compilation',
+        'compil goa trance',
+        'goa trance',
+        'pulse'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pulse 1 {Full Compilation}',
+        description: 'Compil Goa--Trance 96\nhttps://www.discogs.com/fr/Various-Pulse-This-Is-Psychedelic-Trance/release/141983\nTrack-List:\n1-1–Stanley Shanti & The Chillum Wallahs - Placid (7:02)\n1-2–Green Nuns Of The Revolution - Cor (7:06)\n1-3–Paradise Connection - Portamento (7:58)\n1-4–Brain Accent - Orange Acid (9:07)\n1-5–Transwave - Axonal (7:38)\n1-6–Art Of Trance - Octopus (Man With No Name Remix) (7:14)\n1-7–Rainbow Spirit - Prana (8:19)\n1-8–Doof - Born Again (7:27)\n1-9–Disco Volante - Moonraker (Man With No Name Remix) (7:20)\n1-10 –Sourmash - The Blessing (8:55)\n\n2-1–Total Eclipse - Transparent Mind (7:07)\n2-2–Indoor - The Key (8:29)\n2-3–Phreax - Bodynamique (6:57)\n2-4–Amanite FX - Secret Of Manan( 7:14)\n2-5–Soluna - Dancing Spirit (6:27)\n2-6–Quatermass - Kali (7:37)\n2-7–Blue Planet Cooperation - Antidote (7:57)\n2-8–Electric Universe - Electronic Pulsation (9:21)\n2-9–Judson J. Eiloart - Orion (Cranial Remix Dimension 5) (7:17)\n2-10 –Hallucinogen - Astral Pancakes (8:04)'
+      },
+      defaultAudioLanguage: 'en'
     },
-    "channelTitle": "Victor Alejandro Moncada",
-    "tags": [
-     "dream theater"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater   The Count of Tuscany live high voltage UK 2011",
-     "description": "Un audio con buena calidad, aunque el vídeo no sea tan bueno"
+    contentDetails: {
+      duration: 'PT2H34M33S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '2597',
+      likeCount: '36',
+      dislikeCount: '1',
+      favoriteCount: '0',
+      commentCount: '2'
     }
-   },
-   "contentDetails": {
-    "duration": "PT21M48S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "230195",
-    "likeCount": "1666",
-    "dislikeCount": "29",
-    "favoriteCount": "0",
-    "commentCount": "315"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/-sRPENbDxC8_5IcuRK-CCMiddtE\"",
-   "id": "1JpXgmr8ug4",
-   "snippet": {
-    "publishedAt": "2012-04-16T04:43:23.000Z",
-    "channelId": "UCJnGiaCrjXfdXJXUYa64Fiw",
-    "title": "Dream Theater - Awake in Japan '95 (Full Concert)",
-    "description": "11:15 - Pull Me Under\n20:12 - Six O'Clock\n27:03 - Take the Time\n40:27 - Caught in a Web & Drum Solo\n49:54 - Lifting Shadows Off a Dream\n59:00 - Solos\n1:04:34 - The Mirror\n1:11:18 - Lie\n1:19:32 - Another Day\n1:24:07 - Erotomania\n1:30:52 - Voices\n1:42:58 - The Silent Man\n1:47:09 - Metropolis part 1",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/1JpXgmr8ug4/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/1JpXgmr8ug4/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/1JpXgmr8ug4/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/1JpXgmr8ug4/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/ymnHIt_CpSV7wJUIVSo0OKDH0ms"',
+    id: '7c86M-F6eGU',
+    snippet: {
+      publishedAt: '2016-09-14T21:02:57.000Z',
+      channelId: 'UCwd8uu2mtJUgHYRffUl2yPQ',
+      title: 'Beautiful Chill Electronic Music For Relaxation and Sleep  - Rotations Full Album Mix',
+      description: 'Buy or Stream\nhttps://open.spotify.com/album/0RycECnE06hzy5ZGBdea2p\nhttps://thesecession.bandcamp.com/album/rotations\n\nSecession Studios:\nWebsite      ► http://secessionstudios.com/\nBandcamp ► http://thesecession.bandcamp.com/music\nTwitter        ► https://twitter.com/thesecession\nInstagram   ► https://instagram.com/thesecession/\nFacebook    ► http://www.facebook.com/Secession.Studios\n\nComposer: Greg Dombrowski (thesecession)\nVisuals: Beeple http://beeple-crap.com/about_beeple.php',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/7c86M-F6eGU/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/7c86M-F6eGU/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/7c86M-F6eGU/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/7c86M-F6eGU/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/7c86M-F6eGU/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'thesecession',
+      tags: [
+        'chill electronica',
+        'chill music',
+        'beautiful music',
+        'upbeat music',
+        'dance music',
+        'ambient music',
+        'abstract music',
+        'thesecession',
+        'secession studios',
+        'greg dombrowski',
+        'rotations',
+        'beautiful background music',
+        'instrumental music pop',
+        'instrumental music upbeat',
+        'instrumental music for kids',
+        'music that will make you happy'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Beautiful Chill Electronic Music For Relaxation and Sleep  - Rotations Full Album Mix',
+        description: 'Buy or Stream\nhttps://open.spotify.com/album/0RycECnE06hzy5ZGBdea2p\nhttps://thesecession.bandcamp.com/album/rotations\n\nSecession Studios:\nWebsite      ► http://secessionstudios.com/\nBandcamp ► http://thesecession.bandcamp.com/music\nTwitter        ► https://twitter.com/thesecession\nInstagram   ► https://instagram.com/thesecession/\nFacebook    ► http://www.facebook.com/Secession.Studios\n\nComposer: Greg Dombrowski (thesecession)\nVisuals: Beeple http://beeple-crap.com/about_beeple.php'
+      }
     },
-    "channelTitle": "MateusCTR",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "Dream",
-     "Theater",
-     "Awake",
-     "live",
-     "in",
-     "Japan",
-     "1995",
-     "Full",
-     "Concert",
-     "Tokyo",
-     "Progressive",
-     "metal",
-     "prog",
-     "rock",
-     "Heavy",
-     "(Dream",
-     "Album)",
-     "John",
-     "Petrucci",
-     "Myung",
-     "James",
-     "LaBrie",
-     "Derek",
-     "Sherinian",
-     "Mike",
-     "Portnoy"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Awake in Japan '95 (Full Concert)",
-     "description": "11:15 - Pull Me Under\n20:12 - Six O'Clock\n27:03 - Take the Time\n40:27 - Caught in a Web & Drum Solo\n49:54 - Lifting Shadows Off a Dream\n59:00 - Solos\n1:04:34 - The Mirror\n1:11:18 - Lie\n1:19:32 - Another Day\n1:24:07 - Erotomania\n1:30:52 - Voices\n1:42:58 - The Silent Man\n1:47:09 - Metropolis part 1"
+    contentDetails: {
+      duration: 'PT36M37S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '13942',
+      likeCount: '329',
+      dislikeCount: '6',
+      favoriteCount: '0',
+      commentCount: '33'
     }
-   },
-   "contentDetails": {
-    "duration": "PT1H59M20S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "349271",
-    "likeCount": "2151",
-    "dislikeCount": "29",
-    "favoriteCount": "0",
-    "commentCount": "594"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/tazN8xioVTd3wIdbbhuYcQedpJs\"",
-   "id": "wnOLMrY4EFk",
-   "snippet": {
-    "publishedAt": "2015-11-21T04:24:54.000Z",
-    "channelId": "UCGUQAox5XXwcSdBc59CudvA",
-    "title": "Dream Theater live at The Limelight 1993",
-    "description": "1. A Fortune In Lies 0:00\n2. Under A Glass Moon 5:21 \n3. Surrounded 12:41\n4. Ytse Jam w/drum solo 18:58\n5. (To Live) Forever 28:44\n6. Take The Time 34:44\n7. Eve 45:32\n8. Pull Me Under 51:00\n9. Another Day 59:26\n10. Another Hand/The Killing Hand 1:04:01\n11. A Change Of Seasons 1:14:21\n12. Wait For Sleep 1:34:30\n13. Learning To Live 1:37:29\n14. Credits and aftershow schmoozing (in which John Myong's name is misspelled and Jens Johansson appears) 1:50:36\n\nI found this marked as the March 4, 1993 Limelight show, although the band's clothing changes from dark to light, light to dark, dark to light, leading to me believe it's actually from two different shows, or they changed their clothes during the intermission. Whatever the deal is, I'm very pleased to have it on my channel because it's some of the best footage from Dream Theater's golden years. It contains some of the only known video footage of Eve being performed, as well as an early version of A Change Of Seasons. The soundboard audio from this show was  released as the band's first official bootleg (which is sort of an oxymoron, but I digress), and the only official bootleg released when Kevin Moore was still in the band. It goes under various names including The Dance Of Eternity and Tragedy & Comedy.\n\nI cut out Metropolis Pt. 1 from the video because the footage was useless- like watching a giant animated GIF. Just go listen to the audio here if you want it:\n\nhttps://www.youtube.com/watch?v=5Z9v3B3V0bc",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/wnOLMrY4EFk/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/wnOLMrY4EFk/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/wnOLMrY4EFk/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/f9xkWZe1omcOJwHOUKwTDMw3zN0"',
+    id: 'LVdNt2Mmk10',
+    snippet: {
+      publishedAt: '2016-05-30T13:48:39.000Z',
+      channelId: 'UCYcm1SMhxYFHzlHIj0a_DNA',
+      title: 'JME - Pulse 8 432Hz',
+      description: 'JME - Pulse 8 432Hz\nRetuned to 432Hz for pristine sound and beneficial for the mind. \nEnjoy the music? Support artist and retune music yourself.\nMobile/Desktop app - 432 player\nDesktop mp3 - Return to 432\nNot affiliated with software.\nFrequency is the base of which the sound travels through. As seen on the water image of frequency, 432Hz is open and producing. This allows the energy through to us the listener. 440Hz shows a closed off ring, no output. Only noise come through.\nInstagram @Just432it',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/LVdNt2Mmk10/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/LVdNt2Mmk10/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/LVdNt2Mmk10/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/LVdNt2Mmk10/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/LVdNt2Mmk10/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Just432it',
+      tags: [
+        '432',
+        '432hz',
+        '432 music',
+        '432hz music',
+        '432 hip hop',
+        '432hz hip hop',
+        'hip hop',
+        'beat',
+        'music',
+        'song',
+        'lyric',
+        'health',
+        'diy',
+        '432 grime',
+        '432hz grime',
+        '432 rap',
+        '432hz rap',
+        'rap 432hz',
+        'hiphop 432hz',
+        'music 432hz',
+        '432 instrumental',
+        '432hz instrumental',
+        'jme 432hz',
+        'pulse 8 432hz',
+        'jme pulse 8'
+      ],
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'JME - Pulse 8 432Hz',
+        description: 'JME - Pulse 8 432Hz\nRetuned to 432Hz for pristine sound and beneficial for the mind. \nEnjoy the music? Support artist and retune music yourself.\nMobile/Desktop app - 432 player\nDesktop mp3 - Return to 432\nNot affiliated with software.\nFrequency is the base of which the sound travels through. As seen on the water image of frequency, 432Hz is open and producing. This allows the energy through to us the listener. 440Hz shows a closed off ring, no output. Only noise come through.\nInstagram @Just432it'
+      }
     },
-    "channelTitle": "MrDreamTheater2",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "Progressive Metal (Musical Genre)",
-     "Bootleg Recording",
-     "Live",
-     "Concert",
-     "1993",
-     "Rare",
-     "Eve",
-     "A Change Of Seasons",
-     "Kevin Moore (Songwriter)",
-     "James LaBrie (Musical Artist)",
-     "John Petrucci (Songwriter)",
-     "Mike Portnoy (Musical Artist)",
-     "John Myung (Musical Artist)",
-     "Pull Me Under (Composition)",
-     "Learning To Live Again (Composition)",
-     "Take The Time",
-     "The Killing Hand",
-     "Images And Words (Musical Album)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater live at The Limelight 1993",
-     "description": "1. A Fortune In Lies 0:00\n2. Under A Glass Moon 5:21 \n3. Surrounded 12:41\n4. Ytse Jam w/drum solo 18:58\n5. (To Live) Forever 28:44\n6. Take The Time 34:44\n7. Eve 45:32\n8. Pull Me Under 51:00\n9. Another Day 59:26\n10. Another Hand/The Killing Hand 1:04:01\n11. A Change Of Seasons 1:14:21\n12. Wait For Sleep 1:34:30\n13. Learning To Live 1:37:29\n14. Credits and aftershow schmoozing (in which John Myong's name is misspelled and Jens Johansson appears) 1:50:36\n\nI found this marked as the March 4, 1993 Limelight show, although the band's clothing changes from dark to light, light to dark, dark to light, leading to me believe it's actually from two different shows, or they changed their clothes during the intermission. Whatever the deal is, I'm very pleased to have it on my channel because it's some of the best footage from Dream Theater's golden years. It contains some of the only known video footage of Eve being performed, as well as an early version of A Change Of Seasons. The soundboard audio from this show was  released as the band's first official bootleg (which is sort of an oxymoron, but I digress), and the only official bootleg released when Kevin Moore was still in the band. It goes under various names including The Dance Of Eternity and Tragedy & Comedy.\n\nI cut out Metropolis Pt. 1 from the video because the footage was useless- like watching a giant animated GIF. Just go listen to the audio here if you want it:\n\nhttps://www.youtube.com/watch?v=5Z9v3B3V0bc"
+    contentDetails: {
+      duration: 'PT2M23S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '7470',
+      likeCount: '106',
+      dislikeCount: '1',
+      favoriteCount: '0',
+      commentCount: '4'
     }
-   },
-   "contentDetails": {
-    "duration": "PT2H4M24S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "11217",
-    "likeCount": "216",
-    "dislikeCount": "1",
-    "favoriteCount": "0",
-    "commentCount": "61"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/M6IwN1q-OjvITkH8_rMdvDemUO8\"",
-   "id": "1SdWW39VELY",
-   "snippet": {
-    "publishedAt": "2013-11-11T23:42:59.000Z",
-    "channelId": "UC0aV9HkEIguKYurmPLbccZQ",
-    "title": "Surrounded - Dream Theater - live at luna park",
-    "description": "",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/1SdWW39VELY/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/1SdWW39VELY/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/1SdWW39VELY/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/1SdWW39VELY/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/1SdWW39VELY/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/ZwRVc-LmjPWWnPxDRquT09pzHqo"',
+    id: '_4pgBgWMAkM',
+    snippet: {
+      publishedAt: '2015-08-12T19:52:39.000Z',
+      channelId: 'UCWJCR2r0umxTFjKjqLQ23FA',
+      title: 'Pulse 10 FULL ALBUM',
+      description: 'Περιγραφή',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/_4pgBgWMAkM/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/_4pgBgWMAkM/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/_4pgBgWMAkM/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/_4pgBgWMAkM/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'ΓΙΩΡΓΟΣ ΘΩΜΑΣ',
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pulse 10 FULL ALBUM',
+        description: 'Περιγραφή'
+      }
     },
-    "channelTitle": "Thiago Cardoso",
-    "categoryId": "22",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Surrounded - Dream Theater - live at luna park",
-     "description": ""
+    contentDetails: {
+      duration: 'PT2H32M54S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '1029',
+      likeCount: '17',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '1'
     }
-   },
-   "contentDetails": {
-    "duration": "PT5M59S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "229769",
-    "likeCount": "1169",
-    "dislikeCount": "16",
-    "favoriteCount": "0",
-    "commentCount": "197"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/5-CGgi5vkki9naF1kger9JALeYY\"",
-   "id": "QhrWMRF3UHU",
-   "snippet": {
-    "publishedAt": "2016-04-25T16:30:58.000Z",
-    "channelId": "UCSYitu2qA7MGJj1SvN0qjEg",
-    "title": "Dream Theater - Live at Budokan (Full Album)",
-    "description": "Track List:\n#1 - As I Am [0:00]\n#2 - This Dying Soul\nI. Reflections of Reality [7:25]\nII. Release [14:01]\n#3 - Beyond This Life [19:10]\n#4 - Hollow Years [38:47]\n#5 - War Inside My Head [48:05]\n#6 - The Test That Stumped Them All [50:28]\n#7 - Endless Sacrifice [55:25]\n#8 - Instrumedley \nI. The Dance of Eternity (Revisited) [1:06:43]\nII. Metropolis [1:08:18]\nIII. Erotomania [1:08:42]\nIV. The Dance of Eternity [1:10:22]\nV. Metropolis [1:11:06]\nVI. A Change of Seasons: IV. The Darkest of Winters [1:12:01]\nVII. Ytse Jam [1:12:47]\nVIII. The Dance of Eternity [1:14:28]\nIX. Paradigm Shift (Liquid Tension Experiment) [1:15:13]\nX. Universal Mind (Liquid Tension Experiment) [1:16:14]\nXI. The Dance of Eternity [1:17:00]\nXII. Hell's Kitchen [1:17:42]\n#9 - Trial of Tears \nI. It's Raining [1:18:58]\nII. Deep In Heaven [1:25:46]\nIII. The Wasteland [1:29:18]\n#10 - New Millenium [1:32:47]\n#11 - Jordan Rudess Keyboard Solo [1:40:49]\n#12 - Only A Matter of Time [1:44:47]\n#13 - Goodnight Kiss [1:52:03]\n#14 - Solitary Shell [1:58:17]\n#15 - Stream of Consciousness [2:04:16]\n#16 - Disappear [2:15:10]\n#17 - Pull Me Under [2:21:07]\n#18 - In The Name of God [2:29:45]\n\nJames Labrie - Vocals\nJohn Petrucci - Guitar, Vocals (Backing)\nJohn Myung - Bass\nMike Portnoy - Drums, Vocals\nJordan Rudess - Keyboards\n\n------O------\n\nProduced by John Petrucci and Mike Portnoy\nNigel Paul - Recording, Engineering\nJon Belec  - Engineering (assistant)\nHowie Weinberg - Mastering\nKevin Shirley - Mixing\nNigel Paul - Recording, Engineering\nPatrick Woodward - Digital editing\n\nAll rights goes to Dream Theater and Atlantic.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/QhrWMRF3UHU/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/QhrWMRF3UHU/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/QhrWMRF3UHU/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/QhrWMRF3UHU/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/QhrWMRF3UHU/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/N5fixEqQxl9sXsYN2raLRCUbv8M"',
+    id: 'gPT7TAjnBu8',
+    snippet: {
+      publishedAt: '2016-05-21T08:00:37.000Z',
+      channelId: 'UChn3qiZ9HgJ-QsdXE4sKWPA',
+      title: 'Seeming Emptiness - Heavy Rain (official full album)',
+      description: 'Purchase here: http://bit.ly/1Twpv4x\n\nTracklist:\n1. Dispatched Fortune\n2. Retrogression\n3. Riven\n4. Heavy Rain\n5. Red Glowing Night\n6. Heirless\n7. Obscure Pulse\n8. Enliven the Dust\n\nTotal playtime: 59:41 \n\n(C) Rain Without End Records 2016 | www.naturmacht.com',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/gPT7TAjnBu8/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/gPT7TAjnBu8/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/gPT7TAjnBu8/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/gPT7TAjnBu8/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/gPT7TAjnBu8/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'TheNPChannel',
+      tags: [
+        'Seeming Emptiness',
+        'full album',
+        'doom metal',
+        'progressive',
+        'melodic',
+        'post metal',
+        'post rock',
+        'Rain Without End Records'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Seeming Emptiness - Heavy Rain (official full album)',
+        description: 'Purchase here: http://bit.ly/1Twpv4x\n\nTracklist:\n1. Dispatched Fortune\n2. Retrogression\n3. Riven\n4. Heavy Rain\n5. Red Glowing Night\n6. Heirless\n7. Obscure Pulse\n8. Enliven the Dust\n\nTotal playtime: 59:41 \n\n(C) Rain Without End Records 2016 | www.naturmacht.com'
+      }
     },
-    "channelTitle": "Oslam Phoenix",
-    "tags": [
-     "Dream",
-     "Theater",
-     "live",
-     "Mike",
-     "Portnoy",
-     "John",
-     "Myung",
-     "Petrucci",
-     "James",
-     "LaBrie",
-     "Jordan",
-     "Rudess",
-     "Bootleg",
-     "Progressive",
-     "Metal",
-     "the",
-     "majesty",
-     "ytse",
-     "jam",
-     "awake",
-     "eastwest",
-     "records",
-     "ystejamrecords",
-     "Full concert",
-     "HD",
-     "dream theater live at budokan full concert",
-     "live at budokan full concert hd",
-     "dream theater live 2004",
-     "2004",
-     "six degrees of inner turbulence",
-     "scenes from a memory",
-     "train of thought",
-     "falling into infinity",
-     "images and words",
-     "when dream and day unite"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Live at Budokan (Full Album)",
-     "description": "Track List:\n#1 - As I Am [0:00]\n#2 - This Dying Soul\nI. Reflections of Reality [7:25]\nII. Release [14:01]\n#3 - Beyond This Life [19:10]\n#4 - Hollow Years [38:47]\n#5 - War Inside My Head [48:05]\n#6 - The Test That Stumped Them All [50:28]\n#7 - Endless Sacrifice [55:25]\n#8 - Instrumedley \nI. The Dance of Eternity (Revisited) [1:06:43]\nII. Metropolis [1:08:18]\nIII. Erotomania [1:08:42]\nIV. The Dance of Eternity [1:10:22]\nV. Metropolis [1:11:06]\nVI. A Change of Seasons: IV. The Darkest of Winters [1:12:01]\nVII. Ytse Jam [1:12:47]\nVIII. The Dance of Eternity [1:14:28]\nIX. Paradigm Shift (Liquid Tension Experiment) [1:15:13]\nX. Universal Mind (Liquid Tension Experiment) [1:16:14]\nXI. The Dance of Eternity [1:17:00]\nXII. Hell's Kitchen [1:17:42]\n#9 - Trial of Tears \nI. It's Raining [1:18:58]\nII. Deep In Heaven [1:25:46]\nIII. The Wasteland [1:29:18]\n#10 - New Millenium [1:32:47]\n#11 - Jordan Rudess Keyboard Solo [1:40:49]\n#12 - Only A Matter of Time [1:44:47]\n#13 - Goodnight Kiss [1:52:03]\n#14 - Solitary Shell [1:58:17]\n#15 - Stream of Consciousness [2:04:16]\n#16 - Disappear [2:15:10]\n#17 - Pull Me Under [2:21:07]\n#18 - In The Name of God [2:29:45]\n\nJames Labrie - Vocals\nJohn Petrucci - Guitar, Vocals (Backing)\nJohn Myung - Bass\nMike Portnoy - Drums, Vocals\nJordan Rudess - Keyboards\n\n------O------\n\nProduced by John Petrucci and Mike Portnoy\nNigel Paul - Recording, Engineering\nJon Belec  - Engineering (assistant)\nHowie Weinberg - Mastering\nKevin Shirley - Mixing\nNigel Paul - Recording, Engineering\nPatrick Woodward - Digital editing\n\nAll rights goes to Dream Theater and Atlantic."
+    contentDetails: {
+      duration: 'PT59M32S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '9873',
+      likeCount: '126',
+      dislikeCount: '2',
+      favoriteCount: '0',
+      commentCount: '11'
     }
-   },
-   "contentDetails": {
-    "duration": "PT2H45M50S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "8428",
-    "likeCount": "51",
-    "dislikeCount": "1",
-    "favoriteCount": "0",
-    "commentCount": "4"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/lo4RAdPE86NRpXylYBDoC3KmZiQ\"",
-   "id": "YShCks2GfFo",
-   "snippet": {
-    "publishedAt": "2016-04-06T10:06:30.000Z",
-    "channelId": "UCGUQAox5XXwcSdBc59CudvA",
-    "title": "Dream Theater 2016-03-04 Kuppelsaal, Hanover, Germany (most of The Astonishing)",
-    "description": "0:36 Intro/Descent Of The NOMACs\n2:30 Dystopian Overture\n7:21 The Gift Of Music\n11:38 The Answer\n13:41 A Better Life\n18:24 Lord Nafaryus\n21:57 A Savior in the Square (incomplete)\n22:33 When Your Time Has Come\n27:04 Act Of Faythe\n31:59 Three Days\n35:30 The Hovering Sojourn\n36:26 Brother, Can You Hear Me?\n41:40 A Life Left Behind\n47:19 Ravenskill\n53:58 Chosen\n58:12 A Tempting Offer\n1:02:34 Digital Discord\n1:04:04 The X Aspect\n1:08:21 A New Beginning\n1:17:00 A Road To Revolution\n1:21:10 2285 Entr'acte\n1:23:30 Moment Of Betrayal\n1:29:55 Heaven's Cove\n1:33:40 Begin Again\n1:38:11 The Path That Divides\n1:42:45 Machine Chatter\n1:43:36 The Walking Shadow\n1:45:55 My Last Farewell\n1:47:13 Losing Faythe (Pull Me Under ending)\n\nThis is a nice quality nearly full performance of The Astonishing which popped up on ThePirateBay about a week ago. Who filmed it, I don't know, but hopefully they don't have any aversions to it being on YouTube. Just a heads up to my subscribers, the next two weeks are going to be crazy, because I've decided to go on hiatus starting on April 20 and want to get as much uploaded as possible before then.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/YShCks2GfFo/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/YShCks2GfFo/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/YShCks2GfFo/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/YShCks2GfFo/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/YShCks2GfFo/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/5fAN4BjGzBKRUFA7X_212Vdz7wk"',
+    id: 'qG3PDfqaPL8',
+    snippet: {
+      publishedAt: '2015-02-01T16:43:03.000Z',
+      channelId: 'UCbbMUqq3s5-r4vs61yn5FVQ',
+      title: 'Mystry - Pulse 8',
+      description: 'SUBSCRIBE TO OFFTRAKK: https://www.youtube.com/channel/UCbbM...\n\nBuy now on Itunes: https://itunes.apple.com/gb/album/pulse-8-ep/id958664679\n\n=== OFFTRAKK - Pure fiyyaa selecta\nI Soundcloud: https://soundcloud.com/offtrakk\nI Facebook: https://www.facebook.com/off.trakk?fr...\nI Twitter: https://twitter.com/OFFTRAKK_\n\n=== Mystry\nFacebook: https://www.facebook.com/misery.dubz\nTwitter: https://twitter.com/MYSTRY0121\nSoundcloud: https://soundcloud.com/mystry-og\n\nPromotional use only no profits will be made from these uploads. If the artist or label wants a track removed please email: offtrakkcb@gmail.com',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/qG3PDfqaPL8/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/qG3PDfqaPL8/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/qG3PDfqaPL8/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/qG3PDfqaPL8/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/qG3PDfqaPL8/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'OffTrakk',
+      tags: [
+        'Mystery (TV Genre)',
+        'House Music (Musical Genre)',
+        'Grime (Musical Genre)',
+        'Bass Music'
+      ],
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Mystry - Pulse 8',
+        description: 'SUBSCRIBE TO OFFTRAKK: https://www.youtube.com/channel/UCbbM...\n\nBuy now on Itunes: https://itunes.apple.com/gb/album/pulse-8-ep/id958664679\n\n=== OFFTRAKK - Pure fiyyaa selecta\nI Soundcloud: https://soundcloud.com/offtrakk\nI Facebook: https://www.facebook.com/off.trakk?fr...\nI Twitter: https://twitter.com/OFFTRAKK_\n\n=== Mystry\nFacebook: https://www.facebook.com/misery.dubz\nTwitter: https://twitter.com/MYSTRY0121\nSoundcloud: https://soundcloud.com/mystry-og\n\nPromotional use only no profits will be made from these uploads. If the artist or label wants a track removed please email: offtrakkcb@gmail.com'
+      }
     },
-    "channelTitle": "MrDreamTheater2",
-    "tags": [
-     "Dream Theater",
-     "The Astonishing",
-     "Bootleg",
-     "Live",
-     "Full",
-     "Concert",
-     "Germany",
-     "Hanover",
-     "2016",
-     "Mike Mangini",
-     "John Petrucci",
-     "John Myung",
-     "James LaBrie",
-     "Jordan Rudess",
-     "The Gift Of Music",
-     "Moment Of Betrayal",
-     "Act Of Faythe"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater 2016-03-04 Kuppelsaal, Hanover, Germany (most of The Astonishing)",
-     "description": "0:36 Intro/Descent Of The NOMACs\n2:30 Dystopian Overture\n7:21 The Gift Of Music\n11:38 The Answer\n13:41 A Better Life\n18:24 Lord Nafaryus\n21:57 A Savior in the Square (incomplete)\n22:33 When Your Time Has Come\n27:04 Act Of Faythe\n31:59 Three Days\n35:30 The Hovering Sojourn\n36:26 Brother, Can You Hear Me?\n41:40 A Life Left Behind\n47:19 Ravenskill\n53:58 Chosen\n58:12 A Tempting Offer\n1:02:34 Digital Discord\n1:04:04 The X Aspect\n1:08:21 A New Beginning\n1:17:00 A Road To Revolution\n1:21:10 2285 Entr'acte\n1:23:30 Moment Of Betrayal\n1:29:55 Heaven's Cove\n1:33:40 Begin Again\n1:38:11 The Path That Divides\n1:42:45 Machine Chatter\n1:43:36 The Walking Shadow\n1:45:55 My Last Farewell\n1:47:13 Losing Faythe (Pull Me Under ending)\n\nThis is a nice quality nearly full performance of The Astonishing which popped up on ThePirateBay about a week ago. Who filmed it, I don't know, but hopefully they don't have any aversions to it being on YouTube. Just a heads up to my subscribers, the next two weeks are going to be crazy, because I've decided to go on hiatus starting on April 20 and want to get as much uploaded as possible before then."
+    contentDetails: {
+      duration: 'PT4M8S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '43582',
+      likeCount: '930',
+      dislikeCount: '4',
+      favoriteCount: '0',
+      commentCount: '70'
     }
-   },
-   "contentDetails": {
-    "duration": "PT1H50M34S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "98424",
-    "likeCount": "521",
-    "dislikeCount": "30",
-    "favoriteCount": "0",
-    "commentCount": "258"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/voLTqOKMEcJINqzB5Ss4PiUgG7c\"",
-   "id": "34HK44CeSMg",
-   "snippet": {
-    "publishedAt": "2009-10-27T02:46:01.000Z",
-    "channelId": "UCe4LM_eKc9ywRmVuBm5pjQg",
-    "title": "Dream Theater - In The Name Of God (Live At Budokan) (Video)",
-    "description": "© 2006 WMG\nIn The Name Of God (Live At Budokan) (Video)",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/34HK44CeSMg/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/34HK44CeSMg/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/34HK44CeSMg/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/PxeW6V_7rPlRnHLfOtJx7qeHB4Y"',
+    id: 'fya4Ucm5xiQ',
+    snippet: {
+      publishedAt: '2016-11-23T20:22:25.000Z',
+      channelId: 'UCoQMHFRTVfgo8qQCCEdwn4w',
+      title: 'Best of Washed Out',
+      description: '“Look at the stars. It won\'t fix the economy. It won\'t stop wars. It won\'t give you flat abs, or even help you figure out your relationship. But it\'s important. It helps you to remember that you and your problems are both infinitesimally small and conversely, that you are a piece of an amazing and vast universe.”\n\n0:00 - Entrance\n1:19 - Weightless\n6:16 - Echoes\n10:13 - All I Know\n15:41 - New Theory\n18:30 - Falling Back\n24:16 - Call It Off\n27:51 - Eyes Be Closed\n31:49 - Great Escape\n36:58 - Lately\n38:56 - Don\'t Give Up\n42:51 - Amor Fati\n47:15 - All Over Now\n51:06 - You and I\n56:16 - Soft\n1:01:50 - A Dedication\n1:06:05 - Paracosm\n1:12:39 - Get Up\n1:15:40 - Belong\n\nWashed Out\nhttps://www.facebook.com/washed.out\nhttps://soundcloud.com/washedoutofficial\nhttps://www.subpop.com/artists/washed_out\n\nDisclaimer:\nDear artists, producers and photographers!\n\nThe purpose of Cure Music is to share fantastic music and beautiful pictures! If you are the rightful owner of any material posted by us and want us to remove it, we will do so immediately. Just send me an message/email.',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/fya4Ucm5xiQ/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/fya4Ucm5xiQ/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/fya4Ucm5xiQ/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/fya4Ucm5xiQ/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/fya4Ucm5xiQ/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Cure Music',
+      tags: [
+        'washed out',
+        'electronic',
+        'wave',
+        'chillwave',
+        'indie',
+        'folk',
+        'rock',
+        'pop',
+        'alternative',
+        'chill'
+      ],
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Best of Washed Out',
+        description: '“Look at the stars. It won\'t fix the economy. It won\'t stop wars. It won\'t give you flat abs, or even help you figure out your relationship. But it\'s important. It helps you to remember that you and your problems are both infinitesimally small and conversely, that you are a piece of an amazing and vast universe.”\n\n0:00 - Entrance\n1:19 - Weightless\n6:16 - Echoes\n10:13 - All I Know\n15:41 - New Theory\n18:30 - Falling Back\n24:16 - Call It Off\n27:51 - Eyes Be Closed\n31:49 - Great Escape\n36:58 - Lately\n38:56 - Don\'t Give Up\n42:51 - Amor Fati\n47:15 - All Over Now\n51:06 - You and I\n56:16 - Soft\n1:01:50 - A Dedication\n1:06:05 - Paracosm\n1:12:39 - Get Up\n1:15:40 - Belong\n\nWashed Out\nhttps://www.facebook.com/washed.out\nhttps://soundcloud.com/washedoutofficial\nhttps://www.subpop.com/artists/washed_out\n\nDisclaimer:\nDear artists, producers and photographers!\n\nThe purpose of Cure Music is to share fantastic music and beautiful pictures! If you are the rightful owner of any material posted by us and want us to remove it, we will do so immediately. Just send me an message/email.'
+      }
     },
-    "channelTitle": "Atlantic Records",
-    "tags": [
-     "Dream Theater",
-     "In The Name Of God",
-     "Rock",
-     "Hard Rock",
-     "Warner Music",
-     "Atlantic Records",
-     "Live",
-     "Budokan",
-     "Rock Music (Musical Genre)",
-     "Concert (TV Genre)",
-     "Berklee College Of Music (Organization)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - In The Name Of God (Live At Budokan) (Video)",
-     "description": "© 2006 WMG\nIn The Name Of God (Live At Budokan) (Video)"
+    contentDetails: {
+      duration: 'PT1H18M37S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '148045',
+      likeCount: '1620',
+      dislikeCount: '42',
+      favoriteCount: '0',
+      commentCount: '87'
     }
-   },
-   "contentDetails": {
-    "duration": "PT15M25S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": true,
-    "regionRestriction": {
-     "blocked": [
-      "SZ",
-      "LB",
-      "LA",
-      "DZ",
-      "SR",
-      "LI",
-      "SV",
-      "ST",
-      "SJ",
-      "LR",
-      "SH",
-      "SN",
-      "SO",
-      "SL",
-      "SM",
-      "SB",
-      "SC",
-      "LY",
-      "SA",
-      "SD",
-      "KI",
-      "KN",
-      "LK",
-      "VU",
-      "TL",
-      "PN",
-      "KW",
-      "KZ",
-      "KY",
-      "VG",
-      "VA",
-      "KG",
-      "VC",
-      "KE",
-      "KH",
-      "VN",
-      "VI",
-      "KM",
-      "PM",
-      "CK",
-      "CI",
-      "DJ",
-      "CC",
-      "CM",
-      "CF",
-      "CG",
-      "CD",
-      "CX",
-      "LS",
-      "CR",
-      "DO",
-      "CV",
-      "DM",
-      "EH",
-      "QA",
-      "JE",
-      "LC",
-      "JM",
-      "JO",
-      "IM",
-      "BI",
-      "BH",
-      "BJ",
-      "BM",
-      "BL",
-      "BN",
-      "BB",
-      "BD",
-      "BF",
-      "BY",
-      "PW",
-      "BZ",
-      "DE",
-      "BS",
-      "BT",
-      "BW",
-      "BV",
-      "TK",
-      "TJ",
-      "TO",
-      "TN",
-      "TM",
-      "IO",
-      "TC",
-      "PS",
-      "TG",
-      "TF",
-      "TD",
-      "TZ",
-      "IQ",
-      "UG",
-      "TV",
-      "TT",
-      "AE",
-      "AF",
-      "AG",
-      "AI",
-      "YT",
-      "AM",
-      "AO",
-      "AQ",
-      "AS",
-      "AW",
-      "AX",
-      "MP",
-      "AZ",
-      "YE",
-      "HT",
-      "WS",
-      "WF",
-      "HN",
-      "HM",
-      "ET",
-      "PA",
-      "OM",
-      "ZM",
-      "RW",
-      "ZW",
-      "RE",
-      "GF",
-      "GG",
-      "GD",
-      "GE",
-      "GA",
-      "GN",
-      "GL",
-      "GM",
-      "GH",
-      "GI",
-      "GW",
-      "GT",
-      "GU",
-      "GS",
-      "GP",
-      "GQ",
-      "GY",
-      "UM",
-      "NI",
-      "NE",
-      "NF",
-      "NA",
-      "NC",
-      "UZ",
-      "NU",
-      "NP",
-      "NR",
-      "FM",
-      "FO",
-      "FK",
-      "FJ",
-      "MD",
-      "MF",
-      "MG",
-      "MA",
-      "ML",
-      "MM",
-      "MN",
-      "MO",
-      "MH",
-      "PR",
-      "ER",
-      "MU",
-      "MV",
-      "MW",
-      "PK",
-      "MQ",
-      "MR",
-      "MS",
-      "PF",
-      "MZ",
-      "EC"
-     ]
-    },
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "2123629",
-    "likeCount": "8942",
-    "dislikeCount": "148",
-    "favoriteCount": "0",
-    "commentCount": "1890"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/0iisnpUje2yylqKrW18zkw3YQgw\"",
-   "id": "qCbKKuTwnro",
-   "snippet": {
-    "publishedAt": "2016-09-30T02:05:29.000Z",
-    "channelId": "UCwSGC8ZVBs75uzCx-Y-DJdQ",
-    "title": "Rocksmith 2014 - Dream Theater DLC - Live from Ubisoft Studio SF",
-    "description": "Ready for a challenge? The team tackles Dream Theater's highly technical songs “Pull Me Under,” “On The Backs Of Angels,” and “Metropolis—Part I: 'The Miracle And The Sleeper'” -- plus we get a good long look at the changes for Riff Repeater in Rocksmith Remastered. It's a long show and it's a good show!  -- Watch live at https://www.twitch.tv/rocksmithgame",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/qCbKKuTwnro/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/qCbKKuTwnro/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/qCbKKuTwnro/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/qCbKKuTwnro/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/qCbKKuTwnro/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/PadegLM7QqHwcenXO3hQVnf_Oz8"',
+    id: 'DBJt6l7MMrw',
+    snippet: {
+      publishedAt: '2015-11-13T02:07:02.000Z',
+      channelId: 'UC2l3Q7_tEggLyeXgiXIbKeQ',
+      title: 'Gatecrasher   Digital  Chill Out cd 3 full album HD',
+      description: '',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/DBJt6l7MMrw/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/DBJt6l7MMrw/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/DBJt6l7MMrw/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/DBJt6l7MMrw/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/DBJt6l7MMrw/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'simplesecretof',
+      tags: [
+        'Album',
+        'Full'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Gatecrasher   Digital  Chill Out cd 3 full album HD',
+        description: ''
+      }
     },
-    "channelTitle": "Ubisoft Studio SF",
-    "tags": [
-     "twitch",
-     "games",
-     "developer",
-     "dream theater",
-     "guitar",
-     "live",
-     "music",
-     "prog rock",
-     "progressive rock",
-     "rocksmith",
-     "rocksmith remastered",
-     "san francisco",
-     "studio SF",
-     "ubisoft"
-    ],
-    "categoryId": "20",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Rocksmith 2014 - Dream Theater DLC - Live from Ubisoft Studio SF",
-     "description": "Ready for a challenge? The team tackles Dream Theater's highly technical songs “Pull Me Under,” “On The Backs Of Angels,” and “Metropolis—Part I: 'The Miracle And The Sleeper'” -- plus we get a good long look at the changes for Riff Repeater in Rocksmith Remastered. It's a long show and it's a good show!  -- Watch live at https://www.twitch.tv/rocksmithgame"
+    contentDetails: {
+      duration: 'PT1H2M44S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '21576',
+      likeCount: '213',
+      dislikeCount: '9',
+      favoriteCount: '0',
+      commentCount: '43'
     }
-   },
-   "contentDetails": {
-    "duration": "PT1H36M21S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "6493",
-    "likeCount": "89",
-    "dislikeCount": "0",
-    "favoriteCount": "0",
-    "commentCount": "21"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/1rQ0oFlweKiAASmP-iMyJ5NEinw\"",
-   "id": "XxAZT8IJD9w",
-   "snippet": {
-    "publishedAt": "2011-08-07T08:51:08.000Z",
-    "channelId": "UCzaEnydPhMpLuwc9E1SDBcA",
-    "title": "Dream Theater - Learning To Live (Metropolis 2000: Scenes From New York)",
-    "description": "John Myung - Electric Bass\r\nJohn Petrucci - Electric Guitar, Vocal\r\nMike Portnoy - Drums, Percussion, Vocal\r\nJordan Rudess - Keyboards\r\nJames LaBrie - Lead Vocal, Percussion",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/XxAZT8IJD9w/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/XxAZT8IJD9w/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/XxAZT8IJD9w/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/XxAZT8IJD9w/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/XxAZT8IJD9w/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/ycZZfo1RL-saS2luoZbkxpJ-Esw"',
+    id: 'DFaxkyGTVLw',
+    snippet: {
+      publishedAt: '2015-05-26T11:53:51.000Z',
+      channelId: 'UC-k2wT0UQL9XLsPNKTzVk4w',
+      title: 'Mystry - Pulse 8 (Stripes Records)',
+      description: 'https://itunes.apple.com/gb/album/pulse-8-ep/id958664679',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/DFaxkyGTVLw/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/DFaxkyGTVLw/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/DFaxkyGTVLw/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/DFaxkyGTVLw/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/DFaxkyGTVLw/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'StripesRecords',
+      tags: [
+        'grime',
+        'pulse',
+        'mystry',
+        'jme',
+        'skepta',
+        'stripes',
+        'true tiger',
+        'birmingham',
+        '0121'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Mystry - Pulse 8 (Stripes Records)',
+        description: 'https://itunes.apple.com/gb/album/pulse-8-ep/id958664679'
+      }
     },
-    "channelTitle": "axl43210",
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Learning To Live (Metropolis 2000: Scenes From New York)",
-     "description": "John Myung - Electric Bass\r\nJohn Petrucci - Electric Guitar, Vocal\r\nMike Portnoy - Drums, Percussion, Vocal\r\nJordan Rudess - Keyboards\r\nJames LaBrie - Lead Vocal, Percussion"
+    contentDetails: {
+      duration: 'PT4M7S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '527',
+      likeCount: '14',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '0'
     }
-   },
-   "contentDetails": {
-    "duration": "PT14M1S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "80399",
-    "likeCount": "658",
-    "dislikeCount": "10",
-    "favoriteCount": "0",
-    "commentCount": "100"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/xN7q5lF4kGmaAMizTV3d6xbhCE0\"",
-   "id": "s454AqHEu8I",
-   "snippet": {
-    "publishedAt": "2015-03-02T16:57:21.000Z",
-    "channelId": "UCZYaPEERzZ_yNlmT801FzZg",
-    "title": "Dream Theater - Another Day | Happy Holidays 2013 (Video)",
-    "description": "Dream Theater - Another Day Austin Texas 07/07/12 Live Happy Holidays CD 2013.\n\nThis is a live video with audio track official cd \"happy holidays\" of dream theater.\n\nOriginal Videos: https://www.youtube.com/watch?v=5a5Jb1ozSxY & https://www.youtube.com/watch?v=jnNh-3ZR3Ok",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/s454AqHEu8I/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/s454AqHEu8I/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/s454AqHEu8I/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/s454AqHEu8I/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/s454AqHEu8I/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/l46P9izzPS4WEq1OSladkGVKhwg"',
+    id: '889PT03xGR8',
+    snippet: {
+      publishedAt: '2015-08-11T21:53:28.000Z',
+      channelId: 'UCWJCR2r0umxTFjKjqLQ23FA',
+      title: 'Pulse 7  FULL ALBUM',
+      description: 'Περιγραφή',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/889PT03xGR8/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/889PT03xGR8/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/889PT03xGR8/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/889PT03xGR8/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'ΓΙΩΡΓΟΣ ΘΩΜΑΣ',
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pulse 7  FULL ALBUM',
+        description: 'Περιγραφή'
+      }
     },
-    "channelTitle": "Matias Amor",
-    "tags": [
-     "Dream Theater (Musical Group)",
-     "Happy Holidays 2013",
-     "Live",
-     "Another Day",
-     "Austin (City/Town/Village)",
-     "Music (TV Genre)",
-     "Christmas",
-     "Progressive Metal (Musical Genre)",
-     "Progressive Rock (Musical Genre)"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Another Day | Happy Holidays 2013 (Video)",
-     "description": "Dream Theater - Another Day Austin Texas 07/07/12 Live Happy Holidays CD 2013.\n\nThis is a live video with audio track official cd \"happy holidays\" of dream theater.\n\nOriginal Videos: https://www.youtube.com/watch?v=5a5Jb1ozSxY & https://www.youtube.com/watch?v=jnNh-3ZR3Ok"
+    contentDetails: {
+      duration: 'PT2H24M29S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '727',
+      likeCount: '7',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '1'
     }
-   },
-   "contentDetails": {
-    "duration": "PT4M28S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "86302",
-    "favoriteCount": "0",
-    "commentCount": "59"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/eatBq8zZOVx1G7GXDVR33TiwTrs\"",
-   "id": "u3v7QM5YvOQ",
-   "snippet": {
-    "publishedAt": "2016-08-27T14:36:58.000Z",
-    "channelId": "UCVRsQa3EDSNwoCKfJcdFZXw",
-    "title": "Dream Theater (Moment of Betrayal)-Live-HD-Leg-PT.",
-    "description": "Dream Theater - Moment of Betrayal.\nAstonishing Live at Chile 2016-Legendado em Português.",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/u3v7QM5YvOQ/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/u3v7QM5YvOQ/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/u3v7QM5YvOQ/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/u3v7QM5YvOQ/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/u3v7QM5YvOQ/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/zc6PbEOqWmyaRs7p3lbacBFdU-U"',
+    id: 'W44rD0B3Z04',
+    snippet: {
+      publishedAt: '2015-06-27T22:35:28.000Z',
+      channelId: 'UCWJCR2r0umxTFjKjqLQ23FA',
+      title: 'Pulse 2 - FULL ALBUM',
+      description: '1996 - Pulse Vol 2 - The 2nd Psychedelic Chapter (VA)\nTracklist: CD 1\n1. Synchro - Babes On Broomsticks 0:00\n2. Shakta - Foxglove 8:21\n3. Butler & Wilson - Deliverance 16:04\n4. Amanite FX & Prànà - Black Rain 24:22\n5. Transwave - Trashish 31:31\n6. Biot - Radiation 37:30\n7. Cosmosis - San Yacid 44:07\n8. Asia 2001 - Dawn To Dusk 51:54\n9. Metal Spark - Smells Electric 58:14\n10. N.D.M.A. - Vitan 1:04:57\n\nTracklist: CD 2\n1. Total Eclipse - Pulsar Glitch 1:15:04\n2. Astral Projection - Kabalah 1:22:45\n3. Power Source - Tinkerbell 1:32:15\n4. Chakra & Edi Mis - X-File (The Monkey Mix) 1:41:28\n5. Eat Static - Bony Incus (MWNN Remix) 1:50:06\n6. Miranda - Triplexus 1:56:38\n7. Sundog - Touch The Sun 2:04:08\n8. Sit On The Lungi - Miles And Smiles 2:11:12\n9. Astralasia - Afterlife 2:20:11\n@Discogs: http://www.discogs.com/Various-Pulse-...',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/W44rD0B3Z04/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/W44rD0B3Z04/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/W44rD0B3Z04/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/W44rD0B3Z04/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'ΓΙΩΡΓΟΣ ΘΩΜΑΣ',
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pulse 2 - FULL ALBUM',
+        description: '1996 - Pulse Vol 2 - The 2nd Psychedelic Chapter (VA)\nTracklist: CD 1\n1. Synchro - Babes On Broomsticks 0:00\n2. Shakta - Foxglove 8:21\n3. Butler & Wilson - Deliverance 16:04\n4. Amanite FX & Prànà - Black Rain 24:22\n5. Transwave - Trashish 31:31\n6. Biot - Radiation 37:30\n7. Cosmosis - San Yacid 44:07\n8. Asia 2001 - Dawn To Dusk 51:54\n9. Metal Spark - Smells Electric 58:14\n10. N.D.M.A. - Vitan 1:04:57\n\nTracklist: CD 2\n1. Total Eclipse - Pulsar Glitch 1:15:04\n2. Astral Projection - Kabalah 1:22:45\n3. Power Source - Tinkerbell 1:32:15\n4. Chakra & Edi Mis - X-File (The Monkey Mix) 1:41:28\n5. Eat Static - Bony Incus (MWNN Remix) 1:50:06\n6. Miranda - Triplexus 1:56:38\n7. Sundog - Touch The Sun 2:04:08\n8. Sit On The Lungi - Miles And Smiles 2:11:12\n9. Astralasia - Afterlife 2:20:11\n@Discogs: http://www.discogs.com/Various-Pulse-...'
+      }
     },
-    "channelTitle": "UAFARQUITETURA",
-    "tags": [
-     "Dream Theater",
-     "Moment of Betrayal",
-     "uafarquitetura",
-     "uafarquiteto@gmail.com",
-     "Astonishing",
-     "HD"
-    ],
-    "categoryId": "24",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater (Moment of Betrayal)-Live-HD-Leg-PT.",
-     "description": "Dream Theater - Moment of Betrayal.\nAstonishing Live at Chile 2016-Legendado em Português."
+    contentDetails: {
+      duration: 'PT2H28M43S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '1633',
+      likeCount: '21',
+      dislikeCount: '1',
+      favoriteCount: '0',
+      commentCount: '4'
     }
-   },
-   "contentDetails": {
-    "duration": "PT6M16S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "1074",
-    "likeCount": "13",
-    "dislikeCount": "0",
-    "favoriteCount": "0",
-    "commentCount": "7"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/zyXMJoh9Nxn1W_7Uj3Eo8lIuHVw\"",
-   "id": "-fxUj1LvSNY",
-   "snippet": {
-    "publishedAt": "2016-02-19T00:12:44.000Z",
-    "channelId": "UCzhhG_egJ2TxfhBJXWkohJQ",
-    "title": "Dream Theater - The Gift of Music (The Palladium, London, 18.02.2016)",
-    "description": "Dream Theater - Descent of the Nomacs / Dystopian Overture / The Gift of Music \n(The Palladium, London, 18.02.2016)",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/-fxUj1LvSNY/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/-fxUj1LvSNY/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/-fxUj1LvSNY/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/-fxUj1LvSNY/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/-fxUj1LvSNY/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/P02xFgCOiFz01od8_JbEU0MJSlM"',
+    id: 'No6OFIyo_7s',
+    snippet: {
+      publishedAt: '2017-09-26T12:22:55.000Z',
+      channelId: 'UC-wdveKCDbbjK0_rzR2XhVA',
+      title: 'Wander - Glass [Full Album]',
+      description: 'Genre: Post rock, math rock\nArtist: Wander \nAlbum: Glass (September 22, 2017)\nCountry: Oakland, California, USA\n\nhttps://wanderband.bandcamp.com/album/glass\nhttps://www.facebook.com/wakingwander\nhttps://www.twitter.com/wander_band\nhttps://www.instagram.com/wander_band\n\nTracklist:\n\n01. Softy 00:00\n02. Glass 06:51\n03. Apex 12:06\n04. Magenta 14:45\n05. Luna 20:23\n06. Breaker 25:34\n\nI don\'t own any copyright for this album. All credits belong to Wander.',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/No6OFIyo_7s/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/No6OFIyo_7s/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/No6OFIyo_7s/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/No6OFIyo_7s/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/No6OFIyo_7s/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Wherepostrockdwells',
+      tags: [
+        'post rock',
+        'instrumental rock',
+        'experimental rock',
+        'cinematic rock',
+        'cinematic',
+        'ambient',
+        'math rock',
+        'post math rock',
+        'atmospheric',
+        'ethereal',
+        'soundscape',
+        'delay',
+        'drone',
+        'rock',
+        'wander',
+        'wander band',
+        'wander post rock band',
+        'glass',
+        'glass album',
+        'glass post rock album',
+        'new album',
+        '2017 album',
+        '2017 post rock',
+        'september 22 post rock',
+        'post rock september',
+        'oakland',
+        'california',
+        'bandcamp',
+        'USA',
+        'post rock california',
+        'california post rock band',
+        'post rock USA',
+        'wherepostrockdwells'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Wander - Glass [Full Album]',
+        description: 'Genre: Post rock, math rock\nArtist: Wander \nAlbum: Glass (September 22, 2017)\nCountry: Oakland, California, USA\n\nhttps://wanderband.bandcamp.com/album/glass\nhttps://www.facebook.com/wakingwander\nhttps://www.twitter.com/wander_band\nhttps://www.instagram.com/wander_band\n\nTracklist:\n\n01. Softy 00:00\n02. Glass 06:51\n03. Apex 12:06\n04. Magenta 14:45\n05. Luna 20:23\n06. Breaker 25:34\n\nI don\'t own any copyright for this album. All credits belong to Wander.'
+      }
     },
-    "channelTitle": "Geor Geor",
-    "tags": [
-     "Rock",
-     "Hard Rock",
-     "Heavy Metal",
-     "Music",
-     "Disco",
-     "80-xx",
-     "Dream Theater",
-     "The Astonishing"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - The Gift of Music (The Palladium, London, 18.02.2016)",
-     "description": "Dream Theater - Descent of the Nomacs / Dystopian Overture / The Gift of Music \n(The Palladium, London, 18.02.2016)"
+    contentDetails: {
+      duration: 'PT33M41S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: true,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '4180',
+      likeCount: '172',
+      dislikeCount: '4',
+      favoriteCount: '0',
+      commentCount: '9'
     }
-   },
-   "contentDetails": {
-    "duration": "PT10M45S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "147147",
-    "likeCount": "1227",
-    "dislikeCount": "55",
-    "favoriteCount": "0",
-    "commentCount": "398"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/ATdEQvBg1h3yqORR6DsH6YY5H_g\"",
-   "id": "qRFcLHo58eQ",
-   "snippet": {
-    "publishedAt": "2015-01-03T15:18:19.000Z",
-    "channelId": "UCDHu87pKVWi_W2y_rdC_LMQ",
-    "title": "Dream Theater - Enigma Machine [Breaking The Fourth Wall]",
-    "description": "Breaking the Fourth Wall - Live From The Boston Opera House\nDream Theater - Enigma Machine",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/qRFcLHo58eQ/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/qRFcLHo58eQ/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/qRFcLHo58eQ/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/KYmkLFPxUdFJsVQoGfo8CAoR668"',
+    id: 'yzYEfLSa1ws',
+    snippet: {
+      publishedAt: '2016-04-04T05:04:59.000Z',
+      channelId: 'UC8IZ-0Rrbbl6ihYzwh8i6bw',
+      title: 'Namlook & Move D - The Audiolounge (Full Album)',
+      description: 'Released 2000 on Fax Records. Recorded live at reSource Studio, Heidelberg\nMade in Germany.',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/yzYEfLSa1ws/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/yzYEfLSa1ws/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/yzYEfLSa1ws/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/yzYEfLSa1ws/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'basscadet',
+      tags: [
+        'move D',
+        'namlook',
+        'ambient',
+        'fax records',
+        'audiolounge'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Namlook & Move D - The Audiolounge (Full Album)',
+        description: 'Released 2000 on Fax Records. Recorded live at reSource Studio, Heidelberg\nMade in Germany.'
+      }
     },
-    "channelTitle": "japanin poika",
-    "tags": [
-     "Dream Theater",
-     "Enigma Machine",
-     "Breaking The Fourth Wall",
-     "Live From The Boston Opera House",
-     "Progressive",
-     "japanin_poika",
-     "Opera House"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater - Enigma Machine [Breaking The Fourth Wall]",
-     "description": "Breaking the Fourth Wall - Live From The Boston Opera House\nDream Theater - Enigma Machine"
+    contentDetails: {
+      duration: 'PT55M42S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '1935',
+      likeCount: '38',
+      dislikeCount: '1',
+      favoriteCount: '0',
+      commentCount: '3'
     }
-   },
-   "contentDetails": {
-    "duration": "PT8M29S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "296778",
-    "likeCount": "1719",
-    "dislikeCount": "26",
-    "favoriteCount": "0",
-    "commentCount": "278"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/S5jGEymmm-eBkPPAToJp0FU0Kuo\"",
-   "id": "qDuKsiwS5xw",
-   "snippet": {
-    "publishedAt": "2016-10-03T20:18:49.000Z",
-    "channelId": "UCBHhdnYxvu94yefpeZABY9g",
-    "title": "Final Opportunity to Experience Dream Theater The Astonishing  Live In Its E...",
-    "description": "Tickets & VIP packages at http://www.DreamTheater.net/tour/\n\nCatch the pioneering group Dream Theater performing their widely acclaimed double concept album “The Astonishing” in immersive and interactive settings for a unique and unparalleled live experience! Dream Theater has performed its groundbreaking new album, The Astonishing, live in its entirety in over 58 shows across 46 cities throughout Europe and North America. Don't miss your final opportunity to experience this one-of-a-kind, immersive, prog-metal rock opera as the band embarks on the final leg of its US tour, this Fall! Tickets on sale now!\n\nPick up THE ASTONISHING at:\nStore: http://flyt.it/DTTheAstonishingStore\niTunes: http://Smarturl.it/TheAstonishingIT\nAmazon: http://Smarturl.it/TheAstonishingAZ\nGoogle Play: http://Smarturl.it/TheAstonishingGP\nSpotify: http://Smarturl.it/TheAstonishingSP\n\nSubscribe: http://bit.ly/171a3Ya\nSite: http://www.dreamtheater.net/\nFacebook: https://www.facebook.com/dreamtheater\nTwitter: https://twitter.com/dreamtheaternet\nInstagram: http://instagram.com/dtimages",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/qDuKsiwS5xw/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/qDuKsiwS5xw/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/qDuKsiwS5xw/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/qDuKsiwS5xw/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/5f3C_v5p496hAU7-YJ3kjNKKi2g"',
+    id: 'ZhuY4vyO63o',
+    snippet: {
+      publishedAt: '2017-02-02T22:31:21.000Z',
+      channelId: 'UCdu55TUWcrmw7IOtsVRYzfQ',
+      title: 'PULSE8 - HOUSE OF LEADERS lyrics video',
+      description: '',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/ZhuY4vyO63o/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/ZhuY4vyO63o/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/ZhuY4vyO63o/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/ZhuY4vyO63o/sddefault.jpg',
+          width: 640,
+          height: 480
+        },
+        maxres: {
+          url: 'https://i.ytimg.com/vi/ZhuY4vyO63o/maxresdefault.jpg',
+          width: 1280,
+          height: 720
+        }
+      },
+      channelTitle: 'Pulse 8',
+      tags: [
+        'Pusle8',
+        'Official Pulse8',
+        'House of Leaders',
+        'Follow Me to Hell',
+        'Robb Webb fecit',
+        'metal'
+      ],
+      categoryId: '10',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'PULSE8 - HOUSE OF LEADERS lyrics video',
+        description: ''
+      }
     },
-    "channelTitle": "Dream Theater",
-    "tags": [
-     "DreamTheater",
-     "Dream Theater",
-     "Dream",
-     "Theater",
-     "Moment Of Betrayal",
-     "The Astonishing",
-     "Astonishing",
-     "Prog",
-     "Rock",
-     "Progressive Rock",
-     "Live",
-     "Tour",
-     "Roadrunner Records",
-     "Roadrunner",
-     "Official",
-     "Visualizer",
-     "New Dream Theater",
-     "New Dream Theater Album",
-     "Music",
-     "Video",
-     "heavy metal",
-     "prog rock",
-     "progressive rock",
-     "rush",
-     "jordan rudess",
-     "john petrucci",
-     "john myung",
-     "mike mangini",
-     "James LaBrie",
-     "Mike Portnoy",
-     "Progressive metal"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Final Opportunity to Experience Dream Theater The Astonishing  Live In Its E...",
-     "description": "Tickets & VIP packages at http://www.DreamTheater.net/tour/\n\nCatch the pioneering group Dream Theater performing their widely acclaimed double concept album “The Astonishing” in immersive and interactive settings for a unique and unparalleled live experience! Dream Theater has performed its groundbreaking new album, The Astonishing, live in its entirety in over 58 shows across 46 cities throughout Europe and North America. Don't miss your final opportunity to experience this one-of-a-kind, immersive, prog-metal rock opera as the band embarks on the final leg of its US tour, this Fall! Tickets on sale now!\n\nPick up THE ASTONISHING at:\nStore: http://flyt.it/DTTheAstonishingStore\niTunes: http://Smarturl.it/TheAstonishingIT\nAmazon: http://Smarturl.it/TheAstonishingAZ\nGoogle Play: http://Smarturl.it/TheAstonishingGP\nSpotify: http://Smarturl.it/TheAstonishingSP\n\nSubscribe: http://bit.ly/171a3Ya\nSite: http://www.dreamtheater.net/\nFacebook: https://www.facebook.com/dreamtheater\nTwitter: https://twitter.com/dreamtheaternet\nInstagram: http://instagram.com/dtimages"
+    contentDetails: {
+      duration: 'PT5M47S',
+      dimension: '2d',
+      definition: 'hd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '853',
+      likeCount: '13',
+      dislikeCount: '0',
+      favoriteCount: '0',
+      commentCount: '0'
     }
-   },
-   "contentDetails": {
-    "duration": "PT31S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "10962",
-    "likeCount": "264",
-    "dislikeCount": "9",
-    "favoriteCount": "0",
-    "commentCount": "53"
-   }
   },
   {
-   "kind": "youtube#video",
-   "etag": "\"I_8xdZu766_FSaexEaDXTIfEWc0/vPcBPMY2zd2lsw3qNWMcHnwFiV8\"",
-   "id": "Ad-M6hMXHFU",
-   "snippet": {
-    "publishedAt": "2011-09-23T14:20:02.000Z",
-    "channelId": "UCTN8s65YKl3leSNO54KAZnA",
-    "title": "Dream Theater Live Download Festival 2009",
-    "description": "Dream Theater Live Download Festival 2009",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/Ad-M6hMXHFU/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/Ad-M6hMXHFU/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/Ad-M6hMXHFU/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
+    kind: 'youtube#video',
+    etag: '"S8kisgyDEblalhHF9ooXPiFFrkc/kG81FmBJEwd5wD4EdKSBI0jQ6ms"',
+    id: 'wu6UqrxY2cw',
+    snippet: {
+      publishedAt: '2017-03-10T18:43:28.000Z',
+      channelId: 'UCFRKihqYXMb1HVtL5SO4_Vw',
+      title: 'Pink Floyd - Pulse (Live in Concert at Earl\'s Court in London, 1994) Full Show (Multicam HD)',
+      description: 'At long last Pink Floyd Pulse has arrived on DVD, and Floyd fans already know it\'s a major cause to celebrate. The original VHS release was a milestone bestseller, but it seemed to take forever for the DVD to arrive, with numerous delays while Floyd guitarist David Gilmour and long-time Floyd producer James Guthrie labored to restore, re-edit, and remix this legendary concert video in 5.1-channel Dolby Surround Sound. Pulse is a Pink Floyd concert video taken from the 20 October 1994 concert at Earls Court, London, England in The Division Bell Tour. It was originally released on VHS and Laserdisc in 1995. There was considerable delay in the release of the DVD edition of Pulse, with new features announced with each setback. The cause of the delays was reputed to be the continued modifications and additions to produce a high-quality release. The previous planned release date of 22 September 2005 for the two-disc DVD set was changed to 10 July 2006 for the UK and Europe, and 11 July 2006 everywhere else. [by Wikipedia]\n\n"Si può dire che questo disco è l\'ultima vera testimonianza della musica "viva" e pulsante dei Pink Floyd. O almeno io lo considero cosi perchè le varie raccolte uscite successivamente: Echoes, The Best Of, il live di The Wall, Is There Anybody Out There?, le trovo operazioni meramente commerciali (c\'era bisogno?! mah!) e non appartengono alla storia recente, mentre Pulse si, sebbene siano passati ormai 10 anni dalla sua pubblicazione. Ovviamente un discorso a parte va fatto per la loro (breve) e quanto mai storica apparizione al recente Live 8 a Londra. Live uscito poco dopo l\'ultimo album in studio The Division Bell che, mi duole dirlo, ma non è stato un granchè (eccetto pochi particolari), questo Pulse ha un ottimo valore collezionistico oltre che affettivo e musicale per i fan. La parte inerente la manifattura è ben studiata, veramente carino il booklet completo di parecchie fotografie del tour corrispondente, e la confezione tipica del live "collezionistico", fatta di cartone che nel tempo "invecchia" a furia di usarlo. Sotto questo aspetto però, devo dire la verità, Is There Anybody Out There? è riuscito ancora più accattivante. Riguardo i contenuti musicali, cosa dire che non sia stato già detto? Ottimo, seppure con un pò di sapore in meno rispetto al passato, ma che ci vuoi fare, all\'epoca in cui uscì i Pink Floyd avevano già alle spalle un glorioso passato e ben quasi 30 anni di carriera, e non è certo questa la prova della loro consacrazione artistica. Pulse è un doppio CD, nel primo troviamo grandi successi del gruppo da Shine on You Crazy Diamond, Another Brick in The Wall e perfino Astronomy Domine, più altri pezzi dal già citato The Division Bell. Il secondo CD contiene tutto (e sottolineo tutto) The Dark Side Of Te Moon riproposto in sede live, più Wish You Were Here, Comfortably Numb e Rub Like Hell, che ormai è diventata da alcuni anni a questa parte l\'indiscussa canzone con cui concludere i loro concerti. Le versioni riproposte in sede live hanno ovviamente tutte una influenza di modernità (eccetto i pezzi più recenti, che sono praticamente nati cosi) dovuta in parte al fatto che siamo nel 1995 e che i Pink Floyd non sono certo quelli degli anni \'70 ed in parte alla ricchezza di arrangiamenti e musicisti che ormai si portano dietro, insieme all\'immancabile e mastodontica scenografia che rende unici i loro show, da sempre. Il live è perfetto, ed anche la video cassetta corrispondente intitolata nello stesso identico modo, (registrata il 20/10/94 all\'Earls Court a Londra) regala emozioni non da poco se siete fan affezionati di questi eroi del rock, ad oggi signori di 60 anni. Certo vedere dei video vintage del gruppo ha sicuramente un altro effetto emotivo, ma questo rimane, come dicevo prima, un ottima (ed indiscussa) testimonianza della loro longevità artistica. [www.debaser.it/pink-floyd/pulse/recensione-aniel]\n\nSetlist:\n01. Shine On You Crazy Diamond 0:00\n02. Learning to Fly 13:16\n03. High Hopes 18:35\n04. Take It Back 26:38\n05. Coming Back to Life 32:47\n06. Sorrow 39:39\n07. Keep Talking 51:26\n08. Another Brick in the Wall, Part 2 58:58\n09. One of These Days 1:05:49\n10. Speak to Me 1:12:53\n11. Breathe (In the Air) 1:14:19\n12. On the Run 1:16:57\n13. Time 1:21:13\n14. The Great Gig in the Sky 1:28:05\n15. Money 1:33:50\n16. Us and Them 1:42:36\n17. Any Colour You Like 1:49:46\n18. Brain Damage 1:53:01\n19. Eclipse 1:56:52\n20. Wish You Were Here 1:59:45\n21. Comfortably Numb 2:05:54\n22. Run Like Hell 2:16:46',
+      thumbnails: {
+        'default': {
+          url: 'https://i.ytimg.com/vi/wu6UqrxY2cw/default.jpg',
+          width: 120,
+          height: 90
+        },
+        medium: {
+          url: 'https://i.ytimg.com/vi/wu6UqrxY2cw/mqdefault.jpg',
+          width: 320,
+          height: 180
+        },
+        high: {
+          url: 'https://i.ytimg.com/vi/wu6UqrxY2cw/hqdefault.jpg',
+          width: 480,
+          height: 360
+        },
+        standard: {
+          url: 'https://i.ytimg.com/vi/wu6UqrxY2cw/sddefault.jpg',
+          width: 640,
+          height: 480
+        }
+      },
+      channelTitle: 'Pantegana Metallica',
+      categoryId: '22',
+      liveBroadcastContent: 'none',
+      localized: {
+        title: 'Pink Floyd - Pulse (Live in Concert at Earl\'s Court in London, 1994) Full Show (Multicam HD)',
+        description: 'At long last Pink Floyd Pulse has arrived on DVD, and Floyd fans already know it\'s a major cause to celebrate. The original VHS release was a milestone bestseller, but it seemed to take forever for the DVD to arrive, with numerous delays while Floyd guitarist David Gilmour and long-time Floyd producer James Guthrie labored to restore, re-edit, and remix this legendary concert video in 5.1-channel Dolby Surround Sound. Pulse is a Pink Floyd concert video taken from the 20 October 1994 concert at Earls Court, London, England in The Division Bell Tour. It was originally released on VHS and Laserdisc in 1995. There was considerable delay in the release of the DVD edition of Pulse, with new features announced with each setback. The cause of the delays was reputed to be the continued modifications and additions to produce a high-quality release. The previous planned release date of 22 September 2005 for the two-disc DVD set was changed to 10 July 2006 for the UK and Europe, and 11 July 2006 everywhere else. [by Wikipedia]\n\n"Si può dire che questo disco è l\'ultima vera testimonianza della musica "viva" e pulsante dei Pink Floyd. O almeno io lo considero cosi perchè le varie raccolte uscite successivamente: Echoes, The Best Of, il live di The Wall, Is There Anybody Out There?, le trovo operazioni meramente commerciali (c\'era bisogno?! mah!) e non appartengono alla storia recente, mentre Pulse si, sebbene siano passati ormai 10 anni dalla sua pubblicazione. Ovviamente un discorso a parte va fatto per la loro (breve) e quanto mai storica apparizione al recente Live 8 a Londra. Live uscito poco dopo l\'ultimo album in studio The Division Bell che, mi duole dirlo, ma non è stato un granchè (eccetto pochi particolari), questo Pulse ha un ottimo valore collezionistico oltre che affettivo e musicale per i fan. La parte inerente la manifattura è ben studiata, veramente carino il booklet completo di parecchie fotografie del tour corrispondente, e la confezione tipica del live "collezionistico", fatta di cartone che nel tempo "invecchia" a furia di usarlo. Sotto questo aspetto però, devo dire la verità, Is There Anybody Out There? è riuscito ancora più accattivante. Riguardo i contenuti musicali, cosa dire che non sia stato già detto? Ottimo, seppure con un pò di sapore in meno rispetto al passato, ma che ci vuoi fare, all\'epoca in cui uscì i Pink Floyd avevano già alle spalle un glorioso passato e ben quasi 30 anni di carriera, e non è certo questa la prova della loro consacrazione artistica. Pulse è un doppio CD, nel primo troviamo grandi successi del gruppo da Shine on You Crazy Diamond, Another Brick in The Wall e perfino Astronomy Domine, più altri pezzi dal già citato The Division Bell. Il secondo CD contiene tutto (e sottolineo tutto) The Dark Side Of Te Moon riproposto in sede live, più Wish You Were Here, Comfortably Numb e Rub Like Hell, che ormai è diventata da alcuni anni a questa parte l\'indiscussa canzone con cui concludere i loro concerti. Le versioni riproposte in sede live hanno ovviamente tutte una influenza di modernità (eccetto i pezzi più recenti, che sono praticamente nati cosi) dovuta in parte al fatto che siamo nel 1995 e che i Pink Floyd non sono certo quelli degli anni \'70 ed in parte alla ricchezza di arrangiamenti e musicisti che ormai si portano dietro, insieme all\'immancabile e mastodontica scenografia che rende unici i loro show, da sempre. Il live è perfetto, ed anche la video cassetta corrispondente intitolata nello stesso identico modo, (registrata il 20/10/94 all\'Earls Court a Londra) regala emozioni non da poco se siete fan affezionati di questi eroi del rock, ad oggi signori di 60 anni. Certo vedere dei video vintage del gruppo ha sicuramente un altro effetto emotivo, ma questo rimane, come dicevo prima, un ottima (ed indiscussa) testimonianza della loro longevità artistica. [www.debaser.it/pink-floyd/pulse/recensione-aniel]\n\nSetlist:\n01. Shine On You Crazy Diamond 0:00\n02. Learning to Fly 13:16\n03. High Hopes 18:35\n04. Take It Back 26:38\n05. Coming Back to Life 32:47\n06. Sorrow 39:39\n07. Keep Talking 51:26\n08. Another Brick in the Wall, Part 2 58:58\n09. One of These Days 1:05:49\n10. Speak to Me 1:12:53\n11. Breathe (In the Air) 1:14:19\n12. On the Run 1:16:57\n13. Time 1:21:13\n14. The Great Gig in the Sky 1:28:05\n15. Money 1:33:50\n16. Us and Them 1:42:36\n17. Any Colour You Like 1:49:46\n18. Brain Damage 1:53:01\n19. Eclipse 1:56:52\n20. Wish You Were Here 1:59:45\n21. Comfortably Numb 2:05:54\n22. Run Like Hell 2:16:46'
+      }
     },
-    "channelTitle": "Claudinho Junior",
-    "tags": [
-     "Dream",
-     "Theater",
-     "Live",
-     "Download",
-     "Festival",
-     "2009"
-    ],
-    "categoryId": "10",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Dream Theater Live Download Festival 2009",
-     "description": "Dream Theater Live Download Festival 2009"
+    contentDetails: {
+      duration: 'PT2H25M53S',
+      dimension: '2d',
+      definition: 'sd',
+      caption: 'false',
+      licensedContent: false,
+      projection: 'rectangular'
+    },
+    statistics: {
+      viewCount: '249043',
+      likeCount: '1576',
+      dislikeCount: '131',
+      favoriteCount: '0',
+      commentCount: '148'
     }
-   },
-   "contentDetails": {
-    "duration": "PT46M32S",
-    "dimension": "2d",
-    "definition": "sd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   },
-   "statistics": {
-    "viewCount": "274889",
-    "likeCount": "1077",
-    "dislikeCount": "38",
-    "favoriteCount": "0",
-    "commentCount": "388"
-   }
   }
- ];
+];

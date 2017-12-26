@@ -1,27 +1,14 @@
-import { Store } from '@ngrx/store';
+import { Store, createSelector } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { IAppSettings } from './app-layout.reducer';
-import { EchoesState } from '../reducers';
+import { EchoesState } from '@store/reducers';
 
-export function getAppLayout$(state$: Store<EchoesState>): Observable<IAppSettings> {
-  return state$.select(state => state.appLayout);
-}
-
-export function getAppVersion$(state$: Store<EchoesState>): Observable<any> {
-  return state$.select(state => state.appLayout.version);
-}
-
-export function getSidebarCollapsed$(state$: Store<EchoesState>): Observable<boolean> {
-  return state$.select(state => !state.appLayout.sidebarExpanded);
-}
-
-export function getAppTheme(state: EchoesState) {
-  return state.appLayout.theme;
-}
-
-export function getAppThemes(state: EchoesState) {
-  return {
-    selected: getAppTheme(state),
-    themes: state.appLayout.themes.map(theme => ({ label: theme, value: theme }))
-  };
-}
+export const getAppSettings = (state: EchoesState) => state.appLayout;
+export const getAppTheme = createSelector(getAppSettings, (state: IAppSettings) => state.theme);
+export const getAllAppThemes = createSelector(getAppSettings, (state: IAppSettings) => state.themes);
+export const getAppThemes = createSelector(getAppSettings, getAppTheme, getAllAppThemes, (appLayout, theme: string, themes: string[]) => ({
+  selected: theme,
+  themes: themes.map(_theme => ({ label: _theme, value: _theme }))
+}));
+export const getAppVersion = createSelector(getAppSettings, (state: IAppSettings) => state.version);
+export const getSidebarCollapsed = createSelector(getAppSettings, (state: IAppSettings) => !state.sidebarExpanded);

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { EchoesState } from '../store';
-import * as NowPlaylist from '../store/now-playlist';
+import { EchoesState } from '@store/reducers';
+import * as NowPlaylist from '@store/now-playlist';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class NowPlaylistService {
     private youtubeVideosInfo: YoutubeVideosInfo,
     private nowPlaylistActions: NowPlaylist.NowPlaylistActions
   ) {
-    this.playlist$ = this.store.let(NowPlaylist.getNowPlaylist$);
+    this.playlist$ = this.store.select(NowPlaylist.getNowPlaylist);
   }
 
   queueVideo(mediaId: string) {

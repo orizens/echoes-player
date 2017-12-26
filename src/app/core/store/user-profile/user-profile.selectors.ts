@@ -1,23 +1,9 @@
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 import { IUserProfile } from './user-profile.reducer';
-import { EchoesState } from '../reducers';
+import { EchoesState } from '@store/reducers';
+import { createSelector } from '@ngrx/store/src/selector';
 
-export function getUser$(state$: Store<EchoesState>): Observable<IUserProfile> {
-  return state$.select(state => state.user);
-}
-
-export function getUserPlaylists$(
-  state$: Store<EchoesState>
-): Observable<GoogleApiYouTubePlaylistResource[]> {
-  return state$.select(state => state.user.playlists);
-}
-
-export function getUserViewPlaylist$(state$: Store<EchoesState>) {
-  return state$.select(state => state.user.viewedPlaylist);
-}
-export function getIsUserSignedIn$(state$: Store<EchoesState>) {
-  return state$.select(state => {
-    return state.user.access_token !== '';
-  });
-}
+export const getUser = (state: EchoesState) => state.user;
+export const getUserPlaylists = createSelector(getUser, (user: IUserProfile) => user.playlists);
+export const getUserViewPlaylist = createSelector(getUser, (user: IUserProfile) => user.viewedPlaylist);
+export const getIsUserSignedIn = createSelector(getUser, (user: IUserProfile) => user.access_token !== '');

@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   Renderer2
 } from '@angular/core';
+import { isNewChange } from '@utils/data.utils';
 
 const ICON_BASE_CLASSNAME = 'fa';
 const ICON_LIB_PREFFIX = 'fa';
@@ -32,7 +33,7 @@ export class IconDirective implements OnInit, OnChanges {
   }
 
   ngOnChanges({ name }: SimpleChanges) {
-    if (name.currentValue !== name.previousValue) {
+    if (name && isNewChange(name)) {
       this.createIconStyles(name.currentValue);
     }
   }

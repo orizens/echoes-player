@@ -1,6 +1,6 @@
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared';
+import { SharedModule } from '@shared/index';
 
 import { AppSearchComponent } from './app-search.component';
 import { AppNavbarModule } from '../app-navbar';

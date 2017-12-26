@@ -1,7 +1,7 @@
-import { NowPlaylistEffects } from '../../effects/now-playlist.effects';
-import * as AppPlayer from '../../store/app-player';
-import { isPlayerInRepeat$ } from '../../store/now-playlist/now-playlist.selectors';
-import { EchoesState } from '../../store';
+import { NowPlaylistEffects } from '@core/effects/now-playlist.effects';
+import * as AppPlayer from '@store/app-player';
+import * as NowPlaylist from '@store/now-playlist/now-playlist.selectors';
+import { EchoesState } from '@store/reducers';
 import { Store } from '@ngrx/store';
 import {
   ChangeDetectionStrategy,
@@ -16,8 +16,8 @@ import {
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
-import { NowPlaylistService } from '../../services';
-import { AppPlayerApi } from '../../api/app-player.api';
+import { NowPlaylistService } from '@core/services';
+import { AppPlayerApi } from '@api/app-player.api';
 
 @Component({
   selector: 'app-player',
@@ -59,12 +59,12 @@ import { AppPlayerApi } from '../../api/app-player.api';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppPlayerComponent implements OnInit {
-  player$ = this.store.let(AppPlayer.getPlayer$);
-  media$ = this.store.let(AppPlayer.getCurrentMedia$);
-  isPlayerPlaying$ = this.store.let(AppPlayer.getIsPlayerPlaying$);
-  isPlayerInRepeat$ = this.store.let(isPlayerInRepeat$);
-  isPlayerFullscreen$ = this.store.let(AppPlayer.getPlayerFullscreen$);
-  isShowPlayer$ = this.store.let(AppPlayer.getShowPlayer$);
+  player$ = this.store.select(AppPlayer.getPlayer);
+  media$ = this.store.select(AppPlayer.getCurrentMedia);
+  isPlayerPlaying$ = this.store.select(AppPlayer.getIsPlayerPlaying);
+  isPlayerInRepeat$ = this.store.select(NowPlaylist.isPlayerInRepeat);
+  isPlayerFullscreen$ = this.store.select(AppPlayer.getPlayerFullscreen);
+  isShowPlayer$ = this.store.select(AppPlayer.getShowPlayer);
 
   @HostBinding('class.youtube-player') style = true;
 

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../../shared';
+import { SharedModule } from '@shared/index';
 
 import { NowPlayingComponent } from './now-playing.component';
 import { NowPlaylistComponent, NowPlaylistTrackComponent } from './now-playlist';

@@ -2,7 +2,7 @@ import { inject, async } from '@angular/core/testing';
 
 import { player, IAppPlayer } from './app-player.reducer';
 import { ActionTypes } from './app-player.actions';
-import { YoutubeMediaMock } from '../../../../../tests/mocks/youtube.media.item';
+import { YoutubeMediaMock } from '@mocks/youtube.media.item';
 
 describe('The App Player reducer', () => {
   const mockedState: IAppPlayer = {

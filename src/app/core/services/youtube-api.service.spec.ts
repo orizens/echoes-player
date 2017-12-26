@@ -3,7 +3,6 @@
  * More info: https://angular.io/docs/ts/latest/guide/testing.html
  */
 import { TestBed, async, inject } from '@angular/core/testing';
-import { Http } from '@angular/http';
 import { YoutubeApiService } from './youtube-api.service';
 
 describe('YoutubeApiService', () => {
@@ -27,9 +26,9 @@ describe('YoutubeApiService', () => {
     const token = 'mocked-token-for-test';
     const service = new YoutubeApiService({}, authSpy);
     authSpy.accessToken = token;
-    const actual = service.createHeaders();
-    const expected = 'authorization';
-    expect(actual.get(expected)).toContain(token);
+    const actual = service.createHeaders()['Authorization'];
+    const expected = token;
+    expect(actual).toContain(expected);
   });
 
 

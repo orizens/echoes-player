@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { extractThumbUrl } from '../../utils/media.utils';
+import { extractThumbUrl } from '@utils/media.utils';
 
 interface MediaStatus {
   queued: boolean;

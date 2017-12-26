@@ -1,3 +1,12 @@
+## v 3.9.3 (2017/12/27)
+* [ADDED] - spinner indicator for a playlist item
+* [UPDATE] - Echoes with Angular 5 (now using HttpClient) 
+* [UPDATE] - updated NgRx to use memoized selectors 
+* [UPDATE] - analytics indicates now type of search 
+* [UPDATE] - added icon for a playlist search result 
+* [UPGRADE] - now using aliases for main app packages (@env, @utils, @store etc..)
+* [FIX] - play icon didn't show in playlist search result 
+
 ## v 3.9.2 (2017/12/20)
 * [NEW] - gtag integration
 * [NEW] - youtube api and client keys, analytics key is attached in build time (rather than hard coded in ts, html files) 

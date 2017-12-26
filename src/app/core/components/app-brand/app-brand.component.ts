@@ -1,4 +1,4 @@
-import { AppApi } from '../../api/app.api';
+import { AppApi } from '@api/app.api';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

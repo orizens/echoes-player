@@ -31,17 +31,3 @@ export let EchoesReducers: ActionReducerMap<EchoesState> = {
 };
 
 export let EchoesActions = [ActionTypes, NowPlaylistActions, UserProfileActions, PlayerSearchActions];
-
-export { getPlayerSearch$ } from './player-search';
-
-export function getPlayerSearchResults$(state$: Store<EchoesState>): Observable<any[]> {
-  return state$.select(state => state.search.results);
-}
-
-export function getAppLayout$($state: Store<EchoesState>): Observable<IAppSettings> {
-  return $state.select(state => state.appLayout);
-}
-
-export function getNowPlaylist$($state: Store<EchoesState>): Observable<INowPlaylist> {
-  return $state.select(state => state.nowPlaylist);
-}

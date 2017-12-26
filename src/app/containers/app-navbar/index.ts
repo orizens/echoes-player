@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../../shared';
+import { SharedModule } from '@shared/index';
 import { RouterModule } from '@angular/router';
 
 import { AppNavbarComponent } from './app-navbar.component';

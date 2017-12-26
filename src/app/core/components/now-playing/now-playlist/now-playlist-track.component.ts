@@ -1,6 +1,6 @@
-import { MediaParserService } from '../../../services/media-parser.service';
+import { MediaParserService } from '@core/services/media-parser.service';
 import { AfterContentInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { extractThumbUrl } from '../../../../shared/utils/media.utils';
+import { extractThumbUrl } from '@shared/utils/media.utils';
 
 @Component({
   selector: 'now-playlist-track',

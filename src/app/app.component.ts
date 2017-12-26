@@ -1,10 +1,9 @@
+import { Store } from '@ngrx/store';
 import { VersionCheckerService } from './core/services/version-checker.service';
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { EchoesState } from './core/store';
-import { getSidebarCollapsed$, getAppTheme } from './core/store/app-layout';
+import { EchoesState } from '@store/reducers';
+import { getSidebarCollapsed, getAppTheme } from '@store/app-layout';
 
-import { Store } from '@ngrx/store';
-import 'rxjs/add/operator/let';
 
 @Component({
   selector: 'body',
@@ -12,7 +11,7 @@ import 'rxjs/add/operator/let';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  sidebarCollapsed$ = this.store.let(getSidebarCollapsed$);
+  sidebarCollapsed$ = this.store.select(getSidebarCollapsed);
   theme$ = this.store.select(getAppTheme);
 
   @HostBinding('class')

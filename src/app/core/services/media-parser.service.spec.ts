@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { MediaParserService } from './media-parser.service';
-import * as Mocks from '../../../../tests/mocks/now-playlist-track.mocks';
+import * as Mocks from '@mocks/now-playlist-track.mocks';
 
 describe('MediaParserService', () => {
   let service: MediaParserService;

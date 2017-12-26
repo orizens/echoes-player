@@ -1,8 +1,7 @@
-import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { EchoesState } from '../store';
-import * as AppPlayer from '../store/app-player';
+import { EchoesState } from '@store/reducers';
+import * as AppPlayer from '@store/app-player';
 
 @Injectable()
 export class YoutubePlayerService {

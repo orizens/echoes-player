@@ -1,5 +1,5 @@
-import { MediaParserService, YoutubePlayerService } from '../services';
-import { EchoesState } from '../store';
+import { MediaParserService, YoutubePlayerService } from '@core/services';
+import { EchoesState } from '@store/reducers';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
@@ -10,15 +10,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
-import * as NowPlaylist from '../store/now-playlist';
-import {
-  getSelectedMedia$,
-  getSelectedMediaId$,
-  getPlaylistVideos$,
-  isPlayerInRepeat$
-} from '../store/now-playlist/now-playlist.selectors';
-
-import { UserProfile } from '../services/user-profile.service';
+import * as NowPlaylist from '@store/now-playlist';
+import { UserProfile } from '@core/services/user-profile.service';
 
 @Injectable()
 export class NowPlaylistEffects {
@@ -52,7 +45,7 @@ export class NowPlaylistEffects {
   loadNextTrack$ = this.actions$
     .ofType(NowPlaylist.NowPlaylistActions.MEDIA_ENDED)
     .map(toPayload)
-    .withLatestFrom(this.store.let(getSelectedMedia$))
+    .withLatestFrom(this.store.select(NowPlaylist.getSelectedMedia))
     .filter((states: [any, GoogleApiYouTubeVideoResource]) => states[1] && states[1].hasOwnProperty('id'))
     .map((states: [any, GoogleApiYouTubeVideoResource]) => new NowPlaylist.SelectVideo(states[1]));
 
