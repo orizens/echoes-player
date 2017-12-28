@@ -34,7 +34,7 @@ describe('The Player Search reducer', () => {
   it('should ADD videos', () => {
     const state = mockedState();
     const youtubeMediaItems = YoutubeMediaItemsMock as any[];
-    const actual = search(state, new SearchActions.AddResults(youtubeMediaItems));
+    const actual = search(state, SearchActions.AddResultsAction.creator(youtubeMediaItems));
     const expected = [...state.results, ...YoutubeMediaItemsMock];
     expect(actual.results.length).toBe(expected.length);
   });

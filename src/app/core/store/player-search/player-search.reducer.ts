@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { PlayerSearchActions } from './player-search.actions';
+import { PlayerSearchActions, AddResultsAction } from './player-search.actions';
 import { IPlayerSearch, CSearchTypes, CPresetTypes } from './player-search.interfaces';
 
 export * from './player-search.interfaces';
@@ -57,12 +57,8 @@ export function search(state: IPlayerSearch = initialState, action: UnsafeAction
     case PlayerSearchActions.SEARCH_STARTED:
       return { ...state, isSearching: true };
 
-    case PlayerSearchActions.ADD_RESULTS:
-      return {
-        ...state,
-        results: [...state.results, ...action.payload],
-        isSearching: false
-      };
+    case AddResultsAction.type:
+      return AddResultsAction.handler(state, action.payload);
 
     case PlayerSearchActions.RESET_RESULTS:
       return { ...state, results: [] };

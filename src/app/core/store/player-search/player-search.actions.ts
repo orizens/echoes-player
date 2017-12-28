@@ -61,7 +61,21 @@ export class UpdateQueryAction {
   constructor(public payload: string) { }
 }
 
-export class AddResults implements Action {
-  readonly type = PlayerSearchActions.ADD_RESULTS;
-  constructor(public payload: GoogleApiYouTubeVideoResource[]) { }
-}
+// export class AddResults implements Action {
+//   readonly type = PlayerSearchActions.ADD_RESULTS;
+//   constructor(public payload: GoogleApiYouTubeVideoResource[]) { }
+// }
+
+export const AddResultsAction = {
+  type: PlayerSearchActions.ADD_RESULTS,
+  creator(payload: GoogleApiYouTubeVideoResource[]) {
+    return { payload, type: this.type };
+  },
+  handler(state, payload: GoogleApiYouTubeVideoResource[]) {
+    return {
+      ...state,
+      results: [...state.results, ...payload],
+      isSearching: false
+    };
+  }
+};

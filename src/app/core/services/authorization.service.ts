@@ -13,6 +13,11 @@ import 'rxjs/add/operator/catch';
 import { environment } from '@env/environment';
 import { GapiLoader } from './gapi-loader.service';
 
+const extractAccessToken = (_googleAuth: gapi.auth2.GoogleAuth) => {
+  return _googleAuth
+    && _googleAuth.currentUser.get().getAuthResponse().access_token;
+};
+
 @Injectable()
 export class Authorization {
   private _googleAuth: gapi.auth2.GoogleAuth;
@@ -24,7 +29,16 @@ export class Authorization {
     this._accessToken = value;
   }
   get accessToken() {
-    return this._accessToken;
+    const token = {
+      fromGoogle: extractAccessToken(this._googleAuth),
+      fromApp: this._accessToken,
+      equal: true
+    };
+    window['__token__'] = token;
+    token.equal = token.fromGoogle === token.fromApp;
+    return token.equal
+      ? token.fromApp
+      : token.fromGoogle;
   }
 
   constructor(

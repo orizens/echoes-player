@@ -7,6 +7,7 @@ import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { defer } from 'rxjs/observable/defer';
+import 'rxjs/add/operator/catch';
 
 import * as AppPlayer from '@store/app-player';
 import { YoutubePlayerService } from '@core/services/youtube-player.service';
@@ -44,7 +45,8 @@ export class AppPlayerEffects {
       this.youtubeVideosInfo
         .fetchVideoData(media.id || media.id.videoId)
         .map((video: any) => new AppPlayer.PlayVideo(video))
-    );
+    )
+    .catch(() => of({ type: 'LOAD_AND_PLAY_ERROR' }));
 
   @Effect({ dispatch: false })
   toggleFullscreen$ = this.actions$

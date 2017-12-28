@@ -5,8 +5,8 @@ import 'rxjs/add/operator/mergeAll';
 import 'rxjs/add/operator/switchMapTo';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
@@ -34,7 +34,7 @@ export class PlayerSearchEffects {
       this.youtubeSearch.resetPageToken()
         .searchFor(store.search.searchType, store.search.query, store.search.queryParams)
         .map((youtubeResponse) => this.playerSearchActions.searchResultsReturned(youtubeResponse))
-        .catch((err) => Observable.of(this.playerSearchActions.errorInSearch(err)))
+        .catch((err) => of(this.playerSearchActions.errorInSearch(err)))
     );
 
   @Effect()
@@ -61,7 +61,7 @@ export class PlayerSearchEffects {
   addPlaylistsToResults$ = this.actions$
     .ofType(PlayerSearch.PlayerSearchActions.ADD_PLAYLISTS_TO_RESULTS.action)
     .map(toPayload)
-    .map((result) => new PlayerSearch.AddResults(result.items));
+    .map((result) => PlayerSearch.AddResultsAction.creator(result.items));
 
   @Effect()
   addMetadataToVideos$ = this.actions$
@@ -69,7 +69,7 @@ export class PlayerSearchEffects {
     .map(toPayload)
     .map((medias: { items: GoogleApiYouTubeSearchResource[] }) => medias.items.map(media => media.id.videoId).join(','))
     .mergeMap((mediaIds: string) => this.youtubeVideosInfo.fetchVideosData(mediaIds)
-      .map((videos: any) => new PlayerSearch.AddResults(videos)));
+      .map((videos: any) => PlayerSearch.AddResultsAction.creator(videos)));
 
   @Effect()
   searchMoreForQuery$ = this.actions$
@@ -110,7 +110,7 @@ export class PlayerSearchEffects {
   resetPageToken$ = this.actions$
     .ofType(PlayerSearch.PlayerSearchActions.RESET_PAGE_TOKEN)
     .map(toPayload)
-    .mergeMap(() => Observable.of(this.youtubeSearch.resetPageToken()))
+    .mergeMap(() => of(this.youtubeSearch.resetPageToken()))
     .map(() => ({ type: 'PAGE_RESET_DONE' }));
 
   @Effect()
@@ -129,8 +129,8 @@ export class PlayerSearchEffects {
     .map((latest: any[]) => latest[1])
     .switchMap((store: EchoesState) =>
       this.youtubeSearch.searchForPlaylist(store.search.query, store.search.queryParams)
-        .map((youtubeResponse: any) => {
-          return new PlayerSearch.AddResults(youtubeResponse.items);
-        })
-    ).catch((err) => Observable.of(this.playerSearchActions.errorInSearch(err)));
+        .map((youtubeResponse: any) =>
+          PlayerSearch.AddResultsAction.creator(youtubeResponse.items)
+        )
+    ).catch((err) => of(this.playerSearchActions.errorInSearch(err)));
 }

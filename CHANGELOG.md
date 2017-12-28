@@ -1,3 +1,6 @@
+## v 3.9.4 (2017/12/28)
+* [FIX] - handles user's signin token refresh
+
 ## v 3.9.3 (2017/12/27)
 * [ADDED] - spinner indicator for a playlist item
 * [UPDATE] - Echoes with Angular 5 (now using HttpClient) 
