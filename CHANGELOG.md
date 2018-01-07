@@ -1,3 +1,7 @@
+## v 3.9.5 (2018/01/07)
+* [UPDATE] - updating infinite-scroll
+* [UPDATE] - added google site verification 
+
 ## v 3.9.4 (2017/12/28)
 * [FIX] - handles user's signin token refresh
 
