@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-// import { AngularFirestore } from 'angularfire2/firestore';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -8,17 +7,16 @@ import * as firebase from 'firebase/app';
 const GoogleAuthScopes = ['profile', 'email', 'https://www.googleapis.com/auth/youtube'];
 @Injectable()
 export class AuthorizationFire {
-  // users: Observable<any[]>;
   get auth() {
     return this.afAuth.authState;
   }
 
   constructor(
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
   ) { }
 
-  getUsers() {
-    // return this.db.collection('users').valueChanges();
+  getAuth() {
+    return firebase.auth().currentUser.providerData[0];
   }
 
   signin() {

@@ -7,7 +7,7 @@ import { ActivatedRoute, Data } from '@angular/router';
 import { AppPlayerApi } from '../../core/api/app-player.api';
 import { AppApi } from '../../core/api/app.api';
 
-import { AuthorizationFire } from '../../core/services/firebase';
+import { AuthorizationFire, FirebaseStoreService } from '../../core/services/firebase';
 
 @Injectable()
 export class PlaygroundProxy {
@@ -18,7 +18,8 @@ export class PlaygroundProxy {
     private appPlayerApi: AppPlayerApi,
     private appApi: AppApi,
 
-    private fb: AuthorizationFire
+    private fb: AuthorizationFire,
+    private fs: FirebaseStoreService
   ) {
     // this.items$ = this.fb.users;
     // this.fb.getUsers();

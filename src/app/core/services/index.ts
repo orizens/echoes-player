@@ -8,7 +8,7 @@ import { Authorization } from './authorization.service';
 import { YoutubeDataApi } from './youtube-data-api';
 import { VersionCheckerService } from './version-checker.service';
 import { MediaParserService } from './media-parser.service';
-import { AuthorizationFire } from './firebase';
+import { FirebaseServices } from './firebase';
 
 export * from './user-profile.service';
 export * from './youtube.search';
@@ -31,5 +31,5 @@ export const APP_SERVICES = [
   { provide: YoutubeDataApi, useClass: YoutubeDataApi },
   VersionCheckerService,
   MediaParserService,
-  AuthorizationFire
+  ...FirebaseServices
 ];
