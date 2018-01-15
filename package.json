@@ -48,7 +48,7 @@
     "@types/jasmine": "2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/youtube": "0.0.31",
-    "angularfire2": "5.0.0-rc.4",
+    "angularfire2": "5.0.0-rc.3",
     "bootstrap-sass": "3.3.7",
     "codelyzer": "~3.1.1",
     "firebase": "4.6.0",
