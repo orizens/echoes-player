@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/orizens/echoes-player.svg?branch=master)](https://travis-ci.org/orizens/echoes-player) [![Code Climate](https://codeclimate.com/github/orizens/echoes-player/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-player)
+[![Build Status](https://travis-ci.org/orizens/echoes-player.svg?branch=master)](https://travis-ci.org/orizens/echoes-player) [![Code Climate](https://codeclimate.com/github/orizens/echoes-player/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-player) [![Backers on Open Collective](https://opencollective.com/echoes-player/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/echoes-player/sponsors/badge.svg)](#sponsors) 
+
 
 # Echoes Player - Angular Version (2nd Generation)
 Echoes is a great youtube player developed by [Oren Farhi](http://orizens.com).
@@ -92,3 +93,32 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 1. make sure ```npm i source-map-explorer -g```
 1. ```ng build --prod --aot --sm``` (the sourcemap is for later steps)  
 1. ```cd dist && source-map-explorer A-FILE-WITH-HASH.js```
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="graphs/contributors"><img src="https://opencollective.com/echoes-player/contributors.svg?width=890" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/echoes-player#backer)]
+
+<a href="https://opencollective.com/echoes-player#backers" target="_blank"><img src="https://opencollective.com/echoes-player/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/echoes-player#sponsor)]
+
+<a href="https://opencollective.com/echoes-player/sponsor/0/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/1/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/2/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/3/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/4/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/5/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/6/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/7/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/8/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/echoes-player/sponsor/9/website" target="_blank"><img src="https://opencollective.com/echoes-player/sponsor/9/avatar.svg"></a>
+
+

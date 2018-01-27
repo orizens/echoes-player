@@ -9,7 +9,7 @@
     "build": "ng build",
     "build:prod": "ng build --prod",
     "build:env": "node config/build-env.js",
-    "postinstall": "npm rebuild node-sass",
+    "postinstall": "npm rebuild node-sass && opencollective postinstall",
     "copy:heroku": "shx cp -r ./config/heroku/*.* ./dist",
     "copy:domain": "shx cp CNAME ./dist",
     "copy:package": "shx cp ./package.json ./dist/assets/",
@@ -33,6 +33,7 @@
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
     "http-server": "0.10.0",
+    "opencollective": "^1.0.3",
     "replace": "0.3.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
@@ -76,5 +77,10 @@
     "tslint": "~5.7.0",
     "typescript": "~2.4.2",
     "uglify-es": "3.2.2"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/echoes-player",
+    "logo": "https://opencollective.com/echoes-player/logo.txt"
   }
 }
