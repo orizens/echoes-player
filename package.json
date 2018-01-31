@@ -1,6 +1,6 @@
 {
   "name": "echoes-player",
-  "version": "3.9.5",
+  "version": "3.9.6",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -22,6 +22,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/core": "0.0.29",
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
@@ -38,7 +39,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.1",
+    "@angular/cli": "^1.6.6",
     "@angular/compiler-cli": "^5.0.0",
     "@angular/language-service": "^5.0.0",
     "@ngrx/effects": "4.1.1",
@@ -65,16 +66,15 @@
     "karma-spec-reporter": "0.0.32",
     "ngrx-action-creator-factory": "0.0.1",
     "ngrx-store-localstorage": "0.2.4",
-    "ngx-infinite-scroll": "0.8.1",
+    "ngx-infinite-scroll": "^0.8.2",
     "ngx-tooltip": "0.0.9",
     "ngx-typeahead": "0.1.0",
-    "ngx-youtube-player": "0.0.41",
+    "ngx-youtube-player": "^0.1.0",
     "protractor": "~5.1.2",
     "rimraf": "2.6.1",
     "shx": "0.2.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.4.2",
-    "uglify-es": "3.2.2"
+    "typescript": "~2.4.2"
   }
 }

@@ -11,18 +11,18 @@ import { AuthGuard } from './user.guard';
 
 export const routing: ModuleWithProviders = RouterModule.forChild([
   {
-    path: 'user', component: UserComponent,
+    path: '', component: UserComponent,
     children: [
       { path: '', redirectTo: 'playlists', pathMatch: 'full' },
       { path: 'playlists', component: PlaylistsComponent },
+      {
+        path: 'playlist/:id', component: PlaylistViewComponent,
+        canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+        resolve: {
+          videos: PlaylistVideosResolver,
+          playlist: PlaylistResolver
+        }
+      }
     ]
   },
-  {
-    path: 'user/playlist/:id', component: PlaylistViewComponent,
-    canActivate: [AuthGuard], canActivateChild: [AuthGuard],
-    resolve: {
-      videos: PlaylistVideosResolver,
-      playlist: PlaylistResolver
-    }
-  }
 ]);
