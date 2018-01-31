@@ -5,7 +5,7 @@ import { PlaylistViewModule } from './playlist-view';
 
 export const APP_CONTAINER_MODULES = [
   AppSearchModule,
-  UserModule,
+  // UserModule,
   AppNavbarModule,
   PlaylistViewModule
 ];

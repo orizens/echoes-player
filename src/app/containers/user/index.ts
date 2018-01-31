@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/index';
 import { AppNavbarModule } from '../app-navbar';
 
+import { PlaylistViewModule } from '../playlist-view'
+
 import { UserComponent } from './user.component';
 import { PlaylistsComponent } from './playlists';
 // import { PlaylistViewComponent, PlaylistResolver, PlaylistVideosResolver } from '@shared/components/playlist-view';
@@ -14,6 +16,7 @@ import { routing } from './user.routing';
   imports: [
     SharedModule,
     AppNavbarModule,
+    PlaylistViewModule,
     routing
   ],
   declarations: [

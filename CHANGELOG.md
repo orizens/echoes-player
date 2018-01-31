@@ -1,3 +1,8 @@
+## v 3.9.6 (2018/01/30)
+* [UPDATE] - now lazy loading user area (if signed in) 
+* [UPDATE] - updates color text for viedos size in playlist search 
+* [FIX] - player in mini mode aligned to thumb in controls bar 
+
 ## v 3.9.5 (2018/01/07)
 * [UPDATE] - updating infinite-scroll
 * [UPDATE] - added google site verification 

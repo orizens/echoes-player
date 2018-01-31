@@ -35,7 +35,9 @@ export class UserComponent implements OnInit {
   constructor(
     private appApi: AppApi,
     public store: Store<EchoesState>
-  ) { }
+  ) { 
+    console.log('LAZY..');
+  }
 
   ngOnInit() { }
 
