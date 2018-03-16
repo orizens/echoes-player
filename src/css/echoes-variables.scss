@@ -81,11 +81,11 @@ $link-hover-color:          var(--link-primary-hover-color);
 //
 //## Font, line-height for body text, headings, and more.
 
-$font-family-base:          'Open Sans Condensed', 'Open Sans', Helvetica, Arial, sans-serif;
+$font-family-base:          'Roboto', 'Open Sans', Helvetica, Arial, sans-serif;
 $font-family-demo:          "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-monospace:     Monaco, Menlo, Consolas, "Courier New", monospace;
 $font-family-narrow:		'Open Sans Condensed', 'Open Sans', Helvetica;
-$font-size-base:            14px;
+$font-size-base:            11px;
 
 $font-size-h1:            floor(($font-size-base * 2.6)); // ~36px
 $font-size-h2:            floor(($font-size-base * 2.15)); // ~30px
@@ -97,7 +97,7 @@ $font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
 $line-height-base:          1.428571429; // 20/14
 $line-height-computed:      floor($font-size-base * $line-height-base); // ~31px
 
-$headings-font-family:      $font-family-narrow;
+$headings-font-family:      $font-family-base;
 $headings-font-weight:      200;
 $headings-line-height:      1.1;
 $headings-color:            $gray-dark;
