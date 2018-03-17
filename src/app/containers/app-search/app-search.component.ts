@@ -39,6 +39,7 @@ import * as PlayerSearch from '@core/store/player-search';
     </app-navbar>
 
     <search-navigator></search-navigator>
+    
 
     <router-outlet></router-outlet>
     </article>
