@@ -13,12 +13,13 @@
     nav.navbar {
       margin-left: 0;
       background-image: none;
-      background-color: var(--navbar-bg-color);
-      border-color: var(--navbar-bg-color);
+      background-color: #273238;
+      //border-color: var(--navbar-bg-color);
       color: var(--navbar-text-color);
-      box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+      //box-shadow: 0 1px 7px rgba(0,0,0,0.5);
       transition: transform, margin-left .3s ease-out;      
-      z-index: $zindex;      
+      //z-index: $zindex;
+      height: 58px;      
     }
 
     // .navbar-brand {

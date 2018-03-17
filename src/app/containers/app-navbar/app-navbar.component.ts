@@ -17,6 +17,8 @@ import { AppApi } from '@api/app.api';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./app-navbar.scss'],
   template: `
+  
+ 
     <nav class="row navbar navbar-default navbar-fixed-top">
       <div class="navbar-container">
         <div class="navbar__content">

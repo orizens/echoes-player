@@ -14,13 +14,8 @@ import {
   template: `
   <article class="media-info ellipsis">
     <h3 class="yt-media-title ellipsis">
-      <aside class="media-thumb-container pull-left"
-        title="maximize / minimize"
-        (click)="handleThumbClick()">
-        <img class="media-thumb" src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
-        <icon name="arrows-alt" [class.invisible]="_minimized"></icon>
-      </aside>
-      <a class="title">{{ player?.media?.snippet?.title }}</a>
+
+     
     </h3>
   </article>
   `,
