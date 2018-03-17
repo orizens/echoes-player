@@ -25,21 +25,21 @@ import * as PlayerSearch from '@core/store/player-search';
     
 
       <player-search
-      [query]="query$ | async"
-      (queryChange)="resetPageToken($event)"
-      (search)="search($event)"
-    ></player-search>
+        [query]="query$ | async"
+        (queryChange)="resetPageToken($event)"
+        (search)="search($event)">
+      </player-search>
       
-      <button-group class="nav-toolbar"
+      <button-group class="nav-toolbar btn-group-searchtype"
         [buttons]="presets$ | async"
         [selectedButton]="queryParamPreset$ | async"
-        (buttonClick)="updatePreset($event)"
-      ></button-group>
+        (buttonClick)="updatePreset($event)">
+      </button-group>
       
-      <search-navigator></search-navigator>
-
     </app-navbar>
-    
+
+    <search-navigator></search-navigator>
+
     <router-outlet></router-outlet>
     </article>
     `

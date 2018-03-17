@@ -2,6 +2,9 @@
   display: inline-block;
   .btn {
     border: 0;
+    height: 32px;
+    width: 60px;
+
     &.btn-default.active {
       background-color: var(--brand-primary);
       color: var(--brand-inverse-text);
