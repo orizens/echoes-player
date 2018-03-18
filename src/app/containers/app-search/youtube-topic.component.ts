@@ -10,9 +10,10 @@ import { AppPlayerApi } from '@core/api/app-player.api';
 
 // selectors
 import * as NowPlaylist from '@core/store/now-playlist';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'youtube-videos',
+  selector: 'youtube-topic',
   styleUrls: ['./youtube-videos.scss'],
   template: `
     <loader [message]="'Loading Awesome Media Results'" [loading]="loading$ | async"></loader>
@@ -25,7 +26,7 @@ import * as NowPlaylist from '@core/store/now-playlist';
     ></youtube-list>
   `
 })
-export class YoutubeVideosComponent implements OnInit {
+export class YoutubeTopicComponent implements OnInit {
   videos$ = this.store.select(PlayerSearch.getPlayerSearchResults);
   playlistVideos$ = this.store.select(NowPlaylist.getPlaylistVideos);
   loading$ = this.store.select(PlayerSearch.getIsSearching);
@@ -33,13 +34,17 @@ export class YoutubeVideosComponent implements OnInit {
   constructor(
     private store: Store<EchoesState>,
     private appPlayerApi: AppPlayerApi,
+    private router: Router,
+    private route: ActivatedRoute,
     private playerSearchActions: PlayerSearch.PlayerSearchActions
   ) { }
 
   ngOnInit() {
-    this.store.dispatch(this.playerSearchActions.updateSearchType(PlayerSearch.CSearchTypes.VIDEO));
+    let genre = this.route.snapshot.url[0].path;
+
+    this.store.dispatch(this.playerSearchActions.updateSearchType(PlayerSearch.CSearchTypes.TOPIC));
     this.store.dispatch(this.playerSearchActions.updateQueryParam({
-      topic:''
+      topic: PlayerSearch.CTopicIds[genre.toUpperCase()]
     }));
     this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
   }

@@ -19,6 +19,12 @@ export class SearchNavigatorComponent implements OnInit {
   searchTypes = [
     { label: 'Videos', link: '/search/videos', type: CSearchTypes.VIDEO },
     { label: 'Playlists', link: '/search/playlists', type: CSearchTypes.PLAYLIST },
+    { label: 'Pop', link: '/genre/pop', type: CSearchTypes.TOPIC },
+    { label: 'R&B', link: '/genre/rnb', type: CSearchTypes.TOPIC },
+    { label: 'Hip Hop', link: '/genre/hiphop', type: CSearchTypes.TOPIC },
+    { label: 'Rock', link: '/genre/rock', type: CSearchTypes.TOPIC },    
+    { label: 'Jazz', link: '/genre/jazz', type: CSearchTypes.TOPIC },
+    { label: 'Electronic', link: '/genre/electronic', type: CSearchTypes.TOPIC },
   ];
 
   ngOnInit() { }

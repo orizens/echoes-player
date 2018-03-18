@@ -1,3 +1,4 @@
+import { YoutubeTopicComponent } from './youtube-topic.component';
 import { AppBrandModule } from './../../core/components/app-brand';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -23,6 +24,7 @@ import { AppBrandComponent } from '~/app/core/components/app-brand/app-brand.com
   declarations: [
     AppSearchComponent,
     YoutubeVideosComponent,
+    YoutubeTopicComponent,
     YoutubePlaylistsComponent,
     PlayerSearchComponent,
     SearchNavigatorComponent

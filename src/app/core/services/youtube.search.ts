@@ -4,7 +4,8 @@ import { YoutubeDataApi, DataApiProviders } from './youtube-data-api';
 const SearchTypes = {
   VIDEO: 'video',
   PLAYLIST: 'playlist',
-  CHANNEL: 'channel'
+  CHANNEL: 'channel',
+  TOPIC: 'topic'
 };
 
 export const SearchParams = {
@@ -21,6 +22,13 @@ export class YoutubeSearch {
   private _apiOptions = {
     part: 'snippet,id',
     q: '',
+    type: 'video',
+    pageToken: ''
+  };
+
+  private _apiTopicOptions = {
+    part: 'snippet,id',
+    topicId: '',
     type: 'video',
     pageToken: ''
   };
@@ -49,6 +57,11 @@ export class YoutubeSearch {
    * @param params params of api
    */
   searchFor(type: string, query: string, params?: any) {
+    console.log(type);
+    console.log(params);
+    
+    
+    
     switch (type) {
       case SearchTypes.VIDEO: {
         return this.searchVideo(query, params);
@@ -56,6 +69,10 @@ export class YoutubeSearch {
 
       case SearchTypes.PLAYLIST: {
         return this.searchForPlaylist(query, params);
+      }
+
+      case SearchTypes.TOPIC: {
+        return this.searchTopic(params['topic']);
       }
     }
   }
@@ -67,6 +84,7 @@ export class YoutubeSearch {
   searchVideo(query: string, params?: any) {
     this._apiOptions.type = SearchParams.Types[SearchTypes.VIDEO];
     return this.search(query, params);
+    //return this.searchTopic('/m/09xp_');
   }
 
   /**
@@ -84,6 +102,13 @@ export class YoutubeSearch {
         };
         return this.youtubeDataApi.list(DataApiProviders.PLAYLISTS, options);
       });
+  }
+
+  searchTopic(topic: string) {
+    if (topic) {
+      this._apiTopicOptions.topicId = topic;
+    }
+    return this.youtubeDataApi.list(this._api, this._apiTopicOptions);
   }
 
   searchMore(nextPageToken: string) {

@@ -47,6 +47,7 @@ export class PlayerSearchActions {
   searchMoreForQuery = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_MORE_FOR_QUERY);
   updateFilter = ActionCreatorFactory.create(PlayerSearchActions.UPDATE_FILTER);
   updateQueryParam = ActionCreatorFactory.create<any>(PlayerSearchActions.UPDATE_QUERY_PARAM);
+  updateQuery = ActionCreatorFactory.create<any>(PlayerSearchActions.UPDATE_QUERY);
   resetPageToken = ActionCreatorFactory.create<any>(PlayerSearchActions.RESET_PAGE_TOKEN);
   searchResultsReturned = ActionCreatorFactory.create<any>(PlayerSearchActions.SEARCH_RESULTS_RETURNED);
   searchStarted = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_STARTED);
