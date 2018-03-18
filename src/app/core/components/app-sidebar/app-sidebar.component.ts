@@ -8,12 +8,7 @@ import { AppSidebarProxy } from './app-sidebar.proxy';
   <div id="sidebar" class="sidebar ux-maker"
     [class.closed]="sidebarCollapsed$ | async">
     <div class="sidebar-backdrop" (click)="toggleSidebar()"></div>
-    <nav class="navbar navbar-transparent">
-      <app-brand></app-brand>
-      <app-navigator [closed]="sidebarCollapsed$ | async" [searchType]="searchType$ | async">
-      </app-navigator>
-    </nav>
-    <now-playing></now-playing>
+
   </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush

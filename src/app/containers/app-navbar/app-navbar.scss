@@ -7,18 +7,46 @@
     $navbar-container-padding: 0.5rem 5rem;
     $navbar-new-height: 1rem;
     
+    $brand-icon-font-size: 30px;
+    $brand-icon-line-height: 2;
+    $brand-icon-margin: 0 0.3rem;
+    $brand-padding: 0.5rem 1.5rem;
+
 
     display: block;
+
+    .brand-icon {
+      font-size: $brand-icon-font-size;
+      margin: $brand-icon-margin;
+      color: $clouds;
+      padding-top: 9px;
+      flex: 0 0 0%;
+
+      &.brand-text-item {
+        line-height: 1 !important;
+      }
+
+      .closed & {
+        flex: 0;
+      }
+    }
+
+    .brand-text{
+      color: $brand-primary;
+      font-size: $brand-icon-font-size;
+      font-family: $font-family-narrow;
+    }
 
     nav.navbar {
       margin-left: 0;
       background-image: none;
-      background-color: var(--navbar-bg-color);
-      border-color: var(--navbar-bg-color);
+      background-color: #273238;
+      //border-color: var(--navbar-bg-color);
       color: var(--navbar-text-color);
-      box-shadow: 0 1px 7px rgba(0,0,0,0.5);
+      //box-shadow: 0 1px 7px rgba(0,0,0,0.5);
       transition: transform, margin-left .3s ease-out;      
-      z-index: $zindex;      
+      //z-index: $zindex;
+      height: 58px;      
     }
 
     // .navbar-brand {

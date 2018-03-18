@@ -17,8 +17,17 @@ import { AppApi } from '@api/app.api';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./app-navbar.scss'],
   template: `
+  
+ 
     <nav class="row navbar navbar-default navbar-fixed-top">
       <div class="navbar-container">
+      
+        <div class=navbar-header>
+            <h3 appIcon name="headphones" class="brand-icon brand-text-item"></h3>
+            <a class="brand-text" href="http://echoesplayer.com/">Echoes</a>
+
+        </div>
+
         <div class="navbar__content">
         <h3 *ngIf="header" class="navbar__header navbar-text">
             <button *ngIf="mainIcon" class="navbar-btn__main btn-transparent"

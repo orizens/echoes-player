@@ -34,6 +34,8 @@ $asbestos:                  #7f8c8d;
 
 $blue-grey-900: #263238;
 $blue-grey-darker: #202a2f;
+
+$md-mid-blue-500: #1974D2;
 $md-lite-blue-500: #03A9F4;
 $md-lite-blue-300: rgba(79, 195, 247, .9);
 $md-lite-blue-800: #0277bd;
@@ -54,7 +56,7 @@ $dark:					 #000;
 $dark-transparent: rgba(10, 10, 10, .5);
 
 // Brand colors
-$brand-primary:             $md-lite-blue-500;
+$brand-primary:             $md-mid-blue-500;
 $brand-secondary:           $md-lite-blue-800;
 $brand-success:             $emerald;
 $brand-warning:             $sun-flower;
@@ -79,11 +81,11 @@ $link-hover-color:          var(--link-primary-hover-color);
 //
 //## Font, line-height for body text, headings, and more.
 
-$font-family-base:          'Open Sans Condensed', 'Open Sans', Helvetica, Arial, sans-serif;
+$font-family-base:          'Roboto', 'Open Sans', Helvetica, Arial, sans-serif;
 $font-family-demo:          "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-monospace:     Monaco, Menlo, Consolas, "Courier New", monospace;
 $font-family-narrow:		'Open Sans Condensed', 'Open Sans', Helvetica;
-$font-size-base:            14px;
+$font-size-base:            11px;
 
 $font-size-h1:            floor(($font-size-base * 2.6)); // ~36px
 $font-size-h2:            floor(($font-size-base * 2.15)); // ~30px
@@ -95,7 +97,7 @@ $font-size-h6:            ceil(($font-size-base * 0.85)); // ~12px
 $line-height-base:          1.428571429; // 20/14
 $line-height-computed:      floor($font-size-base * $line-height-base); // ~31px
 
-$headings-font-family:      $font-family-narrow;
+$headings-font-family:      $font-family-base;
 $headings-font-weight:      200;
 $headings-line-height:      1.1;
 $headings-color:            $gray-dark;
@@ -313,7 +315,7 @@ $navbar-default-bg:                #f8f8f8;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%);
 
 // Navbar links
-$navbar-default-link-color:                #777;
+$navbar-default-link-color:                #f8f8f8;
 $navbar-default-link-hover-color:          #333;
 $navbar-default-link-hover-bg:             transparent;
 $navbar-default-link-active-color:         #555;
@@ -549,5 +551,5 @@ $hr-border:                   mix($brand-primary, $inverse, 63%);
 //** Horizontal forms & lists
 $component-offset-horizontal: 180px;
 
-$drawer-width: 29.5rem;
+$drawer-width: 0rem;
 $sidebar-closed-width: 7rem;

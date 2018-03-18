@@ -1,3 +1,4 @@
+import { AppBrandModule } from './../../core/components/app-brand';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/index';
 import { RouterModule } from '@angular/router';
@@ -9,7 +10,8 @@ import { AppNavbarUserComponent } from './app-navbar-user';
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule
+    RouterModule,
+    AppBrandModule
   ],
   declarations: [
     AppNavbarComponent,

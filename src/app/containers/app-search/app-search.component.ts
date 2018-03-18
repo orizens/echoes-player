@@ -11,27 +11,37 @@ import * as PlayerSearch from '@core/store/player-search';
   selector: 'app-search',
   styleUrls: ['./app-search.scss'],
   template: `
+  
   <article
     infiniteScroll
     [infiniteScrollDistance]="2"
     [infiniteScrollDisabled]="currentPlaylist$ | async"
     (scrolled)="searchMore()"
     [immediateCheck]="true">
+    
+  
+  
     <app-navbar>
-      <div class="navbar-header">
-        <player-search
-          [query]="query$ | async"
-          (queryChange)="resetPageToken($event)"
-          (search)="search($event)"
-        ></player-search>
-      </div>
-      <button-group class="nav-toolbar"
+    
+
+      <player-search
+        [query]="query$ | async"
+        (queryChange)="resetPageToken($event)"
+        (search)="search($event)">
+      </player-search>
+      
+      <button-group class="nav-toolbar btn-group-searchtype"
         [buttons]="presets$ | async"
         [selectedButton]="queryParamPreset$ | async"
-        (buttonClick)="updatePreset($event)"
-      ></button-group>
-      <search-navigator></search-navigator>
+        (buttonClick)="updatePreset($event)">
+      </button-group>
+      
     </app-navbar>
+
+    <search-navigator></search-navigator>
+    
+
+    
     <router-outlet></router-outlet>
     </article>
     `
