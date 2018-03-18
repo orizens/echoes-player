@@ -1,11 +1,11 @@
-import * as PlayerSearch from '@core/store/player-search';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '@core/store';
 
 // actions
-import { NowPlaylistActions } from '@core/store/now-playlist';
-import { ActionTypes } from '@core/store/app-player';
+import * as fromNowPlaylist from '@core/store/now-playlist';
+import * as fromPlayer from '@core/store/app-player';
+import * as fromPlayerSearch from '@core/store/player-search';
 import { AppPlayerApi } from '@core/api/app-player.api';
 
 // selectors
@@ -26,19 +26,20 @@ import * as NowPlaylist from '@core/store/now-playlist';
   `
 })
 export class YoutubeVideosComponent implements OnInit {
-  videos$ = this.store.select(PlayerSearch.getPlayerSearchResults);
+  videos$ = this.store.select(fromPlayerSearch.getPlayerSearchResults);
   playlistVideos$ = this.store.select(NowPlaylist.getPlaylistVideos);
-  loading$ = this.store.select(PlayerSearch.getIsSearching);
+  loading$ = this.store.select(fromPlayerSearch.getIsSearching);
 
   constructor(
     private store: Store<EchoesState>,
-    private appPlayerApi: AppPlayerApi,
-    private playerSearchActions: PlayerSearch.PlayerSearchActions
-  ) { }
+    private appPlayerApi: AppPlayerApi
+  ) {}
 
   ngOnInit() {
-    this.store.dispatch(this.playerSearchActions.updateSearchType(PlayerSearch.CSearchTypes.VIDEO));
-    this.store.dispatch(this.playerSearchActions.searchCurrentQuery());
+    this.store.dispatch(
+      new fromPlayerSearch.UpdateSearchType(fromPlayerSearch.CSearchTypes.VIDEO)
+    );
+    this.store.dispatch(new fromPlayerSearch.SearchCurrentQuery());
   }
 
   playSelectedVideo(media: GoogleApiYouTubeVideoResource) {

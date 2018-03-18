@@ -2,7 +2,8 @@ import { NowPlaylistService } from '@core/services';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '@store/reducers';
 import { Injectable } from '@angular/core';
-import { Effect, Actions, toPayload } from '@ngrx/effects';
+import { Effect, Actions } from '@ngrx/effects';
+import { toPayload } from '@utils/data.utils';
 
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -20,7 +21,7 @@ export class AppPlayerEffects {
     public store: Store<EchoesState>,
     public youtubePlayerService: YoutubePlayerService,
     public youtubeVideosInfo: YoutubeVideosInfo
-  ) { }
+  ) {}
 
   @Effect() init$ = defer(() => of(new AppPlayer.ResetFullScreen()));
 
@@ -33,9 +34,7 @@ export class AppPlayerEffects {
     );
 
   @Effect({ dispatch: false })
-  pauseVideo$ = this.actions$
-    .ofType(AppPlayer.ActionTypes.PAUSE)
-    .do(() => this.youtubePlayerService.pause());
+  pauseVideo$ = this.actions$.ofType(AppPlayer.ActionTypes.PAUSE).do(() => this.youtubePlayerService.pause());
 
   @Effect()
   loadAndPlay$ = this.actions$
@@ -52,15 +51,13 @@ export class AppPlayerEffects {
   toggleFullscreen$ = this.actions$
     .ofType(AppPlayer.ActionTypes.FULLSCREEN)
     .withLatestFrom(this.store.select(AppPlayer.getPlayerFullscreen))
-    .do((states: [any, { on; height; width }]) =>
-      this.youtubePlayerService.setSize(states[1].height, states[1].width)
-    );
+    .do((states: [any, { on; height; width }]) => this.youtubePlayerService.setSize(states[1].height, states[1].width));
 
   @Effect({ dispatch: false })
   setupPlayer$ = this.actions$
     .ofType(AppPlayer.ActionTypes.SETUP_PLAYER)
     .map(toPayload)
-    .do((player) => this.youtubePlayerService.setupPlayer(player));
+    .do(player => this.youtubePlayerService.setupPlayer(player));
 
   @Effect()
   playerStateChange$ = this.actions$

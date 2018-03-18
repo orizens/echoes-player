@@ -1,10 +1,9 @@
 import { inject, async } from '@angular/core/testing';
 
-import * as NowPlaylist from './index';
+import * as fromNowPlaylist from './index';
 import { YoutubeMediaItemsMock } from '@mocks/youtube.media.items';
 
 describe('The Now Playlist Reducer', () => {
-  const nowPlaylistActions = new NowPlaylist.NowPlaylistActions();
   const createState = (props = {}) => {
     const defaultState = {
       selectedId: '',
@@ -17,7 +16,10 @@ describe('The Now Playlist Reducer', () => {
 
   it('should return current state when no valid actions have been made', () => {
     const state = createState();
-    const actual = NowPlaylist.nowPlaylist(state, { type: 'INVALID_ACTION', payload: {} });
+    const actual = fromNowPlaylist.nowPlaylist(state, {
+      type: 'INVALID_ACTION',
+      payload: {}
+    });
     const expected = state;
     expect(actual).toBe(expected);
   });
@@ -27,8 +29,8 @@ describe('The Now Playlist Reducer', () => {
       selectedId: 0,
       videos: [...YoutubeMediaItemsMock]
     });
-    const actual = NowPlaylist.nowPlaylist(<any>state, {
-      type: NowPlaylist.NowPlaylistActions.SELECT,
+    const actual = fromNowPlaylist.nowPlaylist(<any>state, {
+      type: fromNowPlaylist.ActionTypes.SELECT,
       payload: YoutubeMediaItemsMock[0]
     });
     const expected = YoutubeMediaItemsMock[0];
@@ -42,8 +44,8 @@ describe('The Now Playlist Reducer', () => {
       selectedId: 0,
       videos: [...videos]
     });
-    const actual = NowPlaylist.nowPlaylist(<any>state, {
-      type: NowPlaylist.NowPlaylistActions.QUEUE,
+    const actual = fromNowPlaylist.nowPlaylist(<any>state, {
+      type: fromNowPlaylist.ActionTypes.QUEUE,
       payload: newVideo
     });
     const expected = newVideo;
@@ -55,7 +57,10 @@ describe('The Now Playlist Reducer', () => {
       selectedId: YoutubeMediaItemsMock[4].id,
       videos: [...YoutubeMediaItemsMock]
     });
-    const actual = NowPlaylist.nowPlaylist(<any>state, new NowPlaylist.MediaEnded());
+    const actual = fromNowPlaylist.nowPlaylist(
+      <any>state,
+      new fromNowPlaylist.MediaEnded()
+    );
     const expected = state.videos[5];
     expect(actual.selectedId).toMatch(expected.id);
   });
@@ -63,13 +68,18 @@ describe('The Now Playlist Reducer', () => {
   it('should select the correct NEXT track when filter is with a value', () => {
     const videos = [...YoutubeMediaItemsMock];
     const filter = '2015';
-    const filteredVideos = videos.filter(video => JSON.stringify(video).includes(filter));
+    const filteredVideos = videos.filter(video =>
+      JSON.stringify(video).includes(filter)
+    );
     const state = createState({
       videos,
       filter,
       selectedId: filteredVideos[0].id
     });
-    const newState = NowPlaylist.nowPlaylist(<any>state, new NowPlaylist.SelectNext());
+    const newState = fromNowPlaylist.nowPlaylist(
+      <any>state,
+      new fromNowPlaylist.SelectNext()
+    );
     const actual = newState.selectedId;
     const expected = filteredVideos[1].id;
     expect(actual).toMatch(expected);
@@ -78,13 +88,18 @@ describe('The Now Playlist Reducer', () => {
   it('should select the correct PREVIOUS track when filter is with a value', () => {
     const videos = [...YoutubeMediaItemsMock];
     const filter = '2015';
-    const filteredVideos = videos.filter(video => JSON.stringify(video).includes(filter));
+    const filteredVideos = videos.filter(video =>
+      JSON.stringify(video).includes(filter)
+    );
     const state = createState({
       videos,
       filter,
       selectedId: filteredVideos[1].id
     });
-    const newState = NowPlaylist.nowPlaylist(<any>state, new NowPlaylist.SelectPrevious());
+    const newState = fromNowPlaylist.nowPlaylist(
+      <any>state,
+      new fromNowPlaylist.SelectPrevious()
+    );
     const actual = newState.selectedId;
     const expected = filteredVideos[0].id;
     expect(actual).toMatch(expected);
@@ -98,7 +113,10 @@ describe('The Now Playlist Reducer', () => {
       filter,
       selectedId: videos[5].id
     });
-    const newState = NowPlaylist.nowPlaylist(<any>state, new NowPlaylist.RemoveAll());
+    const newState = fromNowPlaylist.nowPlaylist(
+      <any>state,
+      new fromNowPlaylist.RemoveAll()
+    );
     const actual = newState;
     const expected = createState();
     expect(actual).toEqual(expected);
@@ -117,7 +135,10 @@ describe('The Now Playlist Reducer', () => {
       filter,
       selectedId: filteredVideos[0].id
     });
-    const newState = NowPlaylist.nowPlaylist(<any>state, new NowPlaylist.SelectNext());
+    const newState = fromNowPlaylist.nowPlaylist(
+      <any>state,
+      new fromNowPlaylist.SelectNext()
+    );
     const actual = newState.selectedId;
     const expected = filteredVideos[1].id;
     expect(actual).toMatch(expected);

@@ -1,10 +1,11 @@
 import { Store } from '@ngrx/store';
-import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
+import { toPayload } from '@utils/data.utils';
 
 import { Injectable } from '@angular/core';
 import { EchoesState } from '@store/reducers';
 import * as AppPlayer from '@store/app-player';
-import * as NowPlaylist from '@store/now-playlist';
+import * as fromNowPlaylist from '@store/now-playlist';
 import { NowPlaylistEffects } from '@core/effects/now-playlist.effects';
 
 import 'rxjs/add/operator/take';
@@ -13,33 +14,34 @@ import 'rxjs/add/operator/take';
 export class AppPlayerApi {
   constructor(
     private store: Store<EchoesState>,
-    private nowPlaylistEffects: NowPlaylistEffects,
-    private nowPlaylistActions: NowPlaylist.NowPlaylistActions
-  ) { }
+    private nowPlaylistEffects: NowPlaylistEffects
+  ) {}
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.nowPlaylistEffects.playPlaylistFirstTrack$
       .map(toPayload)
       .take(1)
-      .subscribe((media: GoogleApiYouTubeVideoResource) => this.playVideo(media));
+      .subscribe((media: GoogleApiYouTubeVideoResource) =>
+        this.playVideo(media)
+      );
     this.queuePlaylist(playlist);
   }
 
   queuePlaylist(playlist: GoogleApiYouTubePlaylistResource) {
-    this.store.dispatch(new NowPlaylist.LoadPlaylistAction(playlist.id));
+    this.store.dispatch(new fromNowPlaylist.LoadPlaylistAction(playlist.id));
   }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(new AppPlayer.LoadAndPlay(media));
-    this.store.dispatch(new NowPlaylist.SelectVideo(media));
+    this.store.dispatch(new fromNowPlaylist.SelectVideo(media));
   }
 
   queueVideo(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new NowPlaylist.QueueVideo(media));
+    this.store.dispatch(new fromNowPlaylist.QueueVideo(media));
   }
 
   removeVideoFromPlaylist(media: GoogleApiYouTubeVideoResource) {
-    this.store.dispatch(new NowPlaylist.RemoveVideo(media));
+    this.store.dispatch(new fromNowPlaylist.RemoveVideo(media));
   }
 
   pauseVideo() {
@@ -55,7 +57,7 @@ export class AppPlayerApi {
   }
 
   toggleRepeat() {
-    this.store.dispatch(new NowPlaylist.ToggleRepeat());
+    this.store.dispatch(new fromNowPlaylist.ToggleRepeat());
   }
 
   resetPlayer() {
@@ -68,6 +70,6 @@ export class AppPlayerApi {
 
   changePlayerState(event: YT.OnStateChangeEvent) {
     this.store.dispatch(new AppPlayer.PlayerStateChange(event));
-    this.store.dispatch(new NowPlaylist.PlayerStateChange(event));
+    this.store.dispatch(new fromNowPlaylist.PlayerStateChange(event));
   }
 }

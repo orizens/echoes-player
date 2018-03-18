@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { NowPlaylistActions } from './now-playlist.actions';
+import * as fromActions from './now-playlist.actions';
 
 export interface INowPlaylist {
   videos: GoogleApiYouTubeVideoResource[];
@@ -19,52 +19,52 @@ interface UnsafeAction extends Action {
 }
 export function nowPlaylist(state: INowPlaylist = initialState, action: UnsafeAction): INowPlaylist {
   switch (action.type) {
-    case NowPlaylistActions.SELECT:
+    case fromActions.ActionTypes.SELECT:
       return { ...state, selectedId: action.payload.id };
 
-    case NowPlaylistActions.QUEUE:
+    case fromActions.ActionTypes.QUEUE:
       return { ...state, videos: addMedia(state.videos, action.payload) };
 
-    case NowPlaylistActions.QUEUE_VIDEOS:
+    case fromActions.ActionTypes.QUEUE_VIDEOS:
       return { ...state, videos: addMedias(state.videos, action.payload) };
 
-    case NowPlaylistActions.REMOVE:
+    case fromActions.ActionTypes.REMOVE:
       return { ...state, videos: removeMedia(state.videos, action.payload) };
 
     // updates index by media
-    case NowPlaylistActions.UPDATE_INDEX:
+    case fromActions.ActionTypes.UPDATE_INDEX:
       return { ...state, selectedId: action.payload };
 
-    case NowPlaylistActions.FILTER_CHANGE:
+    case fromActions.ActionTypes.FILTER_CHANGE:
       return { ...state, filter: action.payload };
 
-    case NowPlaylistActions.REMOVE_ALL:
+    case fromActions.ActionTypes.REMOVE_ALL:
       return { ...state, videos: [], filter: '', selectedId: '' };
 
-    case NowPlaylistActions.SELECT_NEXT: {
+    case fromActions.ActionTypes.SELECT_NEXT: {
       return {
         ...state,
         selectedId: selectNextIndex(state.videos, state.selectedId, state.filter, state.repeat)
       };
     }
 
-    case NowPlaylistActions.SELECT_PREVIOUS:
+    case fromActions.ActionTypes.SELECT_PREVIOUS:
       return {
         ...state,
         selectedId: selectPreviousIndex(state.videos, state.selectedId, state.filter)
       };
 
-    case NowPlaylistActions.MEDIA_ENDED:
+    case fromActions.ActionTypes.MEDIA_ENDED:
       return selectNextOrPreviousTrack(state, state.filter);
 
-    case NowPlaylistActions.TOGGLE_REPEAT: {
+    case fromActions.ActionTypes.TOGGLE_REPEAT: {
       return {
         ...state,
         repeat: !state.repeat
       };
     }
 
-    case NowPlaylistActions.LOAD_PLAYLIST_END: {
+    case fromActions.ActionTypes.LOAD_PLAYLIST_END: {
       return {
         ...state
       };

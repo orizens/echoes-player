@@ -2,7 +2,8 @@ import { NowPlaylistService } from '@core/services';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '@store/reducers';
 import { Injectable } from '@angular/core';
-import { Effect, Actions, toPayload } from '@ngrx/effects';
+import { Effect, Actions } from '@ngrx/effects';
+import { toPayload } from '@utils/data.utils';
 
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +17,7 @@ export class AppSettingsEffects {
     public actions$: Actions,
     public store: Store<EchoesState>,
     public versionCheckerService: VersionCheckerService
-  ) { }
+  ) {}
 
   @Effect({ dispatch: false })
   updateAppVersion$ = this.actions$

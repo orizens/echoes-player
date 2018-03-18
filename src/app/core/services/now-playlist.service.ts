@@ -2,19 +2,18 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { EchoesState } from '@store/reducers';
-import * as NowPlaylist from '@store/now-playlist';
+import * as fromNowPlaylist from '@store/now-playlist';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 
 @Injectable()
 export class NowPlaylistService {
-  public playlist$: Observable<NowPlaylist.INowPlaylist>;
+  public playlist$: Observable<fromNowPlaylist.INowPlaylist>;
 
   constructor(
     public store: Store<EchoesState>,
     private youtubeVideosInfo: YoutubeVideosInfo,
-    private nowPlaylistActions: NowPlaylist.NowPlaylistActions
   ) {
-    this.playlist$ = this.store.select(NowPlaylist.getNowPlaylist);
+    this.playlist$ = this.store.select(fromNowPlaylist.getNowPlaylist);
   }
 
   queueVideo(mediaId: string) {
@@ -22,35 +21,35 @@ export class NowPlaylistService {
   }
 
   queueVideos(medias: GoogleApiYouTubeVideoResource[]) {
-    this.store.dispatch(new NowPlaylist.QueueVideos(medias));
+    this.store.dispatch(new fromNowPlaylist.QueueVideos(medias));
   }
 
   removeVideo(media) {
-    this.store.dispatch(new NowPlaylist.RemoveVideo(media));
+    this.store.dispatch(new fromNowPlaylist.RemoveVideo(media));
   }
 
   selectVideo(media) {
-    this.store.dispatch(new NowPlaylist.SelectVideo(media));
+    this.store.dispatch(new fromNowPlaylist.SelectVideo(media));
   }
 
   updateFilter(filter: string) {
-    this.store.dispatch(new NowPlaylist.FilterChange(filter));
+    this.store.dispatch(new fromNowPlaylist.FilterChange(filter));
   }
 
   clearPlaylist() {
-    this.store.dispatch(new NowPlaylist.RemoveAll());
+    this.store.dispatch(new fromNowPlaylist.RemoveAll());
   }
 
   selectNextIndex() {
-    this.store.dispatch(new NowPlaylist.SelectNext());
+    this.store.dispatch(new fromNowPlaylist.SelectNext());
   }
 
   selectPreviousIndex() {
-    this.store.dispatch(new NowPlaylist.SelectPrevious());
+    this.store.dispatch(new fromNowPlaylist.SelectPrevious());
   }
 
   trackEnded() {
-    this.store.dispatch(new NowPlaylist.MediaEnded());
+    this.store.dispatch(new fromNowPlaylist.MediaEnded());
   }
 
   getCurrent() {
@@ -62,11 +61,11 @@ export class NowPlaylistService {
   }
 
   updateIndexByMedia(mediaId: string) {
-    this.store.dispatch(new NowPlaylist.UpdateIndexByMedia(mediaId));
+    this.store.dispatch(new fromNowPlaylist.UpdateIndexByMedia(mediaId));
   }
 
   isInLastTrack(): boolean {
-    let nowPlaylist: NowPlaylist.INowPlaylist;
+    let nowPlaylist: fromNowPlaylist.INowPlaylist;
     this.playlist$.take(1).subscribe(_nowPlaylist => (nowPlaylist = _nowPlaylist));
     const currentVideoId = nowPlaylist.selectedId;
     const indexOfCurrentVideo = nowPlaylist.videos.findIndex(video => video.id === currentVideoId);
@@ -75,6 +74,6 @@ export class NowPlaylistService {
   }
 
   seekToTrack(trackEvent) {
-    this.store.dispatch(this.nowPlaylistActions.seekTo(trackEvent));
+    this.store.dispatch(new fromNowPlaylist.SeekTo(trackEvent));
   }
 }

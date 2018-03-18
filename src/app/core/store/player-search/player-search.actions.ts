@@ -23,12 +23,18 @@ export class PlayerSearchActions {
   static SEARCH_TYPE_UPDATE = '[PlayerSearch] SEARCH_TYPE_UPDATE';
   static ADD_PLAYLISTS_TO_RESULTS = {
     action: '[PlayerSearch] ADD_PLAYLISTS_TO_RESULTS',
-    creator: (payload) => ({ payload, type: PlayerSearchActions.ADD_PLAYLISTS_TO_RESULTS.action })
+    creator: payload => ({
+      payload,
+      type: PlayerSearchActions.ADD_PLAYLISTS_TO_RESULTS.action
+    })
   };
 
   static ADD_METADATA_TO_VIDEOS = {
     action: '[PlayerSearch] ADD_METADATA_TO_VIDEOS',
-    creator: (payload) => ({ payload, type: PlayerSearchActions.ADD_METADATA_TO_VIDEOS.action })
+    creator: payload => ({
+      payload,
+      type: PlayerSearchActions.ADD_METADATA_TO_VIDEOS.action
+    })
   };
 
   static PLAYLISTS_SEARCH_START = {
@@ -41,24 +47,48 @@ export class PlayerSearchActions {
   static RESET_RESULTS = '[PlayerSearch] RESET_RESULTS';
   static ERROR_RESULTS = '[PlayerSearch] ERROR_RESULTS';
 
-  getSuggestions = ActionCreatorFactory.create<string>(PlayerSearchActions.GET_SUGGESTIONS);
-  searchCurrentQuery = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_CURRENT_QUERY);
-  searchNewQuery = ActionCreatorFactory.create<string>(PlayerSearchActions.SEARCH_NEW_QUERY);
-  searchMoreForQuery = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_MORE_FOR_QUERY);
+  getSuggestions = ActionCreatorFactory.create<string>(
+    PlayerSearchActions.GET_SUGGESTIONS
+  );
+  searchNewQuery = ActionCreatorFactory.create<string>(
+    PlayerSearchActions.SEARCH_NEW_QUERY
+  );
+  searchMoreForQuery = ActionCreatorFactory.create(
+    PlayerSearchActions.SEARCH_MORE_FOR_QUERY
+  );
   updateFilter = ActionCreatorFactory.create(PlayerSearchActions.UPDATE_FILTER);
-  updateQueryParam = ActionCreatorFactory.create<any>(PlayerSearchActions.UPDATE_QUERY_PARAM);
-  resetPageToken = ActionCreatorFactory.create<any>(PlayerSearchActions.RESET_PAGE_TOKEN);
-  searchResultsReturned = ActionCreatorFactory.create<any>(PlayerSearchActions.SEARCH_RESULTS_RETURNED);
-  searchStarted = ActionCreatorFactory.create(PlayerSearchActions.SEARCH_STARTED);
+  updateQueryParam = ActionCreatorFactory.create<any>(
+    PlayerSearchActions.UPDATE_QUERY_PARAM
+  );
+  resetPageToken = ActionCreatorFactory.create<any>(
+    PlayerSearchActions.RESET_PAGE_TOKEN
+  );
+  searchResultsReturned = ActionCreatorFactory.create<any>(
+    PlayerSearchActions.SEARCH_RESULTS_RETURNED
+  );
+  searchStarted = ActionCreatorFactory.create(
+    PlayerSearchActions.SEARCH_STARTED
+  );
   // addResults = ActionCreatorFactory.create(PlayerSearchActions.ADD_RESULTS);
   resetResults = ActionCreatorFactory.create(PlayerSearchActions.RESET_RESULTS);
-  errorInSearch = ActionCreatorFactory.create<any>(PlayerSearchActions.ERROR_RESULTS);
-  updateSearchType = ActionCreatorFactory.create<string>(PlayerSearchActions.SEARCH_TYPE_UPDATE);
+  errorInSearch = ActionCreatorFactory.create<any>(
+    PlayerSearchActions.ERROR_RESULTS
+  );
 }
 
 export class UpdateQueryAction {
   public type = PlayerSearchActions.UPDATE_QUERY;
-  constructor(public payload: string) { }
+  constructor(public payload: string) {}
+}
+
+export class UpdateSearchType {
+  public type = PlayerSearchActions.SEARCH_TYPE_UPDATE;
+  constructor(public payload: string) {}
+}
+
+export class SearchCurrentQuery {
+  public type = PlayerSearchActions.SEARCH_CURRENT_QUERY;
+  constructor() {}
 }
 
 // export class AddResults implements Action {
