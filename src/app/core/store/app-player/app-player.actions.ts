@@ -20,17 +20,17 @@ export class ActionTypes {
 
 export class PlayVideo implements Action {
   public type = ActionTypes.PLAY;
-  constructor(public payload: GoogleApiYouTubeVideoResource) { }
+  constructor(public payload: GoogleApiYouTubeVideoResource) {}
 }
 
 export class PauseVideo implements Action {
   public type = ActionTypes.PAUSE;
-  constructor(public payload = '') { }
+  constructor(public payload = '') {}
 }
 
 export class TogglePlayer implements Action {
   public type = ActionTypes.TOGGLE_PLAYER;
-  constructor(public payload: boolean = true) { }
+  constructor(public payload: boolean = true) {}
 }
 
 export class LoadNextTrack implements Action {
@@ -40,17 +40,17 @@ export class LoadNextTrack implements Action {
 
 export class LoadAndPlay implements Action {
   public type = ActionTypes.LOAD_AND_PLAY;
-  constructor(public payload: GoogleApiYouTubeVideoResource) { }
+  constructor(public payload: GoogleApiYouTubeVideoResource) {}
 }
 
 export class PlayStarted implements Action {
   public type = ActionTypes.PLAY_STARTED;
-  constructor(public payload: GoogleApiYouTubeVideoResource) { }
+  constructor(public payload: GoogleApiYouTubeVideoResource) {}
 }
 
 export class UpdateState implements Action {
   public type = ActionTypes.UPDATE_STATE;
-  constructor(public payload: number) { }
+  constructor(public payload: number) {}
 }
 
 export class FullScreen implements Action {
@@ -70,12 +70,12 @@ export class Reset implements Action {
 
 export class SetupPlayer implements Action {
   public type = ActionTypes.SETUP_PLAYER;
-  constructor(public payload: any) { }
+  constructor(public payload: any) {}
 }
 
 export class PlayerStateChange implements Action {
   public type = ActionTypes.PLAYER_STATE_CHANGE;
-  constructor(public payload: YT.OnStateChangeEvent) { }
+  constructor(public payload: YT.PlayerState) {}
 }
 
 export type Actions =

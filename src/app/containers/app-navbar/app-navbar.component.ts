@@ -30,6 +30,9 @@ import { AppApi } from '@api/app.api';
           <ng-content></ng-content>
         </div>
         <section class="navbar-text navbar-actions">
+          <a class="navbar-action-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdzGRIXoHuzRFZU03EyhgwBJgJp6W1LMatz6Bn44L-5SyuxZA/viewform" target="_blank">
+            <icon name="star"></icon> Request New Features
+          </a>
           <app-navbar-user
             [signedIn]="isSignIn()"
             [userImageUrl]="(user$ | async).profile.imageUrl"
@@ -63,12 +66,9 @@ export class AppNavbarComponent implements OnInit {
   @Output() signOut = new EventEmitter();
   @Output() headerMainIconClick = new EventEmitter();
 
-  constructor(
-    private authorization: Authorization,
-    private appApi: AppApi
-  ) { }
+  constructor(private authorization: Authorization, private appApi: AppApi) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   signInUser() {
     this.appApi.signinUser();

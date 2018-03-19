@@ -37,9 +37,7 @@ export class NowPlaylistEffects {
   playerStateChange$ = this.actions$
     .ofType(fromNowPlaylist.ActionTypes.PLAYER_STATE_CHANGE)
     .map(toPayload)
-    .filter(
-      (event: YT.OnStateChangeEvent) => event.data === YT.PlayerState.ENDED
-    )
+    .filter((data: YT.PlayerState) => data === YT.PlayerState.ENDED)
     .map(() => new fromNowPlaylist.MediaEnded());
 
   /* if it's the last track

@@ -4,6 +4,7 @@
 * [UPDATE] - now using ngrx 5
 * [UPDATE] - now using rxjs 5.5 new "pipe" syntax for ngrx/effects
 * [UPDATE] - added prettier for code formatting
+* [FIXED] - fixes repeat in filtered now playlist #35
 
 ## v 3.9.6 (2018/01/30)
 

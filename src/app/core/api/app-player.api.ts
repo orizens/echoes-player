@@ -69,7 +69,7 @@ export class AppPlayerApi {
   }
 
   changePlayerState(event: YT.OnStateChangeEvent) {
-    this.store.dispatch(new AppPlayer.PlayerStateChange(event));
-    this.store.dispatch(new fromNowPlaylist.PlayerStateChange(event));
+    this.store.dispatch(new AppPlayer.PlayerStateChange(event.data));
+    this.store.dispatch(new fromNowPlaylist.PlayerStateChange(event.data));
   }
 }

@@ -30,11 +30,15 @@ export class AppPlayerEffects {
     .ofType(AppPlayer.ActionTypes.PLAY)
     .map(toPayload)
     .switchMap(media =>
-      of(this.youtubePlayerService.playVideo(media)).map((video: any) => new AppPlayer.PlayStarted(video))
+      of(this.youtubePlayerService.playVideo(media)).map(
+        (video: any) => new AppPlayer.PlayStarted(video)
+      )
     );
 
   @Effect({ dispatch: false })
-  pauseVideo$ = this.actions$.ofType(AppPlayer.ActionTypes.PAUSE).do(() => this.youtubePlayerService.pause());
+  pauseVideo$ = this.actions$
+    .ofType(AppPlayer.ActionTypes.PAUSE)
+    .do(() => this.youtubePlayerService.pause());
 
   @Effect()
   loadAndPlay$ = this.actions$
@@ -51,7 +55,9 @@ export class AppPlayerEffects {
   toggleFullscreen$ = this.actions$
     .ofType(AppPlayer.ActionTypes.FULLSCREEN)
     .withLatestFrom(this.store.select(AppPlayer.getPlayerFullscreen))
-    .do((states: [any, { on; height; width }]) => this.youtubePlayerService.setSize(states[1].height, states[1].width));
+    .do((states: [any, { on; height; width }]) =>
+      this.youtubePlayerService.setSize(states[1].height, states[1].width)
+    );
 
   @Effect({ dispatch: false })
   setupPlayer$ = this.actions$
@@ -63,5 +69,5 @@ export class AppPlayerEffects {
   playerStateChange$ = this.actions$
     .ofType(AppPlayer.ActionTypes.PLAYER_STATE_CHANGE)
     .map(toPayload)
-    .map((event: YT.OnStateChangeEvent) => new AppPlayer.UpdateState(event.data));
+    .map((data: YT.PlayerState) => new AppPlayer.UpdateState(data));
 }

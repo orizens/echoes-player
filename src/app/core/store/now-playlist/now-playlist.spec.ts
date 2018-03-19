@@ -1,7 +1,10 @@
 import { inject, async } from '@angular/core/testing';
 
 import * as fromNowPlaylist from './index';
-import { YoutubeMediaItemsMock } from '@mocks/youtube.media.items';
+import {
+  YoutubeMediaItemsMock,
+  youtubeVideoResources
+} from '@mocks/youtube.media.items';
 
 describe('The Now Playlist Reducer', () => {
   const createState = (props = {}) => {
@@ -52,6 +55,20 @@ describe('The Now Playlist Reducer', () => {
     expect(actual.videos.pop().etag).toBe(expected.etag);
   });
 
+  it('should queue videos', () => {
+    const videos = [...YoutubeMediaItemsMock];
+    const state = createState({
+      selectedId: 0,
+      videos: [...videos]
+    });
+    const actual = fromNowPlaylist.nowPlaylist(
+      <any>state,
+      new fromNowPlaylist.QueueVideos(youtubeVideoResources)
+    );
+    const expected = videos.length + youtubeVideoResources.length;
+    expect(actual.videos.length).toBe(expected);
+  });
+
   it('should select the NEXT track when media ended and not at end of playlist', () => {
     const state = createState({
       selectedId: YoutubeMediaItemsMock[4].id,
@@ -82,6 +99,26 @@ describe('The Now Playlist Reducer', () => {
     );
     const actual = newState.selectedId;
     const expected = filteredVideos[1].id;
+    expect(actual).toMatch(expected);
+  });
+
+  it('should select the NEXT filtered track when filter is with a value and at the end of playlist', () => {
+    const videos = [...YoutubeMediaItemsMock];
+    const filter = 'aurora';
+    const filteredVideos = videos.filter(video =>
+      JSON.stringify(video).includes(filter)
+    );
+    const state = createState({
+      videos,
+      filter,
+      selectedId: videos[videos.length - 1].id
+    });
+    const newState = fromNowPlaylist.nowPlaylist(
+      <any>state,
+      new fromNowPlaylist.SelectNext()
+    );
+    const actual = newState.selectedId;
+    const expected = filteredVideos[0].id;
     expect(actual).toMatch(expected);
   });
 
