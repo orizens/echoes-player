@@ -4,7 +4,7 @@ import { EchoesState } from '@core/store';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { UserProfileActions } from '@core/store/user-profile';
-import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '@core/store/now-playlist';
+import * as fromNowPlaylist from '@core/store/now-playlist';
 
 import { PlaylistProxy } from './playlist-view.proxy';
 
@@ -38,9 +38,12 @@ export class PlaylistViewComponent implements OnInit {
   header$ = this.playlistProxy.fetchPlaylistHeader(this.route);
   nowPlaylist$ = this.playlistProxy.nowPlaylist$;
 
-  constructor(private playlistProxy: PlaylistProxy, private route: ActivatedRoute) { }
+  constructor(
+    private playlistProxy: PlaylistProxy,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.playlistProxy.playPlaylist(playlist);

@@ -21,11 +21,7 @@ import { TooltipModule } from 'ngx-tooltip';
     NgxTypeaheadModule,
     TooltipModule
   ],
-  declarations: [
-    ...CORE_COMPONENTS,
-    ...CORE_DIRECTIVES,
-    ...PIPES
-  ],
+  declarations: [...CORE_COMPONENTS, ...CORE_DIRECTIVES, ...PIPES],
   exports: [
     CommonModule,
     FormsModule,
@@ -39,4 +35,4 @@ import { TooltipModule } from 'ngx-tooltip';
   ],
   providers: []
 })
-export class SharedModule { }
+export class SharedModule {}

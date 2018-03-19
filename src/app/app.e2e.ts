@@ -30,7 +30,6 @@
 //     page.navigateTo();
 //   });
 
-
 //   // it('should have a title', () => {
 //   //   const actual = page.getTitle();
 //   //   const expected = 'Echoes Player - Open Source Media Player for Youtube';

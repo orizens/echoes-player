@@ -5,7 +5,7 @@ import { ActionReducerMap, Store } from '@ngrx/store';
 
 // reducers
 import { IAppPlayer, player, ActionTypes } from './app-player';
-import { INowPlaylist, nowPlaylist, NowPlaylistActions } from './now-playlist';
+import { INowPlaylist, nowPlaylist } from './now-playlist';
 import { IUserProfile, user, UserProfileActions } from './user-profile';
 import { IPlayerSearch, search, PlayerSearchActions } from './player-search';
 import { IAppSettings, appLayout } from './app-layout';
@@ -26,8 +26,12 @@ export let EchoesReducers: ActionReducerMap<EchoesState> = {
   nowPlaylist,
   user,
   search,
-  appLayout,
+  appLayout
   // routerReducer
 };
 
-export let EchoesActions = [ActionTypes, NowPlaylistActions, UserProfileActions, PlayerSearchActions];
+export let EchoesActions = [
+  ActionTypes,
+  UserProfileActions,
+  PlayerSearchActions
+];

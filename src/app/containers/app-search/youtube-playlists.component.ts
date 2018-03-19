@@ -3,10 +3,10 @@ import { Store } from '@ngrx/store';
 import { EchoesState } from '@core/store';
 
 // actions
-import { NowPlaylistActions, LoadPlaylistAction, PlayPlaylistAction } from '@core/store/now-playlist';
-import { ActionTypes } from '@core/store/app-player';
+import * as fromNowPlaylist from '@core/store/now-playlist';
+import * as fromAppPlayer from '@core/store/app-player';
 // selectors
-import * as PlayerSearch from '@core/store/player-search';
+import * as fromPlayerSearch from '@core/store/player-search';
 import { AppPlayerApi } from '@core/api/app-player.api';
 
 import { fadeInAnimation } from '@shared/animations/fade-in.animation';
@@ -41,29 +41,30 @@ import { fadeInAnimation } from '@shared/animations/fade-in.animation';
   `
 })
 export class YoutubePlaylistsComponent implements OnInit {
-  results$ = this.store.select(PlayerSearch.getPlayerSearchResults);
-  isSearching$ = this.store.select(PlayerSearch.getIsSearching);
+  results$ = this.store.select(fromPlayerSearch.getPlayerSearchResults);
+  isSearching$ = this.store.select(fromPlayerSearch.getIsSearching);
 
   constructor(
     private store: Store<EchoesState>,
-    private nowPlaylistActions: NowPlaylistActions,
-    private appPlayerActions: ActionTypes,
-    private playerSearchActions: PlayerSearch.PlayerSearchActions,
     private appPlayerApi: AppPlayerApi
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.store.dispatch(this.playerSearchActions.updateSearchType(PlayerSearch.CSearchTypes.PLAYLIST));
-    this.store.dispatch(PlayerSearch.PlayerSearchActions.PLAYLISTS_SEARCH_START.creator());
+    this.store.dispatch(
+      new fromPlayerSearch.UpdateSearchType(
+        fromPlayerSearch.CSearchTypes.PLAYLIST
+      )
+    );
+    this.store.dispatch(
+      fromPlayerSearch.PlayerSearchActions.PLAYLISTS_SEARCH_START.creator()
+    );
   }
 
   playPlaylist(media: GoogleApiYouTubePlaylistResource) {
-    // this.store.dispatch(new PlayPlaylistAction(media.id));
     this.appPlayerApi.playPlaylist(media);
   }
 
   queueSelectedPlaylist(media: GoogleApiYouTubePlaylistResource) {
-    // this.store.dispatch(new LoadPlaylistAction(media.id));
     this.appPlayerApi.queuePlaylist(media);
   }
 }

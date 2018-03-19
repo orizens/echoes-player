@@ -51,7 +51,10 @@ $toolbar-position-on-hover: -9rem;
     overflow: hidden;
     padding: 0;
     z-index: $zindex-navbar-fixed;
-    background-color: var(--player-controls-bar-bg);
+    background: var(--player-controls-bar-bg)
+      url('/assets/images/developed-with-youtube-sentence-case-light.png')
+      no-repeat right center;
+    background-size: contain;
     position: relative;
     transition: all 0.3s;
     display: flex;
@@ -70,8 +73,7 @@ $toolbar-position-on-hover: -9rem;
     top: 0;
     box-shadow: 1px -1px 2px 0px rgba(0, 0, 0, 1);
     background: var(--brand-dark-bg-color-transparent); //rgba(0, 0, 0, 0.8);
-    transition-duration: 0.5s;
-    transform: translate3d(-40%, -39%, 0) scale(0.21);
+    transform: translate3d(-39%, -38%, 0) scale(0.23);
   }
 
   .show-youtube-player .btn.show-player {

@@ -12,7 +12,9 @@ import { NavigationSerializer } from './router-store';
 
 export { EchoesState } from './reducers';
 
-export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
   return localStorageSync({
     keys: Object.keys(EchoesReducers),
     rehydrate: true
@@ -34,8 +36,8 @@ if (!environment.production) {
   declarations: [],
   exports: [],
   providers: [
-    ...EchoesActions,
+    ...EchoesActions
     // { provide: RouterStateSerializer, useClass: NavigationSerializer }
   ]
 })
-export class CoreStoreModule { }
+export class CoreStoreModule {}

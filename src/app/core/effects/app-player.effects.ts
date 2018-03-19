@@ -2,7 +2,8 @@ import { NowPlaylistService } from '@core/services';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '@store/reducers';
 import { Injectable } from '@angular/core';
-import { Effect, Actions, toPayload } from '@ngrx/effects';
+import { Effect, Actions } from '@ngrx/effects';
+import { toPayload } from '@utils/data.utils';
 
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -20,7 +21,7 @@ export class AppPlayerEffects {
     public store: Store<EchoesState>,
     public youtubePlayerService: YoutubePlayerService,
     public youtubeVideosInfo: YoutubeVideosInfo
-  ) { }
+  ) {}
 
   @Effect() init$ = defer(() => of(new AppPlayer.ResetFullScreen()));
 
@@ -29,7 +30,9 @@ export class AppPlayerEffects {
     .ofType(AppPlayer.ActionTypes.PLAY)
     .map(toPayload)
     .switchMap(media =>
-      of(this.youtubePlayerService.playVideo(media)).map((video: any) => new AppPlayer.PlayStarted(video))
+      of(this.youtubePlayerService.playVideo(media)).map(
+        (video: any) => new AppPlayer.PlayStarted(video)
+      )
     );
 
   @Effect({ dispatch: false })
@@ -60,11 +63,11 @@ export class AppPlayerEffects {
   setupPlayer$ = this.actions$
     .ofType(AppPlayer.ActionTypes.SETUP_PLAYER)
     .map(toPayload)
-    .do((player) => this.youtubePlayerService.setupPlayer(player));
+    .do(player => this.youtubePlayerService.setupPlayer(player));
 
   @Effect()
   playerStateChange$ = this.actions$
     .ofType(AppPlayer.ActionTypes.PLAYER_STATE_CHANGE)
     .map(toPayload)
-    .map((event: YT.OnStateChangeEvent) => new AppPlayer.UpdateState(event.data));
+    .map((data: YT.PlayerState) => new AppPlayer.UpdateState(data));
 }

@@ -7,10 +7,13 @@ export function extractThumbnail(snippet) {
   if (snippet) {
     const thumbs = snippet.thumbnails;
     const sizes = ['high', 'standard', 'default'];
-    const thumb = sizes.reduce((acc, size) => {
-      acc.result = !acc.result.length && thumbs[size] ? thumbs[size].url : acc.result;
-      return acc;
-    }, { result: '' });
+    const thumb = sizes.reduce(
+      (acc, size) => {
+        acc.result = !acc.result.length && thumbs[size] ? thumbs[size].url : acc.result;
+        return acc;
+      },
+      { result: '' }
+    );
     thumbUrl = thumb.result;
   }
   return thumbUrl;

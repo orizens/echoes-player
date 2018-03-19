@@ -31,7 +31,7 @@ import { AppPlayerApi } from '@api/app-player.api';
         (toggle)="togglePlayer()"
         [fullScreen]="isShowPlayer$ | async"
       ></player-resizer>
-      <youtube-player class="nicer-ux"
+      <youtube-player
         (ready)="setupPlayer($event)"
         (change)="updatePlayerState($event)"
       ></youtube-player>
@@ -73,11 +73,13 @@ export class AppPlayerComponent implements OnInit {
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects,
     private appPlayerApi: AppPlayerApi
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.appPlayerApi.resetPlayer();
-    this.nowPlaylistEffects.loadNextTrack$.subscribe(action => this.playVideo(action.payload));
+    this.nowPlaylistEffects.loadNextTrack$.subscribe(action =>
+      this.playVideo(action.payload)
+    );
   }
 
   setupPlayer(player) {
