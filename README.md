@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/orizens/echoes-player.svg?branch=master)](https://travis-ci.org/orizens/echoes-player) [![Code Climate](https://codeclimate.com/github/orizens/echoes-player/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-player)
 
+## [Join Echoes Slack Channel](https://join.slack.com/t/echoesplayer/shared_invite/enQtMzMxMDk3OTEwOTMwLTFmODM5YjgwOWM0YjUwNGRlZmU5NDFiYmE4NDlmNDY0OWYzNTg2YzIwMWM1NzAzMWQ1MzlhMGFjODZmMzM4N2E)
+
 # Echoes Player - Angular Version (2nd Generation)
 
 Echoes is a great youtube player developed by [Oren Farhi](http://orizens.com).
