@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { extractThumbUrl } from '@utils/media.utils';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 
 interface MediaStatus {
   queued: boolean;
@@ -12,9 +17,10 @@ interface MediaStatus {
   templateUrl: './youtube-media.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class YoutubeMediaComponent implements OnChanges {
+export class YoutubeMediaComponent {
   @Input() media: GoogleApiYouTubeVideoResource;
-  @Input() status: MediaStatus = {
+  @Input()
+  status: MediaStatus = {
     queued: false,
     isPlaying: false
   };
@@ -25,15 +31,8 @@ export class YoutubeMediaComponent implements OnChanges {
 
   showDesc = false;
   isPlaying = false;
-  thumb = '';
 
-  constructor() { }
-
-  ngOnChanges({ media }: SimpleChanges) {
-    if (media && !media.firstChange || media && media.firstChange) {
-      this.thumb = extractThumbUrl(this.media);
-    }
-  }
+  constructor() {}
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
     this.play.emit(media);

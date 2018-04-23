@@ -36,6 +36,7 @@
     "@ngrx/router": "1.0.0-beta.2",
     "core-js": "^2.4.1",
     "http-server": "0.10.0",
+    "memo-decorator": "1.0.1",
     "replace": "0.3.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"

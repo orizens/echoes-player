@@ -2,7 +2,7 @@
   <section class="media-title front">
     <div class="media-thumb" [tooltip]="media.snippet.title">
       <div class="thumbnail">
-        <img [src]="thumb" class="thumb-image">
+        <img src="{{ media | videoToThumb }}" class="thumb-image">
       </div>
       <button class="btn btn-default btn-lg play-media" (click)="playPlaylist(media)">
         <icon name="play"></icon>

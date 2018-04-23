@@ -1,6 +1,13 @@
 import { MediaParserService } from '@core/services/media-parser.service';
-import { AfterContentInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { extractThumbUrl } from '@shared/utils/media.utils';
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 
 @Component({
   selector: 'now-playlist-track',
@@ -12,7 +19,7 @@ import { extractThumbUrl } from '@shared/utils/media.utils';
         (click)="markSelected(video)">
         <span class="track-number">{{ index + 1 }}</span>
         <img draggable="false" class="video-thumb__image"
-        [src]="videoThumb"
+        src="{{ video | videoToThumb }}"
         xtitle="Drag to sort">
         <span class="badge badge-info">
           {{ video.contentDetails.duration | toFriendlyDuration }}
@@ -55,30 +62,30 @@ import { extractThumbUrl } from '@shared/utils/media.utils';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NowPlaylistTrackComponent implements OnInit, AfterContentInit {
+export class NowPlaylistTrackComponent implements AfterContentInit {
   @Input() video: GoogleApiYouTubeVideoResource;
   @Input() index: number;
 
   @Output() remove = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output() select = new EventEmitter<GoogleApiYouTubeVideoResource>();
-  @Output() selectTrack = new EventEmitter<{ time: string, media: GoogleApiYouTubeVideoResource }>();
+  @Output()
+  selectTrack = new EventEmitter<{
+    time: string;
+    media: GoogleApiYouTubeVideoResource;
+  }>();
 
   displayTracks = false;
   displayInfo = false;
   tracks: string[] = [];
-  videoThumb = '';
 
-  constructor(public mediaParser: MediaParserService) { }
-
-  ngOnInit() {
-    this.videoThumb = extractThumbUrl(this.video);
-  }
+  constructor(public mediaParser: MediaParserService) {}
 
   ngAfterContentInit() {
     this.extractTracks(this.video);
   }
 
   extractTracks(media: GoogleApiYouTubeVideoResource) {
+    console.log('EXTRACT tracks', media.id);
     const tracks = this.mediaParser.extractTracks(media);
     const isArray = Array.isArray(tracks);
     if (isArray) {
@@ -104,7 +111,11 @@ export class NowPlaylistTrackComponent implements OnInit, AfterContentInit {
     this.toggleTracks(media);
   }
 
-  handleSelectTrack($event: Event, track: string, media: GoogleApiYouTubeVideoResource) {
+  handleSelectTrack(
+    $event: Event,
+    track: string,
+    media: GoogleApiYouTubeVideoResource
+  ) {
     $event.stopImmediatePropagation();
     const time = this.mediaParser.extractTime(track);
     if (time) {

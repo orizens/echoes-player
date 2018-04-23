@@ -13,7 +13,7 @@
 			<div rel="tooltip" class="media-thumb" [tooltip]="media.snippet.title" (click)="playVideo(media)">
 
 				<div class="thumbnail">
-					<img name class="thumb-image" [src]="thumb">
+					<img name class="thumb-image" src="{{ media | videoToThumb }}">
 				</div>
 
 				<section class="stats">
