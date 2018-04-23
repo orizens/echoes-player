@@ -50,7 +50,7 @@ import {
     <article *ngIf="displayTracks" class="track-tracks list-group">
       <aside class="album-tracks-heading">Tracks</aside>
       <button type="button" class="list-group-item btn-transparent"
-        *ngFor="let track of tracks"
+        *ngFor="let track of tracks | parseTracks"
         (click)="handleSelectTrack($event, track, video)">
         {{ track }}
       </button>
@@ -77,6 +77,8 @@ export class NowPlaylistTrackComponent implements AfterContentInit {
   displayTracks = false;
   displayInfo = false;
   tracks: string[] = [];
+  hasTracks = false;
+  private parsedTracks = false;
 
   constructor(public mediaParser: MediaParserService) {}
 
@@ -85,20 +87,18 @@ export class NowPlaylistTrackComponent implements AfterContentInit {
   }
 
   extractTracks(media: GoogleApiYouTubeVideoResource) {
-    console.log('EXTRACT tracks', media.id);
-    const tracks = this.mediaParser.extractTracks(media);
-    const isArray = Array.isArray(tracks);
-    if (isArray) {
-      this.parseAndSaveTracks(tracks);
+    if (!this.parsedTracks) {
+      const tracks = this.mediaParser.extractTracks(media);
+      if (Array.isArray(tracks)) {
+        this.parsedTracks = true;
+        this.tracks = tracks;
+        this.hasTracks = true;
+      }
     }
   }
 
   isPlaylistMedia(media: GoogleApiYouTubeVideoResource) {
-    return this.tracks.length;
-  }
-
-  parseAndSaveTracks(tracks: string[]) {
-    this.tracks = this.mediaParser.parseTracks(tracks);
+    return this.hasTracks;
   }
 
   toggleTracks(media: GoogleApiYouTubeVideoResource) {
