@@ -25,7 +25,7 @@ function createIdMap(list: GoogleApiYouTubeVideoResource[]) {
     <li class="youtube-list-item" [@fadeIn] *ngFor="let media of list">
       <youtube-media
         [media]="media"
-        [status]="getMediaStatus(media)"
+        [queued]="media | isInQueue:queued"
         (play)="playSelectedVideo(media)"
         (queue)="queueSelectedVideo(media)"
         (unqueue)="unqueueSelectedVideo(media)"
@@ -38,7 +38,7 @@ function createIdMap(list: GoogleApiYouTubeVideoResource[]) {
 })
 export class YoutubeListComponent implements OnChanges {
   @Input() list: GoogleApiYouTubeVideoResource[] = [];
-  @Input() queued: GoogleApiYouTubeVideoResource[] = [];
+  @Input() queued: string[] = [];
   @Output() play = new EventEmitter();
   @Output() queue = new EventEmitter();
   @Output() add = new EventEmitter();
@@ -46,12 +46,13 @@ export class YoutubeListComponent implements OnChanges {
 
   queuedMediaIdMap = {};
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges({ queued }: SimpleChanges) {
-    if (queued && queued.currentValue) {
-      this.queuedMediaIdMap = createIdMap(queued.currentValue);
-    }
+    // if (queued && queued.currentValue) {
+    //   console.log('YoutubeListComponent.createIdMap()');
+    //   this.queuedMediaIdMap = createIdMap(queued.currentValue);
+    // }
   }
 
   playSelectedVideo(media) {
@@ -71,6 +72,7 @@ export class YoutubeListComponent implements OnChanges {
   }
 
   getMediaStatus(media: GoogleApiYouTubeVideoResource) {
+    console.log('getMediaStatus()');
     return {
       queued: this.queuedMediaIdMap[media.id]
     };
