@@ -2,78 +2,80 @@
 /* applying a nicer UX*/
 .nicer-ux *,
 .ux-maker {
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition:    all 0.3s ease-out;
-    -ms-transition:     all 0.3s ease-out;
-    -o-transition:      all 0.3s ease-out;
-    transition:         all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 // 3d flip
 .card .face {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transition: all .8s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: all 0.8s ease;
 }
 
 .card .front {
-    -webkit-transform: perspective(400px) rotateY(0deg);
-    transform: perspective(400px) rotateY(0deg);
-    -webkit-backface-visibility: visible;
-    backface-visibility: visible;
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
 }
 
 .card .back {
-    -webkit-transform: perspective(400px) rotateY(-179.9deg);
-    transform: perspective(400px) rotateY(-179.9deg);
-    opacity: 0;
+  -webkit-transform: perspective(400px) rotateY(-179.9deg);
+  transform: perspective(400px) rotateY(-179.9deg);
+  opacity: 0;
 }
 
 .show-description .face.front {
-    -webkit-transform: perspective(400px) rotateY(179.9deg);
-    transform: perspective(400px) rotateY(179.9deg);
+  -webkit-transform: perspective(400px) rotateY(179.9deg);
+  transform: perspective(400px) rotateY(179.9deg);
 }
 .show-description .face.back {
-    -webkit-transform: perspective(400px) rotateY(0deg);
-    transform: perspective(400px) rotateY(0deg);
-    opacity: 1;
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
 }
 input,
 a,
 button,
 select {
-    // removes the blue overlay in chrome android
-    tap-highlight-color: rgba(0,0,0,0);
-    // removes the orange border when on focus
-    outline: none;
+  // removes the blue overlay in chrome android
+  tap-highlight-color: rgba(0, 0, 0, 0);
+  // removes the orange border when on focus
+  outline: none;
 }
 .dropdown .dropdown-toggle {
-    cursor: pointer;
+  cursor: pointer;
 }
 .btn-transparent {
-    background-color: transparent !important;
-    border-color: transparent;
-    box-shadow: none;
+  background-color: transparent !important;
+  border-color: transparent;
+  box-shadow: none;
 }
 .bg-primary {
-	background-color: var(--brand-primary);
+  background-color: var(--brand-primary);
 }
 .bg-secondary {
-    background-color: var(--brand-secondary);
+  background-color: var(--brand-secondary);
 }
 .text-primary {
-    color: var(--brand-primary);
+  color: var(--brand-primary);
 }
 .text-secondary {
-    color: var(--brand-secondary);
+  color: var(--brand-secondary);
 }
-
+.text-info {
+  color: var(--brand-info);
+}
 .label-danger {
   background-color: var(--brand-danger);
 }
@@ -102,4 +104,77 @@ select {
 // FLEX
 .is-strechable {
   flex-grow: 1;
+}
+.is-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.is-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.is-flex-valign {
+  align-items: center;
+}
+// border-radius
+.is-rounded-top {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: 0px solid;
+}
+
+.is-rounded-bottom {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: 0px solid;
+}
+.is-rounded {
+  @extend .is-rounded-top;
+  @extend .is-rounded-bottom;
+}
+
+.is-aligned-vh {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+// font-size
+.text-md {
+  font-size: 2rem;
+}
+
+// layout utils
+.no-padding {
+  padding: 0;
+}
+
+.no-margins {
+  margin: 0;
+}
+
+.is-media-valign {
+  vertical-align: middle;
+}
+
+.is-absolute {
+  position: absolute;
+}
+
+.is-absolute-bottom {
+  @extend .is-absolute;
+  bottom: 0;
+}
+.is-absolute-top {
+  @extend .is-absolute;
+  top: 0;
+}
+.is-absolute-right {
+  @extend .is-absolute;
+  right: 0;
+}
+.is-absolute-left {
+  @extend .is-absolute;
+  left: 0;
 }

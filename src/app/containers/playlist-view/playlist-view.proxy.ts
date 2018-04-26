@@ -1,6 +1,6 @@
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/let';
+import { map } from 'rxjs/operators';
 
 import { EchoesState } from '@core/store';
 import * as NowPlaylist from '@core/store/now-playlist';
@@ -19,14 +19,14 @@ export interface PlaylistData {
 
 @Injectable()
 export class PlaylistProxy {
-  nowPlaylist$ = this.store.select(NowPlaylist.getPlaylistVideos);
+  nowPlaylistIds$ = this.store.pipe(select(NowPlaylist.getPlaylistMediaIds));
 
   constructor(
     public store: Store<EchoesState>,
     private userProfileActions: UserProfileActions,
     private appPlayerApi: AppPlayerApi,
     private appApi: AppApi
-  ) { }
+  ) {}
 
   goBack() {
     this.appApi.navigateBack();
@@ -37,18 +37,24 @@ export class PlaylistProxy {
   }
 
   fetchPlaylist(route: ActivatedRoute) {
-    return this.toRouteData(route).map((data: PlaylistData) => data.playlist);
+    return this.toRouteData(route).pipe(
+      map((data: PlaylistData) => data.playlist)
+    );
   }
 
   fetchPlaylistVideos(route: ActivatedRoute) {
-    return this.toRouteData(route).map((data: PlaylistData) => data.videos);
+    return this.toRouteData(route).pipe(
+      map((data: PlaylistData) => data.videos)
+    );
   }
 
   fetchPlaylistHeader(route: ActivatedRoute) {
-    return this.fetchPlaylist(route).map((playlist: GoogleApiYouTubePlaylistResource) => {
-      const { snippet, contentDetails } = playlist;
-      return `${snippet.title} (${contentDetails.itemCount} videos)`;
-    });
+    return this.fetchPlaylist(route).pipe(
+      map((playlist: GoogleApiYouTubePlaylistResource) => {
+        const { snippet, contentDetails } = playlist;
+        return `${snippet.title} (${contentDetails.itemCount} videos)`;
+      })
+    );
   }
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {

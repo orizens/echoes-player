@@ -6,11 +6,6 @@ import {
   Output
 } from '@angular/core';
 
-interface MediaStatus {
-  queued: boolean;
-  isPlaying: boolean;
-}
-
 @Component({
   selector: 'youtube-media',
   styleUrls: ['./youtube-media.scss'],
@@ -19,11 +14,7 @@ interface MediaStatus {
 })
 export class YoutubeMediaComponent {
   @Input() media: GoogleApiYouTubeVideoResource;
-  @Input()
-  status: MediaStatus = {
-    queued: false,
-    isPlaying: false
-  };
+  @Input() queued = false;
   @Output() play = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output() queue = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output() add = new EventEmitter<GoogleApiYouTubeVideoResource>();

@@ -1,4 +1,9 @@
-import { Jsonp, Response, URLSearchParams, RequestOptionsArgs } from '@angular/http';
+import {
+  Jsonp,
+  Response,
+  URLSearchParams,
+  RequestOptionsArgs
+} from '@angular/http';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,8 +16,11 @@ import {
   SimpleChanges,
   ViewChild,
   ViewEncapsulation,
+  OnDestroy
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { debounceTime, filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'player-search',
@@ -21,7 +29,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   template: `
     <form class="navbar-form form-search" id="media-explorer"
       [formGroup]="searchForm"
-      (ngSubmit)="onSearch()">
+      >
       <div class="form-group clearfix">
         <input placeholder="Find My Echoes..." id="media-search"
           #mediaSearch
@@ -33,7 +41,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
           name="mediaSearch"
           formControlName="searchInput"
           >
-        <button class="btn btn-transparent btn-submit" type="submit" tooltip="search with echoes">
+        <button class="btn btn-transparent btn-submit" tooltip="search with echoes">
           <icon name="search"></icon>
         </button>
       </div>
@@ -42,7 +50,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 // (input)="onQueryChange()"
-export class PlayerSearchComponent implements OnChanges {
+export class PlayerSearchComponent implements OnChanges, OnDestroy {
   @Input() query;
   @Output() queryChange = new EventEmitter<string>();
   @Output() search = new EventEmitter();
@@ -51,6 +59,7 @@ export class PlayerSearchComponent implements OnChanges {
   @ViewChild('mediaSearch') mediaSearch;
 
   searchForm: FormGroup;
+  formState: Subscription;
 
   params = {
     hl: 'en',
@@ -63,9 +72,11 @@ export class PlayerSearchComponent implements OnChanges {
     this.searchForm = fb.group({
       searchInput: this.query
     });
-    this.searchForm.valueChanges
-      .debounceTime(400)
-      .filter(value => !value.hasOwnProperty('isTrusted'))
+    this.formState = this.searchForm.valueChanges
+      .pipe(
+        debounceTime(400),
+        filter(value => !value.hasOwnProperty('isTrusted'))
+      )
       .subscribe(formState => {
         this.onQueryChange(formState.searchInput);
       });
@@ -73,9 +84,17 @@ export class PlayerSearchComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const changedQuery = changes && changes.query;
-    if (changedQuery) {
+    if (
+      changedQuery &&
+      changedQuery.currentValue &&
+      changedQuery.currentValue.hasOwnProperty('length')
+    ) {
       this.patchSearchInput(changedQuery.currentValue);
     }
+  }
+
+  ngOnDestroy() {
+    this.formState.unsubscribe();
   }
 
   patchSearchInput(searchInput: string) {
@@ -88,7 +107,7 @@ export class PlayerSearchComponent implements OnChanges {
 
   onSearch() {
     const searchFormState = this.searchForm.value;
-    this.search.emit(searchFormState.searchInput);
+    this.selectSuggestion(searchFormState.searchInput);
   }
 
   handleSelectSuggestion(suggestion: string) {
@@ -96,6 +115,6 @@ export class PlayerSearchComponent implements OnChanges {
   }
 
   selectSuggestion(suggestion: string) {
-    this.search.emit(suggestion);
+    if (!suggestion.hasOwnProperty('isTrusted')) this.search.emit(suggestion);
   }
 }

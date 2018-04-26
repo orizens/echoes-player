@@ -3,38 +3,18 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "baseUrl": "",
+    "baseUrl": "./",
     "paths": {
-      "~/*": [
-        "/*"
-      ],
-      "@utils/*": [
-        "app/shared/utils/*"
-      ],
-      "@shared/*": [
-        "app/shared/*"
-      ],
-      "@animations/*": [
-        "app/shared/animations/*"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@api/*": [
-        "app/core/api/*"
-      ],
-      "@resolvers/*": [
-        "app/core/resolvers/*"
-      ],
-      "@store/*": [
-        "app/core/store/*"
-      ],
-      "@mocks/*": [
-        "../tests/mocks/*"
-      ],
-      "@env/*": [
-        "environments/*"
-      ]
+      "~/*": ["/*"],
+      "@utils/*": ["app/shared/utils/*"],
+      "@shared/*": ["app/shared/*"],
+      "@animations/*": ["app/shared/animations/*"],
+      "@core/*": ["app/core/*"],
+      "@api/*": ["app/core/api/*"],
+      "@resolvers/*": ["app/core/resolvers/*"],
+      "@store/*": ["app/core/store/*"],
+      "@mocks/*": ["../tests/mocks/*"],
+      "@env/*": ["environments/*"]
     },
     "types": [
       "gapi",
@@ -45,11 +25,6 @@
       "node"
     ]
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ],
-  "angularCompilerOptions": {
-    "preserveWhitespaces": false
-  }
+  "exclude": ["test.ts", "**/*.spec.ts"],
+  "angularCompilerOptions": {}
 }

@@ -1,11 +1,11 @@
 body.halloween {
-  --brand-primary: #FF5722;
+  --brand-primary: #ff5722;
   --brand-secondary: #d77418;
-  --brand-success: #2196F3;
+  --brand-success: #2196f3;
   --brand-warning: #f1c40f;
-  --brand-danger: #F44336;
-  --brand-info: #4CAF50;
-  
+  --brand-danger: #f44336;
+  --brand-info: #4caf50;
+
   --sidebar-bg: rgba(10, 21, 27, 0.95);
   --sidebar-bg-secondary: #0e191f;
   --sidebar-text: white;
@@ -15,12 +15,12 @@ body.halloween {
   --brand-primary-lite-bg-color: white;
   --brand-primary-text-color: #fbfbfb;
   --brand-dark-bg-color: #000;
-  --brand-dark-bg-color-transparent: rgba(10, 10, 10, 0.5);
+  --brand-dark-bg-color-transparent: rgba(10, 10, 10, 0.7);
   --brand-bg-lite-transparent: rgb(19, 40, 51);
-  
+
   --link-primary-color: var(--brand-primary);
   --link-primary-hover-color: var(--brand-primary);
-  
+
   --navbar-bg-color: rgba(10, 21, 27, 0.95);
   --navbar-text-color: #fbfbfb;
   --navbar-link-color: var(--link-primary-color);

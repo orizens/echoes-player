@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { YoutubeDataApi, DataApiProviders } from './youtube-data-api';
+import { switchMap } from 'rxjs/operators';
 
 const SearchTypes = {
   VIDEO: 'video',
@@ -25,9 +26,7 @@ export class YoutubeSearch {
     pageToken: ''
   };
 
-  constructor(
-    private youtubeDataApi: YoutubeDataApi
-  ) { }
+  constructor(private youtubeDataApi: YoutubeDataApi) {}
 
   /**
    * search for video
@@ -76,14 +75,15 @@ export class YoutubeSearch {
    */
   searchForPlaylist(query: string, params?: any) {
     this._apiOptions.type = SearchParams.Types[SearchTypes.PLAYLIST];
-    return this.search(query, params)
-      .switchMap((response: any) => {
+    return this.search(query, params).pipe(
+      switchMap((response: any) => {
         const options = {
           part: 'snippet,id,contentDetails',
           id: response.items.map(pl => pl.id.playlistId).join(',')
         };
         return this.youtubeDataApi.list(DataApiProviders.PLAYLISTS, options);
-      });
+      })
+    );
   }
 
   searchMore(nextPageToken: string) {

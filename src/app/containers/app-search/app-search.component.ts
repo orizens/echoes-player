@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { EchoesState } from '@core/store';
 
 // selectors
@@ -36,10 +36,12 @@ import * as fromPlayerSearch from '@core/store/player-search';
     `
 })
 export class AppSearchComponent implements OnInit {
-  query$ = this.store.select(fromPlayerSearch.getQuery);
-  currentPlaylist$ = this.store.select(UserProfile.getUserViewPlaylist);
-  queryParamPreset$ = this.store.select(fromPlayerSearch.getQueryParamPreset);
-  presets$ = this.store.select(fromPlayerSearch.getPresets);
+  query$ = this.store.pipe(select(fromPlayerSearch.getQuery));
+  currentPlaylist$ = this.store.pipe(select(UserProfile.getUserViewPlaylist));
+  queryParamPreset$ = this.store.pipe(
+    select(fromPlayerSearch.getQueryParamPreset)
+  );
+  presets$ = this.store.pipe(select(fromPlayerSearch.getPresets));
 
   constructor(
     private store: Store<EchoesState>,
@@ -49,7 +51,9 @@ export class AppSearchComponent implements OnInit {
   ngOnInit() {}
 
   search(query: string) {
-    this.store.dispatch(this.playerSearchActions.searchNewQuery(query));
+    if (!query.hasOwnProperty('isTrusted')) {
+      this.store.dispatch(this.playerSearchActions.searchNewQuery(query));
+    }
   }
 
   resetPageToken(query: string) {

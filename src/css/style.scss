@@ -2,18 +2,23 @@
    Author: Oren Farhi, http://orizens.com
    ========================================================================== */
 /* Application */
-// $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import './echoes-variables';
 // @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import './bootstrap-custom';
 @import './core/global';
 @import './core/utils';
+@import './core/animations';
 
-$fa-font-path: '../fonts' !default;
-@import '~font-awesome/scss/font-awesome';
+// $fa-font-path: '../fonts' !default;
+// @import '~font-awesome/scss/font-awesome';
 
 // Themes
 @import './themes/index.themes';
+
+body,
+html {
+  height: 100%;
+}
 
 .btn:focus,
 .btn:active:focus,

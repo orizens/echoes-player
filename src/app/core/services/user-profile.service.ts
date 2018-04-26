@@ -3,14 +3,12 @@ import { Subscription } from 'rxjs/Subscription';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/buffer';
-
 import { YoutubeApiService } from './youtube-api.service';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { Authorization } from './authorization.service';
 
 import { GoogleBasicProfile } from '@store/user-profile';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class UserProfile {
@@ -25,33 +23,42 @@ export class UserProfile {
     private youtubeVideosInfo: YoutubeVideosInfo,
     private authorization: Authorization
   ) {
-    this.playlistInfo = new YoutubeApiService({
-      url: 'https://www.googleapis.com/youtube/v3/playlistItems',
-      http: this.http,
-      idKey: 'playlistId',
-      config: {
-        mine: 'true'
-      }
-    }, authorization);
+    this.playlistInfo = new YoutubeApiService(
+      {
+        url: 'https://www.googleapis.com/youtube/v3/playlistItems',
+        http: this.http,
+        idKey: 'playlistId',
+        config: {
+          mine: 'true'
+        }
+      },
+      authorization
+    );
     // TODO - extract to a Model / Reducer?
     // Reducer - because nextPageToken is changed
     // Model - new _config should be recreated easily with a new nextPageToken
-    this.playlists = new YoutubeApiService({
-      url: 'https://www.googleapis.com/youtube/v3/playlists',
-      http: this.http,
-      config: {
-        mine: 'true',
-        part: 'snippet,id,contentDetails'
+    this.playlists = new YoutubeApiService(
+      {
+        url: 'https://www.googleapis.com/youtube/v3/playlists',
+        http: this.http,
+        config: {
+          mine: 'true',
+          part: 'snippet,id,contentDetails'
+        }
       },
-    }, authorization);
-    this.playlistApi = new YoutubeApiService({
-      url: 'https://www.googleapis.com/youtube/v3/playlists',
-      http: this.http,
-      idKey: 'id',
-      config: {
-        part: 'snippet,id,contentDetails'
+      authorization
+    );
+    this.playlistApi = new YoutubeApiService(
+      {
+        url: 'https://www.googleapis.com/youtube/v3/playlists',
+        http: this.http,
+        idKey: 'id',
+        config: {
+          part: 'snippet,id,contentDetails'
+        }
       },
-    }, authorization);
+      authorization
+    );
   }
 
   getPlaylists(isNewPage: boolean) {
@@ -86,12 +93,14 @@ export class UserProfile {
     } else {
       this.playlistInfo.setPageToken(pageToken);
     }
-    return this.playlistInfo
-      .list(playlistId)
-      .switchMap((response: any) => {
-        const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
+    return this.playlistInfo.list(playlistId).pipe(
+      switchMap((response: any) => {
+        const videoIds = response.items
+          .map(video => video.snippet.resourceId.videoId)
+          .join(',');
         return this.youtubeVideosInfo.api.list(videoIds);
-      });
+      })
+    );
   }
 
   fetchAllPlaylistItems(playlistId: string) {
@@ -99,12 +108,14 @@ export class UserProfile {
     const subscriptions: Subscription[] = [];
     const items$ = new Subject();
     let nextPageToken = '';
-    const fetchMetadata = (response) => {
-      const videoIds = response.items.map(video => video.snippet.resourceId.videoId).join(',');
+    const fetchMetadata = response => {
+      const videoIds = response.items
+        .map(video => video.snippet.resourceId.videoId)
+        .join(',');
       nextPageToken = response.nextPageToken;
       return this.youtubeVideosInfo.api.list(videoIds);
     };
-    const collectItems = (videos) => {
+    const collectItems = videos => {
       items = [...items, ...videos.items];
       if (nextPageToken) {
         fetchItems(playlistId, nextPageToken);
@@ -116,9 +127,10 @@ export class UserProfile {
     };
     const fetchItems = (id, token) => {
       this.playlistInfo.setPageToken(token);
-      const sub = this.playlistInfo.list(id)
-        .switchMap((response) => fetchMetadata(response))
-        .subscribe((response) => collectItems(response));
+      const sub = this.playlistInfo
+        .list(id)
+        .pipe(switchMap(response => fetchMetadata(response)))
+        .subscribe(response => collectItems(response));
       subscriptions.push(sub);
       return sub;
     };

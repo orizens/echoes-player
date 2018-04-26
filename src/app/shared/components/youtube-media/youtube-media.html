@@ -1,7 +1,7 @@
 <section class="youtube-item card ux-maker" [class.show-description]="showDesc">
-	<section class="media-title">
+	<section class="media-card">
 
-		<div class="front face">
+		<div class="front face is-rounded-bottom">
 			<div class="indicators clearfix">
 
 				<span class="pull-left item-is-playing">
@@ -10,13 +10,13 @@
 
 			</div>
 
-			<div rel="tooltip" class="media-thumb" [tooltip]="media.snippet.title" (click)="playVideo(media)">
+			<div rel="tooltip" class="media-thumb is-rounded-top" [tooltip]="media.snippet.title" (click)="playVideo(media)">
 
 				<div class="thumbnail">
 					<img name class="thumb-image" src="{{ media | videoToThumb }}">
 				</div>
 
-				<section class="stats">
+				<section class="stats is-absolute-bottom">
 					<span class="item-duration item-action pull-right">
 						<icon name="clock-o"></icon> {{ media.contentDetails?.duration | toFriendlyDuration }}
 					</span>
@@ -35,40 +35,40 @@
 				</button>
 			</div>
 
-			<section class="item-actions main-actions">
-				<h4 class="title span11">
+			<section class="item-actions main-actions is-rounded-bottom">
+				<h4 class="title">
 					<a href='#/video/' rel="tooltip" class="media-thumb ellipsis" [tooltip]="media.snippet.title">
 						{{ media.snippet.title }}
 					</a>
 				</h4>
-				<section class="media-actions">
-					<button *ngIf="!status.queued" class="btn btn-link first-action" tooltip="Queue this video to now playlist" (click)="queueVideo(media)">
+				<section class="media-actions is-flex-row is-flex-valign">
+					<button *ngIf="!queued" class="btn btn-link first-action" tooltip="Queue this video to now playlist" (click)="queueVideo(media)">
 						<icon name="share"></icon> Queue
 					</button>
-					<button *ngIf="status.queued" class=" btn btn-danger" tooltip="Queue this video to now playlist" (click)="removeVideoFromQueue(media)">
+					<button *ngIf="queued" class=" btn btn-danger" tooltip="Queue this video to now playlist" (click)="removeVideoFromQueue(media)">
 						<icon name="trash"></icon> Remove From Queue
 					</button>
 					<button class="btn btn-link add-to-playlist" disabled tooltip="Add this video to a playlist" (click)="addVideo(media)">
 						<icon name="plus"></icon> Add
 					</button>
 					<span class="is-strechable"></span>
-					<button (click)="toggle(showDesc)" class="btn btn-xs btn-info" tooltip="more info about this video">
-						<icon name="info-circle"></icon>
+					<button class="btn btn-transparent no-padding">
+						<icon name="info-circle" class="text-info text-md is-media-valign" (click)="toggle(showDesc)" tooltip="more info about this video"></icon>
 					</button>
 				</section>
 			</section>
 		</div>
 
-		<div class="description back face">
+		<div class="description back face is-rounded is-absolute-top is-absolute-left">
 			<h4>
 				<a href='https://youtube.com/watch?v={{ media.id }}' target="_blank" tooltip="Open in YouTube" class="media-thumb">
 					<icon name="youtube"></icon> {{ media.snippet.title}}</a>
 			</h4>
-			<div>{{ media.snippet.description }}</div>
+			<div *ngIf="showDesc">{{ media.snippet.description }}</div>
 		</div>
 
-		<section class="item-actions close-desc">
-			<button (click)="toggle(showDesc)" class="btn btn-info btn-xs" tooltip="flip back...">
+		<section *ngIf="showDesc" class="close-desc is-absolute-bottom is-absolute-right">
+			<button (click)="toggle(showDesc)" class="btn-transparent btn-xs text-md text-success" tooltip="flip back...">
 				<icon name="times-circle"></icon>
 			</button>
 		</section>

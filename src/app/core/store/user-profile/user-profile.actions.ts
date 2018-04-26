@@ -14,6 +14,7 @@ export class UserProfileActions {
   static USER_PROFILE_RECIEVED = '[UserProfile] USER_PROFILE_RECIEVED';
   static VIEWED_PLAYLIST = '[UserProfile] VIEWED_PLAYLIST';
 
+  static CHECK_USER_AUTH = '[UserProfile] CHECK_USER_AUTH';
   static USER_SIGNIN = '[UserProfile] USER_SIGNIN';
   static USER_SIGNIN_START = '[UserProfile] USER_SIGNIN_START';
   static USER_SIGNIN_SUCCESS = '[UserProfile] USER_SIGNIN_SUCCESS';
@@ -64,10 +65,12 @@ export class UserProfileActions {
 
 export class UserSignin implements Action {
   readonly type = UserProfileActions.USER_SIGNIN;
+  constructor() {}
 }
 
 export class UserSigninStart implements Action {
   readonly type = UserProfileActions.USER_SIGNIN_START;
+  constructor() {}
 }
 
 export class UserSigninSuccess implements Action {
@@ -81,4 +84,10 @@ export class UserSignout implements Action {
 
 export class UserSignoutSuccess implements Action {
   readonly type = UserProfileActions.USER_SIGNOUT_SUCCESS;
+  constructor() {}
+}
+
+export class CheckUserAuth implements Action {
+  readonly type = UserProfileActions.CHECK_USER_AUTH;
+  constructor () {}
 }

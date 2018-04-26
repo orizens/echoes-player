@@ -7,8 +7,7 @@ import { EchoesState } from '@store/reducers';
 import * as AppPlayer from '@store/app-player';
 import * as fromNowPlaylist from '@store/now-playlist';
 import { NowPlaylistEffects } from '@core/effects/now-playlist.effects';
-
-import 'rxjs/add/operator/take';
+import { take, map } from 'rxjs/operators';
 
 @Injectable()
 export class AppPlayerApi {
@@ -19,8 +18,7 @@ export class AppPlayerApi {
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.nowPlaylistEffects.playPlaylistFirstTrack$
-      .map(toPayload)
-      .take(1)
+      .pipe(map(toPayload), take(1))
       .subscribe((media: GoogleApiYouTubeVideoResource) =>
         this.playVideo(media)
       );

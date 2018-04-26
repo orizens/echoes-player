@@ -13,9 +13,7 @@ export class AppApi {
   appVersion$ = this.store.select(AppLayout.getAppVersion);
   user$ = this.store.select(UserActions.getUser);
 
-  constructor(
-    private store: Store<EchoesState>
-  ) { }
+  constructor(private store: Store<EchoesState>) {}
 
   toggleSidebar() {
     this.store.dispatch(new AppLayout.ToggleSidebar());
@@ -52,5 +50,9 @@ export class AppApi {
 
   signoutUser() {
     this.store.dispatch(new UserActions.UserSignout());
+  }
+
+  checkUserAuth() {
+    this.store.dispatch(new UserActions.CheckUserAuth());
   }
 }

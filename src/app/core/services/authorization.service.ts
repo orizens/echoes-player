@@ -1,21 +1,23 @@
+import { fromPromise } from 'rxjs/observable/fromPromise';
 import { Subscription } from 'rxjs/Subscription';
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/timeInterval';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/catch';
-
+import {
+  switchMap,
+  map,
+  filter,
+  tap,
+  timeInterval,
+  retry,
+  catchError
+} from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { GapiLoader } from './gapi-loader.service';
 
 const extractAccessToken = (_googleAuth: gapi.auth2.GoogleAuth) => {
-  return _googleAuth
-    && _googleAuth.currentUser.get().getAuthResponse().access_token;
+  return (
+    _googleAuth && _googleAuth.currentUser.get().getAuthResponse().access_token
+  );
 };
 
 @Injectable()
@@ -34,28 +36,25 @@ export class Authorization {
       fromApp: this._accessToken,
       equal: true
     };
-    window['__token__'] = token;
-    token.equal = token.fromGoogle === token.fromApp;
-    return token.equal
-      ? token.fromApp
-      : token.fromGoogle;
+    return token.fromGoogle;
   }
 
-  constructor(
-    private zone: NgZone,
-    private gapiLoader: GapiLoader,
-  ) { }
+  constructor(private zone: NgZone, private gapiLoader: GapiLoader) {}
 
   loadAuth() {
     // attempt to SILENT authorize
-    return this.gapiLoader
-      .load('auth2')
-      .switchMap(() => this.authorize())
-      .do((googleAuth: gapi.auth2.GoogleAuth) => this.saveGoogleAuth(googleAuth))
-      .do((googleAuth: gapi.auth2.GoogleAuth) => this.listenToGoogleAuthSignIn(googleAuth))
-      .filter((googleAuth: gapi.auth2.GoogleAuth) => this.isSignIn())
-      .filter((googleAuth: gapi.auth2.GoogleAuth) => this.hasAccessToken(googleAuth))
-      .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get());
+    return this.gapiLoader.load('auth2').pipe(
+      switchMap(() => this.authorize()),
+      tap((googleAuth: gapi.auth2.GoogleAuth) => {
+        this.saveGoogleAuth(googleAuth);
+        this.listenToGoogleAuthSignIn(googleAuth);
+      }),
+      filter(
+        (googleAuth: gapi.auth2.GoogleAuth) =>
+          this.isSignIn() && this.hasAccessToken(googleAuth)
+      ),
+      map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get())
+    );
   }
 
   authorize() {
@@ -66,14 +65,22 @@ export class Authorization {
       client_id: environment.youtube.CLIENT_ID,
       scope: this._scope
     };
-    return Observable.fromPromise(window['gapi'].auth2.init(authOptions));
+    return window['gapi'].auth2.init(authOptions);
   }
 
   private hasAccessToken(googleAuth: gapi.auth2.GoogleAuth): boolean {
-    return googleAuth && googleAuth.currentUser.get().getAuthResponse().hasOwnProperty('access_token');
+    return (
+      googleAuth &&
+      googleAuth.currentUser
+        .get()
+        .getAuthResponse()
+        .hasOwnProperty('access_token')
+    );
   }
 
-  private saveGoogleAuth(googleAuth: gapi.auth2.GoogleAuth): gapi.auth2.GoogleAuth {
+  private saveGoogleAuth(
+    googleAuth: gapi.auth2.GoogleAuth
+  ): gapi.auth2.GoogleAuth {
     this._googleAuth = googleAuth;
     return googleAuth;
   }
@@ -87,9 +94,9 @@ export class Authorization {
   signIn() {
     const signOptions: gapi.auth2.SigninOptions = { scope: this._scope };
     if (this._googleAuth) {
-      return Observable.fromPromise(this._googleAuth.signIn(signOptions));
+      return fromPromise(this._googleAuth.signIn(signOptions));
     }
-    return new Observable((obs) => obs.complete());
+    return new Observable(obs => obs.complete());
   }
 
   extractToken(googleUser: gapi.auth2.GoogleUser) {
@@ -107,15 +114,21 @@ export class Authorization {
 
   startTimerToNextAuth(timeInMs: number): Subscription {
     return Observable.timer(timeInMs)
-      .timeInterval()
-      .switchMap(() => this.authorize())
-      .do((googleAuth: gapi.auth2.GoogleAuth) => this.saveGoogleAuth(googleAuth))
-      .map((googleAuth: gapi.auth2.GoogleAuth) => googleAuth.currentUser.get())
-      .retry(3)
-      .catch((error) => {
-        window.location.reload();
-        return error;
-      })
+      .pipe(
+        timeInterval(),
+        switchMap(() => this.authorize()),
+        tap((googleAuth: gapi.auth2.GoogleAuth) =>
+          this.saveGoogleAuth(googleAuth)
+        ),
+        map((googleAuth: gapi.auth2.GoogleAuth) =>
+          googleAuth.currentUser.get()
+        ),
+        retry(3),
+        catchError(error => {
+          window.location.reload();
+          return error;
+        })
+      )
       .subscribe((googleUser: gapi.auth2.GoogleUser) => {
         this.zone.run(() => this.setAuthTimer(googleUser));
       });
@@ -134,7 +147,7 @@ export class Authorization {
   }
 
   signOut() {
-    return Observable.fromPromise(this._googleAuth.signOut());
+    return this._googleAuth.signOut();
   }
 
   disposeAutoSignIn() {

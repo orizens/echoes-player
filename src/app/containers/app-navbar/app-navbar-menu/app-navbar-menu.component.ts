@@ -1,4 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+  HostListener
+} from '@angular/core';
 
 enum Key {
   Backspace = 8,
@@ -70,7 +78,8 @@ enum Key {
 export class AppNavbarMenuComponent implements OnInit {
   hide = true;
   @Input() signedIn = false;
-  @Input() appVersion = {
+  @Input()
+  appVersion = {
     semver: '',
     isNewAvailable: false,
     checkingForVersion: false
@@ -88,9 +97,9 @@ export class AppNavbarMenuComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   handleSignOut() {
     this.signOut.emit();
