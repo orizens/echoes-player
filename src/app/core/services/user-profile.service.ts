@@ -8,7 +8,7 @@ import { YoutubeVideosInfo } from './youtube-videos-info.service';
 import { Authorization } from './authorization.service';
 
 import { GoogleBasicProfile } from '@store/user-profile';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 
 @Injectable()
 export class UserProfile {
@@ -135,7 +135,7 @@ export class UserProfile {
       return sub;
     };
     fetchItems(playlistId, '');
-    return items$.take(1);
+    return items$.pipe(take(1));
   }
 
   toUserJson(profile): GoogleBasicProfile {
