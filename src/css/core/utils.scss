@@ -107,6 +107,13 @@ select {
 .is-flex-valign {
   align-items: center;
 }
+.is-flex-wrap {
+  flex-wrap: wrap;
+}
+.is-content-aligned-h {
+  justify-content: center;
+}
+
 // border-radius
 .is-rounded-top {
   border-top-left-radius: 6px;

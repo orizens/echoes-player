@@ -1,0 +1,24 @@
+// CARDS
+@media (min-width: 320px) {
+  .is-media-responsive {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
+@media (min-width: 480px) {
+  .is-media-responsive {
+    width: 33% !important;
+  }
+}
+@media (min-width: 767px) {
+  .is-media-responsive {
+    max-width: 28rem;
+    width: 24.5% !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .is-media-responsive {
+    width: 28rem !important;
+  }
+}

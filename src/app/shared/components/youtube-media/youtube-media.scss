@@ -160,7 +160,9 @@
         .description {
           overflow: auto;
         }
-
+        .stats {
+          display: none;
+        }
         .main-actions.item-actions {
           visibility: hidden;
         }

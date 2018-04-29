@@ -16,9 +16,13 @@
     .menu-dropdown {
       position: absolute;
       right: 0;
-      top: -35rem;
       min-width: 250px;
       z-index: $zindex-navbar-fixed;
+      transform-origin: top right;
+
+      &.end-animation {
+        top: -35rem;
+      }
 
       &.slideInDown {
         animation: slideInDown 0.5s 1;
@@ -30,13 +34,13 @@
         top: 5rem;
         transform-origin: top right;
       }
-      .menu-backdrop {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-      }
+    }
+    .menu-backdrop {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
     }
   }
 }

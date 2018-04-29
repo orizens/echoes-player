@@ -1,3 +1,11 @@
+## v 3.9.8 (2018/03/17) (codename: Adi)
+
+* [PERF] - performance optimization using pipes with function utils
+* [NEW] - cards videos & playlists rounded styles
+* [UPGRADE] - app menu with animation in/out
+* [REFACTOR] - using now more css utils to reduce css code
+* [REFACTOR] - app-search component restructure
+
 ## v 3.9.7 (2018/03/17)
 
 * [NEW] - added "Developed With YouTube" badge

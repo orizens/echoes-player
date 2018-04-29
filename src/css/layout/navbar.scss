@@ -1,63 +1,62 @@
 @import '../core/global.scss';
 
 @media (min-width: 320px) {
-	$navbar-new-height: 1rem;
+  $navbar-new-height: 1rem;
 
-	.navbar {
-		background-image: none;
-		background-color: var(--navbar-bg-color);
-		transition: transform, margin-left .3s ease-out;
+  .navbar {
+    background-image: none;
+    background-color: var(--navbar-bg-color);
+    transition: transform, margin-left 0.3s ease-out;
 
-		&.navbar-fixed-top {
-			padding: 0;
-			z-index: 1020;
+    &.navbar-fixed-top {
+      padding: 0;
+      z-index: 1020;
 
-			&.fullscreen {
-				transform: translatey(-60px);
-			}
-		}
+      &.fullscreen {
+        transform: translatey(-60px);
+      }
+    }
 
-		.navbar-brand {
-			margin: 0;
-			position: relative;
-		}
-		.sidebar-toggle {
-			padding: .3rem 1.5rem;
-			font-size: 2rem;
-			line-height: 2;
-		}
+    .navbar-brand {
+      margin: 0;
+      position: relative;
+    }
+    .sidebar-toggle {
+      padding: 0.3rem 1.5rem;
+      font-size: 2rem;
+      line-height: 2;
+    }
 
-		.navbar-header {
-			width: auto;
-			margin-right: 7px;
-			line-height: $navbar-new-height;
-		}
-	}
+    .navbar-header {
+      width: auto;
+      margin-right: 7px;
+      line-height: $navbar-new-height;
+    }
+  }
 
-	&.navbar-transparent {
-		background-color: transparent;
-		color: $inverse;
-	}
+  &.navbar-transparent {
+    background-color: transparent;
+    color: $inverse;
+  }
 }
 
 @media (min-width: 768px) {
-	.navbar {
-
-		.container {
+  .navbar {
+    .container {
       padding-right: 15px;
       padding-left: 15px;
       margin-right: auto;
       margin-left: auto;
-			padding: 0;
-		}
-	}
-	.navbar-fixed-top {
-		box-shadow: 0 1px 7px rgba(0,0,0,0.5);
-		border-width: 0;
-	}
+      padding: 0;
+    }
+  }
+  .navbar-fixed-top {
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.5);
+    border-width: 0;
+  }
 }
 @media (min-width: 1280px) {
-	.navbar .navbar-brand {
-		padding-left: 5px;
-	}
+  .navbar .navbar-brand {
+    padding-left: 5px;
+  }
 }

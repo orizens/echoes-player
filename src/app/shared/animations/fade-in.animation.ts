@@ -61,3 +61,24 @@ export const flyInOut = trigger('flyInOut', [
     animate(100, style({ transform: 'translateX(100%)' }))
   ])
 ]);
+
+export const expandFadeInAnimation = trigger('expandFadeIn', [
+  // state('void', style({ top: '-35rem' })),
+  state(
+    'show',
+    style({
+      opacity: 1,
+      transform: 'scale(1)'
+    })
+  ),
+  state(
+    'hide',
+    style({
+      opacity: 0,
+      transform: 'scale(0.4)',
+      top: -2
+    })
+  ),
+  transition('show => hide', animate('300ms ease-in')),
+  transition('hide => show', animate('300ms ease-in'))
+]);

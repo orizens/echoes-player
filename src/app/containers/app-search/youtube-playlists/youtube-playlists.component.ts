@@ -13,22 +13,12 @@ import { fadeInAnimation } from '@shared/animations/fade-in.animation';
 
 @Component({
   selector: 'youtube-playlists',
-  styles: [
-    `
-    :host .youtube-items-container {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  `
-  ],
   animations: [fadeInAnimation],
   template: `
   <loader [message]="'Loading Awesome Playlists Results'" [loading]="isSearching$ | async"></loader>
   <section class="videos-list">
-    <div class="list-unstyled ux-maker youtube-items-container clearfix">
-      <youtube-playlist
+    <div class="ux-maker is-flex-row is-flex-wrap is-content-aligned-h">
+      <youtube-playlist class="is-media-responsive"
         [@fadeIn]
         *ngFor="let playlist of results$ | async"
         link=""

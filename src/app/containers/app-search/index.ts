@@ -4,19 +4,14 @@ import { SharedModule } from '@shared/index';
 
 import { AppSearchComponent } from './app-search.component';
 import { AppNavbarModule } from '../app-navbar';
-import { YoutubeVideosComponent } from './youtube-videos.component';
-import { YoutubePlaylistsComponent } from './youtube-playlists.component';
-import { PlayerSearchComponent } from './player-search.component';
+import { YoutubeVideosComponent } from './youtube-videos';
+import { YoutubePlaylistsComponent } from './youtube-playlists';
+import { PlayerSearchComponent } from './player-search';
 import { SearchNavigatorComponent } from './search-navigator';
 import { routing } from './app-search.routing';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    AppNavbarModule,
-    ReactiveFormsModule,
-    routing
-  ],
+  imports: [SharedModule, AppNavbarModule, ReactiveFormsModule, routing],
   declarations: [
     AppSearchComponent,
     YoutubeVideosComponent,
@@ -24,9 +19,7 @@ import { routing } from './app-search.routing';
     PlayerSearchComponent,
     SearchNavigatorComponent
   ],
-  exports: [
-    AppSearchComponent
-  ],
+  exports: [AppSearchComponent],
   providers: []
 })
-export class AppSearchModule { }
+export class AppSearchModule {}
