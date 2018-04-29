@@ -1,4 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+  HostListener
+} from '@angular/core';
+import { expandFadeInAnimation } from '@shared/animations/fade-in.animation';
 
 enum Key {
   Backspace = 8,
@@ -14,16 +23,19 @@ enum Key {
 
 @Component({
   selector: 'app-navbar-menu',
+  animations: [expandFadeInAnimation],
   template: `
     <button class="btn btn-navbar btn-link ux-maker btn-toggle"
       (click)="toggleMenu()">
       <icon name="ellipsis-v"></icon>
       <icon *ngIf="appVersion.isNewAvailable" name="dot-circle-o" class="pulse update-indicator text-primary"></icon>
     </button>
+    <div class="menu-backdrop" *ngIf="!hide" (click)="hideMenu()"></div>
     <div class="panel menu-dropdown"
-      [class.slideInDown]="!hide"
+      [class.end-animation]="end"
+      [@expandFadeIn]="menuState"
+      (@expandFadeIn.done)="endAnimation($event)"
       >
-      <div class="menu-backdrop" *ngIf="!hide" (click)="hideMenu()"></div>
       <div class="list-group">
         <div *ngIf="appVersion.isNewAvailable" class="list-group-item">
           <button class="btn btn-success" title="click to update Echoes"
@@ -68,9 +80,15 @@ enum Key {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNavbarMenuComponent implements OnInit {
+  end = false;
   hide = true;
+  get menuState() {
+    return this.hide ? 'hide' : 'show';
+  }
+
   @Input() signedIn = false;
-  @Input() appVersion = {
+  @Input()
+  appVersion = {
     semver: '',
     isNewAvailable: false,
     checkingForVersion: false
@@ -88,9 +106,9 @@ export class AppNavbarMenuComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   handleSignOut() {
     this.signOut.emit();
@@ -101,6 +119,7 @@ export class AppNavbarMenuComponent implements OnInit {
   }
 
   toggleMenu() {
+    this.end = false;
     this.hide = !this.hide;
   }
 
@@ -114,5 +133,12 @@ export class AppNavbarMenuComponent implements OnInit {
 
   updateTheme(theme) {
     this.themeChange.emit(theme);
+  }
+
+  endAnimation({ toState }) {
+    if (toState === 'hide') {
+      this.end = true;
+    }
+    console.log('animation done!');
   }
 }

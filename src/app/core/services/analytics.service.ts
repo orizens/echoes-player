@@ -22,26 +22,39 @@ const CustomEvents = {
 @Injectable()
 export class AnalyticsService {
   private projectId = window['GA_PROJECT_ID'];
+  private gtag: any;
 
-  constructor() { }
+  constructor() {
+    this.assignGtag();
+  }
+
+  assignGtag() {
+    const hasGtagLoaded = 'gtag' in window;
+    if (!hasGtagLoaded) {
+      console.info('GTAG has not been loaded');
+    }
+    this.gtag = hasGtagLoaded ? gtag : () => undefined;
+  }
 
   trackPage(page) {
-    gtag('config', this.projectId, {
-      'page_title': page,
-      'page_location': location.origin,
-      'page_path': location.hash
+    this.gtag('config', this.projectId, {
+      page_title: page,
+      page_location: location.origin,
+      page_path: location.hash
     });
   }
 
   trackSearch(searchType) {
-    gtag('event', Events.Search.NAME, { [Events.Search.LABEL]: searchType });
+    this.gtag('event', Events.Search.NAME, {
+      [Events.Search.LABEL]: searchType
+    });
   }
 
   trackSignin() {
-    gtag('event', Events.Login.NAME, { [Events.Login.LABEL]: 'Google' });
+    this.gtag('event', Events.Login.NAME, { [Events.Login.LABEL]: 'Google' });
   }
 
   trackVideoPlay() {
-    gtag('event', CustomEvents.VIDEO_PLAY);
+    this.gtag('event', CustomEvents.VIDEO_PLAY);
   }
 }

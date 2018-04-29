@@ -1,6 +1,6 @@
 import { of } from 'rxjs/observable/of';
 import { defer } from 'rxjs/observable/defer';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { UserProfileActions, GoogleBasicProfile } from '@store/user-profile';
@@ -20,8 +20,13 @@ export class UserProfileEffects {
   ) {}
 
   @Effect()
-  init$ = defer(() => this.auth.loadAuth()).pipe(
-    map((googleUser: gapi.auth2.GoogleUser) => new UserActions.UserSigninSuccess(googleUser))
+  checkUserAuth$ = this.actions$.pipe(
+    ofType(UserProfileActions.CHECK_USER_AUTH),
+    switchMap(() => this.auth.loadAuth()),
+    map(
+      (googleUser: gapi.auth2.GoogleUser) =>
+        new UserActions.UserSigninSuccess(googleUser)
+    )
   );
 
   @Effect()
@@ -30,10 +35,12 @@ export class UserProfileEffects {
     map(toPayload),
     map((token: string) => (this.auth.accessToken = token)),
     switchMap(token =>
-      this.userProfile.getPlaylists(true).catch((error: Error) => {
-        console.log(`error in fetching user's playlists ${error}`);
-        return of(error);
-      })
+      this.userProfile.getPlaylists(true).pipe(
+        catchError((error: Error) => {
+          console.log(`error in fetching user's playlists ${error}`);
+          return of(error);
+        })
+      )
     ),
     map(response => this.userProfileActions.updateData(response))
   );
@@ -71,7 +78,9 @@ export class UserProfileEffects {
     ofType(UserProfileActions.USER_PROFILE_RECIEVED),
     map(toPayload),
     map(profile => this.userProfile.toUserJson(profile)),
-    map((profile: GoogleBasicProfile) => this.userProfileActions.updateUserProfile(profile))
+    map((profile: GoogleBasicProfile) =>
+      this.userProfileActions.updateUserProfile(profile)
+    )
   );
 
   // SIGN IN/OUT EFFECTS
@@ -84,7 +93,11 @@ export class UserProfileEffects {
   @Effect()
   userSigninStart$ = this.actions$.pipe(
     ofType(UserProfileActions.USER_SIGNIN_START),
-    switchMap(() => this.auth.signIn().catch(error => this.auth.handleFailedLogin(error))),
+    switchMap(() =>
+      this.auth
+        .signIn()
+        .pipe(catchError(error => this.auth.handleFailedLogin(error)))
+    ),
     map((response: any) => new UserActions.UserSigninSuccess(response))
   );
 
@@ -98,7 +111,9 @@ export class UserProfileEffects {
   updateTokenAfterSigninSuccess$ = this.actions$.pipe(
     ofType(UserProfileActions.USER_SIGNIN_SUCCESS),
     map(toPayload),
-    map((googleUser: gapi.auth2.GoogleUser) => this.userProfileActions.updateToken(this.auth.extractToken(googleUser)))
+    map((googleUser: gapi.auth2.GoogleUser) =>
+      this.userProfileActions.updateToken(this.auth.extractToken(googleUser))
+    )
   );
 
   @Effect()

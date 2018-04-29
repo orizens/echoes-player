@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { toPayload } from '@utils/data.utils';
 
-import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
-import * as AppLayout from '@store/app-layout';
+import * as fromAppLayout from '@store/app-layout';
 import { VersionCheckerService } from '@core/services/version-checker.service';
 
 @Injectable()
@@ -21,11 +21,11 @@ export class AppSettingsEffects {
 
   @Effect({ dispatch: false })
   updateAppVersion$ = this.actions$
-    .ofType(AppLayout.ActionTypes.APP_UPDATE_VERSION)
-    .map(() => this.versionCheckerService.updateVersion());
+    .ofType(fromAppLayout.ActionTypes.APP_UPDATE_VERSION)
+    .pipe(map(() => this.versionCheckerService.updateVersion()));
 
   @Effect({ dispatch: false })
   checkForNewAppVersion$ = this.actions$
-    .ofType(AppLayout.ActionTypes.APP_CHECK_VERSION)
-    .map(() => this.versionCheckerService.checkForVersion());
+    .ofType(fromAppLayout.ActionTypes.APP_CHECK_VERSION)
+    .pipe(map(() => this.versionCheckerService.checkForVersion()));
 }

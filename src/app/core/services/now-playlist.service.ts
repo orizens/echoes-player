@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { EchoesState } from '@store/reducers';
 import * as fromNowPlaylist from '@store/now-playlist';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';
+import { map, take } from 'rxjs/operators';
 
 @Injectable()
 export class NowPlaylistService {
@@ -11,13 +12,15 @@ export class NowPlaylistService {
 
   constructor(
     public store: Store<EchoesState>,
-    private youtubeVideosInfo: YoutubeVideosInfo,
+    private youtubeVideosInfo: YoutubeVideosInfo
   ) {
-    this.playlist$ = this.store.select(fromNowPlaylist.getNowPlaylist);
+    this.playlist$ = this.store.pipe(select(fromNowPlaylist.getNowPlaylist));
   }
 
   queueVideo(mediaId: string) {
-    return this.youtubeVideosInfo.api.list(mediaId).map(items => items[0]);
+    return this.youtubeVideosInfo.api
+      .list(mediaId)
+      .pipe(map(items => items[0]));
   }
 
   queueVideos(medias: GoogleApiYouTubeVideoResource[]) {
@@ -54,7 +57,7 @@ export class NowPlaylistService {
 
   getCurrent() {
     let media;
-    this.playlist$.take(1).subscribe(playlist => {
+    this.playlist$.pipe(take(1)).subscribe(playlist => {
       media = playlist.videos.find(video => video.id === playlist.selectedId);
     });
     return media;
@@ -66,9 +69,13 @@ export class NowPlaylistService {
 
   isInLastTrack(): boolean {
     let nowPlaylist: fromNowPlaylist.INowPlaylist;
-    this.playlist$.take(1).subscribe(_nowPlaylist => (nowPlaylist = _nowPlaylist));
+    this.playlist$
+      .pipe(take(1))
+      .subscribe(_nowPlaylist => (nowPlaylist = _nowPlaylist));
     const currentVideoId = nowPlaylist.selectedId;
-    const indexOfCurrentVideo = nowPlaylist.videos.findIndex(video => video.id === currentVideoId);
+    const indexOfCurrentVideo = nowPlaylist.videos.findIndex(
+      video => video.id === currentVideoId
+    );
     const isCurrentLast = indexOfCurrentVideo + 1 === nowPlaylist.videos.length;
     return isCurrentLast;
   }

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Authorization } from './authorization.service';
+import { map } from 'rxjs/operators';
 
 interface YoutubeApiServiceOptions {
   url?: string;
@@ -13,10 +14,10 @@ interface YoutubeApiServiceOptions {
 }
 
 const defaultParams = {
-  'part': 'snippet,contentDetails',
-  'key': environment.youtube.API_KEY,
-  'maxResults': '50',
-  'pageToken': ''
+  part: 'snippet,contentDetails',
+  key: environment.youtube.API_KEY,
+  maxResults: '50',
+  pageToken: ''
 };
 
 // @Injectable()
@@ -62,7 +63,7 @@ export class YoutubeApiService {
     this.isSearching = true;
     const options = {
       params: this.params,
-      headers: this.createHeaders(),
+      headers: this.createHeaders()
     };
     return this.http.get(this.url, options);
   }
@@ -78,12 +79,13 @@ export class YoutubeApiService {
       params: this.params,
       headers: this.createHeaders()
     };
-    return this.http.get(this.url, options)
-      .map((response: any) => {
+    return this.http.get(this.url, options).pipe(
+      map((response: any) => {
         this.nextPageToken = response.nextPageToken;
         this.isSearching = false;
         return response;
-      });
+      })
+    );
   }
 
   fetchNextPage() {

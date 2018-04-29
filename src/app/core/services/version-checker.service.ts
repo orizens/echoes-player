@@ -8,6 +8,8 @@ import { AppApi } from '@api/app.api';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/observable/of';
+import { of } from 'rxjs/observable/of';
+import { switchMap, retry, filter, take } from 'rxjs/operators';
 
 interface INpmPackageJson {
   version: number;
@@ -26,10 +28,15 @@ export class VersionCheckerService {
   private repo = 'orizens/echoes-player';
   private repoBranch = 'gh-pages';
   private pathToFile = 'assets/package.json';
-  public url = `${this.protocol}://${this.prefix}/${this.repo}/${this.repoBranch}/${this.pathToFile}`;
+  public url = `${this.protocol}://${this.prefix}/${this.repo}/${
+    this.repoBranch
+  }/${this.pathToFile}`;
 
-  constructor(private http: HttpClient,
-    private zone: NgZone, private appApi: AppApi) { }
+  constructor(
+    private http: HttpClient,
+    private zone: NgZone,
+    private appApi: AppApi
+  ) {}
 
   check() {
     return this.http.get(this.url);
@@ -39,13 +46,7 @@ export class VersionCheckerService {
     let checkTimer: Subscription;
     this.zone.runOutsideAngular(() => {
       checkTimer = Observable.timer(0, this.interval)
-        .switchMap(() => this.check())
-        // .catch((err) => {
-        //   console.log(err);
-        //   return Observable.of(err);
-        // })
-        .retry()
-        .filter(verifyPackage)
+        .pipe(switchMap(() => this.check()), retry(), filter(verifyPackage))
         .subscribe(response => this.appApi.recievedNewVersion(response));
     });
     return checkTimer;
@@ -59,9 +60,7 @@ export class VersionCheckerService {
 
   checkForVersion() {
     return this.check()
-      .retry()
-      .filter(verifyPackage)
-      .take(1)
+      .pipe(retry(), filter(verifyPackage), take(1))
       .subscribe(response => this.appApi.notifyNewVersion(response));
   }
 }

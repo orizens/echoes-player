@@ -7,33 +7,34 @@ export class GapiLoader {
   private _api: Observable<any>;
   private api: Subject<any>;
 
-  constructor() { }
+  constructor() {}
+
+  loadGoogleApi(api, api$) {
+    const gapi = 'https://apis.google.com/js/api.js';
+    const script = document.createElement('script');
+    script.addEventListener('load', () => this._loadApi(api, api$));
+    script.setAttribute('src', gapi);
+    document.body.appendChild(script);
+  }
 
   load(api: string) {
-    return this.createApi(api);
+    const api$ = this.createApi(api);
+    this.loadGoogleApi(api, api$);
+    return api$;
   }
-  _loadApi(api: string, observer) {
+
+  _loadApi(api: string, api$) {
     const gapi = window['gapi'];
     const gapiAuthLoaded = gapi && gapi.auth2 && gapi.auth2.getAuthInstance();
     if (gapiAuthLoaded && gapiAuthLoaded.currentUser) {
-      return observer.next(gapiAuthLoaded);
+      api$.complete(gapiAuthLoaded);
+    } else {
+      gapi.load(api, response => api$.next(response));
     }
-    gapi.load(api, response => observer.next(response));
   }
 
   createApi(api: string) {
     const api$ = new Subject();
-    const gapi = window['gapi'];
-    // this._api = new Observable(observer => {
-    const isGapiLoaded = gapi && gapi.load;
-    const onApiLoaded = () => this._loadApi(api, api$);
-    if (isGapiLoaded) {
-      onApiLoaded();
-    } else {
-      window['apiLoaded'] = onApiLoaded;
-    }
-    // });
-    // return this._api;
     return api$;
   }
 }

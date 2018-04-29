@@ -1,6 +1,10 @@
 import { Action } from '@ngrx/store';
 import { PlayerSearchActions, AddResultsAction } from './player-search.actions';
-import { IPlayerSearch, CSearchTypes, CPresetTypes } from './player-search.interfaces';
+import {
+  IPlayerSearch,
+  CSearchTypes,
+  CPresetTypes
+} from './player-search.interfaces';
 
 export * from './player-search.interfaces';
 
@@ -28,7 +32,10 @@ interface UnsafeAction extends Action {
   payload: any;
 }
 
-export function search(state: IPlayerSearch = initialState, action: UnsafeAction): IPlayerSearch {
+export function search(
+  state: IPlayerSearch = initialState,
+  action: UnsafeAction
+): IPlayerSearch {
   switch (action.type) {
     case PlayerSearchActions.UPDATE_QUERY: {
       return { ...state, query: action.payload };

@@ -2,36 +2,6 @@
 
 @media (min-width: 320px) {
   :host {
-    @keyframes pulse {
-      0% {
-        transform: scale(0);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1);
-        opacity: 0.5;
-      }
-      100% {
-        transform: scale(1.5);
-        opacity: 0;
-      }
-    }
-
-    @keyframes slideInDown {
-      0% {
-        transform: scale(0.4);
-        opacity: 0;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-
     .btn-toggle {
       padding: 1rem 1.5rem;
       font-size: 2rem;
@@ -46,22 +16,31 @@
     .menu-dropdown {
       position: absolute;
       right: 0;
-      top: -35rem;
       min-width: 250px;
       z-index: $zindex-navbar-fixed;
+      transform-origin: top right;
+
+      &.end-animation {
+        top: -35rem;
+      }
 
       &.slideInDown {
         animation: slideInDown 0.5s 1;
         top: 5rem;
         transform-origin: top right;
       }
-      .menu-backdrop {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
+      &.slideOutDown {
+        animation: slideOutDown 0.8s 1 forwards;
+        top: 5rem;
+        transform-origin: top right;
       }
+    }
+    .menu-backdrop {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
     }
   }
 }

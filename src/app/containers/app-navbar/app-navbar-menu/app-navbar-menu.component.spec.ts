@@ -2,18 +2,21 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppNavbarMenuComponent } from './app-navbar-menu.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppNavbarMenuComponent', () => {
   let component: AppNavbarMenuComponent;
   let fixture: ComponentFixture<AppNavbarMenuComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [AppNavbarMenuComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [AppNavbarMenuComponent],
+        schemas: [NO_ERRORS_SCHEMA],
+        imports: [NoopAnimationsModule]
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AppNavbarMenuComponent);

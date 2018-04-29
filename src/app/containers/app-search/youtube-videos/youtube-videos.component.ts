@@ -18,7 +18,7 @@ import * as NowPlaylist from '@core/store/now-playlist';
     <loader [message]="'Loading Awesome Media Results'" [loading]="loading$ | async"></loader>
     <youtube-list
       [list]="videos$ | async"
-      [queued]="playlistVideos$ | async"
+      [queued]="playlistIds$ | async"
       (play)="playSelectedVideo($event)"
       (queue)="queueSelectedVideo($event)"
       (unqueue)="removeVideoFromPlaylist($event)"
@@ -27,7 +27,7 @@ import * as NowPlaylist from '@core/store/now-playlist';
 })
 export class YoutubeVideosComponent implements OnInit {
   videos$ = this.store.select(fromPlayerSearch.getPlayerSearchResults);
-  playlistVideos$ = this.store.select(NowPlaylist.getPlaylistVideos);
+  playlistIds$ = this.store.select(NowPlaylist.getPlaylistMediaIds);
   loading$ = this.store.select(fromPlayerSearch.getIsSearching);
 
   constructor(

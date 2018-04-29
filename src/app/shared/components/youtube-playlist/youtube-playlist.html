@@ -1,24 +1,20 @@
 <div class="youtube-playlist-item ux-maker card">
   <section class="media-title front">
     <div class="media-thumb" [tooltip]="media.snippet.title">
-      <div class="thumbnail">
-        <img [src]="thumb" class="thumb-image">
+      <div class="thumbnail is-rounded">
+        <img src="{{ media | videoToThumb }}" class="thumb-image">
       </div>
       <button class="btn btn-default btn-lg play-media" (click)="playPlaylist(media)">
         <icon name="play"></icon>
       </button>
     </div>
 
-    <section class="item-actions">
+    <section class="item-actions is-absolute is-rounded-bottom">
       <a class="playlist-link" [routerLink]="[ link + '/playlist', media.id ]" [tooltip]="media.snippet.title" (click)="onNavigateToPlaylist()">
         <h4 class="title ellipsis">
-          {{ media.snippet.title }}
+          <icon name="th-large"></icon> ({{ media.contentDetails.itemCount }}) {{ media.snippet.title }}
         </h4>
-        <span class="item-action badge">
-          <icon name="th-large"></icon>
-          {{ media.contentDetails.itemCount }} videos
-        </span>
-        <icon name="circle-o-notch 3x spin" *ngIf="loading" class="loader"></icon>
+        <icon name="refresh 2x spin" *ngIf="loading" class="loader"></icon>
       </a>
     </section>
   </section>

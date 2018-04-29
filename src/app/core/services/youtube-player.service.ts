@@ -1,17 +1,12 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '@store/reducers';
-import * as AppPlayer from '@store/app-player';
 
 @Injectable()
 export class YoutubePlayerService {
   public player: YT.Player;
 
-  constructor(
-    private store: Store<EchoesState>,
-    private zone: NgZone,
-    private playerActions: AppPlayer.ActionTypes
-  ) { }
+  constructor(private store: Store<EchoesState>, private zone: NgZone) {}
 
   setupPlayer(player) {
     this.player = player;
@@ -29,7 +24,9 @@ export class YoutubePlayerService {
     const id = media.id;
     const isLoaded = this.player.getVideoUrl().includes(id);
     if (!isLoaded) {
-      this.zone.runOutsideAngular(() => this.player.loadVideoById(id, seconds || undefined));
+      this.zone.runOutsideAngular(() =>
+        this.player.loadVideoById(id, seconds || undefined)
+      );
     }
     this.play();
   }
