@@ -17,7 +17,7 @@ import { AppApi } from '@api/app.api';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./app-navbar.scss'],
   template: `
-    <nav class="row navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default XXXnavbar-fixed-top">
       <div class="navbar-container">
         <div class="navbar__content">
         <h3 *ngIf="header" class="navbar__header navbar-text">

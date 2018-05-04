@@ -5,10 +5,10 @@ import { AppSidebarProxy } from './app-sidebar.proxy';
   selector: 'app-sidebar',
   styleUrls: ['./app-sidebar.scss'],
   template: `
-  <div id="sidebar" class="sidebar ux-maker"
+  <div class="sidebar flex-column flex-full-v flex-full-h"
     [class.closed]="sidebarCollapsed$ | async">
     <div class="sidebar-backdrop" (click)="toggleSidebar()"></div>
-    <nav class="navbar navbar-transparent">
+    <nav>
       <app-brand></app-brand>
       <app-navigator [closed]="sidebarCollapsed$ | async" [searchType]="searchType$ | async">
       </app-navigator>
@@ -22,7 +22,7 @@ export class AppSidebarComponent {
   sidebarCollapsed$ = this.appSidebarProxy.sidebarCollapsed$;
   searchType$ = this.appSidebarProxy.searchType$;
 
-  constructor(private appSidebarProxy: AppSidebarProxy) { }
+  constructor(private appSidebarProxy: AppSidebarProxy) {}
 
   toggleSidebar() {
     this.appSidebarProxy.toggleSidebar();

@@ -15,13 +15,13 @@
 
       .playlist-count,
       .playlist-filter {
-        color: var(--sidebar-text-color);
+        color: var(--sidebar-text);
       }
 
       &.nav-header {
         box-shadow: -1rem -0.2rem 2rem #000 !important;
         line-height: 26px;
-        color: var(--sidebar-text-color);
+        color: var(--sidebar-text);
         text-transform: uppercase;
         font-size: 10px;
       }

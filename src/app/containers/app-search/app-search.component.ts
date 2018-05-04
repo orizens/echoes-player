@@ -14,6 +14,8 @@ import * as fromPlayerSearch from '@core/store/player-search';
     infiniteScroll
     [infiniteScrollDistance]="2"
     [infiniteScrollDisabled]="currentPlaylist$ | async"
+    infiniteScrollContainer=".container-main"
+    [fromRoot]="true"
     (scrolled)="searchMore()"
     [immediateCheck]="true">
     <app-navbar>

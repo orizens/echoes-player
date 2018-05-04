@@ -4,23 +4,37 @@
   // DEFAULT THEME - 'arctic'
 
   background-color: var(--app-bg-color);
-  display: block;
-  height: 100%;
+  // display: block;
+  // height: 100%;
+
+  .app-container {
+    height: 100vh;
+  }
 
   .container-main {
-    height: 100vh;
-    display: block;
-    transition: margin 0.3s ease-out;
-    margin-left: 0;
+    flex: 1 1 0;
+
+    overflow-y: scroll;
+    position: relative;
+    //   height: 100vh;
+    //   display: block;
+    //   transition: margin .3s ease-out;
+    //   margin-left: 0;
   }
 }
-@media (min-width: 768px) {
-  :host .closed + .container-main {
-    margin-left: $sidebar-closed-width;
-  }
-}
-@media (min-width: 1024px) {
-  :host .container-main {
-    margin-left: $drawer-width;
-  }
-}
+// @media (min-width: 320px) {
+//   :host .container-fluid.container-main {
+//     padding-right: 0;
+//     padding-left: 0;
+//   }
+// }
+// @media (min-width: 768px) {
+//   :host .closed + .container-main {
+//     margin-left: $sidebar-closed-width;
+//   }
+// }
+// @media (min-width: 1024px) {
+//   :host .container-main {
+//     margin-left: $drawer-width;
+//   }
+// }

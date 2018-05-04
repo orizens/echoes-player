@@ -7,17 +7,20 @@
     $navbar-container-padding: 0.5rem 5rem;
     $navbar-new-height: 1rem;
 
+    position: sticky;
+    width: 100%;
     display: block;
+    top: 0;
+    z-index: $zindex;
 
     nav.navbar {
-      margin-left: 0;
-      background-image: none;
+      // margin-left: 0;
+      // background-image: none;
       background-color: var(--navbar-bg-color);
       border-color: var(--navbar-bg-color);
       color: var(--navbar-text-color);
       box-shadow: 0 1px 7px rgba(0, 0, 0, 0.5);
-      transition: transform, margin-left 0.3s ease-out;
-      z-index: $zindex;
+      // transition: transform, margin-left 0.3s ease-out;
     }
 
     // .navbar-brand {
@@ -100,7 +103,7 @@
 
   app-navbar {
     nav.navbar.navbar-fixed-top {
-      margin-left: $drawer-width;
+      // margin-left: $drawer-width;
     }
     .navbar-container {
       padding: 0.5rem 0;
@@ -121,6 +124,6 @@
   }
 
   .closed + .container-main app-navbar .navbar {
-    margin-left: $sidebar-closed-width;
+    // margin-left: $sidebar-closed-width;
   }
 }
