@@ -52,7 +52,7 @@ export class YoutubeApiService {
   }
 
   hasToken(): boolean {
-    return this.authService && this.authService.accessToken.length > 0;
+    return this.extractToken().length > 0;
   }
 
   resetConfig() {
@@ -109,6 +109,9 @@ export class YoutubeApiService {
     console.log('remove pageToken', this.params.toString());
   }
 
+  extractToken() {
+    return this.authService && this.authService.accessToken;
+  }
   createHeaders() {
     const accessToken = this.authService && this.authService.accessToken;
     const headers = {};

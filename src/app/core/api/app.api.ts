@@ -12,6 +12,7 @@ export class AppApi {
   themes$ = this.store.select(AppLayout.getAppThemes);
   appVersion$ = this.store.select(AppLayout.getAppVersion);
   user$ = this.store.select(UserActions.getUser);
+  userProfile$ = this.store.select(UserActions.getUserProfile);
 
   constructor(private store: Store<EchoesState>) {}
 

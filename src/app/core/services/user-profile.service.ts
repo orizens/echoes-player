@@ -1,3 +1,4 @@
+import { AuthorizationFire } from './firebase';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { HttpClient } from '@angular/common/http';
@@ -21,7 +22,8 @@ export class UserProfile {
     private http: HttpClient,
     private zone: NgZone,
     private youtubeVideosInfo: YoutubeVideosInfo,
-    private authorization: Authorization
+    private authorization: Authorization,
+    private auth: AuthorizationFire
   ) {
     this.playlistInfo = new YoutubeApiService(
       {

@@ -34,15 +34,15 @@ import { AppApi } from '@api/app.api';
             <icon name="star"></icon> Request New Features
           </a>
           <app-navbar-user
-            [signedIn]="isSignIn()"
-            [userImageUrl]="(user$ | async).profile.imageUrl"
+            [signedIn]="isSignedIn$ | async"
+            [userImageUrl]="(userProfile$ | async).photoURL"
             (signIn)="signInUser()"
             ></app-navbar-user>
           <app-navbar-menu
             [appVersion]="appVersion$ | async"
             [theme]="themes$ | async"
             (themeChange)="changeTheme($event)"
-            [signedIn]="isSignIn()"
+            [signedIn]="isSignedIn$ | async"
             (signOut)="signOutUser()"
             (versionUpdate)="updateVersion()"
             (versionCheck)="checkVersion()"
@@ -54,7 +54,8 @@ import { AppApi } from '@api/app.api';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppNavbarComponent implements OnInit {
-  user$ = this.appApi.user$;
+  userProfile$ = this.appApi.userProfile$;
+  isSignedIn$ = this.appApi.userProfile$.map(profile => profile.uid !== '');
   appVersion$ = this.appApi.appVersion$;
   themes$ = this.appApi.themes$;
 
@@ -81,7 +82,7 @@ export class AppNavbarComponent implements OnInit {
   }
 
   isSignIn() {
-    return this.authorization.isSignIn();
+    // return this.authorization.isSignIn();
   }
 
   updateVersion() {

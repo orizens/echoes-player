@@ -1,7 +1,8 @@
+import { Action } from '@ngrx/store';
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 import { Injectable } from '@angular/core';
 import { GoogleBasicProfile } from './user-profile.reducer';
-import { Action } from '@ngrx/store';
+import { UserInfo } from 'firebase';
 
 @Injectable()
 export class UserProfileActions {
@@ -18,6 +19,7 @@ export class UserProfileActions {
   static USER_SIGNIN = '[UserProfile] USER_SIGNIN';
   static USER_SIGNIN_START = '[UserProfile] USER_SIGNIN_START';
   static USER_SIGNIN_SUCCESS = '[UserProfile] USER_SIGNIN_SUCCESS';
+  static USER_SIGNIN_SILENT = '[UserProfile] USER_SIGNIN_SILENT';
 
   static USER_SIGNOUT = '[UserProfile] USER_SIGNOUT';
   static USER_SIGNOUT_SUCCESS = '[UserProfile] USER_SIGNOUT_SUCCESS';
@@ -55,7 +57,7 @@ export class UserProfileActions {
     };
   }
 
-  updateUserProfile(profile: GoogleBasicProfile) {
+  updateUserProfile(profile: UserInfo) {
     return {
       type: UserProfileActions.UPDATE_USER_PROFILE,
       payload: profile
@@ -63,6 +65,37 @@ export class UserProfileActions {
   }
 }
 
+// firebase START
+export class UpdateToken implements Action {
+  public type = UserProfileActions.UPDATE_TOKEN;
+  constructor(public payload: string) { }
+}
+
+export class ProfileRecieved implements Action {
+  public type = UserProfileActions.USER_PROFILE_RECIEVED;
+  constructor(public payload: gapi.auth2.BasicProfile) { }
+}
+
+export class Signout implements Action {
+  public type = UserProfileActions.USER_SIGNOUT;
+  public payload = '';
+}
+
+export class Signin implements Action {
+  public type = UserProfileActions.USER_SIGNIN;
+  public payload = '';
+}
+
+export class SigninSuccess implements Action {
+  public type = UserProfileActions.USER_SIGNIN_SUCCESS;
+  constructor(public payload: any) { }
+}
+
+// export class SignoutCompleted implements Action {
+//   public type = UserProfileActions.SIGNOUT_COMPLETED;
+//   public payload = '';
+// }
+// Firebase END
 export class UserSignin implements Action {
   readonly type = UserProfileActions.USER_SIGNIN;
   constructor() {}

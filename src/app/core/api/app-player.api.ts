@@ -38,6 +38,10 @@ export class AppPlayerApi {
     this.store.dispatch(new fromNowPlaylist.QueueVideo(media));
   }
 
+  queueVideos(items: GoogleApiYouTubeVideoResource[]) {
+    this.store.dispatch(new NowPlaylist.QueueVideos(items));
+  }
+
   removeVideoFromPlaylist(media: GoogleApiYouTubeVideoResource) {
     this.store.dispatch(new fromNowPlaylist.RemoveVideo(media));
   }

@@ -1,3 +1,4 @@
+// import { UserProxy } from './user.proxy';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '@core/store';

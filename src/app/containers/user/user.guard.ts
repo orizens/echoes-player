@@ -1,3 +1,4 @@
+import { AuthorizationFire } from '../../core/services/firebase';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
 
@@ -5,7 +6,10 @@ import { Authorization } from '@core/services';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private authorization: Authorization, private router: Router) { }
+  constructor(
+    private auth: AuthorizationFire,
+    private authorization: Authorization,
+    private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     // console.log('AuthGuard#canActivate called', { state });
@@ -18,7 +22,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authorization.isSignIn()) { return true; }
+    // if (this.authorization.isSignIn()) { return true; }
+    // const isSignedIn = this.authorization.isSignIn();
+    let isSignedIn = false;
+    this.auth.isSignedIn.take(1).subscribe(si => isSignedIn = Object.keys(si).length > 0);
+    if (isSignedIn) { return true; }
 
     // Store the attempted URL for redirecting
     // this.authService.redirectUrl = url;

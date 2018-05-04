@@ -14,6 +14,8 @@ import {
 import { environment } from '@env/environment';
 import { GapiLoader } from './gapi-loader.service';
 
+import { AuthorizationFire } from './firebase/firebase-auth';
+
 const extractAccessToken = (_googleAuth: gapi.auth2.GoogleAuth) => {
   return (
     _googleAuth && _googleAuth.currentUser.get().getAuthResponse().access_token
@@ -39,7 +41,11 @@ export class Authorization {
     return token.fromGoogle;
   }
 
-  constructor(private zone: NgZone, private gapiLoader: GapiLoader) {}
+  constructor(
+    private zone: NgZone,
+    private gapiLoader: GapiLoader,
+    private authFire: AuthorizationFire
+  ) {}
 
   loadAuth() {
     // attempt to SILENT authorize

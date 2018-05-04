@@ -1,3 +1,4 @@
+import { environment } from '../../../../environments/environment.prod';
 import { Router } from '@angular/router';
 import { EchoesState } from '@store/reducers';
 import { Store } from '@ngrx/store';
@@ -39,12 +40,16 @@ export class AppNavigatorComponent implements OnInit {
   constructor(
     private store: Store<EchoesState>,
     private router: Router
-  ) { }
+  ) {
+    if (environment.production) {
+      this.routes.push({ link: 'playground', icon: 'flask', label: 'Playground' });
+    }
+  }
 
   ngOnInit() {
   }
 
   go(link) {
-    this.router.navigate([`/${link}/${this.searchType}s`]);
+    this.router.navigate([`/${link}`]);
   }
 }

@@ -6,7 +6,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { environment } from '@env/environment';
 import { EchoesState, EchoesReducers, EchoesActions } from './reducers';
-import { NavigationSerializer } from './router-store';
+// import { NavigationSerializer } from './router-store';
 
 // import { storeFreeze } from 'ngrx-store-freeze';
 

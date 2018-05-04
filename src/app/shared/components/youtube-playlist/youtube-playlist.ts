@@ -29,8 +29,4 @@ export class YoutubePlaylistComponent {
   queuePlaylist(media: GoogleApiYouTubePlaylistResource) {
     this.queue.next(media);
   }
-
-  onNavigateToPlaylist() {
-    this.loading = true;
-  }
 }

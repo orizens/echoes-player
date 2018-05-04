@@ -7,6 +7,7 @@ import { UserProfileEffects } from './user-profile.effects';
 import { PlayerSearchEffects } from './player-search.effects';
 import { AppSettingsEffects } from './app-settings.effects';
 import { RouterEffects } from './router.effects';
+import { AuthEffects } from './auth.effects';
 
 export const AppEffectsModules = EffectsModule.forRoot([
   AppPlayerEffects,
@@ -15,5 +16,6 @@ export const AppEffectsModules = EffectsModule.forRoot([
   PlayerSearchEffects,
   AppSettingsEffects,
   RouterEffects,
-  AnalyticsEffects
+  AnalyticsEffects,
+  AuthEffects
 ]);

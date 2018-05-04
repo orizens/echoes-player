@@ -17,7 +17,9 @@ import { AppNavbarUserComponent } from './app-navbar-user';
     AppNavbarUserComponent
   ],
   exports: [
-    AppNavbarComponent
-  ]
+    AppNavbarComponent,
+    AppNavbarUserComponent
+  ],
+  providers: []
 })
 export class AppNavbarModule { }

@@ -83,7 +83,7 @@ export class YoutubeDataApi {
   }
 
   private createHeaders(addAuth: boolean) {
-    const accessToken = this.auth.accessToken;
+    const accessToken = ''; // this.auth.accessToken;
     const headersOptions = {};
     if (accessToken && addAuth) {
       headersOptions['authorization'] = `Bearer ${accessToken}`;

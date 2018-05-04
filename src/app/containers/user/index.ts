@@ -10,6 +10,7 @@ import { PlaylistsComponent } from './playlists';
 
 import { AuthGuard } from './user.guard';
 import { UserPlayerService } from './user-player.service';
+// import { UserProxy } from './user.proxy';
 import { routing } from './user.routing';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { routing } from './user.routing';
   providers: [
     AuthGuard,
     UserPlayerService,
+    // UserProxy
     // PlaylistResolver,
     // PlaylistVideosResolver
   ]

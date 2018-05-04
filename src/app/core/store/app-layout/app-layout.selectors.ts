@@ -1,5 +1,4 @@
 import { Store, createSelector } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 import { IAppSettings } from './app-layout.reducer';
 import { EchoesState } from '@store/reducers';
 
