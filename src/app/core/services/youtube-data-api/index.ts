@@ -50,9 +50,15 @@ export class YoutubeDataApi {
     return `${this._apiPrefixUrl}/${this._apiVersion}`;
   }
 
-  constructor(private http: HttpClient, private auth: Authorization) {
-  }
+  constructor(private http: HttpClient, private auth: Authorization) {}
 
+  // constructor (private http: Http, private auth: Authorization) {
+  //   this._config = this.mergeParams(this._defaultUrlParams, this._config);
+  // }
+
+  // list(api: string, options) {
+  //   const _options = {
+  //     params,
   list(api: string, options) {
     const params = { ..._defaultUrlParams, ...options };
     const _options = {
@@ -66,8 +72,13 @@ export class YoutubeDataApi {
     return this._request(api);
   }
 
-  insert(api: string, options) {
-    return this.http.post(this.getApi(api), {});
+  insert(api: string, body: any, config: any) {
+    const params = { ..._defaultUrlParams, ...config };
+    const _options = {
+      params,
+      headers: this.createHeaders(true)
+    };
+    return this.http.post(this.getApi(api), body, _options);
   }
 
   update(api) {
