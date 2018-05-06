@@ -1,3 +1,9 @@
+## v 3.9.9 (2018/05/05)
+* [FIXED] - style for auto complete didnt change accroding to theme 
+* [FIXED] - media cards messed when statistics are long 
+* [UPGRADE] - media card stats are highlighted with primary color 
+* [FIXED] - aligned current playing media with title when minimized
+
 ## v 3.9.8 (2018/04/29) (codename: Adi)
 
 * [PERF] - performance optimization using pipes with function utils

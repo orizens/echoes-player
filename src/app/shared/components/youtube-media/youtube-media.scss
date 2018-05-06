@@ -74,8 +74,13 @@
           width: 100%;
           padding: 1rem;
           color: white;
+          justify-content: space-between;
 
+          .item-duration {
+          }
+          
           .item-action {
+            color: var(--link-primary-color);
             &.item-likes {
               margin-right: 0.5rem;
             }
@@ -218,16 +223,6 @@
     .youtube-item {
       .item-views {
         display: block;
-      }
-    }
-  }
-}
-@media (min-width: 767px) {
-  :host {
-    .youtube-item {
-      .item-views {
-        width: auto;
-        max-width: 33%;
       }
     }
   }

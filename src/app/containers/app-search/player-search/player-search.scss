@@ -50,13 +50,13 @@
 			}
 		}
 
-		.results {
+		.ta-results {
 			position: absolute;
 			top: $input-search-box-height;
 			z-index: 10;
 			box-shadow: 0rem 0.3rem 3rem -0.5rem rgba(0,0,0,.5);
 
-			.list-group-item {
+			.ta-item {
 				border-radius: 0;
 
 				&.active {
