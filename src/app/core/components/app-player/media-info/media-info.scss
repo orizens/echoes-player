@@ -4,7 +4,7 @@
 	--media-title-text-color: var(--brand-primary);
 	--media-title-shadow: var(--brand-dark-bg-color);
 	--media-expand-icon-bg-color: var(--brand-dark-bg-color-transparent);
-	$line-height: 5.5rem;
+	$line-height: 6rem;
 
 	line-height: 1.5rem;
 
@@ -18,7 +18,7 @@
 
 		.media-thumb-container {
 			position: relative;
-			margin-right: 1rem;
+			margin-right: 2rem;
 			cursor: pointer;
 
 			.media-thumb {
