@@ -1,3 +1,9 @@
+## v 3.9.91 (2018/05/18)
+* [FIXED] - revert to PROD + AOT for smaller bundle size
+* [FIXED] - removed broken character from html (causing prod build failure)
+* [REFACTOR] - removed unused code
+* [UPGRADE] - upgrade @ng/cli to v6
+
 ## v 3.9.9 (2018/05/05)
 * [FIXED] - style for auto complete didnt change accroding to theme 
 * [FIXED] - media cards messed when statistics are long 
