@@ -106,7 +106,6 @@ export class YoutubeApiService {
 
   deletePageToken() {
     this.params = this.params.delete('pageToken');
-    console.log('remove pageToken', this.params.toString());
   }
 
   createHeaders() {

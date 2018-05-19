@@ -72,7 +72,6 @@ export class YoutubeListComponent implements OnChanges {
   }
 
   getMediaStatus(media: GoogleApiYouTubeVideoResource) {
-    console.log('getMediaStatus()');
     return {
       queued: this.queuedMediaIdMap[media.id]
     };

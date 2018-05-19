@@ -139,6 +139,5 @@ export class AppNavbarMenuComponent implements OnInit {
     if (toState === 'hide') {
       this.end = true;
     }
-    console.log('animation done!');
   }
 }
