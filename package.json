@@ -1,6 +1,6 @@
 {
   "name": "echoes-player",
-  "version": "3.9.91",
+  "version": "3.9.92",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

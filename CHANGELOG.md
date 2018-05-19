@@ -1,3 +1,6 @@
+## v 3.9.92 (2018/05/19)
+* [FIXED] - default arctic theme now renders
+
 ## v 3.9.91 (2018/05/18)
 * [FIXED] - revert to PROD + AOT for smaller bundle size
 * [FIXED] - removed broken character from html (causing prod build failure)
