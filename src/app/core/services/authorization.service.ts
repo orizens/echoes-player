@@ -58,9 +58,9 @@ export class Authorization {
   }
 
   authorize() {
-    if (this._googleAuth) {
-      console.log('signedIn?', this._googleAuth.isSignedIn.get());
-    }
+    // if (this._googleAuth) {
+    //   console.log('signedIn?', this._googleAuth.isSignedIn.get());
+    // }
     const authOptions = {
       client_id: environment.youtube.CLIENT_ID,
       scope: this._scope

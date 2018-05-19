@@ -1,13 +1,13 @@
 {
   "name": "echoes-player",
-  "version": "3.9.9",
+  "version": "3.9.91",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:prod": "ng serve --aot --build-optimizer",
+    "start:prod": "ng serve --prod",
     "build": "ng build",
-    "build:prod": "ng build --aot --build-optimizer",
+    "build:prod": "ng build --prod --aot",
     "build:env": "node config/build-env.js",
     "postinstall": "npm rebuild node-sass",
     "copy:heroku": "shx cp -r ./config/heroku/*.* ./dist",
@@ -43,7 +43,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.7.4",
+    "@angular/cli": "^6.0.3",
     "@angular/compiler-cli": "5.2.7",
     "@angular/language-service": "5.2.7",
     "@ngrx/effects": "5.2.0",
@@ -79,6 +79,7 @@
     "shx": "0.2.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
+    "typescript": "~2.5.3",
+    "@angular-devkit/build-angular": "~0.6.3"
   }
 }
