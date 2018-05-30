@@ -1,7 +1,7 @@
 // import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
 // import { inject, TestBed } from '@angular/core/testing';
 
-// import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs';
 // import { MediaParserService, YoutubePlayerService } from '@core/services';
 // import { Store } from '@ngrx/store';
 

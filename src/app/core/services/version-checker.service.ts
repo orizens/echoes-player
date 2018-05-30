@@ -1,14 +1,8 @@
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription, Observable, of, timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 
 import { AppApi } from '@api/app.api';
-
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/observable/of';
-import { of } from 'rxjs/observable/of';
 import { switchMap, retry, filter, take } from 'rxjs/operators';
 
 interface INpmPackageJson {
@@ -45,7 +39,7 @@ export class VersionCheckerService {
   start() {
     let checkTimer: Subscription;
     this.zone.runOutsideAngular(() => {
-      checkTimer = Observable.timer(0, this.interval)
+      checkTimer = timer(0, this.interval)
         .pipe(switchMap(() => this.check()), retry(), filter(verifyPackage))
         .subscribe(response => this.appApi.recievedNewVersion(response));
     });

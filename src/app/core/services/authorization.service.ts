@@ -1,7 +1,5 @@
-import { fromPromise } from 'rxjs/observable/fromPromise';
-import { Subscription } from 'rxjs/Subscription';
+import { from as fromPromise, Subscription, Observable, timer } from 'rxjs';
 import { Injectable, NgZone } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import {
   switchMap,
   map,
@@ -113,7 +111,7 @@ export class Authorization {
   }
 
   startTimerToNextAuth(timeInMs: number): Subscription {
-    return Observable.timer(timeInMs)
+    return timer(timeInMs)
       .pipe(
         timeInterval(),
         switchMap(() => this.authorize()),

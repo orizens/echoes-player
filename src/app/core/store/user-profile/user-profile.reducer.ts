@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { EchoesState } from '../';
 import { Action } from '@ngrx/store';
 import { UserProfileActions } from './user-profile.actions';

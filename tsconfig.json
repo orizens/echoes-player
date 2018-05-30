@@ -8,45 +8,20 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "baseUrl": "./",
     "paths": {
-      "~/*": [
-        "src/*"
-      ],
-      "@utils/*": [
-        "src/app/shared/utils/*"
-      ],
-      "@shared/*": [
-        "./src/app/shared/*"
-      ],
-      "@animations/*": [
-        "./src/app/shared/animations/*"
-      ],
-      "@core/*": [
-        "./src/app/core/*"
-      ],
-      "@api/*": [
-        "./src/app/core/api/*"
-      ],
-      "@resolvers/*": [
-        "./src/app/core/resolvers/*"
-      ],
-      "@store/*": [
-        "./src/app/core/store/*"
-      ],
-      "@mocks/*": [
-        "./tests/mocks/*"
-      ],
-      "@env/*": [
-        "./src/environments/*"
-      ]
+      "~/*": ["src/*"],
+      "@utils/*": ["src/app/shared/utils/*"],
+      "@shared/*": ["./src/app/shared/*"],
+      "@animations/*": ["./src/app/shared/animations/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@api/*": ["./src/app/core/api/*"],
+      "@resolvers/*": ["./src/app/core/resolvers/*"],
+      "@store/*": ["./src/app/core/store/*"],
+      "@mocks/*": ["./tests/mocks/*"],
+      "@env/*": ["./src/environments/*"]
     }
   }
 }

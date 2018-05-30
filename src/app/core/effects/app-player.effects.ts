@@ -5,9 +5,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { toPayload } from '@utils/data.utils';
 
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
-import { defer } from 'rxjs/observable/defer';
+import { of, Observable, defer } from 'rxjs';
 import {
   map,
   switchMap,

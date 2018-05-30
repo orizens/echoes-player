@@ -13,8 +13,6 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
 
 import { NowPlaylistService } from '@core/services';
 import { AppPlayerApi } from '@api/app-player.api';
