@@ -61,7 +61,7 @@
 
 		<div class="description back face is-rounded is-absolute-top is-absolute-left">
 			<h4>
-				<a href='https://youtube.com/watch?v={{ media.id }}' target="_blank" tooltip="Open in YouTube" class="media-thumb">
+				<a href='https://youtube.com/watch?v={{ media.id }}' target="_blank" rel="noopener" tooltip="Open in YouTube" class="media-thumb">
 					<icon name="youtube"></icon> {{ media.snippet.title}}</a>
 			</h4>
 			<div *ngIf="showDesc">{{ media.snippet.description }}</div>
