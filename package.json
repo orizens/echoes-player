@@ -8,6 +8,7 @@
     "start:integration": "ng serve --configuration=integration",
     "build": "ng build",
     "build:prod": "ng build --prod",
+    "build:integration": "ng build --configuration=integration",
     "build:env": "node config/build-env.js",
     "postinstall": "npm rebuild node-sass",
     "copy:heroku": "shx cp -r ./config/heroku/*.* ./dist",
@@ -32,7 +33,9 @@
     "@angular/http": "6.0.3",
     "@angular/platform-browser": "6.0.3",
     "@angular/platform-browser-dynamic": "6.0.3",
+    "@angular/pwa": "0.6.8",
     "@angular/router": "6.0.3",
+    "@angular/service-worker": "6.0.3",
     "core-js": "^2.4.1",
     "http-server": "0.10.0",
     "memo-decorator": "1.0.2",
@@ -40,6 +43,7 @@
     "replace": "0.3.0",
     "rxjs": "6.2.0",
     "sass-loader": "7.0.1",
+    "service-worker": "0.0.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
