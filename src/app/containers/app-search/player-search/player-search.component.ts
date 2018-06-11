@@ -36,6 +36,7 @@ import { Subscription } from 'rxjs';
           ngxTypeahead
           [taUrl]="'//suggestqueries.google.com/complete/search'"
           [taParams]="params"
+          [taAllowEmpty]="true"
           (taSelected)="handleSelectSuggestion($event)"
           type="search" class="form-control" autocomplete="off"
           name="mediaSearch"

@@ -1,79 +1,82 @@
 @import '~css/echoes-variables.scss';
 
 @media (min-width: 320px) {
-	$track-badge-index: 10;
-	$track-button: 15;
-	$track-border-color: #262829;
-	--track-active-border-color: var(--brand-primary);
-	--track-bg-active-color: var(--brand-dark-bg-color-transparent);
+  $track-badge-index: 10;
+  $track-button: 15;
+  $track-border-color: #262829;
+  --track-active-border-color: var(--brand-primary);
+  --track-bg-active-color: var(--brand-dark-bg-color-transparent);
 
-	.now-playlist {
-		position: relative;
-		// opacity: 0;
+  .now-playlist {
+    position: relative;
+    // opacity: 0;
 
-		.nav-list {
-			overflow-x: hidden;
+    .nav-list {
+      overflow: hidden;
 
-			> :not(.active) a:hover {
-				background: rgba(10,10,10,.2);
-			}
-		}
+      > :not(.active) a:hover {
+        background: rgba(10, 10, 10, 0.2);
+      }
+    }
 
-		.now-playlist-track {
-			cursor: pointer;
-			opacity: 1;
+    .now-playlist-track {
+      cursor: pointer;
+      opacity: 1;
 
-			a .playlist-track__content {
-				height: 6rem;
-			}
-		}
-		// .as-sortable-placeholder {
-		// 	background-color: $gray-darker;
-		// 	border: 1px dashed white;
-		// }
+      a .playlist-track__content {
+        height: 6rem;
+      }
+    }
+    // .as-sortable-placeholder {
+    // 	background-color: $gray-darker;
+    // 	border: 1px dashed white;
+    // }
+  }
 
-	}
-
-	.ng-enter + .now-playlist.slide-down {
-		transform: translatey(10px);
-	}
+  .ng-enter + .now-playlist.slide-down {
+    transform: translatey(10px);
+  }
 }
 @media (min-width: 768px) {
-	.now-playlist {
-		.now-playlist-track {
-			a .playlist-track__content {
-				overflow: hidden;
-			}
-		}
-	}
-	.closed now-playlist {
-		.now-playlist-track {
-			a, 
-			a.active {
-				padding: 0;
-				min-height: 6rem;
-				margin: 0.7rem 0;
-			}
-			.now-playlist-track__trigger {
-				padding: 0;
-			}
-			.playlist-track__content,
-			.video-title {
-				height: 0;
-			}
-			.track-number {
-				left: 0;
-			}
-			.video-thumb {
-				height: 5rem;
-				width: 7rem;
-			}
-			.track-tracks {
-				display: none;
-			}
-			.playlist-track {
-				transform: translateX(5rem);
-			}
-		}
-	}
+  .now-playlist {
+    .now-playlist-track {
+      a .playlist-track__content {
+        overflow: hidden;
+      }
+    }
+  }
+  .closed now-playlist {
+    .now-playlist-track {
+      a,
+      a.active {
+        padding: 0;
+        min-height: 6rem;
+        margin: 0.7rem 0;
+      }
+      .now-playlist-track__trigger {
+        padding: 0;
+      }
+      .playlist-track__content,
+      .video-title {
+        height: 0;
+        transform: translateY(-5px);
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .track-number {
+        left: 0;
+      }
+      .video-thumb {
+        height: 5rem;
+        width: 7rem;
+      }
+      .track-tracks {
+        display: none;
+      }
+      .playlist-track {
+        transform: translateX(5rem);
+      }
+    }
+  }
 }
