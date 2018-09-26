@@ -75,7 +75,7 @@
     "ngrx-store-localstorage": "0.2.4",
     "ngx-infinite-scroll": "6.0.0",
     "ngx-tooltip": "0.0.9",
-    "ngx-typeahead": "6.0.2",
+    "ngx-typeahead": "6.2.0",
     "ngx-youtube-player": "6.0.0",
     "prettier": "1.11.1",
     "protractor": "~5.1.2",
