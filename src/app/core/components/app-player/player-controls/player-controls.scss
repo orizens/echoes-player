@@ -16,6 +16,8 @@
 		font-size: $btn-control-font-size;
 	}
 
+	z-index: 100;
+
 	.btn {
 		&.next,
 		&.previous,

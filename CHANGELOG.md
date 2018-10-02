@@ -1,4 +1,4 @@
-## v 4.0.0 (2018/09/28)
+## v 4.0.0 (2018/09/29)
 
 * [UPGRADE] - now running Angular 6, NgRx 6
 * [UPGRADE] - ngx-typeahead allowing free text and not only selecting a suggestion from the dropdown

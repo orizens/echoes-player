@@ -4,36 +4,73 @@ import {
   EventEmitter,
   Input,
   OnInit,
+  AfterContentInit,
   Output,
   HostListener
 } from '@angular/core';
+import { MediaParserService } from '../../../../core/services';
 
 @Component({
   selector: 'media-info',
   styleUrls: ['./media-info.scss'],
   template: `
-  <article class="media-info ellipsis">
-    <h3 class="yt-media-title ellipsis">
+  <article class="media-info is-flex-column">
+    <h3 class="yt-media-title is-flex-row is-flex-valign">
       <aside class="media-thumb-container pull-left"
-        title="maximize / minimize"
-        (click)="handleThumbClick()">
-        <img class="media-thumb" src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
-        <icon name="arrows-alt" [class.invisible]="_minimized"></icon>
+      title="maximize / minimize"
+      (click)="handleThumbClick()">
+      <img class="media-thumb" src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
+      <icon name="arrows-alt" [class.invisible]="_minimized"></icon>
       </aside>
-      <a class="title">{{ player?.media?.snippet?.title }}</a>
+      <a class="title ellipsis">{{ player?.media?.snippet?.title }}</a>
+      <article class="track-info" [ngClass]="{ 'show-info': displayInfo }">
+        <nav class="is-flex-row is-justify-right is-sticky">
+          <button (click)="toggleInfo()" class="btn btn-default">
+            <icon name="close"></icon>
+            Close
+          </button>
+        </nav>
+        {{ player.media.snippet.description }}
+        <div class="track-tracks list-group" *ngIf="hasTracks()">
+          <h3 class="text-primary">Tracks (Select &amp; Play)</h3>
+          <button class="list-group-item btn-transparent"
+            *ngFor="let track of tracks | parseTracks"
+            (click)="handleSelectTrack($event, track, player.media)">
+            {{ track }}
+          </button>
+        </div>
+      </article>
+      <button class="label label-info more-info-btn" (click)="toggleInfo()">
+        <icon name="info-circle"></icon>
+      </button>
     </h3>
   </article>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MediaInfoComponent implements OnInit {
+export class MediaInfoComponent implements OnInit, AfterContentInit {
   @Input() player: any = {};
   @Input() minimized: GoogleApiYouTubeVideoResource;
   @Output() thumbClick = new EventEmitter();
+  @Output() seekTrack = new EventEmitter();
 
-  constructor() { }
+  displayInfo = false;
+  tracks: string[] = [];
 
-  ngOnInit() { }
+  constructor(public mediaParser: MediaParserService) {}
+
+  ngOnInit() {}
+
+  ngAfterContentInit() {
+    this.extractTracks(this.player.media);
+  }
+
+  extractTracks(media: GoogleApiYouTubeVideoResource) {
+    const tracks = this.mediaParser.extractTracks(media);
+    if (Array.isArray(tracks)) {
+      this.tracks = tracks;
+    }
+  }
 
   @HostListener('window:keyup.Escape', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -44,6 +81,26 @@ export class MediaInfoComponent implements OnInit {
 
   handleThumbClick() {
     this.thumbClick.next();
+  }
+
+  toggleInfo() {
+    this.displayInfo = !this.displayInfo;
+  }
+
+  handleSelectTrack(
+    $event: Event,
+    track: string,
+    media: GoogleApiYouTubeVideoResource
+  ) {
+    $event.stopImmediatePropagation();
+    const time = this.mediaParser.extractTime(track);
+    if (time) {
+      this.seekTrack.emit({ time: time[0], media });
+    }
+  }
+
+  hasTracks() {
+    return this.tracks.length > 0;
   }
 
   get _minimized() {
