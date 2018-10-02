@@ -21,6 +21,7 @@ export class UserProfileActions {
 
   static USER_SIGNOUT = '[UserProfile] USER_SIGNOUT';
   static USER_SIGNOUT_SUCCESS = '[UserProfile] USER_SIGNOUT_SUCCESS';
+  static USER_PLAYLISTS_FETCH_ERROR = '[UserProfile] USER_PLAYLISTS_FETCH_ERROR';
 
   setViewPlaylist = ActionCreatorFactory.create<string>(UserProfileActions.VIEWED_PLAYLIST);
 
@@ -90,4 +91,8 @@ export class UserSignoutSuccess implements Action {
 export class CheckUserAuth implements Action {
   readonly type = UserProfileActions.CHECK_USER_AUTH;
   constructor () {}
+}
+export class UserPlaylistsFetchError implements Action {
+  readonly type = UserProfileActions.USER_PLAYLISTS_FETCH_ERROR;
+  constructor (public payload: any) {}
 }

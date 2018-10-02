@@ -1,4 +1,4 @@
-import { of ,  defer } from 'rxjs';
+import { of, defer } from 'rxjs';
 import { map, switchMap, tap, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
@@ -16,7 +16,7 @@ export class UserProfileEffects {
     private userProfileActions: UserProfileActions,
     private userProfile: UserProfile,
     private auth: Authorization
-  ) {}
+  ) { }
 
   @Effect()
   checkUserAuth$ = this.actions$.pipe(
@@ -35,13 +35,13 @@ export class UserProfileEffects {
     map((token: string) => (this.auth.accessToken = token)),
     switchMap(token =>
       this.userProfile.getPlaylists(true).pipe(
+        map(response => this.userProfileActions.updateData(response)),
         catchError((error: Error) => {
           console.log(`error in fetching user's playlists ${error}`);
-          return of(error);
+          return of(new UserActions.UserPlaylistsFetchError(error));
         })
       )
     ),
-    map(response => this.userProfileActions.updateData(response))
   );
 
   @Effect()
