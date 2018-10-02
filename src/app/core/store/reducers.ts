@@ -1,5 +1,5 @@
 import { RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ActionReducerMap, Store } from '@ngrx/store';
 // import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 

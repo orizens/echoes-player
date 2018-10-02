@@ -55,11 +55,16 @@ export const flyInOut = trigger('flyInOut', [
   state('in', style({ transform: 'translateX(0)' })),
   transition('void => *', [
     style({ transform: 'translateX(-100%)' }),
-    animate(100)
+    animate(300)
   ]),
   transition('* => void', [
-    animate(100, style({ transform: 'translateX(100%)' }))
+    animate(300, style({ transform: 'translateX(100%)' }))
   ])
+]);
+export const heightReveal = trigger('flyInOut', [
+  state('in', style({ height: 0, overflow: 'hidden' })),
+  transition('void => *', [style({ height: 0 }), animate(300)]),
+  transition('* => void', [animate(300, style({ height: 100 }))])
 ]);
 
 export const expandFadeInAnimation = trigger('expandFadeIn', [

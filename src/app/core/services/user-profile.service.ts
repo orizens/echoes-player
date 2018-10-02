@@ -1,5 +1,4 @@
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+import { Subject, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 

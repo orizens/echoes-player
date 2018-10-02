@@ -1,5 +1,4 @@
-import { of } from 'rxjs/observable/of';
-import { defer } from 'rxjs/observable/defer';
+import { of ,  defer } from 'rxjs';
 import { map, switchMap, tap, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';

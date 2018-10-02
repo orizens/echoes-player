@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { EchoesState } from '@store/reducers';
 import * as fromNowPlaylist from '@store/now-playlist';
 import { YoutubeVideosInfo } from './youtube-videos-info.service';

@@ -13,6 +13,8 @@ import { APP_CONTAINER_MODULES } from './containers';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +29,8 @@ import { AppComponent } from './app.component';
     CoreModule,
     SharedModule,
     ...APP_CORE_MODULES,
-    ...APP_CONTAINER_MODULES
+    ...APP_CONTAINER_MODULES,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,28 @@
+## v 4.0.0 (2018/10/02)
+
+* [UPGRADE] - now running Angular 6, NgRx 6
+* [UPGRADE] - ngx-typeahead allowing free text and not only selecting a suggestion from the dropdown
+* [NEW] = added media information button to current track - shows description and cued tracks (click to select)
+* [NEW] - transitions added to track's playlist and information on the now-playlist component
+* [NEW] - support for PWA - player assets are now part of the pwa definition
+* [NEW] - added firebase integration (not hosted in firebase yet)
+
 ## v 3.9.92 (2018/05/19)
+
 * [FIXED] - default arctic theme now renders
 
 ## v 3.9.91 (2018/05/18)
+
 * [FIXED] - revert to PROD + AOT for smaller bundle size
 * [FIXED] - removed broken character from html (causing prod build failure)
 * [REFACTOR] - removed unused code
 * [UPGRADE] - upgrade @ng/cli to v6
 
 ## v 3.9.9 (2018/05/05)
-* [FIXED] - style for auto complete didnt change accroding to theme 
-* [FIXED] - media cards messed when statistics are long 
-* [UPGRADE] - media card stats are highlighted with primary color 
+
+* [FIXED] - style for auto complete didnt change accroding to theme
+* [FIXED] - media cards messed when statistics are long
+* [UPGRADE] - media card stats are highlighted with primary color
 * [FIXED] - aligned current playing media with title when minimized
 
 ## v 3.9.8 (2018/04/29) (codename: Adi)

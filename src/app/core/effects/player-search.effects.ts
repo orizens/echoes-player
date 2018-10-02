@@ -1,8 +1,7 @@
 import { YoutubeVideosInfo } from '@core/services';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '@store/reducers';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable ,  of } from 'rxjs';
 
 import {
   map,

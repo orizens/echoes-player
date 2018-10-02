@@ -6,15 +6,11 @@ import { Store } from '@ngrx/store';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   HostBinding,
-  HostListener,
-  Input,
   OnInit,
+  OnDestroy,
   Output
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
 
 import { NowPlaylistService } from '@core/services';
 import { AppPlayerApi } from '@api/app-player.api';
@@ -42,6 +38,7 @@ import { AppPlayerApi } from '@api/app-player.api';
         [player]="player$ | async"
         [minimized]="media$ | async"
         (thumbClick)="toggleFullScreen()"
+        (seekTrack)="selectTrackInVideo($event)"
       ></media-info>
       <player-controls class="controls-container nicer-ux"
         [isRepeat]="isPlayerInRepeat$ | async"
@@ -58,7 +55,7 @@ import { AppPlayerApi } from '@api/app-player.api';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppPlayerComponent implements OnInit {
+export class AppPlayerComponent implements OnInit, OnDestroy {
   player$ = this.store.select(AppPlayer.getPlayer);
   media$ = this.store.select(AppPlayer.getCurrentMedia);
   isPlayerPlaying$ = this.store.select(AppPlayer.getIsPlayerPlaying);
@@ -81,6 +78,8 @@ export class AppPlayerComponent implements OnInit {
       this.playVideo(action.payload)
     );
   }
+
+  ngOnDestroy() {}
 
   setupPlayer(player) {
     this.appPlayerApi.setupPlayer(player);
@@ -118,5 +117,13 @@ export class AppPlayerComponent implements OnInit {
 
   toggleRepeat() {
     this.appPlayerApi.toggleRepeat();
+  }
+
+  selectTrackInVideo(trackEvent: {
+    time: string;
+    media: GoogleApiYouTubeVideoResource;
+  }) {
+    this.playVideo(trackEvent.media);
+    this.nowPlaylistService.seekToTrack(trackEvent);
   }
 }

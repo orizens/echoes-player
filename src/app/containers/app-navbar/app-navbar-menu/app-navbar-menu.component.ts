@@ -46,11 +46,11 @@ enum Key {
         <a class="list-group-item" href="http://github.com/orizens/echoes-player" target="_blank">
         <icon name="github"></icon> Source Code @Github
         </a>
-        <a class="list-group-item" *ngIf="!hide" href="https://travis-ci.org/orizens/echoes-player" target="_blank">
+        <a class="list-group-item" *ngIf="!hide" href="https://travis-ci.org/orizens/echoes-player" target="_blank" rel="noopener">
         <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
         </a>
         <div class="list-group-item" target="_blank">
-        v.<a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank">
+        v.<a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank" rel="noopener">
         {{ appVersion.semver }}
         </a>
         <button *ngIf="!appVersion.isNewAvailable"
@@ -65,7 +65,7 @@ enum Key {
           Theme: <button-group [buttons]="theme.themes" [selectedButton]="theme.selected"
             (buttonClick)="updateTheme($event)"></button-group>
         </div>
-        <a class="list-group-item" href="http://orizens.com" target="_blank">
+        <a class="list-group-item" href="http://orizens.com" rel="noopener" blank="_target">
         Made with <icon name="heart" class="text-danger"></icon> By Orizens
         </a>
         <button class="list-group-item"

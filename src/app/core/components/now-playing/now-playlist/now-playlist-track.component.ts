@@ -8,6 +8,7 @@ import {
   OnInit,
   Output
 } from '@angular/core';
+import { flyOut, flyInOut } from '@shared/animations/fade-in.animation';
 
 @Component({
   selector: 'now-playlist-track',
@@ -47,7 +48,7 @@ import {
         <icon name="trash"></icon>
       </span>
     </aside>
-    <article *ngIf="displayTracks" class="track-tracks list-group">
+    <article [@flyInOut] *ngIf="displayTracks" class="track-tracks list-group">
       <aside class="album-tracks-heading">Tracks</aside>
       <button type="button" class="list-group-item btn-transparent"
         *ngFor="let track of tracks | parseTracks"
@@ -55,11 +56,12 @@ import {
         {{ track }}
       </button>
     </article>
-    <article *ngIf="displayInfo" class="track-info">
+    <article [@flyOut] *ngIf="displayInfo" class="track-info">
       {{ video.snippet.description }}
     </article>
   </div>
   `,
+  animations: [flyOut, flyInOut],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NowPlaylistTrackComponent implements AfterContentInit {
@@ -88,7 +90,7 @@ export class NowPlaylistTrackComponent implements AfterContentInit {
 
   extractTracks(media: GoogleApiYouTubeVideoResource) {
     if (!this.parsedTracks) {
-      const tracks = this.mediaParser.extractTracks(media);
+      const tracks = this.mediaParser.extractTracks(media.snippet.description);
       if (Array.isArray(tracks)) {
         this.parsedTracks = true;
         this.tracks = tracks;

@@ -1,12 +1,8 @@
 import { MediaParserService, YoutubePlayerService } from '@core/services';
 import { EchoesState } from '@store/reducers';
 import { Store } from '@ngrx/store';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/zip';
-import 'rxjs/add/operator/withLatestFrom';
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
+
+import { of, Observable } from 'rxjs';
 
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ActionTypes, Action } from './app-layout.actions';
 import { Themes, DEFAULT_THEME } from '../../../app.themes';

@@ -48,7 +48,6 @@ $toolbar-position-on-hover: -9rem;
   }
 
   .container {
-    overflow: hidden;
     padding: 0;
     z-index: $zindex-navbar-fixed;
     background: var(--player-controls-bar-bg)
@@ -73,7 +72,7 @@ $toolbar-position-on-hover: -9rem;
     top: 0;
     box-shadow: 1px -1px 2px 0px rgba(0, 0, 0, 1);
     background: var(--brand-dark-bg-color-transparent); //rgba(0, 0, 0, 0.8);
-    transform: translate3d(-38%, -38%, 0) scale(0.23);
+    transform: translate3d(-40%, -38%, 0) scale(0.24);
   }
 
   .show-youtube-player .btn.show-player {

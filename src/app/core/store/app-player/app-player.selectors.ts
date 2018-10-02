@@ -1,5 +1,5 @@
 import { Store, createSelector } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { IAppPlayer } from './app-player.reducer';
 import { EchoesState } from '@store/reducers';
 

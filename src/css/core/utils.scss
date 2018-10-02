@@ -113,7 +113,9 @@ select {
 .is-content-aligned-h {
   justify-content: center;
 }
-
+.is-justify-right {
+  justify-content: flex-end;
+}
 // border-radius
 .is-rounded-top {
   border-top-left-radius: 6px;
@@ -174,4 +176,8 @@ select {
 .is-absolute-left {
   @extend .is-absolute;
   left: 0;
+}
+.is-sticky {
+  position: sticky;
+  top: 0;
 }

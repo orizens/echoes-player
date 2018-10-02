@@ -20,7 +20,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { debounceTime, filter } from 'rxjs/operators';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'player-search',
@@ -36,6 +36,7 @@ import { Subscription } from 'rxjs/Subscription';
           ngxTypeahead
           [taUrl]="'//suggestqueries.google.com/complete/search'"
           [taParams]="params"
+          [taAllowEmpty]="true"
           (taSelected)="handleSelectSuggestion($event)"
           type="search" class="form-control" autocomplete="off"
           name="mediaSearch"

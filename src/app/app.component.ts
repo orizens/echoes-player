@@ -1,4 +1,4 @@
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { VersionCheckerService } from './core/services/version-checker.service';
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { EchoesState } from '@store/reducers';
@@ -11,7 +11,7 @@ import { AppApi } from '@core/api/app.api';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  sidebarCollapsed$ = this.store.select(getSidebarCollapsed);
+  sidebarCollapsed$ = this.store.pipe(select(getSidebarCollapsed));
   theme$ = this.store.select(getAppTheme);
 
   @HostBinding('class') style = 'arctic';
