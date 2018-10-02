@@ -1,7 +1,8 @@
-## v 4.0.0 (2018/09/29)
+## v 4.0.0 (2018/10/02)
 
 * [UPGRADE] - now running Angular 6, NgRx 6
 * [UPGRADE] - ngx-typeahead allowing free text and not only selecting a suggestion from the dropdown
+* [NEW] = added media information button to current track - shows description and cued tracks (click to select)
 * [NEW] - transitions added to track's playlist and information on the now-playlist component
 * [NEW] - support for PWA - player assets are now part of the pwa definition
 * [NEW] - added firebase integration (not hosted in firebase yet)

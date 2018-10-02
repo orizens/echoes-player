@@ -90,7 +90,7 @@ export class NowPlaylistTrackComponent implements AfterContentInit {
 
   extractTracks(media: GoogleApiYouTubeVideoResource) {
     if (!this.parsedTracks) {
-      const tracks = this.mediaParser.extractTracks(media);
+      const tracks = this.mediaParser.extractTracks(media.snippet.description);
       if (Array.isArray(tracks)) {
         this.parsedTracks = true;
         this.tracks = tracks;

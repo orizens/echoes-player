@@ -14,36 +14,34 @@ import { MediaParserService } from '../../../../core/services';
   selector: 'media-info',
   styleUrls: ['./media-info.scss'],
   template: `
-  <article class="media-info is-flex-column">
-    <h3 class="yt-media-title is-flex-row is-flex-valign">
-      <aside class="media-thumb-container pull-left"
-      title="maximize / minimize"
-      (click)="handleThumbClick()">
+  <article class="media-info is-flex-row is-flex-valign">
+    <aside class="media-thumb-container pull-left"
+    title="maximize / minimize"
+    (click)="handleThumbClick()">
       <img class="media-thumb" src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
       <icon name="arrows-alt" [class.invisible]="_minimized"></icon>
-      </aside>
-      <a class="title ellipsis">{{ player?.media?.snippet?.title }}</a>
-      <article class="track-info" [ngClass]="{ 'show-info': displayInfo }">
-        <nav class="is-flex-row is-justify-right is-sticky">
-          <button (click)="toggleInfo()" class="btn btn-default">
-            <icon name="close"></icon>
-            Close
-          </button>
-        </nav>
-        {{ player.media.snippet.description }}
-        <div class="track-tracks list-group" *ngIf="hasTracks()">
-          <h3 class="text-primary">Tracks (Select &amp; Play)</h3>
-          <button class="list-group-item btn-transparent"
-            *ngFor="let track of tracks | parseTracks"
-            (click)="handleSelectTrack($event, track, player.media)">
-            {{ track }}
-          </button>
-        </div>
-      </article>
-      <button class="label label-info more-info-btn" (click)="toggleInfo()">
-        <icon name="info-circle"></icon>
-      </button>
-    </h3>
+    </aside>
+    <a class="title ellipsis">{{ player?.media?.snippet?.title }}</a>
+    <article class="track-info" [ngClass]="{ 'show-info': displayInfo }">
+      <nav class="is-flex-row is-justify-right is-sticky">
+        <button (click)="toggleInfo()" class="btn btn-default">
+          <icon name="close"></icon>
+          Close
+        </button>
+      </nav>
+      {{ player.media.snippet.description }}
+      <div class="track-tracks list-group" *ngIf="hasTracks()">
+        <h3 class="text-primary">Tracks (Select &amp; Play)</h3>
+        <button class="list-group-item btn-transparent"
+          *ngFor="let track of tracks | parseTracks"
+          (click)="handleSelectTrack($event, track, player.media)">
+          {{ track }}
+        </button>
+      </div>
+    </article>
+    <button class="label label-info more-info-btn" (click)="toggleInfo()">
+      <icon name="info-circle 2x"></icon>
+    </button>
   </article>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -62,11 +60,13 @@ export class MediaInfoComponent implements OnInit, AfterContentInit {
   ngOnInit() {}
 
   ngAfterContentInit() {
-    this.extractTracks(this.player.media);
+    if (this.player.media) {
+      this.extractTracks(this.player.media);
+    }
   }
 
   extractTracks(media: GoogleApiYouTubeVideoResource) {
-    const tracks = this.mediaParser.extractTracks(media);
+    const tracks = this.mediaParser.extractTracks(media.snippet.description);
     if (Array.isArray(tracks)) {
       this.tracks = tracks;
     }

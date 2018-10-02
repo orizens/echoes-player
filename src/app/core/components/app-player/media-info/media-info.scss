@@ -9,10 +9,11 @@
 	line-height: 1.5rem;
 	z-index: 100;
 
-	.yt-media-title {
+	.media-info {
 		color: var(--media-title-text-color);
 		margin: 0;
 		justify-content: space-evenly;
+		height: 100%;
 
 		.media-thumb-container {
 			position: relative;
