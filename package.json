@@ -18,7 +18,7 @@
     "test:ci": "ng test",
     "lint": "ng lint",
     "lint:fix": "prettier --write ./src/**/*.ts",
-    "e2e": "ng e2e",
+    "e2e": "cypress open",
     "clean": "rimraf -- node_modules",
     "server:prod": "http-server ./dist -a localhost -p 4200"
   },
@@ -62,6 +62,7 @@
     "@types/jasminewd2": "~2.0.2",
     "bootstrap-sass": "3.3.7",
     "codelyzer": "^4.0.1",
+    "cypress": "3.1.0",
     "font-awesome": "4.7.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
