@@ -6,6 +6,7 @@ import {
   toggleSidebar,
   selectSuggestion
 } from '../components.api';
+import * as sidebarApi from '../sidebar.api';
 
 context('Echoes Player', () => {
   beforeEach(() => {
@@ -40,13 +41,12 @@ context('Echoes Player', () => {
     cy
       .get('youtube-videos youtube-list youtube-media')
       .should('have.length', 50)
-      .should('contain', 'ambient');
   });
 
-  it('should play a video', () => {});
+  it('should play a video', () => { });
 
   it('should collapse sidebar', () => {
-    toggleSidebar()
+    sidebarApi.toggleSidebar()
       .get('app-sidebar')
       .should('have.class', 'closed')
       .get('app-brand button')
@@ -54,10 +54,11 @@ context('Echoes Player', () => {
   });
 
   it('should show sidebar', () => {
-    toggleSidebar()
-      .get('app-brand .brand-container')
-      .click()
-      .get('app-sidebar')
+    sidebarApi.toggleSidebar()
+    cy.get('app-sidebar')
+      .should('have.class', 'closed').as('sidebar')
+    sidebarApi.toggleSidebarWithHeader();
+    cy.get('@sidebar')
       .should('not.have.class', 'closed')
       .get('app-brand button')
       .should('be.visible');
