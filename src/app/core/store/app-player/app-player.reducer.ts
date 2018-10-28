@@ -1,13 +1,13 @@
-import { Observable } from 'rxjs';
-import { Action } from '@ngrx/store';
 import { ActionTypes, Actions } from './app-player.actions';
 
-type GoogleApiYoutubeVideo = GoogleApiYouTubeVideoResource | GoogleApiYouTubeSearchResource | any;
+type GoogleApiYoutubeVideo =
+  | GoogleApiYouTubeVideoResource
+  | GoogleApiYouTubeSearchResource
+  | any;
 
 export * from './app-player.actions';
 
 export interface IAppPlayer {
-  mediaId: { videoId: string };
   index: number;
   media?: GoogleApiYoutubeVideo | any;
   showPlayer: boolean;
@@ -20,7 +20,6 @@ export interface IAppPlayer {
   isFullscreen: boolean;
 }
 const initialPlayerState: IAppPlayer = {
-  mediaId: { videoId: 'NONE' },
   index: 0,
   media: {
     snippet: { title: 'No Media Yet' }
@@ -34,7 +33,10 @@ const initialPlayerState: IAppPlayer = {
   },
   isFullscreen: false
 };
-export function player(state: IAppPlayer = initialPlayerState, action: Actions): IAppPlayer {
+export function player(
+  state: IAppPlayer = initialPlayerState,
+  action: Actions
+): IAppPlayer {
   switch (action.type) {
     case ActionTypes.PLAY:
       return playVideo(state, action.payload);
@@ -77,13 +79,16 @@ export function player(state: IAppPlayer = initialPlayerState, action: Actions):
 }
 
 export function playVideo(state: IAppPlayer, media: GoogleApiYoutubeVideo) {
-  return { ...state, mediaId: media.id, media };
+  return { ...state, mediaId: media.id || '', media };
 }
 
 export function toggleVisibility(state: IAppPlayer) {
   return { ...state, showPlayer: !state.showPlayer };
 }
 
-export function changePlayerState(state: IAppPlayer, playerState: YT.PlayerState | any) {
+export function changePlayerState(
+  state: IAppPlayer,
+  playerState: YT.PlayerState | any
+) {
   return { ...state, playerState: playerState };
 }

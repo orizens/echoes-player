@@ -1,3 +1,7 @@
+## v 4.0.1 (2018/10/28)
+
+* [FIX] - fixes #54
+
 ## v 4.0.0 (2018/10/02)
 
 * [UPGRADE] - now running Angular 6, NgRx 6
