@@ -1,17 +1,18 @@
 :host {
   $transparent-bg: rgba(255,255,255, .5);
-  $cover-padding-size: 9rem 0;
   $cover-blur-size: 24rem;
   $cover-blur-value: 5px;
   $cover-blur-scale: 1.2;
   $thumbnail-top: 56px;
+  $z-index-cover-items: 100;
   display: block;
-
+  
   .playlist-cover {
     position: relative;
-    padding: $cover-padding-size;
+    padding-top: 3rem;
     margin-bottom: 1rem;
     overflow: hidden;
+    height: $cover-blur-size - 3;
 
     .cover-bg {
       background-size: cover;
@@ -27,12 +28,7 @@
     }
 
     .playlist-thumbnail {
-      position: absolute;
-      top: $thumbnail-top;
-
-      img {
-        border: 1px solid $transparent-bg;
-      }
+      z-index: $z-index-cover-items;
     }
   
     h4 {
@@ -48,7 +44,7 @@
     }
 
     .actions {
-      transform: translateX(11rem) translateY(9rem);
+      z-index: $z-index-cover-items;
 
       .btn {
         color: white;

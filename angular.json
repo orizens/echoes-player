@@ -17,10 +17,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": ["src/assets", "src/favicon.ico", "src/manifest.json"],
-            "styles": [
-              "node_modules/font-awesome/scss/font-awesome.scss",
-              "src/css/style.scss"
-            ],
+            "styles": ["src/css/style.scss"],
             "scripts": []
           },
           "configurations": {

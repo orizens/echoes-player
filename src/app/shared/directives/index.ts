@@ -1,5 +1,3 @@
-import { IconDirective } from './icon';
+import { IconComponent } from './icon';
 
-export const CORE_DIRECTIVES = [
-  IconDirective
-];
+export const CORE_DIRECTIVES = [IconComponent];

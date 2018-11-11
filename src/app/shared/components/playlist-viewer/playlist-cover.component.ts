@@ -4,15 +4,14 @@ import {
   EventEmitter,
   Input,
   OnInit,
-  Output,
-  ViewEncapsulation
+  Output
 } from '@angular/core';
 
 @Component({
   selector: 'playlist-cover',
   styleUrls: ['./playlist-cover.scss'],
   template: `
-  <div class="playlist-cover clearfix">
+  <div class="playlist-cover is-flex-row is-flex-valign">
     <div class="cover-bg" [ngStyle]="{ 'background-image': 'url(' + thumbUrl + ')' }"></div>
     <div class="btn btn-transparent playlist-thumbnail">
       <img [src]="thumbUrl">
@@ -36,9 +35,9 @@ export class PlaylistCoverComponent implements OnInit {
   @Output() play = new EventEmitter<GoogleApiYouTubePlaylistResource>();
   @Output() queue = new EventEmitter<GoogleApiYouTubePlaylistResource>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   get title() {
     return this.playlist && this.playlist.snippet
@@ -55,6 +54,9 @@ export class PlaylistCoverComponent implements OnInit {
   get thumbUrl() {
     const thumbnails = this.playlist && this.playlist.snippet.thumbnails;
     const sizes = ['default', 'medium'];
-    return sizes.reduce((acc, size) => thumbnails.hasOwnProperty(size) && thumbnails[size].url, '');
+    return sizes.reduce(
+      (acc, size) => thumbnails.hasOwnProperty(size) && thumbnails[size].url,
+      ''
+    );
   }
 }

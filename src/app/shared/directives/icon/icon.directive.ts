@@ -5,27 +5,31 @@ import {
   OnChanges,
   OnInit,
   SimpleChanges,
-  Renderer2
+  Renderer2,
+  Component
 } from '@angular/core';
 import { isNewChange } from '@utils/data.utils';
 
-const ICON_BASE_CLASSNAME = 'fa';
-const ICON_LIB_PREFFIX = 'fa';
-@Directive({
-  selector: 'icon, [appIcon]'
+const ICON_PREFIX_STANDARD = 'fas';
+export const ICON_PREFIX_BRAND = 'fab';
+const ICON_LIB_PREFIX = 'fa';
+@Component({
+  selector: 'icon',
+  template: `<ng-content></ng-content>`
 })
-export class IconDirective implements OnInit, OnChanges {
+export class IconComponent implements OnInit, OnChanges {
   @Input() name = '';
+  @Input() prefix = ICON_PREFIX_STANDARD;
 
   icons = {
-    'fa': true
+    fa: true
   };
 
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
     const { name } = this;
-    let classes = [ICON_BASE_CLASSNAME];
+    let classes = [this.prefix];
     if (name) {
       classes = [...classes, ...this.createIconStyles(name)];
     }
@@ -39,12 +43,10 @@ export class IconDirective implements OnInit, OnChanges {
   }
 
   createIconStyles(names: string): string[] {
-    return names.split(' ')
-      .map(name => `${ICON_LIB_PREFFIX}-${name}`);
+    return names.split(' ').map(name => `${ICON_LIB_PREFIX}-${name}`);
   }
 
   setClasses(names: string[]) {
-    names.forEach(name =>
-      this.renderer.addClass(this.el.nativeElement, name));
+    names.forEach(name => this.renderer.addClass(this.el.nativeElement, name));
   }
 }

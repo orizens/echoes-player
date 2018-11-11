@@ -8,6 +8,7 @@ import {
   HostListener
 } from '@angular/core';
 import { expandFadeInAnimation } from '@shared/animations/fade-in.animation';
+import { ICON_PREFIX_BRAND } from '@shared/directives/icon';
 
 enum Key {
   Backspace = 8,
@@ -20,7 +21,6 @@ enum Key {
   ArrowUp = 38,
   ArrowDown = 40
 }
-
 @Component({
   selector: 'app-navbar-menu',
   animations: [expandFadeInAnimation],
@@ -44,34 +44,38 @@ enum Key {
           </button>
         </div>
         <a class="list-group-item" href="http://github.com/orizens/echoes-player" target="_blank">
-        <icon name="github"></icon> Source Code @Github
+        <icon name="github" prefix="${ICON_PREFIX_BRAND}"></icon> Source Code @Github
         </a>
         <a class="list-group-item" *ngIf="!hide" href="https://travis-ci.org/orizens/echoes-player" target="_blank" rel="noopener">
-        <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
+          <icon name="notes-medical"></icon> <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
         </a>
-        <div class="list-group-item" target="_blank">
-        v.<a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank" rel="noopener">
-        {{ appVersion.semver }}
-        </a>
-        <button *ngIf="!appVersion.isNewAvailable"
-        class="btn btn-info" (click)="handleVersionCheck()">
-        Check For Updates
-        </button>
-        <div *ngIf="appVersion.checkingForVersion" class="text-info">
-        checking for version...
-        </div>
+        <div class="list-group-item menu-version" target="_blank">
+          <section>
+            <icon name="code-branch"></icon>
+            <a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank" rel="noopener">
+              {{ appVersion.semver }}
+            </a>
+          </section>
+          <button *ngIf="!appVersion.isNewAvailable"
+          class="btn btn-info" (click)="handleVersionCheck()">
+          Check For Updates
+          </button>
+          <div *ngIf="appVersion.checkingForVersion" class="text-info">
+          checking for version...
+          </div>
         </div>
         <div class="list-group-item">
-          Theme: <button-group [buttons]="theme.themes" [selectedButton]="theme.selected"
+          <icon name="palette" class="text-primary"></icon> Theme: 
+          <button-group [buttons]="theme.themes" [selectedButton]="theme.selected"
             (buttonClick)="updateTheme($event)"></button-group>
         </div>
         <a class="list-group-item" href="http://orizens.com" rel="noopener" blank="_target">
-        Made with <icon name="heart" class="text-danger"></icon> By Orizens
+          <icon name="hands"></icon> Made with <icon name="heart" class="text-danger"></icon> By Orizens
         </a>
         <button class="list-group-item"
           *ngIf="signedIn"
           (click)="handleSignOut()">
-          <icon name="sign-out"></icon> Sign Out
+          <icon name="sign-out-alt"></icon> Sign Out
         </button>
       </div>
     </div>

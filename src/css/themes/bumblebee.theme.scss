@@ -6,8 +6,8 @@ body.bumblebee {
   --brand-danger: #f13939;
   --brand-info: #00bcd4;
 
-  --sidebar-bg: rgba(18, 22, 24, 0.95);
-  --sidebar-bg-secondary: #080d0f;
+  --sidebar-bg: #080d0f;
+  --sidebar-bg-secondary:rgba(18, 22, 24, 0.95);
   --sidebar-text: white;
   --sidebar-text-lighter: #c9c7c7;
 
@@ -15,7 +15,7 @@ body.bumblebee {
   --brand-primary-lite-bg-color: white;
   --brand-primary-text-color: #fbfbfb;
   --brand-dark-bg-color: #000;
-  --brand-dark-bg-color-transparent: rgba(10, 10, 10, 0.7);
+  --brand-dark-bg-color-transparent: rgba(5, 5, 5, 0.9);
   --brand-bg-lite-transparent: rgb(19, 40, 51);
 
   --link-primary-color: var(--brand-primary);
@@ -32,6 +32,8 @@ body.bumblebee {
   --list-group-item-border: var(--brand-bg-lite-transparent);
 
   --player-controls-bar-bg: var(--navbar-bg-color);
+
+  --media-bg-primary: var(--sidebar-bg-secondary);
 
   --app-bg-color: #0d0f0f;
 }

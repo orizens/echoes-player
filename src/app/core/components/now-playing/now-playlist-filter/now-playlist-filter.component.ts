@@ -24,13 +24,13 @@ import * as NowPlaylist from '@store/now-playlist';
       tooltip="Clear All Tracks In Now Playlist"
       [disabled]="isPlaylistEmpty()"
       (click)="clearPlaylist()">
-      <icon name="trash-o"></icon>
+      <icon name="trash"></icon>
     </button>
     <button class="btn btn-link btn-xs btn-save" title="Save All These Tracks To A New Playlist"
       disabled
       ng-disabled="!nowPlaylistFilter.playlist.length"
       ng-click="nowPlaylistFilter.togglePlaylistSaver()">
-      <icon name="cloud-upload"></icon>
+      <icon name="cloud-upload-alt"></icon>
     </button>
     <div class="playlist-filter">
       <icon name="search" *ngIf="isFilterEmpty()"></icon>
@@ -55,7 +55,7 @@ export class NowPlaylistFilterComponent {
   @Output() reset = new EventEmitter();
   @Output() headerClick = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   handleFilterChange(searchFilter: string) {
     this.filter.next(searchFilter);

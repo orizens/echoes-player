@@ -80,8 +80,7 @@ export const expandFadeInAnimation = trigger('expandFadeIn', [
     'hide',
     style({
       opacity: 0,
-      transform: 'scale(0.4)',
-      top: -2
+      transform: 'scale(0.4)'
     })
   ),
   transition('show => hide', animate('300ms ease-in')),

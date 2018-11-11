@@ -11,7 +11,13 @@ import {
   SimpleChanges
 } from '@angular/core';
 import * as NowPlaylist from '@store/now-playlist';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
 import { flyOut } from '@shared/animations/fade-in.animation';
 import { isNewChange } from '@shared/utils/data.utils';
 
@@ -22,6 +28,13 @@ import { isNewChange } from '@shared/utils/data.utils';
   styleUrls: ['./now-playlist.scss'],
   template: `
   <section class="now-playlist ux-maker">
+    <div *ngIf="isPlaylistEmpty" class="empty-list text-center" [@flyOut]>
+      <icon name="music 4x" class="bg-primary"></icon>
+      <article>
+        <h3 class="text-primary">Playlist Is Empty</h3>
+        <p class="text-primary">Queue Media From Results</p>
+      </article>
+    </div>
     <ul class="nav nav-list ux-maker nicer-ux">
       <li class="now-playlist-track" #playlistTrack
         [ngClass]="{
@@ -55,7 +68,7 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
   public activeTrackElement: HTMLUListElement;
   public hasActiveChanged = false;
 
-  constructor(public zone: NgZone) { }
+  constructor(public zone: NgZone) {}
 
   ngAfterViewChecked() {
     if (this.hasActiveChanged && this.activeTrackElement) {
@@ -97,5 +110,9 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
 
   selectTrackInVideo(trackEvent: { time; media }) {
     this.selectTrack.emit(trackEvent);
+  }
+
+  get isPlaylistEmpty() {
+    return this.playlist.videos.length === 0;
   }
 }

@@ -5,6 +5,7 @@ import {
   Input,
   Output
 } from '@angular/core';
+import { ICON_PREFIX_BRAND } from '@shared/directives/icon';
 
 @Component({
   selector: 'youtube-media',
@@ -22,6 +23,7 @@ export class YoutubeMediaComponent {
 
   showDesc = false;
   isPlaying = false;
+  ICON_PREFIX_BRAND = ICON_PREFIX_BRAND;
 
   constructor() {}
 

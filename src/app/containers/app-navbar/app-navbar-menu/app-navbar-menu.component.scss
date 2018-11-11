@@ -34,6 +34,17 @@
         top: 5rem;
         transform-origin: top right;
       }
+
+      .list-group-item icon {
+        margin-right: 5px;
+      }
+
+      .menu-version {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
     }
     .menu-backdrop {
       position: fixed;

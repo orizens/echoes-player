@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     (click)="toggleSidebar()">
     <section class="brand-text">
       <h3 class="text brand-text-item">Ech</h3>
-      <h3 appIcon name="headphones" class="brand-icon brand-text-item"></h3>
+      <icon name="headphones" class="brand-icon brand-text-item"></icon>
       <h3 class="text brand-text-item">es</h3>
     </section>
     <button class="btn btn-transparent sidebar-toggle">
@@ -19,8 +19,8 @@ import { Component, OnInit } from '@angular/core';
   `
 })
 export class AppBrandComponent implements OnInit {
-  constructor(private appApi: AppApi) { }
-  ngOnInit() { }
+  constructor(private appApi: AppApi) {}
+  ngOnInit() {}
 
   toggleSidebar() {
     return this.appApi.toggleSidebar();

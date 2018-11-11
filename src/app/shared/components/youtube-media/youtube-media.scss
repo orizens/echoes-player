@@ -4,7 +4,6 @@
 @media (min-width: 320px) {
   :host {
     --media-primary-color: var(--brand-primary);
-    --media-bg-primary: var(--brand-bg-lite-transparent);
     --media-dark-transparent: var(--brand-dark-bg-color-transparent);
     --text-color: var(--brand-primary-text-color);
     --text-primary-color-inverse: var(--brand-inverse-text);
@@ -84,7 +83,7 @@
             &.item-likes {
               margin-right: 0.5rem;
             }
-            .fa {
+            .fas {
               color: $bg-description;
             }
           }

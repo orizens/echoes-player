@@ -20,7 +20,7 @@
         flex-direction: row;
 
         .brand-text-item {
-          margin: 0;
+          margin: 0 2px;
           transition: flex, opacity 0.3s ease-in;
           line-height: $brand-icon-line-height;
         }
