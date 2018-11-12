@@ -1,3 +1,10 @@
+## v 4.1.0 (2018/11/12) (codename: farhi-44)
+
+* [NEW] - upgraded to font awesome 5
+* [NEW] - visual indicator for an empty playlist in now playlist panel
+* [UPGRADE] - themes updated
+* [UPGRADE] - now playlist tracks design
+
 ## v 4.0.1 (2018/10/28)
 
 * [FIX] - fixes #54
