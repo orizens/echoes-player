@@ -44,10 +44,11 @@
         padding-left: 5px;
 
         input {
-          background: var(--filter-darker-bg);
+          background: transparent;
           border: none;
           padding: 0 3px;
           margin-bottom: 0;
+          color: var(--brand-inverse-text);
         }
       }
     }

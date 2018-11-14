@@ -1,0 +1,31 @@
+body.twilight {
+  --brand-primary: #020202;
+  --brand-secondary: #9a5a42;
+  --brand-success: #2ecc71;
+  --brand-warning: #f18f0f;
+  --brand-danger: black;
+  --brand-info: #869c69;
+  --sidebar-bg: #d70035;
+  --sidebar-bg-secondary: rgba(0, 0, 0, 0.51);
+  --sidebar-text: #000000;
+  --sidebar-text-lighter: #ffffff;
+  --brand-inverse-text: #fdfdfd;
+  --brand-primary-lite-bg-color: white;
+  --brand-primary-text-color: #fbfbfb;
+  --brand-dark-bg-color: #000;
+  --brand-dark-bg-color-transparent: rgba(5, 5, 5, 0.9);
+  --brand-bg-lite-transparent: #132833;
+  --link-primary-color: #f70000;
+  --link-primary-hover-color: #ffffff;
+  --navbar-bg-color: rgba(216, 0, 54, 0.76);
+  --navbar-text-color: #000000;
+  --navbar-link-color: #ea002e;
+  --list-group-item-text: #ea002e;
+  --list-group-item-text-hover: var(--sidebar-text);
+  --list-group-item-bg: rgba(22, 22, 23, 0.95);
+  --list-group-item-bg-hover: #ea002e;
+  --list-group-item-border: #000000;
+  --player-controls-bar-bg: var(--navbar-bg-color);
+  --media-bg-primary: var(--sidebar-bg-secondary);
+  --app-bg-color: #d80036;
+}

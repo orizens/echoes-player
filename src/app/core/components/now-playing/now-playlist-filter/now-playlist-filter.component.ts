@@ -34,7 +34,7 @@ import * as NowPlaylist from '@store/now-playlist';
     </button>
     <div class="playlist-filter">
       <icon name="search" *ngIf="isFilterEmpty()"></icon>
-      <icon name="remove" class="text-danger"
+      <icon name="times" class="text-danger"
         *ngIf="!isFilterEmpty()"
         (click)="resetSearchFilter()"
       ></icon>
