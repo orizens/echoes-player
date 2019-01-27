@@ -63,7 +63,7 @@ export class PlayerControlsComponent {
     },
     {
       title: 'repeate playlist',
-      icon: 'refresh',
+      icon: 'sync-alt',
       handler: this.handleRepeat,
       feature: 'repeat'
     }
