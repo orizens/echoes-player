@@ -1,12 +1,13 @@
 import { browser, element, by } from 'protractor';
+import { protractor } from 'protractor';
 
 export class EchoesPlayerPage {
-  navigateTo() {
-    return browser.get('/');
+  async navigateTo() {
+    return await browser.get('/');
   }
 
-  getTitle() {
-    return browser.getTitle();
+  async getTitle() {
+    return await browser.getTitle();
   }
 
   getTitleInput() {
@@ -14,10 +15,13 @@ export class EchoesPlayerPage {
   }
 
   getVideoResults() {
-    return element.all(by.css('youtube-videos youtube-list .youtube-list-item'));
+    return element.all(
+      by.css('youtube-videos youtube-list .youtube-list-item')
+    );
   }
 
-  // getTalkText(index: number) {
-  //   return this.getTalks().get(index).getText();
-  // }
+  async searchFor(query: string) {
+    await element(by.css('.form-search input')).sendKeys(query);
+    return await element(by.css('.form-search .btn-submit')).click();
+  }
 }
