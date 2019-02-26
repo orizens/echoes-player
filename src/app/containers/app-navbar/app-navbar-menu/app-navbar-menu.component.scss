@@ -3,7 +3,7 @@
 @media (min-width: 320px) {
   :host {
     .btn-toggle {
-      padding: 1rem 1.5rem;
+      padding: 1rem;
       font-size: 2rem;
       color: var(--navbar-text-color);
 
@@ -40,11 +40,20 @@
         margin-right: 5px;
       }
 
+      .navbar-action-link {
+        display: block;
+      }
+
       .menu-version {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+      }
+
+      icon {
+        font-size: 2em;
+        vertical-align: middle;
       }
     }
     .menu-backdrop {

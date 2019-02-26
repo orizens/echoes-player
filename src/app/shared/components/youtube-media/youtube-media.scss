@@ -83,7 +83,7 @@
             &.item-likes {
               margin-right: 0.5rem;
             }
-            .fas {
+            icon {
               color: $bg-description;
             }
           }
@@ -105,9 +105,13 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        background: var(--media-primary-color);
-        color: var(--text-primary-color-inverse);
+        // background: var(--media-primary-color);
+        // color: var(--text-primary-color-inverse);
         border: none;
+
+        &:hover {
+          color: inherit;
+        }
       }
 
       .item-is-playing {

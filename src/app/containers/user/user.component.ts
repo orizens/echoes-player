@@ -13,7 +13,7 @@ import { AppApi } from '@api/app.api';
   <article>
     <app-navbar
       [header]="'My Profile - My Playlists'"
-      [headerIcon]="'heart'"
+      [headerIcon]="'heart-o'"
     ></app-navbar>
     <p *ngIf="!(isSignedIn$ | async)" class="well lead">
       To view your playlists in youtube, you need to sign in.

@@ -10,8 +10,8 @@
     $track-badge-index: 10;
     $track-button: 15;
     $track-border-color: #262829;
-    $remove-font-size: 1.5rem;
-    $playlist-font-size: 1.3rem;
+    $remove-font-size: 2rem;
+    $playlist-font-size: 2rem;
 
     .now-playlist-track__trigger {
       text-shadow: none;
@@ -48,8 +48,8 @@
 
     .track-actions {
       position: absolute;
-      top: 5rem;
-      right: 1rem;
+      top: 7rem;
+      right: 0;
     }
 
     .track-info {
@@ -135,7 +135,7 @@
     }
     &:hover {
       .remove-track {
-        transform: translatex(-1rem);
+        transform: translatex(0rem);
       }
     }
 

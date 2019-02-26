@@ -25,7 +25,7 @@ enum Key {
   selector: 'app-navbar-menu',
   animations: [expandFadeInAnimation],
   template: `
-    <button class="btn btn-navbar btn-link ux-maker btn-toggle"
+    <button class="btn btn-navbar btn-transparent ux-maker btn-toggle"
       (click)="toggleMenu()">
       <icon name="ellipsis-v"></icon>
       <icon *ngIf="appVersion.isNewAvailable" name="dot-circle-o" class="pulse update-indicator text-primary"></icon>
@@ -47,11 +47,11 @@ enum Key {
         <icon name="github" prefix="${ICON_PREFIX_BRAND}"></icon> Source Code @Github
         </a>
         <a class="list-group-item" *ngIf="!hide" href="https://travis-ci.org/orizens/echoes-player" target="_blank" rel="noopener">
-          <icon name="notes-medical"></icon> <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
+          <icon name="medkit"></icon> <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
         </a>
         <div class="list-group-item menu-version" target="_blank">
           <section>
-            <icon name="code-branch"></icon>
+            <icon name="code-fork"></icon>
             <a href="https://github.com/orizens/echoes-player/blob/master/CHANGELOG.md" target="_blank" rel="noopener">
               {{ appVersion.semver }}
             </a>
@@ -65,17 +65,20 @@ enum Key {
           </div>
         </div>
         <div class="list-group-item">
-          <icon name="palette" class="text-primary"></icon> Theme: 
+          <icon name="paint-brush" class="text-primary"></icon> Theme: 
           <button-group [buttons]="theme.themes" [selectedButton]="theme.selected"
             (buttonClick)="updateTheme($event)"></button-group>
         </div>
         <a class="list-group-item" href="http://orizens.com" rel="noopener" blank="_target">
-          <icon name="hands"></icon> Made with <icon name="heart" class="text-danger"></icon> By Orizens
+          <icon name="keyboard-o"></icon> Made with <icon name="heart-o" class="text-danger"></icon> By Orizens
+        </a>
+        <a class="list-group-item navbar-action-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdzGRIXoHuzRFZU03EyhgwBJgJp6W1LMatz6Bn44L-5SyuxZA/viewform" target="_blank" rel="noopener">
+          <icon name="star-o"></icon> Request New Features
         </a>
         <button class="list-group-item"
           *ngIf="signedIn"
           (click)="handleSignOut()">
-          <icon name="sign-out-alt"></icon> Sign Out
+          <icon name="sign-out"></icon> Sign Out
         </button>
       </div>
     </div>

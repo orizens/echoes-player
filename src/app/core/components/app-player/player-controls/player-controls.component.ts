@@ -11,10 +11,10 @@ import {
   selector: 'player-controls',
   styleUrls: ['./player-controls.scss'],
   template: `
-  <div class="btn-group player-controls">
+  <div class="btn-group player-controls is-flex-row">
     <button *ngFor="let control of controls"
       [title]="control.title"
-      class="btn btn-default btn-lg navbar-btn"
+      class="btn btn-default btn-lg"
       [ngClass]="[control.feature]"
       (click)="handleControl(control)">
       <icon [name]="control.icon"></icon>
@@ -62,8 +62,8 @@ export class PlayerControlsComponent {
       feature: 'next'
     },
     {
-      title: 'repeate playlist',
-      icon: 'sync-alt',
+      title: 'repeat playlist',
+      icon: 'repeat',
       handler: this.handleRepeat,
       feature: 'repeat'
     }

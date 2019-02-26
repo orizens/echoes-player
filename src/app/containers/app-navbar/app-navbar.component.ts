@@ -30,9 +30,6 @@ import { AppApi } from '@api/app.api';
           <ng-content></ng-content>
         </div>
         <section class="navbar-text navbar-actions">
-          <a class="navbar-action-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdzGRIXoHuzRFZU03EyhgwBJgJp6W1LMatz6Bn44L-5SyuxZA/viewform" target="_blank" rel="noopener">
-            <icon name="star"></icon> Request New Features
-          </a>
           <app-navbar-user
             [signedIn]="isSignIn()"
             [userImageUrl]="(user$ | async).profile.imageUrl"

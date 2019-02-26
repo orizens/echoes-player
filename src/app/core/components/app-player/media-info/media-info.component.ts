@@ -15,11 +15,12 @@ import { MediaParserService } from '../../../../core/services';
   styleUrls: ['./media-info.scss'],
   template: `
   <article class="media-info is-flex-row is-flex-valign">
-    <aside class="media-thumb-container pull-left"
+    <aside class="media-thumb-container"
     title="maximize / minimize"
     (click)="handleThumbClick()">
-      <img class="media-thumb" src="{{ player?.media?.snippet?.thumbnails?.default?.url }}">
-      <icon name="arrows-alt" [class.invisible]="_minimized"></icon>
+      <img class="media-thumb" *ngIf="player.media.snippet.thumbnails" [src]="player?.media?.snippet?.thumbnails?.default?.url">
+      <icon name="code 2x" *ngIf="!player.media.snippet.thumbnails"></icon>
+      <icon name="arrows-alt" [class.invisible]="_minimized" class="minimize-icon"></icon>
     </aside>
     <a class="title ellipsis">{{ player?.media?.snippet?.title }}</a>
     <article class="track-info" [ngClass]="{ 'show-info': displayInfo }">
@@ -39,7 +40,7 @@ import { MediaParserService } from '../../../../core/services';
         </button>
       </div>
     </article>
-    <button class="label label-info more-info-btn" (click)="toggleInfo()">
+    <button class="btn btn-transparent text-info more-info-btn" (click)="toggleInfo()">
       <icon name="info-circle 2x"></icon>
     </button>
   </article>

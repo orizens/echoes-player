@@ -1,17 +1,9 @@
 import {
-  Jsonp,
-  Response,
-  URLSearchParams,
-  RequestOptionsArgs
-} from '@angular/http';
-import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
-  NgZone,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
   ViewChild,
@@ -30,7 +22,7 @@ import { Subscription } from 'rxjs';
     <form class="navbar-form form-search" id="media-explorer"
       [formGroup]="searchForm"
       >
-      <div class="form-group clearfix">
+      <div class="form-group clearfix is-flex-row">
         <input placeholder="Find My Echoes..." id="media-search"
           #mediaSearch
           ngxTypeahead
@@ -50,7 +42,6 @@ import { Subscription } from 'rxjs';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-// (input)="onQueryChange()"
 export class PlayerSearchComponent implements OnChanges, OnDestroy {
   @Input() query;
   @Output() queryChange = new EventEmitter<string>();

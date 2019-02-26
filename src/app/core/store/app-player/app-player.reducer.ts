@@ -22,7 +22,7 @@ export interface IAppPlayer {
 const initialPlayerState: IAppPlayer = {
   index: 0,
   media: {
-    snippet: { title: 'No Media Yet' }
+    snippet: { title: 'No Media Yet', thumbnails: { default: { url: '' } } }
   },
   showPlayer: true,
   playerState: 0,
