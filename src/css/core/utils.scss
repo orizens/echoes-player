@@ -52,28 +52,31 @@ select {
   box-shadow: none;
 }
 .bg-primary {
-  background-color: var(--brand-primary);
+  background-color: var(--brand-primary) !important;
 }
 .bg-secondary {
-  background-color: var(--brand-secondary);
+  background-color: var(--brand-secondary) !important;
 }
 .text-primary {
-  color: var(--brand-primary);
+  color: var(--brand-primary) !important;
 }
 .text-secondary {
   color: var(--brand-secondary);
 }
 .text-info {
-  color: var(--brand-info);
+  color: var(--brand-info) !important;
+}
+.text-danger {
+  color: var(--brand-danger) !important;
 }
 .label-danger {
-  background-color: var(--brand-danger);
+  background-color: var(--brand-danger) !important;
 }
 .label-info {
-  background-color: var(--brand-info);
+  background-color: var(--brand-info) !important;
 }
 .label-success {
-  background-color: var(--brand-success);
+  background-color: var(--brand-success) !important;
 }
 
 // BUTTONS
@@ -97,12 +100,12 @@ select {
 }
 .is-flex-row {
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
 }
 
 .is-flex-column {
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
 }
 .is-flex-valign {
   align-items: center;
@@ -115,6 +118,11 @@ select {
 }
 .is-justify-right {
   justify-content: flex-end;
+}
+@for $size from 1 to 5 {
+  .is-flex-#{$size} {
+    flex: $size;
+  }
 }
 // border-radius
 .is-rounded-top {
@@ -141,24 +149,24 @@ select {
 
 // font-size
 .text-md {
-  font-size: 2rem;
+  font-size: 2rem !important;
 }
 
 // layout utils
 .no-padding {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .no-margins {
-  margin: 0;
+  margin: 0 !important;
 }
 
 .is-media-valign {
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 
 .is-absolute {
-  position: absolute;
+  position: absolute !important;
 }
 
 .is-absolute-bottom {

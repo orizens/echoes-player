@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import { isNewChange } from '@utils/data.utils';
 
-const ICON_PREFIX_STANDARD = 'fas';
-export const ICON_PREFIX_BRAND = 'fab';
+const ICON_PREFIX_STANDARD = 'fa';
+export const ICON_PREFIX_BRAND = 'fa';
 const ICON_LIB_PREFIX = 'fa';
 @Component({
   selector: 'icon',

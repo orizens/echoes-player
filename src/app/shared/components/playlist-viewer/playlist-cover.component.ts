@@ -16,7 +16,7 @@ import {
     <div class="btn btn-transparent playlist-thumbnail">
       <img [src]="thumbUrl">
     </div>
-    <div class="actions">
+    <div class="actions is-flex-2">
       <button class="btn btn-lg ux-maker play-media bg-primary"
         (click)="play.emit(playlist)" title="play playlist">
         <icon name="play"></icon>

@@ -22,12 +22,12 @@
           <img
             name
             class="thumb-image"
-            src="{{ media | videoToThumb }}">
+            [src]="media | videoToThumb">
         </div>
 
         <section class="stats is-absolute-bottom is-flex-row">
           <span class="item-duration item-action">
-						<icon name="clock"></icon> {{ media.contentDetails?.duration | toFriendlyDuration }}
+						<icon name="clock-o"></icon> {{ media.contentDetails?.duration | toFriendlyDuration }}
 					</span>
 
           <span
@@ -45,8 +45,8 @@
 					</span>
         </section>
 
-        <button class="btn btn-default btn-lg ux-maker play-media">
-          <icon name="play"></icon>
+        <button class="btn btn-transparent text-primary btn-lg ux-maker play-media">
+          <icon name="youtube-play 3x"></icon>
         </button>
       </div>
 
@@ -63,7 +63,7 @@
         <section class="media-actions is-flex-row is-flex-valign">
           <button
             *ngIf="!queued"
-            class="btn btn-info first-action"
+            class="btn btn-transparent text-info first-action"
             tooltip="Queue this video to now playlist"
             (click)="queueVideo(media)">
             <icon name="reply"></icon>
@@ -71,7 +71,7 @@
           </button>
           <button
             *ngIf="queued"
-            class="btn btn-danger"
+            class="btn btn-transparent text-danger no-padding"
             tooltip="Queue this video to now playlist"
             (click)="removeVideoFromQueue(media)">
             <icon name="trash"></icon>

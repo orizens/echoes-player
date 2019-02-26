@@ -45,6 +45,8 @@
 
     .actions {
       z-index: $z-index-cover-items;
+      align-self: flex-end;
+      text-align: left;
 
       .btn {
         color: white;

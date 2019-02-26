@@ -1,6 +1,5 @@
 @import '~css/echoes-variables.scss';
 
-
 @media (min-width: 320px) {
 	:host {
 		--media-title-text-color: var(--brand-primary);
@@ -10,6 +9,9 @@
 
 		line-height: 1.5rem;
 		z-index: 100;
+		display: flex;
+    flex-direction: column;
+    justify-content: center;
 
 		.media-info {
 			color: var(--media-title-text-color);
@@ -19,13 +21,12 @@
 
 			.media-thumb-container {
 				position: relative;
-				// margin-right: 1rem;
 				cursor: pointer;
 
 				.media-thumb {
 					height: $line-height;
 				}
-				.fas {
+				.minimize-icon {
 					position: absolute;
 					right: 0;
 					bottom: 0;
@@ -44,6 +45,11 @@
 			.more-info-btn {
 				max-height: 30px;
 				border: none;
+
+				&:hover {
+					box-shadow: none;
+					opacity: .5;
+				}
 			}
 
 			.track-info {

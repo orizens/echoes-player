@@ -31,22 +31,22 @@ import { flyOut, flyInOut } from '@shared/animations/fade-in.animation';
       </div>
     <aside class="playlist-track__content">
       <section class="track-actions">
-        <button class="btn label btn-primary playlist-track"
+        <button class="btn btn-transparent text-primary playlist-track"
           *ngIf="isPlaylistMedia(video)"
           (click)="handleToggleTracks($event, video)"
           tooltip="Album Track - click to select cued tracks">
           <icon name="list-ul"></icon>
         </button>
-        <button class="btn label btn-info playlist-track"
+        <button class="btn btn-transparent text-info playlist-track"
           (click)="toggleInfo()"
           tooltip="More information for this media">
           <icon name="info-circle"></icon>
         </button>
       </section>
-      <span class="label label-danger ux-maker remove-track" tooltip="Remove From Playlist"
+      <button class="btn btn-transparent text-danger ux-maker remove-track" tooltip="Remove From Playlist"
         (click)="remove.emit(video)">
         <icon name="trash"></icon>
-      </span>
+      </button>
     </aside>
     <article [@flyInOut] *ngIf="displayTracks" class="track-tracks list-group">
       <aside class="album-tracks-heading">Tracks</aside>

@@ -52,7 +52,7 @@
           margin-right: 7px;
           line-height: $navbar-new-height;
 
-          .fas {
+          icon {
             margin-right: 10px;
           }
 
@@ -112,11 +112,6 @@
     .navbar-actions {
       position: relative;
       flex-direction: row;
-
-      .navbar-action-link {
-        display: block;
-        padding: 1rem;
-      }
     }
   }
 

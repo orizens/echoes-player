@@ -4,6 +4,7 @@
 	$input-search-box-height: $input-height-base;
 	$input-search-box-width: 25rem;
 	$form-bg-color: $input-bg;
+	$input-font-size: $input-font-size-huge;
 
 	player-search {
 		display: inline-block;
@@ -14,11 +15,8 @@
 			border: 0;
 
 			.btn-submit {
-				position: absolute;
-				right: 0rem;
-				top: 0;
-				padding: 0.4rem 1rem 0.7rem 1rem;
 				color: $navbar-default-link-active-color;
+				font-size: 1.5rem;
 			}
 
 			.dropdown-menu {
@@ -47,6 +45,7 @@
 				height: $input-search-box-height;
 				border: none;
 				box-shadow: none;
+				font-size: $input-font-size;
 			}
 		}
 
@@ -73,11 +72,6 @@
 		.form-search {
 			input.form-control {
 				display: inline-block;
-			}
-			.btn-submit {
-				position: relative;
-				top: 0;
-				right: auto;
 			}
 		}
 	}

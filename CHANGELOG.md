@@ -1,3 +1,7 @@
+## v 4.1.1 (2019/02/26) (codename: maya-1)
+
+* [NEW] - icon overhaul - now using line-awesome
+
 ## v 4.1.0 (2018/11/12) (codename: farhi-44)
 
 * [NEW] - upgraded to font awesome 5
