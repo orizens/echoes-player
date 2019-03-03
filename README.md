@@ -15,7 +15,7 @@ It can be regarded as the Media Player experience for youtube listening pleasure
 
 <p align="center">
   <a href="http://echoesplayer.com" target="_blank">
-    <img src="https://user-images.githubusercontent.com/878660/30917366-7ffe7ba2-a3a4-11e7-89ab-e85f4b761bcb.png" alt="Webpack, Angular, ngrx, bootstrap" width="75%"/>
+    <img src="https://user-images.githubusercontent.com/878660/53698116-72b76d80-3da6-11e9-82be-f185c1951cf9.png" alt="Webpack, Angular, ngrx, bootstrap" width="75%"/>
   </a>
 </p>
 
