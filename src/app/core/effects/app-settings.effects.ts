@@ -1,11 +1,8 @@
-import { NowPlaylistService } from '@core/services';
 import { Store } from '@ngrx/store';
 import { EchoesState } from '@store/reducers';
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { toPayload } from '@utils/data.utils';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import * as fromAppLayout from '@store/app-layout';
@@ -20,12 +17,14 @@ export class AppSettingsEffects {
   ) {}
 
   @Effect({ dispatch: false })
-  updateAppVersion$ = this.actions$
-    .ofType(fromAppLayout.ActionTypes.APP_UPDATE_VERSION)
-    .pipe(map(() => this.versionCheckerService.updateVersion()));
+  updateAppVersion$ = this.actions$.pipe(
+    ofType(fromAppLayout.ActionTypes.APP_UPDATE_VERSION),
+    map(() => this.versionCheckerService.updateVersion())
+  );
 
   @Effect({ dispatch: false })
-  checkForNewAppVersion$ = this.actions$
-    .ofType(fromAppLayout.ActionTypes.APP_CHECK_VERSION)
-    .pipe(map(() => this.versionCheckerService.checkForVersion()));
+  checkForNewAppVersion$ = this.actions$.pipe(
+    ofType(fromAppLayout.ActionTypes.APP_CHECK_VERSION),
+    map(() => this.versionCheckerService.checkForVersion())
+  );
 }

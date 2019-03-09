@@ -22,7 +22,7 @@ import { MediaParserService } from '../../../../core/services';
       <icon name="code 2x" *ngIf="!player.media.snippet.thumbnails"></icon>
       <icon name="arrows-alt" [class.invisible]="_minimized" class="minimize-icon"></icon>
     </aside>
-    <a class="title ellipsis">{{ player?.media?.snippet?.title }}</a>
+    <section class="title ellipsis">{{ player?.media?.snippet?.title }}</section>
     <article class="track-info" [ngClass]="{ 'show-info': displayInfo }">
       <nav class="is-flex-row is-justify-right is-sticky">
         <button (click)="toggleInfo()" class="btn btn-default">

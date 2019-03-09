@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store';
 
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { UserProfileActions } from '@store/user-profile';
 import * as PlayerSearch from '@store/player-search';
 import { ActionTypes } from '@store/app-player';
@@ -20,24 +20,27 @@ export class AnalyticsEffects {
   ) {}
 
   @Effect({ dispatch: false })
-  trackToken$ = this.actions$
-    .ofType(UserProfileActions.USER_PROFILE_RECIEVED)
-    .pipe(map(toPayload), tap(() => this.analytics.trackSignin()));
+  trackToken$ = this.actions$.pipe(
+    ofType(UserProfileActions.USER_PROFILE_RECIEVED),
+    map(toPayload),
+    tap(() => this.analytics.trackSignin())
+  );
 
   @Effect({ dispatch: false })
-  trackSearch$ = this.actions$
-    .ofType(
+  trackSearch$ = this.actions$.pipe(
+    ofType(
       PlayerSearch.PlayerSearchActions.SEARCH_NEW_QUERY,
       PlayerSearch.PlayerSearchActions.SEARCH_MORE_FOR_QUERY
-    )
-    .pipe(
-      map(toPayload),
-      withLatestFrom(this.store.select(PlayerSearch.getSearchType)),
-      tap((states: any[]) => this.analytics.trackSearch(states[1].presets))
-    );
+    ),
+    map(toPayload),
+    withLatestFrom(this.store.select(PlayerSearch.getSearchType)),
+    tap((states: any[]) => this.analytics.trackSearch(states[1].presets))
+  );
 
   @Effect({ dispatch: false })
-  trackPlay$ = this.actions$
-    .ofType(ActionTypes.PLAY_STARTED)
-    .pipe(map(toPayload), tap(() => this.analytics.trackVideoPlay()));
+  trackPlay$ = this.actions$.pipe(
+    ofType(ActionTypes.PLAY_STARTED),
+    map(toPayload),
+    tap(() => this.analytics.trackVideoPlay())
+  );
 }

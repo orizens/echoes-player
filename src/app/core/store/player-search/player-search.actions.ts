@@ -2,6 +2,27 @@ import { Injectable } from '@angular/core';
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 import { Action } from '@ngrx/store';
 
+export enum ActionTypes {
+  ADD = '[Videos] ADD',
+  SET_SELECTED_VIDEO = '[Videos] SET_SELECTED_VIDEO',
+  UPDATE_FILTER = '[PlayerSearch] UPDATE_FILTER',
+  UPDATE_QUERY_PARAM = '[PlayerSearch] UPDATE_QUERY_PARAM',
+  UPDATE_QUERY = '[PlayerSearch] UPDATE_QUERY',
+  SEARCH_NEW_QUERY = '[PlayerSearch] SEARCH_NEW_QUERY',
+  SEARCH_MORE_FOR_QUERY = '[PlayerSearch] SEARCH_MORE_FOR_QUERY',
+  GET_SUGGESTIONS = '[PlayerSearch] GET_SUGGESTIONS',
+  RESET_PAGE_TOKEN = '[PlayerSearch] RESET_PAGE_TOKEN',
+  SEARCH_RESULTS_RETURNED = '[PlayerSearch] SERACH_RESULTS_RETURNED',
+  SEARCH_CURRENT_QUERY = '[PlayerSearch] SEARCH_CURRENT_QUERY',
+  SEARCH_STARTED = '[PlayerSearch] SEARCH_STARTED',
+  SEARCH_TYPE_UPDATE = '[PlayerSearch] SEARCH_TYPE_UPDATE',
+  ADD_PLAYLISTS_TO_RESULTS = '[PlayerSearch] ADD_PLAYLISTS_TO_RESULTS',
+  ADD_METADATA_TO_VIDEOS = '[PlayerSearch] ADD_METADATA_TO_VIDEOS',
+  PLAYLISTS_SEARCH_START = '[PlayerSearch] PLAYLISTS_SEARCH_START',
+  ADD_RESULTS = '[PlayerSearch] ADD_RESULTS',
+  RESET_RESULTS = '[PlayerSearch] RESET_RESULTS',
+  ERROR_RESULTS = '[PlayerSearch] ERROR_RESULTS'
+}
 @Injectable()
 export class PlayerSearchActions {
   // @ActionCreator({

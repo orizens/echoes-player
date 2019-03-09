@@ -28,13 +28,14 @@ const initialState: IPlayerSearch = {
   isSearching: false,
   results: []
 };
-interface UnsafeAction extends Action {
+interface UnsafeAction {
   payload: any;
+  type?: any;
 }
 
 export function search(
   state: IPlayerSearch = initialState,
-  action: UnsafeAction
+  action: any
 ): IPlayerSearch {
   switch (action.type) {
     case PlayerSearchActions.UPDATE_QUERY: {
