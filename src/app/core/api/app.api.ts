@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 import { EchoesState } from '@store/reducers';
 
 // Actions
-import * as AppLayout from '@store/app-layout';
+import * as AppCore from '@store/app-core';
 import * as RouterActions from '@store/router-store';
 import * as UserActions from '@store/user-profile';
 
 @Injectable()
 export class AppApi {
-  themes$ = this.store.select(AppLayout.getAppThemes);
-  appVersion$ = this.store.select(AppLayout.getAppVersion);
+  themes$ = this.store.select(AppCore.getAppThemes);
+  appVersion$ = this.store.select(AppCore.getAppVersion);
   user$ = this.store.select(UserActions.getUser);
 
   constructor(private store: Store<EchoesState>) {}
 
   toggleSidebar() {
-    this.store.dispatch(new AppLayout.ToggleSidebar());
+    this.store.dispatch(new AppCore.ToggleSidebar());
   }
 
   navigateBack() {
@@ -24,23 +24,23 @@ export class AppApi {
   }
 
   updateVersion() {
-    this.store.dispatch(new AppLayout.UpdateAppVersion());
+    this.store.dispatch(new AppCore.UpdateAppVersion());
   }
 
   checkVersion() {
-    this.store.dispatch(new AppLayout.CheckVersion());
+    this.store.dispatch(new AppCore.CheckVersion());
   }
 
   changeTheme(theme: string) {
-    this.store.dispatch(new AppLayout.ThemeChange(theme));
+    this.store.dispatch(new AppCore.ThemeChange(theme));
   }
 
   notifyNewVersion(response) {
-    this.store.dispatch(new AppLayout.RecievedAppVersion(response));
+    this.store.dispatch(new AppCore.RecievedAppVersion(response));
   }
 
   recievedNewVersion(response) {
-    this.store.dispatch(new AppLayout.RecievedAppVersion(response));
+    this.store.dispatch(new AppCore.RecievedAppVersion(response));
   }
 
   // AUTHORIZATION
@@ -54,5 +54,9 @@ export class AppApi {
 
   checkUserAuth() {
     this.store.dispatch(new UserActions.CheckUserAuth());
+  }
+
+  notifyError(error) {
+    this.store.dispatch(new AppCore.AddError(error));
   }
 }

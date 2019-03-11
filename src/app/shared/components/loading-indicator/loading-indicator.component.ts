@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input
+} from '@angular/core';
 
 @Component({
   selector: 'loader',

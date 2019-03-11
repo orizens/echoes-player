@@ -1,3 +1,8 @@
+## v 4.2.0 (2019/03/15)
+
+* [UPGRADE] - upgraded to Angular 7
+* [NEW] - added toast for errors (error handler)
+
 ## v 4.1.1 (2019/02/26) (codename: maya-1)
 
 * [NEW] - icon overhaul - now using line-awesome

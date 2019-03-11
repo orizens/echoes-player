@@ -57,6 +57,9 @@ select {
 .bg-secondary {
   background-color: var(--brand-secondary) !important;
 }
+.bg-danger {
+  background-color: var(--brand-danger) !important;
+}
 .text-primary {
   color: var(--brand-primary) !important;
 }
@@ -188,4 +191,7 @@ select {
 .is-sticky {
   position: sticky;
   top: 0;
+}
+.is-fixed {
+  position: fixed;
 }

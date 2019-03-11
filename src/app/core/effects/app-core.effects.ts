@@ -5,11 +5,11 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 
 import { map } from 'rxjs/operators';
 
-import * as fromAppLayout from '@store/app-layout';
+import * as fromAppCore from '@store/app-core';
 import { VersionCheckerService } from '@core/services/version-checker.service';
 
 @Injectable()
-export class AppSettingsEffects {
+export class AppCoreEffects {
   constructor(
     public actions$: Actions,
     public store: Store<EchoesState>,
@@ -18,13 +18,13 @@ export class AppSettingsEffects {
 
   @Effect({ dispatch: false })
   updateAppVersion$ = this.actions$.pipe(
-    ofType(fromAppLayout.ActionTypes.APP_UPDATE_VERSION),
+    ofType(fromAppCore.ActionTypes.APP_UPDATE_VERSION),
     map(() => this.versionCheckerService.updateVersion())
   );
 
   @Effect({ dispatch: false })
   checkForNewAppVersion$ = this.actions$.pipe(
-    ofType(fromAppLayout.ActionTypes.APP_CHECK_VERSION),
+    ofType(fromAppCore.ActionTypes.APP_CHECK_VERSION),
     map(() => this.versionCheckerService.checkForVersion())
   );
 }

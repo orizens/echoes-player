@@ -2,7 +2,7 @@ import { Store, select } from '@ngrx/store';
 import { VersionCheckerService } from './core/services/version-checker.service';
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { EchoesState } from '@store/reducers';
-import { getSidebarCollapsed, getAppTheme } from '@store/app-layout';
+import { getSidebarCollapsed, getAppTheme } from '@store/app-core';
 import { AppApi } from '@core/api/app.api';
 
 @Component({
@@ -18,11 +18,11 @@ export class AppComponent implements OnInit {
 
   constructor(
     private store: Store<EchoesState>,
-    private versionCheckerService: VersionCheckerService,
-    private appApi: AppApi
+    private appApi: AppApi,
+    private versionCheckerService: VersionCheckerService
   ) {
-    versionCheckerService.start();
-    appApi.checkUserAuth();
+    this.versionCheckerService.start();
+    this.appApi.checkUserAuth();
   }
 
   ngOnInit() {
