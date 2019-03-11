@@ -3,7 +3,7 @@ import { ActionTypes, Action } from './app-core.actions';
 import { Themes, DEFAULT_THEME } from '../../../app.themes';
 
 export enum ErrorActions {
-  RELOAD = 'reload',
+  RELOAD = 'Reload',
   NONE = 0
 }
 export interface IAppVersion {
