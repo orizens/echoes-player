@@ -7,6 +7,10 @@ export enum ErrorActions {
   NONE = 0,
   RESET = 1
 }
+export enum ErrorMessages {
+  OFFLINE = 'No Connection Available',
+  RESPONSE_ERROR = 'Error With Providing Response'
+}
 export interface IAppVersion {
   semver: string;
   isNewAvailable: boolean;
