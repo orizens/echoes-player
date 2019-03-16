@@ -20,24 +20,26 @@ export class AppHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const onLine = navigator.onLine;
     if (!onLine) {
-      this.errorHandler.handleError({
-        message: ErrorMessages.OFFLINE
-      } as Error);
+      this.handleError(ErrorMessages.OFFLINE);
       return EMPTY;
     }
     return next.handle(req).pipe(
       tap(
         event => {},
         err => {
-          this.errorHandler.handleError({
-            message: `${ErrorMessages.RESPONSE_ERROR}, More Details: ${
-              err.message
-            }`
-          } as Error);
+          this.handleError(
+            `${ErrorMessages.RESPONSE_ERROR}, More Details: ${err.message}`
+          );
           if (err.status === 404) {
           }
         }
       )
     );
+  }
+
+  handleError(message: string) {
+    this.errorHandler.handleError({
+      message
+    } as Error);
   }
 }
