@@ -14,14 +14,22 @@ describe('The App Core Reducer', () => {
         checkingForVersion: false
       },
       theme: DEFAULT_THEME,
-      themes: Themes.sort()
+      themes: Themes.sort(),
+      error: {
+        message: '',
+        action: null,
+        show: false
+      }
     };
     return { ...defaultState, ...props };
   };
 
   it('should return current state when no valid actions have been made', () => {
     const state = createState();
-    const actual = appLayout(state, { type: 'INVALID_ACTION', payload: {} });
+    const actual = appLayout(state, {
+      type: 'INVALID_ACTION',
+      payload: {}
+    } as any);
     const expected = state;
     expect(actual).toEqual(expected);
   });
