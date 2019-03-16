@@ -4,7 +4,8 @@ import { Themes, DEFAULT_THEME } from '../../../app.themes';
 
 export enum ErrorActions {
   RELOAD = 'Reload',
-  NONE = 0
+  NONE = 0,
+  RESET = 1
 }
 export interface IAppVersion {
   semver: string;
@@ -87,7 +88,19 @@ export function appCore(
     case ActionTypes.ERROR_CLEAN: {
       return {
         ...state,
-        error: { ...initialState.error }
+        error: {
+          ...initialState.error
+        }
+      };
+    }
+
+    case ActionTypes.TOGGLE_ERROR: {
+      return {
+        ...state,
+        error: {
+          ...initialState.error,
+          show: false
+        }
       };
     }
 

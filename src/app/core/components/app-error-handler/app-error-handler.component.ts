@@ -19,6 +19,7 @@ export class AppErrorHandlerComponent implements OnInit {
   handleAction(errorAction: ErrorActions) {
     switch (errorAction) {
       case ErrorActions.NONE:
+        this.appErrorHandlerProxy.toggleError();
         break;
 
       case ErrorActions.RELOAD:
@@ -29,5 +30,9 @@ export class AppErrorHandlerComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  close() {
+    this.handleAction(ErrorActions.NONE);
   }
 }

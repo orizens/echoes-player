@@ -1,9 +1,15 @@
 <section
   class="is-flex-column is-flex-valign bg-danger"
   *ngIf="errorShow$ | async">
-  <h4 class="is-strechable">
-    <icon name="info-circle"></icon> Something Went Wrong
-  </h4>
+  <article class="is-flex-row is-flex-valign">
+    <h4 class="is-strechable">
+      <icon name="info-circle"></icon> Something Went Wrong
+    </h4>
+    <button-icon
+      (click)="close()"
+      icon="close"
+      types="primary"></button-icon>
+  </article>
   <article class="text-left">{{ errorMessage$ | async }}</article>
   <ng-container *ngIf="errorAction$ | async as errorAction">
     <button
