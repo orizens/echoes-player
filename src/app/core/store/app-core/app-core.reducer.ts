@@ -48,7 +48,8 @@ const newInitialState: IAppCore = {
 };
 const initialState: IAppCore = migrateReducerState(
   'appLayout',
-  newInitialState
+  newInitialState,
+  localStorage
 );
 
 export function appCore(

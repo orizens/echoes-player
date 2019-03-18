@@ -3,15 +3,16 @@
  */
 export function migrateReducerState(
   prevReducerKey: string,
-  newReducerState: any
+  newReducerState: any,
+  storage: { getItem: Function; removeItem: Function }
 ): any {
-  const prevReducerState = localStorage.getItem(prevReducerKey);
+  const prevReducerState = storage.getItem(prevReducerKey);
   const prevStateJson =
     prevReducerState && prevReducerState.length > 0
       ? JSON.parse(prevReducerState)
       : false;
   if (prevStateJson) {
-    localStorage.removeItem(prevReducerKey);
+    storage.removeItem(prevReducerKey);
   }
   return prevStateJson
     ? { ...newReducerState, ...prevStateJson }
