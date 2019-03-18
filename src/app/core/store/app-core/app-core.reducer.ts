@@ -1,6 +1,7 @@
 import { Store } from '@ngrx/store';
 import { ActionTypes, Action } from './app-core.actions';
 import { Themes, DEFAULT_THEME } from '../../../app.themes';
+import { migrateReducerState } from '../store.utils';
 
 export enum ErrorActions {
   RELOAD = 'Reload',
@@ -29,7 +30,7 @@ export interface IAppCore {
   themes: string[];
   error: IAppError;
 }
-const initialState: IAppCore = {
+const newInitialState: IAppCore = {
   sidebarExpanded: true,
   requestInProcess: false,
   version: {
@@ -45,6 +46,10 @@ const initialState: IAppCore = {
     action: ErrorActions.NONE
   }
 };
+const initialState: IAppCore = migrateReducerState(
+  'appLayout',
+  newInitialState
+);
 
 export function appCore(
   state: IAppCore = initialState,
