@@ -27,10 +27,14 @@ const initialUserState: IUserProfile = {
   profile: {},
   viewedPlaylist: ''
 };
-interface UnsafeAction extends Action {
-  payload: any;
+interface UnsafeAction {
+  payload?: any;
+  type: any;
 }
-export function user(state = initialUserState, action: UnsafeAction): IUserProfile {
+export function user(
+  state = initialUserState,
+  action: UnsafeAction
+): IUserProfile {
   switch (action.type) {
     case UserProfileActions.ADD_PLAYLISTS:
       return { ...state, playlists: [...state.playlists, ...action.payload] };

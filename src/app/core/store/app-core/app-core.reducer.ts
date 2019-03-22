@@ -1,21 +1,36 @@
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { ActionTypes, Action } from './app-layout.actions';
+import { ActionTypes, Action } from './app-core.actions';
 import { Themes, DEFAULT_THEME } from '../../../app.themes';
+import { migrateReducerState } from '../store.utils';
 
+export enum ErrorActions {
+  RELOAD = 'Reload',
+  NONE = 0,
+  RESET = 1
+}
+export enum ErrorMessages {
+  OFFLINE = 'No Connection Available',
+  RESPONSE_ERROR = 'Error With Providing Response'
+}
 export interface IAppVersion {
   semver: string;
   isNewAvailable: boolean;
   checkingForVersion: boolean;
 }
-export interface IAppSettings {
+export interface IAppError {
+  message: string;
+  show: boolean;
+  action: ErrorActions;
+}
+export interface IAppCore {
   sidebarExpanded: boolean;
   requestInProcess: boolean;
   version: IAppVersion;
   theme: string;
   themes: string[];
+  error: IAppError;
 }
-const initialState: IAppSettings = {
+const newInitialState: IAppCore = {
   sidebarExpanded: true,
   requestInProcess: false,
   version: {
@@ -24,10 +39,23 @@ const initialState: IAppSettings = {
     checkingForVersion: false
   },
   theme: DEFAULT_THEME,
-  themes: Themes.sort()
+  themes: Themes.sort(),
+  error: {
+    message: '',
+    show: false,
+    action: ErrorActions.NONE
+  }
 };
+const initialState: IAppCore = migrateReducerState(
+  'appLayout',
+  newInitialState,
+  localStorage
+);
 
-export function appLayout(state: IAppSettings = initialState, action: Action): IAppSettings {
+export function appCore(
+  state: IAppCore = initialState,
+  action: Action
+): IAppCore {
   switch (action.type) {
     case ActionTypes.SIDEBAR_EXPAND:
       return { ...state, sidebarExpanded: true };
@@ -55,16 +83,51 @@ export function appLayout(state: IAppSettings = initialState, action: Action): I
       return { ...state, theme: action.payload };
     }
 
+    case ActionTypes.ERROR_ADD: {
+      const { payload: { message } } = action;
+      return {
+        ...state,
+        error: {
+          message,
+          show: true,
+          action: ErrorActions.RELOAD
+        }
+      };
+    }
+
+    case ActionTypes.ERROR_CLEAN: {
+      return {
+        ...state,
+        error: {
+          ...initialState.error
+        }
+      };
+    }
+
+    case ActionTypes.TOGGLE_ERROR: {
+      return {
+        ...state,
+        error: {
+          ...initialState.error,
+          show: false
+        }
+      };
+    }
+
     default:
-      return { ...initialState, ...state, themes: Themes.sort() };
+      return {
+        ...initialState,
+        ...state,
+        themes: Themes.sort()
+      };
   }
 }
 
-export function getSidebarExpanded($state: Store<IAppSettings>) {
+export function getSidebarExpanded($state: Store<IAppCore>) {
   return $state.select(state => state.sidebarExpanded);
 }
 
-function getVersion(state: IAppSettings, packageJson: any): IAppVersion {
+function getVersion(state: IAppCore, packageJson: any): IAppVersion {
   const currentVersion = state.version.semver;
   const remoteVersion = packageJson.version;
   const version: IAppVersion = {
@@ -73,7 +136,8 @@ function getVersion(state: IAppSettings, packageJson: any): IAppVersion {
     checkingForVersion: false
   };
   const isCurrentVersionEmpty = '' === currentVersion;
-  const isCurrentDifferentFromRemote = !isCurrentVersionEmpty && currentVersion !== remoteVersion;
+  const isCurrentDifferentFromRemote =
+    !isCurrentVersionEmpty && currentVersion !== remoteVersion;
   if (isCurrentVersionEmpty) {
     version.semver = remoteVersion;
   }

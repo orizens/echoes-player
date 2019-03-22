@@ -8,7 +8,7 @@ import { IAppPlayer, player, ActionTypes } from './app-player';
 import { INowPlaylist, nowPlaylist } from './now-playlist';
 import { IUserProfile, user, UserProfileActions } from './user-profile';
 import { IPlayerSearch, search, PlayerSearchActions } from './player-search';
-import { IAppSettings, appLayout } from './app-layout';
+import { IAppCore, appCore } from './app-core';
 
 // The top level Echoes Player application interface
 // each reducer is reponsible for manipulating a certain state
@@ -17,7 +17,7 @@ export interface EchoesState {
   nowPlaylist: INowPlaylist;
   user: IUserProfile;
   search: IPlayerSearch;
-  appLayout: IAppSettings;
+  appCore: IAppCore;
   // routerReducer: RouterReducerState;
 }
 
@@ -26,7 +26,7 @@ export let EchoesReducers: ActionReducerMap<EchoesState> = {
   nowPlaylist,
   user,
   search,
-  appLayout
+  appCore
   // routerReducer
 };
 

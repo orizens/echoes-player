@@ -14,8 +14,9 @@ const initialState: INowPlaylist = {
   filter: '',
   repeat: false
 };
-interface UnsafeAction extends Action {
+interface UnsafeAction {
   payload?: any;
+  type: any;
 }
 export function nowPlaylist(
   state: INowPlaylist = initialState,
