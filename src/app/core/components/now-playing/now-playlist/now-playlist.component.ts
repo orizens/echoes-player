@@ -29,7 +29,7 @@ import { isNewChange } from '@shared/utils/data.utils';
   template: `
   <section class="now-playlist ux-maker">
     <div *ngIf="isPlaylistEmpty" class="empty-list text-center" [@flyOut]>
-      <icon name="music 4x" class="bg-primary"></icon>
+      <icon name="music" class="bg-primary ux-maker"></icon>
       <article>
         <h3 class="text-primary">Playlist Is Empty</h3>
         <p class="text-primary">Queue Media From Results</p>
