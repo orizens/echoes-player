@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxTypeaheadModule } from 'ngx-typeahead';
-import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { CORE_COMPONENTS } from './components';
 import { CORE_DIRECTIVES } from './directives';
 import { PIPES } from './pipes';
@@ -16,7 +16,7 @@ import { TooltipModule } from 'ngx-tooltip';
     CommonModule,
     FormsModule,
     RouterModule,
-    YoutubePlayerModule,
+    NgxYoutubePlayerModule.forRoot(),
     InfiniteScrollModule,
     NgxTypeaheadModule,
     TooltipModule
@@ -29,7 +29,7 @@ import { TooltipModule } from 'ngx-tooltip';
     ...CORE_DIRECTIVES,
     ...PIPES,
     InfiniteScrollModule,
-    YoutubePlayerModule,
+    NgxYoutubePlayerModule,
     NgxTypeaheadModule,
     TooltipModule
   ],
