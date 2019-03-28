@@ -44,7 +44,10 @@ enum Key {
           </button>
         </div>
         <a class="list-group-item" href="http://github.com/orizens/echoes-player" target="_blank">
-        <icon name="github" prefix="${ICON_PREFIX_BRAND}"></icon> Source Code @Github
+          <icon name="github" prefix="${ICON_PREFIX_BRAND}"></icon> Source Code @Github
+        </a>
+        <a class="list-group-item" href="/assets/privacy-policy.txt" target="_blank">
+          <icon name="shield"></icon> Privacy Policy
         </a>
         <a class="list-group-item" *ngIf="!hide" href="https://travis-ci.org/orizens/echoes-player" target="_blank" rel="noopener">
           <icon name="medkit"></icon> <img src="https://travis-ci.org/orizens/echoes-player.svg?branch=master">
