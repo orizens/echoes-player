@@ -16,7 +16,7 @@ export class UserProfileEffects {
     private userProfileActions: UserProfileActions,
     private userProfile: UserProfile,
     private auth: Authorization
-  ) { }
+  ) {}
 
   @Effect()
   checkUserAuth$ = this.actions$.pipe(
@@ -41,7 +41,7 @@ export class UserProfileEffects {
           return of(new UserActions.UserPlaylistsFetchError(error));
         })
       )
-    ),
+    )
   );
 
   @Effect()
@@ -92,26 +92,30 @@ export class UserProfileEffects {
   @Effect()
   userSigninStart$ = this.actions$.pipe(
     ofType(UserProfileActions.USER_SIGNIN_START),
-    switchMap(() =>
-      this.auth
-        .signIn()
-        .pipe(catchError(error => this.auth.handleFailedLogin(error)))
+    switchMap(
+      () => this.auth.signIn()
+      // .pipe(catchError(error => this.auth.handleFailedLogin(error)))
     ),
-    map((response: any) => new UserActions.UserSigninSuccess(response))
+    map(
+      (response: firebase.auth.UserCredential) =>
+        new UserActions.UserSigninSuccess(response)
+    )
   );
 
-  @Effect({ dispatch: false })
-  userSigninSuccess$ = this.actions$.pipe(
-    ofType(UserProfileActions.USER_SIGNIN_SUCCESS),
-    tap((response: any) => this.auth.setAuthTimer(response))
-  );
+  // @Effect({ dispatch: false })
+  // userSigninSuccess$ = this.actions$.pipe(
+  //   ofType(UserProfileActions.USER_SIGNIN_SUCCESS),
+  //   tap((response: any) => this.auth.setAuthTimer(response))
+  // );
 
   @Effect()
   updateTokenAfterSigninSuccess$ = this.actions$.pipe(
     ofType(UserProfileActions.USER_SIGNIN_SUCCESS),
     map(toPayload),
-    map((googleUser: gapi.auth2.GoogleUser) =>
-      this.userProfileActions.updateToken(this.auth.extractToken(googleUser))
+    map((auth: firebase.auth.UserCredential) =>
+      this.userProfileActions.updateToken(
+        this.auth.extractToken(auth.credential)
+      )
     )
   );
 
@@ -119,8 +123,8 @@ export class UserProfileEffects {
   updateProfileAfterSigninSuccess$ = this.actions$.pipe(
     ofType(UserProfileActions.USER_SIGNIN_SUCCESS),
     map(toPayload),
-    map((googleUser: gapi.auth2.GoogleUser) =>
-      this.userProfileActions.userProfileRecieved(googleUser.getBasicProfile())
+    map((auth: firebase.auth.UserCredential) =>
+      this.userProfileActions.userProfileRecieved(auth.user)
     )
   );
 

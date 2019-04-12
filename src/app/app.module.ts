@@ -17,6 +17,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppErrorHandler } from './core/services/error-handler';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -27,6 +31,9 @@ import { AppErrorHandler } from './core/services/error-handler';
     RouterModule.forRoot(ROUTES, { useHash: true }),
     BrowserAnimationsModule,
 
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     CoreModule,
     SharedModule,
     ...APP_CORE_MODULES,

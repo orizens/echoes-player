@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     private versionCheckerService: VersionCheckerService
   ) {
     this.versionCheckerService.start();
-    this.appApi.checkUserAuth();
+    // this.appApi.checkUserAuth();
   }
 
   ngOnInit() {

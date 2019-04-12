@@ -23,9 +23,14 @@ export class UserProfileActions {
   static USER_SIGNOUT_SUCCESS = '[UserProfile] USER_SIGNOUT_SUCCESS';
   static USER_PLAYLISTS_FETCH_ERROR = '[UserProfile] USER_PLAYLISTS_FETCH_ERROR';
 
-  setViewPlaylist = ActionCreatorFactory.create<string>(UserProfileActions.VIEWED_PLAYLIST);
+  setViewPlaylist = ActionCreatorFactory.create<string>(
+    UserProfileActions.VIEWED_PLAYLIST
+  );
 
-  updateData = (data: any) => ({ type: UserProfileActions.UPDATE, payload: data });
+  updateData = (data: any) => ({
+    type: UserProfileActions.UPDATE,
+    payload: data
+  });
 
   addPlaylists(playlists: Array<any>) {
     return {
@@ -34,7 +39,10 @@ export class UserProfileActions {
     };
   }
 
-  updateToken = (payload: string) => ({ type: UserProfileActions.UPDATE_TOKEN, payload });
+  updateToken = (payload: string) => ({
+    type: UserProfileActions.UPDATE_TOKEN,
+    payload
+  });
 
   updatePageToken(token: string) {
     return {
@@ -76,7 +84,7 @@ export class UserSigninStart implements Action {
 
 export class UserSigninSuccess implements Action {
   readonly type = UserProfileActions.USER_SIGNIN_SUCCESS;
-  constructor(public payload: gapi.auth2.GoogleUser) { }
+  constructor(public payload: firebase.auth.UserCredential) {}
 }
 
 export class UserSignout implements Action {
@@ -90,9 +98,9 @@ export class UserSignoutSuccess implements Action {
 
 export class CheckUserAuth implements Action {
   readonly type = UserProfileActions.CHECK_USER_AUTH;
-  constructor () {}
+  constructor() {}
 }
 export class UserPlaylistsFetchError implements Action {
   readonly type = UserProfileActions.USER_PLAYLISTS_FETCH_ERROR;
-  constructor (public payload: any) {}
+  constructor(public payload: any) {}
 }

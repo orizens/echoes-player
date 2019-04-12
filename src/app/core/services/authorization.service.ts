@@ -12,6 +12,8 @@ import {
 import { environment } from '@env/environment';
 import { GapiLoader } from './gapi-loader.service';
 
+import { AuthorizationFire } from './firebase/firebase-auth';
+
 const extractAccessToken = (_googleAuth: gapi.auth2.GoogleAuth) => {
   return (
     _googleAuth && _googleAuth.currentUser.get().getAuthResponse().access_token
@@ -37,9 +39,17 @@ export class Authorization {
     return token.fromGoogle;
   }
 
-  constructor(private zone: NgZone, private gapiLoader: GapiLoader) {}
+  constructor(
+    private zone: NgZone,
+    private gapiLoader: GapiLoader,
+    private authFire: AuthorizationFire
+  ) {}
 
   loadAuth() {
+    return this.authFire.signin().then((res: firebase.auth.UserCredential) => {
+      console.log('FIREBASE', res);
+      return res;
+    });
     // attempt to SILENT authorize
     return this.gapiLoader.load('auth2').pipe(
       switchMap(() => this.authorize()),
@@ -90,6 +100,7 @@ export class Authorization {
   }
 
   signIn() {
+    return this.loadAuth();
     const signOptions: gapi.auth2.SigninOptions = { scope: this._scope };
     if (this._googleAuth) {
       return fromPromise(this._googleAuth.signIn(signOptions));
@@ -97,9 +108,9 @@ export class Authorization {
     return new Observable(obs => obs.complete());
   }
 
-  extractToken(googleUser: gapi.auth2.GoogleUser) {
-    const authResponse = googleUser.getAuthResponse();
-    return authResponse.access_token;
+  extractToken(user: firebase.auth.OAuthCredential) {
+    // const authResponse = googleUser.getAuthResponse();
+    return user.accessToken;
   }
 
   setAuthTimer(googleUser: gapi.auth2.GoogleUser) {
