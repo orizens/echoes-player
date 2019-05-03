@@ -4,11 +4,10 @@ import {
   EventEmitter,
   Input,
   OnInit,
-  AfterContentInit,
   Output,
   HostListener
 } from '@angular/core';
-import { MediaParserService } from '../../../../core/services';
+import { ITrackInfoSelectEvent } from '../track-info/track-info.component';
 
 @Component({
   selector: 'media-info',
@@ -24,21 +23,9 @@ import { MediaParserService } from '../../../../core/services';
     </aside>
     <section class="title ellipsis">{{ player?.media?.snippet?.title }}</section>
     <article class="track-info" [ngClass]="{ 'show-info': displayInfo }">
-      <nav class="is-flex-row is-justify-right is-sticky">
-        <button (click)="toggleInfo()" class="btn btn-default">
-          <icon name="close"></icon>
-          Close
-        </button>
-      </nav>
-      {{ player.media.snippet.description }}
-      <div class="track-tracks list-group" *ngIf="hasTracks()">
-        <h3 class="text-primary">Tracks (Select &amp; Play)</h3>
-        <button class="list-group-item btn-transparent"
-          *ngFor="let track of tracks | parseTracks"
-          (click)="handleSelectTrack($event, track, player.media)">
-          {{ track }}
-        </button>
-      </div>
+      <track-info *ngIf="displayInfo" [media]="player.media"
+        (selectTrack)="handleSelectTrack($event)"
+        (dismiss)="toggleInfo()"></track-info>
     </article>
     <button class="btn btn-transparent text-info more-info-btn" (click)="toggleInfo()">
       <icon name="info-circle 2x"></icon>
@@ -47,7 +34,7 @@ import { MediaParserService } from '../../../../core/services';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MediaInfoComponent implements OnInit, AfterContentInit {
+export class MediaInfoComponent implements OnInit {
   @Input() player: any = {};
   @Input() minimized: GoogleApiYouTubeVideoResource;
   @Output() thumbClick = new EventEmitter();
@@ -56,22 +43,9 @@ export class MediaInfoComponent implements OnInit, AfterContentInit {
   displayInfo = false;
   tracks: string[] = [];
 
-  constructor(public mediaParser: MediaParserService) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  ngAfterContentInit() {
-    if (this.player.media) {
-      this.extractTracks(this.player.media);
-    }
-  }
-
-  extractTracks(media: GoogleApiYouTubeVideoResource) {
-    const tracks = this.mediaParser.extractTracks(media.snippet.description);
-    if (Array.isArray(tracks)) {
-      this.tracks = tracks;
-    }
-  }
 
   @HostListener('window:keyup.Escape', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -88,20 +62,8 @@ export class MediaInfoComponent implements OnInit, AfterContentInit {
     this.displayInfo = !this.displayInfo;
   }
 
-  handleSelectTrack(
-    $event: Event,
-    track: string,
-    media: GoogleApiYouTubeVideoResource
-  ) {
-    $event.stopImmediatePropagation();
-    const time = this.mediaParser.extractTime(track);
-    if (time) {
-      this.seekTrack.emit({ time: time[0], media });
-    }
-  }
-
-  hasTracks() {
-    return this.tracks.length > 0;
+  handleSelectTrack(event: ITrackInfoSelectEvent) {
+    this.seekTrack.emit(event);
   }
 
   get _minimized() {

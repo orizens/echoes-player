@@ -1,3 +1,8 @@
+## v 4.3.0 (2019/05/02)
+
+* [UPGRADE] - theme colors are now as background in user menu
+* [NEW] - upgraded the info popover (controls bar) - now clearly shows a toggle for track description and tracks
+
 ## v 4.2.0 (2019/03/17)
 
 * [UPGRADE] - upgraded to Angular 7

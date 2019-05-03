@@ -1,0 +1,29 @@
+<nav class="is-flex-row is-justify-right is-sticky">
+  <button
+    (click)="toggleInfo()"
+    class="btn btn-default">
+    <icon name="close"></icon>
+    Close
+  </button>
+</nav>
+<section>
+  <div>
+    <button-group
+      [buttons]="infoButtons"
+      [selectedButton]="selected.value"
+      (buttonClick)="onInfoClick($event)"></button-group>
+  </div>
+  <article *ngIf="selected.value === 'about'">{{ description }}</article>
+  <section *ngIf="selected.value === 'tracks'">
+    <div
+      class="track-tracks list-group"
+      *ngIf="hasTracks()">
+      <button
+        class="list-group-item btn-transparent"
+        *ngFor="let track of tracks | parseTracks"
+        (click)="handleSelectTrack($event, track, video)">
+        {{ track }}
+      </button>
+    </div>
+  </section>
+</section>
