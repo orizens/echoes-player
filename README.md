@@ -29,7 +29,7 @@ My services include:
 
 [Contact Me Here](http://orizens.com/contact)
 
-  <a href="https://orizens.com" target="_blank">
+  <a href="http://orizens.com" target="_blank">
     <img src="https://cloud.githubusercontent.com/assets/878660/23353771/d0adbd12-fcd6-11e6-96be-7a236f8819d9.png" alt="Webpack and Angular" width="20%"/>
   </a>
 
@@ -45,16 +45,16 @@ My services include:
 
 ## Included Technologies & Libraries
 
-* [Angular +5.x](http://angular.io)
+* [Angular](http://angular.io)
 * [Angular CLI](https://cli.angular.io/)
-* [@ngrx Platform v5](https://github.com/ngrx/platform)
+* [@ngrx Platform](https://github.com/ngrx/platform)
 * Bootstrap v3.x (SASS, selected modules)
 * Typescript (latest)
 * ECMAscript latest
 
 # EchoesPlayer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
 
 ## Development server
 

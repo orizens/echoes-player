@@ -6,20 +6,18 @@ import { MediaInfoComponent } from './media-info';
 import { PlayerControlsComponent } from './player-controls/player-controls.component';
 import { PlayerResizerComponent } from './player-resizer/player-resizer.component';
 import { ImageBlurComponent } from './image-blur';
+import { TrackInfoComponent } from './track-info/track-info.component';
 
 @NgModule({
-  imports: [
-    SharedModule
-  ],
+  imports: [SharedModule],
   declarations: [
     AppPlayerComponent,
     MediaInfoComponent,
     PlayerControlsComponent,
     PlayerResizerComponent,
-    ImageBlurComponent
+    ImageBlurComponent,
+    TrackInfoComponent
   ],
-  exports: [
-    AppPlayerComponent
-  ]
+  exports: [AppPlayerComponent]
 })
-export class AppPlayerModule { }
+export class AppPlayerModule {}
