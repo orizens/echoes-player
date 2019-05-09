@@ -3,10 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TrackInfoComponent } from './track-info.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MediaParserService } from '../../../../core/services';
-import {
-  MediaParserServiceMock,
-  ParseTracksMockPipe
-} from './track-info.mocks';
+import { MediaParserServiceMock } from './track-info.mocks';
+import { ParseTracksPipe } from '../../../../shared/pipes/parseTracks.pipe';
 
 describe('TrackInfoComponent', () => {
   let component: TrackInfoComponent;
@@ -15,7 +13,7 @@ describe('TrackInfoComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [TrackInfoComponent, ParseTracksMockPipe],
+        declarations: [TrackInfoComponent, ParseTracksPipe],
         providers: [
           {
             provide: MediaParserService,
