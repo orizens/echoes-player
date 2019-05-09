@@ -1,13 +1,4 @@
-import { PipeTransform, Pipe, Injectable } from '@angular/core';
-
-@Pipe({ name: 'parseTracks' })
-export class ParseTracksMockPipe implements PipeTransform {
-  constructor() {}
-
-  transform(value: any): any {
-    return value;
-  }
-}
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class MediaParserServiceMock {
