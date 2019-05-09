@@ -133,9 +133,10 @@ export class Authorization {
   }
 
   handleFailedLogin(response) {
-    console.error('FAILED TO LOGIN:', response);
     return new Observable(obs => {
-      obs.error();
+      console.info('Login Dismissed:', response);
+      const { error } = response;
+      obs.error({ message: error, name: error });
       obs.complete();
     });
   }

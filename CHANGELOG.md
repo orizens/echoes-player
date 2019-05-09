@@ -1,3 +1,7 @@
+## v 4.3.1 (2019/05/09)
+
+* [UPGRADE] - more refined error handling
+
 ## v 4.3.0 (2019/05/08)
 
 * [UPGRADE] - theme colors are now as background in user menu
