@@ -83,4 +83,8 @@ export class NowPlaylistService {
   seekToTrack(trackEvent) {
     this.store.dispatch(new fromNowPlaylist.SeekTo(trackEvent));
   }
+
+  sortPlaylist(playlist) {
+    this.store.dispatch(new fromNowPlaylist.SortPlaylist(playlist));
+  }
 }

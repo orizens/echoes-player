@@ -1,4 +1,3 @@
-import { Action } from '@ngrx/store';
 import * as fromActions from './now-playlist.actions';
 
 export interface INowPlaylist {
@@ -80,6 +79,13 @@ export function nowPlaylist(
     case fromActions.ActionTypes.LOAD_PLAYLIST_END: {
       return {
         ...state
+      };
+    }
+
+    case fromActions.ActionTypes.SORT_PLAYLIST: {
+      return {
+        ...state,
+        videos: action.payload
       };
     }
 

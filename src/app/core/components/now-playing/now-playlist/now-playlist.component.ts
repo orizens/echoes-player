@@ -11,15 +11,9 @@ import {
   SimpleChanges
 } from '@angular/core';
 import * as NowPlaylist from '@store/now-playlist';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
 import { flyOut } from '@shared/animations/fade-in.animation';
 import { isNewChange } from '@shared/utils/data.utils';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'now-playlist',
@@ -35,12 +29,12 @@ import { isNewChange } from '@shared/utils/data.utils';
         <p class="text-primary">Queue Media From Results</p>
       </article>
     </div>
-    <ul class="nav nav-list ux-maker nicer-ux">
-      <li class="now-playlist-track" #playlistTrack
-        [ngClass]="{
-          'active': isActiveMedia(video.id, playlistTrack)
-        }"
+    <ul class="nav nav-list ux-maker nicer-ux" cdkDropList 
+      (cdkDropListDropped)="onTrackDrop($event)"
+      [cdkDropListLockAxis]="'y'">
+      <li class="now-playlist-track" #playlistTrack cdkDrag
         *ngFor="let video of playlist.videos | search:playlist.filter; let index = index"
+        [class.active]="isActiveMedia(video.id, playlistTrack)"
         [@flyOut]>
         <now-playlist-track
           [video]="video" [index]="index"
@@ -62,8 +56,8 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
     time: string;
     media: GoogleApiYouTubeVideoResource;
   }>();
-  // @Output() sort = new EventEmitter<GoogleApiYouTubeSearchResource>();
   @Output() remove = new EventEmitter<GoogleApiYouTubeVideoResource>();
+  @Output() sort = new EventEmitter<GoogleApiYouTubeVideoResource[]>();
 
   public activeTrackElement: HTMLUListElement;
   public hasActiveChanged = false;
@@ -96,10 +90,6 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
     this.remove.emit(media);
   }
 
-  sortVideo(media: GoogleApiYouTubeVideoResource) {
-    // this.sort.next(media);
-  }
-
   isActiveMedia(mediaId: string, trackElement: HTMLUListElement) {
     const isActive = this.playlist.selectedId === mediaId;
     if (isActive) {
@@ -110,6 +100,15 @@ export class NowPlaylistComponent implements OnChanges, AfterViewChecked {
 
   selectTrackInVideo(trackEvent: { time; media }) {
     this.selectTrack.emit(trackEvent);
+  }
+
+  onTrackDrop({
+    currentIndex,
+    previousIndex
+  }: CdkDragDrop<GoogleApiYouTubeVideoResource>) {
+    const videos = [...this.playlist.videos];
+    moveItemInArray(videos, previousIndex, currentIndex);
+    this.sort.emit(videos);
   }
 
   get isPlaylistEmpty() {

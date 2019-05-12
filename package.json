@@ -1,6 +1,6 @@
 {
   "name": "echoes-player",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -26,6 +26,7 @@
   "dependencies": {
     "@angular-devkit/core": "0.0.29",
     "@angular/animations": "7.2.7",
+    "@angular/cdk": "7.3.7",
     "@angular/common": "7.2.7",
     "@angular/compiler": "7.2.7",
     "@angular/core": "7.2.7",

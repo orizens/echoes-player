@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 
@@ -22,7 +21,8 @@ export enum ActionTypes {
   LOAD_PLAYLIST_END = '[NowPlaylist] LOAD_PLAYLIST_END',
   PLAY_PLAYLIST = '[NowPlaylist] PLAY_PLAYLIST',
   PLAY_PLAYLIST_START = '[NowPlaylist] PLAY_PLAYLIST_START',
-  PLAYER_STATE_CHANGE = '[NowPlaylist] PLAYER_STATE_CHANGE'
+  PLAYER_STATE_CHANGE = '[NowPlaylist] PLAYER_STATE_CHANGE',
+  SORT_PLAYLIST = '[NowPlaylist] SORT ITEM'
 }
 
 export class SeekTo implements Action {
@@ -112,6 +112,11 @@ export class PlayerStateChange implements Action {
   constructor(public payload: YT.PlayerState) {}
 }
 
+export class SortPlaylist implements Action {
+  public type = ActionTypes.SORT_PLAYLIST;
+  constructor(public payload: GoogleApiYouTubeVideoResource[]) {}
+}
+
 export type Actions =
   | PlayPlaylistAction
   | PlayPlaylistStartAction
@@ -122,4 +127,5 @@ export type Actions =
   | SelectPrevious
   | RemoveAll
   | ToggleRepeat
-  | PlayerStateChange;
+  | PlayerStateChange
+  | SortPlaylist;

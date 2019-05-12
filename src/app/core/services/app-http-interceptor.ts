@@ -27,9 +27,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
       tap(
         event => {},
         err => {
-          this.handleError(
-            `${ErrorMessages.RESPONSE_ERROR}, More Details: ${err.message}`
-          );
+          this.handleError(err);
           if (err.status === 404) {
           }
         }
@@ -37,9 +35,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
     );
   }
 
-  handleError(message: string) {
-    this.errorHandler.handleError({
-      message
-    } as Error);
+  handleError(error: Error | any) {
+    this.errorHandler.handleError(error);
   }
 }
