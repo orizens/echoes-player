@@ -31,6 +31,7 @@ import { AppErrorHandler } from './core/services/error-handler';
     SharedModule,
     ...APP_CORE_MODULES,
     ...APP_CONTAINER_MODULES,
+
     ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production
     })

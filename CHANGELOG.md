@@ -1,5 +1,6 @@
-## v 4.3.1 (2019/05/09)
+## v 4.4.0 (2019/05/12)
 
+* [NEW] - now playlist can be sorted now (drag & drop)
 * [UPGRADE] - more refined error handling
 
 ## v 4.3.0 (2019/05/08)

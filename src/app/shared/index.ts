@@ -10,6 +10,7 @@ import { CORE_COMPONENTS } from './components';
 import { CORE_DIRECTIVES } from './directives';
 import { PIPES } from './pipes';
 import { TooltipModule } from 'ngx-tooltip';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { TooltipModule } from 'ngx-tooltip';
     NgxYoutubePlayerModule.forRoot(),
     InfiniteScrollModule,
     NgxTypeaheadModule,
-    TooltipModule
+    TooltipModule,
+    DragDropModule
   ],
   declarations: [...CORE_COMPONENTS, ...CORE_DIRECTIVES, ...PIPES],
   exports: [
@@ -31,7 +33,8 @@ import { TooltipModule } from 'ngx-tooltip';
     InfiniteScrollModule,
     NgxYoutubePlayerModule,
     NgxTypeaheadModule,
-    TooltipModule
+    TooltipModule,
+    DragDropModule
   ],
   providers: []
 })

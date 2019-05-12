@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
@@ -25,17 +30,20 @@ import { NowPlaylistComponent } from './now-playlist';
       (select)="selectVideo($event)"
       (selectTrack)="selectTrackInVideo($event)"
       (remove)="removeVideo($event)"
+      (sort)="sortPlaylist($event)"
     ></now-playlist>
   </div>
   `,
-  // (sort)="sortVideo($event)"
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NowPlayingComponent implements OnInit {
   public nowPlaylist$: Observable<INowPlaylist>;
   @ViewChild(NowPlaylistComponent) nowPlaylistComponent: NowPlaylistComponent;
 
-  constructor(public store: Store<EchoesState>, public nowPlaylistService: NowPlaylistService) { }
+  constructor(
+    public store: Store<EchoesState>,
+    public nowPlaylistService: NowPlaylistService
+  ) {}
 
   ngOnInit() {
     this.nowPlaylist$ = this.nowPlaylistService.playlist$;
@@ -46,7 +54,9 @@ export class NowPlayingComponent implements OnInit {
     this.nowPlaylistService.updateIndexByMedia(media.id);
   }
 
-  sortVideo() { }
+  sortPlaylist(playlist) {
+    this.nowPlaylistService.sortPlaylist(playlist);
+  }
 
   updateFilter(searchFilter: string) {
     this.nowPlaylistService.updateFilter(searchFilter);
@@ -68,7 +78,10 @@ export class NowPlayingComponent implements OnInit {
     this.nowPlaylistComponent.scrollToActiveTrack();
   }
 
-  selectTrackInVideo(trackEvent: { time: string; media: GoogleApiYouTubeVideoResource }) {
+  selectTrackInVideo(trackEvent: {
+    time: string;
+    media: GoogleApiYouTubeVideoResource;
+  }) {
     this.store.dispatch(new AppPlayer.PlayVideo(trackEvent.media));
     this.nowPlaylistService.seekToTrack(trackEvent);
   }
