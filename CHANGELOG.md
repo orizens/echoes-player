@@ -1,3 +1,7 @@
+## v 4.4.1 (2019/05/30)
+
+* [UPGRADE] - updates to be PWA compliant
+
 ## v 4.4.0 (2019/05/12)
 
 * [NEW] - now playlist can be sorted now (drag & drop)

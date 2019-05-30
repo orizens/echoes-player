@@ -43,7 +43,7 @@ enum Key {
             New Version Is Available - UPDATE NOW
           </button>
         </div>
-        <a class="list-group-item" href="http://github.com/orizens/echoes-player" target="_blank">
+        <a class="list-group-item" href="https://github.com/orizens/echoes-player" target="_blank" rel="noopener">
           <icon name="github" prefix="${ICON_PREFIX_BRAND}"></icon> Source Code @Github
         </a>
         <a class="list-group-item" href="/assets/privacy-policy.txt" target="_blank">
