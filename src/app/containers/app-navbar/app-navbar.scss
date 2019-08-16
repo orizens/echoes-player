@@ -41,10 +41,10 @@
       padding: $navbar-container-padding;
 
       .navbar__content {
-        flex: 3 0 0;
+        flex: 1;
         padding-left: 0;
         display: flex;
-        flex-flow: wrap;
+        flex-direction: column;
         justify-content: center;
 
         .navbar-header {
@@ -81,8 +81,7 @@
 
     .navbar-actions {
       display: flex;
-      flex: 1;
-      flex-direction: column-reverse;
+      flex-direction: row;
       justify-content: flex-end;
       padding-right: 1rem;
       position: absolute;
@@ -104,10 +103,6 @@
     }
     .navbar-container {
       padding: 0.5rem 0;
-      .navbar__content {
-        display: block;
-        padding-left: $navbar-container-left-padding;
-      }
     }
     .navbar-actions {
       position: relative;

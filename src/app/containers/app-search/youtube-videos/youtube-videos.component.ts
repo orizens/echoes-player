@@ -3,8 +3,6 @@ import { Store } from '@ngrx/store';
 import { EchoesState } from '@core/store';
 
 // actions
-import * as fromNowPlaylist from '@core/store/now-playlist';
-import * as fromPlayer from '@core/store/app-player';
 import * as fromPlayerSearch from '@core/store/player-search';
 import { AppPlayerApi } from '@core/api/app-player.api';
 

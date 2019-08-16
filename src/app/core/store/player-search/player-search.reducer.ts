@@ -17,7 +17,7 @@ const initialState: IPlayerSearch = {
     duration: -1
   },
   presets: [
-    { label: 'Any', value: '' },
+    // { label: 'Any', value: '' },
     { label: 'Albums', value: CPresetTypes.FULL_ALBUMS },
     { label: 'Live', value: CPresetTypes.LIVE }
   ],

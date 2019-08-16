@@ -5,6 +5,7 @@ import { EchoesState } from '@core/store';
 // selectors
 import * as UserProfile from '@core/store/user-profile';
 import * as fromPlayerSearch from '@core/store/player-search';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -24,12 +25,9 @@ import * as fromPlayerSearch from '@core/store/player-search';
           (search)="search($event)"
         ></player-search>
       </div>
-      <button-group class="nav-toolbar"
-        [buttons]="presets$ | async"
-        [selectedButton]="queryParamPreset$ | async"
-        (buttonClick)="updatePreset($event)"
-      ></button-group>
-      <search-navigator></search-navigator>
+      <section class="is-flex-row is-content-aligned-h">
+        <search-navigator></search-navigator>
+      </section>
     </app-navbar>
     <router-outlet></router-outlet>
     </article>
@@ -45,7 +43,8 @@ export class AppSearchComponent implements OnInit {
 
   constructor(
     private store: Store<EchoesState>,
-    private playerSearchActions: fromPlayerSearch.PlayerSearchActions
+    private playerSearchActions: fromPlayerSearch.PlayerSearchActions,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -65,9 +64,10 @@ export class AppSearchComponent implements OnInit {
     this.store.dispatch(this.playerSearchActions.searchMoreForQuery());
   }
 
-  updatePreset(preset: fromPlayerSearch.IPresetParam) {
+  updatePreset(preset: fromPlayerSearch.IPresetParam | any) {
     this.store.dispatch(
       this.playerSearchActions.updateQueryParam({ preset: preset.value })
     );
+    this.router.navigate([preset.link]);
   }
 }

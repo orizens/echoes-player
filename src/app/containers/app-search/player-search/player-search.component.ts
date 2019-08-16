@@ -19,25 +19,23 @@ import { Subscription } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./player-search.scss'],
   template: `
-    <form class="navbar-form form-search" id="media-explorer"
+    <form class="navbar-form form-search is-flex-row" id="media-explorer"
       [formGroup]="searchForm"
       >
-      <div class="form-group clearfix is-flex-row">
-        <input placeholder="Find My Echoes..." id="media-search"
-          #mediaSearch
-          ngxTypeahead
-          [taUrl]="'//suggestqueries.google.com/complete/search'"
-          [taParams]="params"
-          [taAllowEmpty]="true"
-          (taSelected)="handleSelectSuggestion($event)"
-          type="search" class="form-control" autocomplete="off"
-          name="mediaSearch"
-          formControlName="searchInput"
-          >
-        <button class="btn btn-transparent btn-submit" tooltip="search with echoes">
-          <icon name="search"></icon>
-        </button>
-      </div>
+      <input placeholder="Find My Echoes..." id="media-search"
+        #mediaSearch
+        ngxTypeahead
+        [taUrl]="'//suggestqueries.google.com/complete/search'"
+        [taParams]="params"
+        [taAllowEmpty]="true"
+        (taSelected)="handleSelectSuggestion($event)"
+        type="search" class="form-control" autocomplete="off"
+        name="mediaSearch"
+        formControlName="searchInput"
+        >
+      <button class="btn btn-transparent btn-submit" tooltip="search with echoes">
+        <icon name="search"></icon>
+      </button>
     </form>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
