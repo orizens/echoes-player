@@ -1,12 +1,18 @@
-export interface IQueryParam {
+export type videoDurations = 'any' | 'long';
+export type videoDefinition = 'any' | 'high';
+export type videoTypes = 'any' | 'movie' | 'episode';
+export interface IQueryParams {
   preset: string;
-  duration: number;
+  videoType: videoTypes;
+  videoDuration: videoDurations;
+  videoDefinition: videoDefinition;
 }
 export interface IPlayerSearch {
   query: string;
   filter: string;
   searchType: string;
-  queryParams: IQueryParam;
+  queryParams: any;
+  queryParamsNew: IQueryParams;
   presets: IPresetParam[];
   pageToken: {
     next: string;
@@ -26,7 +32,7 @@ export interface IPresetParam {
 }
 
 export class CSearchTypes {
-  static VIDEO =  'video';
+  static VIDEO = 'video';
   static PLAYLIST = 'playlist';
 }
 

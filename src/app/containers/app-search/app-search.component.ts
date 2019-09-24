@@ -3,9 +3,9 @@ import { select, Store } from '@ngrx/store';
 import { EchoesState } from '@core/store';
 
 // selectors
-import * as UserProfile from '@core/store/user-profile';
+import * as fromUserProfile from '@core/store/user-profile';
 import * as fromPlayerSearch from '@core/store/player-search';
-import { Router } from '@angular/router';
+import { UpdateQueryFilter } from '@core/store/player-search';
 
 @Component({
   selector: 'app-search',
@@ -21,7 +21,9 @@ import { Router } from '@angular/router';
       <div class="navbar-header">
         <player-search
           [query]="query$ | async"
+          [searchParams]="queryParams$ | async"
           (queryChange)="resetPageToken($event)"
+          (paramsChange)="updateParams($event)"
           (search)="search($event)"
         ></player-search>
       </div>
@@ -35,16 +37,15 @@ import { Router } from '@angular/router';
 })
 export class AppSearchComponent implements OnInit {
   query$ = this.store.pipe(select(fromPlayerSearch.getQuery));
-  currentPlaylist$ = this.store.pipe(select(UserProfile.getUserViewPlaylist));
-  queryParamPreset$ = this.store.pipe(
-    select(fromPlayerSearch.getQueryParamPreset)
+  currentPlaylist$ = this.store.pipe(
+    select(fromUserProfile.getUserViewPlaylist)
   );
+  queryParams$ = this.store.pipe(select(fromPlayerSearch.getQueryParams));
   presets$ = this.store.pipe(select(fromPlayerSearch.getPresets));
 
   constructor(
     private store: Store<EchoesState>,
-    private playerSearchActions: fromPlayerSearch.PlayerSearchActions,
-    private router: Router
+    private playerSearchActions: fromPlayerSearch.PlayerSearchActions
   ) {}
 
   ngOnInit() {}
@@ -64,10 +65,7 @@ export class AppSearchComponent implements OnInit {
     this.store.dispatch(this.playerSearchActions.searchMoreForQuery());
   }
 
-  updatePreset(preset: fromPlayerSearch.IPresetParam | any) {
-    this.store.dispatch(
-      this.playerSearchActions.updateQueryParam({ preset: preset.value })
-    );
-    this.router.navigate([preset.link]);
+  updateParams(queryParams: any) {
+    this.store.dispatch(new UpdateQueryFilter(queryParams));
   }
 }

@@ -19,23 +19,23 @@
 @media (min-width: 480px) {
   :host {
     .youtube-list-item {
-      width: 33%;
+      width: 22rem;
     }
   }
 }
-@media (min-width: 767px) {
-  :host {
-    .youtube-list-item {
-      max-width: 28rem;
-      width: 24.5%;
-    }
-  }
-}
+// @media (min-width: 767px) {
+//   :host {
+//     .youtube-list-item {
+//       max-width: 28rem;
+//       width: 24.5%;
+//     }
+//   }
+// }
 
-@media (min-width: 1440px) {
-  :host {
-    .youtube-list-item {
-      width: 28rem;
-    }
-  }
-}
+// @media (min-width: 1440px) {
+//   :host {
+//     .youtube-list-item {
+//       width: 28rem;
+//     }
+//   }
+// }

@@ -13,43 +13,62 @@ import {
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { debounceTime, filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { IQueryParams } from '@core/store/player-search';
+
+const defaultSearchParams = {
+  hd: false,
+  duration: false
+};
 
 @Component({
   selector: 'player-search',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./player-search.scss'],
   template: `
-    <form class="navbar-form form-search is-flex-row" id="media-explorer"
+    <form class="navbar-form form-search is-flex-row"
       [formGroup]="searchForm"
       >
-      <input placeholder="Find My Echoes..." id="media-search"
-        #mediaSearch
+      <input placeholder="Find My Echoes..."
         ngxTypeahead
         [taUrl]="'//suggestqueries.google.com/complete/search'"
         [taParams]="params"
         [taAllowEmpty]="true"
         (taSelected)="handleSelectSuggestion($event)"
         type="search" class="form-control" autocomplete="off"
-        name="mediaSearch"
-        formControlName="searchInput"
+        formControlName="query"
         >
-      <button class="btn btn-transparent btn-submit" tooltip="search with echoes">
+      <button class="btn btn-transparent btn-submit is-flex-row is-flex-valign" tooltip="search with echoes">
         <icon name="search"></icon>
       </button>
     </form>
-  `,
+      <button class="btn btn-filter btn-transparent is-flex-row is-flex-valign">
+        <icon name="filter" [ngClass]="{'text-primary': filtersForm.value.duration || filtersForm.value.hd }"></icon>
+        <form class="filters is-rounded" [formGroup]="filtersForm">
+          <div class="filter">
+            <input id="long" type="checkbox" class="form-control" formControlName="duration">
+            <label for="long" class="filter-label">long</label>
+          </div>
+          <div class="filter">
+            <input id="hd" type="checkbox" class="form-control" formControlName="hd">
+            <label for="hd" class="filter-label">HD</label>
+          </div>
+          <icon name="trash" *ngIf="filtersForm.value.duration || filtersForm.value.hd" (click)="clearFilters()"></icon>
+        </form>
+      </button>
+      `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayerSearchComponent implements OnChanges, OnDestroy {
   @Input() query;
+  @Input() searchParams = { ...defaultSearchParams };
   @Output() queryChange = new EventEmitter<string>();
+  @Output() paramsChange = new EventEmitter<ISearchFormParams>();
   @Output() search = new EventEmitter();
-  // @Output() typing = new EventEmitter<string>();
-
-  @ViewChild('mediaSearch') mediaSearch;
 
   searchForm: FormGroup;
+  filtersForm: FormGroup;
   formState: Subscription;
+  filtersChanged: Subscription;
 
   params = {
     hl: 'en',
@@ -60,26 +79,42 @@ export class PlayerSearchComponent implements OnChanges, OnDestroy {
 
   constructor(private fb: FormBuilder) {
     this.searchForm = fb.group({
-      searchInput: this.query
+      query: this.query
     });
+    this.filtersForm = fb.group({
+      ...this.searchParams
+    });
+
     this.formState = this.searchForm.valueChanges
       .pipe(
         debounceTime(400),
         filter(value => !value.hasOwnProperty('isTrusted'))
       )
       .subscribe(formState => {
-        this.onQueryChange(formState.searchInput);
+        // console.log('formState', formState);
+        this.onQueryChange(formState.query);
       });
+    this.filtersChanged = this.filtersForm.valueChanges.subscribe(state => {
+      this.paramsChange.emit(state);
+    });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    const changedQuery = changes && changes.query;
+  ngOnChanges({ query, searchParams }: SimpleChanges) {
     if (
-      changedQuery &&
-      changedQuery.currentValue &&
-      changedQuery.currentValue.hasOwnProperty('length')
+      query &&
+      query.currentValue &&
+      query.currentValue.hasOwnProperty('length')
     ) {
-      this.patchSearchInput(changedQuery.currentValue);
+      this.patchFormGroup(this.searchForm, { query: query.currentValue });
+    }
+
+    if (searchParams && searchParams.currentValue) {
+      const { videoDuration, videoDefinition } = searchParams.currentValue;
+      const values = {
+        duration: videoDuration === 'long',
+        hd: videoDefinition === 'high'
+      };
+      this.patchFormGroup(this.filtersForm, values);
     }
   }
 
@@ -87,8 +122,8 @@ export class PlayerSearchComponent implements OnChanges, OnDestroy {
     this.formState.unsubscribe();
   }
 
-  patchSearchInput(searchInput: string) {
-    this.searchForm.patchValue({ searchInput }, { emitEvent: false });
+  patchFormGroup(form: FormGroup, values: { [key: string]: any }) {
+    form.patchValue(values, { emitEvent: false });
   }
 
   onQueryChange(query: string) {
@@ -97,7 +132,7 @@ export class PlayerSearchComponent implements OnChanges, OnDestroy {
 
   onSearch() {
     const searchFormState = this.searchForm.value;
-    this.selectSuggestion(searchFormState.searchInput);
+    this.selectSuggestion(searchFormState.query);
   }
 
   handleSelectSuggestion(suggestion: string) {
@@ -107,4 +142,13 @@ export class PlayerSearchComponent implements OnChanges, OnDestroy {
   selectSuggestion(suggestion: string) {
     if (!suggestion.hasOwnProperty('isTrusted')) this.search.emit(suggestion);
   }
+
+  clearFilters() {
+    this.paramsChange.emit({ ...defaultSearchParams });
+  }
+}
+
+export interface ISearchFormParams {
+  duration: boolean;
+  hd: boolean;
 }

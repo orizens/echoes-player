@@ -5,36 +5,44 @@
 	$input-search-box-width: 35vw;
 	$search-box-width-large: 50vw;
 	$form-bg-color: $input-bg;
-	$input-font-size: $input-font-size-huge;
 
 	player-search {
-		display: inline-block;
+		display: flex;
 		
 		.form-search {
 			position: relative;
 			border: 0;
 			background-color: $form-bg-color;
 			border-radius: 3px;
-			padding: .5rem;
+			padding: var(--spacing-medium);
 
-			&:hover .form-control,
-			&:focus-within .form-control {
-				width: $search-box-width-large;
+			&:focus-within input.form-control,
+			input.form-control:focus {
+					width: $search-box-width-large;
 			}
 
 			input.form-control {
 				border: none;
 				box-shadow: none;
-				font-size: $input-font-size;
+				font-size: $input-font-size-huge;
 				background-color: transparent;
 				flex: 1;
 				width: $input-search-box-width;
 				transition: width .3s ease-out;
+				z-index: 10;
+				text-align: center;
+			}
+			.btn {
+				padding: var(--spacing-medium) 0;
+				font-size: var(--font-large);
+				color: $navbar-default-link-active-color;
+				z-index: 10;
 			}
 
 			.btn-submit {
-				color: $navbar-default-link-active-color;
-				font-size: 1.5rem;
+				icon {
+					margin-right: var(--spacing-standard);
+				}
 			}
 
 			.dropdown-menu {
@@ -52,13 +60,12 @@
 				}
 			}
 		}
-
+		
 		.ta-results {
-			position: absolute;
 			top: 100%;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 80%;
+			left: 0;
+			// transform: translateX(-50%);
+			width: 100%;
 			z-index: 10;
 			box-shadow: 0rem 0.3rem 3rem -0.5rem rgba(0,0,0,.5);
 
@@ -68,6 +75,48 @@
 				&.active {
 					background-color: var(--brand-primary);
 					border-color: var(--brand-primary);
+				}
+			}
+		}
+
+		.btn-filter {
+			position: relative;
+			padding: calc(var(--spacing-medium) + var(--spacing-standard)) var(--spacing-medium);
+			z-index: 1000;
+
+			&:hover .filters {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+
+		.filters {
+			transition: all .3s ease-out;
+			position: absolute;
+			top: 0;
+			right: 0;
+			opacity: 0;
+			transform: scale(0);
+			background-color: white;
+			padding: var(--spacing-standard);
+			display: flex;
+			justify-content: space-evenly;
+			z-index: 9;
+
+			.fa-trash {
+				font-size: 2rem;
+			}
+
+			.filter {
+				padding: 0 var(--spacing-standard);
+				.form-control {
+					display: none;
+				}
+
+				.form-control:checked + .filter-label {
+					text-shadow: 0 0 3px var(--brand-primary);
+					color: var(--brand-primary);
+					cursor: pointer;
 				}
 			}
 		}
@@ -84,6 +133,7 @@
 	player-search {
 		display: flex;
 		align-items: center;
-		flex-direction: column;
+		justify-content: center;
+		flex-direction: row;
 	}
 }

@@ -4,6 +4,10 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import {
+  StoreRouterConnectingModule,
+  RouterStateSerializer
+} from '@ngrx/router-store';
 
 import { CoreModule } from './core';
 import { SharedModule } from '@shared/index';
@@ -32,6 +36,7 @@ import { AppErrorHandler } from './core/services/error-handler';
     ...APP_CORE_MODULES,
     ...APP_CONTAINER_MODULES,
 
+    StoreRouterConnectingModule.forRoot(),
     ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production
     })

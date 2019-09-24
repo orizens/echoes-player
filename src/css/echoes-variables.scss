@@ -42,7 +42,7 @@ $md-lite-blue-800: #0277bd;
 // $gray-light:                $silver;
 $inverse: white;
 $inverse-transparent: rgba(255, 255, 255, 0.85);
-$white-dark-transparent: rgba(243, 243, 243, 0.9);
+$white-dark-transparent: rgba(243, 243, 243, 0.8);
 $white-darker: rgb(201, 199, 199);
 
 $gray-darker: lighten(#000, 13.5%); // #222
@@ -193,7 +193,7 @@ $btn-link-disabled-color: $gray-light;
 $input-font-size-base: $component-font-size-base;
 $input-font-size-small: floor($component-font-size-base * 0.867); // ~13px
 $input-font-size-large: ceil($component-font-size-base * 1.133); // ~17px
-$input-font-size-huge: floor($component-font-size-base * 1.467); // ~22px
+$input-font-size-huge: floor($component-font-size-base * 1.5); // ~22px
 
 $input-line-height-base: 1.467; // ~22px
 $input-line-height-small: 1.462; // ~19px
