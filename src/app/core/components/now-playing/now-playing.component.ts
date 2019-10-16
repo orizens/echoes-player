@@ -38,7 +38,7 @@ import { NowPlaylistComponent } from './now-playlist';
 })
 export class NowPlayingComponent implements OnInit {
   public nowPlaylist$: Observable<INowPlaylist>;
-  @ViewChild(NowPlaylistComponent) nowPlaylistComponent: NowPlaylistComponent;
+  @ViewChild(NowPlaylistComponent, { static: true }) nowPlaylistComponent: NowPlaylistComponent;
 
   constructor(
     public store: Store<EchoesState>,

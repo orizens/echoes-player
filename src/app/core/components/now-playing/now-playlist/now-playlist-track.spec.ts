@@ -1,10 +1,13 @@
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { TooltipModule } from 'ngx-tooltip';
+// import { TooltipModule } from 'ngx-tooltip';
 import { PIPES } from '@shared/pipes';
 import { NowPlaylistTrackComponent } from './now-playlist-track.component';
-import { VideoMock, VideoMockWithSpecialChars } from '@mocks/now-playlist-track.mocks';
+import {
+  VideoMock,
+  VideoMockWithSpecialChars
+} from '@mocks/now-playlist-track.mocks';
 import { MediaParserService } from '@core/services';
 
 describe('NowPlaylistTrackComponent', () => {
@@ -18,20 +21,22 @@ describe('NowPlaylistTrackComponent', () => {
     fixture.detectChanges();
   }
 
-  beforeEach(async(() => {
-    const mediaParserSpy = jasmine.createSpyObj('mediaParserSpy', [
-      'extractTracks', 'verifyTracksCue', 'extractTime', 'parseTracks'
-    ]);
-    TestBed.configureTestingModule({
-      imports: [TooltipModule],
-      declarations: [NowPlaylistTrackComponent, ...PIPES],
-      schemas: [NO_ERRORS_SCHEMA],
-      providers: [
-        { provide: MediaParserService, useValue: mediaParserSpy },
-      ]
+  beforeEach(
+    async(() => {
+      const mediaParserSpy = jasmine.createSpyObj('mediaParserSpy', [
+        'extractTracks',
+        'verifyTracksCue',
+        'extractTime',
+        'parseTracks'
+      ]);
+      TestBed.configureTestingModule({
+        // imports: [TooltipModule],
+        declarations: [NowPlaylistTrackComponent, ...PIPES],
+        schemas: [NO_ERRORS_SCHEMA],
+        providers: [{ provide: MediaParserService, useValue: mediaParserSpy }]
+      }).compileComponents();
     })
-      .compileComponents();
-  }));
+  );
 
   it('should create a component', () => {
     createComponent();

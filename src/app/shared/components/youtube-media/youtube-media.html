@@ -15,7 +15,7 @@
       <div
         rel="tooltip"
         class="media-thumb is-rounded-top"
-        [tooltip]="media.snippet.title"
+        [title]="media.snippet.title"
         (click)="playVideo(media)">
 
         <div class="thumbnail">
@@ -63,18 +63,18 @@
             *ngIf="!queued"
             class="btn btn-transparent text-info first-action"
             (click)="queueVideo(media)">
-            <icon name="reply" tooltip="Queue this video to now playlist"></icon>
+            <icon name="reply" title="Queue this video to now playlist"></icon>
           </button>
           <button
             *ngIf="queued"
             class="btn btn-transparent text-danger no-padding"
             (click)="removeVideoFromQueue(media)">
-            <icon name="trash" tooltip="Queue this video to now playlist"></icon>
+            <icon name="trash" title="Queue this video to now playlist"></icon>
           </button>
           <!-- <button
             class="btn btn-link add-to-playlist"
             disabled
-            tooltip="Add this video to a playlist"
+            title="Add this video to a playlist"
             (click)="addVideo(media)">
             <icon name="plus"></icon>
             Add
@@ -86,7 +86,7 @@
           <button class="btn btn-transparent no-padding">
             <icon
               name="info-circle"
-              tooltip="more info about this video"
+              title="more info about this video"
               class="text-info text-md is-media-valign"
               (click)="toggle(showDesc)"
               ></icon>
@@ -101,7 +101,7 @@
           href="https://youtube.com/watch?v={{ media.id }}"
           target="_blank"
           rel="noopener"
-          tooltip="Open in YouTube"
+          title="Open in YouTube"
           class="media-thumb"><icon
             name="youtube"
             [prefix]="ICON_PREFIX_BRAND"></icon>
@@ -117,7 +117,7 @@
       <button
         (click)="toggle(showDesc)"
         class="btn-transparent btn-xs text-md text-success"
-        tooltip="flip back...">
+        title="flip back...">
         <icon name="times-circle"></icon>
       </button>
     </section>

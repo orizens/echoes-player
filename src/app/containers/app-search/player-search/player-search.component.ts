@@ -37,7 +37,7 @@ const defaultSearchParams = {
         type="search" class="form-control" autocomplete="off"
         formControlName="query"
         >
-      <button class="btn btn-transparent btn-submit is-flex-row is-flex-valign" tooltip="search with echoes">
+      <button class="btn btn-transparent btn-submit is-flex-row is-flex-valign" title="search with echoes">
         <icon name="search"></icon>
       </button>
     </form>

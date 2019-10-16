@@ -9,7 +9,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { CORE_COMPONENTS } from './components';
 import { CORE_DIRECTIVES } from './directives';
 import { PIPES } from './pipes';
-import { TooltipModule } from 'ngx-tooltip';
+// import { TooltipModule } from 'ngx-tooltip';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     NgxYoutubePlayerModule.forRoot(),
     InfiniteScrollModule,
     NgxTypeaheadModule,
-    TooltipModule,
+    // TooltipModule,
     DragDropModule
   ],
   declarations: [...CORE_COMPONENTS, ...CORE_DIRECTIVES, ...PIPES],
@@ -33,7 +33,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     InfiniteScrollModule,
     NgxYoutubePlayerModule,
     NgxTypeaheadModule,
-    TooltipModule,
+    // TooltipModule,
     DragDropModule
   ],
   providers: []

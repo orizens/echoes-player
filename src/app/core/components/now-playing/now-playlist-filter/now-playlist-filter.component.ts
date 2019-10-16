@@ -16,12 +16,12 @@ import * as NowPlaylist from '@store/now-playlist';
   <span class="playlist-header" (click)="onNowPlayingClick()">
       <icon name="play-circle-o" class="text-primary"></icon>
       <span class="text btn-transparent playlist-count"
-        tooltip="Reveal now playing track">
+        title="Reveal now playing track">
         Now Playing <span *ngIf="!isPlaylistEmpty()">({{ playlistLength }})</span>
       </span>
     </span>
     <button class="btn btn-link btn-xs btn-clear"
-      tooltip="Clear All Tracks In Now Playlist"
+      title="Clear All Tracks In Now Playlist"
       [disabled]="isPlaylistEmpty()"
       (click)="clearPlaylist()">
       <icon name="trash"></icon>
