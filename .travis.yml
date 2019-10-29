@@ -13,6 +13,7 @@ language: node_js
 node_js:
   - "8.9.0"
 install:
+  - nvm use
   - npm install karma-es6-shim
   - npm install
 script:

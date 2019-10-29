@@ -36,4 +36,25 @@ body.halloween {
 
   --app-bg-color: #0b161b;
   --app-lite-shadow: 0 0 20px -3px #000;
+  
+  $halloween-bg: "//www3.pictures.livingly.com/mp/UH0i__i-SFJl.jpg";
+
+  .brand-container {
+    background: url($halloween-bg) no-repeat;
+    background-position: center;
+
+    .brand-text .text {
+      color: var(--sidebar-text);
+    }
+  }
+
+  now-playing {
+    background: var(--sidebar-bg-color) url($halloween-bg) no-repeat;
+    background-position: -30rem;
+    background-blend-mode: exclusion;
+
+    .sidebar-pane {
+      backdrop-filter: blur(6rem);
+    }
+  }
 }
