@@ -13,6 +13,10 @@
       text-transform: uppercase;
       position: relative;
       display: flex;
+      background-image: var(--brand-bg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
 
       .brand-text {
         flex: 1;
@@ -44,6 +48,7 @@
 
       .text {
         flex: 0 1 0%;
+        color: var(--sidebar-text);
       }
 
       .sidebar-toggle {
