@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Node
-        uses: actions/setup-node@v1.1.0
-
       - name: Puppeteer Container
         uses: ianwalter/puppeteer@v1.0.0
+      
+      - name: Setup Node
+        uses: actions/setup-node@v1.1.0
 
       - name: install and test
         run: |
