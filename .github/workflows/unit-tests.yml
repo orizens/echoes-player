@@ -8,15 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: ianwalter/puppeteer@v1.0.0
-    - uses: dcodeIO/setup-node-nvm@v1.0.0
-    - name: Puppeteer Container
-      run: |
-        nvm use 8.9.0
-        npm --version
-        npm i karma-es6-shim
-        npm i
-        npm run test:ci
+      - name: Setup Node
+        uses: setup-node@v1
+        with:
+          node-version:: '8.9.0'
+
+      - uses: ianwalter/puppeteer@v1.0.0
+      - name: Puppeteer Container
+        run: |
+          npm --version
+          npm i karma-es6-shim
+          npm i
+          npm run test:ci
 
    
 #     - uses: actions/checkout@v1
