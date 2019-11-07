@@ -17,7 +17,6 @@ jobs:
       - name: install and test
         run: |
           npm --version
-          npm i karma-es6-shim
           npm i
           npm run test:ci
 
