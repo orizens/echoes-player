@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Puppeteer Container
     - uses: ianwalter/puppeteer@v1.0.0
+    - name: Puppeteer Container
    
     - uses: actions/checkout@v1
     - name: install
