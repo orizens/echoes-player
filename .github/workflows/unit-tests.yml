@@ -19,7 +19,7 @@ jobs:
       - name: install
         run: npm i
       - name: test
-        run: npm test:ci
+        run: npm run test:ci
 #     steps:
 #       - name: Puppeteer Container
 #         uses: ianwalter/puppeteer@v1.0.0
