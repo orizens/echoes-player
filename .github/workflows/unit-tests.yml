@@ -1,0 +1,18 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: install
+      run: |
+        export DISPLAY=:99.0
+        sh -e /etc/init.d/xvfb start
+        npm i karma-es6-shim
+        npm i
+        npm run test:ci
