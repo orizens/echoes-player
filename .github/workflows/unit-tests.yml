@@ -8,9 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Puppeteer Container
+    - uses: ianwalter/puppeteer@v1.0.0
+
+#     - uses: actions/checkout@v1
     - name: install
       run: |
+        npm --version
         npm i karma-es6-shim
         npm i
         npm run test:ci
