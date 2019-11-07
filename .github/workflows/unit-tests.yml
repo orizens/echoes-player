@@ -4,22 +4,32 @@ on: [push]
 
 jobs:
   build:
-
+    name: Test on node
     runs-on: ubuntu-latest
 
     steps:
-      - name: Puppeteer Container
-        uses: ianwalter/puppeteer@v1.0.0
+      - uses: actions/checkout@v1
+
+      - name: Use node 8.9.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: 8.9.0
+          registry-url: https://registry.npmjs.org
+
+      - name: install
+        run: npm i
+      - name: test
+        run: npm test
+#     steps:
+#       - name: Puppeteer Container
+#         uses: ianwalter/puppeteer@v1.0.0
       
-      - name: Setup Node
-        uses: actions/setup-node@v1.1.0
+#       - name: Setup Node
+#         uses: actions/setup-node@v1.1.0
 
-      - name: install and test
-        run: |
-          npm --version
-          npm i
-          npm run test:ci
+#       - name: install and test
+#         run: |
+#           npm --version
+#           npm i
+#           npm run test:ci
 
-   
-#     - uses: actions/checkout@v1
-#     - name: install
