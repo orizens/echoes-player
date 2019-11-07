@@ -10,8 +10,8 @@ jobs:
     steps:
     - name: Puppeteer Container
     - uses: ianwalter/puppeteer@v1.0.0
-
-#     - uses: actions/checkout@v1
+   
+    - uses: actions/checkout@v1
     - name: install
       run: |
         npm --version
