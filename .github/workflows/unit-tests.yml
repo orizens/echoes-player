@@ -9,9 +9,7 @@ jobs:
 
     steps:
       - name: Setup Node
-        uses: setup-node@v1
-        with:
-          node-version:: '8.9.0'
+        uses: actions/setup-node@v1.1.0
 
       - name: Puppeteer Container
         uses: ianwalter/puppeteer@v1.0.0
