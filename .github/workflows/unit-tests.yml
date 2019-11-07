@@ -9,6 +9,7 @@ jobs:
 
     steps:
     - uses: ianwalter/puppeteer@v1.0.0
+    - uses: dcodeIO/setup-node-nvm@v1.0.0
     - name: Puppeteer Container
       run: |
         nvm use 8.9.0
