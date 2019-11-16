@@ -34,25 +34,12 @@ export class YoutubeSearch {
    * @param query {string}
    * @param params {key/value object}
    */
-  search(query: string, params: any | IQueryParams = {}) {
-    const {
-      videoType = 'any',
-      videoDuration = 'any',
-      videoDefinition = 'any',
-      preset
-    } = params;
+  search(query: string, { preset }: any | IQueryParams = {}) {
     if (query || '' === query) {
       // TODO: assign defaults here as migration
       // REMOVE next version
       this._apiOptions.q = `${query} ${preset}`;
     }
-    this._apiOptions = {
-      ...this._apiOptions,
-      videoType,
-      videoDuration,
-      videoDefinition
-    };
-
     return this.youtubeDataApi.list(this._api, this._apiOptions);
   }
 
@@ -65,10 +52,24 @@ export class YoutubeSearch {
   searchFor(type: string, query: string, params?: IQueryParams) {
     switch (type) {
       case SearchTypes.VIDEO: {
+        const {
+          videoType = 'any',
+          videoDuration = 'any',
+          videoDefinition = 'any'
+        } = params;
+        this._apiOptions = {
+          ...this._apiOptions,
+          videoType,
+          videoDuration,
+          videoDefinition
+        };
         return this.searchVideo(query, params);
       }
 
       case SearchTypes.PLAYLIST: {
+        delete this._apiOptions.videoType;
+        delete this._apiOptions.videoDuration;
+        delete this._apiOptions.videoDefinition;
         return this.searchForPlaylist(query, params);
       }
     }

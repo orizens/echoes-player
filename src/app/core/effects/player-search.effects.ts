@@ -17,7 +17,12 @@ import * as fromPlayerSearch from '@store/player-search';
 import { toPayload } from '@utils/data.utils';
 
 import { YoutubeSearch } from '@core/services/youtube.search';
-import { ROUTER_NAVIGATION, RouterNavigationAction } from '@ngrx/router-store';
+import {
+  ROUTER_NAVIGATION,
+  ROUTER_REQUEST,
+  RouterNavigationAction,
+  RouterNavigationPayload
+} from '@ngrx/router-store';
 
 @Injectable()
 export class PlayerSearchEffects {
@@ -192,10 +197,24 @@ export class PlayerSearchEffects {
 
   // ROUTER EFFECTS
   @Effect()
+  updateSearchType$ = this.actions$.pipe(
+    ofType(ROUTER_REQUEST),
+    filter((r: RouterNavigationAction) => isRoute(r.payload, '/search')),
+    map((r: RouterNavigationAction) => getSearchType(r.payload)),
+    map(
+      (searchType: string) => new fromPlayerSearch.UpdateSearchType(searchType)
+    )
+  );
+
+  @Effect()
   presetUpdate$ = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
-    filter((r: RouterNavigationAction) => isRoute(r, '/search')),
-    map((r: RouterNavigationAction) => getQueryParam(r, 'filter')),
+    filter(({ payload }: RouterNavigationAction) =>
+      isRoute(payload, '/search')
+    ),
+    map(({ payload }: RouterNavigationAction) =>
+      getQueryParam(payload, 'filter')
+    ),
     map((preset: string) =>
       this.playerSearchActions.updateQueryParam({ preset })
     )
@@ -205,22 +224,28 @@ export class PlayerSearchEffects {
   searchQueryUpdate$ = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
     filter(
-      (r: RouterNavigationAction) =>
-        isRoute(r, '/search') && includesInRoute(r, 'q=')
+      ({ payload }: RouterNavigationAction) =>
+        isRoute(payload, '/search') && includesInRoute(payload, 'q=')
     ),
-    map((r: RouterNavigationAction) => getQueryParam(r, 'q')),
+    map(({ payload }: RouterNavigationAction) => getQueryParam(payload, 'q')),
     map((query: string) => this.playerSearchActions.searchNewQuery(query))
   );
 }
 
-function isRoute(router: RouterNavigationAction, route: string) {
-  return router.payload.routerState.url.startsWith(route);
+function isRoute(payload: RouterNavigationPayload, route: string) {
+  return payload.event.url.startsWith(route);
 }
 
-function includesInRoute(router: RouterNavigationAction, param: string) {
-  return router.payload.routerState.url.includes(param);
+function includesInRoute(payload: RouterNavigationPayload, param: string) {
+  return payload.event.url.includes(param);
 }
 
-function getQueryParam(router: RouterNavigationAction, param: string) {
-  return router.payload.routerState.root.queryParams[param];
+function getQueryParam(payload: RouterNavigationPayload, param: string) {
+  return payload.routerState.root.queryParams[param];
+}
+
+function getSearchType(payload: RouterNavigationPayload) {
+  return payload.event.url
+    .replace(/(\?.+)|(\/search\/)/gim, '')
+    .replace(/s$/, '');
 }

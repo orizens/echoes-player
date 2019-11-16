@@ -12,16 +12,17 @@ import { CSearchTypes, CPresetTypes } from '@core/store/player-search';
   selector: 'search-navigator',
   styleUrls: ['./search-navigator.component.scss'],
   template: `
-  <ul class="nav nav-tabs search-selector" role="tablist">
-    <li *ngFor="let search of searchTypes"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }">
-      <a [routerLink]="search.link"
-        [queryParams]="search.params"
-        class="search-filter"
-        (click)="handleRouteClick(search)">{{ search.label }}</a>
-    </li>
-  </ul>
+    <ul class="nav nav-tabs search-selector" role="tablist">
+      <li *ngFor="let search of searchTypes" routerLinkActive="active">
+        <a
+          [routerLink]="search.link"
+          [queryParams]="search.params"
+          class="search-filter"
+          (click)="handleRouteClick(search)"
+          >{{ search.label }}</a
+        >
+      </li>
+    </ul>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -53,7 +54,7 @@ export class SearchNavigatorComponent implements OnInit {
     }
   ];
 
-  @Output() navigated = new EventEmitter();
+  @Output() navigated = new EventEmitter<INavigateEvent>();
 
   ngOnInit() {}
 
@@ -62,6 +63,13 @@ export class SearchNavigatorComponent implements OnInit {
     link: string;
     type: CSearchTypes;
   }) {
-    this.navigated.emit(searchType);
+    // this.navigated.emit(searchType);
   }
+}
+
+export interface INavigateEvent {
+  params: {
+    filter: string;
+  };
+  type: CSearchTypes;
 }
