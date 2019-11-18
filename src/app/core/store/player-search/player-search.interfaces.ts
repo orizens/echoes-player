@@ -3,9 +3,9 @@ export type videoDefinition = 'any' | 'high';
 export type videoTypes = 'any' | 'movie' | 'episode';
 export interface IQueryParams {
   preset: string;
-  videoType: videoTypes;
-  videoDuration: videoDurations;
-  videoDefinition: videoDefinition;
+  videoType?: videoTypes;
+  videoDuration?: videoDurations;
+  videoDefinition?: videoDefinition;
 }
 export interface IPlayerSearch {
   query: string;

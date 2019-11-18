@@ -3,7 +3,7 @@ import { YoutubeDataApi, DataApiProviders } from './youtube-data-api';
 import { switchMap } from 'rxjs/operators';
 import { IQueryParams } from '../store/player-search';
 
-const SearchTypes = {
+export const SearchTypes = {
   VIDEO: 'video',
   PLAYLIST: 'playlist',
   CHANNEL: 'channel'
@@ -49,7 +49,7 @@ export class YoutubeSearch {
    * @param query any string
    * @param params params of api
    */
-  searchFor(type: string, query: string, params?: IQueryParams) {
+  searchFor(type: string, query: string, params?: any | IQueryParams) {
     switch (type) {
       case SearchTypes.VIDEO: {
         const {

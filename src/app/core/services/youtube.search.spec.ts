@@ -6,7 +6,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayerSearchActions } from '@store/player-search';
 import { YoutubeDataApi } from './youtube-data-api';
-import { YoutubeSearch } from './youtube.search';
+import { YoutubeSearch, SearchTypes } from './youtube.search';
 
 describe('Youtube Search Service', () => {
   let service: YoutubeSearch;
@@ -31,11 +31,9 @@ describe('Youtube Search Service', () => {
   });
 
   // instantiation through framework injection
-  beforeEach(
-    inject([YoutubeSearch], youtubeSearch => {
-      service = youtubeSearch;
-    })
-  );
+  beforeEach(inject([YoutubeSearch], youtubeSearch => {
+    service = youtubeSearch;
+  }));
 
   it('should have a search method', () => {
     const actual = service.search;
@@ -54,7 +52,7 @@ describe('Youtube Search Service', () => {
     const nextPageToken = 'fdsaf#42441';
     service.search(query, params);
     service.searchMore(nextPageToken);
-    service.search(query, params);
+    service.searchFor(SearchTypes.VIDEO, query, params);
     const actual = youtubeDataApiSpy.list;
     const expected = {
       part: 'snippet,id',
@@ -73,7 +71,7 @@ describe('Youtube Search Service', () => {
     const params = { preset: '' };
     service.searchMore('fakePageToken$#@$$!');
     service.resetPageToken();
-    service.search(query, params);
+    service.searchFor(SearchTypes.VIDEO, query, params);
     const actual = youtubeDataApiSpy.list;
     const expected = {
       part: 'snippet,id',

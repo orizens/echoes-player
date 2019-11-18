@@ -1,7 +1,6 @@
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-// import { TooltipModule } from 'ngx-tooltip';
 import { PIPES } from '@shared/pipes';
 import { NowPlaylistTrackComponent } from './now-playlist-track.component';
 import {
@@ -21,22 +20,19 @@ describe('NowPlaylistTrackComponent', () => {
     fixture.detectChanges();
   }
 
-  beforeEach(
-    async(() => {
-      const mediaParserSpy = jasmine.createSpyObj('mediaParserSpy', [
-        'extractTracks',
-        'verifyTracksCue',
-        'extractTime',
-        'parseTracks'
-      ]);
-      TestBed.configureTestingModule({
-        // imports: [TooltipModule],
-        declarations: [NowPlaylistTrackComponent, ...PIPES],
-        schemas: [NO_ERRORS_SCHEMA],
-        providers: [{ provide: MediaParserService, useValue: mediaParserSpy }]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    const mediaParserSpy = jasmine.createSpyObj('mediaParserSpy', [
+      'extractTracks',
+      'verifyTracksCue',
+      'extractTime',
+      'parseTracks'
+    ]);
+    TestBed.configureTestingModule({
+      declarations: [NowPlaylistTrackComponent, ...PIPES],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [{ provide: MediaParserService, useValue: mediaParserSpy }]
+    }).compileComponents();
+  }));
 
   it('should create a component', () => {
     createComponent();
@@ -44,6 +40,7 @@ describe('NowPlaylistTrackComponent', () => {
   });
 
   it('should select the track when title is clicked', () => {
+    createComponent();
     const trigger = fixture.debugElement.query(By.css('.video-title'));
     spyOn(component.select, 'emit');
     const actual = component.select.emit;

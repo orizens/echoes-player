@@ -82,7 +82,7 @@ export class NowPlaylistTrackComponent implements AfterContentInit {
   hasTracks = false;
   private parsedTracks = false;
 
-  constructor(public mediaParser: MediaParserService) {}
+  constructor(public mediaParser: MediaParserService) { }
 
   ngAfterContentInit() {
     this.extractTracks(this.video);
