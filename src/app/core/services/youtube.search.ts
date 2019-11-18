@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { YoutubeDataApi, DataApiProviders } from './youtube-data-api';
 import { switchMap } from 'rxjs/operators';
+import { IQueryParams } from '../store/player-search';
 
-const SearchTypes = {
+export const SearchTypes = {
   VIDEO: 'video',
   PLAYLIST: 'playlist',
   CHANNEL: 'channel'
@@ -19,7 +20,7 @@ export const SearchParams = {
 @Injectable()
 export class YoutubeSearch {
   private _api = DataApiProviders.SEARCH;
-  private _apiOptions = {
+  private _apiOptions: any = {
     part: 'snippet,id',
     q: '',
     type: 'video',
@@ -33,10 +34,11 @@ export class YoutubeSearch {
    * @param query {string}
    * @param params {key/value object}
    */
-  search(query: string, params?: any) {
+  search(query: string, { preset }: any | IQueryParams = {}) {
     if (query || '' === query) {
-      const preset = params ? ` ${params.preset}` : '';
-      this._apiOptions.q = `${query}${preset}`;
+      // TODO: assign defaults here as migration
+      // REMOVE next version
+      this._apiOptions.q = `${query} ${preset}`;
     }
     return this.youtubeDataApi.list(this._api, this._apiOptions);
   }
@@ -47,13 +49,27 @@ export class YoutubeSearch {
    * @param query any string
    * @param params params of api
    */
-  searchFor(type: string, query: string, params?: any) {
+  searchFor(type: string, query: string, params?: any | IQueryParams) {
     switch (type) {
       case SearchTypes.VIDEO: {
+        const {
+          videoType = 'any',
+          videoDuration = 'any',
+          videoDefinition = 'any'
+        } = params;
+        this._apiOptions = {
+          ...this._apiOptions,
+          videoType,
+          videoDuration,
+          videoDefinition
+        };
         return this.searchVideo(query, params);
       }
 
       case SearchTypes.PLAYLIST: {
+        delete this._apiOptions.videoType;
+        delete this._apiOptions.videoDuration;
+        delete this._apiOptions.videoDefinition;
         return this.searchForPlaylist(query, params);
       }
     }
@@ -73,13 +89,13 @@ export class YoutubeSearch {
    * @param query {string}
    * @param params {key/value object}
    */
-  searchForPlaylist(query: string, params?: any) {
+  searchForPlaylist(query: string, { preset }) {
     this._apiOptions.type = SearchParams.Types[SearchTypes.PLAYLIST];
-    return this.search(query, params).pipe(
-      switchMap((response: any) => {
+    return this.search(query, { preset }).pipe(
+      switchMap(({ items }: { items: GoogleApiYouTubeSearchResource[] }) => {
         const options = {
           part: 'snippet,id,contentDetails',
-          id: response.items.map(pl => pl.id.playlistId).join(',')
+          id: items.map(pl => pl.id.playlistId).join(',')
         };
         return this.youtubeDataApi.list(DataApiProviders.PLAYLISTS, options);
       })

@@ -2,7 +2,7 @@
   <section class="media-title front">
     <div
       class="media-thumb"
-      [tooltip]="media.snippet.title">
+      [title]="media.snippet.title">
       <div class="thumbnail is-rounded">
         <img
           [src]="media | videoToThumb"
@@ -19,7 +19,7 @@
       <a
         class="playlist-link"
         [routerLink]="[ link + '/playlist', media.id ]"
-        [tooltip]="media.snippet.title"
+        [title]="media.snippet.title"
         (click)="onNavigateToPlaylist()">
         <h4 class="title ellipsis">
           {{ media.snippet.title }}

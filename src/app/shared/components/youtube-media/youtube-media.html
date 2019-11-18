@@ -15,21 +15,35 @@
       <div
         rel="tooltip"
         class="media-thumb is-rounded-top"
-        [tooltip]="media.snippet.title"
+        [title]="media.snippet.title"
         (click)="playVideo(media)">
 
         <div class="thumbnail">
           <img
             name
-            class="thumb-image"
+            class="thumb-image thumb-shadow"
+            [src]="media | videoToThumb">
+          <img
+            name
+            class="thumb-image is-rounded"
             [src]="media | videoToThumb">
         </div>
 
-        <section class="stats is-absolute-bottom is-flex-row">
-          <span class="item-duration item-action">
-						<icon name="clock-o"></icon> {{ media.contentDetails?.duration | toFriendlyDuration }}
-					</span>
+        <button class="btn btn-transparent text-primary btn-lg ux-maker play-media">
+          <icon name="youtube-play 3x"></icon>
+        </button>
+      </div>
 
+      <section class="item-actions main-actions is-rounded-bottom">
+        <h4 class="title">
+					<span
+            href="#/video/"
+            rel="tooltip"
+            class="media-thumb ellipsis">
+            {{ media.snippet.title }}
+          </span>
+        </h4>
+        <!-- <section class="stats is-absolute-bottom is-flex-row">
           <span
             class="item-likes item-action"
             rel="tooltip"
@@ -43,55 +57,39 @@
             title="Views">
 						<icon name="eye"></icon> {{ media.statistics?.viewCount | number:'2.0'}}
 					</span>
-        </section>
-
-        <button class="btn btn-transparent text-primary btn-lg ux-maker play-media">
-          <icon name="youtube-play 3x"></icon>
-        </button>
-      </div>
-
-      <section class="item-actions main-actions is-rounded-bottom">
-        <h4 class="title">
-					<a
-            href="#/video/"
-            rel="tooltip"
-            class="media-thumb ellipsis"
-            [tooltip]="media.snippet.title">
-            {{ media.snippet.title }}
-          </a>
-				</h4>
+        </section> -->
         <section class="media-actions is-flex-row is-flex-valign">
           <button
             *ngIf="!queued"
             class="btn btn-transparent text-info first-action"
-            tooltip="Queue this video to now playlist"
             (click)="queueVideo(media)">
-            <icon name="reply"></icon>
-            Queue To Playlist
+            <icon name="reply" title="Queue this video to now playlist"></icon>
           </button>
           <button
             *ngIf="queued"
             class="btn btn-transparent text-danger no-padding"
-            tooltip="Queue this video to now playlist"
             (click)="removeVideoFromQueue(media)">
-            <icon name="trash"></icon>
-            Remove From Queue
+            <icon name="trash" title="Queue this video to now playlist"></icon>
           </button>
-          <button
+          <!-- <button
             class="btn btn-link add-to-playlist"
             disabled
-            tooltip="Add this video to a playlist"
+            title="Add this video to a playlist"
             (click)="addVideo(media)">
             <icon name="plus"></icon>
             Add
-          </button>
-          <span class="is-strechable"></span>
+          </button> -->
+          <!-- <span class="is-strechable"></span> -->
+          <span class="text-info item-duration">
+						<icon name="clock-o"></icon> {{ media.contentDetails?.duration | toFriendlyDuration }}
+					</span>
           <button class="btn btn-transparent no-padding">
             <icon
               name="info-circle"
+              title="more info about this video"
               class="text-info text-md is-media-valign"
               (click)="toggle(showDesc)"
-              tooltip="more info about this video"></icon>
+              ></icon>
           </button>
         </section>
       </section>
@@ -103,7 +101,7 @@
           href="https://youtube.com/watch?v={{ media.id }}"
           target="_blank"
           rel="noopener"
-          tooltip="Open in YouTube"
+          title="Open in YouTube"
           class="media-thumb"><icon
             name="youtube"
             [prefix]="ICON_PREFIX_BRAND"></icon>
@@ -119,7 +117,7 @@
       <button
         (click)="toggle(showDesc)"
         class="btn-transparent btn-xs text-md text-success"
-        tooltip="flip back...">
+        title="flip back...">
         <icon name="times-circle"></icon>
       </button>
     </section>

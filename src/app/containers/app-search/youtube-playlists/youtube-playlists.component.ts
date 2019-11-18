@@ -40,14 +40,14 @@ export class YoutubePlaylistsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(
-      new fromPlayerSearch.UpdateSearchType(
-        fromPlayerSearch.CSearchTypes.PLAYLIST
-      )
-    );
-    this.store.dispatch(
-      fromPlayerSearch.PlayerSearchActions.PLAYLISTS_SEARCH_START.creator()
-    );
+    // this.store.dispatch(
+    //   new fromPlayerSearch.UpdateSearchType(
+    //     fromPlayerSearch.CSearchTypes.PLAYLIST
+    //   )
+    // );
+    // this.store.dispatch(
+    //   fromPlayerSearch.PlayerSearchActions.PLAYLISTS_SEARCH_START.creator()
+    // );
   }
 
   playPlaylist(media: GoogleApiYouTubePlaylistResource) {

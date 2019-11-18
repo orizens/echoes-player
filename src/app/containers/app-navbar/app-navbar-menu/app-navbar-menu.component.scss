@@ -69,6 +69,7 @@
 .list-group-item {
   @each $theme, $color in 
   ('arctic', $brand-primary),
+  ('autumn', #FF9800),
   ('bumblebee', #faca0b), 
   ('halloween', #ff5722)  {
     /deep/ .active.btn-value-#{$theme} {

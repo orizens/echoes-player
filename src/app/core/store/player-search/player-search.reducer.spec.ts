@@ -13,6 +13,12 @@ describe('The Player Search reducer', () => {
       preset: '',
       duration: -1
     },
+    queryParamsNew: {
+      preset: '',
+      videoType: 'any',
+      videoDuration: 'any',
+      videoDefinition: 'any'
+    },
     presets: [],
     pageToken: {
       next: '',
@@ -34,7 +40,10 @@ describe('The Player Search reducer', () => {
   it('should ADD videos', () => {
     const state = mockedState();
     const youtubeMediaItems = YoutubeMediaItemsMock as any[];
-    const actual = search(state, SearchActions.AddResultsAction.creator(youtubeMediaItems));
+    const actual = search(
+      state,
+      SearchActions.AddResultsAction.creator(youtubeMediaItems)
+    );
     const expected = [...state.results, ...YoutubeMediaItemsMock];
     expect(actual.results.length).toBe(expected.length);
   });

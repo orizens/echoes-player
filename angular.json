@@ -92,10 +92,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
-            "styles": [
-              "node_modules/font-awesome/scss/font-awesome.scss",
-              "src/css/style.scss"
-            ],
+            "styles": ["src/css/style.scss"],
             "assets": ["src/assets", "src/favicon.ico", "src/manifest.json"]
           }
         },

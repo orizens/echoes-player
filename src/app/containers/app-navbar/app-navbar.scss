@@ -3,7 +3,6 @@
 @media (min-width: 320px) {
   app-navbar {
     $zindex: 1020;
-    $user-icon-size: 4rem;
     $navbar-container-padding: 0.5rem 5rem;
     $navbar-new-height: 1rem;
 
@@ -14,37 +13,23 @@
       background-image: none;
       background-color: var(--navbar-bg-color);
       border-color: var(--navbar-bg-color);
-      color: var(--navbar-text-color);
       box-shadow: 0 1px 7px rgba(0, 0, 0, 0.5);
       transition: transform, margin-left 0.3s ease-out;
       z-index: $zindex;
     }
 
-    // .navbar-brand {
-    //   line-height: 2;
-    //   float: none;
-    //   height: auto;
-    // }
-
-    .user-icon {
-      width: $user-icon-size;
-      height: $user-icon-size;
-      vertical-align: middle;
-      border-radius: 50%;
-      border: 1px solid #fff;
-      box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
-    }
     .navbar-container {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       padding: $navbar-container-padding;
+      backdrop-filter: blur(.5rem);
 
       .navbar__content {
-        flex: 3 0 0;
+        flex: 1;
         padding-left: 0;
         display: flex;
-        flex-flow: wrap;
+        flex-direction: column;
         justify-content: center;
 
         .navbar-header {
@@ -81,8 +66,7 @@
 
     .navbar-actions {
       display: flex;
-      flex: 1;
-      flex-direction: column-reverse;
+      flex-direction: row;
       justify-content: flex-end;
       padding-right: 1rem;
       position: absolute;
@@ -104,10 +88,6 @@
     }
     .navbar-container {
       padding: 0.5rem 0;
-      .navbar__content {
-        display: block;
-        padding-left: $navbar-container-left-padding;
-      }
     }
     .navbar-actions {
       position: relative;

@@ -1,0 +1,32 @@
+body.autumn {
+  --brand-primary: #FF9800;
+  --brand-secondary: #0277bd;
+  --brand-success: #8BC34A;
+  --brand-warning: #f1c40f;
+  --brand-danger: #e74c3c;
+  --brand-info: #8BC34A;
+  --sidebar-bg: #271d1ae0;
+  --sidebar-bg-secondary: #382c29e0;
+  --sidebar-text: white;
+  --sidebar-text-lighter: #c9c7c7;
+  --brand-inverse-text: white;
+  --brand-primary-lite-bg-color: white;
+  --brand-primary-text-color: #9e9e9e;
+  --brand-dark-bg-color: #000;
+  --brand-dark-bg-color-transparent: rgba(10, 10, 10, 0.7);
+  --brand-bg-lite-transparent: #271d1acf;
+  --link-primary-color: var(--brand-primary);
+  --link-primary-hover-color: var(--brand-primary);
+  --navbar-bg-color: #271d1ae0;
+  --navbar-text-color: #c5c5c5;
+  --navbar-link-color: var(--link-primary-color);
+  --list-group-item-text: #b0b6b8;
+  --list-group-item-text-hover: dark(#c0c7cb);
+  --list-group-item-bg: #2c221f;
+  --list-group-item-bg-hover: #45352f;
+  --list-group-item-border: #372c29;
+  --player-controls-bar-bg: #222222;
+  --media-bg-primary: var(--brand-bg-lite-transparent);
+  --app-bg-color: #3c3634e3;
+  --app-lite-shadow: 0 0 20px -3px #1a1818;
+}

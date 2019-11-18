@@ -17,6 +17,12 @@ import * as fromPlayerSearch from '@store/player-search';
 import { toPayload } from '@utils/data.utils';
 
 import { YoutubeSearch } from '@core/services/youtube.search';
+import {
+  ROUTER_NAVIGATION,
+  ROUTER_REQUEST,
+  RouterNavigationAction,
+  RouterNavigationPayload
+} from '@ngrx/router-store';
 
 @Injectable()
 export class PlayerSearchEffects {
@@ -40,7 +46,7 @@ export class PlayerSearchEffects {
         .searchFor(
           store.search.searchType,
           store.search.query,
-          store.search.queryParams
+          store.search.queryParamsNew
         )
         .pipe(
           map(youtubeResponse =>
@@ -117,7 +123,7 @@ export class PlayerSearchEffects {
         .searchFor(
           store.search.searchType,
           store.search.query,
-          store.search.queryParams
+          store.search.queryParamsNew
         )
         .pipe(
           map(youtubeResponse =>
@@ -134,6 +140,12 @@ export class PlayerSearchEffects {
     withLatestFrom(this.store.select(fromPlayerSearch.getIsSearching)),
     filter((states: [any, boolean]) => !states[1]),
     map(() => this.playerSearchActions.searchStarted())
+  );
+
+  @Effect()
+  updateQueryFilter$ = this.actions$.pipe(
+    ofType(fromPlayerSearch.ActionTypes.UPDATE_QUERY_FILTER),
+    map(() => this.playerSearchActions.searchNewQuery())
   );
 
   @Effect()
@@ -182,4 +194,58 @@ export class PlayerSearchEffects {
         )
     )
   );
+
+  // ROUTER EFFECTS
+  @Effect()
+  updateSearchType$ = this.actions$.pipe(
+    ofType(ROUTER_REQUEST),
+    filter((r: RouterNavigationAction) => isRoute(r.payload, '/search')),
+    map((r: RouterNavigationAction) => getSearchType(r.payload)),
+    map(
+      (searchType: string) => new fromPlayerSearch.UpdateSearchType(searchType)
+    )
+  );
+
+  @Effect()
+  presetUpdate$ = this.actions$.pipe(
+    ofType(ROUTER_NAVIGATION),
+    filter(({ payload }: RouterNavigationAction) =>
+      isRoute(payload, '/search')
+    ),
+    map(({ payload }: RouterNavigationAction) =>
+      getQueryParam(payload, 'filter')
+    ),
+    map((preset: string) =>
+      this.playerSearchActions.updateQueryParam({ preset })
+    )
+  );
+
+  @Effect()
+  searchQueryUpdate$ = this.actions$.pipe(
+    ofType(ROUTER_NAVIGATION),
+    filter(
+      ({ payload }: RouterNavigationAction) =>
+        isRoute(payload, '/search') && includesInRoute(payload, 'q=')
+    ),
+    map(({ payload }: RouterNavigationAction) => getQueryParam(payload, 'q')),
+    map((query: string) => this.playerSearchActions.searchNewQuery(query))
+  );
+}
+
+function isRoute(payload: RouterNavigationPayload, route: string) {
+  return payload.event.url.startsWith(route);
+}
+
+function includesInRoute(payload: RouterNavigationPayload, param: string) {
+  return payload.event.url.includes(param);
+}
+
+function getQueryParam(payload: RouterNavigationPayload, param: string) {
+  return payload.routerState.root.queryParams[param];
+}
+
+function getSearchType(payload: RouterNavigationPayload) {
+  return payload.event.url
+    .replace(/(\?.+)|(\/search\/)/gim, '')
+    .replace(/s$/, '');
 }

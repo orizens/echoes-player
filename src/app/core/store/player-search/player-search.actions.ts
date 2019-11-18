@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActionCreatorFactory } from 'ngrx-action-creator-factory';
 import { Action } from '@ngrx/store';
+import { IQueryParams } from './player-search.interfaces';
 
 export enum ActionTypes {
   ADD = '[Videos] ADD',
@@ -21,17 +22,11 @@ export enum ActionTypes {
   PLAYLISTS_SEARCH_START = '[PlayerSearch] PLAYLISTS_SEARCH_START',
   ADD_RESULTS = '[PlayerSearch] ADD_RESULTS',
   RESET_RESULTS = '[PlayerSearch] RESET_RESULTS',
-  ERROR_RESULTS = '[PlayerSearch] ERROR_RESULTS'
+  ERROR_RESULTS = '[PlayerSearch] ERROR_RESULTS',
+  UPDATE_QUERY_FILTER = '[PlayerSearch] UPDATE_QUERY_FILTER'
 }
 @Injectable()
 export class PlayerSearchActions {
-  // @ActionCreator({
-  //   type: 'UPDATE_FILTER',
-  //   payload: string
-  // })
-  // @ActionCreator<string>(PlayerSearchActions.UPDATE_FILTER)
-  // update;
-  static UPDATE_FILTER = '[PlayerSearch] UPDATE_FILTER';
   static UPDATE_QUERY_PARAM = '[PlayerSearch] UPDATE_QUERY_PARAM';
   static UPDATE_QUERY = '[PlayerSearch] UPDATE_QUERY';
   static SEARCH_NEW_QUERY = '[PlayerSearch] SEARCH_NEW_QUERY';
@@ -77,7 +72,7 @@ export class PlayerSearchActions {
   searchMoreForQuery = ActionCreatorFactory.create(
     PlayerSearchActions.SEARCH_MORE_FOR_QUERY
   );
-  updateFilter = ActionCreatorFactory.create(PlayerSearchActions.UPDATE_FILTER);
+  updateFilter = ActionCreatorFactory.create(ActionTypes.UPDATE_FILTER);
   updateQueryParam = ActionCreatorFactory.create<any>(
     PlayerSearchActions.UPDATE_QUERY_PARAM
   );
@@ -112,6 +107,10 @@ export class SearchCurrentQuery {
   constructor() {}
 }
 
+export class UpdateQueryFilter {
+  public type = ActionTypes.UPDATE_QUERY_FILTER;
+  constructor(public payload: { [key: string]: any }) {}
+}
 // export class AddResults implements Action {
 //   readonly type = PlayerSearchActions.ADD_RESULTS;
 //   constructor(public payload: GoogleApiYouTubeVideoResource[]) { }

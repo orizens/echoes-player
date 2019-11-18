@@ -27,23 +27,23 @@ import { flyOut, flyInOut } from '@shared/animations/fade-in.animation';
         </span>
       </section>
 
-      <section class="video-title" (click)="markSelected(video)" [tooltip]="video.snippet.title">{{ video.snippet.title }}</section>
+      <section class="video-title" (click)="markSelected(video)" [title]="video.snippet.title">{{ video.snippet.title }}</section>
       </div>
     <aside class="playlist-track__content">
       <section class="track-actions">
         <button class="btn btn-transparent text-primary playlist-track"
           *ngIf="isPlaylistMedia(video)"
           (click)="handleToggleTracks($event, video)"
-          tooltip="Album Track - click to select cued tracks">
+          title="Album Track - click to select cued tracks">
           <icon name="list-ul"></icon>
         </button>
         <button class="btn btn-transparent text-info playlist-track"
           (click)="toggleInfo()"
-          tooltip="More information for this media">
+          title="More information for this media">
           <icon name="info-circle"></icon>
         </button>
       </section>
-      <button class="btn btn-transparent text-danger ux-maker remove-track" tooltip="Remove From Playlist"
+      <button class="btn btn-transparent text-danger ux-maker remove-track" title="Remove From Playlist"
         (click)="remove.emit(video)">
         <icon name="trash"></icon>
       </button>
@@ -82,7 +82,7 @@ export class NowPlaylistTrackComponent implements AfterContentInit {
   hasTracks = false;
   private parsedTracks = false;
 
-  constructor(public mediaParser: MediaParserService) {}
+  constructor(public mediaParser: MediaParserService) { }
 
   ngAfterContentInit() {
     this.extractTracks(this.video);

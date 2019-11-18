@@ -6,6 +6,7 @@ const HandledErrors = ['HttpErrorResponse'];
 const DimissedErrors = ['popup_closed_by_user'];
 const isYoutubeApiError = error =>
   error && error.error && error.error.error.errors;
+const isString = message => typeof message === 'string';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AppErrorHandler implements ErrorHandler {
       const sanitizedError = isYoutubeApiError(error)
         ? error.error.error.errors[0]
         : error;
-      console.log('There was an ERROR:', error);
+      console.error('There was an ERROR:', error);
+      const errorPayload = isString(error) ? { message: error } : error;
       appApi.notifyError(error);
     }
   }

@@ -7,7 +7,8 @@
     --media-dark-transparent: var(--brand-dark-bg-color-transparent);
     --text-color: var(--brand-primary-text-color);
     --text-primary-color-inverse: var(--brand-inverse-text);
-
+    
+    $cover-scale: 1.2;
     $bg-description: rgba(255, 255, 255, 0.9);
     $icon-color: $gray-light;
     .youtube-item {
@@ -45,6 +46,8 @@
       }
 
       .media-actions {
+        justify-content: space-between;
+
         .first-action {
           padding-left: 0;
         }
@@ -52,7 +55,7 @@
 
       .front {
         padding: 0px;
-        box-shadow: 0 1px 30px -5px var(--media-dark-transparent);
+        // box-shadow: 0 6px 15px -7px var(--media-dark-transparent);
         position: relative;
       }
 
@@ -66,7 +69,6 @@
         position: relative;
         cursor: pointer;
         font-weight: normal;
-        overflow: hidden;
 
         .stats {
           background: var(--brand-dark-bg-color-transparent);
@@ -75,8 +77,8 @@
           color: white;
           justify-content: space-between;
 
-          .item-duration {
-          }
+          // .item-duration {
+          // }
           
           .item-action {
             color: var(--link-primary-color);
@@ -90,10 +92,6 @@
         }
 
         &:hover {
-          img {
-            transform: scale(1.4) translate(0, 0);
-          }
-
           .play-media {
             opacity: 1;
           }
@@ -103,10 +101,9 @@
       .play-media {
         opacity: 0;
         position: absolute;
+        z-index: 10;
         top: 50%;
         left: 50%;
-        // background: var(--media-primary-color);
-        // color: var(--text-primary-color-inverse);
         border: none;
 
         &:hover {
@@ -129,25 +126,29 @@
       }
 
       .thumbnail {
-        overflow: hidden;
         border-radius: 0;
         clear: both;
         height: 149px;
         border: none;
-        background-color: var(--text-primary-color-inverse);
         padding: 0;
         box-shadow: none;
         margin-bottom: 0;
 
         .thumb-image {
           height: 100%;
-          transform: scale(1.7) translatey(0);
           transition: transform 0.3s ease-out;
-          display: block;
           max-width: 100%;
-          margin-left: auto;
-          margin-right: auto;
           border: 0;
+          z-index: 10;
+          position: relative;
+        }
+        .thumb-shadow {
+          transform: translatey(28px);
+          position: absolute;
+          top: 0;
+          filter: blur(17px);
+          opacity: .5;
+          z-index: 9;
         }
       }
 
@@ -186,19 +187,15 @@
       }
 
       .item-actions {
-        background: var(--media-bg-primary);
         padding: 1rem;
         margin: 0;
         box-shadow: none;
         bottom: -1px;
+        position: relative;
+        z-index: 1000;
 
         a:hover {
           text-decoration: none;
-        }
-
-        span {
-          vertical-align: middle;
-          font-size: 1.2rem;
         }
       }
 
