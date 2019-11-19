@@ -2,7 +2,8 @@
 
 - [NEW] - new ui design for search
 - [NEW] - new cards for videos
-- [NEW] - added preset as query parameters
+- [NEW] - added preset as query parameters for "live", "albums"
+- [NEW] - added "q" as a query parameter for search
 - [UPGRADE] - Angular V8, NGRX V8
 
 ## v 4.4.1 (2019/05/30)
