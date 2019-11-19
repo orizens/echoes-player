@@ -31,7 +31,8 @@ import { INavigateEvent } from './search-navigator/search-navigator.component';
         </div>
         <section class="is-flex-row is-content-aligned-h">
           <search-navigator
-            (navigated)="handleNavigateChange($event)"
+            [searchType]="searchType$ | async"
+            [queryParams]="queryParams$ | async"
           ></search-navigator>
         </section>
       </app-navbar>
@@ -41,6 +42,7 @@ import { INavigateEvent } from './search-navigator/search-navigator.component';
 })
 export class AppSearchComponent implements OnInit {
   query$ = this.store.pipe(select(fromPlayerSearch.getQuery));
+  searchType$ = this.store.pipe(select(fromPlayerSearch.getSearchType));
   currentPlaylist$ = this.store.pipe(
     select(fromUserProfile.getUserViewPlaylist)
   );
@@ -50,9 +52,9 @@ export class AppSearchComponent implements OnInit {
   constructor(
     private store: Store<EchoesState>,
     private playerSearchActions: fromPlayerSearch.PlayerSearchActions
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   search(query: string) {
     if (!query.hasOwnProperty('isTrusted')) {
@@ -71,11 +73,5 @@ export class AppSearchComponent implements OnInit {
 
   updateParams(queryParams: any) {
     this.store.dispatch(new UpdateQueryFilter(queryParams));
-  }
-
-  handleNavigateChange({ params: { filter } }: INavigateEvent) {
-    this.store.dispatch(
-      this.playerSearchActions.updateQueryParam({ preset: filter })
-    );
   }
 }

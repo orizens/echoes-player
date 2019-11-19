@@ -27,7 +27,7 @@ export class YoutubeSearch {
     pageToken: ''
   };
 
-  constructor(private youtubeDataApi: YoutubeDataApi) {}
+  constructor(private youtubeDataApi: YoutubeDataApi) { }
 
   /**
    * search for video
@@ -38,7 +38,7 @@ export class YoutubeSearch {
     if (query || '' === query) {
       // TODO: assign defaults here as migration
       // REMOVE next version
-      this._apiOptions.q = `${query} ${preset}`;
+      this._apiOptions.q = `${query} ${preset}`.trim();
     }
     return this.youtubeDataApi.list(this._api, this._apiOptions);
   }

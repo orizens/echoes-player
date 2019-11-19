@@ -46,7 +46,7 @@ describe('Youtube Search Service', () => {
     expect(actual).toHaveBeenCalled();
   });
 
-  it('should search with same value when searching more', () => {
+  it('should search with same value when searching more and trim', () => {
     const query = 'ozrics';
     const params = { preset: '' };
     const nextPageToken = 'fdsaf#42441';
@@ -56,7 +56,7 @@ describe('Youtube Search Service', () => {
     const actual = youtubeDataApiSpy.list;
     const expected = {
       part: 'snippet,id',
-      q: `${query} ${params.preset}`,
+      q: `${query} ${params.preset}`.trim(),
       type: 'video',
       pageToken: nextPageToken,
       videoType: 'any',
@@ -75,7 +75,7 @@ describe('Youtube Search Service', () => {
     const actual = youtubeDataApiSpy.list;
     const expected = {
       part: 'snippet,id',
-      q: `${query} ${params.preset}`,
+      q: `${query} ${params.preset}`.trim(),
       type: 'video',
       pageToken: '',
       videoType: 'any',

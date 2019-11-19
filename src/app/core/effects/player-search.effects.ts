@@ -32,7 +32,7 @@ export class PlayerSearchEffects {
     private playerSearchActions: fromPlayerSearch.PlayerSearchActions,
     private youtubeSearch: YoutubeSearch,
     private youtubeVideosInfo: YoutubeVideosInfo
-  ) {}
+  ) { }
 
   @Effect()
   searchQuery$ = this.actions$.pipe(
@@ -215,7 +215,7 @@ export class PlayerSearchEffects {
     map(({ payload }: RouterNavigationAction) =>
       getQueryParam(payload, 'filter')
     ),
-    map((preset: string) =>
+    map((preset = '') =>
       this.playerSearchActions.updateQueryParam({ preset })
     )
   );
