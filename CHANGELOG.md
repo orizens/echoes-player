@@ -1,4 +1,4 @@
-## v 5.0.0 (2019/11/17)
+## v 5.0.0 (2019/11/18)
 
 - [NEW] - new ui design for search
 - [NEW] - new cards for videos

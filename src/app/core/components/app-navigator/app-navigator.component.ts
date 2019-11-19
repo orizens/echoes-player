@@ -45,6 +45,6 @@ export class AppNavigatorComponent implements OnInit {
   }
 
   go(link) {
-    this.router.navigate([`/${link}/${this.searchType}s`]);
+    this.router.navigate([`/${link}/${this.searchType}s`], { queryParams: { filter: '' } });
   }
 }

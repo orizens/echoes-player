@@ -1,7 +1,7 @@
 app-user {
   article {
     padding-bottom: 5rem;
-    padding-top:7rem;
+    padding-top: 7rem;
   }
   h2 {
     small {
@@ -13,5 +13,9 @@ app-user {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  app-navbar .navbar__header {
+    padding-left: 2rem;
   }
 }

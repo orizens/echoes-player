@@ -7,7 +7,7 @@
     --media-dark-transparent: var(--brand-dark-bg-color-transparent);
     --text-color: var(--brand-primary-text-color);
     --text-primary-color-inverse: var(--brand-inverse-text);
-    
+
     $cover-scale: 1.2;
     $bg-description: rgba(255, 255, 255, 0.9);
     $icon-color: $gray-light;
@@ -79,7 +79,7 @@
 
           // .item-duration {
           // }
-          
+
           .item-action {
             color: var(--link-primary-color);
             &.item-likes {
@@ -128,11 +128,13 @@
       .thumbnail {
         border-radius: 0;
         clear: both;
-        height: 149px;
+        height: 25rem;
         border: none;
         padding: 0;
         box-shadow: none;
         margin-bottom: 0;
+        display: flex;
+        justify-content: center;
 
         .thumb-image {
           height: 100%;
@@ -147,7 +149,7 @@
           position: absolute;
           top: 0;
           filter: blur(17px);
-          opacity: .5;
+          opacity: 0.5;
           z-index: 9;
         }
       }
@@ -236,6 +238,9 @@
     .youtube-item {
       .play-media {
         transform: translate(-50%, -50%);
+      }
+      .thumbnail {
+        height: 17rem;
       }
     }
   }
