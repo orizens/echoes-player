@@ -1,3 +1,7 @@
+## v 5.0.1 (2019/11/27)
+
+- [UPGRADE] - controls bar now shows track info in full screen
+
 ## v 5.0.0 (2019/11/18)
 
 - [NEW] - new ui design for search

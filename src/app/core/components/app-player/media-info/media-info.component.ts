@@ -14,7 +14,8 @@ import { ITrackInfoSelectEvent } from '../track-info/track-info.component';
   styleUrls: ['./media-info.scss'],
   template: `
   <article class="media-info is-flex-row is-flex-valign">
-    <aside class="media-thumb-container"
+    <aside
+      [ngClass]="{ 'media-thumb-container': true, 'floating': floating}"
     title="maximize / minimize"
     (click)="handleThumbClick()">
       <img class="media-thumb" *ngIf="player.media.snippet.thumbnails" [src]="player?.media?.snippet?.thumbnails?.default?.url">
@@ -37,15 +38,16 @@ import { ITrackInfoSelectEvent } from '../track-info/track-info.component';
 export class MediaInfoComponent implements OnInit {
   @Input() player: any = {};
   @Input() minimized: GoogleApiYouTubeVideoResource;
+  @Input() floating = false;
   @Output() thumbClick = new EventEmitter();
   @Output() seekTrack = new EventEmitter();
 
   displayInfo = false;
   tracks: string[] = [];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   @HostListener('window:keyup.Escape', ['$event'])
   keyEvent(event: KeyboardEvent) {

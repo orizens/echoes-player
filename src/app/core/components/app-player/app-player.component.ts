@@ -19,31 +19,35 @@ import { AppPlayerApi } from '@api/app-player.api';
   selector: 'app-player',
   styleUrls: ['./app-player.scss'],
   template: `
-  <section
-    [class.show-youtube-player]="isShowPlayer$ | async"
-    [class.fullscreen]="(isPlayerFullscreen$ | async).on">
+  <section *ngIf="{
+    isFullScreen: isPlayerFullscreen$ | async,
+    isShowPlayer: isShowPlayer$ | async
+  } as player"
+    [class.show-youtube-player]="player.isShowPlayer"
+    [class.fullscreen]="player.isFullScreen.on">
     <div class="yt-player ux-maker">
       <player-resizer
         (toggle)="togglePlayer()"
-        [fullScreen]="isShowPlayer$ | async"
+        [fullScreen]="player.isShowPlayer"
       ></player-resizer>
       <youtube-player
         (ready)="setupPlayer($event)"
         (change)="updatePlayerState($event)"
       ></youtube-player>
     </div>
-    <div class="container">
-      <image-blur [media]="media$ | async" *ngIf="!(isPlayerFullscreen$ | async).on"></image-blur>
+    <div class="container" *ngIf="media$ | async as media">
+      <image-blur [media]="media" *ngIf="!player.isFullScreen.on"></image-blur>
       <media-info
         [player]="player$ | async"
-        [minimized]="media$ | async"
+        [minimized]="media"
+        [floating]="player.isFullScreen.on"
         (thumbClick)="toggleFullScreen()"
         (seekTrack)="selectTrackInVideo($event)"
       ></media-info>
       <player-controls class="controls-container nicer-ux"
         [isRepeat]="isPlayerInRepeat$ | async"
         [playing]="isPlayerPlaying$ | async"
-        [media]="media$ | async"
+        [media]="media"
         (pause)="pauseVideo()"
         (next)="playNextTrack()"
         (play)="playVideo($event)"
@@ -70,7 +74,7 @@ export class AppPlayerComponent implements OnInit, OnDestroy {
     private store: Store<EchoesState>,
     private nowPlaylistEffects: NowPlaylistEffects,
     private appPlayerApi: AppPlayerApi
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.appPlayerApi.resetPlayer();
@@ -79,7 +83,7 @@ export class AppPlayerComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   setupPlayer(player) {
     this.appPlayerApi.setupPlayer(player);
