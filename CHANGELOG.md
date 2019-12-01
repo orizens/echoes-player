@@ -1,3 +1,7 @@
+## v 5.1.0 (2019/12/01)
+
+- [NEW] - add "Twilight" theme
+
 ## v 5.0.1 (2019/11/27)
 
 - [UPGRADE] - controls bar now shows track info in full screen
