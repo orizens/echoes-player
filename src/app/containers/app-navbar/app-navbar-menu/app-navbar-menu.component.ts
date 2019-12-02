@@ -67,7 +67,7 @@ enum Key {
           checking for version...
           </div>
         </div>
-        <div class="list-group-item">
+        <div class="list-group-item theme-selector">
           <icon name="paint-brush" class="text-primary"></icon> Theme: 
           <button-group [buttons]="theme.themes" [selectedButton]="theme.selected"
             (buttonClick)="updateTheme($event)"></button-group>
@@ -116,9 +116,9 @@ export class AppNavbarMenuComponent implements OnInit {
     }
   }
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   handleSignOut() {
     this.signOut.emit();

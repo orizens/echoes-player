@@ -19,7 +19,7 @@ export interface ButtonGroupButton {
   styleUrls: ['./button-group.component.scss'],
   template: `
     <div class="btn-group btn-group-sm navbar-btn">
-      <button [ngClass]="['btn btn-default', 'btn-value-' + button.value]"
+      <button [ngClass]="['btn btn-default', 'btn-value-' + button.value, button.value]"
         *ngFor="let button of buttons"
         [class.active]="isSelectedButton(button.value)"
         (click)="buttonClick.next(button)">
@@ -36,7 +36,7 @@ export class ButtonGroupComponent implements OnInit {
 
   @Output() buttonClick = new EventEmitter<ButtonGroupButton>();
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   isSelectedButton(buttonValue: string) {
     return buttonValue === this.selectedButton;

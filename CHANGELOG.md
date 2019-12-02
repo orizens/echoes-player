@@ -1,3 +1,7 @@
+## v 5.1.1 (2019/12/02)
+
+- [UPDATE] - redesigned theme selector in use menu
+
 ## v 5.1.0 (2019/12/01)
 
 - [NEW] - add "Twilight" theme
