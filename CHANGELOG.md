@@ -1,3 +1,7 @@
+## v 5.1.2 (2019/12/14)
+
+- [UPDATE] - added license per google's app requirements
+
 ## v 5.1.1 (2019/12/02)
 
 - [UPDATE] - redesigned theme selector in use menu
