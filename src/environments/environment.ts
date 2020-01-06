@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   youtube: {
-    API_KEY: 'AIzaSyDCGg6FG6s_zxACqel09vQUKBc-x26pKFA',
-    CLIENT_ID: '971861197531-hm7solf3slsdjc4omsfti4jbcbe625hs'
+    API_KEY: 'AIzaSyA6YkX5YgxBvuh5JUmFRRD36rxfkav2Pnw',
+    CLIENT_ID: '1091000328541-sorqs9dcoip5iucpp2jnm6us04mv5mlb'
   }
 };
