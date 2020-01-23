@@ -1,3 +1,7 @@
+## v 5.1.3 (2020/01/23)
+
+- [UPDATE] - updated theme color for PWA and loading screen
+
 ## v 5.1.2 (2019/12/14)
 
 - [UPDATE] - added license per google's app requirements
