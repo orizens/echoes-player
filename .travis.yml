@@ -11,7 +11,7 @@ env:
     - GH_REF: github.com/orizens/echoes-player.git
 language: node_js
 node_js:
-  - '10.16.0'
+  - '12.15.0'
 install:
   # - nvm use
   - npm install karma-es6-shim
