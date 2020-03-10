@@ -21,6 +21,7 @@ import { PlaylistProxy } from './playlist-view.proxy';
         (playVideo)="playVideo($event)"
         (queueVideo)="queueVideo($event)"
         (unqueueVideo)="unqueueVideo($event)"
+        (add)="addVideo($event)"
       ></playlist-viewer>
     </div>
   </article>
@@ -35,9 +36,9 @@ export class PlaylistViewComponent implements OnInit {
   constructor(
     private playlistProxy: PlaylistProxy,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
     this.playlistProxy.playPlaylist(playlist);
@@ -57,6 +58,10 @@ export class PlaylistViewComponent implements OnInit {
 
   unqueueVideo(media: GoogleApiYouTubeVideoResource) {
     this.playlistProxy.unqueueVideo(media);
+  }
+
+  addVideo(media: GoogleApiYouTubeVideoResource) {
+    this.playlistProxy.addVideo(media);
   }
 
   handleBack() {

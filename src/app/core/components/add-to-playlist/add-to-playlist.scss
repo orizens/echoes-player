@@ -1,37 +1,72 @@
 @import '~css/core/global.scss';
 
-:host {
-  .add-to-playlist {
-    top: 100px;
-    width: 60vw;
-    height: 40vh;
-    position: fixed;
-    transform: translateX(50%);
-    z-index: $zindex-navbar;
-    background-color: var(--sidebar-bg);
-    box-shadow: 0 0 20px -3px #000;
-    padding: 2rem;
-  }
+@media (min-width: 320px) {
+  :host {
+    .add-to-playlist {
+      top: 100px;
+      width: 100vw;
+      height: 40vh;
+      position: fixed;
+      transform: none;
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      transition-delay: 0.5s;
+      z-index: $zindex-navbar;
+      background-color: var(--sidebar-bg);
+      box-shadow: 0 0 20px -3px #000;
+      padding: 2rem;
+      overflow: hidden;
 
-  .header {
-    top: 0;
+      &.show-modal {
+        transform: translateX(0) translateY(0);
+      }
+    }
 
-    button-icon {
-      right: 0;
+    .thumb-image {
       top: 0;
+      filter: blur(13px);
+      opacity: 0.5;
+      transform: translateX(40%) translateY(0%) scale(2);
+      left: 0;
+    }
+
+    .header {
+      top: 0;
+
+      button-icon {
+        right: 0;
+        top: 0;
+      }
+    }
+    .playlists {
+      height: 100%;
+
+      .nav-list .btn {
+        margin: 0.5rem 0;
+      }
+    }
+    .content {
+      max-height: 250px;
+      overflow: auto;
+      position: relative;
+    }
+    .media-to-add {
+      max-width: 200px;
+      .title {
+        color: var(--sidebar-text);
+      }
     }
   }
-  .playlists {
-    height: 100%;
-  }
-  .content {
-    max-height: 250px;
-    overflow: auto;
-  }
-  .media-to-add {
-    max-width: 200px;
-    .title {
-      color: var(--sidebar-text);
+}
+
+@media (min-width: 768px) {
+  :host {
+    .add-to-playlist {
+      width: 60vw;
+      transform: translateX(50%) translateY(-150%);
+
+      &.show-modal {
+        transform: translateX(50%) translateY(0);
+      }
     }
   }
 }

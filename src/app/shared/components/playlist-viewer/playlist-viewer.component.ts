@@ -17,6 +17,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy
       (play)="onPlayVideo($event)"
       (queue)="onQueueVideo($event)"
       (unqueue)="onRemove($event)"
+      (add)="onAdd($event)"
     ></youtube-list>
   </section>
   `
@@ -31,6 +32,7 @@ export class PlaylistViewerComponent implements OnInit {
   @Output() queueVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output() playVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
   @Output() unqueueVideo = new EventEmitter<GoogleApiYouTubeVideoResource>();
+  @Output() add = new EventEmitter<GoogleApiYouTubeVideoResource>();
 
   constructor() { }
 
@@ -55,5 +57,9 @@ export class PlaylistViewerComponent implements OnInit {
 
   onRemove(media: GoogleApiYouTubeVideoResource) {
     this.unqueueVideo.emit(media);
+  }
+
+  onAdd(media: GoogleApiYouTubeVideoResource) {
+    this.add.emit(media);
   }
 }

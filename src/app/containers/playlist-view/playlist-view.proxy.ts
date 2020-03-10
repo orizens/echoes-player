@@ -26,7 +26,7 @@ export class PlaylistProxy {
     private userProfileActions: UserProfileActions,
     private appPlayerApi: AppPlayerApi,
     private appApi: AppApi
-  ) {}
+  ) { }
 
   goBack() {
     this.appApi.navigateBack();
@@ -75,5 +75,9 @@ export class PlaylistProxy {
 
   unqueueVideo(media: GoogleApiYouTubeVideoResource) {
     this.appPlayerApi.removeVideoFromPlaylist(media);
+  }
+
+  addVideo(media: GoogleApiYouTubeVideoResource) {
+    this.appApi.toggleModal(true, media);
   }
 }

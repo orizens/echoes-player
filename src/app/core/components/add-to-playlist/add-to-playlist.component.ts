@@ -1,32 +1,37 @@
 import { AppApi } from '@api/app.api';
 import { Component, OnInit } from '@angular/core';
 
+const MODAL_ANIMATION_TIMEOUT = 100;
 @Component({
   selector: 'add-to-playlist',
   styleUrls: ['./add-to-playlist.scss'],
   template: `
-  <div class="add-to-playlist" *ngIf="show$ | async">
-    <div class="header is-sticky" *ngIf="media$ | async as media">
-      <h4 class="text-success">Add To Playlist: {{media.snippet.title}}</h4>
-        <button-icon class="is-absolute" icon="times" (click)="closeModal()" types="btn btn-danger"></button-icon>
+  <div *ngIf="{show: show$ | async, media: media$ | async  } as video">
+    <div [ngClass]="{ 'add-to-playlist': true, 'show-modal': animateShow }" *ngIf="video.show && video.media.id">
+      <img class="is-absolute thumb-image thumb-shadow"
+        [src]="video.media.snippet.thumbnails.high.url" >
+      <div class="header is-sticky">
+        <h4 class="text-success">Add To Playlist: {{video.media.snippet.title}}</h4>
+          <button-icon class="is-absolute" icon="times" (click)="closeModal()" types="btn btn-danger"></button-icon>
+      </div>
+      <section class="is-flex-row content">
+        <div class="media-to-add is-flex-column is-sticky">
+          <youtube-media [media]="video.media"></youtube-media>
+        </div>
+        <div class="playlists is-strechable" *ngIf="playlists$ | async as playlists">
+          <input [value]="playlistsFilter" placeholder="filter playlists..." class="form-control" #searchFilter (input)
+          ="handleFilterChange(searchFilter.value)" type="search">
+          <ul class="nav nav-list">
+            <li *ngFor="let playlist of playlists | search:playlistsFilter">
+              <button class="btn btn-success" title="Click to add the video to this playlist" (click)="addToPlaylist(playlist, video.media)">
+                {{playlist.snippet.title}} ({{playlist.contentDetails.itemCount}})
+              </button>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
-    <section class="is-flex-row content" *ngIf="media$ | async as media">
-      <div class="media-to-add is-flex-column is-sticky">
-        <youtube-media [media]="media"></youtube-media>
-      </div>
-      <div class="playlists" *ngIf="playlists$ | async as playlists">
-        <input [value]="playlistsFilter" placeholder="filter playlists..." class="form-control" #searchFilter (input)
-        ="handleFilterChange(searchFilter.value)" type="search">
-        <ul class="nav nav-list">
-          <li *ngFor="let playlist of playlists | search:playlistsFilter">
-            <button class="btn btn-success" title="Click to add the video to this playlist" (click)="addToPlaylist(playlist, media)">
-              {{playlist.snippet.title}} ({{playlist.contentDetails.itemCount}})
-            </button>
-          </li>
-        </ul>
-      </div>
-    </section>
-  </div>
+</div>
   `
 })
 export class AddToPlaylistComponent implements OnInit {
@@ -35,12 +40,24 @@ export class AddToPlaylistComponent implements OnInit {
   media$ = this.appApi.mediaToPlaylist$;
 
   playlistsFilter = '';
+  animateShow = false;
 
-  constructor(private appApi: AppApi) { }
-  ngOnInit() { }
+  constructor(private appApi: AppApi) {
+    this.show$.subscribe(show => {
+      if (show) {
+        setTimeout(() => this.animateShow = true, MODAL_ANIMATION_TIMEOUT);
+      }
+    });
+  }
+  ngOnInit() {
+
+  }
 
   closeModal() {
-    this.appApi.toggleModal(false);
+    this.animateShow = false;
+    setTimeout(() => {
+      this.appApi.toggleModal(false)
+    }, MODAL_ANIMATION_TIMEOUT * 8);
   }
 
   handleFilterChange(filter: string) {

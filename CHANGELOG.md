@@ -1,3 +1,7 @@
+## v 5.2.1 (2020/03/10)
+
+- [UPDATE] - add media to your playlist from playlist, more responsive support
+
 ## v 5.2.0 (2020/03/09)
 
 - [NEW] - As a logged in user, you can now add a media to your playlists
