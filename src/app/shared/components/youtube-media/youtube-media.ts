@@ -25,7 +25,7 @@ export class YoutubeMediaComponent {
   isPlaying = false;
   ICON_PREFIX_BRAND = ICON_PREFIX_BRAND;
 
-  constructor() {}
+  constructor() { }
 
   playVideo(media: GoogleApiYouTubeVideoResource) {
     this.play.emit(media);
@@ -35,7 +35,7 @@ export class YoutubeMediaComponent {
     this.queue.emit(media);
   }
 
-  addVideo(media: GoogleApiYouTubeVideoResource) {
+  addVideoToPlaylist(media: GoogleApiYouTubeVideoResource) {
     this.add.emit(media);
   }
 

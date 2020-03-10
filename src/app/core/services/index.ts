@@ -9,6 +9,7 @@ import { YoutubeDataApi } from './youtube-data-api';
 import { VersionCheckerService } from './version-checker.service';
 import { MediaParserService } from './media-parser.service';
 import { AnalyticsService } from './analytics.service';
+import { PlaylistsOrganizer } from './playlists-organizer.service';
 
 export * from './user-profile.service';
 export * from './youtube.search';
@@ -31,5 +32,6 @@ export const APP_SERVICES = [
   YoutubeDataApi,
   VersionCheckerService,
   MediaParserService,
-  AnalyticsService
+  AnalyticsService,
+  PlaylistsOrganizer
 ];

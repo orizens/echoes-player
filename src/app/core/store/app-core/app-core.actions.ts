@@ -14,11 +14,14 @@ export enum ActionTypes {
 
   ERROR_ADD = '[APP CORE] Error Add',
   ERROR_CLEAN = '[APP CORE] Error Clean',
-  TOGGLE_ERROR = '[APP CORE] Error Toggle'
+  TOGGLE_ERROR = '[APP CORE] Error Toggle',
+
+  SHOW_MODAL = 'modal/modalOpened',
+  CLOSE_MODAL = 'modal/modalClosed'
 }
 export class RecievedAppVersion implements Action {
   public type = ActionTypes.APP_VERSION_RECIEVED;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 export class UpdateAppVersion implements Action {
   public type = ActionTypes.APP_UPDATE_VERSION;
@@ -45,22 +48,32 @@ export class ToggleSidebar implements Action {
 
 export class ThemeChange implements Action {
   public type = ActionTypes.APP_THEME_CHANGE;
-  constructor(public payload: string) {}
+  constructor(public payload: string) { }
 }
 
 export class AddError {
   public type = ActionTypes.ERROR_ADD;
-  constructor(public payload: IAppError | any) {}
+  constructor(public payload: IAppError | any) { }
 }
 
 export class ToggleError {
   public type = ActionTypes.TOGGLE_ERROR;
-  constructor(public payload = {}) {}
+  constructor(public payload = {}) { }
 }
 
 export class CleanError {
   public type = ActionTypes.ERROR_CLEAN;
-  constructor(public payload = false) {}
+  constructor(public payload = false) { }
+}
+
+export class ShowModal {
+  public type = ActionTypes.SHOW_MODAL;
+  constructor(public media, public payload = true) { }
+}
+
+export class CloseModal {
+  public type = ActionTypes.CLOSE_MODAL;
+  constructor(public payload = false) { }
 }
 
 export type Action =
@@ -72,4 +85,6 @@ export type Action =
   | ToggleSidebar
   | ThemeChange
   | AddError
-  | ToggleError;
+  | ToggleError
+  | ShowModal
+  | CloseModal;

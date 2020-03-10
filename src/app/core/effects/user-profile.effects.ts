@@ -8,6 +8,7 @@ import { toPayload } from '@utils/data.utils';
 
 import { UserProfile } from '@core/services/user-profile.service';
 import { Authorization } from '@core/services/authorization.service';
+import { PlaylistsOrganizer } from '../services/playlists-organizer.service';
 
 @Injectable()
 export class UserProfileEffects {
@@ -15,7 +16,8 @@ export class UserProfileEffects {
     private actions$: Actions,
     private userProfileActions: UserProfileActions,
     private userProfile: UserProfile,
-    private auth: Authorization
+    private auth: Authorization,
+    private playlistsOrganizer: PlaylistsOrganizer
   ) { }
 
   @Effect()
@@ -136,4 +138,20 @@ export class UserProfileEffects {
     ofType(UserProfileActions.USER_SIGNOUT_SUCCESS),
     tap(() => this.auth.disposeAutoSignIn())
   );
+
+  @Effect()
+  addMediaToPlaylist$ = this.actions$.pipe(
+    ofType(UserProfileActions.ADD_TO_PLAYLIST),
+    map(toPayload),
+    switchMap(({ playlist, media }) => {
+      return this.playlistsOrganizer.addToPlaylist(media.id, playlist.id);
+    }),
+    map((response) => {
+      return { type: 'playlists/mediaAddedEnd' };
+    }),
+    switchMap(() =>
+      this.userProfile.getPlaylists(true).pipe(
+        map(({ items }: any) => this.userProfileActions.setPlaylists(items)),
+      )
+    ));
 }

@@ -44,3 +44,13 @@ export const selectErrorAction = createSelector(
   selectError,
   (error: IAppError) => error.action
 );
+
+export const selectShowAddToPlaylist = createSelector(
+  getAppCore,
+  (state: IAppCore) => state.show.addToPlaylist
+);
+
+export const selectMediaToPlaylist = createSelector(
+  getAppCore,
+  (state: IAppCore) => state.show.media
+);

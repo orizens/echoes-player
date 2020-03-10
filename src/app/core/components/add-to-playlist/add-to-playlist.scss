@@ -1,0 +1,37 @@
+@import '~css/core/global.scss';
+
+:host {
+  .add-to-playlist {
+    top: 100px;
+    width: 60vw;
+    height: 40vh;
+    position: fixed;
+    transform: translateX(50%);
+    z-index: $zindex-navbar;
+    background-color: var(--sidebar-bg);
+    box-shadow: 0 0 20px -3px #000;
+    padding: 2rem;
+  }
+
+  .header {
+    top: 0;
+
+    button-icon {
+      right: 0;
+      top: 0;
+    }
+  }
+  .playlists {
+    height: 100%;
+  }
+  .content {
+    max-height: 250px;
+    overflow: auto;
+  }
+  .media-to-add {
+    max-width: 200px;
+    .title {
+      color: var(--sidebar-text);
+    }
+  }
+}

@@ -8,6 +8,7 @@ import { AppPlayerApi } from '@core/api/app-player.api';
 
 // selectors
 import * as NowPlaylist from '@core/store/now-playlist';
+import { AppApi } from '../../../core/api/app.api';
 
 @Component({
   selector: 'youtube-videos',
@@ -20,6 +21,7 @@ import * as NowPlaylist from '@core/store/now-playlist';
       (play)="playSelectedVideo($event)"
       (queue)="queueSelectedVideo($event)"
       (unqueue)="removeVideoFromPlaylist($event)"
+      (add)="addMediaToPlaylist($event)"
     ></youtube-list>
   `
 })
@@ -30,8 +32,9 @@ export class YoutubeVideosComponent implements OnInit {
 
   constructor(
     private store: Store<EchoesState>,
-    private appPlayerApi: AppPlayerApi
-  ) {}
+    private appPlayerApi: AppPlayerApi,
+    private appApi: AppApi
+  ) { }
 
   ngOnInit() {
     this.store.dispatch(
@@ -51,4 +54,9 @@ export class YoutubeVideosComponent implements OnInit {
   removeVideoFromPlaylist(media: GoogleApiYouTubeVideoResource) {
     this.appPlayerApi.removeVideoFromPlaylist(media);
   }
+
+  addMediaToPlaylist(media: GoogleApiYouTubeVideoResource) {
+    this.appApi.toggleModal(true, media);
+  }
+
 }

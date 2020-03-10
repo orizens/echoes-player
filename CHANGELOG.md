@@ -1,3 +1,7 @@
+## v 5.2.0 (2020/03/09)
+
+- [NEW] - As a logged in user, you can now add a media to your playlists
+
 ## v 5.1.3 (2020/01/23)
 
 - [UPDATE] - updated theme color for PWA and loading screen

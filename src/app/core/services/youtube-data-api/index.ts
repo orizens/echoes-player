@@ -5,7 +5,8 @@ import { Authorization } from '../authorization.service';
 
 export const DataApiProviders = {
   SEARCH: 'search',
-  PLAYLISTS: 'playlists'
+  PLAYLISTS: 'playlists',
+  PLAYLIST_ITEMS: 'playlistItems'
 };
 
 export const _defaultUrlParams = {
@@ -66,8 +67,17 @@ export class YoutubeDataApi {
     return this._request(api);
   }
 
-  insert(api: string, options) {
-    return this.http.post(this.getApi(api), {});
+  insert(api: string, { snippet, part }) {
+    const _options = {
+      headers: this.createHeaders(true),
+      params: {
+        part,
+        key: _defaultUrlParams.key,
+        alt: 'json'
+      }
+    };
+    const body = { snippet };
+    return this.http.post(this.getApi(api), body, _options);
   }
 
   update(api) {

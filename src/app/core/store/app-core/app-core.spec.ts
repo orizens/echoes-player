@@ -19,6 +19,11 @@ describe('The App Core Reducer', () => {
         message: '',
         action: null,
         show: false
+      },
+      show: {
+        addToPlaylist: false,
+        media: undefined,
+        status: 'none'
       }
     };
     return { ...defaultState, ...props };

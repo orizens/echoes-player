@@ -39,6 +39,9 @@ export function user(
     case UserProfileActions.ADD_PLAYLISTS:
       return { ...state, playlists: [...state.playlists, ...action.payload] };
 
+    case UserProfileActions.SET_PLAYLISTS:
+      return { ...state, playlists: action.payload };
+
     case UserProfileActions.UPDATE_TOKEN:
       return { ...state, access_token: action.payload, playlists: [] };
 

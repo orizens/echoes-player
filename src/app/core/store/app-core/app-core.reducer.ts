@@ -29,6 +29,11 @@ export interface IAppCore {
   theme: string;
   themes: string[];
   error: IAppError;
+  show: {
+    addToPlaylist: boolean;
+    media: GoogleApiYouTubeVideoResource;
+    status: 'loading' | 'none'
+  }
 }
 const newInitialState: IAppCore = {
   sidebarExpanded: true,
@@ -44,6 +49,11 @@ const newInitialState: IAppCore = {
     message: '',
     show: false,
     action: ErrorActions.NONE
+  },
+  show: {
+    addToPlaylist: false,
+    media: undefined,
+    status: 'none'
   }
 };
 const initialState: IAppCore = migrateReducerState(
@@ -114,6 +124,18 @@ export function appCore(
       };
     }
 
+    case ActionTypes.SHOW_MODAL:
+    case ActionTypes.CLOSE_MODAL: {
+      const media = action['media'] || undefined;
+      return {
+        ...state,
+        show: {
+          ...state.show,
+          addToPlaylist: action.payload,
+          media
+        }
+      }
+    }
     default:
       return {
         ...initialState,

@@ -1,4 +1,4 @@
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { EchoesState } from '@store/reducers';
 
@@ -12,8 +12,11 @@ export class AppApi {
   themes$ = this.store.select(AppCore.getAppThemes);
   appVersion$ = this.store.select(AppCore.getAppVersion);
   user$ = this.store.select(UserActions.getUser);
+  showAddToPlaylist$ = this.store.pipe(select(AppCore.selectShowAddToPlaylist));
+  usersPlaylists$ = this.store.pipe(select(UserActions.selectUsersPlaylists));
+  mediaToPlaylist$ = this.store.pipe(select(AppCore.selectMediaToPlaylist));
 
-  constructor(private store: Store<EchoesState>) {}
+  constructor(private store: Store<EchoesState>) { }
 
   toggleSidebar() {
     this.store.dispatch(new AppCore.ToggleSidebar());
@@ -58,5 +61,14 @@ export class AppApi {
 
   notifyError(error) {
     this.store.dispatch(new AppCore.AddError(error));
+  }
+
+  // MODAL
+  toggleModal(show = true, media = {}) {
+    this.store.dispatch(show ? new AppCore.ShowModal(media) : new AppCore.CloseModal());
+  }
+
+  addToPlaylist(playlist, media) {
+    this.store.dispatch(new UserActions.AddToPlaylist({ playlist, media }));
   }
 }

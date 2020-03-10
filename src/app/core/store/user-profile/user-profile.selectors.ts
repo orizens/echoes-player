@@ -6,3 +6,6 @@ export const getUser = (state: EchoesState) => state.user;
 export const getUserPlaylists = createSelector(getUser, (user: IUserProfile) => user.playlists);
 export const getUserViewPlaylist = createSelector(getUser, (user: IUserProfile) => user.viewedPlaylist);
 export const getIsUserSignedIn = createSelector(getUser, (user: IUserProfile) => user.access_token !== '');
+
+export const selectUsersPlaylists = createSelector(getUser,
+  (user: IUserProfile): GoogleApiYouTubePlaylistResource[] => user.playlists ? user.playlists : []);
