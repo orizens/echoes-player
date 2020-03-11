@@ -1,3 +1,7 @@
+## v 5.2.2 (2020/03/11)
+
+- [UPDATE] - add to playlist enhanced with playlist cards
+
 ## v 5.2.1 (2020/03/10)
 
 - [UPDATE] - add media to your playlist from playlist, more responsive support

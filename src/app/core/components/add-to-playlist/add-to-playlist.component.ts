@@ -1,12 +1,13 @@
 import { AppApi } from '@api/app.api';
 import { Component, OnInit } from '@angular/core';
 
-const MODAL_ANIMATION_TIMEOUT = 100;
+const MODAL_ANIMATION_TIMEOUT = 50;
 @Component({
   selector: 'add-to-playlist',
   styleUrls: ['./add-to-playlist.scss'],
   template: `
   <div *ngIf="{show: show$ | async, media: media$ | async  } as video">
+    <div class="backdrop is-fixed" *ngIf="video.show"></div>
     <div [ngClass]="{ 'add-to-playlist': true, 'show-modal': animateShow }" *ngIf="video.show && video.media.id">
       <img class="is-absolute thumb-image thumb-shadow"
         [src]="video.media.snippet.thumbnails.high.url" >
@@ -21,13 +22,13 @@ const MODAL_ANIMATION_TIMEOUT = 100;
         <div class="playlists is-strechable" *ngIf="playlists$ | async as playlists">
           <input [value]="playlistsFilter" placeholder="filter playlists..." class="form-control" #searchFilter (input)
           ="handleFilterChange(searchFilter.value)" type="search">
-          <ul class="nav nav-list">
-            <li *ngFor="let playlist of playlists | search:playlistsFilter">
-              <button class="btn btn-success" title="Click to add the video to this playlist" (click)="addToPlaylist(playlist, video.media)">
-                {{playlist.snippet.title}} ({{playlist.contentDetails.itemCount}})
+          <section class="is-flex-row is-flex-wrap">
+            <article class="playlist" *ngFor="let playlist of playlists | search:playlistsFilter">
+              <button class="btn btn-transparent" title="Click to add the video to this playlist" (click)="addToPlaylist(playlist, video.media)">
+                <youtube-playlist [media]="playlist" [playIcon]="'check 2x'" (play)="addToPlaylist(playlist, video.media)" (navigated)="closeModal()"></youtube-playlist>
               </button>
-            </li>
-          </ul>
+            </article>
+          </section>
         </div>
       </section>
     </div>
@@ -57,7 +58,7 @@ export class AddToPlaylistComponent implements OnInit {
     this.animateShow = false;
     setTimeout(() => {
       this.appApi.toggleModal(false)
-    }, MODAL_ANIMATION_TIMEOUT * 8);
+    }, MODAL_ANIMATION_TIMEOUT * 10);
   }
 
   handleFilterChange(filter: string) {
