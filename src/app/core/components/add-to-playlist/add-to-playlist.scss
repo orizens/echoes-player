@@ -9,7 +9,7 @@
       height: 75vh;
       position: fixed;
       transform: none;
-      transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
       z-index: $zindex-modal;
       background-color: var(--sidebar-bg);
       box-shadow: 0 0 20px -3px #000;
@@ -64,7 +64,7 @@
 @media (min-width: 768px) {
   :host {
     .add-to-playlist {
-      top: 50%;
+      top: 45%;
       left: 50%;
       width: 75vw;
       transform: translateX(-50%) translateY(-200%);
@@ -80,7 +80,6 @@
       right: 0;
       z-index: $zindex-navbar-fixed;
       background-color: rgba(0, 0, 0, 0.8);
-      // backdrop-filter: blur(5px);
     }
   }
 }

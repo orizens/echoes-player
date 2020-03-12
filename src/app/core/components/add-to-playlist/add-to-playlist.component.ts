@@ -24,8 +24,8 @@ const MODAL_ANIMATION_TIMEOUT = 50;
           ="handleFilterChange(searchFilter.value)" type="search">
           <section class="is-flex-row is-flex-wrap">
             <article class="playlist" *ngFor="let playlist of playlists | search:playlistsFilter">
-              <button class="btn btn-transparent" title="Click to add the video to this playlist" (click)="addToPlaylist(playlist, video.media)">
-                <youtube-playlist [media]="playlist" [playIcon]="'check 2x'" (play)="addToPlaylist(playlist, video.media)" (navigated)="closeModal()"></youtube-playlist>
+              <button class="btn btn-transparent" title="Click to add the video to this playlist" >
+                <youtube-playlist [media]="playlist" [playIcon]="'check 2x'" [noNavigate]="true" (play)="addToPlaylist(playlist, video.media)" (navigated)="closeModal()"></youtube-playlist>
               </button>
             </article>
           </section>

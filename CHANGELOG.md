@@ -1,3 +1,7 @@
+## v 5.2.3 (2020/03/12)
+
+- [FIX] - add to playlist disables route to playlist, adds media once
+
 ## v 5.2.2 (2020/03/11)
 
 - [UPDATE] - add to playlist enhanced with playlist cards

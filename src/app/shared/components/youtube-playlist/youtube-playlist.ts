@@ -16,7 +16,9 @@ import {
 export class YoutubePlaylistComponent {
   @Input() media: GoogleApiYouTubePlaylistResource;
   @Input() link = './';
-  @Input() playIcon = 'youtube-play 2x'
+  @Input() playIcon = 'youtube-play 2x';
+  @Input() noNavigate = false;
+
   @Output() play = new EventEmitter();
   @Output() queue = new EventEmitter();
   @Output() navigated = new EventEmitter();
@@ -33,6 +35,7 @@ export class YoutubePlaylistComponent {
   }
 
   onNavigateToPlaylist() {
+    if (this.noNavigate) return;
     this.loading = true;
     this.navigated.emit();
   }

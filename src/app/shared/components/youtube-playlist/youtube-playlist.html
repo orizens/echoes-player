@@ -16,7 +16,7 @@
     </div>
 
     <section class="item-actions is-absolute is-rounded-bottom">
-      <a
+      <a *ngIf="!noNavigate"
         class="playlist-link"
         [routerLink]="[ link + '/playlist', media.id ]"
         [title]="media.snippet.title"
@@ -33,6 +33,22 @@
             class="loader"></icon>
         </section>
       </a>
+      <section *ngIf="noNavigate"
+        class="playlist-link"
+        [title]="media.snippet.title"
+        (click)="onNavigateToPlaylist()">
+        <h4 class="title ellipsis">
+          {{ media.snippet.title }}
+        </h4>
+        <section class="text-info is-flex-row is-flex-valign">
+          <icon name="list-ul"></icon>
+          <span class="is-flex-1">{{ media.contentDetails.itemCount }}</span>
+          <icon
+            *ngIf="loading"
+            name="refresh spin"
+            class="loader"></icon>
+        </section>
+      </section>
     </section>
   </section>
 </div>
