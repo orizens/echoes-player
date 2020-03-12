@@ -23,11 +23,11 @@ const MODAL_ANIMATION_TIMEOUT = 50;
           <input [value]="playlistsFilter" placeholder="filter playlists..." class="form-control" #searchFilter (input)
           ="handleFilterChange(searchFilter.value)" type="search">
           <section class="is-flex-row is-flex-wrap">
-            <article class="playlist" *ngFor="let playlist of playlists | search:playlistsFilter">
-              <button class="btn btn-transparent" title="Click to add the video to this playlist" >
-                <youtube-playlist [media]="playlist" [playIcon]="'check 2x'" [noNavigate]="true" (play)="addToPlaylist(playlist, video.media)" (navigated)="closeModal()"></youtube-playlist>
-              </button>
-            </article>
+            <button class="btn btn-transparent playlist" 
+            *ngFor="let playlist of playlists | search:playlistsFilter"
+            title="Click to add the video to this playlist" >
+              <youtube-playlist [media]="playlist" [playIcon]="'check 2x'" [noNavigate]="true" (play)="addToPlaylist(playlist, video.media)" (navigated)="closeModal()"></youtube-playlist>
+            </button>
           </section>
         </div>
       </section>
@@ -58,7 +58,7 @@ export class AddToPlaylistComponent implements OnInit {
     this.animateShow = false;
     setTimeout(() => {
       this.appApi.toggleModal(false)
-    }, MODAL_ANIMATION_TIMEOUT * 10);
+    }, MODAL_ANIMATION_TIMEOUT * 13);
   }
 
   handleFilterChange(filter: string) {

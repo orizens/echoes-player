@@ -15,6 +15,7 @@
       box-shadow: 0 0 20px -3px #000;
       padding: 2rem;
       overflow: hidden;
+      will-change: transform;
 
       &.show-modal {
         transform: translateX(0) translateY(0);
@@ -25,7 +26,7 @@
       top: 0;
       filter: blur(13px);
       opacity: 0.5;
-      transform: translateX(40%) translateY(0%) scale(2);
+      transform: translateX(65%) translateY(35%) scale(2);
       left: 0;
     }
 
@@ -41,11 +42,8 @@
       height: 100%;
 
       .playlist {
-        width: 18rem;
+        width: 21rem;
       }
-      // .btn {
-      //   margin: 0.5rem 0;
-      // }
     }
     .content {
       max-height: 70vh;
