@@ -1,3 +1,7 @@
+## v 5.2.4 (2020/05/22)
+
+- [UPDATE] - added apple touch icon to be compatible as a PWA
+
 ## v 5.2.3 (2020/03/12)
 
 - [FIX] - add to playlist disables route to playlist, adds media once

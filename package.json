@@ -1,6 +1,6 @@
 {
   "name": "echoes-player",
-  "version": "5.2.3",
+  "version": "5.2.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
