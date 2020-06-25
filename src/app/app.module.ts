@@ -6,7 +6,7 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {
   StoreRouterConnectingModule,
-  RouterStateSerializer
+  RouterStateSerializer, DefaultRouterStateSerializer
 } from '@ngrx/router-store';
 
 import { CoreModule } from './core';
@@ -36,7 +36,7 @@ import { AppErrorHandler } from './core/services/error-handler';
     ...APP_CORE_MODULES,
     ...APP_CONTAINER_MODULES,
 
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({ serializer: DefaultRouterStateSerializer }),
     ServiceWorkerModule.register('/ngsw-worker.js', {
       enabled: environment.production
     })
