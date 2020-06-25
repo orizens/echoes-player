@@ -2,7 +2,6 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "module": "esnext",
     "baseUrl": "./",
     "paths": {
       "~/*": ["/*"],
@@ -25,6 +24,12 @@
       "node"
     ]
   },
-  "exclude": ["test.ts", "**/*.spec.ts"],
-  "angularCompilerOptions": {}
+  "angularCompilerOptions": {},
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
 }
