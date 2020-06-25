@@ -64,7 +64,7 @@
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "bootstrap-sass": "3.3.7",
-    "codelyzer": "^4.0.1",
+    "codelyzer": "5.2.2",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
