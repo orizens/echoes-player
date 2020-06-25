@@ -73,7 +73,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-spec-reporter": "0.0.32",
     "ngrx-action-creator-factory": "0.0.1",
-    "ngrx-store-localstorage": "8.0.0",
+    "ngrx-store-localstorage": "9.0.0",
     "ngx-infinite-scroll": "8.0.1",
     "ngx-typeahead": "6.2.0",
     "ngx-youtube-player": "7.1.1",
