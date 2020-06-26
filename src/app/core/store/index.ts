@@ -31,7 +31,7 @@ if (!environment.production) {
     StoreModule.forRoot(EchoesReducers, { metaReducers }),
     // StoreRouterConnectingModule,
     // Note that you must instrument after importing StoreModule
-    ...[!environment.production && StoreDevtoolsModule.instrument({ maxAge: 25 })]
+    StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   declarations: [],
   exports: [],
