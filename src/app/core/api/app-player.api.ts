@@ -8,12 +8,14 @@ import * as AppPlayer from '@store/app-player';
 import * as fromNowPlaylist from '@store/now-playlist';
 import { NowPlaylistEffects } from '@core/effects/now-playlist.effects';
 import { take, map } from 'rxjs/operators';
+import { YoutubePlayerService } from '../services';
 
 @Injectable()
 export class AppPlayerApi {
   constructor(
     private store: Store<EchoesState>,
-    private nowPlaylistEffects: NowPlaylistEffects
+    private nowPlaylistEffects: NowPlaylistEffects,
+    private youtubePlayerService: YoutubePlayerService
   ) {}
 
   playPlaylist(playlist: GoogleApiYouTubePlaylistResource) {
@@ -63,7 +65,8 @@ export class AppPlayerApi {
   }
 
   setupPlayer(player) {
-    this.store.dispatch(new AppPlayer.SetupPlayer(player));
+    // this.store.dispatch(new AppPlayer.SetupPlayer(player));
+    this.youtubePlayerService.setupPlayer(player);
   }
 
   changePlayerState(event: YT.OnStateChangeEvent) {

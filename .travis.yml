@@ -14,24 +14,25 @@ node_js:
   - '12.15.0'
 install:
   # - nvm use
-  - npm install karma-es6-shim
+  # - npm install karma-es6-shim
   - npm install
 script:
-  - npm run test:ci
+  # - npm run test:ci
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
-after_script:
-  - process.exit()
-after_success:
-  # - chmod +x ./config/deploy.sh
-  # - ./config/deploy.sh
+  # - export DISPLAY=:99.0
+  # - sh -e /etc/init.d/xvfb start
+  # - sleep 3
   - npm run build:env
   - npm run build:prod
   - npm run copy:license
-  # - npm run copy:heroku
   - npm run copy:package
+after_script:
+  - process.exit()
+after_success:
+  # - npm run build:env
+  # - npm run build:prod
+  # - npm run copy:license
+  # - npm run copy:package
 deploy:
   provider: pages
   local_dir: ./dist

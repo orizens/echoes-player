@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { ActionTypes, Action } from './app-core.actions';
+import { ActionTypes, AppActions } from './app-core.actions';
 import { Themes, DEFAULT_THEME } from '../../../app.themes';
 import { migrateReducerState } from '../store.utils';
 
@@ -64,7 +64,7 @@ const initialState: IAppCore = migrateReducerState(
 
 export function appCore(
   state: IAppCore = initialState,
-  action: Action
+  action: AppActions
 ): IAppCore {
   switch (action.type) {
     case ActionTypes.SIDEBAR_EXPAND:
@@ -140,7 +140,6 @@ export function appCore(
       return {
         ...initialState,
         ...state,
-        themes: Themes.sort()
       };
   }
 }

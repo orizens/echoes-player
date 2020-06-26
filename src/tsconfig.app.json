@@ -2,7 +2,6 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "module": "es2015",
     "baseUrl": "./",
     "paths": {
       "~/*": ["/*"],
@@ -25,6 +24,9 @@
       "node"
     ]
   },
-  "exclude": ["test.ts", "**/*.spec.ts"],
-  "angularCompilerOptions": {}
+  "angularCompilerOptions": {
+    "enableIvy": false
+  },
+  "files": ["main.ts", "polyfills.ts"],
+  "include": ["src/**/*.d.ts"]
 }

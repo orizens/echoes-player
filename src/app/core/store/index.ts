@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Store, StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 // import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 
 import { environment } from '@env/environment';
 import { EchoesState, EchoesReducers, EchoesActions } from './reducers';
-import { NavigationSerializer } from './router-store';
+// import { NavigationSerializer } from './router-store';
 
 // import { storeFreeze } from 'ngrx-store-freeze';
 
@@ -23,15 +23,15 @@ export function localStorageSyncReducer(
 const metaReducers: MetaReducer<any, any>[] = [localStorageSyncReducer];
 const optionalImports = [];
 if (!environment.production) {
-  // Note that you must instrument after importing StoreModule
-  optionalImports.push(StoreDevtoolsModule.instrument({ maxAge: 25 }));
+  
 }
 
 @NgModule({
   imports: [
     StoreModule.forRoot(EchoesReducers, { metaReducers }),
     // StoreRouterConnectingModule,
-    ...optionalImports
+    // Note that you must instrument after importing StoreModule
+    ...[!environment.production && StoreDevtoolsModule.instrument({ maxAge: 25 })]
   ],
   declarations: [],
   exports: [],
