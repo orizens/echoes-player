@@ -17,7 +17,7 @@ install:
   - npm install karma-es6-shim
   - npm install
 script:
-  - npm run test:ci
+  # - npm run test:ci
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
