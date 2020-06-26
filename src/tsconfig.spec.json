@@ -3,39 +3,18 @@
   "compilerOptions": {
     "sourceMap": true,
     "outDir": "../out-tsc/spec",
-    "target": "es5",
     "baseUrl": "",
     "paths": {
-      "~/*": [
-        "/*"
-      ],
-      "@utils/*": [
-        "app/shared/utils/*"
-      ],
-      "@shared/*": [
-        "app/shared/*"
-      ],
-      "@animations/*": [
-        "app/shared/animations/*"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@api/*": [
-        "app/core/api/*"
-      ],
-      "@resolvers/*": [
-        "app/core/resolvers/*"
-      ],
-      "@store/*": [
-        "app/core/store/*"
-      ],
-      "@mocks/*": [
-        "../tests/mocks/*"
-      ],
-      "@env/*": [
-        "environments/*"
-      ]
+      "~/*": ["/*"],
+      "@utils/*": ["app/shared/utils/*"],
+      "@shared/*": ["app/shared/*"],
+      "@animations/*": ["app/shared/animations/*"],
+      "@core/*": ["app/core/*"],
+      "@api/*": ["app/core/api/*"],
+      "@resolvers/*": ["app/core/resolvers/*"],
+      "@store/*": ["app/core/store/*"],
+      "@mocks/*": ["../tests/mocks/*"],
+      "@env/*": ["environments/*"]
     },
     "types": [
       "jasmine",
@@ -46,12 +25,9 @@
       "youtube"
     ]
   },
-  "files": [
-    "test.ts",
-    "polyfills.ts"
-  ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ]
+  "angularCompilerOptions": {
+    "enableIvy": false
+  },
+  "files": ["test.ts", "polyfills.ts"],
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
 }
