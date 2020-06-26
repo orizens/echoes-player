@@ -1,3 +1,7 @@
+## v 5.3.0 (2020/06/26)
+
+- [UPDATE] - upgrading to Angular v9 with Ivy Performance
+
 ## v 5.2.4 (2020/05/22)
 
 - [UPDATE] - added apple touch icon to be compatible as a PWA
