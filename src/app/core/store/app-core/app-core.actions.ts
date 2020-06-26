@@ -76,7 +76,7 @@ export class CloseModal {
   constructor(public payload = false) { }
 }
 
-export type Action =
+export type AppActions =
   | RecievedAppVersion
   | UpdateAppVersion
   | CheckVersion

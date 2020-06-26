@@ -24,12 +24,9 @@
       "node"
     ]
   },
-  "angularCompilerOptions": {},
-  "files": [
-    "main.ts",
-    "polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "angularCompilerOptions": {
+    "enableIvy": false
+  },
+  "files": ["main.ts", "polyfills.ts"],
+  "include": ["src/**/*.d.ts"]
 }
