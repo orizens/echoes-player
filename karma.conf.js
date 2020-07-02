@@ -30,20 +30,20 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     // autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
-    restartOnFileChange: true,
-    // browsers: ['ChromeHeadlessNoSandbox'],
-    // customLaunchers: {
-    //   ChromeHeadlessNoSandbox: {
-    //     base: 'ChromeHeadless',
-    //     flags: ['--no-sandbox']
-    //   }
-    // },
-    // singleRun: true
+    // browsers: ['Chrome'],
+    // singleRun: false,
+    // restartOnFileChange: true,
+    browsers: ['ChromeHeadlessNoSandbox'],
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox'],
+      },
+    },
+    singleRun: true,
   };
-  // if (process.env.TRAVIS) {
-  //   options.singleRun = true;
-  // }
+  if (process.env.TRAVIS) {
+    options.singleRun = true;
+  }
   config.set(options);
 };
