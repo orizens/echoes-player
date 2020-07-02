@@ -1,7 +1,6 @@
-@import '~css/echoes-variables.scss';
+@import '~src/css/echoes-variables.scss';
 
 @media (min-width: 320px) {
-
   :host {
     .is-sticky {
       z-index: $zindex-navbar;

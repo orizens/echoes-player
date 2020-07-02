@@ -1,4 +1,4 @@
-@import '~css/core/global.scss';
+// @import '~src/css/core/global.scss';
 
 @media (min-width: 320px) {
   app-navbar {
@@ -23,7 +23,7 @@
       flex-direction: row;
       justify-content: space-between;
       padding: $navbar-container-padding;
-      backdrop-filter: blur(.5rem);
+      backdrop-filter: blur(0.5rem);
 
       .navbar__content {
         flex: 1;
@@ -84,7 +84,7 @@
 
   app-navbar {
     nav.navbar.navbar-fixed-top {
-      margin-left: $drawer-width;
+      margin-left: var(--drawer-width);
     }
     .navbar-container {
       padding: 0.5rem 0;
@@ -96,6 +96,6 @@
   }
 
   .closed + .container-main app-navbar .navbar {
-    margin-left: $sidebar-closed-width;
+    margin-left: var(--sidebar-closed-width);
   }
 }

@@ -1,4 +1,4 @@
-@import '~css/echoes-variables';
+@import '~src/css/echoes-variables';
 
 :host {
   // DEFAULT THEME - 'arctic'
@@ -16,11 +16,11 @@
 }
 @media (min-width: 768px) {
   :host .closed + .container-main {
-    margin-left: $sidebar-closed-width;
+    margin-left: var(--sidebar-closed-width);
   }
 }
 @media (min-width: 1024px) {
   :host .container-main {
-    margin-left: $drawer-width;
+    margin-left: var(--drawer-width);
   }
 }

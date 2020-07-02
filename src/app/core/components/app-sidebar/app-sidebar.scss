@@ -1,141 +1,140 @@
-@import '~css/core/global.scss';
+@import '~src/css/core/global.scss';
 
 // helpers
 $navbar-new-height: 5rem;
 
 @mixin closed-sidebar() {
-	.sidebar-left-fixed.closed {
-		@include transform(translatex(0rem));
+  .sidebar-left-fixed.closed {
+    @include transform(translatex(0rem));
 
-		 .sidebar-backdrop {
-			display: none;
-		}
-	}
+    .sidebar-backdrop {
+      display: none;
+    }
+  }
 }
 // the code
 @media (min-width: 320px) {
-:host {
-  position: fixed;
-  bottom: 0;
-  top: 0;
-  left: -30rem;
-  margin: 0;
-  padding: 0rem;
-	z-index: 1030;
-	transition: left .3s;
-	transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
-	
-	
-	&.closed {
-		left: 0;
-	}
+  :host {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: -30rem;
+    margin: 0;
+    padding: 0rem;
+    z-index: 1030;
+    transition: left 0.3s;
+    transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
 
-  .sidebar {
-		--sidebar-bg-color: var(--sidebar-bg);
-		--sidebar-brand-bg: var(--brand-primary);
-		--sidebar-text-color: var(--sidebar-text);
-
-		// flex setup
-		display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: initial;
-    align-self: auto;
-		
-		height: 100%;
-		width: $drawer-width;
-		z-index: $zindex-navbar-fixed;
-		// by default should be hidden
-		transform: translatex(-30rem);
-		background-color: var(--sidebar-bg-color);
-		padding-bottom: 21%;
-		border: none;
-		border-radius: 0;
-
-		// transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
-
-		.navbar-brand {
-			float: none;
-			width: 100%;
-			line-height: $navbar-new-height;
-			// height: $navbar-new-height;
-			padding-left: 1.5rem;
-			color: rgb(50, 53, 56);
-		}
-		// should be displayed
-		&.closed {
-			// transform: translatex(0px);
-			transform: none;
-			.sidebar-backdrop {
-				position: fixed;
-				left: $drawer-width;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				display: block;
-				background-color: var(--brand-dark-bg-color-transparent);
-			}
-		}
-
-		.sidebar-backdrop {
-			display: none;
-		}
-
-		.navbar {
-			margin-bottom: 0;
-			border-bottom: none;
-			z-index: 1030;
-			border-radius: 0;
-			border: none;
-		}
-  
-    .sidebar-backdrop {
-      z-index: 1029;
+    &.closed {
+      left: 0;
     }
-	}
-}
-}
-@media (min-width: 768px) {
-:host { 
-	left: 0;
 
-  .sidebar {
-		transition: transform, width .3s ease-out;
-		transform: none;
+    .sidebar {
+      --sidebar-bg-color: var(--sidebar-bg);
+      --sidebar-brand-bg: var(--brand-primary);
+      --sidebar-text-color: var(--sidebar-text);
 
-		&.closed > .sidebar-backdrop {
-			display: none;
-		}
-		+ .sidebar-backdrop {
-			display: none;
-		}
+      // flex setup
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: initial;
+      align-self: auto;
 
-		&.closed {
-			// transform: translatex(-30rem);
-			width: $sidebar-closed-width;
+      height: 100%;
+      width: var(--drawer-width);
+      z-index: $zindex-navbar-fixed;
+      // by default should be hidden
+      transform: translatex(-30rem);
+      background-color: var(--sidebar-bg-color);
+      padding-bottom: 21%;
+      border: none;
+      border-radius: 0;
 
-			// .text {
-			// 	display: none;
-			// }
+      // transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
 
-			.navbar-brand {
-				/*width: @sidebar-closed-width;*/
-				padding: 0;
-				text-align: center;
-			}
-		}
+      .navbar-brand {
+        float: none;
+        width: 100%;
+        line-height: $navbar-new-height;
+        // height: $navbar-new-height;
+        padding-left: 1.5rem;
+        color: rgb(50, 53, 56);
+      }
+      // should be displayed
+      &.closed {
+        // transform: translatex(0px);
+        transform: none;
+        .sidebar-backdrop {
+          position: fixed;
+          left: var(--drawer-width);
+          right: 0;
+          top: 0;
+          bottom: 0;
+          display: block;
+          background-color: var(--brand-dark-bg-color-transparent);
+        }
+      }
+
+      .sidebar-backdrop {
+        display: none;
+      }
+
+      .navbar {
+        margin-bottom: 0;
+        border-bottom: none;
+        z-index: 1030;
+        border-radius: 0;
+        border: none;
+      }
+
+      .sidebar-backdrop {
+        z-index: 1029;
+      }
+    }
   }
 }
+@media (min-width: 768px) {
+  :host {
+    left: 0;
+
+    .sidebar {
+      transition: transform, width 0.3s ease-out;
+      transform: none;
+
+      &.closed > .sidebar-backdrop {
+        display: none;
+      }
+      + .sidebar-backdrop {
+        display: none;
+      }
+
+      &.closed {
+        // transform: translatex(-30rem);
+        width: var(--sidebar-closed-width);
+
+        // .text {
+        // 	display: none;
+        // }
+
+        .navbar-brand {
+          /*width: @sidebar-closed-width;*/
+          padding: 0;
+          text-align: center;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 1024px) {
-	@include closed-sidebar();
+  @include closed-sidebar();
 
-	.sidebar {
-		// transform: translatex(0px);
+  .sidebar {
+    // transform: translatex(0px);
 
-		 .sidebar-backdrop {
-			display: none;
-		}
-	}
+    .sidebar-backdrop {
+      display: none;
+    }
+  }
 }

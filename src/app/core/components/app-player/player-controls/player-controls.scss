@@ -1,80 +1,80 @@
-@import '~css/echoes-variables.scss';
+@import '~src/css/echoes-variables.scss';
 
 :host {
-	--btn-color:var(--brand-inverse-text);
-	--btn-control-primary-color: var(--brand-primary);
-	$btn-control-font-size:  1.5rem;
-	$btn-control-padding:  1.5rem;
-	$btn-primary-font-size: 3rem;
+  --btn-color: var(--brand-inverse-text);
+  --btn-control-primary-color: var(--brand-primary);
+  $btn-control-font-size: 1.5rem;
+  $btn-control-padding: 1.5rem;
+  $btn-primary-font-size: 3rem;
 
-	@mixin button-style () {
-		border: none;
-		background: transparent;
-		color: var(--btn-color);
-		border-radius: 0;
-		outline: none;
-		font-size: $btn-control-font-size;
-	}
+  @mixin button-style() {
+    border: none;
+    background: transparent;
+    color: var(--btn-color);
+    border-radius: 0;
+    outline: none;
+    font-size: $btn-control-font-size;
+  }
 
-	z-index: 100;
+  z-index: 100;
 
-	.btn {
-		&.next,
-		&.previous,
-		&.repeat {
-			padding: $btn-control-padding;
-		}
-	}
-	.btn {
-		@include button-style();
-		vertical-align: middle;
+  .btn {
+    &.next,
+    &.previous,
+    &.repeat {
+      padding: $btn-control-padding;
+    }
+  }
+  .btn {
+    @include button-style();
+    vertical-align: middle;
     line-height: 0;
-		
-		&:hover {
-			@include button-style();
 
-			opacity: .5;
-		}
+    &:hover {
+      @include button-style();
 
-		&.pause {
-			display: none;
-		}
+      opacity: 0.5;
+    }
 
-		&.play,
-		&.pause {
-			border: 0;
-			color: var(--btn-control-primary-color);
-			padding: 0.9rem 1.4rem;
-			margin: 0;
-			font-size: $btn-primary-font-size;
-		}
-	}
+    &.pause {
+      display: none;
+    }
 
-	.show-player {
-		transform: translatey(0);
-	}
+    &.play,
+    &.pause {
+      border: 0;
+      color: var(--btn-control-primary-color);
+      padding: 0.9rem 1.4rem;
+      margin: 0;
+      font-size: $btn-primary-font-size;
+    }
+  }
 
-	.player-controls {
-		padding: .5rem;
-	}
-	.play,
-	.pause {
-		mix-blend-mode: screen;
-	}
+  .show-player {
+    transform: translatey(0);
+  }
 
-	&.yt-playing .player-controls {
-		.play {
-			display: none;
-		}
+  .player-controls {
+    padding: 0.5rem;
+  }
+  .play,
+  .pause {
+    mix-blend-mode: screen;
+  }
 
-		.pause {
-			display: inline-block;
-		}
-	}
+  &.yt-playing .player-controls {
+    .play {
+      display: none;
+    }
 
-	&.yt-repeat-on .player-controls {
-		.repeat {
-			color: var(--btn-control-primary-color);
-		}
-	}
+    .pause {
+      display: inline-block;
+    }
+  }
+
+  &.yt-repeat-on .player-controls {
+    .repeat {
+      color: var(--btn-control-primary-color);
+    }
+  }
 }

@@ -1,20 +1,23 @@
 body {
-  --size-1: .5rem;
+  --size-1: 0.5rem;
   --size-2: 1rem;
   --size-3: 1.5rem;
   --size-4: 2rem;
   --size-5: 2.5rem;
   --size-6: 3rem;
 
-  --font-medium: .5rem;
+  --font-medium: 0.5rem;
   --font-standard: 1rem;
   --font-large: 2rem;
   --font-xlarge: 3rem;
   --font-xxlarge: 4rem;
 
-  --spacing-medium: .5rem;
+  --spacing-medium: 0.5rem;
   --spacing-standard: 1rem;
   --spacing-large: 2rem;
   --spacing-xlarge: 3rem;
   --spacing-xxlarge: 5rem;
+
+  --sidebar-closed-width: 7rem;
+  --drawer-width: 29.5rem;
 }

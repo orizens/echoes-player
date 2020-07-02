@@ -1,0 +1,31 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "paths": {
+      "~/*": ["/*"],
+      "@utils/*": ["src/app/shared/utils/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@animations/*": ["src/app/shared/animations/*"],
+      "@core/*": ["src/app/core/*"],
+      "@api/*": ["src/app/core/api/*"],
+      "@resolvers/*": ["src/app/core/resolvers/*"],
+      "@store/*": ["src/app/core/store/*"],
+      "@mocks/*": ["tests/mocks/*"],
+      "@env/*": ["src/environments/*"]
+    },
+    "types": [
+      "gapi",
+      "gapi.youtube",
+      "gapi.auth2",
+      "youtube",
+      "jasmine",
+      "node"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
+  },
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["src/**/*.d.ts"]
+}

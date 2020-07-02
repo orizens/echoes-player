@@ -1,44 +1,44 @@
-@import '~css/echoes-variables.scss';
+@import '~src/css/echoes-variables.scss';
 
 :host {
-	.list-group {
-		margin: 0;
-	}
-	.list-group-item {
-		$active-color: rgba(10,10,10, .5);
+  .list-group {
+    margin: 0;
+  }
+  .list-group-item {
+    $active-color: rgba(10, 10, 10, 0.5);
 
-		color: $clouds;
-		border: none;
-		background: transparent;
-		
-		&:hover {
-			background: rgba(10,10,10,.2);
-			box-shadow: inset 0px 0px 6px $active-color;
-		}
-		
-		.closed & {
-			text-align: center;
-		}
+    color: $clouds;
+    border: none;
+    background: transparent;
 
-		icon {
-			color: var(--brand-primary);
-			margin-right: 10px;
+    &:hover {
+      background: rgba(10, 10, 10, 0.2);
+      box-shadow: inset 0px 0px 6px $active-color;
+    }
 
-			.closed & {
-				margin: 0;
-			}
-		}
-	}
+    .closed & {
+      text-align: center;
+    }
+
+    icon {
+      color: var(--brand-primary);
+      margin-right: 10px;
+
+      .closed & {
+        margin: 0;
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) {
-	:host .closed {
-		width: $sidebar-closed-width;
-		a {
-			text-indent: 0.6rem;
-		}
-		.text {
-			display: none;
-		}
-	}
+  :host .closed {
+    width: var(--sidebar-closed-width);
+    a {
+      text-indent: 0.6rem;
+    }
+    .text {
+      display: none;
+    }
+  }
 }
