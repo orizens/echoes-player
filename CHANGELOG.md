@@ -1,3 +1,8 @@
+## v 5.3.1 (2020/07/27)
+
+- [UPDATE] - optimize error handler
+- [NEW] - allow to reset app setting through error toast
+
 ## v 5.3.0 (2020/06/26)
 
 - [UPDATE] - upgrading to Angular v9 with Ivy Performance

@@ -94,11 +94,11 @@ export function appCore(
     }
 
     case ActionTypes.ERROR_ADD: {
-      const { payload: { message } } = action;
+      const { payload } = action;
       return {
         ...state,
         error: {
-          message,
+          message: payload?.message,
           show: true,
           action: ErrorActions.RELOAD
         }

@@ -11,11 +11,19 @@
       types="primary"></button-icon>
   </article>
   <article class="text-left">{{ errorMessage$ | async }}</article>
+  <div class="is-flex-row">
   <ng-container *ngIf="errorAction$ | async as errorAction">
     <button
       class="btn btn-default"
       (click)="handleAction(errorAction)">
       {{ errorAction }}
     </button>
+    <button
+      class="btn btn-default"
+      title="(!) This clears out now playlists, search and theme selection (!)"
+      (click)="reset()">
+      Reset App
+    </button>
   </ng-container>
+</div>
 </section>

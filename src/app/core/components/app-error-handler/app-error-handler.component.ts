@@ -19,12 +19,11 @@ export class AppErrorHandlerComponent implements OnInit {
   handleAction(errorAction: ErrorActions) {
     switch (errorAction) {
       case ErrorActions.NONE:
-        this.appErrorHandlerProxy.toggleError();
+        this.toggleError();
         break;
 
       case ErrorActions.RELOAD:
-        this.appErrorHandlerProxy.cleanError();
-        location.reload();
+        this.reload();
         break;
 
       default:
@@ -32,7 +31,24 @@ export class AppErrorHandlerComponent implements OnInit {
     }
   }
 
+  reload() {
+    this.appErrorHandlerProxy.cleanError();
+    location.reload();
+  }
+
+  toggleError() {
+    this.appErrorHandlerProxy.toggleError();
+  }
+
   close() {
     this.handleAction(ErrorActions.NONE);
   }
+
+  reset(){
+    this.appErrorHandlerProxy.cleanError();
+    window.localStorage.clear();
+    location.reload();
+    // this.handleAction(ErrorActions.RELOAD);
+  }
+  
 }
