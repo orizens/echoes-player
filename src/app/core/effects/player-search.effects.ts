@@ -5,11 +5,11 @@ import { of } from 'rxjs';
 
 import {
   map,
-  switchMap,
   filter,
   withLatestFrom,
   catchError,
-  mergeMap
+  mergeMap,
+  exhaustMap
 } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
@@ -40,7 +40,7 @@ export class PlayerSearchEffects {
     map(toPayload),
     withLatestFrom(this.store),
     map((latest: any[]) => latest[1]),
-    switchMap((store: EchoesState) =>
+    exhaustMap((store: EchoesState) =>
       this.youtubeSearch
         .resetPageToken()
         .searchFor(
@@ -183,7 +183,7 @@ export class PlayerSearchEffects {
     ofType(fromPlayerSearch.PlayerSearchActions.PLAYLISTS_SEARCH_START.action),
     withLatestFrom(this.store),
     map((latest: any[]) => latest[1]),
-    switchMap((store: EchoesState) =>
+    exhaustMap((store: EchoesState) =>
       this.youtubeSearch
         .searchForPlaylist(store.search.query, store.search.queryParams)
         .pipe(

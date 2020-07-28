@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { YoutubeDataApi, DataApiProviders } from './youtube-data-api';
-import { switchMap } from 'rxjs/operators';
+import { exhaustMap } from 'rxjs/operators';
 import { IQueryParams } from '../store/player-search';
 
 export const SearchTypes = {
@@ -16,16 +16,15 @@ export const SearchParams = {
     [SearchTypes.CHANNEL]: 'channel'
   }
 };
-
+const createApiOptions = () => ({
+  part: 'snippet,id',
+  q: '',
+  type: 'video',
+});
 @Injectable()
 export class YoutubeSearch {
   private _api = DataApiProviders.SEARCH;
-  private _apiOptions: any = {
-    part: 'snippet,id',
-    q: '',
-    type: 'video',
-    pageToken: ''
-  };
+  private _apiOptions: any = createApiOptions();
 
   constructor(private youtubeDataApi: YoutubeDataApi) { }
 
@@ -92,7 +91,7 @@ export class YoutubeSearch {
   searchForPlaylist(query: string, { preset }) {
     this._apiOptions.type = SearchParams.Types[SearchTypes.PLAYLIST];
     return this.search(query, { preset }).pipe(
-      switchMap(({ items }: { items: GoogleApiYouTubeSearchResource[] }) => {
+      exhaustMap(({ items }: { items: GoogleApiYouTubeSearchResource[] }) => {
         const options = {
           part: 'snippet,id,contentDetails',
           id: items.map(pl => pl.id.playlistId).join(',')
@@ -108,7 +107,7 @@ export class YoutubeSearch {
   }
 
   resetPageToken() {
-    this._apiOptions.pageToken = '';
+    delete this._apiOptions.pageToken;
     return this;
   }
 }
