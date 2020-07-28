@@ -4,8 +4,6 @@
   :host {
     --track-badge-color: var(--brand-dark-bg-color);
     --text-color: var(--brand-inverse-text);
-    --track-active-border-color: var(--brand-primary);
-    --track-bg-active-color: var(--brand-dark-bg-color-transparent);
 
     $track-badge-index: 10;
     $track-button: 15;
@@ -28,8 +26,8 @@
 
       .active & {
         color: var(--text-color);
-        border-right: 6px solid var(--track-active-border-color);
-        background: var(--track-bg-active-color);
+        border-right: 6px solid var(--brand-primary);
+        background: var(--brand-dark-bg-color-transparent);
         margin: 0;
         border-radius: 0;
       }
@@ -107,11 +105,11 @@
 
     .track-tracks {
       margin: 1.5rem -1.5rem 0;
-      border-top: 1px solid var(--track-active-border-color);
+      border-top: 1px solid var(--brand-primary);
 
       .album-tracks-heading {
         margin: 0 2rem;
-        color: var(--track-active-border-color);
+        color: var(--brand-primary);
         font-size: 1.5rem;
       }
 
@@ -120,7 +118,7 @@
         color: var(--text-color);
 
         &:hover {
-          color: var(--track-active-border-color);
+          color: var(--brand-primary);
         }
       }
     }
