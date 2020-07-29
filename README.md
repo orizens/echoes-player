@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/orizens/echoes-player.svg?branch=master)](https://travis-ci.org/orizens/echoes-player) [![Code Climate](https://codeclimate.com/github/orizens/echoes-player/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-player)
+[![Build Status](https://travis-ci.org/orizens/echoes-player.svg?branch=master)](https://travis-ci.org/orizens/echoes-player) [![Netlify Status](https://api.netlify.com/api/v1/badges/616838a7-249c-4ec3-b070-9ee35146a7e2/deploy-status)](https://app.netlify.com/sites/echoesplayer/deploys) [![Code Climate](https://codeclimate.com/github/orizens/echoes-player/badges/gpa.svg)](https://codeclimate.com/github/orizens/echoes-player)
 
 ## [Join Echoes Slack Channel](https://join.slack.com/t/echoesplayer/shared_invite/enQtMzcwMDI4OTI3MjAzLTljZDI3YTA2OGY2ZWY1NTg2M2RmN2UyZGIxOTI4Y2IwMGI4Mzg5MWFlZTZhYTQzZWI5NDVjMGE3ZTQ5OTJjNDA)
 
@@ -24,8 +24,8 @@ It can be regarded as the Media Player experience for youtube listening pleasure
 I'm a Senior Javascript Engineer & A Front End Consultant.
 My services include:
 
-* consulting to companies and startups on how to approach code in their projects and keep it maintainable.
-* I provide project bootstrapping and development - while afterwards, I integrate it on site and guide the team on it.
+- consulting to companies and startups on how to approach code in their projects and keep it maintainable.
+- I provide project bootstrapping and development - while afterwards, I integrate it on site and guide the team on it.
 
 [Contact Me Here](http://orizens.com/contact)
 
@@ -37,20 +37,20 @@ My services include:
 
 ## Included @ngrx solutions:
 
-* [ngrx/store](https://github.com/ngrx/platform/blob/master/docs/store/README.md) - State Management a la "[Redux](https://github.com/reactjs/redux)" based on RxJs
-* [ngrx/effects](https://github.com/ngrx/platform/blob/master/docs/effects/README.md) - Side Effects layer for ngrx/store
-* ~[ngrx/router-store](https://github.com/ngrx/platform/blob/master/docs/router-store/README.md) - Bindings to connect the Angular Router to @ngrx/store~
-* [ngrx-store-localstorage](https://github.com/btroncone/ngrx-store-localstorage) - local sotrage support for ngrx/store
-* [ngrx/store-devtools](https://github.com/ngrx/platform/blob/master/docs/store-devtools/README.md) - a connector to [redux devtool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US) for chrome
+- [ngrx/store](https://github.com/ngrx/platform/blob/master/docs/store/README.md) - State Management a la "[Redux](https://github.com/reactjs/redux)" based on RxJs
+- [ngrx/effects](https://github.com/ngrx/platform/blob/master/docs/effects/README.md) - Side Effects layer for ngrx/store
+- ~[ngrx/router-store](https://github.com/ngrx/platform/blob/master/docs/router-store/README.md) - Bindings to connect the Angular Router to @ngrx/store~
+- [ngrx-store-localstorage](https://github.com/btroncone/ngrx-store-localstorage) - local sotrage support for ngrx/store
+- [ngrx/store-devtools](https://github.com/ngrx/platform/blob/master/docs/store-devtools/README.md) - a connector to [redux devtool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en-US) for chrome
 
 ## Included Technologies & Libraries
 
-* [Angular](http://angular.io)
-* [Angular CLI](https://cli.angular.io/)
-* [@ngrx Platform](https://github.com/ngrx/platform)
-* Bootstrap v3.x (SASS, selected modules)
-* Typescript (latest)
-* ECMAscript latest
+- [Angular](http://angular.io)
+- [Angular CLI](https://cli.angular.io/)
+- [@ngrx Platform](https://github.com/ngrx/platform)
+- Bootstrap v3.x (SASS, selected modules)
+- Typescript (latest)
+- ECMAscript latest
 
 # EchoesPlayer
 
