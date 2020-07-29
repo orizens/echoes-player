@@ -77,7 +77,6 @@ describe('Youtube Search Service', () => {
       part: 'snippet,id',
       q: `${query} ${params.preset}`.trim(),
       type: 'video',
-      pageToken: '',
       videoType: 'any',
       videoDuration: 'any',
       videoDefinition: 'any'
