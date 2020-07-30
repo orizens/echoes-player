@@ -18,4 +18,16 @@ app-user {
   app-navbar .navbar__header {
     padding-left: 2rem;
   }
+  .lead {
+    margin: 2rem;
+  }
+  .sign-in-text {
+    margin-right: 0.5rem;
+  }
+  .sign-in-with-youtube {
+    background: url('/assets/images/yt_logo_rgb_light.png');
+    background-size: contain;
+    height: 2rem;
+    width: 7rem;
+  }
 }

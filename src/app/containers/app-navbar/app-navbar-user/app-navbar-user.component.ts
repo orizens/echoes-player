@@ -9,11 +9,12 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
       <img [src]="userImageUrl" class="user-icon">
     </a>
     <ng-template #userNotSignedIn>
-      <span class="btn btn-link navbar-link navbar-btn"
+      <button class="btn btn-link navbar-link navbar-btn is-flex-row is-flex-valign"
+        title="Sign In With Your TouTube account"
         (click)="handleSignIn()">
-        <icon name="sign-in"></icon>
-        Sign In
-      </span>
+        <span class="sign-in-text">Sign In</span>
+        <div class="sign-in-with-youtube"></div>
+    </button>
     </ng-template>
   `,
   styleUrls: ['./app-navbar-user.component.scss'],

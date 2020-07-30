@@ -17,9 +17,10 @@ import { AppApi } from '@api/app.api';
     ></app-navbar>
     <p *ngIf="!(isSignedIn$ | async)" class="well lead">
       To view your playlists in youtube, you need to sign in.
-      <button class="btn btn-lg btn-primary"
+      <button class="btn btn-lg btn-transparent is-flex-row is-flex-valign"
         (click)="signInUser()">
-        <icon name="google"></icon> Sign In
+        <span class="sign-in-text">Sign In</span>
+        <div class="sign-in-with-youtube"></div>
       </button>
     </p>
     <router-outlet></router-outlet>

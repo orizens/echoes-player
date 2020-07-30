@@ -16,4 +16,14 @@
       box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
     }
   }
+
+  .sign-in-text {
+    margin-right: 0.5rem;
+  }
+  .sign-in-with-youtube {
+    background: url('/assets/images/yt_logo_rgb_light.png') no-repeat;
+    background-size: contain;
+    height: 2rem;
+    width: 7rem;
+  }
 }

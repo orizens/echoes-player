@@ -1,3 +1,7 @@
+## v 5.3.2 (2020/07/30)
+
+- [UPDATE] - add branded YouTube sign in
+
 ## v 5.3.1 (2020/07/27)
 
 - [UPDATE] - optimize error handler

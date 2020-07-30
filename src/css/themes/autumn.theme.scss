@@ -29,4 +29,8 @@
   --media-bg-primary: var(--brand-bg-lite-transparent);
   --app-bg-color: #3c3634e3;
   --app-lite-shadow: 0 0 20px -3px #1a1818;
+
+  .sign-in-with-youtube {
+    background-image: url('/assets/images/yt_logo_rgb_dark.png') !important;
+  }
 }
