@@ -15,8 +15,8 @@ const Events = {
     LABEL: 'search_term'
   },
   Error: {
-    NAME: 'error',
-    LABEL: 'error'
+    NAME: 'exception',
+    LABEL: 'description'
   }
 };
 
