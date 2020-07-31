@@ -13,6 +13,10 @@ const Events = {
   Search: {
     NAME: 'search',
     LABEL: 'search_term'
+  },
+  Error: {
+    NAME: 'error',
+    LABEL: 'error'
   }
 };
 
@@ -56,5 +60,9 @@ export class AnalyticsService {
 
   trackVideoPlay() {
     this.gtag('event', CustomEvents.VIDEO_PLAY);
+  }
+
+  trackError(error: string) {
+    this.gtag('event', Events.Error.NAME, { [Events.Error.LABEL]: error });
   }
 }

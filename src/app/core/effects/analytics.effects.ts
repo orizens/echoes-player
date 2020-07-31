@@ -5,6 +5,8 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { UserProfileActions } from '@store/user-profile';
 import * as PlayerSearch from '@store/player-search';
 import { ActionTypes } from '@store/app-player';
+import * as AppCore from '@store/app-core';
+
 import { AnalyticsService } from '@core/services/analytics.service';
 import { EchoesState } from '@store/reducers';
 import { toPayload } from '@utils/data.utils';
@@ -42,5 +44,12 @@ export class AnalyticsEffects {
     ofType(ActionTypes.PLAY_STARTED),
     map(toPayload),
     tap(() => this.analytics.trackVideoPlay())
+  );
+  
+  @Effect({ dispatch: false })
+  appError$ = this.actions$.pipe(
+    ofType(AppCore.ActionTypes.ERROR_ADD),
+    map(toPayload),
+    tap((error) => this.analytics.trackError(error?.message || error))
   );
 }
