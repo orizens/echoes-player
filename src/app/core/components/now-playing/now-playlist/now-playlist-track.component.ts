@@ -19,9 +19,9 @@ import { flyOut, flyInOut } from '@shared/animations/fade-in.animation';
       <section class="video-thumb playlist-track__thumb"
         (click)="markSelected(video)">
         <span class="track-number">{{ index + 1 }}</span>
-        <img draggable="false" class="video-thumb__image"
+        <img class="video-thumb__image"
         src="{{ video | videoToThumb }}"
-        xtitle="Drag to sort">
+        title="Drag to sort">
         <span class="badge badge-info">
           {{ video.contentDetails.duration | toFriendlyDuration }}
         </span>

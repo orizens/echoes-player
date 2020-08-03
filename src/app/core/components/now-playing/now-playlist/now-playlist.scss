@@ -7,6 +7,7 @@
 
   .now-playlist {
     position: relative;
+    padding-right: var(--size-5);
     // opacity: 0;
 
     .nav-list {
@@ -53,6 +54,7 @@
 }
 @media (min-width: 768px) {
   .now-playlist {
+    padding: 0;
     .now-playlist-track {
       a .playlist-track__content {
         overflow: hidden;
