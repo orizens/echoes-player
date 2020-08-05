@@ -11,7 +11,7 @@ export const DataApiProviders = {
 
 export const _defaultUrlParams = {
   part: 'snippet,id',
-  maxResults: '50',
+  maxResults: environment.youtube.TOTAL_API_RESULTS,
   key: environment.youtube.API_KEY
 };
 

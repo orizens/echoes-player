@@ -1,5 +1,4 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Authorization } from './authorization.service';
 import { map } from 'rxjs/operators';
@@ -16,7 +15,7 @@ interface YoutubeApiServiceOptions {
 const defaultParams = {
   part: 'snippet,contentDetails',
   key: environment.youtube.API_KEY,
-  maxResults: '50',
+  maxResults: environment.youtube.TOTAL_API_RESULTS,
   pageToken: ''
 };
 
