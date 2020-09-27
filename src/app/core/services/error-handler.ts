@@ -21,7 +21,7 @@ export class AppErrorHandler implements ErrorHandler {
         ? error.error.error.errors[0]
         : error;
       console.error('There was an ERROR:', error);
-      const errorPayload = isString(sanitizedError) ? { message: error } : {...sanitizedError};
+      const errorPayload = isString(sanitizedError) ? { message: error } : { message: `${error?.message}\n${error?.error?.error?.message}` };
       appApi.notifyError(errorPayload);
     }
   }
