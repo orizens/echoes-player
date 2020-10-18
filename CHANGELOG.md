@@ -1,3 +1,7 @@
+## v 5.3.3 (2020/10/18)
+
+- [UPDATE] - updating privacy policy
+
 ## v 5.3.2 (2020/07/30)
 
 - [UPDATE] - add branded YouTube sign in

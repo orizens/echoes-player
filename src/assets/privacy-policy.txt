@@ -14,5 +14,22 @@ Modifications Echoes Player may revise these terms of service for its website at
 
 Governing Law These terms and conditions are governed by and construed in accordance with the laws of Israel and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.
 
-Echoes Player use the google account to authenticate the user with youtube and view/edit the user's playlists. In that context, it stores the user's authentication token within the browser's storage. Upon logout, these details are then removed form the storage.
-Echoes Player doesn't use any of the user's information.
+WHO IS REQUESTING GOOGLE USER DATA
+we're (developers in this project) using Google's own authentication api to request access to the user's playlists and photo.
+
+WHAT DATA WE ARE REQUESTING FROM THE USER
+we're asking the user to access:
+- Google Account (required for authentication) - retreiving user's avatar
+- YouTube Account - access to fetch and update users' playlists (public and private)
+
+WHY WE ARE REQUESTING GOOGLE USER DATA
+Echoes Player is using the google account to authenticate the user with YouTube (TM) and view/edit the user's playlists. In that context, it stores the user's authentication token within the browser's storage. Upon logout, these details are then removed form the storage. The authenticated user's photo is displayed on the app's navigation bar.
+Echoes Player is using the authenticated user's token to save a video to a playlist if the user requested to add a video to their own playlist.
+
+DISCLAIMER ON DATA USAGE
+Echoes Player DOES NOT use any of the user's information and DOES NOT share data with anyone.
+Echoes Player is using Google Analytics in order to track usage and amount of login and entries.
+
+We are recording an action (search, play and login) to have statistics on the actions performed in the app. 
+HOWEVER, we DO NOT record any additional data with these actions (search term, video played, etc) - so none of the user's private data is saved in any form to 3rd party.
+Echoes Player is using the browser's local storage (which can be cleared manually by the user or by logging out) to store playlists, and user's auth data - that in order to allow faster interaction with the app actions: CRUD operations on the users' playlists.
