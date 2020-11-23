@@ -1,6 +1,6 @@
 {
   "name": "echoes-player",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -75,7 +75,7 @@
     "ngrx-action-creator-factory": "0.0.1",
     "ngrx-store-localstorage": "9.0.0",
     "ngx-infinite-scroll": "9.0.0",
-    "ngx-typeahead": "9.1.0",
+    "ngx-typeahead": "9.2.0",
     "ngx-youtube-player": "9.1.0",
     "prettier": "1.11.1",
     "rimraf": "2.6.1",

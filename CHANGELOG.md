@@ -1,3 +1,7 @@
+## v 5.3.4 (2020/11/22)
+
+- [FIX] - arrows didn't work in search box
+
 ## v 5.3.3 (2020/10/18)
 
 - [UPDATE] - updating privacy policy
