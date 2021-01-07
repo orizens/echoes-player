@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Echoes Player - Open Source Media Player for Youtube
+    </title>
+    <base href="/">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1">
+    <meta
+      name="theme-color"
+      content="#0d0f0f">
+    <style type="text/css">
+    html body {
+      background-color: #0d0f0f;
+    }
+
+    .loader-container {
+      display: flex;
+      height: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+
+      position: relative;
+      margin: 100px auto;
+    }
+
+    .loader-label {
+      position: absolute;
+      transform: translateX(-50%) translateY(-140%);
+      left: 50%;
+      opacity: 0.5;
+      font-size: 3rem;
+      font-family: "Open Sans Condensed";
+      text-align: center;
+      color: white;
+    }
+
+    .double-bounce1,
+    .double-bounce2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #333;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+      animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+
+    .double-bounce2 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+
+    @-webkit-keyframes sk-bounce {
+      0%,
+      100% {
+        -webkit-transform: scale(0.0)
+      }
+      50% {
+        -webkit-transform: scale(1.0)
+      }
+    }
+
+    @keyframes sk-bounce {
+      0%,
+      100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+      }
+      50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+      }
+    }
+  </style>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/icons/icon-512x512.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-35188202-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+    window.GA_PROJECT_ID = 'UA-35188202-2';
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', window.GA_PROJECT_ID);
+    </script>
+    <meta
+      name="google-site-verification"
+      content="poEDVsCKw37qAsB04mN0xHiyIQTPVCbH6GMh1OeBZGM">
+    <link rel="manifest" href=".//manifest.json">
+    <meta
+      name="theme-color"
+      content="#1976d2">
+  <link rel="stylesheet" href="styles.654487087fa47aaf317d.css"></head>
+
+  <body>
+    <section class="loader-container">
+      <aside class="loader-label">LOADING ECHOES PLAYER</aside>
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </section>
+  <script src="runtime-es2015.b5ec8b22b43756daa6c0.js" type="module"></script><script src="runtime-es5.b5ec8b22b43756daa6c0.js" nomodule defer></script><script src="polyfills-es5.28b8058dedeea6a29c6c.js" nomodule defer></script><script src="polyfills-es2015.b85ba166f997d29afc39.js" type="module"></script><script src="main-es2015.b429ef5ed80a09cccc7f.js" type="module"></script><script src="main-es5.b429ef5ed80a09cccc7f.js" nomodule defer></script></body>
+
+</html>

@@ -1,0 +1,35 @@
+Terms By accessing the website at https://echoesplayer.com, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.
+
+Use License Permission is granted to temporarily download one copy of the materials (information or software) on Echoes Player' website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not: modify or copy the materials; use the materials for any commercial purpose, or for any public display (commercial or non-commercial); attempt to decompile or reverse engineer any software contained on Echoes Player' website; remove any copyright or other proprietary notations from the materials; or transfer the materials to another person or "mirror" the materials on any other server. This license shall automatically terminate if you violate any of these restrictions and may be terminated by Echoes Player at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
+
+Disclaimer The materials on Echoes Player website are provided on an 'as is' basis. Echoes Player makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, Echoes Player does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.
+
+Limitations In no event shall Echoes Player or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Echoes Player' website, even if Echoes Player or a Echoes Player authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+
+Accuracy of materials The materials appearing on Echoes Player website could include technical, typographical, or photographic errors. Echoes Player does not warrant that any of the materials on its website are accurate, complete or current. Echoes Player may make changes to the materials contained on its website at any time without notice. However Echoes Player does not make any commitment to update the materials.
+
+Links Echoes Player has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Echoes Player of the site. Use of any such linked website is at the user's own risk.
+
+Modifications Echoes Player may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.
+
+Governing Law These terms and conditions are governed by and construed in accordance with the laws of Israel and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.
+
+WHO IS REQUESTING GOOGLE USER DATA
+we're (developers in this project) using Google's own authentication api to request access to the user's playlists and photo.
+
+WHAT DATA WE ARE REQUESTING FROM THE USER
+we're asking the user to access:
+- Google Account (required for authentication) - retreiving user's avatar
+- YouTube Account - access to fetch and update users' playlists (public and private)
+
+WHY WE ARE REQUESTING GOOGLE USER DATA
+Echoes Player is using the google account to authenticate the user with YouTube (TM) and view/edit the user's playlists. In that context, it stores the user's authentication token within the browser's storage. Upon logout, these details are then removed form the storage. The authenticated user's photo is displayed on the app's navigation bar.
+Echoes Player is using the authenticated user's token to save a video to a playlist if the user requested to add a video to their own playlist.
+
+DISCLAIMER ON DATA USAGE
+Echoes Player DOES NOT use any of the user's information and DOES NOT share data with anyone.
+Echoes Player is using Google Analytics in order to track usage and amount of login and entries.
+
+We are recording an action (search, play and login) to have statistics on the actions performed in the app. 
+HOWEVER, we DO NOT record any additional data with these actions (search term, video played, etc) - so none of the user's private data is saved in any form to 3rd party.
+Echoes Player is using the browser's local storage (which can be cleared manually by the user or by logging out) to store playlists, and user's auth data - that in order to allow faster interaction with the app actions: CRUD operations on the users' playlists.
