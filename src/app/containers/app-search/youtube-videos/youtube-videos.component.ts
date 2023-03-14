@@ -23,6 +23,7 @@ import { AppApi } from '../../../core/api/app.api';
       (unqueue)="removeVideoFromPlaylist($event)"
       (add)="addMediaToPlaylist($event)"
     ></youtube-list>
+    <button class="btn btn-primary load-more-btn" (click)="searchMore()">load more results...</button>
   `
 })
 export class YoutubeVideosComponent implements OnInit {
@@ -33,7 +34,7 @@ export class YoutubeVideosComponent implements OnInit {
   constructor(
     private store: Store<EchoesState>,
     private appPlayerApi: AppPlayerApi,
-    private appApi: AppApi
+    private appApi: AppApi,
   ) { }
 
   ngOnInit() {
@@ -57,6 +58,10 @@ export class YoutubeVideosComponent implements OnInit {
 
   addMediaToPlaylist(media: GoogleApiYouTubeVideoResource) {
     this.appApi.toggleModal(true, media);
+  }
+
+  searchMore() {
+    this.appApi.searchMore();
   }
 
 }

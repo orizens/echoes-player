@@ -6,6 +6,7 @@ import { EchoesState } from '@store/reducers';
 import * as AppCore from '@store/app-core';
 import * as RouterActions from '@store/router-store';
 import * as UserActions from '@store/user-profile';
+import * as PlayerSearchActions from '@store/player-search';
 
 @Injectable()
 export class AppApi {
@@ -70,5 +71,9 @@ export class AppApi {
 
   addToPlaylist(playlist, media) {
     this.store.dispatch(new UserActions.AddToPlaylist({ playlist, media }));
+  }
+
+  searchMore() {
+    this.store.dispatch(new PlayerSearchActions.searchMoreForQuery());
   }
 }

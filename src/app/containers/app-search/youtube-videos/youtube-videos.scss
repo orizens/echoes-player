@@ -7,6 +7,10 @@
     margin: 0.9rem 0.5rem;
     display: inline-block;
   }
+
+  .load-more-btn {
+    margin: 3rem;
+  }
 }
 
 @media (min-width: 320px) {
@@ -30,6 +34,7 @@
         padding: 0.7rem 1.5rem;
       }
     }
+
     .videos-list {
       padding-left: 1.6rem;
     }
