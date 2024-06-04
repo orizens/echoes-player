@@ -78,7 +78,7 @@ enum Key {
         <a class="list-group-item navbar-action-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdzGRIXoHuzRFZU03EyhgwBJgJp6W1LMatz6Bn44L-5SyuxZA/viewform" target="_blank" rel="noopener">
           <icon name="star-o"></icon> Request New Features
         </a>
-        <a class="list-group-item navbar-action-link" href="https://echoesplayer.com/homepage/index.html" target="_blank" rel="noopener">
+        <a class="list-group-item navbar-action-link" href="//echoesplayer.netlify.app/homepage/index.html" target="_blank" rel="noopener">
           <icon name="star-o"></icon> Home Page
         </a>
         <button class="list-group-item"
